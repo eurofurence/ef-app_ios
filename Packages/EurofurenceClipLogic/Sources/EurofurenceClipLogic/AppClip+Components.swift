@@ -61,7 +61,11 @@ extension AppClip {
                 dateRangeFormatter: FoundationDateRangeFormatter.shared,
                 eventsService: repositories.events,
                 markdownRenderer: DefaultDownMarkdownRenderer(),
-                shareService: shareService
+                shareService: shareService,
+                calendarRepository: EventKitCalendarEventRepository(
+                    eventStore: EventKitEventStore(window: window),
+                    scheduleRepository: repositories.events
+                )
             )
             
             eventDetailComponentFactory = EventDetailComponentBuilder(

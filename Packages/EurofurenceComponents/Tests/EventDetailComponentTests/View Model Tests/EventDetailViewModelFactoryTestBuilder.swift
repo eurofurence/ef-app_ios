@@ -13,6 +13,7 @@ class EventDetailViewModelFactoryTestBuilder {
         var eventsService: FakeScheduleRepository
 		var markdownRenderer: StubMarkdownRenderer
         var shareService: CapturingShareService
+        var calendarEventRepository: FakeCalendarEventRepository
     }
 
     private var eventsService: FakeScheduleRepository
@@ -32,22 +33,30 @@ class EventDetailViewModelFactoryTestBuilder {
 		let markdownRenderer = StubMarkdownRenderer()
         eventsService.allEvents = [event]
         let shareService = CapturingShareService()
-		let viewModelFactory = DefaultEventDetailViewModelFactory(dateRangeFormatter: dateRangeFormatter,
-                                                      eventsService: eventsService,
-                                                      markdownRenderer: markdownRenderer,
-                                                      shareService: shareService)
+        let calendarEventRepository = FakeCalendarEventRepository()
+        let viewModelFactory = DefaultEventDetailViewModelFactory(
+            dateRangeFormatter: dateRangeFormatter,
+            eventsService: eventsService,
+            markdownRenderer: markdownRenderer,
+            shareService: shareService,
+            calendarRepository: calendarEventRepository
+        )
+        
         var viewModel: EventDetailViewModel!
         viewModelFactory.makeViewModel(for: event.identifier) { viewModel = $0 }
         
         assert(viewModel != nil)
 
-        return Context(event: event,
-                       dateRangeFormatter: dateRangeFormatter,
-                       viewModelFactory: viewModelFactory,
-                       viewModel: viewModel,
-                       eventsService: eventsService,
-					   markdownRenderer: markdownRenderer,
-                       shareService: shareService)
+        return Context(
+            event: event,
+            dateRangeFormatter: dateRangeFormatter,
+            viewModelFactory: viewModelFactory,
+            viewModel: viewModel,
+            eventsService: eventsService,
+            markdownRenderer: markdownRenderer,
+            shareService: shareService,
+            calendarEventRepository: calendarEventRepository
+        )
     }
 
 }
