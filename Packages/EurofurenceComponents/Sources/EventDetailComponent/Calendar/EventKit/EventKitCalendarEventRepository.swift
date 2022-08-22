@@ -1,35 +1,30 @@
 import EurofurenceModel
 
-public struct EventKitCalendarEventRepository: CalendarEventRepository {
+public class EventKitCalendarEventRepository: CalendarEventRepository, EventStoreDelegate {
     
     private let eventStore: EventStore
     private let schedule: Schedule
+    private var calendarEvents = WeakCollection<EventKitCalendarEvent>()
     
     public init(eventStore: EventStore, scheduleRepository: ScheduleRepository) {
         self.schedule = scheduleRepository.loadSchedule(tag: "EventKitCalendarEventRepository")
         self.eventStore = eventStore
+        eventStore.delegate = self
     }
     
-    public func calendarEvent(for identifier: EventIdentifier) -> CalendarEvent {
-        if let event = schedule.loadEvent(identifier: identifier) {
-            return EventKitCalendarEvent(event: event, eventStore: eventStore)
-        } else {
-            return NotACalendarEvent()
+    public func eventStoreChanged(_ eventStore: EventStore) {
+        calendarEvents.forEach { event in
+            event.updatePresence()
         }
     }
     
-    private class NotACalendarEvent: CalendarEvent {
+    public func calendarEvent(for identifier: EventIdentifier) -> CalendarEvent? {
+        guard let event = schedule.loadEvent(identifier: identifier) else { return nil }
         
-        var delegate: CalendarEventDelegate?
+        let calendarEvent = EventKitCalendarEvent(event: event, eventStore: eventStore)
+        calendarEvents.add(calendarEvent)
         
-        func addToCalendar(_ sender: Any?) {
-            
-        }
-        
-        func removeFromCalendar() {
-            
-        }
-        
+        return calendarEvent
     }
     
     private class EventKitCalendarEvent: CalendarEvent {
@@ -37,7 +32,7 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
         private let eventDefinition: EventStoreEventDefinition
         private let eventStore: EventStore
         
-        private var lastKnownEventPresence: CalendarEventPresence {
+        private var lastKnownEventPresence: CalendarEventPresence = .absent {
             didSet {
                 delegate?.calendarEvent(self, presenceDidChange: lastKnownEventPresence)
             }
@@ -56,7 +51,7 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
                 shortDescription: event.abstract
             )
             
-            lastKnownEventPresence = eventStore.contains(eventDefinition: eventDefinition) ? .present : .absent
+            updatePresence()
         }
         
         var delegate: CalendarEventDelegate? {
@@ -66,16 +61,15 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
         }
         
         func addToCalendar(_ sender: Any?) {
-            eventStore.editEvent(definition: eventDefinition, sender: sender) { [weak self] (success) in
-                self?.lastKnownEventPresence = success ? .present : .absent
-            }
-            
-            delegate?.calendarEvent(self, presenceDidChange: .present)
+            eventStore.editEvent(definition: eventDefinition, sender: sender)
         }
         
         func removeFromCalendar() {
             eventStore.removeEvent(identifiedBy: eventDefinition)
-            lastKnownEventPresence = .absent
+        }
+        
+        fileprivate func updatePresence() {
+            lastKnownEventPresence = eventStore.contains(eventDefinition: eventDefinition) ? .present : .absent
         }
         
     }

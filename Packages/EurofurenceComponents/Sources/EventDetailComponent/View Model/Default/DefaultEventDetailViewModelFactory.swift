@@ -53,14 +53,14 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         private let shareService: ShareService
         private var components = [EventDetailViewModelComponent]()
         private let actionBus = DefaultEventDetailViewModel.ActionBus()
-        private let calendarEvent: CalendarEvent
+        private let calendarEvent: CalendarEvent?
 
         init(
             dateRangeFormatter: DateRangeFormatter,
             event: Event,
             markdownRenderer: MarkdownRenderer,
             shareService: ShareService,
-            calendarEvent: CalendarEvent
+            calendarEvent: CalendarEvent?
         ) {
             self.dateRangeFormatter = dateRangeFormatter
             self.event = event
@@ -129,9 +129,11 @@ public class DefaultEventDetailViewModelFactory: EventDetailViewModelFactory {
         }
         
         private func buildAddToCalendarComponent() {
-            let command = AddEventToCalendarAction(calendarEvent: calendarEvent)
-            let component = DefaultEventDetailViewModel.ActionComponent(actionViewModel: command)
-            components.append(component)
+            if let calendarEvent = calendarEvent {            
+                let command = AddEventToCalendarAction(calendarEvent: calendarEvent)
+                let component = DefaultEventDetailViewModel.ActionComponent(actionViewModel: command)
+                components.append(component)
+            }
         }
         
         private func buildSupplementaryInformationBannerComponents() {

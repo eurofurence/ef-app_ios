@@ -5,19 +5,20 @@ import XCTEurofurenceModel
 
 class FakeEventStore: EventStore {
     
-    var registeredEventDefinitions = Set<EventStoreEventDefinition>()
+    var registeredEventDefinitions = Set<EventStoreEventDefinition>() {
+        didSet {
+            simulateStoreDidChange()
+        }
+    }
+    
+    weak var delegate: EventStoreDelegate?
     
     private(set) var addedEventDefinition: EventStoreEventDefinition?
     private(set) var editingSender: Any?
-    private var editCompletionHandler: ((Bool) -> Void)?
-    func editEvent(
-        definition event: EventStoreEventDefinition,
-        sender: Any?,
-        completionHandler: @escaping (Bool) -> Void
-    ) {
+    func editEvent(definition event: EventStoreEventDefinition, sender: Any?) {
         addedEventDefinition = event
         editingSender = sender
-        editCompletionHandler = completionHandler
+        registeredEventDefinitions.insert(addedEventDefinition.unsafelyUnwrapped)
     }
     
     private(set) var removedEventIdentifier: EventStoreEventDefinition?
@@ -29,11 +30,8 @@ class FakeEventStore: EventStore {
         registeredEventDefinitions.contains(eventDefinition)
     }
     
-    func concludeCurrentEdit(success: Bool) {
-        registeredEventDefinitions.insert(addedEventDefinition.unsafelyUnwrapped)
-        editCompletionHandler?(success)
-        addedEventDefinition = nil
-        editCompletionHandler = nil
+    func simulateStoreDidChange() {
+        delegate?.eventStoreChanged(self)
     }
     
 }
@@ -53,7 +51,7 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let sender = self
-        calendarEntry.addToCalendar(sender)
+        calendarEntry?.addToCalendar(sender)
         
         let expected = expectedEventDefinition(for: event)
         
@@ -73,9 +71,8 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         )
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
-        calendarEntry.addToCalendar(self)
-        eventStore.concludeCurrentEdit(success: true)
-        calendarEntry.removeFromCalendar()
+        calendarEntry?.addToCalendar(self)
+        calendarEntry?.removeFromCalendar()
         
         let unexpected = expectedEventDefinition(for: event)
         
@@ -91,7 +88,7 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         )
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: .random)
-        calendarEntry.addToCalendar(nil)
+        calendarEntry?.addToCalendar(nil)
         
         XCTAssertNil(eventStore.addedEventDefinition)
     }
@@ -113,7 +110,7 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let delegate = CapturingCalendarEventDelegate()
-        calendarEntry.delegate = delegate
+        calendarEntry?.delegate = delegate
         
         XCTAssertEqual(.present, delegate.eventPresence)
     }
@@ -131,7 +128,7 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let delegate = CapturingCalendarEventDelegate()
-        calendarEntry.delegate = delegate
+        calendarEntry?.delegate = delegate
         
         XCTAssertEqual(.absent, delegate.eventPresence)
     }
@@ -151,13 +148,13 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let delegate = CapturingCalendarEventDelegate()
-        calendarEntry.delegate = delegate
-        calendarEntry.removeFromCalendar()
+        calendarEntry?.delegate = delegate
+        calendarEntry?.removeFromCalendar()
         
         XCTAssertEqual(.absent, delegate.eventPresence)
     }
     
-    func testEventDoesNotExistInCalendar_WhenDelegateAttached_ThenAdded_Successfully() {
+    func testEventDoesNotExistInCalendar_WhenDelegateAttached_ThenAdded() {
         let scheduleRepository = FakeScheduleRepository()
         let event = FakeEvent.random
         scheduleRepository.allEvents = [event]
@@ -170,19 +167,20 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let delegate = CapturingCalendarEventDelegate()
-        calendarEntry.delegate = delegate
-        calendarEntry.addToCalendar(nil)
-        eventStore.concludeCurrentEdit(success: true)
+        calendarEntry?.delegate = delegate
+        calendarEntry?.addToCalendar(nil)
         
         XCTAssertEqual(.present, delegate.eventPresence)
     }
     
-    func testEventDoesNotExistInCalendar_WhenDelegateAttached_ThenAdded_Unsuccessfully() {
+    func testEventExistsInCalendar_ThenRemovedFromStoreOutsideOfApplication() {
         let scheduleRepository = FakeScheduleRepository()
         let event = FakeEvent.random
         scheduleRepository.allEvents = [event]
         
         let eventStore = FakeEventStore()
+        eventStore.registeredEventDefinitions.insert(expectedEventDefinition(for: event))
+        
         let calendarEventRepository = EventKitCalendarEventRepository(
             eventStore: eventStore,
             scheduleRepository: scheduleRepository
@@ -190,9 +188,9 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
         
         let calendarEntry = calendarEventRepository.calendarEvent(for: event.identifier)
         let delegate = CapturingCalendarEventDelegate()
-        calendarEntry.delegate = delegate
-        calendarEntry.addToCalendar(nil)
-        eventStore.concludeCurrentEdit(success: false)
+        calendarEntry?.delegate = delegate
+        eventStore.registeredEventDefinitions.remove(expectedEventDefinition(for: event))
+        eventStore.simulateStoreDidChange()
         
         XCTAssertEqual(.absent, delegate.eventPresence)
     }

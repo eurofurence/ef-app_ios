@@ -5,7 +5,7 @@ class FakeCalendarEventRepository: CalendarEventRepository {
     
     private var events = [EventIdentifier: FakeCalendarEvent]()
     
-    func calendarEvent(for identifier: EventIdentifier) -> CalendarEvent {
+    func calendarEvent(for identifier: EventIdentifier) -> CalendarEvent? {
         if let event = events[identifier] {
             return event
         } else {

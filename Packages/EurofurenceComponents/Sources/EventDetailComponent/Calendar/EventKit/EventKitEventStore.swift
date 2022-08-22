@@ -6,21 +6,28 @@ public class EventKitEventStore: NSObject, EventStore {
     
     private let window: UIWindow
     private let eventStore: EKEventStore
-    private var currentEditingCompletionHandler: ((Bool) -> Void)?
+    private var eventStoreChangedSubscription: NSObjectProtocol?
     
     public init(window: UIWindow) {
         self.window = window
         self.eventStore = EKEventStore()
+        super.init()
+        
+        eventStoreChangedSubscription = NotificationCenter.default.addObserver(
+            forName: .EKEventStoreChanged,
+            object: eventStore,
+            queue: .main,
+            using: { [weak self] _ in
+                if let strongSelf = self {
+                    strongSelf.delegate?.eventStoreChanged(strongSelf)
+                }
+            })
     }
     
-    public func editEvent(
-        definition event: EventStoreEventDefinition,
-        sender: Any?,
-        completionHandler: @escaping (Bool) -> Void
-    ) {
+    public var delegate: EventStoreDelegate?
+    
+    public func editEvent(definition event: EventStoreEventDefinition, sender: Any?) {
         attemptCalendarStoreEdit { [weak self, eventStore] in
-            self?.currentEditingCompletionHandler = completionHandler
-            
             let calendarEvent = EKEvent(eventStore: eventStore)
             calendarEvent.title = event.title
             calendarEvent.location = event.room
@@ -124,9 +131,6 @@ extension EventKitEventStore: EKEventEditViewDelegate {
         _ controller: EKEventEditViewController,
         didCompleteWith action: EKEventEditViewAction
     ) {
-        currentEditingCompletionHandler?(action == .saved)
-        currentEditingCompletionHandler = nil
-        
         controller.presentingViewController?.dismiss(animated: true)
     }
     

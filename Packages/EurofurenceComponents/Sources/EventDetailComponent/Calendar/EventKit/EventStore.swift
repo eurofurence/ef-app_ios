@@ -1,15 +1,19 @@
 import Foundation
 
-public protocol EventStore {
+public protocol EventStore: AnyObject {
     
-    func editEvent(
-        definition event: EventStoreEventDefinition,
-        sender: Any?,
-        completionHandler: @escaping (Bool) -> Void
-    )
+    /* weak */ var delegate: EventStoreDelegate? { get set }
+    
+    func editEvent(definition event: EventStoreEventDefinition, sender: Any?)
     
     func removeEvent(identifiedBy eventDefinition: EventStoreEventDefinition)
     
     func contains(eventDefinition: EventStoreEventDefinition) -> Bool
+    
+}
+
+public protocol EventStoreDelegate: AnyObject {
+    
+    func eventStoreChanged(_ eventStore: EventStore)
     
 }
