@@ -23,6 +23,7 @@ public class EventKitEventStore: NSObject, EventStore {
             
             let calendarEvent = EKEvent(eventStore: eventStore)
             calendarEvent.title = event.title
+            calendarEvent.location = event.room
             calendarEvent.startDate = event.startDate
             calendarEvent.endDate = event.endDate
             calendarEvent.url = event.deeplinkURL

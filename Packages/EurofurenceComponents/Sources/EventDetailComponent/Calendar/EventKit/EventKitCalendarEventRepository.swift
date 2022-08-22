@@ -49,6 +49,7 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
             self.eventDefinition = EventStoreEventDefinition(
                 identifier: event.identifier.rawValue,
                 title: event.title,
+                room: event.room.name,
                 startDate: event.startDate,
                 endDate: event.endDate,
                 deeplinkURL: event.contentURL
