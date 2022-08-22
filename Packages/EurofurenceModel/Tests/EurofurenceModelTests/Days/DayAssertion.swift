@@ -26,6 +26,7 @@ class DayAssertion: Assertion {
         }
 
         assert(day.date, isEqualTo: characteristic.date)
+        assert(day.identifier, isEqualTo: characteristic.identifier)
     }
 
 }
