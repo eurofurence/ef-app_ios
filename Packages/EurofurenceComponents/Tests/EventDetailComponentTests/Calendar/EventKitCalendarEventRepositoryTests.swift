@@ -204,7 +204,8 @@ class EventKitCalendarEventRepositoryTests: XCTestCase {
             room: event.room.name,
             startDate: event.startDate,
             endDate: event.endDate,
-            deeplinkURL: event.contentURL
+            deeplinkURL: event.contentURL,
+            shortDescription: event.abstract
         )
     }
     

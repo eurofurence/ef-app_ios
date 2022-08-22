@@ -52,7 +52,8 @@ public struct EventKitCalendarEventRepository: CalendarEventRepository {
                 room: event.room.name,
                 startDate: event.startDate,
                 endDate: event.endDate,
-                deeplinkURL: event.contentURL
+                deeplinkURL: event.contentURL,
+                shortDescription: event.abstract
             )
             
             lastKnownEventPresence = eventStore.contains(eventDefinition: eventDefinition) ? .present : .absent
