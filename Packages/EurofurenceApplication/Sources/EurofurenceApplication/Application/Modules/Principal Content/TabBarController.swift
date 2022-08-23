@@ -36,6 +36,7 @@ class TabBarController: UITabBarController {
             
         default:
             guard let tableView = viewController.view.firstDescendant(ofKind: UITableView.self) else { return }
+            guard tableView.numberOfSections > 0 && tableView.numberOfRows(inSection: 0) > 0 else { return }
             
             let firstIndexPath = IndexPath(item: 0, section: 0)
             tableView.scrollToRow(at: firstIndexPath, at: .top, animated: true)
