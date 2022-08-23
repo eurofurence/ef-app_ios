@@ -2,13 +2,15 @@ import EurofurenceModel
 
 public struct EventWidgetUpdater {
     
+    private let widgetSchedule: Schedule
+    
     public init(widgetService: WidgetService, refreshService: RefreshService, eventsService: ScheduleRepository) {
         let reloadWidget = ReloadWidget(widgetService: widgetService)
         let reloadWhenContentRefreshes = ReloadWhenRefreshFinishes(reloadWidget: reloadWidget)
         refreshService.add(reloadWhenContentRefreshes)
         
-        let reloadWhenEventFavouriteStateChanges = ReloadWhenEventFavouriteStateChanges(reloadWidget: reloadWidget)
-        eventsService.add(reloadWhenEventFavouriteStateChanges)
+        widgetSchedule = eventsService.loadSchedule(tag: "Widget")
+        widgetSchedule.setDelegate(WidgetScheduleDelegate(reloadWidget: reloadWidget))
     }
     
     private struct ReloadWidget {
@@ -35,7 +37,7 @@ public struct EventWidgetUpdater {
         
     }
     
-    private class ReloadWhenEventFavouriteStateChanges: ScheduleRepositoryObserver, EventObserver {
+    private class WidgetScheduleDelegate: ScheduleDelegate, EventObserver {
         
         private let reloadWidget: ReloadWidget
         private var isSubscribingToEvents = false
@@ -44,7 +46,7 @@ public struct EventWidgetUpdater {
             self.reloadWidget = reloadWidget
         }
         
-        func eventsDidChange(to events: [Event]) {
+        func scheduleEventsDidChange(to events: [Event]) {
             isSubscribingToEvents = true
             
             for event in events {
@@ -54,15 +56,15 @@ public struct EventWidgetUpdater {
             isSubscribingToEvents = false
         }
         
-        func runningEventsDidChange(to events: [Event]) {
+        func eventDaysDidChange(to days: [Day]) {
             
         }
         
-        func upcomingEventsDidChange(to events: [Event]) {
+        func currentEventDayDidChange(to day: Day?) {
             
         }
         
-        func favouriteEventsDidChange(_ identifiers: [EventIdentifier]) {
+        func scheduleSpecificationChanged(to newSpecification: AnySpecification<Event>) {
             
         }
         

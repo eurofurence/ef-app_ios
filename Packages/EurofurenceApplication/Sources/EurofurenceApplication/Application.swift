@@ -35,6 +35,7 @@ public class Application {
     private let backgroundFetcher: BackgroundFetchService
     private let notificationScheduleController: NotificationScheduleController
     private let reviewPromptController: ReviewPromptController
+    private let widgetUpdater: EventWidgetUpdater
     private var principalWindowController: PrincipalWindowAssembler?
     
     public static func assemble(dependencies: Dependencies) {
@@ -94,7 +95,7 @@ public class Application {
             eventsService: session.repositories.events
         )
         
-        _ = EventWidgetUpdater(
+        widgetUpdater = EventWidgetUpdater(
             widgetService: SystemWidgetService(), 
             refreshService: session.services.refresh, 
             eventsService: session.repositories.events
