@@ -17,6 +17,30 @@ public class EurofurenceModel: ObservableObject {
         configuration.configure(persistentContainer: persistentContainer)
     }
     
+    public func updateLocalStore(remoteResponse: Data) async {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
+        
+        do {
+            let response = try decoder.decode(RemoteSyncResponse.self, from: remoteResponse)
+            let writingContext = persistentContainer.newBackgroundContext()
+            await writingContext.performAsync { (context) in
+                for remoteDay in response.days.changed {
+                    let day = Day(context: context)
+                    day.update(from: remoteDay)
+                }
+                
+                do {
+                    try context.save()
+                } catch {
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
 }
 
 // MARK: - Model Configuration

@@ -13,7 +13,23 @@ public class Day: Entity {
 
 }
 
-// MARK: Generated accessors for events
+// MARK: - Day + ConsumesRemoteResponse
+
+extension Day: ConsumesRemoteResponse {
+    
+    typealias RemoteResponse = RemoteDay
+    
+    func update(from remoteResponse: RemoteDay) {
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        date = remoteResponse.Date
+        name = remoteResponse.Name
+    }
+    
+}
+
+// MARK: - Generated accessors for events
+
 extension Day {
 
     @objc(addEventsObject:)
