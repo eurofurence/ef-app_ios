@@ -4,9 +4,11 @@ struct RemoteSyncResponse: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case days = "EventConferenceDays"
+        case tracks = "EventConferenceTracks"
     }
     
     var days: RemoteEntityNode<RemoteDay>
+    var tracks: RemoteEntityNode<RemoteTrack>
     
 }
 
@@ -26,5 +28,13 @@ struct RemoteDay: Decodable {
     var Id: String
     var Name: String
     var Date: Date
+    
+}
+
+struct RemoteTrack: Decodable {
+    
+    var LastChangeDateTimeUtc: Date
+    var Id: String
+    var Name: String
     
 }

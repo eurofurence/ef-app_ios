@@ -30,6 +30,11 @@ public class EurofurenceModel: ObservableObject {
                     day.update(from: remoteDay)
                 }
                 
+                for remoteTrack in response.tracks.changed {
+                    let track = Track(context: context)
+                    track.update(from: remoteTrack)
+                }
+                
                 try context.save()
             }
         } catch {

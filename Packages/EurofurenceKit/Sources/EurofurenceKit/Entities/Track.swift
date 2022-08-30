@@ -12,6 +12,20 @@ public class Track: Entity {
 
 }
 
+// MARK: - Track + ConsumesRemoteResponse
+
+extension Track: ConsumesRemoteResponse {
+    
+    typealias RemoteResponse = RemoteTrack
+    
+    func update(from remoteResponse: RemoteTrack) {
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        name = remoteResponse.Name
+    }
+    
+}
+
 // MARK: Generated accessors for events
 extension Track {
 
