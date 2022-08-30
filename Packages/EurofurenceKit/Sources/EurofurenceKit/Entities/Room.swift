@@ -9,7 +9,7 @@ public class Room: Entity {
 
     @NSManaged public var name: String
     @NSManaged public var shortName: String
-    @NSManaged public var events: NSSet
+    @NSManaged public var events: Set<Event>
 
 }
 
@@ -23,10 +23,10 @@ extension Room {
     @NSManaged func removeFromEvents(_ value: Event)
 
     @objc(addEvents:)
-    @NSManaged func addToEvents(_ values: NSSet)
+    @NSManaged func addToEvents(_ values: Set<Event>)
 
     @objc(removeEvents:)
-    @NSManaged func removeFromEvents(_ values: NSSet)
+    @NSManaged func removeFromEvents(_ values: Set<Event>)
 
 }
 

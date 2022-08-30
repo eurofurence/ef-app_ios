@@ -11,7 +11,7 @@ public class KnowledgeGroup: Entity {
     @NSManaged public var knowledgeGroupDescription: String
     @NSManaged public var name: String
     @NSManaged public var order: Int16
-    @NSManaged public var entries: NSSet
+    @NSManaged public var entries: Set<KnowledgeEntry>
 
 }
 
@@ -25,10 +25,10 @@ extension KnowledgeGroup {
     @NSManaged func removeFromEntries(_ value: KnowledgeEntry)
 
     @objc(addEntries:)
-    @NSManaged func addToEntries(_ values: NSSet)
+    @NSManaged func addToEntries(_ values: Set<KnowledgeEntry>)
 
     @objc(removeEntries:)
-    @NSManaged func removeFromEntries(_ values: NSSet)
+    @NSManaged func removeFromEntries(_ values: Set<KnowledgeEntry>)
 
 }
 

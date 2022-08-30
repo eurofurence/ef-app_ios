@@ -8,7 +8,7 @@ public class PanelHost: NSManagedObject {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var hostingEvents: NSSet
+    @NSManaged public var hostingEvents: Set<Event>
 
 }
 
@@ -22,10 +22,10 @@ extension PanelHost {
     @NSManaged func removeFromHostingEvents(_ value: Event)
 
     @objc(addHostingEvents:)
-    @NSManaged func addToHostingEvents(_ values: NSSet)
+    @NSManaged func addToHostingEvents(_ values: Set<Event>)
 
     @objc(removeHostingEvents:)
-    @NSManaged func removeFromHostingEvents(_ values: NSSet)
+    @NSManaged func removeFromHostingEvents(_ values: Set<Event>)
 
 }
 

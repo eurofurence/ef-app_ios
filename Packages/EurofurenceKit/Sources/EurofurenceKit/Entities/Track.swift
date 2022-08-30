@@ -8,7 +8,7 @@ public class Track: Entity {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var events: NSSet
+    @NSManaged public var events: Set<Event>
 
 }
 
@@ -22,10 +22,10 @@ extension Track {
     @NSManaged func removeFromEvents(_ value: Event)
 
     @objc(addEvents:)
-    @NSManaged func addToEvents(_ values: NSSet)
+    @NSManaged func addToEvents(_ values: Set<Event>)
 
     @objc(removeEvents:)
-    @NSManaged func removeFromEvents(_ values: NSSet)
+    @NSManaged func removeFromEvents(_ values: Set<Event>)
 
 }
 

@@ -22,8 +22,8 @@ public class Dealer: Entity {
     @NSManaged public var twitterHandle: String
     @NSManaged public var artistImage: ArtistImage?
     @NSManaged public var artPreview: ArtPreview?
-    @NSManaged public var categories: NSSet
-    @NSManaged public var links: NSSet
+    @NSManaged public var categories: Set<DealerCategory>
+    @NSManaged public var links: Set<DealerLink>
     @NSManaged public var thumbnail: DealerThumbnail?
 
 }
@@ -38,10 +38,10 @@ extension Dealer {
     @NSManaged func removeFromCategories(_ value: DealerCategory)
 
     @objc(addCategories:)
-    @NSManaged func addToCategories(_ values: NSSet)
+    @NSManaged func addToCategories(_ values: Set<DealerCategory>)
 
     @objc(removeCategories:)
-    @NSManaged func removeFromCategories(_ values: NSSet)
+    @NSManaged func removeFromCategories(_ values: Set<DealerCategory>)
 
 }
 
@@ -55,9 +55,9 @@ extension Dealer {
     @NSManaged func removeFromLinks(_ value: DealerLink)
 
     @objc(addLinks:)
-    @NSManaged func addToLinks(_ values: NSSet)
+    @NSManaged func addToLinks(_ values: Set<DealerLink>)
 
     @objc(removeLinks:)
-    @NSManaged func removeFromLinks(_ values: NSSet)
+    @NSManaged func removeFromLinks(_ values: Set<DealerLink>)
 
 }

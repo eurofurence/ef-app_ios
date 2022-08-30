@@ -11,8 +11,8 @@ public class KnowledgeEntry: Entity {
     @NSManaged public var text: String
     @NSManaged public var title: String
     @NSManaged public var group: KnowledgeGroup
-    @NSManaged public var images: NSSet
-    @NSManaged public var links: NSSet
+    @NSManaged public var images: Set<KnowledgeEntryImage>
+    @NSManaged public var links: Set<KnowledgeLink>
 
 }
 
@@ -26,10 +26,10 @@ extension KnowledgeEntry {
     @NSManaged func removeFromImages(_ value: KnowledgeEntryImage)
 
     @objc(addImages:)
-    @NSManaged func addToImages(_ values: NSSet)
+    @NSManaged func addToImages(_ values: Set<KnowledgeEntryImage>)
 
     @objc(removeImages:)
-    @NSManaged func removeFromImages(_ values: NSSet)
+    @NSManaged func removeFromImages(_ values: Set<KnowledgeEntryImage>)
 
 }
 
@@ -43,9 +43,9 @@ extension KnowledgeEntry {
     @NSManaged func removeFromLinks(_ value: KnowledgeLink)
 
     @objc(addLinks:)
-    @NSManaged func addToLinks(_ values: NSSet)
+    @NSManaged func addToLinks(_ values: Set<KnowledgeLink>)
 
     @objc(removeLinks:)
-    @NSManaged func removeFromLinks(_ values: NSSet)
+    @NSManaged func removeFromLinks(_ values: Set<KnowledgeLink>)
 
 }

@@ -18,10 +18,10 @@ public class Event: Entity {
     @NSManaged public var title: String
     @NSManaged public var banner: EventBanner?
     @NSManaged public var day: Day
-    @NSManaged public var panelHosts: NSSet
+    @NSManaged public var panelHosts: Set<PanelHost>
     @NSManaged public var poster: EventPoster?
     @NSManaged public var room: Room
-    @NSManaged public var tracks: NSSet
+    @NSManaged public var tracks: Set<Track>
 
 }
 
@@ -35,10 +35,10 @@ extension Event {
     @NSManaged func removeFromPanelHosts(_ value: PanelHost)
 
     @objc(addPanelHosts:)
-    @NSManaged func addToPanelHosts(_ values: NSSet)
+    @NSManaged func addToPanelHosts(_ values: Set<PanelHost>)
 
     @objc(removePanelHosts:)
-    @NSManaged func removeFromPanelHosts(_ values: NSSet)
+    @NSManaged func removeFromPanelHosts(_ values: Set<PanelHost>)
 
 }
 
@@ -52,9 +52,9 @@ extension Event {
     @NSManaged func removeFromTracks(_ value: Track)
 
     @objc(addTracks:)
-    @NSManaged func addToTracks(_ values: NSSet)
+    @NSManaged func addToTracks(_ values: Set<Track>)
 
     @objc(removeTracks:)
-    @NSManaged func removeFromTracks(_ values: NSSet)
+    @NSManaged func removeFromTracks(_ values: Set<Track>)
 
 }

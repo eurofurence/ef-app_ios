@@ -8,7 +8,7 @@ public class DealerCategory: NSManagedObject {
     }
 
     @NSManaged public var name: String
-    @NSManaged public var dealers: NSSet
+    @NSManaged public var dealers: Set<Dealer>
 
 }
 
@@ -22,9 +22,9 @@ extension DealerCategory {
     @NSManaged func removeFromDealers(_ value: Dealer)
 
     @objc(addDealers:)
-    @NSManaged func addToDealers(_ values: NSSet)
+    @NSManaged func addToDealers(_ values: Set<Dealer>)
 
     @objc(removeDealers:)
-    @NSManaged func removeFromDealers(_ values: NSSet)
+    @NSManaged func removeFromDealers(_ values: Set<Dealer>)
     
 }

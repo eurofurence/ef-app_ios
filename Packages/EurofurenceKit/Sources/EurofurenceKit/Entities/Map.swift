@@ -10,7 +10,7 @@ public class Map: Entity {
     @NSManaged public var isBrowsable: Bool
     @NSManaged public var mapDescription: String
     @NSManaged public var order: Int16
-    @NSManaged public var entries: NSSet
+    @NSManaged public var entries: Set<MapEntry>
     @NSManaged public var graphic: MapGraphic
 
 }
@@ -25,9 +25,9 @@ extension Map {
     @NSManaged func removeFromEntries(_ value: MapEntry)
 
     @objc(addEntries:)
-    @NSManaged func addToEntries(_ values: NSSet)
+    @NSManaged func addToEntries(_ values: Set<MapEntry>)
 
     @objc(removeEntries:)
-    @NSManaged func removeFromEntries(_ values: NSSet)
+    @NSManaged func removeFromEntries(_ values: Set<MapEntry>)
 
 }

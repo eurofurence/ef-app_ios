@@ -11,7 +11,7 @@ public class MapEntry: NSManagedObject {
     @NSManaged public var radius: Int32
     @NSManaged public var x: Int32
     @NSManaged public var y: Int32
-    @NSManaged public var links: NSSet
+    @NSManaged public var links: Set<MapEntryLink>
     @NSManaged public var map: Map
 
 }
@@ -26,9 +26,9 @@ extension MapEntry {
     @NSManaged func removeFromLinks(_ value: MapEntryLink)
 
     @objc(addLinks:)
-    @NSManaged func addToLinks(_ values: NSSet)
+    @NSManaged func addToLinks(_ values: Set<MapEntryLink>)
 
     @objc(removeLinks:)
-    @NSManaged func removeFromLinks(_ values: NSSet)
+    @NSManaged func removeFromLinks(_ values: Set<MapEntryLink>)
 
 }
