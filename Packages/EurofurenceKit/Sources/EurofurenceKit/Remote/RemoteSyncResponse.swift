@@ -3,10 +3,12 @@ import Foundation
 struct RemoteSyncResponse: Decodable {
     
     private enum CodingKeys: String, CodingKey {
+        case conventionIdentifier = "ConventionIdentifier"
         case days = "EventConferenceDays"
         case tracks = "EventConferenceTracks"
     }
     
+    var conventionIdentifier: String
     var days: RemoteEntityNode<RemoteDay>
     var tracks: RemoteEntityNode<RemoteTrack>
     

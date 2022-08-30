@@ -1,4 +1,4 @@
-struct EF26FullSyncResponseFile: SampleResponseFile {
+struct EF26FullSyncResponseFile: SyncResponseFile {
     
     var jsonFileName: String {
         return "EF26_Full_Sync_Response"

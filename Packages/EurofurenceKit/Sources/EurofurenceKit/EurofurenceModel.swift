@@ -7,6 +7,7 @@ public class EurofurenceModel: ObservableObject {
     private let logger: Logger
     private let persistentContainer: EurofurencePersistentContainer
     private let api: EurofurenceRemoteAPI
+    private let conventionIdentifier: ConventionIdentifier
     
     public var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
@@ -15,14 +16,26 @@ public class EurofurenceModel: ObservableObject {
     public init(configuration: Configuration) {
         self.logger = configuration.logger
         self.api = EurofurenceRemoteAPI(network: configuration.network)
+        self.conventionIdentifier = configuration.conventionIdentifier
         
         persistentContainer = EurofurencePersistentContainer(logger: configuration.logger)
         configuration.configure(persistentContainer: persistentContainer)
     }
     
-    public func updateLocalStore() async {
+    public func updateLocalStore() async throws {
+        let response: RemoteSyncResponse
         do {
-            let response = try await api.executeSyncRequest()
+            response = try await api.executeSyncRequest()
+        } catch {
+            logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])
+            throw EurofurenceError.syncFailure
+        }
+        
+        guard response.conventionIdentifier == conventionIdentifier.stringValue else {
+            throw EurofurenceError.conventionIdentifierMismatch
+        }
+        
+        do {
             let writingContext = persistentContainer.newBackgroundContext()
             try await writingContext.performAsync { (context) in
                 for remoteDay in response.days.changed {
@@ -58,15 +71,18 @@ extension EurofurenceModel {
         let environment: Environment
         let logger: Logger
         let network: Network
+        let conventionIdentifier: ConventionIdentifier
         
         public init(
             environment: Environment = .persistent,
             network: Network = URLSessionNetwork.shared,
-            logger: Logger
+            logger: Logger,
+            conventionIdentifier: ConventionIdentifier
         ) {
             self.environment = environment
             self.network = network
             self.logger = logger
+            self.conventionIdentifier = conventionIdentifier
         }
         
         func configure(persistentContainer: EurofurencePersistentContainer) {

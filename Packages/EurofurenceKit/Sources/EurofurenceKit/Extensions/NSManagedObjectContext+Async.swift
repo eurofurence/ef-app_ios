@@ -3,7 +3,7 @@ import CoreData
 extension NSManagedObjectContext {
     
     func performAsync<T>(block: @Sendable @escaping (NSManagedObjectContext) throws -> T) async throws -> T {
-        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<T, Error>) in
+        return try await withCheckedThrowingContinuation { [self] (continuation: CheckedContinuation<T, Error>) in
             perform { [self] in
                 do {
                     let result = try block(self)
