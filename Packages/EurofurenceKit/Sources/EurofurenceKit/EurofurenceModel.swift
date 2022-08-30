@@ -48,6 +48,11 @@ public class EurofurenceModel: ObservableObject {
                     track.update(from: remoteTrack)
                 }
                 
+                for remoteRoom in response.rooms.changed {
+                    let room = Room(context: context)
+                    room.update(from: remoteRoom)
+                }
+                
                 try context.save()
             }
         } catch {

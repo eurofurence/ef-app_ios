@@ -135,4 +135,213 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
         ]
     }
     
+    var rooms: [ExpectedRoom] {
+        return [
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.775Z",
+                identifier: "2d5d9a98-aaca-4434-959d-99d20e675d3a",
+                name: "Art Show — Convention Hall Section D",
+                shortName: "Art Show"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.777Z",
+                identifier: "4fdf6f0b-adf0-49b8-801f-70b026733538",
+                name: "Artist Lounge — Foyer Estrel Hall",
+                shortName: "Artist Lounge"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.779Z",
+                identifier: "51bb19cb-a658-4cd5-b7cf-b655355040bf",
+                name: "Club Stage — Estrel Hall A",
+                shortName: "Club Stage"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.782Z",
+                identifier: "f48c3415-907d-4ebe-9483-3033e2539563",
+                name: "ConOps | Frontoffice — Estrel Hall B",
+                shortName: "ConOps | Frontoffice"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.784Z",
+                identifier: "3465b19a-fe53-45fd-b3ee-e6df1be71e15",
+                name: "Dealers' Den — Convention Hall Section C",
+                shortName: "Dealers' Den"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.789Z",
+                identifier: "61c6d51a-a0f4-46ba-a719-d09d859afa26",
+                name: "ECC Room 1",
+                shortName: "ECC Room 1"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.790Z",
+                identifier: "52b9576a-48b5-47ec-b295-de6fc895bb71",
+                name: "ECC Room 4",
+                shortName: "ECC Room 4"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.792Z",
+                identifier: "9ebc2135-aa51-4042-ba92-670bd118c6f3",
+                name: "ECC Room 5",
+                shortName: "ECC Room 5"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.793Z",
+                identifier: "7fe3490e-bab8-4651-bea5-83d5b545919c",
+                name: "Entrance Rotunda",
+                shortName: "Entrance Rotunda"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.795Z",
+                identifier: "193d8ce2-6d9a-43f0-93de-05c35e3e010f",
+                name: "Estrel Beergarden",
+                shortName: "Estrel Beergarden"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.797Z",
+                identifier: "e2ff4cbf-1ed8-494b-b6a0-67f19d503769",
+                name: "Fursuit Lounge — ECC Room 3",
+                shortName: "Fursuit Lounge"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.799Z",
+                identifier: "d485995d-4550-40b7-a729-1a19f5a373a6",
+                name: "Fursuit Photoshoot Registration — Estrel Hall B",
+                shortName: "Fursuit Photoshoot Registration"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.800Z",
+                identifier: "face6d3a-6db0-463a-9cf4-432cdd7d6757",
+                name: "Lyon",
+                shortName: "Lyon"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.802Z",
+                identifier: "979f4ecf-66bd-4c83-ac3c-c3636ff82a81",
+                name: "Main Stage — Convention Hall Section A",
+                shortName: "Main Stage"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.805Z",
+                identifier: "1a181eac-fd0d-4144-8339-c4000904d84d",
+                name: "Office Passage",
+                shortName: "Office Passage"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.807Z",
+                identifier: "9c28630f-a667-40da-960c-c12500c653a1",
+                name: "Open Stage — ECC Foyer 1",
+                shortName: "Open Stage"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.808Z",
+                identifier: "62060c43-76a8-49de-8389-511790f52917",
+                name: "Paris",
+                shortName: "Paris"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.810Z",
+                identifier: "b321418c-cf44-47a7-a7e9-3281bd6a7bd2",
+                name: "Photoshooting — Convention Hall Section D",
+                shortName: "Photoshooting"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.813Z",
+                identifier: "496fa438-9917-46b0-8f44-0fbeb05b3821",
+                name: "Registration — Estrel Hall C",
+                shortName: "Registration"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.814Z",
+                identifier: "c137717f-f297-4c3d-bc0e-542cbb032135",
+                name: "Registration, Con Shop — Paris",
+                shortName: "Registration, Con Shop"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.816Z",
+                identifier: "d6efe16f-9fd2-4f21-8e5e-b5cc5cc46c66",
+                name: "Straßburg",
+                shortName: "Straßburg"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.658Z",
+                identifier: "4d64ba76-8a9b-4dd1-9b78-c159e38c5292",
+                name: "AD Dealers' Den — Convention Hall Section C Level 1",
+                shortName: "AD Dealers' Den"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.803Z",
+                identifier: "8e9a2236-c83b-4206-aff8-fe73880e796a",
+                name: "Nizza",
+                shortName: "Nizza"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.786Z",
+                identifier: "4b63218d-e78d-4127-9b75-bcbb585b8703",
+                name: "ECC Foyer 2 — VR Portal",
+                shortName: "ECC Foyer 2"
+            ),
+            .init(
+                lastUpdated: "2022-07-30T11:14:50.787Z",
+                identifier: "6366daef-34fc-47b1-98a6-3b6f4f24bde2",
+                name: "ECC Foyer 3 — Artist Alley",
+                shortName: "ECC Foyer 3"
+            ),
+            .init(
+                lastUpdated: "2022-08-16T00:00:06.296Z",
+                identifier: "5db1fdc8-980f-4e0f-b6f5-665468d3fa11",
+                name: "Rotunda",
+                shortName: "Rotunda"
+            ),
+            .init(
+                lastUpdated: "2022-08-16T19:30:04.667Z",
+                identifier: "95e0ee88-8447-4c29-8362-c4dd06f6d39c",
+                name: "Main Stage",
+                shortName: "Main Stage"
+            ),
+            .init(
+                lastUpdated: "2022-08-17T22:30:05.656Z",
+                identifier: "7588ab3d-39a1-4635-80a7-bdbcff50c7c3",
+                name: "Small Lobby ­— Passage Estrel Hall",
+                shortName: "Small Lobby ­"
+            ),
+            .init(
+                lastUpdated: "2022-08-23T20:00:05.729Z",
+                identifier: "683c3c60-e0fb-47e3-a39c-ef75a0777c54",
+                name: "Entrance Fursuit Lounge — Entrance ECC Room 3",
+                shortName: "Entrance Fursuit Lounge"
+            ),
+            .init(
+                lastUpdated: "2022-08-23T23:00:05.388Z",
+                identifier: "75bb1d1b-5f42-4156-9e62-9104132ceb90",
+                name: "Below Rotunda — Food Trucks",
+                shortName: "Below Rotunda"
+            ),
+            .init(
+                lastUpdated: "2022-08-24T12:30:05.279Z",
+                identifier: "d8e26090-6093-459c-95c8-63f0348f41c6",
+                name: "Lobby — Atrium",
+                shortName: "Lobby"
+            ),
+            .init(
+                lastUpdated: "2022-08-25T23:30:05.563Z",
+                identifier: "aa998c8b-d0d7-4812-b2ab-29c83228f35d",
+                name: "Outdoor",
+                shortName: "Outdoor"
+            ),
+            .init(
+                lastUpdated: "2022-08-26T00:00:06.394Z",
+                identifier: "43c996b7-cbcb-497c-87fd-6aee63136947",
+                name: "Outdoor — Campfire",
+                shortName: "Outdoor"
+            ),
+            .init(
+                lastUpdated: "2022-08-27T01:30:05.069Z",
+                identifier: "7169741d-dc82-457a-bb5e-4bcf15e34278",
+                name: "Rotunda ",
+                shortName: "Rotunda "
+            )
+        ]
+    }
+    
 }

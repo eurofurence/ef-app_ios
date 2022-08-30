@@ -6,11 +6,13 @@ struct RemoteSyncResponse: Decodable {
         case conventionIdentifier = "ConventionIdentifier"
         case days = "EventConferenceDays"
         case tracks = "EventConferenceTracks"
+        case rooms = "EventConferenceRooms"
     }
     
     var conventionIdentifier: String
     var days: RemoteEntityNode<RemoteDay>
     var tracks: RemoteEntityNode<RemoteTrack>
+    var rooms: RemoteEntityNode<RemoteRoom>
     
 }
 
@@ -38,5 +40,14 @@ struct RemoteTrack: Decodable {
     var LastChangeDateTimeUtc: Date
     var Id: String
     var Name: String
+    
+}
+
+struct RemoteRoom: Decodable {
+    
+    var LastChangeDateTimeUtc: Date
+    var Id: String
+    var Name: String
+    var ShortName: String
     
 }

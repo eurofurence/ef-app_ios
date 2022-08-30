@@ -13,6 +13,21 @@ public class Room: Entity {
 
 }
 
+// MARK: - Room + ConsumesRemoteResponse
+
+extension Room: ConsumesRemoteResponse {
+    
+    typealias RemoteResponse = RemoteRoom
+    
+    func update(from remoteResponse: RemoteRoom) {
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        name = remoteResponse.Name
+        shortName = remoteResponse.ShortName
+    }
+    
+}
+
 // MARK: Generated accessors for events
 extension Room {
 

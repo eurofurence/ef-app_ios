@@ -6,6 +6,7 @@ protocol SyncResponseFile: SampleResponseFile {
     
     var days: [ExpectedDay] { get }
     var tracks: [ExpectedTrack] { get }
+    var rooms: [ExpectedRoom] { get }
     
 }
 
@@ -28,6 +29,15 @@ extension SyncResponseFile {
             let match = try XCTUnwrap(matches.first)
             
             track.assert(against: match)
+        }
+        
+        for room in rooms {
+            let fetchRequest: NSFetchRequest<Room> = Room.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "identifier == %@", room.identifier)
+            let matches = try context.fetch(fetchRequest)
+            let match = try XCTUnwrap(matches.first)
+            
+            room.assert(against: match)
         }
     }
     
