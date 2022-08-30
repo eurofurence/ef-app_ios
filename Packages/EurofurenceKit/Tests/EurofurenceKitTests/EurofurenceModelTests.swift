@@ -7,7 +7,7 @@ class EurofurenceKitTests: XCTestCase {
     func testIngestingRemoteResponse() async throws {
         let logger = Logger(label: "Test")
         let network = FakeNetwork()
-        let configuration = EurofurenceModel.Configuration(environment: .memory, logger: logger)
+        let configuration = EurofurenceModel.Configuration(environment: .memory, network: network, logger: logger)
         let model = EurofurenceModel(configuration: configuration)
         
         let sampleResponse = EF26FullSyncResponseFile()
