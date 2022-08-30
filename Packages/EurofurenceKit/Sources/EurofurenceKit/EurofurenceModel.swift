@@ -4,40 +4,36 @@ import Logging
 
 public class EurofurenceModel: ObservableObject {
     
-    private let configuration: Configuration
+    private let logger: Logger
     private let persistentContainer: EurofurencePersistentContainer
+    private let api: EurofurenceRemoteAPI
     
     public var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
     }
     
     public init(configuration: Configuration) {
-        self.configuration = configuration
+        self.logger = configuration.logger
+        self.api = EurofurenceRemoteAPI(network: configuration.network)
+        
         persistentContainer = EurofurencePersistentContainer(logger: configuration.logger)
         configuration.configure(persistentContainer: persistentContainer)
     }
     
-    public func updateLocalStore(remoteResponse: Data) async {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
-        
+    public func updateLocalStore() async {
         do {
-            let response = try decoder.decode(RemoteSyncResponse.self, from: remoteResponse)
+            let response = try await api.executeSyncRequest()
             let writingContext = persistentContainer.newBackgroundContext()
-            await writingContext.performAsync { (context) in
+            try await writingContext.performAsync { (context) in
                 for remoteDay in response.days.changed {
                     let day = Day(context: context)
                     day.update(from: remoteDay)
                 }
                 
-                do {
-                    try context.save()
-                } catch {
-                    print(error)
-                }
+                try context.save()
             }
         } catch {
-            print(error)
+            logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
         }
     }
     
@@ -56,18 +52,24 @@ extension EurofurenceModel {
         
         let environment: Environment
         let logger: Logger
+        let network: Network
         
-        public init(environment: Environment, logger: Logger) {
+        public init(
+            environment: Environment = .persistent,
+            network: Network = URLSessionNetwork.shared,
+            logger: Logger
+        ) {
             self.environment = environment
+            self.network = network
             self.logger = logger
         }
         
         func configure(persistentContainer: EurofurencePersistentContainer) {
             switch environment {
             case .persistent:
-                persistentContainer.attachMemoryStore()
-            case .memory:
                 persistentContainer.attachPersistentStore()
+            case .memory:
+                persistentContainer.attachMemoryStore()
             }
         }
         

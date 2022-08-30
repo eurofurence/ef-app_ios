@@ -4,24 +4,18 @@ import XCTest
 
 class EurofurenceKitTests: XCTestCase {
     
-    func testCanConfigureInMemoryStore() throws {
-        let logger = Logger(label: "Test")
-        let configuration = EurofurenceModel.Configuration(environment: .memory, logger: logger)
-        let model = EurofurenceModel(configuration: configuration)
-        let managedObjectContext = model.viewContext
-        
-        XCTAssertNotNil(managedObjectContext.persistentStoreCoordinator)
-    }
-    
     func testIngestingRemoteResponse_Days() async throws {
         let logger = Logger(label: "Test")
+        let network = FakeNetwork()
         let configuration = EurofurenceModel.Configuration(environment: .memory, logger: logger)
         let model = EurofurenceModel(configuration: configuration)
         
         let (fileName, fileExtension) = ("EF26_Full_Sync_Response", "json")
         let fileURL = try XCTUnwrap(Bundle.module.url(forResource: fileName, withExtension: fileExtension))
         let fileContents = try Data(contentsOf: fileURL)
-        await model.updateLocalStore(remoteResponse: fileContents)
+        let syncURL = try XCTUnwrap(URL(string: "https://app.eurofurence.org/EF26/api/Sync"))
+        network.stub(url: syncURL, with: fileContents)
+        await model.updateLocalStore()
         
         struct ExpectedDay {
             var lastUpdated: Date

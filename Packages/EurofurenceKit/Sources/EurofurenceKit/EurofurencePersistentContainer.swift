@@ -10,6 +10,12 @@ class EurofurencePersistentContainer: NSPersistentContainer {
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
     }
     
+}
+
+// MARK: - Attaching Persistent Stores
+
+extension EurofurencePersistentContainer {
+    
     func attachPersistentStore() {
         let persistentStoreURL = FileManager.default.modelDirectory.appendingPathComponent("database.sqlite")
         let persistentStoreDescription = NSPersistentStoreDescription(url: persistentStoreURL)
