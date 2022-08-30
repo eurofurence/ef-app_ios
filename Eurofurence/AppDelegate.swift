@@ -29,12 +29,9 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> UISceneConfiguration {
         let userDefaults = UserDefaults.standard
         let isSwiftUIEnabled = userDefaults.bool(forKey: "EFSwiftUIAppVariantEnabled")
+        let sceneConfigurationName = isSwiftUIEnabled ? "Principal SwiftUI Window Scene" : "Principal Window Scene"
         
-        if isSwiftUIEnabled {
-            return UISceneConfiguration(name: "Principal SwiftUI Window Scene", sessionRole: connectingSceneSession.role)
-        } else {
-            return UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
-        }
+        return UISceneConfiguration(name: sceneConfigurationName, sessionRole: connectingSceneSession.role)
     }
 
     public func application(
