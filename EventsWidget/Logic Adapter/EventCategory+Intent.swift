@@ -1,4 +1,4 @@
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import EventsWidgetLogic
 
 extension EventCategory {

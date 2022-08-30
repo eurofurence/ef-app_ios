@@ -1,5 +1,5 @@
 import EurofurenceApplicationSession
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import EurofurenceModel
 
 struct IntentBasedWidgetSpecificationFactory {

@@ -1,5 +1,5 @@
 import DealerComponent
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import EurofurenceModel
 
 @available(iOS 12.0, *)

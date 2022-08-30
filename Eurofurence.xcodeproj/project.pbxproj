@@ -31,8 +31,8 @@
 		CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */; };
 		CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */; };
 		CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */; };
-		CA3ADD502677DC28007064AF /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
-		CA3ADD512677DC28007064AF /* EurofurenceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA3ADD502677DC28007064AF /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
+		CA3ADD512677DC28007064AF /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA3ADD552677DD63007064AF /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
 		CA3ADD562677DD63007064AF /* DonateFromAppDealerIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */; };
 		CA3ADD572677DD63007064AF /* ViewDealerIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2AA2F322C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift */; };
@@ -61,8 +61,8 @@
 		CA5F270A25570CE600CED97A /* Color+Catalogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F270925570CE600CED97A /* Color+Catalogue.swift */; };
 		CA5F2716255711C700CED97A /* CategoryTextHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */; };
 		CA5F273D25572BD500CED97A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5F273C25572BD500CED97A /* Localizable.strings */; };
-		CA630BE3229F14F800754C27 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
-		CA630BE4229F14F800754C27 /* EurofurenceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
+		CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */; };
 		CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
 		CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA66C01D2124C6D800F87AFE /* StoreKit.framework */; };
@@ -101,7 +101,7 @@
 		CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CAB4E9182662704500EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
 		CAB4E9192662704600EFE882 /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CAB4E91126626F7100EFE882 /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
-		CAB4E91A2662705100EFE882 /* EurofurenceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4E91226626F7100EFE882 /* EurofurenceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CAB4E91A2662705100EFE882 /* EurofurenceIntentDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = CAB4E91226626F7100EFE882 /* EurofurenceIntentDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAB7ABC928730E230037ACFB /* KnowledgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
@@ -118,7 +118,7 @@
 		CAF25568251A8774008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAF2556D251A877A008892ED /* UIAutomationTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF25567251A8774008892ED /* UIAutomationTestCase.swift */; };
 		CAFC4A6C2564589500499A47 /* EventStartTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC4A6B2564589500499A47 /* EventStartTime.swift */; };
-		CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */; };
+		CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,7 +208,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA3ADD512677DC28007064AF /* EurofurenceKit.framework in Embed Frameworks */,
+				CA3ADD512677DC28007064AF /* EurofurenceIntentDefinitions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,7 +240,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CA630BE4229F14F800754C27 /* EurofurenceKit.framework in Embed Frameworks */,
+				CA630BE4229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +300,7 @@
 		CA5F2715255711C700CED97A /* CategoryTextHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTextHeadline.swift; sourceTree = "<group>"; };
 		CA5F273C25572BD500CED97A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CA621345221EFDD800E88880 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		CA630BDC229F14F800754C27 /* EurofurenceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EurofurenceIntentDefinitions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA630BED229F16F400754C27 /* DonateFromAppEventIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateFromAppEventIntentDonor.swift; sourceTree = "<group>"; };
 		CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewEventIntent+Definition.swift"; sourceTree = "<group>"; };
 		CA66C01D2124C6D800F87AFE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -346,7 +346,7 @@
 		CAB300E72603AFDC009A52E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB300E82603AFDC009A52E1 /* EurofurenceClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EurofurenceClip.entitlements; sourceTree = "<group>"; };
 		CAB4E91126626F7100EFE882 /* Intents.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
-		CAB4E91226626F7100EFE882 /* EurofurenceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EurofurenceKit.h; sourceTree = "<group>"; };
+		CAB4E91226626F7100EFE882 /* EurofurenceIntentDefinitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EurofurenceIntentDefinitions.h; sourceTree = "<group>"; };
 		CAB4E91326626F7100EFE882 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeTests.swift; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 			files = (
 				CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */,
 				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
-				CA630BE3229F14F800754C27 /* EurofurenceKit.framework in Frameworks */,
+				CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
-				CAFC4A8C256463A400499A47 /* EurofurenceKit.framework in Frameworks */,
+				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */,
 				CA5F26A02556F04C00CED97A /* SwiftUI.framework in Frameworks */,
 				CA9768FB25FE3A81001AE029 /* EurofurenceModel in Frameworks */,
@@ -436,7 +436,7 @@
 				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
 				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
 				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
-				CA3ADD502677DC28007064AF /* EurofurenceKit.framework in Frameworks */,
+				CA3ADD502677DC28007064AF /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA3ADD5A2677DD96007064AF /* EventDetailComponent in Frameworks */,
 				CAB301052603B0D8009A52E1 /* DealersComponent in Frameworks */,
 			);
@@ -508,7 +508,7 @@
 				9ACF99341EBE172D006FC958 /* Eurofurence.app */,
 				9ACF99481EBE172D006FC958 /* EurofurenceTests.xctest */,
 				78D7EEA11F17F40C005372A9 /* Screenshots.xctest */,
-				CA630BDC229F14F800754C27 /* EurofurenceKit.framework */,
+				CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */,
 				CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */,
 				CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */,
 				CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */,
@@ -789,7 +789,7 @@
 			isa = PBXGroup;
 			children = (
 				CAB4E91126626F7100EFE882 /* Intents.intentdefinition */,
-				CAB4E91226626F7100EFE882 /* EurofurenceKit.h */,
+				CAB4E91226626F7100EFE882 /* EurofurenceIntentDefinitions.h */,
 				CAB4E91326626F7100EFE882 /* Info.plist */,
 			);
 			path = EurofurenceKit;
@@ -840,7 +840,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAB4E91A2662705100EFE882 /* EurofurenceKit.h in Headers */,
+				CAB4E91A2662705100EFE882 /* EurofurenceIntentDefinitions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -938,9 +938,9 @@
 			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		CA630BDB229F14F800754C27 /* EurofurenceKit */ = {
+		CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceKit" */;
+			buildConfigurationList = CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceIntentDefinitions" */;
 			buildPhases = (
 				CA630BD7229F14F800754C27 /* Headers */,
 				CA630BD8229F14F800754C27 /* Sources */,
@@ -951,9 +951,9 @@
 			);
 			dependencies = (
 			);
-			name = EurofurenceKit;
+			name = EurofurenceIntentDefinitions;
 			productName = EurofurenceIntentDefinitions;
-			productReference = CA630BDC229F14F800754C27 /* EurofurenceKit.framework */;
+			productReference = CA630BDC229F14F800754C27 /* EurofurenceIntentDefinitions.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		CA7A2EEA2606B83C00919DA0 /* Eurofurence ClipTests */ = {
@@ -1129,7 +1129,7 @@
 				9ACF99471EBE172D006FC958 /* EurofurenceTests */,
 				CAF254A92517F983008892ED /* EurofurenceUITests */,
 				78D7EEA01F17F40C005372A9 /* Screenshots */,
-				CA630BDB229F14F800754C27 /* EurofurenceKit */,
+				CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */,
 				CA5F269B2556F04C00CED97A /* EventsWidgetExtension */,
 				CAB300D62603AFDB009A52E1 /* EurofurenceClip */,
 				CA7A2EEA2606B83C00919DA0 /* Eurofurence ClipTests */,
@@ -1466,7 +1466,7 @@
 		};
 		CA3ADD532677DC28007064AF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
+			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
 			targetProxy = CA3ADD522677DC28007064AF /* PBXContainerItemProxy */;
 		};
 		CA5F26AB2556F04D00CED97A /* PBXTargetDependency */ = {
@@ -1476,7 +1476,7 @@
 		};
 		CA630BE2229F14F800754C27 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
+			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
 			targetProxy = CA630BE1229F14F800754C27 /* PBXContainerItemProxy */;
 		};
 		CA7A2EFF2606B83F00919DA0 /* PBXTargetDependency */ = {
@@ -1501,7 +1501,7 @@
 		};
 		CAFC4A8F256463A400499A47 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CA630BDB229F14F800754C27 /* EurofurenceKit */;
+			target = CA630BDB229F14F800754C27 /* EurofurenceIntentDefinitions */;
 			targetProxy = CAFC4A8E256463A400499A47 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -2028,7 +2028,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2062,7 +2062,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2097,7 +2097,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2131,7 +2131,7 @@
 					"@loader_path/Frameworks",
 				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceKit;
+				PRODUCT_BUNDLE_IDENTIFIER = org.eurofurence.EurofurenceIntentDefinitions;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -2757,7 +2757,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceKit" */ = {
+		CA630BE5229F14F800754C27 /* Build configuration list for PBXNativeTarget "EurofurenceIntentDefinitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CA630BE6229F14F800754C27 /* Debug */,
