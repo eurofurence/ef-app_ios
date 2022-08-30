@@ -27,7 +27,7 @@ To build the app, you'll need the latest version of Xcode 13. Once you clone the
 
 To build and run the app, select the __Eurofurence__ scheme and hit `Product > Run` (or `⌘ + R`). Other schemes of interest include:
 
-- __EurofurenceKit__ - all `INIntent` definitions live here for sharing betweeen targets
+- __EurofurenceIntentDefinitions__ - all `INIntent` definitions live here for sharing betweeen targets
 - __EurofurenceModel__ - adapter between the API, data store and model-specific logic
 - __EurofurenceApplication__ - presenters, views etc used by the app
 - __EurofurenceApplicationSession__ - builds up a model instance with application specific dependencies (e.g. Firebase)

@@ -1,4 +1,4 @@
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import Intents
 import SwiftUI
 import WidgetKit

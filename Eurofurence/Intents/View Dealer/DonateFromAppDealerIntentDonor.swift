@@ -1,5 +1,5 @@
 import DealerComponent
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import EurofurenceModel
 import Intents
 

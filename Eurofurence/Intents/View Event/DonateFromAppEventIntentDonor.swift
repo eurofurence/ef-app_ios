@@ -1,4 +1,4 @@
-import EurofurenceKit
+import EurofurenceIntentDefinitions
 import EurofurenceModel
 import EventDetailComponent
 import Intents
