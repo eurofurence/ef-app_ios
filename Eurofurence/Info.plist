@@ -68,6 +68,14 @@
 					<key>UISceneDelegateClassName</key>
 					<string>$(PRODUCT_MODULE_NAME).PrincipalWindowSceneDelegate</string>
 				</dict>
+				<dict>
+					<key>UISceneClassName</key>
+					<string>UIWindowScene</string>
+					<key>UISceneConfigurationName</key>
+					<string>Principal SwiftUI Window Scene</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).PrincipalSwiftUIWindowSceneDelegate</string>
+				</dict>
 			</array>
 		</dict>
 	</dict>

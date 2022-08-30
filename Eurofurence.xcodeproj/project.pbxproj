@@ -105,6 +105,8 @@
 		CAB7ABC928730E230037ACFB /* KnowledgeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */; };
 		CABBCA162565B153007A11A2 /* EventCategory+Intent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */; };
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
+		CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */; };
+		CABD9BA528BE08DF00CEFAB3 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD9BA428BE08DF00CEFAB3 /* Placeholder.swift */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
 		CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */; };
 		CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */; };
@@ -349,6 +351,8 @@
 		CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnowledgeTests.swift; sourceTree = "<group>"; };
 		CABBCA152565B153007A11A2 /* EventCategory+Intent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EventCategory+Intent.swift"; sourceTree = "<group>"; };
 		CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewDetailBugTests.swift; sourceTree = "<group>"; };
+		CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalSwiftUIWindowSceneDelegate.swift; sourceTree = "<group>"; };
+		CABD9BA428BE08DF00CEFAB3 /* Placeholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		CACD371F25650BC400C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD372825650BD800C23041 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACD376925650C1200C23041 /* EurofurenceModelTestDoubles.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModelTestDoubles.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -522,6 +526,7 @@
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
+				CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */,
@@ -530,6 +535,7 @@
 				CA0885F625FE98110044DD53 /* Intents */,
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
 				CA08861525FE99680044DD53 /* Resources */,
+				CABD9BA328BE08D300CEFAB3 /* SwiftUI */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
@@ -787,6 +793,14 @@
 				CAB4E91326626F7100EFE882 /* Info.plist */,
 			);
 			path = EurofurenceKit;
+			sourceTree = "<group>";
+		};
+		CABD9BA328BE08D300CEFAB3 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				CABD9BA428BE08DF00CEFAB3 /* Placeholder.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 		CAF254AB2517F983008892ED /* EurofurenceUITests */ = {
@@ -1315,6 +1329,7 @@
 				CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */,
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
+				CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
@@ -1323,6 +1338,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
+				CABD9BA528BE08DF00CEFAB3 /* Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

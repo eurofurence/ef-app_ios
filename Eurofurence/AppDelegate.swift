@@ -27,7 +27,14 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         configurationForConnecting connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions
     ) -> UISceneConfiguration {
-        UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
+        let userDefaults = UserDefaults.standard
+        let isSwiftUIEnabled = userDefaults.bool(forKey: "EFSwiftUIAppVariantEnabled")
+        
+        if isSwiftUIEnabled {
+            return UISceneConfiguration(name: "Principal SwiftUI Window Scene", sessionRole: connectingSceneSession.role)
+        } else {
+            return UISceneConfiguration(name: "Principal Window Scene", sessionRole: connectingSceneSession.role)
+        }
     }
 
     public func application(
