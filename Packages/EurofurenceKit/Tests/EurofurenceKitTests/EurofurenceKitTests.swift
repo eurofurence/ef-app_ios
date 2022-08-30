@@ -1,5 +1,5 @@
+import EurofurenceKit
 import XCTest
-@testable import EurofurenceKit
 
 final class EurofurenceKitTests: XCTestCase {
     func testExample() throws {

@@ -10,7 +10,7 @@ let package = Package(
         .library(
             name: "EurofurenceKit",
             targets: ["EurofurenceKit"]
-        ),
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0")
@@ -18,11 +18,13 @@ let package = Package(
     targets: [
         .target(
             name: "EurofurenceKit",
-            dependencies: []
+            dependencies: [
+                .product(name: "Logging", package: "swift-log")
+            ]
         ),
         .testTarget(
             name: "EurofurenceKitTests",
             dependencies: ["EurofurenceKit"]
-        ),
+        )
     ]
 )

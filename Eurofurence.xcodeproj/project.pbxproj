@@ -107,6 +107,9 @@
 		CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABBCA2F2566FE0B007A11A2 /* SplitViewDetailBugTests.swift */; };
 		CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */; };
 		CABD9BA528BE08DF00CEFAB3 /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABD9BA428BE08DF00CEFAB3 /* Placeholder.swift */; };
+		CABD9BAC28BE2B8C00CEFAB3 /* EurofurenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = CABD9BAB28BE2B8C00CEFAB3 /* EurofurenceKit */; };
+		CABD9BAE28BE2B9700CEFAB3 /* EurofurenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = CABD9BAD28BE2B9700CEFAB3 /* EurofurenceKit */; };
+		CABD9BB028BE2B9F00CEFAB3 /* EurofurenceKit in Frameworks */ = {isa = PBXBuildFile; productRef = CABD9BAF28BE2B9F00CEFAB3 /* EurofurenceKit */; };
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
 		CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */; };
 		CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */; };
@@ -382,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */,
+				CABD9BAC28BE2B8C00CEFAB3 /* EurofurenceKit in Frameworks */,
 				CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */,
 				CA630BE3229F14F800754C27 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 			);
@@ -398,6 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CABD9BAE28BE2B9700CEFAB3 /* EurofurenceKit in Frameworks */,
 				CA3FBF4B2558426B005E1F53 /* EventsWidgetLogic in Frameworks */,
 				CAFC4A8C256463A400499A47 /* EurofurenceIntentDefinitions.framework in Frameworks */,
 				CA9768DD25FE39C6001AE029 /* EurofurenceApplicationSession in Frameworks */,
@@ -433,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA03124026793F32004E47B0 /* EurofurenceClipLogic in Frameworks */,
+				CABD9BB028BE2B9F00CEFAB3 /* EurofurenceKit in Frameworks */,
 				CAB301032603B0D8009A52E1 /* DealerComponent in Frameworks */,
 				CAB301012603B0D8009A52E1 /* ContentController in Frameworks */,
 				CAB300FF2603B0D8009A52E1 /* EurofurenceApplicationSession in Frameworks */,
@@ -890,6 +896,7 @@
 			name = Eurofurence;
 			packageProductDependencies = (
 				CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */,
+				CABD9BAB28BE2B8C00CEFAB3 /* EurofurenceKit */,
 			);
 			productName = Eurofurence;
 			productReference = 9ACF99341EBE172D006FC958 /* Eurofurence.app */;
@@ -933,6 +940,7 @@
 				CA3FBF4A2558426B005E1F53 /* EventsWidgetLogic */,
 				CA9768DC25FE39C6001AE029 /* EurofurenceApplicationSession */,
 				CA9768FA25FE3A81001AE029 /* EurofurenceModel */,
+				CABD9BAD28BE2B9700CEFAB3 /* EurofurenceKit */,
 			);
 			productName = EventsWidgetExtension;
 			productReference = CA5F269C2556F04C00CED97A /* EventsWidgetExtension.appex */;
@@ -1016,6 +1024,7 @@
 				CAB301042603B0D8009A52E1 /* DealersComponent */,
 				CA3ADD592677DD96007064AF /* EventDetailComponent */,
 				CA03123F26793F32004E47B0 /* EurofurenceClipLogic */,
+				CABD9BAF28BE2B9F00CEFAB3 /* EurofurenceKit */,
 			);
 			productName = DealersAppClip;
 			productReference = CAB300D72603AFDB009A52E1 /* EurofurenceClip.app */;
@@ -2850,6 +2859,18 @@
 		CAB301042603B0D8009A52E1 /* DealersComponent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DealersComponent;
+		};
+		CABD9BAB28BE2B8C00CEFAB3 /* EurofurenceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceKit;
+		};
+		CABD9BAD28BE2B9700CEFAB3 /* EurofurenceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceKit;
+		};
+		CABD9BAF28BE2B9F00CEFAB3 /* EurofurenceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EurofurenceKit;
 		};
 		CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */ = {
 			isa = XCSwiftPackageProductDependency;
