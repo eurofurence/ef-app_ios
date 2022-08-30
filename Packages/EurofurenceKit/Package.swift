@@ -26,7 +26,7 @@ let package = Package(
             name: "EurofurenceKitTests",
             dependencies: ["EurofurenceKit"],
             resources: [
-                .process("Remote Responses/EF26_Full_Sync_Response.json")
+                .process("Remote Responses/EF26 Full Sync Response/EF26_Full_Sync_Response.json")
             ]
         )
     ]
