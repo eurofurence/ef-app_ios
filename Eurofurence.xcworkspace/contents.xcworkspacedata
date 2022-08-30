@@ -5,6 +5,9 @@
       location = "container:"
       name = "Packages">
       <FileRef
+         location = "group:Packages/EurofurenceKit">
+      </FileRef>
+      <FileRef
          location = "group:Packages/EurofurenceApplication">
       </FileRef>
       <FileRef
