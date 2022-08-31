@@ -35,6 +35,10 @@ public class EurofurenceModel: ObservableObject {
             throw EurofurenceError.conventionIdentifierMismatch
         }
         
+        await updateLocalCache(from: response)
+    }
+    
+    private func updateLocalCache(from response: RemoteSyncResponse) async {
         do {
             let writingContext = persistentContainer.newBackgroundContext()
             try await writingContext.performAsync { (context) in
@@ -51,6 +55,11 @@ public class EurofurenceModel: ObservableObject {
                 for remoteRoom in response.rooms.changed {
                     let room = Room(context: context)
                     room.update(from: remoteRoom)
+                }
+                
+                for remoteEvent in response.events.changed {
+                    let event = Event(context: context)
+                    try event.update(from: remoteEvent)
                 }
                 
                 try context.save()

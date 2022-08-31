@@ -2,6 +2,6 @@ protocol ConsumesRemoteResponse {
     
     associatedtype RemoteResponse
     
-    func update(from remoteResponse: RemoteResponse)
+    func update(from remoteResponse: RemoteResponse) throws
     
 }

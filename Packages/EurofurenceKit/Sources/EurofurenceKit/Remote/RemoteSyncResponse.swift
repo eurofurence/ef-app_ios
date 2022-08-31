@@ -7,12 +7,14 @@ struct RemoteSyncResponse: Decodable {
         case days = "EventConferenceDays"
         case tracks = "EventConferenceTracks"
         case rooms = "EventConferenceRooms"
+        case events = "Events"
     }
     
     var conventionIdentifier: String
     var days: RemoteEntityNode<RemoteDay>
     var tracks: RemoteEntityNode<RemoteTrack>
     var rooms: RemoteEntityNode<RemoteRoom>
+    var events: RemoteEntityNode<RemoteEvent>
     
 }
 
@@ -49,5 +51,25 @@ struct RemoteRoom: Decodable {
     var Id: String
     var Name: String
     var ShortName: String
+    
+}
+
+struct RemoteEvent: Decodable {
+    
+    var LastChangeDateTimeUtc: Date
+    var Id: String
+    var Slug: String
+    var Title: String
+    var SubTitle: String
+    var Abstract: String
+    var ConferenceDayId: String
+    var ConferenceTrackId: String
+    var ConferenceRoomId: String
+    var Description: String
+    var StartDateTimeUtc: Date
+    var EndDateTimeUtc: Date
+    var PanelHosts: String
+    var IsDeviatingFromConBook: Bool
+    var IsAcceptingFeedback: Bool
     
 }

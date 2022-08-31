@@ -25,6 +25,43 @@ public class Event: Entity {
 
 }
 
+// MARK: - Event + ConsumesRemoteResponse
+
+extension Event: ConsumesRemoteResponse {
+    
+    typealias RemoteResponse = RemoteEvent
+    
+    func update(from remoteResponse: RemoteEvent) throws {
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        slug = remoteResponse.Slug
+        title = remoteResponse.Title
+        subtitle = remoteResponse.SubTitle
+        abstract = remoteResponse.Abstract
+        day = try managedObjectContext!.object(matching: NSPredicate(format: "identifier == %@", remoteResponse.ConferenceDayId))
+        
+        let track: Track = try managedObjectContext!.entity(withIdentifier: remoteResponse.ConferenceTrackId)
+        addToTracks(track)
+        
+        room = try managedObjectContext!.object(matching: NSPredicate(format: "identifier == %@", remoteResponse.ConferenceRoomId))
+        eventDescription = remoteResponse.Description
+        startDate = remoteResponse.StartDateTimeUtc
+        endDate = remoteResponse.EndDateTimeUtc
+        
+        let hosts = remoteResponse.PanelHosts.components(separatedBy: ",")
+        for host in hosts {
+            let trimmedHost = host.trimmingCharacters(in: .whitespaces)
+            let host = PanelHost(context: managedObjectContext!)
+            host.name = trimmedHost
+            addToPanelHosts(host)
+        }
+        
+        deviatingFromConbook = remoteResponse.IsDeviatingFromConBook
+        acceptingFeedback = remoteResponse.IsAcceptingFeedback
+    }
+    
+}
+
 // MARK: Generated accessors for panelHosts
 extension Event {
 

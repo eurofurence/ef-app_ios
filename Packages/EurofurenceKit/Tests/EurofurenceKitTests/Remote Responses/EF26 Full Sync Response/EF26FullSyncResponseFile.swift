@@ -344,4 +344,26 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
         ]
     }
     
+    var events: [ExpectedEvent] {
+        return [
+            .init(
+                lastUpdated: "2022-08-22T19:30:05.600Z",
+                identifier: "76430fe0-ece7-48c9-b8e6-fdbc3974ff64",
+                slug: "reg_tue",
+                title: "Registration",
+                subtitle: "",
+                abstract: "Take me to the Reg Line!",
+                dayIdentifier: "db6e0b07-3300-4d58-adfd-84c145e36242",
+                trackIdentifier: "0b80cc7b-b5b2-4fab-8b74-078f2b5e366e",
+                roomIdentifier: "c137717f-f297-4c3d-bc0e-542cbb032135",
+                description: "Take me to the Reg Line!\r\n\r\nIn case you arrive after Registration closes, go to the Security Office in Estrel Saal C to get your Badge.",
+                startDate: "2022-08-23T10:00:00.000Z",
+                endDate: "2022-08-23T18:00:00.000Z",
+                panelHosts: ["EF Staff"],
+                deviatingFromConbook: false,
+                acceptingFeedback: false
+            )
+        ]
+    }
+    
 }
