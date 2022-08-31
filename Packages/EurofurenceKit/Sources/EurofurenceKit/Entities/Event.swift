@@ -43,13 +43,11 @@ extension Event {
     
 }
 
-// MARK: - Event + ConsumesRemoteResponse
+// MARK: - Consuming Remote Response
 
-extension Event: ConsumesRemoteResponse {
+extension Event {
     
-    typealias RemoteResponse = RemoteEvent
-    
-    func update(from remoteResponse: RemoteEvent) throws {
+    func update(from remoteResponse: RemoteEvent, fullResponse: RemoteSyncResponse) throws {
         identifier = remoteResponse.Id
         lastEdited = remoteResponse.LastChangeDateTimeUtc
         slug = remoteResponse.Slug
@@ -80,6 +78,18 @@ extension Event: ConsumesRemoteResponse {
         
         deviatingFromConbook = remoteResponse.IsDeviatingFromConBook
         acceptingFeedback = remoteResponse.IsAcceptingFeedback
+        
+        if let bannerImageIdentifier = remoteResponse.BannerImageId, let remoteBanner = fullResponse.images.changed.first(where: { $0.Id == bannerImageIdentifier }) {
+            let eventBanner = EventBanner.identifiedBy(identifier: bannerImageIdentifier, in: managedObjectContext!)
+            eventBanner.update(from: remoteBanner)
+            banner = eventBanner
+        }
+        
+        if let posterImageIdentifier = remoteResponse.PosterImageId, let remotePoster = fullResponse.images.changed.first(where: { $0.Id == posterImageIdentifier }) {
+            let eventPoster = EventPoster.identifiedBy(identifier: posterImageIdentifier, in: managedObjectContext!)
+            eventPoster.update(from: remotePoster)
+            poster = eventPoster
+        }
     }
     
 }

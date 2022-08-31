@@ -8,6 +8,7 @@ struct RemoteSyncResponse: Decodable {
         case tracks = "EventConferenceTracks"
         case rooms = "EventConferenceRooms"
         case events = "Events"
+        case images = "Images"
     }
     
     var conventionIdentifier: String
@@ -15,6 +16,7 @@ struct RemoteSyncResponse: Decodable {
     var tracks: RemoteEntityNode<RemoteTrack>
     var rooms: RemoteEntityNode<RemoteRoom>
     var events: RemoteEntityNode<RemoteEvent>
+    var images: RemoteEntityNode<RemoteImage>
     
 }
 
@@ -72,5 +74,20 @@ struct RemoteEvent: Decodable {
     var IsDeviatingFromConBook: Bool
     var IsAcceptingFeedback: Bool
     var Tags: [String]
+    var BannerImageId: String?
+    var PosterImageId: String?
+    
+}
+
+struct RemoteImage: Decodable {
+    
+    var LastChangeDateTimeUtc: Date
+    var Id: String
+    var InternalReference: String
+    var Width: Int
+    var Height: Int
+    var SizeInBytes: Int
+    var MimeType: String
+    var ContentHashSha1: String
     
 }

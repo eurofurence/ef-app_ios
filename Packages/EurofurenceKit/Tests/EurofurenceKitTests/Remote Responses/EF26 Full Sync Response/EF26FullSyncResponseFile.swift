@@ -362,7 +362,56 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 panelHosts: ["EF Staff"],
                 deviatingFromConbook: false,
                 acceptingFeedback: false,
-                tags: ["mask_required"]
+                tags: ["mask_required"],
+                bannerImageIdentifier: nil,
+                posterImageIdentifier: nil
+            ),
+            
+            .init(
+                lastUpdated: "2022-08-21T16:18:04.893Z",
+                identifier: "4a90c95f-dac0-4ca0-9f6d-a7839845ba36",
+                slug: "ms_fursuit_friendly_dance",
+                title: "The Pirate's Paradise",
+                subtitle: "",
+                abstract: "This is Eurofurence's Club Night. We don't hold back. Neither should you. It's time to party.",
+                dayIdentifier: "7f69f120-3c8a-49bf-895a-20c2adade161",
+                trackIdentifier: "dac39c38-da16-4b18-9e90-d17b785ee5a8",
+                roomIdentifier: "979f4ecf-66bd-4c83-ac3c-c3636ff82a81",
+                description: "The Pirate's Paradise brings you what every sea dog needs. Loud thumping beats from the bass cannon and shining bright lights in the sky. \r\n\r\nThe Eurofurence Club Night not only pulled all strings to get the chairman himself behind the decks, it's also gonna blow your mind with a wide selection of music and a stage unlike anything you've ever seen. Ready for a ride? Welcome to the Paradise!",
+                startDate: "2022-08-25T19:30:00.000Z",
+                endDate: "2022-08-26T01:30:00.000Z",
+                panelHosts: ["Eurofurence DJs", "Jaryic"],
+                deviatingFromConbook: false,
+                acceptingFeedback: false,
+                tags: ["stage", "main_stage"],
+                bannerImageIdentifier: "b58304dc-4b1c-4857-9ba6-818c593b2f6e",
+                posterImageIdentifier: "16462c95-4aeb-4557-986c-9d3193a67607"
+            )
+        ]
+    }
+    
+    var images: [ExpectedImage] {
+        return [
+            .init(
+                lastUpdated: "2022-08-21T16:18:04.792Z",
+                identifier: "b58304dc-4b1c-4857-9ba6-818c593b2f6e",
+                internalReference: "event:Banner:4a90c95f-dac0-4ca0-9f6d-a7839845ba36",
+                width: 1280,
+                height: 427,
+                sizeInBytes: 461521,
+                mimeType: "image/png",
+                contentHashSha1: "JdsAVGreKRoL6M3TGNNpcNCsajI="
+            ),
+            
+            .init(
+                lastUpdated: "2022-08-16T08:30:21.253Z",
+                identifier: "16462c95-4aeb-4557-986c-9d3193a67607",
+                internalReference: "event:Poster:0d7817c3-03c4-48a7-bcf9-5cd690e86368",
+                width: 2339,
+                height: 3308,
+                sizeInBytes: 1133398,
+                mimeType: "image/jpeg",
+                contentHashSha1: "aoU0oeC4LqJ9KoxYevHeryHbl/8="
             )
         ]
     }

@@ -41,28 +41,28 @@ public class EurofurenceModel: ObservableObject {
     private func updateLocalCache(from response: RemoteSyncResponse) async {
         do {
             let writingContext = persistentContainer.newBackgroundContext()
-            try await writingContext.performAsync { (context) in
+            try await writingContext.performAsync { [writingContext] in
                 for remoteDay in response.days.changed {
-                    let day = Day(context: context)
+                    let day = Day(context: writingContext)
                     day.update(from: remoteDay)
                 }
                 
                 for remoteTrack in response.tracks.changed {
-                    let track = Track(context: context)
+                    let track = Track(context: writingContext)
                     track.update(from: remoteTrack)
                 }
                 
                 for remoteRoom in response.rooms.changed {
-                    let room = Room(context: context)
+                    let room = Room(context: writingContext)
                     room.update(from: remoteRoom)
                 }
                 
                 for remoteEvent in response.events.changed {
-                    let event = Event(context: context)
-                    try event.update(from: remoteEvent)
+                    let event = Event(context: writingContext)
+                    try event.update(from: remoteEvent, fullResponse: response)
                 }
                 
-                try context.save()
+                try writingContext.save()
             }
         } catch {
             logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])

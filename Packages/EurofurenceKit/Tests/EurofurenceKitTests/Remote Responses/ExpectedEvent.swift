@@ -20,6 +20,8 @@ struct ExpectedEvent {
     var deviatingFromConbook: Bool
     var acceptingFeedback: Bool
     var tags: [String]
+    var bannerImageIdentifier: String?
+    var posterImageIdentifier: String?
     
     init(
         lastUpdated: String,
@@ -37,7 +39,9 @@ struct ExpectedEvent {
         panelHosts: [String],
         deviatingFromConbook: Bool,
         acceptingFeedback: Bool,
-        tags: [String]
+        tags: [String],
+        bannerImageIdentifier: String?,
+        posterImageIdentifier: String?
     ) {
         let dateFormatter = EurofurenceISO8601DateFormatter.instance
         self.lastUpdated = dateFormatter.date(from: lastUpdated)!
@@ -57,9 +61,15 @@ struct ExpectedEvent {
         self.deviatingFromConbook = deviatingFromConbook
         self.acceptingFeedback = acceptingFeedback
         self.tags = tags
+        self.bannerImageIdentifier = bannerImageIdentifier
+        self.posterImageIdentifier = posterImageIdentifier
     }
     
-    func assert(against actual: Event, in managedObjectContext: NSManagedObjectContext) throws {
+    func assert<R>(
+        against actual: Event,
+        in managedObjectContext: NSManagedObjectContext,
+        from response: R
+    ) throws where R: SyncResponseFile {
         XCTAssertEqual(lastUpdated, actual.lastEdited)
         XCTAssertEqual(identifier, actual.identifier)
         XCTAssertEqual(slug, actual.slug)
@@ -82,7 +92,6 @@ struct ExpectedEvent {
         
         let track: Track = try managedObjectContext.entity(withIdentifier: trackIdentifier)
         XCTAssertTrue(actual.tracks.contains(track))
-        XCTAssertTrue(track.events.contains(actual))
         
         for host in panelHosts {
             let matchingHost = try XCTUnwrap(actual.panelHosts.first(where: { $0.name == host }))
@@ -92,6 +101,20 @@ struct ExpectedEvent {
         for tag in tags {
             let matchingTag = try XCTUnwrap(actual.tags.first(where: { $0.name == tag }))
             XCTAssertTrue(matchingTag.events.contains(actual))
+        }
+        
+        if let bannerImageIdentifier = bannerImageIdentifier {
+            let expectedImage = try response.image(identifiedBy: bannerImageIdentifier)
+            let banner: EventBanner = try managedObjectContext.entity(withIdentifier: bannerImageIdentifier)
+            expectedImage.assert(against: banner)
+            XCTAssertEqual(banner, actual.banner)
+        }
+        
+        if let posterImageIdentifier = posterImageIdentifier {
+            let expectedImage = try response.image(identifiedBy: posterImageIdentifier)
+            let poster: EventPoster = try managedObjectContext.entity(withIdentifier: posterImageIdentifier)
+            expectedImage.assert(against: poster)
+            XCTAssertEqual(poster, actual.poster)
         }
     }
     

@@ -1,15 +1,6 @@
 @testable import EurofurenceKit
 import XCTest
 
-//var isSponsorOnly: Bool { get }
-//var isSuperSponsorOnly: Bool { get }
-//var isArtShow: Bool { get }
-//var isKageEvent: Bool { get }
-//var isDealersDen: Bool { get }
-//var isMainStage: Bool { get }
-//var isPhotoshoot: Bool { get }
-//var isFaceMaskRequired: Bool { get }
-
 class WellKnownTagTests: XCTestCase {
     
     func testSponsorOnly() async throws {

@@ -6,7 +6,11 @@ class IngestingFullRemoteModel_Success: XCTestCase {
         let scenario = EurofurenceModelTestBuilder().build()
         let response = EF26FullSyncResponseFile()
         try await scenario.updateLocalStore(using: response)
-        try response.assertAgainstEntities(in: scenario.viewContext)
+        
+        let managedObjectContext = scenario.viewContext
+        try scenario.viewContext.performAndWait { [managedObjectContext] in
+            try response.assertAgainstEntities(in: managedObjectContext)
+        }
     }
     
 }

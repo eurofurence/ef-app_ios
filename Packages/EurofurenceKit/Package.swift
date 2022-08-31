@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "EurofurenceKit",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14), .macOS(.v11), .watchOS(.v8)],
+    platforms: [.iOS(.v14), .macOS(.v12), .watchOS(.v8)],
     products: [
         .library(
             name: "EurofurenceKit",

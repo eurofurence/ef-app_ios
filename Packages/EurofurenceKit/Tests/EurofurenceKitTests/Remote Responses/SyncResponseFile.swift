@@ -8,10 +8,15 @@ protocol SyncResponseFile: SampleResponseFile {
     var tracks: [ExpectedTrack] { get }
     var rooms: [ExpectedRoom] { get }
     var events: [ExpectedEvent] { get }
+    var images: [ExpectedImage] { get }
     
 }
 
 extension SyncResponseFile {
+    
+    func image(identifiedBy identifier: String) throws -> ExpectedImage {
+        try XCTUnwrap(images.first(where: { $0.identifier == identifier }))
+    }
     
     func assertAgainstEntities(in context: NSManagedObjectContext) throws {
         for day in days {
@@ -31,7 +36,7 @@ extension SyncResponseFile {
         
         for event in events {
             let entity: Event = try context.entity(withIdentifier: event.identifier)
-            try event.assert(against: entity, in: context)
+            try event.assert(against: entity, in: context, from: self)
         }
     }
     
