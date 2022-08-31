@@ -28,3 +28,16 @@ func XCTAssertEventuallyThrowsError(
         // 👍
     }
 }
+
+func XCTAssertEventuallyNoThrows(
+    _ block: () async throws -> Void,
+    file: StaticString = #file,
+    line: UInt = #line
+) async {
+    do {
+        try await block()
+        // 👍
+    } catch {
+        XCTFail("Unexpected error raised: \(error)", file: file, line: line)
+    }
+}

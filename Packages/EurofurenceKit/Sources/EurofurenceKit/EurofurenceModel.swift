@@ -45,22 +45,22 @@ public class EurofurenceModel: ObservableObject {
             let writingContext = persistentContainer.newBackgroundContext()
             try await writingContext.performAsync { [writingContext] in
                 for remoteDay in response.days.changed {
-                    let day = Day(context: writingContext)
+                    let day = try Day.entity(identifiedBy: remoteDay.Id, in: writingContext)
                     day.update(from: remoteDay)
                 }
                 
                 for remoteTrack in response.tracks.changed {
-                    let track = Track(context: writingContext)
+                    let track = try Track.entity(identifiedBy: remoteTrack.Id, in: writingContext)
                     track.update(from: remoteTrack)
                 }
                 
                 for remoteRoom in response.rooms.changed {
-                    let room = Room(context: writingContext)
+                    let room = try Room.entity(identifiedBy: remoteRoom.Id, in: writingContext)
                     room.update(from: remoteRoom)
                 }
                 
                 for remoteEvent in response.events.changed {
-                    let event = Event(context: writingContext)
+                    let event = try Event.entity(identifiedBy: remoteEvent.Id, in: writingContext)
                     try event.update(from: remoteEvent, fullResponse: response)
                 }
                 

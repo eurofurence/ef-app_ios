@@ -48,7 +48,14 @@ extension EurofurenceModelTestBuilder.Scenario {
     }
     
     func stubSyncResponse(with result: Result<Data, Error>) {
-        let syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync")!
+        let syncURL: URL
+        if let lastSyncTime = modelProperties.lastSyncTime {
+            let formattedSyncTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
+            syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedSyncTime)")!
+        } else {
+            syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync")!
+        }
+        
         stub(url: syncURL, with: result)
     }
     
