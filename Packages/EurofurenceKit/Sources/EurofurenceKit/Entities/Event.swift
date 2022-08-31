@@ -52,14 +52,12 @@ extension Event: ConsumesRemoteResponse {
         let hosts = remoteResponse.PanelHosts.components(separatedBy: ",")
         for host in hosts {
             let trimmedHost = host.trimmingCharacters(in: .whitespaces)
-            let host = PanelHost(context: managedObjectContext!)
-            host.name = trimmedHost
+            let host = PanelHost.named(name: trimmedHost, in: managedObjectContext!)
             addToPanelHosts(host)
         }
         
         for remoteTag in remoteResponse.Tags {
-            let tag = Tag(context: managedObjectContext!)
-            tag.name = remoteTag
+            let tag = Tag.named(name: remoteTag, in: managedObjectContext!)
             addToTags(tag)
         }
         

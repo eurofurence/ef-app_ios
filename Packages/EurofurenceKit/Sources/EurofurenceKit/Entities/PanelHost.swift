@@ -12,6 +12,26 @@ public class PanelHost: NSManagedObject {
 
 }
 
+// MARK: - Fetching
+
+extension PanelHost {
+    
+    static func named(name: String, in managedObjectContext: NSManagedObjectContext) -> PanelHost {
+        let fetchRequest = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        let results = try? managedObjectContext.fetch(fetchRequest)
+    
+        if let existingPanelHost = results?.first {
+            return existingPanelHost
+        } else {
+            let panelHost = PanelHost(context: managedObjectContext)
+            panelHost.name = name
+            return panelHost
+        }
+    }
+    
+}
+
 // MARK: Generated accessors for hostingEvents
 extension PanelHost {
 
