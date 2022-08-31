@@ -23,12 +23,8 @@ class FakeNetwork: Network {
         }
     }
     
-    func stub(url: URL, with data: Data) {
-        getResponses[url] = .success(data)
-    }
-    
-    func stub(url: URL, with error: Error) {
-        getResponses[url] = .failure(error)
+    func stub(url: URL, with result: Result<Data, Error>) {
+        getResponses[url] = result
     }
     
 }
