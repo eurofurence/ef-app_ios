@@ -15,39 +15,23 @@ extension SyncResponseFile {
     
     func assertAgainstEntities(in context: NSManagedObjectContext) throws {
         for day in days {
-            let fetchRequest: NSFetchRequest<Day> = Day.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", day.identifier)
-            let matches = try context.fetch(fetchRequest)
-            let match = try XCTUnwrap(matches.first)
-            
-            day.assert(against: match)
+            let entity: Day = try context.entity(withIdentifier: day.identifier)
+            day.assert(against: entity)
         }
         
         for track in tracks {
-            let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", track.identifier)
-            let matches = try context.fetch(fetchRequest)
-            let match = try XCTUnwrap(matches.first)
-            
-            track.assert(against: match)
+            let entity: Track = try context.entity(withIdentifier: track.identifier)
+            track.assert(against: entity)
         }
         
         for room in rooms {
-            let fetchRequest: NSFetchRequest<Room> = Room.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", room.identifier)
-            let matches = try context.fetch(fetchRequest)
-            let match = try XCTUnwrap(matches.first)
-            
-            room.assert(against: match)
+            let entity: Room = try context.entity(withIdentifier: room.identifier)
+            room.assert(against: entity)
         }
         
         for event in events {
-            let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", event.identifier)
-            let matches = try context.fetch(fetchRequest)
-            let match = try XCTUnwrap(matches.first)
-            
-            try event.assert(against: match, in: context)
+            let entity: Event = try context.entity(withIdentifier: event.identifier)
+            try event.assert(against: entity, in: context)
         }
     }
     
