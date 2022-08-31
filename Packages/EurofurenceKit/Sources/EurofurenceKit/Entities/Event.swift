@@ -23,6 +23,45 @@ public class Event: Entity {
     @NSManaged public var room: Room
     @NSManaged public var tracks: Set<Track>
     @NSManaged public var tags: Set<Tag>
+    
+    public var canonicalTags: CanonicalTag {
+        var tags = CanonicalTag()
+        for tag in self.tags {
+            if tag.name == "sponsors_only" {
+                tags.insert(.sponsorOnly)
+            }
+            
+            if tag.name == "supersponsors_only" {
+                tags.insert(.superSponsorOnly)
+            }
+            
+            if tag.name == "art_show" {
+                tags.insert(.artShow)
+            }
+            
+            if tag.name == "kage" {
+                tags.insert(.kage)
+            }
+            
+            if tag.name == "dealers_den" {
+                tags.insert(.dealersDen)
+            }
+            
+            if tag.name == "main_stage" {
+                tags.insert(.mainStage)
+            }
+            
+            if tag.name == "photoshoot" {
+                tags.insert(.photoshoot)
+            }
+            
+            if tag.name == "mask_required" {
+                tags.insert(.faceMaskRequired)
+            }
+        }
+        
+        return tags
+    }
 
 }
 
