@@ -361,7 +361,8 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 endDate: "2022-08-23T18:00:00.000Z",
                 panelHosts: ["EF Staff"],
                 deviatingFromConbook: false,
-                acceptingFeedback: false
+                acceptingFeedback: false,
+                tags: ["mask_required"]
             )
         ]
     }

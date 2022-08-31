@@ -71,5 +71,6 @@ struct RemoteEvent: Decodable {
     var PanelHosts: String
     var IsDeviatingFromConBook: Bool
     var IsAcceptingFeedback: Bool
+    var Tags: [String]
     
 }

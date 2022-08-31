@@ -57,6 +57,12 @@ extension Event: ConsumesRemoteResponse {
             addToPanelHosts(host)
         }
         
+        for remoteTag in remoteResponse.Tags {
+            let tag = Tag(context: managedObjectContext!)
+            tag.name = remoteTag
+            addToTags(tag)
+        }
+        
         deviatingFromConbook = remoteResponse.IsDeviatingFromConBook
         acceptingFeedback = remoteResponse.IsAcceptingFeedback
     }

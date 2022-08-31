@@ -19,6 +19,7 @@ struct ExpectedEvent {
     var panelHosts: [String]
     var deviatingFromConbook: Bool
     var acceptingFeedback: Bool
+    var tags: [String]
     
     init(
         lastUpdated: String,
@@ -35,7 +36,8 @@ struct ExpectedEvent {
         endDate: String,
         panelHosts: [String],
         deviatingFromConbook: Bool,
-        acceptingFeedback: Bool
+        acceptingFeedback: Bool,
+        tags: [String]
     ) {
         let dateFormatter = EurofurenceISO8601DateFormatter.instance
         self.lastUpdated = dateFormatter.date(from: lastUpdated)!
@@ -54,6 +56,7 @@ struct ExpectedEvent {
         self.panelHosts = panelHosts
         self.deviatingFromConbook = deviatingFromConbook
         self.acceptingFeedback = acceptingFeedback
+        self.tags = tags
     }
     
     func assert(against actual: Event, in managedObjectContext: NSManagedObjectContext) throws {
@@ -84,6 +87,11 @@ struct ExpectedEvent {
         for host in panelHosts {
             let matchingHost = try XCTUnwrap(actual.panelHosts.first(where: { $0.name == host }))
             XCTAssertTrue(matchingHost.hostingEvents.contains(actual))
+        }
+        
+        for tag in tags {
+            let matchingTag = try XCTUnwrap(actual.tags.first(where: { $0.name == tag }))
+            XCTAssertTrue(matchingTag.events.contains(actual))
         }
     }
     
