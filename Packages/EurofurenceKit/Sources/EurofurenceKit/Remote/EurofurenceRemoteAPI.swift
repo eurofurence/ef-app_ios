@@ -12,8 +12,19 @@ struct EurofurenceRemoteAPI {
         decoder.dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
     }
     
-    func executeSyncRequest() async throws -> RemoteSyncResponse {
-        let url = URL(string: "https://app.eurofurence.org/EF26/api/Sync").unsafelyUnwrapped
+    func executeSyncRequest(lastUpdateTime: Date?) async throws -> RemoteSyncResponse {
+        let sinceToken: String = {
+            if let lastUpdateTime = lastUpdateTime {
+                let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastUpdateTime)
+                return "?since=\(formattedTime)"
+            } else {
+                return ""
+            }
+        }()
+        
+        let urlString = "https://app.eurofurence.org/EF26/api/Sync\(sinceToken)"
+        guard let url = URL(string: urlString) else { fatalError() }
+        
         let data = try await network.get(contentsOf: url)
         let response = try decoder.decode(RemoteSyncResponse.self, from: data)
         

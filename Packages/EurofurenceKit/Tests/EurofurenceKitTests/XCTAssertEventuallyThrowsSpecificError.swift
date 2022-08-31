@@ -15,3 +15,16 @@ func XCTAssertEventuallyThrowsSpecificError<E>(
         XCTFail("Unexpected error thrown: \(error)", file: file, line: line)
     }
 }
+
+func XCTAssertEventuallyThrowsError(
+    _ block: () async throws -> Void,
+    file: StaticString = #file,
+    line: UInt = #line
+) async {
+    do {
+        try await block()
+        XCTFail("Expected to throw an error.", file: file, line: line)
+    } catch {
+        // 👍
+    }
+}

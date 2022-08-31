@@ -4,6 +4,8 @@ import XCTest
 
 protocol SyncResponseFile: SampleResponseFile {
     
+    var currentDate: Date { get }
+    
     var days: [ExpectedDay] { get }
     var tracks: [ExpectedTrack] { get }
     var rooms: [ExpectedRoom] { get }

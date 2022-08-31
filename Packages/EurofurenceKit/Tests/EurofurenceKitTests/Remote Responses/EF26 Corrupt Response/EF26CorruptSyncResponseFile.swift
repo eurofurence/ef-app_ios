@@ -1,11 +1,13 @@
 @testable import EurofurenceKit
 import Foundation
 
-/// A valid response with representable data used during EF26.
-struct EF26FullSyncResponseFile: SyncResponseFile {
+/// A flavour of the valid EF26 response tweaked to simulate local processing errors.
+///
+/// A few days have been removed to force the model to fail ingestion.
+struct EF26CorruptSyncResponseFile: SyncResponseFile {
     
     var jsonFileName: String {
-        return "EF26_Full_Sync_Response"
+        return "EF26_Corrupt_Sync_Response"
     }
     
     var currentDate: Date {
@@ -14,18 +16,6 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
     
     var days: [ExpectedDay] {
         return [
-            .init(
-                lastUpdated: "2022-06-23T08:18:09.424Z",
-                identifier: "db6e0b07-3300-4d58-adfd-84c145e36242",
-                name: "Early Arrival",
-                date: "2022-08-23T00:00:00.000Z"
-            ),
-            .init(
-                lastUpdated: "2022-06-23T08:18:09.429Z",
-                identifier: "572ca56c-c473-4ca7-b4ec-c6498c077dda",
-                name: "Official Con Start/Con Day 1",
-                date: "2022-08-24T00:00:00.000Z"
-            ),
             .init(
                 lastUpdated: "2022-06-23T08:18:09.431Z",
                 identifier: "7f69f120-3c8a-49bf-895a-20c2adade161",

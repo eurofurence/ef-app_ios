@@ -29,7 +29,8 @@ let package = Package(
                 .target(name: "EurofurenceKit")
             ],
             resources: [
-                .process("Remote Responses/EF26 Full Sync Response/EF26_Full_Sync_Response.json")
+                .process("Remote Responses/EF26 Full Sync Response/EF26_Full_Sync_Response.json"),
+                .process("Remote Responses/EF26 Corrupt Response/EF26_Corrupt_Sync_Response.json")
             ]
         ),
         

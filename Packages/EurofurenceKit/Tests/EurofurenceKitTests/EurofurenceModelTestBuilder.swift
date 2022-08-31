@@ -7,6 +7,7 @@ class EurofurenceModelTestBuilder {
     
     struct Scenario {
         var model: EurofurenceModel
+        var modelProperties: FakeModelProperties
         var network: FakeNetwork
     }
     
@@ -20,8 +21,10 @@ class EurofurenceModelTestBuilder {
     func build() -> Scenario {
         let logger = Logger(label: "Test")
         let network = FakeNetwork()
+        let properties = FakeModelProperties()
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
+            properties: properties,
             network: network,
             logger: logger,
             conventionIdentifier: conventionIdentifier
@@ -29,7 +32,7 @@ class EurofurenceModelTestBuilder {
         
         let model = EurofurenceModel(configuration: configuration)
         
-        return Scenario(model: model, network: network)
+        return Scenario(model: model, modelProperties: properties, network: network)
     }
     
 }
@@ -40,9 +43,13 @@ extension EurofurenceModelTestBuilder.Scenario {
         model.viewContext
     }
     
+    func stub(url: URL, with result: Result<Data, Error>) {
+        network.stub(url: url, with: result)
+    }
+    
     func stubSyncResponse(with result: Result<Data, Error>) {
         let syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync")!
-        network.stub(url: syncURL, with: result)
+        stub(url: syncURL, with: result)
     }
     
     func updateLocalStore<Response>(using response: Response) async throws where Response: SampleResponseFile {

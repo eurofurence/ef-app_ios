@@ -5,6 +5,7 @@ import Logging
 public class EurofurenceModel: ObservableObject {
     
     private let logger: Logger
+    private let properties: EurofurenceModelProperties
     private let persistentContainer: EurofurencePersistentContainer
     private let api: EurofurenceRemoteAPI
     private let conventionIdentifier: ConventionIdentifier
@@ -15,6 +16,7 @@ public class EurofurenceModel: ObservableObject {
     
     public init(configuration: Configuration) {
         self.logger = configuration.logger
+        self.properties = configuration.properties
         self.api = EurofurenceRemoteAPI(network: configuration.network)
         self.conventionIdentifier = configuration.conventionIdentifier
         
@@ -25,7 +27,7 @@ public class EurofurenceModel: ObservableObject {
     public func updateLocalStore() async throws {
         let response: RemoteSyncResponse
         do {
-            response = try await api.executeSyncRequest()
+            response = try await api.executeSyncRequest(lastUpdateTime: properties.lastSyncTime)
         } catch {
             logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.syncFailure
@@ -35,10 +37,10 @@ public class EurofurenceModel: ObservableObject {
             throw EurofurenceError.conventionIdentifierMismatch
         }
         
-        await updateLocalCache(from: response)
+        try await updateLocalCache(from: response)
     }
     
-    private func updateLocalCache(from response: RemoteSyncResponse) async {
+    private func updateLocalCache(from response: RemoteSyncResponse) async throws {
         do {
             let writingContext = persistentContainer.newBackgroundContext()
             try await writingContext.performAsync { [writingContext] in
@@ -64,8 +66,11 @@ public class EurofurenceModel: ObservableObject {
                 
                 try writingContext.save()
             }
+            
+            properties.lastSyncTime = response.currentDate
         } catch {
             logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
+            throw error
         }
     }
     
@@ -83,17 +88,20 @@ extension EurofurenceModel {
         }
         
         let environment: Environment
+        let properties: EurofurenceModelProperties
         let logger: Logger
         let network: Network
         let conventionIdentifier: ConventionIdentifier
         
         public init(
             environment: Environment = .persistent,
+            properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             network: Network = URLSessionNetwork.shared,
             logger: Logger = Logger(label: "EurofurenceKit"),
             conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.environment = environment
+            self.properties = properties
             self.network = network
             self.logger = logger
             self.conventionIdentifier = conventionIdentifier
