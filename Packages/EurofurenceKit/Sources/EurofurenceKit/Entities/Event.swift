@@ -3,7 +3,7 @@ import CoreData
 @objc(Event)
 public class Event: Entity {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Event> {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
     }
 
@@ -22,6 +22,7 @@ public class Event: Entity {
     @NSManaged public var poster: EventPoster?
     @NSManaged public var room: Room
     @NSManaged public var tracks: Set<Track>
+    @NSManaged public var tags: Set<Tag>
 
 }
 
@@ -38,12 +39,12 @@ extension Event: ConsumesRemoteResponse {
         title = remoteResponse.Title
         subtitle = remoteResponse.SubTitle
         abstract = remoteResponse.Abstract
-        day = try managedObjectContext!.object(matching: NSPredicate(format: "identifier == %@", remoteResponse.ConferenceDayId))
+        day = try managedObjectContext!.entity(withIdentifier: remoteResponse.ConferenceDayId)
         
         let track: Track = try managedObjectContext!.entity(withIdentifier: remoteResponse.ConferenceTrackId)
         addToTracks(track)
         
-        room = try managedObjectContext!.object(matching: NSPredicate(format: "identifier == %@", remoteResponse.ConferenceRoomId))
+        room = try managedObjectContext!.entity(withIdentifier: remoteResponse.ConferenceRoomId)
         eventDescription = remoteResponse.Description
         startDate = remoteResponse.StartDateTimeUtc
         endDate = remoteResponse.EndDateTimeUtc
@@ -62,8 +63,11 @@ extension Event: ConsumesRemoteResponse {
     
 }
 
-// MARK: Generated accessors for panelHosts
+// MARK: - Core Data Generated Accessors
+
 extension Event {
+    
+    // MARK: Panel Hosts
 
     @objc(addPanelHostsObject:)
     @NSManaged func addToPanelHosts(_ value: PanelHost)
@@ -77,10 +81,8 @@ extension Event {
     @objc(removePanelHosts:)
     @NSManaged func removeFromPanelHosts(_ values: Set<PanelHost>)
 
-}
-
-// MARK: Generated accessors for tracks
-extension Event {
+    
+    // MARK: Tracks
 
     @objc(addTracksObject:)
     @NSManaged func addToTracks(_ value: Track)
@@ -93,5 +95,20 @@ extension Event {
 
     @objc(removeTracks:)
     @NSManaged func removeFromTracks(_ values: Set<Track>)
+
+    
+    // MARK: Tags
+
+    @objc(addTagsObject:)
+    @NSManaged public func addToTags(_ value: Tag)
+
+    @objc(removeTagsObject:)
+    @NSManaged public func removeFromTags(_ value: Tag)
+
+    @objc(addTags:)
+    @NSManaged public func addToTags(_ values: NSSet)
+
+    @objc(removeTags:)
+    @NSManaged public func removeFromTags(_ values: NSSet)
 
 }

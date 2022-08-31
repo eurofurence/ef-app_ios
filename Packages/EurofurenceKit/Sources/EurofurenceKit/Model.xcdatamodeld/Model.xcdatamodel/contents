@@ -73,6 +73,7 @@
         <relationship name="panelHosts" toMany="YES" deletionRule="Nullify" destinationEntity="PanelHost" inverseName="hostingEvents" inverseEntity="PanelHost"/>
         <relationship name="poster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EventPoster" inverseName="event" inverseEntity="EventPoster"/>
         <relationship name="room" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="events" inverseEntity="Room"/>
+        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="events" inverseEntity="Tag"/>
         <relationship name="tracks" toMany="YES" deletionRule="Nullify" destinationEntity="Track" inverseName="events" inverseEntity="Track"/>
     </entity>
     <entity name="EventBanner" representedClassName="EventBanner" parentEntity="Image" syncable="YES">
@@ -145,6 +146,10 @@
         <attribute name="shortName" attributeType="String"/>
         <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="room" inverseEntity="Event"/>
     </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="tags" inverseEntity="Event"/>
+    </entity>
     <entity name="Track" representedClassName="Track" parentEntity="Entity" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="tracks" inverseEntity="Event"/>
@@ -160,10 +165,9 @@
         <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="DealerThumbnail" positionX="36" positionY="162" width="128" height="58"/>
         <element name="Entity" positionX="-54" positionY="9" width="128" height="73"/>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="268"/>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="269"/>
         <element name="EventBanner" positionX="18" positionY="144" width="128" height="58"/>
         <element name="EventPoster" positionX="27" positionY="153" width="128" height="58"/>
-        <element name="Track" positionX="-18" positionY="36" width="128" height="73"/>
         <element name="Image" positionX="9" positionY="144" width="128" height="133"/>
         <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="58"/>
@@ -176,5 +180,7 @@
         <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
         <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
         <element name="Room" positionX="0" positionY="45" width="128" height="88"/>
+        <element name="Track" positionX="-18" positionY="36" width="128" height="73"/>
+        <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
     </elements>
 </model>
