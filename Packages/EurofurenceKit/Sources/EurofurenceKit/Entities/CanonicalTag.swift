@@ -37,4 +37,19 @@ extension CanonicalTag {
     /// Attendance to the associated event requires a fask mask.
     public static let faceMaskRequired = CanonicalTag(rawValue: 1 << 7)
     
+    private static let wellKnownTagsByName: [String: CanonicalTag] = [
+        "sponsors_only": .sponsorOnly,
+        "supersponsors_only": .superSponsorOnly,
+        "art_show": .artShow,
+        "kage": .kage,
+        "dealers_den": .dealersDen,
+        "main_stage": .mainStage,
+        "photoshoot": .photoshoot,
+        "mask_required": .faceMaskRequired
+    ]
+    
+    static func wellKnownTag(named name: String) -> CanonicalTag {
+        wellKnownTagsByName[name, default: CanonicalTag()]
+    }
+    
 }

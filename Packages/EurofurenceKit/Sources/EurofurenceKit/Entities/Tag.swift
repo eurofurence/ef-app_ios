@@ -12,6 +12,16 @@ public class Tag: NSManagedObject {
 
 }
 
+// MARK: - CanonicalTag Adaptation
+
+extension Tag {
+    
+    var canonicalTag: CanonicalTag {
+        CanonicalTag.wellKnownTag(named: name)
+    }
+    
+}
+
 // MARK: - Fetching
 
 extension Tag {
