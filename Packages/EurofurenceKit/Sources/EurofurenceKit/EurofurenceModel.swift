@@ -90,8 +90,8 @@ extension EurofurenceModel {
         public init(
             environment: Environment = .persistent,
             network: Network = URLSessionNetwork.shared,
-            logger: Logger,
-            conventionIdentifier: ConventionIdentifier
+            logger: Logger = Logger(label: "EurofurenceKit"),
+            conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.environment = environment
             self.network = network

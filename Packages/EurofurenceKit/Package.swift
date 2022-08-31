@@ -22,11 +22,21 @@ let package = Package(
                 .product(name: "Logging", package: "swift-log")
             ]
         ),
+        
         .testTarget(
             name: "EurofurenceKitTests",
-            dependencies: ["EurofurenceKit"],
+            dependencies: [
+                .target(name: "EurofurenceKit")
+            ],
             resources: [
                 .process("Remote Responses/EF26 Full Sync Response/EF26_Full_Sync_Response.json")
+            ]
+        ),
+        
+        .testTarget(
+            name: "EurofurenceKitAcceptanceTests",
+            dependencies: [
+                .target(name: "EurofurenceKit")
             ]
         )
     ]

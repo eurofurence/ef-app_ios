@@ -7,7 +7,11 @@ public struct URLSessionNetwork: Network {
     private let urlSession: URLSession
     
     private init() {
-        urlSession = URLSession(configuration: .default)
+        let delegateQueue = OperationQueue()
+        delegateQueue.name = "EurofurenceKit Network"
+        delegateQueue.qualityOfService = .utility
+        
+        urlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: delegateQueue)
     }
     
     public func get(contentsOf url: URL) async throws -> Data {

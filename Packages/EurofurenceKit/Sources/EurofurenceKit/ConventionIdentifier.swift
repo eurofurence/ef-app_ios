@@ -7,3 +7,11 @@ public struct ConventionIdentifier: Equatable {
     }
     
 }
+
+// MARK: - Current Convention Identifier
+
+extension ConventionIdentifier {
+    
+    public static let current = ConventionIdentifier("EF26")
+    
+}
