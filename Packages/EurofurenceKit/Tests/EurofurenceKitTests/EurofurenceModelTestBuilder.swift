@@ -65,6 +65,12 @@ extension EurofurenceModelTestBuilder.Scenario {
         try await model.updateLocalStore()
     }
     
+    func updateLocalStore(using response: SampleResponse) async throws {
+        let synchronizationPayload = try response.loadResponse()
+        stubSyncResponse(with: .success(synchronizationPayload))
+        try await model.updateLocalStore()
+    }
+    
     func updateLocalStore() async throws {
         try await model.updateLocalStore()
     }

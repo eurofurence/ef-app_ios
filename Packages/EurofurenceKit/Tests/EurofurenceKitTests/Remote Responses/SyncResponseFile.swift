@@ -23,9 +23,4 @@ extension SyncResponseFile {
         try XCTUnwrap(images.first(where: { $0.identifier == identifier }))
     }
     
-    func assertAgainstEntities(in context: NSManagedObjectContext) throws {
-        let assertion = SyncResponseAssertion(managedObjectContext: context, response: self)
-        try assertion.assert()
-    }
-    
 }

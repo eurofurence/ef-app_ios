@@ -5,7 +5,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testSponsorOnly() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "sponsors_only", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.sponsorOnly))
@@ -13,7 +13,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testSuperSponsorOnly() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "supersponsors_only", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.superSponsorOnly))
@@ -21,7 +21,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testArtShow() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "art_show", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.artShow))
@@ -29,7 +29,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testKage() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "kage", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.kage))
@@ -37,7 +37,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testDealersDen() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "dealers_den", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.dealersDen))
@@ -45,7 +45,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testMainStage() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "main_stage", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.mainStage))
@@ -53,7 +53,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testPhotoshoot() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "photoshoot", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.photoshoot))
@@ -61,7 +61,7 @@ class WellKnownTagTests: XCTestCase {
     
     func testFaceMaskRequired() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         let eventWithTag = try self.eventWithTag(named: "mask_required", in: scenario.viewContext)
         
         XCTAssertTrue(eventWithTag.canonicalTags.contains(.faceMaskRequired))

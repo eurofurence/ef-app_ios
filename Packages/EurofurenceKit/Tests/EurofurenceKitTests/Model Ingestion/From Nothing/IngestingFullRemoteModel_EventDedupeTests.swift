@@ -5,7 +5,7 @@ class IngestingFullRemoteModel_EventDedupeTests: XCTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateHosts() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         
         // For each panel host, there should be one instance with the corresponding name associated with one or more
         // events. Witnessing the same host multiple times implies it has been instantiated on a per-Event basis.
@@ -27,7 +27,7 @@ class IngestingFullRemoteModel_EventDedupeTests: XCTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateTags() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         
         // For each panel tag, there should be one instance with the corresponding name associated with one or more
         // events. Witnessing the same tag multiple times implies it has been instantiated on a per-Event basis.

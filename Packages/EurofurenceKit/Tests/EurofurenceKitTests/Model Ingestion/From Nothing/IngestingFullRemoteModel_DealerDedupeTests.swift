@@ -5,7 +5,7 @@ class IngestingFullRemoteModel_DealerDedupeTests: XCTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateCategories() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         
         // For each category, there should be one instance with the corresponding name associated with one or more
         // dealers. Witnessing the same category implies it has been duplicated amongst many dealers.

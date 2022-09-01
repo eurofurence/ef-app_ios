@@ -19,7 +19,7 @@ class IngestingFullRemoteModel_Errors: XCTestCase {
         
         await XCTAssertEventuallyThrowsSpecificError(
             EurofurenceError.conventionIdentifierMismatch,
-            { try await scenario.updateLocalStore(using: EF26FullSyncResponseFile()) }
+            { try await scenario.updateLocalStore(using: .ef26) }
         )
     }
 

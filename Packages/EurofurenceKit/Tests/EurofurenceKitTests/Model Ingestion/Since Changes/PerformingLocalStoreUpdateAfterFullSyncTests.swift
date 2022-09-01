@@ -8,16 +8,17 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
         let scenario = EurofurenceModelTestBuilder().build()
         let changeToken = SynchronizationPayload.GenerationToken(lastSyncTime: Date())
         scenario.modelProperties.synchronizationChangeToken = changeToken
-        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
+        try await scenario.updateLocalStore(using: .ef26)
         
         XCTAssertEqual(changeToken, scenario.api.lastChangeToken)
     }
     
     func testRecordsTimestampAfterSuccessfulSyncRequest() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
-        let response = EF26FullSyncResponseFile()
-        try await scenario.updateLocalStore(using: response)
-        let expected = SynchronizationPayload.GenerationToken(lastSyncTime: response.currentDate)
+        let response = try SampleResponse.ef26.loadResponse()
+        scenario.stubSyncResponse(with: .success(response))
+        try await scenario.updateLocalStore()
+        let expected = response.synchronizationToken
         
         XCTAssertEqual(expected, scenario.modelProperties.synchronizationChangeToken)
     }
@@ -35,15 +36,17 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_ConventionIdentifierMismatch() async throws {
         let scenario = EurofurenceModelTestBuilder().with(conventionIdentifier: ConventionIdentifier("EF25")).build()
         
-        await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore(using: EF26FullSyncResponseFile()) }
+        await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore(using: .ef26) }
         
         XCTAssertNil(scenario.modelProperties.synchronizationChangeToken)
     }
     
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_ModelProcessingError() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
+        let payload = try SampleResponse.corruptEF26.loadResponse()
+        scenario.stubSyncResponse(with: .success(payload))
         
-        await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore(using: EF26CorruptSyncResponseFile()) }
+        await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore() }
         
         XCTAssertNil(scenario.modelProperties.synchronizationChangeToken)
     }
