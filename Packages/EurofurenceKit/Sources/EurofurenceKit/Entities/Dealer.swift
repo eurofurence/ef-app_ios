@@ -128,8 +128,7 @@ extension Dealer: ConsumesRemoteResponse {
     
     private func updateCategories(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
         for category in context.remoteObject.categories {
-            let dealerCategory = DealerCategory(context: context.managedObjectContext)
-            dealerCategory.name = category
+            let dealerCategory = DealerCategory.named(name: category, in: context.managedObjectContext)
             addToCategories(dealerCategory)
         }
     }

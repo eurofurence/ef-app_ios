@@ -12,6 +12,26 @@ public class DealerCategory: NSManagedObject {
 
 }
 
+// MARK: - Fetching
+
+extension DealerCategory {
+    
+    static func named(name: String, in managedObjectContext: NSManagedObjectContext) -> DealerCategory {
+        let fetchRequest = Self.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        let results = try? managedObjectContext.fetch(fetchRequest)
+    
+        if let existingCategory = results?.first {
+            return existingCategory
+        } else {
+            let category = DealerCategory(context: managedObjectContext)
+            category.name = name
+            return category
+        }
+    }
+    
+}
+
 // MARK: Generated accessors for dealers
 extension DealerCategory {
 
