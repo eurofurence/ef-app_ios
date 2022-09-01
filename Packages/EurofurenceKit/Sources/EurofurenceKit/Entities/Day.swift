@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(Day)
 public class Day: Entity {

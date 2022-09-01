@@ -1,3 +1,4 @@
+import EurofurenceWebAPI
 import Foundation
 
 struct EurofurenceRemoteAPI {

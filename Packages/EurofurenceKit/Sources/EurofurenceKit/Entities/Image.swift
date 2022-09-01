@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(Image)
 public class Image: Entity {

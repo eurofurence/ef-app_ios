@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-struct RemoteEvent: RemoteEntity {
+public struct RemoteEvent: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -23,23 +23,23 @@ struct RemoteEvent: RemoteEntity {
         case posterImageIdentifier = "PosterImageId"
     }
     
-    var lastChangeDateTimeUtc: Date
-    var id: String
-    var slug: String
-    var title: String
-    var subtitle: String
-    var abstract: String
-    var dayIdentifier: String
-    var trackIdentifier: String
-    var roomIdentifier: String
-    var description: String
-    var startDateTimeUtc: Date
-    var endDateTimeUtc: Date
-    var panelHostsSeperatedByComma: String
-    var isDeviatingFromConBook: Bool
-    var isAcceptingFeedback: Bool
-    var tags: [String]
-    var bannerImageIdentifier: String?
-    var posterImageIdentifier: String?
+    public var lastChangeDateTimeUtc: Date
+    public var id: String
+    public var slug: String
+    public var title: String
+    public var subtitle: String
+    public var abstract: String
+    public var dayIdentifier: String
+    public var trackIdentifier: String
+    public var roomIdentifier: String
+    public var description: String
+    public var startDateTimeUtc: Date
+    public var endDateTimeUtc: Date
+    public var panelHostsSeperatedByComma: String
+    public var isDeviatingFromConBook: Bool
+    public var isAcceptingFeedback: Bool
+    public var tags: [String]
+    public var bannerImageIdentifier: String?
+    public var posterImageIdentifier: String?
     
 }

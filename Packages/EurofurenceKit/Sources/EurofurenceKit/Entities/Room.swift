@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(Room)
 public class Room: Entity {

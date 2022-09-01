@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-struct RemoteDealer: RemoteEntity {
+public struct RemoteDealer: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -26,26 +26,26 @@ struct RemoteDealer: RemoteEntity {
         case categories = "Categories"
     }
     
-    var lastChangeDateTimeUtc: Date
-    var id: String
-    var registrationNumber: Int
-    var attendeeNickname: String
-    var displayName: String
-    var merchandise: String
-    var shortDescription: String
-    var aboutTheArtistText: String
-    var aboutTheArtText: String
-    var links: [RemoteLink]?
-    var twitterHandle: String
-    var telegramHandle: String
-    var attendsOnThursday: Bool
-    var attendsOnFriday: Bool
-    var attendsOnSaturday: Bool
-    var artPreviewCaption: String
-    var artistThumbnailImageId: String?
-    var artistImageId: String?
-    var artPreviewImageId: String?
-    var isAfterDark: Bool
-    var categories: [String]
+    public var lastChangeDateTimeUtc: Date
+    public var id: String
+    public var registrationNumber: Int
+    public var attendeeNickname: String
+    public var displayName: String
+    public var merchandise: String
+    public var shortDescription: String
+    public var aboutTheArtistText: String
+    public var aboutTheArtText: String
+    public var links: [RemoteLink]?
+    public var twitterHandle: String
+    public var telegramHandle: String
+    public var attendsOnThursday: Bool
+    public var attendsOnFriday: Bool
+    public var attendsOnSaturday: Bool
+    public var artPreviewCaption: String
+    public var artistThumbnailImageId: String?
+    public var artistImageId: String?
+    public var artPreviewImageId: String?
+    public var isAfterDark: Bool
+    public var categories: [String]
     
 }

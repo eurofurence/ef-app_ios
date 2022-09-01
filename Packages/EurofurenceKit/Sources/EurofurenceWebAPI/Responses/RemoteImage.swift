@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-struct RemoteImage: RemoteEntity {
+public struct RemoteImage: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -13,13 +13,13 @@ struct RemoteImage: RemoteEntity {
         case contentHashSha1 = "ContentHashSha1"
     }
     
-    var lastChangeDateTimeUtc: Date
-    var id: String
-    var internalReference: String
-    var width: Int
-    var height: Int
-    var sizeInBytes: Int
-    var mimeType: String
-    var contentHashSha1: String
+    public var lastChangeDateTimeUtc: Date
+    public var id: String
+    public var internalReference: String
+    public var width: Int
+    public var height: Int
+    public var sizeInBytes: Int
+    public var mimeType: String
+    public var contentHashSha1: String
     
 }

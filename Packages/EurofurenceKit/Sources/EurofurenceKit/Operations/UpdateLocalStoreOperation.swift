@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 import Logging
 
 struct UpdateLocalStoreOperation {

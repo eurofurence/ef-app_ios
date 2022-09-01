@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "EurofurenceKit",
-            targets: ["EurofurenceKit"]
+            targets: ["EurofurenceKit", "EurofurenceWebAPI"]
         )
     ],
     dependencies: [
@@ -17,8 +17,14 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "EurofurenceWebAPI",
+            dependencies: []
+        ),
+        
+        .target(
             name: "EurofurenceKit",
             dependencies: [
+                .target(name: "EurofurenceWebAPI"),
                 .product(name: "Logging", package: "swift-log")
             ]
         ),

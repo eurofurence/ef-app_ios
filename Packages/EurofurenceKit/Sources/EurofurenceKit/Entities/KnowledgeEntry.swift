@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(KnowledgeEntry)
 public class KnowledgeEntry: Entity {

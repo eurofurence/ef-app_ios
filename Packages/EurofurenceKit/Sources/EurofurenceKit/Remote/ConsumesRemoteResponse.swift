@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 struct RemoteResponseConsumingContext<Object> {
     

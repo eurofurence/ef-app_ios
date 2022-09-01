@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-struct RemoteDay: RemoteEntity {
+public struct RemoteDay: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -9,9 +9,9 @@ struct RemoteDay: RemoteEntity {
         case date = "Date"
     }
     
-    var lastChangeDateTimeUtc: Date
-    var id: String
-    var name: String
-    var date: Date
+    public var lastChangeDateTimeUtc: Date
+    public var id: String
+    public var name: String
+    public var date: Date
     
 }

@@ -1,4 +1,4 @@
-struct RemoteLink: Decodable {
+public struct RemoteLink: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case fragmentType = "FragmentType"
@@ -6,8 +6,8 @@ struct RemoteLink: Decodable {
         case target = "Target"
     }
     
-    var fragmentType: String
-    var name: String
-    var target: String
+    public var fragmentType: String
+    public var name: String
+    public var target: String
     
 }
