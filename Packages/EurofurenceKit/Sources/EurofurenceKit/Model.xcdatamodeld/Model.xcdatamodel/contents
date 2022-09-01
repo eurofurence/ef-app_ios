@@ -113,7 +113,7 @@
     </entity>
     <entity name="Link" representedClassName="Link" syncable="YES">
         <attribute name="fragmentType" attributeType="String"/>
-        <attribute name="name" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="target" attributeType="String"/>
     </entity>
     <entity name="Map" representedClassName="Map" parentEntity="Entity" syncable="YES">
@@ -173,7 +173,7 @@
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
-        <element name="Link" positionX="9" positionY="153" width="128" height="88"/>
+        <element name="Link" positionX="9" positionY="153" width="128" height="74"/>
         <element name="Map" positionX="54" positionY="198" width="128" height="118"/>
         <element name="MapEntry" positionX="9" positionY="153" width="128" height="133"/>
         <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>

@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(MapEntry)
 public class MapEntry: NSManagedObject {
@@ -14,6 +15,57 @@ public class MapEntry: NSManagedObject {
     @NSManaged public var links: Set<MapEntryLink>
     @NSManaged public var map: Map
 
+}
+
+// MARK: - Fetching
+
+extension MapEntry {
+    
+    class func entry(identifiedBy identifier: String, in managedObjectContext: NSManagedObjectContext) -> MapEntry {
+        let fetchRequest: NSFetchRequest<MapEntry> = MapEntry.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        let fetchResults = try? managedObjectContext.fetch(fetchRequest)
+        if let existingEntry = fetchResults?.first {
+            return existingEntry
+        } else {
+            let newEntry = MapEntry(context: managedObjectContext)
+            newEntry.identifier = identifier
+            return newEntry
+        }
+    }
+    
+}
+
+// MARK: - Updating
+
+extension MapEntry {
+    
+    func update(from entry: EurofurenceWebAPI.Map.Entry, managedObjectContext: NSManagedObjectContext) {
+        identifier = entry.id
+        x = Int32(entry.x)
+        y = Int32(entry.y)
+        radius = Int32(entry.tapRadius)
+        
+        for link in entry.links {
+            // Only insert this link if the entry does not contain an existing link.
+            let containsLink = links.contains { entityLink in
+                return entityLink.fragmentType == link.fragmentType &&
+                entityLink.target == link.target &&
+                entityLink.name == link.name
+            }
+            
+            if containsLink {
+                continue
+            }
+            
+            let linkEntity = MapEntryLink(context: managedObjectContext)
+            linkEntity.update(from: link)
+            addToLinks(linkEntity)
+        }
+    }
+    
 }
 
 // MARK: Generated accessors for links

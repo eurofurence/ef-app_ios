@@ -26,6 +26,7 @@ struct SynchronizedStoreAssertion {
             try assertKnowledgeEntries()
             try assertDealers()
             try assertAnnouncements()
+            try assertMaps()
         }
     }
     
@@ -82,6 +83,13 @@ struct SynchronizedStoreAssertion {
         for announcement in synchronizationPayload.announcements.changed {
             let entity: EurofurenceKit.Announcement = try managedObjectContext.entity(withIdentifier: announcement.id)
             try announcement.assert(against: entity, in: managedObjectContext, from: synchronizationPayload)
+        }
+    }
+    
+    private func assertMaps() throws {
+        for map in synchronizationPayload.maps.changed {
+            let entity: EurofurenceKit.Map = try managedObjectContext.entity(withIdentifier: map.id)
+            try map.assert(against: entity, in: managedObjectContext, from: synchronizationPayload)
         }
     }
     

@@ -7,7 +7,7 @@ public struct Link: Decodable {
     }
     
     public var fragmentType: String
-    public var name: String
+    public var name: String?
     public var target: String
     
 }

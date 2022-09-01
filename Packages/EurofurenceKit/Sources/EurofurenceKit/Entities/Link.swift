@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 
 @objc(Link)
 public class Link: NSManagedObject {
@@ -8,7 +9,19 @@ public class Link: NSManagedObject {
     }
 
     @NSManaged public var fragmentType: String
-    @NSManaged public var name: String
+    @NSManaged public var name: String?
     @NSManaged public var target: String
 
+}
+
+// MARK: - Updating
+
+extension Link {
+    
+    func update(from link: EurofurenceWebAPI.Link) {
+        fragmentType = link.fragmentType
+        name = link.name
+        target = link.target
+    }
+    
 }

@@ -63,6 +63,7 @@ struct UpdateLocalStoreOperation {
         try ingest(node: syncResponse.knowledgeEntries, from: syncResponse, into: managedObjectContext, as: KnowledgeEntry.self)
         try ingest(node: syncResponse.dealers, from: syncResponse, into: managedObjectContext, as: Dealer.self)
         try ingest(node: syncResponse.announcements, from: syncResponse, into: managedObjectContext, as: Announcement.self)
+        try ingest(node: syncResponse.maps, from: syncResponse, into: managedObjectContext, as: Map.self)
     }
     
     private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
