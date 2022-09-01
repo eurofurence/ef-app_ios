@@ -4,7 +4,7 @@ struct RemoteResponseConsumingContext<Object> {
     
     var managedObjectContext: NSManagedObjectContext
     var remoteObject: Object
-    var response: RemoteSyncResponse
+    var response: SynchronizationPayload
     
     func image(identifiedBy identifier: RemoteImage.ID) -> RemoteImage? {
         response.images.changed.first(where: { $0.id == identifier })

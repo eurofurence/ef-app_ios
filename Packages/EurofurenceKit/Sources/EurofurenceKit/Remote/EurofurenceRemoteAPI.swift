@@ -12,7 +12,7 @@ struct EurofurenceRemoteAPI {
         decoder.dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
     }
     
-    func executeSyncRequest(lastUpdateTime: Date?) async throws -> RemoteSyncResponse {
+    func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload {
         let sinceToken: String = {
             if let lastUpdateTime = lastUpdateTime {
                 let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastUpdateTime)
@@ -26,7 +26,7 @@ struct EurofurenceRemoteAPI {
         guard let url = URL(string: urlString) else { fatalError() }
         
         let data = try await network.get(contentsOf: url)
-        let response = try decoder.decode(RemoteSyncResponse.self, from: data)
+        let response = try decoder.decode(SynchronizationPayload.self, from: data)
         
         return response
     }

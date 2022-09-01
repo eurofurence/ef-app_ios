@@ -16,7 +16,7 @@ struct UpdateLocalStoreOperation {
         try await ingestSyncResponse(response)
     }
     
-    private func fetchLatestSyncResponse() async throws -> RemoteSyncResponse {
+    private func fetchLatestSyncResponse() async throws -> SynchronizationPayload {
         do {
             let lastSyncTime = configuration.properties.lastSyncTime
             return try await configuration.api.executeSyncRequest(lastUpdateTime: lastSyncTime)
@@ -26,13 +26,13 @@ struct UpdateLocalStoreOperation {
         }
     }
     
-    private func validateSyncResponse(_ response: RemoteSyncResponse) throws {
+    private func validateSyncResponse(_ response: SynchronizationPayload) throws {
         guard response.conventionIdentifier == configuration.conventionIdentifier.stringValue else {
             throw EurofurenceError.conventionIdentifierMismatch
         }
     }
     
-    private func ingestSyncResponse(_ response: RemoteSyncResponse) async throws {
+    private func ingestSyncResponse(_ response: SynchronizationPayload) async throws {
         let writingContext = configuration.persistentContainer.newBackgroundContext()
         try await writingContext.performAsync { [self, writingContext] in
             do {
@@ -47,7 +47,7 @@ struct UpdateLocalStoreOperation {
         configuration.properties.lastSyncTime = response.currentDate
     }
     
-    private func ingest(syncResponse: RemoteSyncResponse, into managedObjectContext: NSManagedObjectContext) throws {
+    private func ingest(syncResponse: SynchronizationPayload, into managedObjectContext: NSManagedObjectContext) throws {
         try ingest(node: syncResponse.days, from: syncResponse, into: managedObjectContext, as: Day.self)
         try ingest(node: syncResponse.tracks, from: syncResponse, into: managedObjectContext, as: Track.self)
         try ingest(node: syncResponse.rooms, from: syncResponse, into: managedObjectContext, as: Room.self)
@@ -58,8 +58,8 @@ struct UpdateLocalStoreOperation {
     }
     
     private func ingest<T: RemoteEntity, U: Entity & ConsumesRemoteResponse>(
-        node: RemoteEntityNode<T>,
-        from response: RemoteSyncResponse,
+        node: SynchronizationPayload.Update<T>,
+        from response: SynchronizationPayload,
         into managedObjectContext: NSManagedObjectContext,
         as entityType: U.Type
     ) throws where U.RemoteObject == T {
