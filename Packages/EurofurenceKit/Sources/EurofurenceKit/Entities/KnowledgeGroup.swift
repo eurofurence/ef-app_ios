@@ -15,6 +15,23 @@ public class KnowledgeGroup: Entity {
 
 }
 
+// MARK: - KnowledgeGroup + ConsumesRemoteResponse
+
+extension KnowledgeGroup: ConsumesRemoteResponse {
+    
+    typealias RemoteResponse = RemoteKnowledgeGroup
+    
+    func update(from remoteResponse: RemoteKnowledgeGroup) throws {
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        name = remoteResponse.Name
+        knowledgeGroupDescription = remoteResponse.Description
+        order = Int16(remoteResponse.Order)
+        fontAwesomeUnicodeCharacterAddress = remoteResponse.FontAwesomeIconCharacterUnicodeAddress
+    }
+    
+}
+
 // MARK: Generated accessors for entries
 extension KnowledgeGroup {
 

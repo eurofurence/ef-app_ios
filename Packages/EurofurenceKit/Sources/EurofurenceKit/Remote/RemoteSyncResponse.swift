@@ -10,6 +10,7 @@ struct RemoteSyncResponse: Decodable {
         case rooms = "EventConferenceRooms"
         case events = "Events"
         case images = "Images"
+        case knowledgeGroups = "KnowledgeGroups"
     }
     
     var currentDate: Date
@@ -19,6 +20,7 @@ struct RemoteSyncResponse: Decodable {
     var rooms: RemoteEntityNode<RemoteRoom>
     var events: RemoteEntityNode<RemoteEvent>
     var images: RemoteEntityNode<RemoteImage>
+    var knowledgeGroups: RemoteEntityNode<RemoteKnowledgeGroup>
     
 }
 
@@ -91,5 +93,16 @@ struct RemoteImage: Decodable {
     var SizeInBytes: Int
     var MimeType: String
     var ContentHashSha1: String
+    
+}
+
+struct RemoteKnowledgeGroup: Decodable {
+    
+    var LastChangeDateTimeUtc: Date
+    var Id: String
+    var Name: String
+    var Description: String
+    var Order: Int
+    var FontAwesomeIconCharacterUnicodeAddress: String
     
 }

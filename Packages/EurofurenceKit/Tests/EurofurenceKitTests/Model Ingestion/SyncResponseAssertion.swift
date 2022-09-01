@@ -12,6 +12,7 @@ struct SyncResponseAssertion<Response> where Response: SyncResponseFile {
             try assertTracks()
             try assertRooms()
             try assertEvents()
+            try assertKnowledgeGroups()
         }
     }
     
@@ -40,6 +41,13 @@ struct SyncResponseAssertion<Response> where Response: SyncResponseFile {
         for event in response.events {
             let entity: Event = try managedObjectContext.entity(withIdentifier: event.identifier)
             try event.assert(against: entity, in: managedObjectContext, from: response)
+        }
+    }
+    
+    private func assertKnowledgeGroups() throws {
+        for knowledgeGroup in response.knowledgeGroups {
+            let entity: KnowledgeGroup = try managedObjectContext.entity(withIdentifier: knowledgeGroup.identifier)
+            try knowledgeGroup.assert(against: entity)
         }
     }
     

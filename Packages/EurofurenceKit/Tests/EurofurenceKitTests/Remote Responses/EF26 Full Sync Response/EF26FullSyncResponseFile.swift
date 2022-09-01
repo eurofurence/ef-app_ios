@@ -424,4 +424,81 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
         ]
     }
     
+    var knowledgeGroups: [ExpectedKnowledgeGroup] {
+        return [
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.050Z",
+                identifier: "92cdf214-7e9f-6bfa-0370-dfadd5e76493",
+                name: "About Eurofurence",
+                description: "Our departments and what they do",
+                order: 9,
+                fontAwesomeCharacterAddress: "f0c0"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.210Z",
+                identifier: "9bf9b01f-e655-bec2-35ae-d72ebe38c245",
+                name: "Travel",
+                description: "Helpful things & addresses",
+                order: 6,
+                fontAwesomeCharacterAddress: "f0f2"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.239Z",
+                identifier: "6232ae2f-4e9d-fcf4-6341-f1751b405e45",
+                name: "Security",
+                description: "Tips for staying safe during the convention",
+                order: 1,
+                fontAwesomeCharacterAddress: "f132"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-07-16T10:37:30.323Z",
+                identifier: "66e14f56-743c-1ece-a50c-b691143a3f93",
+                name: "Guests of Honor",
+                description: "JoJoe (Artist) & Fox Amoore (Musician)",
+                order: 3,
+                fontAwesomeCharacterAddress: "f2be"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.328Z",
+                identifier: "72cdaaba-e980-fa1a-ce94-7a1cc19d0f79",
+                name: "Parking",
+                description: "Where to leave your car",
+                order: 8,
+                fontAwesomeCharacterAddress: "f1b9"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.363Z",
+                identifier: "ec031cbf-d8d0-825d-4c36-b782ed8d19d8",
+                name: "General Information",
+                description: "Helpful things all about and around the convention",
+                order: 0,
+                fontAwesomeCharacterAddress: "f129"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-06-23T11:59:23.394Z",
+                identifier: "3f733bc5-d41f-e233-3cae-1df9ee5c39b6",
+                name: "Fursuits",
+                description: "Relevant information for our suiters",
+                order: 2,
+                fontAwesomeCharacterAddress: "f1ae"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-07-01T19:03:54.147Z",
+                identifier: "d3c10dde-0c9b-1111-1a61-33b76a562a3c",
+                name: "Charity",
+                description: "The Cheetah Preservation Foundation",
+                order: 4,
+                fontAwesomeCharacterAddress: "f0fa"
+            ),
+            ExpectedKnowledgeGroup(
+                lastUpdated: "2022-08-26T11:31:36.142Z",
+                identifier: "6f91eaf9-68dc-4744-9da8-1bfc7d0052af",
+                name: "The Daily Eurofurence",
+                description: "Digital Downloads (updated daily)",
+                order: 5,
+                fontAwesomeCharacterAddress: "f1ea"
+            ),
+        ]
+    }
+    
 }

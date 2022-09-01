@@ -67,6 +67,15 @@ struct UpdateLocalStoreOperation {
             try event.update(from: remoteEvent, fullResponse: syncResponse)
         }
         
+        for remoteKnowledgeGroup in syncResponse.knowledgeGroups.changed {
+            let knowledgeGroup = try KnowledgeGroup.entity(
+                identifiedBy: remoteKnowledgeGroup.Id,
+                in: managedObjectContext
+            )
+            
+            try knowledgeGroup.update(from: remoteKnowledgeGroup)
+        }
+        
         try managedObjectContext.save()
     }
     

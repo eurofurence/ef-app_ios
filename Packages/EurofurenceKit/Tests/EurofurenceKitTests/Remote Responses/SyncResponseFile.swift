@@ -11,6 +11,7 @@ protocol SyncResponseFile: SampleResponseFile {
     var rooms: [ExpectedRoom] { get }
     var events: [ExpectedEvent] { get }
     var images: [ExpectedImage] { get }
+    var knowledgeGroups: [ExpectedKnowledgeGroup] { get }
     
 }
 
