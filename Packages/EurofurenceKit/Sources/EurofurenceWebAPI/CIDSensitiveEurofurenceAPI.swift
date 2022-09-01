@@ -1,19 +1,20 @@
-import EurofurenceWebAPI
 import Foundation
 
-struct EurofurenceRemoteAPI {
+public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
     private let network: Network
     private let decoder: JSONDecoder
     
-    init(network: Network) {
-        self.network = network
-        
-        decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
+    public static func api() -> EurofurenceAPI {
+        CIDSensitiveEurofurenceAPI(network: URLSessionNetwork.shared)
     }
     
-    func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload {
+    private init(network: Network) {
+        self.network = network
+        decoder = EurofurenceAPIDecoder()
+    }
+    
+    public func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload {
         let sinceToken: String = {
             if let lastUpdateTime = lastUpdateTime {
                 let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastUpdateTime)

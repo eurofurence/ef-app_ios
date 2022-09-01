@@ -1,4 +1,5 @@
 @testable import EurofurenceKit
+import class EurofurenceWebAPI.EurofurenceISO8601DateFormatter
 import Foundation
 import XCTest
 

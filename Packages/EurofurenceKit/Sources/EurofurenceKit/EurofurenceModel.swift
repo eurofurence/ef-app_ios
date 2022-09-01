@@ -1,4 +1,5 @@
 import CoreData
+import EurofurenceWebAPI
 import Foundation
 import Logging
 
@@ -45,21 +46,19 @@ extension EurofurenceModel {
         
         let persistentContainer: EurofurencePersistentContainer
         let properties: EurofurenceModelProperties
-        let api: EurofurenceRemoteAPI
-        let network: Network
+        let api: EurofurenceAPI
         let conventionIdentifier: ConventionIdentifier
         
         public init(
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
-            network: Network = URLSessionNetwork.shared,
+            api: EurofurenceAPI = CIDSensitiveEurofurenceAPI.api(),
             conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.persistentContainer = EurofurencePersistentContainer()
             self.properties = properties
-            self.network = network
+            self.api = api
             self.conventionIdentifier = conventionIdentifier
-            self.api = EurofurenceRemoteAPI(network: network)
             
             environment.configure(persistentContainer: persistentContainer)
         }

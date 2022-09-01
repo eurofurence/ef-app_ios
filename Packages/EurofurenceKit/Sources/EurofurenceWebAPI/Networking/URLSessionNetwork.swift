@@ -1,8 +1,8 @@
 import Foundation
 
-public struct URLSessionNetwork: Network {
+struct URLSessionNetwork: Network {
     
-    public static let shared = URLSessionNetwork()
+    static let shared = URLSessionNetwork()
     
     private let urlSession: URLSession
     
@@ -14,7 +14,7 @@ public struct URLSessionNetwork: Network {
         urlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: delegateQueue)
     }
     
-    public func get(contentsOf url: URL) async throws -> Data {
+    func get(contentsOf url: URL) async throws -> Data {
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Data, Error>) in
             let urlRequest = URLRequest(url: url)
             let dataTask = urlSession.dataTask(with: urlRequest) { data, _, error in

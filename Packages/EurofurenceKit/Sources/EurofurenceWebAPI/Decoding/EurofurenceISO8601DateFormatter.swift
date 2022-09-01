@@ -1,11 +1,11 @@
 import Foundation
 
-class EurofurenceISO8601DateFormatter: DateFormatter {
+public class EurofurenceISO8601DateFormatter: DateFormatter {
     
-    static let instance = EurofurenceISO8601DateFormatter()
+    public static let instance = EurofurenceISO8601DateFormatter()
     private let noFractionsDateFormatter = DateFormatter()
 
-    override init() {
+    public override init() {
         super.init()
 
         locale = Locale(identifier: "en_US_POSIX")
@@ -21,16 +21,12 @@ class EurofurenceISO8601DateFormatter: DateFormatter {
         super.init(coder: aDecoder)
     }
 
-    override func date(from string: String) -> Date? {
+    public override func date(from string: String) -> Date? {
         if let date = noFractionsDateFormatter.date(from: string) {
             return date
         }
 
         return super.date(from: string)
-    }
-
-    override func string(from date: Date) -> String {
-        return super.string(from: date)
     }
     
 }

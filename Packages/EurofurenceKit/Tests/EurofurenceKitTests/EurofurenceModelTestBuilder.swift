@@ -1,5 +1,6 @@
 import CoreData
 @testable import EurofurenceKit
+import EurofurenceWebAPI
 import XCTest
 
 class EurofurenceModelTestBuilder {
@@ -7,7 +8,7 @@ class EurofurenceModelTestBuilder {
     struct Scenario {
         var model: EurofurenceModel
         var modelProperties: FakeModelProperties
-        var network: FakeNetwork
+        var api: FakeEurofurenceAPI
     }
     
     private var conventionIdentifier: ConventionIdentifier = .current
@@ -18,18 +19,18 @@ class EurofurenceModelTestBuilder {
     }
     
     func build() -> Scenario {
-        let network = FakeNetwork()
         let properties = FakeModelProperties()
+        let api = FakeEurofurenceAPI()
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
             properties: properties,
-            network: network,
+            api: api,
             conventionIdentifier: conventionIdentifier
         )
         
         let model = EurofurenceModel(configuration: configuration)
         
-        return Scenario(model: model, modelProperties: properties, network: network)
+        return Scenario(model: model, modelProperties: properties, api: api)
     }
     
 }
@@ -40,24 +41,27 @@ extension EurofurenceModelTestBuilder.Scenario {
         model.viewContext
     }
     
-    func stub(url: URL, with result: Result<Data, Error>) {
-        network.stub(url: url, with: result)
+    func stubSyncResponse(with result: Result<SynchronizationPayload, Error>) {
+        api.nextSyncResponse = result
     }
     
-    func stubSyncResponse(with result: Result<Data, Error>) {
-        let syncURL: URL
-        if let lastSyncTime = modelProperties.lastSyncTime {
-            let formattedSyncTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
-            syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedSyncTime)")!
-        } else {
-            syncURL = URL(string: "https://app.eurofurence.org/EF26/api/Sync")!
-        }
-        
-        stub(url: syncURL, with: result)
+    func stubSyncResponse(contentsOf jsonFile: String) throws {
+        let bundle = Bundle.module
+        let url = try XCTUnwrap(bundle.url(forResource: jsonFile, withExtension: "json"))
+        let data = try Data(contentsOf: url)
+        let decoder = EurofurenceAPIDecoder()
+        let payload = try decoder.decodeSynchronizationPayload(from: data)
+        stubSyncResponse(with: .success(payload))
+    }
+    
+    func stubSyncResponse(responseData: Data) throws {
+        let decoder = EurofurenceAPIDecoder()
+        let payload = try decoder.decodeSynchronizationPayload(from: responseData)
+        stubSyncResponse(with: .success(payload))
     }
     
     func updateLocalStore<Response>(using response: Response) async throws where Response: SampleResponseFile {
-        stubSyncResponse(with: .success(try response.loadFileContents()))
+        try stubSyncResponse(responseData: try response.loadFileContents())
         try await model.updateLocalStore()
     }
     

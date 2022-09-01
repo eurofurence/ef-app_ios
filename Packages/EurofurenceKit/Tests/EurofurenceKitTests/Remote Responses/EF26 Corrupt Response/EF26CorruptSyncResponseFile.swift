@@ -1,4 +1,5 @@
 @testable import EurofurenceKit
+import class EurofurenceWebAPI.EurofurenceISO8601DateFormatter
 import Foundation
 
 /// A flavour of the valid EF26 response tweaked to simulate local processing errors.

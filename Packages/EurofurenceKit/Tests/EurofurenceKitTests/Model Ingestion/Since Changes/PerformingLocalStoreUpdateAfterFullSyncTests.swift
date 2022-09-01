@@ -7,15 +7,9 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
         let scenario = EurofurenceModelTestBuilder().build()
         let lastSyncTime = Date()
         scenario.modelProperties.lastSyncTime = lastSyncTime
+        try await scenario.updateLocalStore(using: EF26FullSyncResponseFile())
         
-        let formattedSyncTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
-        let expectedSyncURLString = "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedSyncTime)"
-        let expectedSyncURL = try XCTUnwrap(URL(string: expectedSyncURLString))
-        let response = EF26FullSyncResponseFile()
-        scenario.stub(url: expectedSyncURL, with: .success(try response.loadFileContents()))
-        try await scenario.updateLocalStore()
-        
-        try response.assertAgainstEntities(in: scenario.viewContext)
+        XCTAssertEqual(lastSyncTime, scenario.api.lastSyncTime)
     }
     
     func testRecordsTimestampAfterSuccessfulSyncRequest() async throws {

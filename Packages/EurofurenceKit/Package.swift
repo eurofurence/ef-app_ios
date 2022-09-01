@@ -30,6 +30,13 @@ let package = Package(
         ),
         
         .testTarget(
+            name: "EurofurenceWebAPITests",
+            dependencies: [
+                .target(name: "EurofurenceWebAPI")
+            ]
+        ),
+        
+        .testTarget(
             name: "EurofurenceKitTests",
             dependencies: [
                 .target(name: "EurofurenceKit")
