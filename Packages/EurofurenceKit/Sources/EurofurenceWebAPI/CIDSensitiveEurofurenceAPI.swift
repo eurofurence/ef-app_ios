@@ -9,7 +9,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         CIDSensitiveEurofurenceAPI(network: URLSessionNetwork.shared)
     }
     
-    private init(network: Network) {
+    init(network: Network) {
         self.network = network
         decoder = EurofurenceAPIDecoder()
     }

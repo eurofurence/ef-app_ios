@@ -1,4 +1,4 @@
-import EurofurenceKit
+import EurofurenceWebAPI
 import Foundation
 
 class FakeNetwork: Network {
@@ -9,7 +9,15 @@ class FakeNetwork: Network {
         var url: URL
     }
     
+    enum Event: Equatable {
+        case get(url: URL)
+    }
+    
+    private(set) var history = [Event]()
+    
     func get(contentsOf url: URL) async throws -> Data {
+        history.append(.get(url: url))
+        
         guard let response = getResponses[url] else {
             throw NotStubbed(url: url)
         }

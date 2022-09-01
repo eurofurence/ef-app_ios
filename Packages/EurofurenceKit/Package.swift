@@ -33,6 +33,9 @@ let package = Package(
             name: "EurofurenceWebAPITests",
             dependencies: [
                 .target(name: "EurofurenceWebAPI")
+            ],
+            resources: [
+                .process("Resources")
             ]
         ),
         
