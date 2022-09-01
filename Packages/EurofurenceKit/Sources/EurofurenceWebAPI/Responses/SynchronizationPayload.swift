@@ -61,6 +61,11 @@ extension SynchronizationPayload {
             lastSyncTime = try singleValueContainer.decode(Date.self)
         }
         
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.singleValueContainer()
+            try container.encode(lastSyncTime)
+        }
+        
     }
     
 }
