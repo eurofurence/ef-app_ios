@@ -50,46 +50,46 @@ extension Event: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteEvent
     
     func update(context: RemoteResponseConsumingContext<RemoteEvent>) throws {
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        slug = context.remoteObject.Slug
-        title = context.remoteObject.Title
-        subtitle = context.remoteObject.SubTitle
-        abstract = context.remoteObject.Abstract
-        day = try managedObjectContext!.entity(withIdentifier: context.remoteObject.ConferenceDayId)
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        slug = context.remoteObject.slug
+        title = context.remoteObject.title
+        subtitle = context.remoteObject.subtitle
+        abstract = context.remoteObject.abstract
+        day = try managedObjectContext!.entity(withIdentifier: context.remoteObject.dayIdentifier)
         
-        let track: Track = try managedObjectContext!.entity(withIdentifier: context.remoteObject.ConferenceTrackId)
+        let track: Track = try managedObjectContext!.entity(withIdentifier: context.remoteObject.trackIdentifier)
         addToTracks(track)
         
-        room = try managedObjectContext!.entity(withIdentifier: context.remoteObject.ConferenceRoomId)
-        eventDescription = context.remoteObject.Description
-        startDate = context.remoteObject.StartDateTimeUtc
-        endDate = context.remoteObject.EndDateTimeUtc
+        room = try managedObjectContext!.entity(withIdentifier: context.remoteObject.roomIdentifier)
+        eventDescription = context.remoteObject.description
+        startDate = context.remoteObject.startDateTimeUtc
+        endDate = context.remoteObject.endDateTimeUtc
         
-        let hosts = context.remoteObject.PanelHosts.components(separatedBy: ",")
+        let hosts = context.remoteObject.panelHostsSeperatedByComma.components(separatedBy: ",")
         for host in hosts {
             let trimmedHost = host.trimmingCharacters(in: .whitespaces)
             let host = PanelHost.named(name: trimmedHost, in: managedObjectContext!)
             addToPanelHosts(host)
         }
         
-        for remoteTag in context.remoteObject.Tags {
+        for remoteTag in context.remoteObject.tags {
             let tag = Tag.named(name: remoteTag, in: managedObjectContext!)
             addToTags(tag)
         }
         
-        deviatingFromConbook = context.remoteObject.IsDeviatingFromConBook
-        acceptingFeedback = context.remoteObject.IsAcceptingFeedback
+        deviatingFromConbook = context.remoteObject.isDeviatingFromConBook
+        acceptingFeedback = context.remoteObject.isAcceptingFeedback
         
-        if let bannerImageIdentifier = context.remoteObject.BannerImageId,
-            let remoteBanner = context.response.images.changed.first(where: { $0.Id == bannerImageIdentifier }) {
+        if let bannerImageIdentifier = context.remoteObject.bannerImageIdentifier,
+            let remoteBanner = context.response.images.changed.first(where: { $0.id == bannerImageIdentifier }) {
             let eventBanner = EventBanner.identifiedBy(identifier: bannerImageIdentifier, in: managedObjectContext!)
             eventBanner.update(from: remoteBanner)
             banner = eventBanner
         }
         
-        if let posterImageIdentifier = context.remoteObject.PosterImageId,
-            let remotePoster = context.response.images.changed.first(where: { $0.Id == posterImageIdentifier }) {
+        if let posterImageIdentifier = context.remoteObject.posterImageIdentifier,
+            let remotePoster = context.response.images.changed.first(where: { $0.id == posterImageIdentifier }) {
             let eventPoster = EventPoster.identifiedBy(identifier: posterImageIdentifier, in: managedObjectContext!)
             eventPoster.update(from: remotePoster)
             poster = eventPoster

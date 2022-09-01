@@ -20,10 +20,10 @@ extension Day: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteDay
     
     func update(context: RemoteResponseConsumingContext<RemoteDay>) throws {
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        date = context.remoteObject.Date
-        name = context.remoteObject.Name
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        date = context.remoteObject.date
+        name = context.remoteObject.name
     }
     
 }

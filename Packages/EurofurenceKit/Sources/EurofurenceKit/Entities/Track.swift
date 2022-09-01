@@ -19,9 +19,9 @@ extension Track: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteTrack
     
     func update(context: RemoteResponseConsumingContext<RemoteTrack>) throws {
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        name = context.remoteObject.Name
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        name = context.remoteObject.name
     }
     
 }

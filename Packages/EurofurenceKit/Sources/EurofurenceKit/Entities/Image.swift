@@ -66,14 +66,14 @@ extension Image {
 extension Image {
     
     func update(from remoteResponse: RemoteImage) {
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        contentHashSHA1 = remoteResponse.ContentHashSha1
-        estimatedSizeInBytes = Int64(remoteResponse.SizeInBytes)
-        internalReference = remoteResponse.InternalReference
-        mimeType = remoteResponse.MimeType
-        width = Int32(remoteResponse.Width)
-        height = Int32(remoteResponse.Height)
+        identifier = remoteResponse.id
+        lastEdited = remoteResponse.lastChangeDateTimeUtc
+        contentHashSHA1 = remoteResponse.contentHashSha1
+        estimatedSizeInBytes = Int64(remoteResponse.sizeInBytes)
+        internalReference = remoteResponse.internalReference
+        mimeType = remoteResponse.mimeType
+        width = Int32(remoteResponse.width)
+        height = Int32(remoteResponse.height)
     }
     
 }

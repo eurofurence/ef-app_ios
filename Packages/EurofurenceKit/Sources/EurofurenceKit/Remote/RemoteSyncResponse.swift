@@ -26,7 +26,7 @@ struct RemoteSyncResponse: Decodable {
     
 }
 
-struct RemoteEntityNode<T>: Decodable where T: Decodable {
+struct RemoteEntityNode<T>: Decodable where T: Decodable & Identifiable {
     
     private enum CodingKeys: String, CodingKey {
         case changed = "ChangedEntities"
@@ -36,96 +36,174 @@ struct RemoteEntityNode<T>: Decodable where T: Decodable {
     
 }
 
-struct RemoteDay: Decodable {
+struct RemoteDay: Decodable, Identifiable {
     
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var Name: String
-    var Date: Date
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case name = "Name"
+        case date = "Date"
+    }
     
-}
-
-struct RemoteTrack: Decodable {
-    
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var Name: String
-    
-}
-
-struct RemoteRoom: Decodable {
-    
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var Name: String
-    var ShortName: String
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var name: String
+    var date: Date
     
 }
 
-struct RemoteEvent: Decodable {
+struct RemoteTrack: Decodable, Identifiable {
     
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var Slug: String
-    var Title: String
-    var SubTitle: String
-    var Abstract: String
-    var ConferenceDayId: String
-    var ConferenceTrackId: String
-    var ConferenceRoomId: String
-    var Description: String
-    var StartDateTimeUtc: Date
-    var EndDateTimeUtc: Date
-    var PanelHosts: String
-    var IsDeviatingFromConBook: Bool
-    var IsAcceptingFeedback: Bool
-    var Tags: [String]
-    var BannerImageId: String?
-    var PosterImageId: String?
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case name = "Name"
+    }
+    
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var name: String
     
 }
 
-struct RemoteImage: Decodable {
+struct RemoteRoom: Decodable, Identifiable {
     
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var InternalReference: String
-    var Width: Int
-    var Height: Int
-    var SizeInBytes: Int
-    var MimeType: String
-    var ContentHashSha1: String
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case name = "Name"
+        case shortName = "ShortName"
+    }
     
-}
-
-struct RemoteKnowledgeGroup: Decodable {
-    
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var Name: String
-    var Description: String
-    var Order: Int
-    var FontAwesomeIconCharacterUnicodeAddress: String
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var name: String
+    var shortName: String
     
 }
 
-struct RemoteKnowledgeEntry: Decodable {
+struct RemoteEvent: Decodable, Identifiable {
     
-    var LastChangeDateTimeUtc: Date
-    var Id: String
-    var KnowledgeGroupId: String
-    var Title: String
-    var Text: String
-    var Order: Int
-    var Links: [RemoteLink]
-    var ImageIds: [String]
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case slug = "Slug"
+        case title = "Title"
+        case subtitle = "SubTitle"
+        case abstract = "Abstract"
+        case dayIdentifier = "ConferenceDayId"
+        case trackIdentifier = "ConferenceTrackId"
+        case roomIdentifier = "ConferenceRoomId"
+        case description = "Description"
+        case startDateTimeUtc = "StartDateTimeUtc"
+        case endDateTimeUtc = "EndDateTimeUtc"
+        case panelHostsSeperatedByComma = "PanelHosts"
+        case isDeviatingFromConBook = "IsDeviatingFromConBook"
+        case isAcceptingFeedback = "IsAcceptingFeedback"
+        case tags = "Tags"
+        case bannerImageIdentifier = "BannerImageId"
+        case posterImageIdentifier = "PosterImageId"
+    }
+    
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var slug: String
+    var title: String
+    var subtitle: String
+    var abstract: String
+    var dayIdentifier: String
+    var trackIdentifier: String
+    var roomIdentifier: String
+    var description: String
+    var startDateTimeUtc: Date
+    var endDateTimeUtc: Date
+    var panelHostsSeperatedByComma: String
+    var isDeviatingFromConBook: Bool
+    var isAcceptingFeedback: Bool
+    var tags: [String]
+    var bannerImageIdentifier: String?
+    var posterImageIdentifier: String?
+    
+}
+
+struct RemoteImage: Decodable, Identifiable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case internalReference = "InternalReference"
+        case width = "Width"
+        case height = "Height"
+        case sizeInBytes = "SizeInBytes"
+        case mimeType = "MimeType"
+        case contentHashSha1 = "ContentHashSha1"
+    }
+    
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var internalReference: String
+    var width: Int
+    var height: Int
+    var sizeInBytes: Int
+    var mimeType: String
+    var contentHashSha1: String
+    
+}
+
+struct RemoteKnowledgeGroup: Decodable, Identifiable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case name = "Name"
+        case description = "Description"
+        case order = "Order"
+        case fontAwesomeIconCharacterUnicodeAddress = "FontAwesomeIconCharacterUnicodeAddress"
+    }
+    
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var name: String
+    var description: String
+    var order: Int
+    var fontAwesomeIconCharacterUnicodeAddress: String
+    
+}
+
+struct RemoteKnowledgeEntry: Decodable, Identifiable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
+        case id = "Id"
+        case knowledgeGroupIdentifier = "KnowledgeGroupId"
+        case title = "Title"
+        case text = "Text"
+        case order = "Order"
+        case links = "Links"
+        case imageIdentifiers = "ImageIds"
+    }
+    
+    var lastChangeDateTimeUtc: Date
+    var id: String
+    var knowledgeGroupIdentifier: String
+    var title: String
+    var text: String
+    var order: Int
+    var links: [RemoteLink]
+    var imageIdentifiers: [String]
     
 }
 
 struct RemoteLink: Decodable {
     
-    var FragmentType: String
-    var Name: String
-    var Target: String
+    private enum CodingKeys: String, CodingKey {
+        case fragmentType = "FragmentType"
+        case name = "Name"
+        case target = "Target"
+    }
+    
+    var fragmentType: String
+    var name: String
+    var target: String
     
 }

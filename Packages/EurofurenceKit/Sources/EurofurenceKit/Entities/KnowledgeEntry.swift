@@ -28,27 +28,27 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
             managedObjectContext!.delete(link)
         }
         
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        title = context.remoteObject.Title
-        text = context.remoteObject.Text
-        order = Int16(context.remoteObject.Order)
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        title = context.remoteObject.title
+        text = context.remoteObject.text
+        order = Int16(context.remoteObject.order)
         
-        group = try managedObjectContext!.entity(withIdentifier: context.remoteObject.KnowledgeGroupId)
+        group = try managedObjectContext!.entity(withIdentifier: context.remoteObject.knowledgeGroupIdentifier)
         
-        for imageIdentifier in context.remoteObject.ImageIds {
-            if let remoteImage = context.response.images.changed.first(where: { $0.Id == imageIdentifier }) {
+        for imageIdentifier in context.remoteObject.imageIdentifiers {
+            if let remoteImage = context.response.images.changed.first(where: { $0.id == imageIdentifier }) {
                 let image = KnowledgeEntryImage.identifiedBy(identifier: imageIdentifier, in: managedObjectContext!)
                 image.update(from: remoteImage)
                 addToImages(image)
             }
         }
         
-        for link in context.remoteObject.Links {
+        for link in context.remoteObject.links {
             let knowledgeLink = KnowledgeLink(context: managedObjectContext!)
-            knowledgeLink.fragmentType = link.FragmentType
-            knowledgeLink.name = link.Name
-            knowledgeLink.target = link.Target
+            knowledgeLink.fragmentType = link.fragmentType
+            knowledgeLink.name = link.name
+            knowledgeLink.target = link.target
             addToLinks(knowledgeLink)
         }
     }

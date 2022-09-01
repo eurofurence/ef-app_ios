@@ -20,10 +20,10 @@ extension Room: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteRoom
     
     func update(context: RemoteResponseConsumingContext<RemoteRoom>) throws {
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        name = context.remoteObject.Name
-        shortName = context.remoteObject.ShortName
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        name = context.remoteObject.name
+        shortName = context.remoteObject.shortName
     }
     
 }

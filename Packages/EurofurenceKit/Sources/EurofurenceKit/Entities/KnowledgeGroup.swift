@@ -22,12 +22,12 @@ extension KnowledgeGroup: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteKnowledgeGroup
     
     func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
-        identifier = context.remoteObject.Id
-        lastEdited = context.remoteObject.LastChangeDateTimeUtc
-        name = context.remoteObject.Name
-        knowledgeGroupDescription = context.remoteObject.Description
-        order = Int16(context.remoteObject.Order)
-        fontAwesomeUnicodeCharacterAddress = context.remoteObject.FontAwesomeIconCharacterUnicodeAddress
+        identifier = context.remoteObject.id
+        lastEdited = context.remoteObject.lastChangeDateTimeUtc
+        name = context.remoteObject.name
+        knowledgeGroupDescription = context.remoteObject.description
+        order = Int16(context.remoteObject.order)
+        fontAwesomeUnicodeCharacterAddress = context.remoteObject.fontAwesomeIconCharacterUnicodeAddress
     }
     
 }
