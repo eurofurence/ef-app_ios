@@ -45,7 +45,6 @@ extension EurofurenceModel {
         
         let persistentContainer: EurofurencePersistentContainer
         let properties: EurofurenceModelProperties
-        let logger: Logger
         let api: EurofurenceRemoteAPI
         let network: Network
         let conventionIdentifier: ConventionIdentifier
@@ -54,13 +53,11 @@ extension EurofurenceModel {
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             network: Network = URLSessionNetwork.shared,
-            logger: Logger = Logger(label: "EurofurenceKit"),
             conventionIdentifier: ConventionIdentifier = .current
         ) {
-            self.persistentContainer = EurofurencePersistentContainer(logger: logger)
+            self.persistentContainer = EurofurencePersistentContainer()
             self.properties = properties
             self.network = network
-            self.logger = logger
             self.conventionIdentifier = conventionIdentifier
             self.api = EurofurenceRemoteAPI(network: network)
             

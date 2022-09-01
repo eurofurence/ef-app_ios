@@ -1,6 +1,5 @@
 import CoreData
 @testable import EurofurenceKit
-import Logging
 import XCTest
 
 class EurofurenceModelTestBuilder {
@@ -19,14 +18,12 @@ class EurofurenceModelTestBuilder {
     }
     
     func build() -> Scenario {
-        let logger = Logger(label: "Test")
         let network = FakeNetwork()
         let properties = FakeModelProperties()
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
             properties: properties,
             network: network,
-            logger: logger,
             conventionIdentifier: conventionIdentifier
         )
         

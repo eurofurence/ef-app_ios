@@ -3,10 +3,9 @@ import Logging
 
 class EurofurencePersistentContainer: NSPersistentContainer {
     
-    private let logger: Logger
+    private let logger = Logger(label: "EurofurencePersistentContainer")
     
-    init(logger: Logger) {
-        self.logger = logger
+    init() {
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
     }
     
