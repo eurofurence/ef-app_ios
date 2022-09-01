@@ -56,42 +56,56 @@ extension Event: ConsumesRemoteResponse {
         title = context.remoteObject.title
         subtitle = context.remoteObject.subtitle
         abstract = context.remoteObject.abstract
-        day = try managedObjectContext!.entity(withIdentifier: context.remoteObject.dayIdentifier)
-        
-        let track: Track = try managedObjectContext!.entity(withIdentifier: context.remoteObject.trackIdentifier)
-        addToTracks(track)
-        
-        room = try managedObjectContext!.entity(withIdentifier: context.remoteObject.roomIdentifier)
+        deviatingFromConbook = context.remoteObject.isDeviatingFromConBook
+        acceptingFeedback = context.remoteObject.isAcceptingFeedback
         eventDescription = context.remoteObject.description
         startDate = context.remoteObject.startDateTimeUtc
         endDate = context.remoteObject.endDateTimeUtc
         
+        day = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.dayIdentifier)
+        room = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.roomIdentifier)
+        
+        let track: Track = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.trackIdentifier)
+        addToTracks(track)
+                
+        updateTags(context)
+        updateHosts(context)
+        updateBanner(context)
+        updatePoster(context)
+    }
+    
+    private func updateTags(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+        for remoteTag in context.remoteObject.tags {
+            let tag = Tag.named(name: remoteTag, in: context.managedObjectContext)
+            addToTags(tag)
+        }
+    }
+    
+    private func updateHosts(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
         let hosts = context.remoteObject.panelHostsSeperatedByComma.components(separatedBy: ",")
         for host in hosts {
             let trimmedHost = host.trimmingCharacters(in: .whitespaces)
-            let host = PanelHost.named(name: trimmedHost, in: managedObjectContext!)
+            let host = PanelHost.named(name: trimmedHost, in: context.managedObjectContext)
             addToPanelHosts(host)
         }
-        
-        for remoteTag in context.remoteObject.tags {
-            let tag = Tag.named(name: remoteTag, in: managedObjectContext!)
-            addToTags(tag)
-        }
-        
-        deviatingFromConbook = context.remoteObject.isDeviatingFromConBook
-        acceptingFeedback = context.remoteObject.isAcceptingFeedback
-        
-        if let bannerImageIdentifier = context.remoteObject.bannerImageIdentifier,
-            let remoteBanner = context.response.images.changed.first(where: { $0.id == bannerImageIdentifier }) {
-            let eventBanner = EventBanner.identifiedBy(identifier: bannerImageIdentifier, in: managedObjectContext!)
+    }
+    
+    private func updateBanner(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+        let bannerID = context.remoteObject.bannerImageIdentifier
+        if let bannerID = bannerID, let remoteBanner = context.image(identifiedBy: bannerID) {
+            let eventBanner = EventBanner.identifiedBy(identifier: bannerID, in: context.managedObjectContext)
             eventBanner.update(from: remoteBanner)
+            
             banner = eventBanner
         }
-        
-        if let posterImageIdentifier = context.remoteObject.posterImageIdentifier,
-            let remotePoster = context.response.images.changed.first(where: { $0.id == posterImageIdentifier }) {
-            let eventPoster = EventPoster.identifiedBy(identifier: posterImageIdentifier, in: managedObjectContext!)
+    }
+    
+    private func updatePoster(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+        let posterID = context.remoteObject.posterImageIdentifier
+        if let posterID = posterID, let remotePoster = context.image(identifiedBy: posterID) {
+            let eventPoster = EventPoster.identifiedBy(identifier: posterID, in: context.managedObjectContext)
             eventPoster.update(from: remotePoster)
+            
             poster = eventPoster
         }
     }

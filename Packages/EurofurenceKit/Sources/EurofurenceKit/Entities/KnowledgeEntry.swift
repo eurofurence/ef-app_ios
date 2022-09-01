@@ -23,33 +23,44 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
     typealias RemoteObject = RemoteKnowledgeEntry
     
     func update(context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) throws {
-        for link in links {
-            removeFromLinks(link)
-            managedObjectContext!.delete(link)
-        }
-        
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         title = context.remoteObject.title
         text = context.remoteObject.text
         order = Int16(context.remoteObject.order)
         
-        group = try managedObjectContext!.entity(withIdentifier: context.remoteObject.knowledgeGroupIdentifier)
+        group = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.knowledgeGroupIdentifier)
         
-        for imageIdentifier in context.remoteObject.imageIdentifiers {
-            if let remoteImage = context.response.images.changed.first(where: { $0.id == imageIdentifier }) {
-                let image = KnowledgeEntryImage.identifiedBy(identifier: imageIdentifier, in: managedObjectContext!)
+        updateImages(context)
+        updateLinks(context)
+    }
+    
+    private func updateImages(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+        for imageID in context.remoteObject.imageIdentifiers {
+            if let remoteImage = context.image(identifiedBy: imageID) {
+                let image = KnowledgeEntryImage.identifiedBy(identifier: imageID, in: context.managedObjectContext)
                 image.update(from: remoteImage)
                 addToImages(image)
             }
         }
+    }
+    
+    private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+        removeAllLinks(context)
         
         for link in context.remoteObject.links {
-            let knowledgeLink = KnowledgeLink(context: managedObjectContext!)
+            let knowledgeLink = KnowledgeLink(context: context.managedObjectContext)
             knowledgeLink.fragmentType = link.fragmentType
             knowledgeLink.name = link.name
             knowledgeLink.target = link.target
             addToLinks(knowledgeLink)
+        }
+    }
+    
+    private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+        for link in links {
+            removeFromLinks(link)
+            context.managedObjectContext.delete(link)
         }
     }
     

@@ -6,6 +6,10 @@ struct RemoteResponseConsumingContext<Object> {
     var remoteObject: Object
     var response: RemoteSyncResponse
     
+    func image(identifiedBy identifier: RemoteImage.ID) -> RemoteImage? {
+        response.images.changed.first(where: { $0.id == identifier })
+    }
+    
 }
 
 protocol ConsumesRemoteResponse {
