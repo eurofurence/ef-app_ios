@@ -1,7 +1,17 @@
+import CoreData
+
+struct RemoteResponseConsumingContext<Object> {
+    
+    var managedObjectContext: NSManagedObjectContext
+    var remoteObject: Object
+    var response: RemoteSyncResponse
+    
+}
+
 protocol ConsumesRemoteResponse {
     
-    associatedtype RemoteResponse
+    associatedtype RemoteObject
     
-    func update(from remoteResponse: RemoteResponse) throws
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws
     
 }

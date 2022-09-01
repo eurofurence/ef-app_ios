@@ -49,22 +49,47 @@ struct UpdateLocalStoreOperation {
     private func ingest(syncResponse: RemoteSyncResponse, into managedObjectContext: NSManagedObjectContext) throws {
         for remoteDay in syncResponse.days.changed {
             let day = try Day.entity(identifiedBy: remoteDay.Id, in: managedObjectContext)
-            day.update(from: remoteDay)
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteDay,
+                response: syncResponse
+            )
+            
+            try day.update(context: context)
         }
         
         for remoteTrack in syncResponse.tracks.changed {
             let track = try Track.entity(identifiedBy: remoteTrack.Id, in: managedObjectContext)
-            track.update(from: remoteTrack)
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteTrack,
+                response: syncResponse
+            )
+            
+            try track.update(context: context)
         }
         
         for remoteRoom in syncResponse.rooms.changed {
             let room = try Room.entity(identifiedBy: remoteRoom.Id, in: managedObjectContext)
-            room.update(from: remoteRoom)
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteRoom,
+                response: syncResponse
+            )
+            
+            try room.update(context: context)
         }
         
         for remoteEvent in syncResponse.events.changed {
             let event = try Event.entity(identifiedBy: remoteEvent.Id, in: managedObjectContext)
-            try event.update(from: remoteEvent, fullResponse: syncResponse)
+            
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteEvent,
+                response: syncResponse
+            )
+            
+            try event.update(context: context)
         }
         
         for remoteKnowledgeGroup in syncResponse.knowledgeGroups.changed {
@@ -73,7 +98,13 @@ struct UpdateLocalStoreOperation {
                 in: managedObjectContext
             )
             
-            try knowledgeGroup.update(from: remoteKnowledgeGroup)
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteKnowledgeGroup,
+                response: syncResponse
+            )
+            
+            try knowledgeGroup.update(context: context)
         }
         
         for remoteKnowledgeEntry in syncResponse.knowledgeEntries.changed {
@@ -82,7 +113,13 @@ struct UpdateLocalStoreOperation {
                 in: managedObjectContext
             )
             
-            try knowledgeEntry.update(from: remoteKnowledgeEntry, fullResponse: syncResponse)
+            let context = RemoteResponseConsumingContext(
+                managedObjectContext: managedObjectContext,
+                remoteObject: remoteKnowledgeEntry,
+                response: syncResponse
+            )
+            
+            try knowledgeEntry.update(context: context)
         }
         
         try managedObjectContext.save()

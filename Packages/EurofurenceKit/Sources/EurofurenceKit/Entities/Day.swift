@@ -17,13 +17,13 @@ public class Day: Entity {
 
 extension Day: ConsumesRemoteResponse {
     
-    typealias RemoteResponse = RemoteDay
+    typealias RemoteObject = RemoteDay
     
-    func update(from remoteResponse: RemoteDay) {
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        date = remoteResponse.Date
-        name = remoteResponse.Name
+    func update(context: RemoteResponseConsumingContext<RemoteDay>) throws {
+        identifier = context.remoteObject.Id
+        lastEdited = context.remoteObject.LastChangeDateTimeUtc
+        date = context.remoteObject.Date
+        name = context.remoteObject.Name
     }
     
 }

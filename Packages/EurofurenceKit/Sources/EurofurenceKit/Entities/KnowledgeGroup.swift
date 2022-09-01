@@ -19,15 +19,15 @@ public class KnowledgeGroup: Entity {
 
 extension KnowledgeGroup: ConsumesRemoteResponse {
     
-    typealias RemoteResponse = RemoteKnowledgeGroup
+    typealias RemoteObject = RemoteKnowledgeGroup
     
-    func update(from remoteResponse: RemoteKnowledgeGroup) throws {
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        name = remoteResponse.Name
-        knowledgeGroupDescription = remoteResponse.Description
-        order = Int16(remoteResponse.Order)
-        fontAwesomeUnicodeCharacterAddress = remoteResponse.FontAwesomeIconCharacterUnicodeAddress
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
+        identifier = context.remoteObject.Id
+        lastEdited = context.remoteObject.LastChangeDateTimeUtc
+        name = context.remoteObject.Name
+        knowledgeGroupDescription = context.remoteObject.Description
+        order = Int16(context.remoteObject.Order)
+        fontAwesomeUnicodeCharacterAddress = context.remoteObject.FontAwesomeIconCharacterUnicodeAddress
     }
     
 }

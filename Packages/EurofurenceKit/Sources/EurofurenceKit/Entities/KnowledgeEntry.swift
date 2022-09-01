@@ -16,34 +16,35 @@ public class KnowledgeEntry: Entity {
 
 }
 
-extension KnowledgeEntry {
+// MARK: - KnowledgeEntry + ConsumesRemoteResponse
+
+extension KnowledgeEntry: ConsumesRemoteResponse {
     
-    func update(
-        from remoteResponse: RemoteKnowledgeEntry,
-        fullResponse: RemoteSyncResponse
-    ) throws {
+    typealias RemoteObject = RemoteKnowledgeEntry
+    
+    func update(context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) throws {
         for link in links {
             removeFromLinks(link)
             managedObjectContext!.delete(link)
         }
         
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        title = remoteResponse.Title
-        text = remoteResponse.Text
-        order = Int16(remoteResponse.Order)
+        identifier = context.remoteObject.Id
+        lastEdited = context.remoteObject.LastChangeDateTimeUtc
+        title = context.remoteObject.Title
+        text = context.remoteObject.Text
+        order = Int16(context.remoteObject.Order)
         
-        group = try managedObjectContext!.entity(withIdentifier: remoteResponse.KnowledgeGroupId)
+        group = try managedObjectContext!.entity(withIdentifier: context.remoteObject.KnowledgeGroupId)
         
-        for imageIdentifier in remoteResponse.ImageIds {
-            if let remoteImage = fullResponse.images.changed.first(where: { $0.Id == imageIdentifier }) {
+        for imageIdentifier in context.remoteObject.ImageIds {
+            if let remoteImage = context.response.images.changed.first(where: { $0.Id == imageIdentifier }) {
                 let image = KnowledgeEntryImage.identifiedBy(identifier: imageIdentifier, in: managedObjectContext!)
                 image.update(from: remoteImage)
                 addToImages(image)
             }
         }
         
-        for link in remoteResponse.Links {
+        for link in context.remoteObject.Links {
             let knowledgeLink = KnowledgeLink(context: managedObjectContext!)
             knowledgeLink.fragmentType = link.FragmentType
             knowledgeLink.name = link.Name

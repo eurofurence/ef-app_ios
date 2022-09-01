@@ -17,13 +17,13 @@ public class Room: Entity {
 
 extension Room: ConsumesRemoteResponse {
     
-    typealias RemoteResponse = RemoteRoom
+    typealias RemoteObject = RemoteRoom
     
-    func update(from remoteResponse: RemoteRoom) {
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        name = remoteResponse.Name
-        shortName = remoteResponse.ShortName
+    func update(context: RemoteResponseConsumingContext<RemoteRoom>) throws {
+        identifier = context.remoteObject.Id
+        lastEdited = context.remoteObject.LastChangeDateTimeUtc
+        name = context.remoteObject.Name
+        shortName = context.remoteObject.ShortName
     }
     
 }

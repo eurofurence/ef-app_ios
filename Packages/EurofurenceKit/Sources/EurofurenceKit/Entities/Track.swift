@@ -16,12 +16,12 @@ public class Track: Entity {
 
 extension Track: ConsumesRemoteResponse {
     
-    typealias RemoteResponse = RemoteTrack
+    typealias RemoteObject = RemoteTrack
     
-    func update(from remoteResponse: RemoteTrack) {
-        identifier = remoteResponse.Id
-        lastEdited = remoteResponse.LastChangeDateTimeUtc
-        name = remoteResponse.Name
+    func update(context: RemoteResponseConsumingContext<RemoteTrack>) throws {
+        identifier = context.remoteObject.Id
+        lastEdited = context.remoteObject.LastChangeDateTimeUtc
+        name = context.remoteObject.Name
     }
     
 }
