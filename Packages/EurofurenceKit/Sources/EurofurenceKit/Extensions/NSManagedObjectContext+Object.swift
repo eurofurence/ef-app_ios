@@ -25,7 +25,7 @@ extension NSManagedObjectContext {
     }
     
     func entity<E>(withIdentifier identifier: String) throws -> E where E: Entity {
-        let fetchRequest: NSFetchRequest<E> = NSFetchRequest(entityName: Entity.entity().name!)
+        let fetchRequest: NSFetchRequest<E> = NSFetchRequest(entityName: E.entity().name!)
         let predicate = NSPredicate(format: "identifier == %@", identifier)
         fetchRequest.predicate = predicate
         

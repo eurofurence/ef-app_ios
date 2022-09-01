@@ -13,6 +13,7 @@ public struct SynchronizationPayload: Decodable {
         case knowledgeGroups = "KnowledgeGroups"
         case knowledgeEntries = "KnowledgeEntries"
         case dealers = "Dealers"
+        case announcements = "Announcements"
     }
     
     public var synchronizationToken: GenerationToken
@@ -25,6 +26,7 @@ public struct SynchronizationPayload: Decodable {
     public var knowledgeGroups: SynchronizationPayload.Update<KnowledgeGroup>
     public var knowledgeEntries: SynchronizationPayload.Update<KnowledgeEntry>
     public var dealers: SynchronizationPayload.Update<Dealer>
+    public var announcements: SynchronizationPayload.Update<Announcement>
     
 }
 
