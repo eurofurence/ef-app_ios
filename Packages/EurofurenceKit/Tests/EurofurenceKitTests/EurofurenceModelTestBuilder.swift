@@ -45,26 +45,6 @@ extension EurofurenceModelTestBuilder.Scenario {
         api.nextSyncResponse = result
     }
     
-    func stubSyncResponse(contentsOf jsonFile: String) throws {
-        let bundle = Bundle.module
-        let url = try XCTUnwrap(bundle.url(forResource: jsonFile, withExtension: "json"))
-        let data = try Data(contentsOf: url)
-        let decoder = EurofurenceAPIDecoder()
-        let payload = try decoder.decodeSynchronizationPayload(from: data)
-        stubSyncResponse(with: .success(payload))
-    }
-    
-    func stubSyncResponse(responseData: Data) throws {
-        let decoder = EurofurenceAPIDecoder()
-        let payload = try decoder.decodeSynchronizationPayload(from: responseData)
-        stubSyncResponse(with: .success(payload))
-    }
-    
-    func updateLocalStore<Response>(using response: Response) async throws where Response: SampleResponseFile {
-        try stubSyncResponse(responseData: try response.loadFileContents())
-        try await model.updateLocalStore()
-    }
-    
     func updateLocalStore(using response: SampleResponse) async throws {
         let synchronizationPayload = try response.loadResponse()
         stubSyncResponse(with: .success(synchronizationPayload))
