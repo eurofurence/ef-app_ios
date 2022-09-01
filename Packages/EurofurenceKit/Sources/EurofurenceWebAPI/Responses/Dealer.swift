@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-public struct RemoteDealer: RemoteEntity {
+public struct Dealer: APIEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -35,7 +35,7 @@ public struct RemoteDealer: RemoteEntity {
     public var shortDescription: String
     public var aboutTheArtistText: String
     public var aboutTheArtText: String
-    public var links: [RemoteLink]?
+    public var links: [Link]?
     public var twitterHandle: String
     public var telegramHandle: String
     public var attendsOnThursday: Bool

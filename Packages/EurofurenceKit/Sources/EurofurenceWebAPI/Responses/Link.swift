@@ -1,4 +1,4 @@
-public struct RemoteLink: Decodable {
+public struct Link: Decodable {
     
     private enum CodingKeys: String, CodingKey {
         case fragmentType = "FragmentType"

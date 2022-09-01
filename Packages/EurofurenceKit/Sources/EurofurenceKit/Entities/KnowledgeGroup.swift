@@ -20,7 +20,7 @@ public class KnowledgeGroup: Entity {
 
 extension KnowledgeGroup: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteKnowledgeGroup
+    typealias RemoteObject = EurofurenceWebAPI.KnowledgeGroup
     
     func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id

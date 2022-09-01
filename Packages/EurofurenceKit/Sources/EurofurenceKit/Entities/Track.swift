@@ -17,9 +17,9 @@ public class Track: Entity {
 
 extension Track: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteTrack
+    typealias RemoteObject = EurofurenceWebAPI.Track
     
-    func update(context: RemoteResponseConsumingContext<RemoteTrack>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         name = context.remoteObject.name

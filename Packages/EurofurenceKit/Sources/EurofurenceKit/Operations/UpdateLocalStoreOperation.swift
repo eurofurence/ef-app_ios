@@ -58,7 +58,7 @@ struct UpdateLocalStoreOperation {
         try ingest(node: syncResponse.dealers, from: syncResponse, into: managedObjectContext, as: Dealer.self)
     }
     
-    private func ingest<T: RemoteEntity, U: Entity & ConsumesRemoteResponse>(
+    private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
         node: SynchronizationPayload.Update<T>,
         from response: SynchronizationPayload,
         into managedObjectContext: NSManagedObjectContext,

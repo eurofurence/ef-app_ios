@@ -21,9 +21,9 @@ public class KnowledgeEntry: Entity {
 
 extension KnowledgeEntry: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteKnowledgeEntry
+    typealias RemoteObject = EurofurenceWebAPI.KnowledgeEntry
     
-    func update(context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         title = context.remoteObject.title
@@ -36,7 +36,7 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
         updateLinks(context)
     }
     
-    private func updateImages(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+    private func updateImages(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         for imageID in context.remoteObject.imageIdentifiers {
             if let remoteImage = context.image(identifiedBy: imageID) {
                 let image = KnowledgeEntryImage.identifiedBy(identifier: imageID, in: context.managedObjectContext)
@@ -46,7 +46,7 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
         }
     }
     
-    private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+    private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         removeAllLinks(context)
         
         for link in context.remoteObject.links {
@@ -58,7 +58,7 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
         }
     }
     
-    private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteKnowledgeEntry>) {
+    private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         for link in links {
             removeFromLinks(link)
             context.managedObjectContext.delete(link)

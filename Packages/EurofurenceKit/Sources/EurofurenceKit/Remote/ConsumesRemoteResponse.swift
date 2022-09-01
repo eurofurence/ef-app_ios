@@ -7,7 +7,7 @@ struct RemoteResponseConsumingContext<Object> {
     var remoteObject: Object
     var response: SynchronizationPayload
     
-    func image(identifiedBy identifier: RemoteImage.ID) -> RemoteImage? {
+    func image(identifiedBy identifier: EurofurenceWebAPI.Image.ID) -> EurofurenceWebAPI.Image? {
         response.images.changed.first(where: { $0.id == identifier })
     }
     

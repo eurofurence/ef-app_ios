@@ -48,9 +48,9 @@ extension Event {
 
 extension Event: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteEvent
+    typealias RemoteObject = EurofurenceWebAPI.Event
     
-    func update(context: RemoteResponseConsumingContext<RemoteEvent>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         slug = context.remoteObject.slug
@@ -75,14 +75,14 @@ extension Event: ConsumesRemoteResponse {
         updatePoster(context)
     }
     
-    private func updateTags(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+    private func updateTags(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         for remoteTag in context.remoteObject.tags {
             let tag = Tag.named(name: remoteTag, in: context.managedObjectContext)
             addToTags(tag)
         }
     }
     
-    private func updateHosts(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+    private func updateHosts(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         let hosts = context.remoteObject.panelHostsSeperatedByComma.components(separatedBy: ",")
         for host in hosts {
             let trimmedHost = host.trimmingCharacters(in: .whitespaces)
@@ -91,7 +91,7 @@ extension Event: ConsumesRemoteResponse {
         }
     }
     
-    private func updateBanner(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+    private func updateBanner(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         let bannerID = context.remoteObject.bannerImageIdentifier
         if let bannerID = bannerID, let remoteBanner = context.image(identifiedBy: bannerID) {
             let eventBanner = EventBanner.identifiedBy(identifier: bannerID, in: context.managedObjectContext)
@@ -101,7 +101,7 @@ extension Event: ConsumesRemoteResponse {
         }
     }
     
-    private func updatePoster(_ context: RemoteResponseConsumingContext<RemoteEvent>) {
+    private func updatePoster(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         let posterID = context.remoteObject.posterImageIdentifier
         if let posterID = posterID, let remotePoster = context.image(identifiedBy: posterID) {
             let eventPoster = EventPoster.identifiedBy(identifier: posterID, in: context.managedObjectContext)

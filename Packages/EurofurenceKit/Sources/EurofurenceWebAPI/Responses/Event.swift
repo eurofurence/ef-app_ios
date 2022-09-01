@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-public struct RemoteEvent: RemoteEntity {
+public struct Event: APIEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"

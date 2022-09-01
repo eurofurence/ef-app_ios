@@ -18,9 +18,9 @@ public class Day: Entity {
 
 extension Day: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteDay
+    typealias RemoteObject = EurofurenceWebAPI.Day
     
-    func update(context: RemoteResponseConsumingContext<RemoteDay>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         date = context.remoteObject.date

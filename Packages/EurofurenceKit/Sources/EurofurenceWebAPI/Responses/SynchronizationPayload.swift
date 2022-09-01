@@ -17,14 +17,14 @@ public struct SynchronizationPayload: Decodable {
     
     public var currentDate: Date
     public var conventionIdentifier: String
-    public var days: SynchronizationPayload.Update<RemoteDay>
-    public var tracks: SynchronizationPayload.Update<RemoteTrack>
-    public var rooms: SynchronizationPayload.Update<RemoteRoom>
-    public var events: SynchronizationPayload.Update<RemoteEvent>
-    public var images: SynchronizationPayload.Update<RemoteImage>
-    public var knowledgeGroups: SynchronizationPayload.Update<RemoteKnowledgeGroup>
-    public var knowledgeEntries: SynchronizationPayload.Update<RemoteKnowledgeEntry>
-    public var dealers: SynchronizationPayload.Update<RemoteDealer>
+    public var days: SynchronizationPayload.Update<Day>
+    public var tracks: SynchronizationPayload.Update<Track>
+    public var rooms: SynchronizationPayload.Update<Room>
+    public var events: SynchronizationPayload.Update<Event>
+    public var images: SynchronizationPayload.Update<Image>
+    public var knowledgeGroups: SynchronizationPayload.Update<KnowledgeGroup>
+    public var knowledgeEntries: SynchronizationPayload.Update<KnowledgeEntry>
+    public var dealers: SynchronizationPayload.Update<Dealer>
     
 }
 
@@ -32,7 +32,7 @@ public struct SynchronizationPayload: Decodable {
 
 extension SynchronizationPayload {
     
-    public struct Update<E>: Decodable where E: RemoteEntity {
+    public struct Update<E>: Decodable where E: APIEntity {
         
         private enum CodingKeys: String, CodingKey {
             case changed = "ChangedEntities"

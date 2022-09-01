@@ -18,9 +18,9 @@ public class Room: Entity {
 
 extension Room: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteRoom
+    typealias RemoteObject = EurofurenceWebAPI.Room
     
-    func update(context: RemoteResponseConsumingContext<RemoteRoom>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         identifier = context.remoteObject.id
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         name = context.remoteObject.name

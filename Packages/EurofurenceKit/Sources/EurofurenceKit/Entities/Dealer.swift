@@ -33,9 +33,9 @@ public class Dealer: Entity {
 
 extension Dealer: ConsumesRemoteResponse {
     
-    typealias RemoteObject = RemoteDealer
+    typealias RemoteObject = EurofurenceWebAPI.Dealer
     
-    func update(context: RemoteResponseConsumingContext<RemoteDealer>) throws {
+    func update(context: RemoteResponseConsumingContext<RemoteObject>) throws {
         updateAttributes(context)
         updateLinks(context)
         updateArtistImage(context)
@@ -44,7 +44,7 @@ extension Dealer: ConsumesRemoteResponse {
         updateCategories(context)
     }
     
-    private func updateAttributes(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateAttributes(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         lastEdited = context.remoteObject.lastChangeDateTimeUtc
         identifier = context.remoteObject.id
         aboutTheArt = context.remoteObject.aboutTheArtText
@@ -62,7 +62,7 @@ extension Dealer: ConsumesRemoteResponse {
         twitterHandle = context.remoteObject.twitterHandle
     }
     
-    private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         removeAllLinks(context)
         
         if let links = context.remoteObject.links {
@@ -76,14 +76,14 @@ extension Dealer: ConsumesRemoteResponse {
         }
     }
     
-    private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         for link in links {
             removeFromLinks(link)
             context.managedObjectContext.delete(link)
         }
     }
     
-    private func updateArtistImage(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateArtistImage(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         // TODO: Update removing image should clear the current reference.
         let artistImageID = context.remoteObject.artistImageId
         if let artistImageID = artistImageID, let image = context.image(identifiedBy: artistImageID) {
@@ -97,7 +97,7 @@ extension Dealer: ConsumesRemoteResponse {
         }
     }
     
-    private func updateArtPreview(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateArtPreview(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         // TODO: Update removing image should clear the current reference.
         let artPreviewID = context.remoteObject.artPreviewImageId
         if let artPreviewID = artPreviewID, let image = context.image(identifiedBy: artPreviewID) {
@@ -113,7 +113,7 @@ extension Dealer: ConsumesRemoteResponse {
         }
     }
     
-    private func updateArtistThumbnail(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateArtistThumbnail(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         // TODO: Update removing image should clear the current reference.
         let thumbnailID = context.remoteObject.artistThumbnailImageId
         if let thumbnailID = thumbnailID, let image = context.image(identifiedBy: thumbnailID) {
@@ -127,7 +127,7 @@ extension Dealer: ConsumesRemoteResponse {
         }
     }
     
-    private func updateCategories(_ context: RemoteResponseConsumingContext<RemoteDealer>) {
+    private func updateCategories(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         for category in context.remoteObject.categories {
             let dealerCategory = DealerCategory.named(name: category, in: context.managedObjectContext)
             addToCategories(dealerCategory)

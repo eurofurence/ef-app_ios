@@ -66,7 +66,7 @@ extension Image {
 
 extension Image {
     
-    func update(from remoteResponse: RemoteImage) {
+    func update(from remoteResponse: EurofurenceWebAPI.Image) {
         identifier = remoteResponse.id
         lastEdited = remoteResponse.lastChangeDateTimeUtc
         contentHashSHA1 = remoteResponse.contentHashSha1

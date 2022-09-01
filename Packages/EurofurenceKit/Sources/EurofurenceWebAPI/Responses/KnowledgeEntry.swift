@@ -1,6 +1,6 @@
 import Foundation.NSDate
 
-public struct RemoteKnowledgeEntry: RemoteEntity {
+public struct KnowledgeEntry: APIEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -19,7 +19,7 @@ public struct RemoteKnowledgeEntry: RemoteEntity {
     public var title: String
     public var text: String
     public var order: Int
-    public var links: [RemoteLink]
+    public var links: [Link]
     public var imageIdentifiers: [String]
     
 }
