@@ -20,6 +20,12 @@ struct UpdateLocalStoreOperation {
     private func fetchLatestSyncResponse() async throws -> SynchronizationPayload {
         do {
             let previousChangeToken = configuration.properties.synchronizationChangeToken
+            
+            if logger.logLevel >= .info {
+                let tokenMetatadataString = previousChangeToken?.description ?? "nil"
+                logger.info("Fetching latest changes.", metadata: ["Token": .string(tokenMetatadataString)])
+            }
+            
             return try await configuration.api.fetchChanges(since: previousChangeToken)
         } catch {
             logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])

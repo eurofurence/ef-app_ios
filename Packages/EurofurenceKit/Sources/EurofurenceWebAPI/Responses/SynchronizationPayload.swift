@@ -48,9 +48,13 @@ extension SynchronizationPayload {
 
 extension SynchronizationPayload {
     
-    public struct GenerationToken: Codable, Equatable {
+    public struct GenerationToken: Codable, CustomStringConvertible, Equatable {
         
         let lastSyncTime: Date
+        
+        public var description: String {
+            EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
+        }
         
         public init(lastSyncTime: Date) {
             self.lastSyncTime = lastSyncTime
