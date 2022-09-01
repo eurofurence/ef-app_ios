@@ -95,11 +95,11 @@
         <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeGroup" inverseName="entries" inverseEntity="KnowledgeGroup"/>
-        <relationship name="images" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntryImage" inverseName="entry" inverseEntity="KnowledgeEntryImage"/>
+        <relationship name="images" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
         <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
     </entity>
     <entity name="KnowledgeEntryImage" representedClassName="KnowledgeEntryImage" parentEntity="Image" syncable="YES">
-        <relationship name="entry" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="images" inverseEntity="KnowledgeEntry"/>
+        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="images" inverseEntity="KnowledgeEntry"/>
     </entity>
     <entity name="KnowledgeGroup" representedClassName="KnowledgeGroup" parentEntity="Entity" syncable="YES">
         <attribute name="fontAwesomeUnicodeCharacterAddress" attributeType="String"/>
@@ -170,7 +170,7 @@
         <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
         <element name="Image" positionX="9" positionY="144" width="128" height="133"/>
         <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
-        <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="58"/>
+        <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
         <element name="Link" positionX="9" positionY="153" width="128" height="88"/>
