@@ -33,17 +33,17 @@ struct UpdateLocalStoreOperation {
     }
     
     private func ingestSyncResponse(_ response: RemoteSyncResponse) async throws {
-        do {
-            let writingContext = configuration.persistentContainer.newBackgroundContext()
-            try await writingContext.performAsync { [self, writingContext] in
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        try await writingContext.performAsync { [self, writingContext] in
+            do {
                 try ingest(syncResponse: response, into: writingContext)
+            } catch {
+                logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
+                throw error
             }
-            
-            configuration.properties.lastSyncTime = response.currentDate
-        } catch {
-            logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
-            throw error
         }
+        
+        configuration.properties.lastSyncTime = response.currentDate
     }
     
     private func ingest(syncResponse: RemoteSyncResponse, into managedObjectContext: NSManagedObjectContext) throws {
@@ -74,6 +74,15 @@ struct UpdateLocalStoreOperation {
             )
             
             try knowledgeGroup.update(from: remoteKnowledgeGroup)
+        }
+        
+        for remoteKnowledgeEntry in syncResponse.knowledgeEntries.changed {
+            let knowledgeEntry = try KnowledgeEntry.entity(
+                identifiedBy: remoteKnowledgeEntry.Id,
+                in: managedObjectContext
+            )
+            
+            try knowledgeEntry.update(from: remoteKnowledgeEntry, fullResponse: syncResponse)
         }
         
         try managedObjectContext.save()

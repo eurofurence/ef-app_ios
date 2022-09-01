@@ -16,6 +16,44 @@ public class KnowledgeEntry: Entity {
 
 }
 
+extension KnowledgeEntry {
+    
+    func update(
+        from remoteResponse: RemoteKnowledgeEntry,
+        fullResponse: RemoteSyncResponse
+    ) throws {
+        for link in links {
+            removeFromLinks(link)
+            managedObjectContext!.delete(link)
+        }
+        
+        identifier = remoteResponse.Id
+        lastEdited = remoteResponse.LastChangeDateTimeUtc
+        title = remoteResponse.Title
+        text = remoteResponse.Text
+        order = Int16(remoteResponse.Order)
+        
+        group = try managedObjectContext!.entity(withIdentifier: remoteResponse.KnowledgeGroupId)
+        
+        for imageIdentifier in remoteResponse.ImageIds {
+            if let remoteImage = fullResponse.images.changed.first(where: { $0.Id == imageIdentifier }) {
+                let image = KnowledgeEntryImage.identifiedBy(identifier: imageIdentifier, in: managedObjectContext!)
+                image.update(from: remoteImage)
+                addToImages(image)
+            }
+        }
+        
+        for link in remoteResponse.Links {
+            let knowledgeLink = KnowledgeLink(context: managedObjectContext!)
+            knowledgeLink.fragmentType = link.FragmentType
+            knowledgeLink.name = link.Name
+            knowledgeLink.target = link.Target
+            addToLinks(knowledgeLink)
+        }
+    }
+    
+}
+
 // MARK: Generated accessors for images
 extension KnowledgeEntry {
 

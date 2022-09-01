@@ -12,6 +12,7 @@ protocol SyncResponseFile: SampleResponseFile {
     var events: [ExpectedEvent] { get }
     var images: [ExpectedImage] { get }
     var knowledgeGroups: [ExpectedKnowledgeGroup] { get }
+    var knowledgeEntries: [ExpectedKnowledgeEntry] { get }
     
 }
 

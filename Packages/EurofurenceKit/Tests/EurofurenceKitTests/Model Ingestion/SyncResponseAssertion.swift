@@ -13,6 +13,7 @@ struct SyncResponseAssertion<Response> where Response: SyncResponseFile {
             try assertRooms()
             try assertEvents()
             try assertKnowledgeGroups()
+            try assertKnowledgeEntries()
         }
     }
     
@@ -48,6 +49,13 @@ struct SyncResponseAssertion<Response> where Response: SyncResponseFile {
         for knowledgeGroup in response.knowledgeGroups {
             let entity: KnowledgeGroup = try managedObjectContext.entity(withIdentifier: knowledgeGroup.identifier)
             try knowledgeGroup.assert(against: entity)
+        }
+    }
+    
+    private func assertKnowledgeEntries() throws {
+        for knowledgeEntry in response.knowledgeEntries {
+            let entity: KnowledgeEntry = try managedObjectContext.entity(withIdentifier: knowledgeEntry.identifier)
+            try knowledgeEntry.assert(against: entity, in: managedObjectContext, from: response)
         }
     }
     

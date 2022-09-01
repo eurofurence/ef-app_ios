@@ -491,4 +491,8 @@ struct EF26CorruptSyncResponseFile: SyncResponseFile {
         ]
     }
     
+    var knowledgeEntries: [ExpectedKnowledgeEntry] {
+        []
+    }
+    
 }

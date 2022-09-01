@@ -420,6 +420,16 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 sizeInBytes: 1133398,
                 mimeType: "image/jpeg",
                 contentHashSha1: "aoU0oeC4LqJ9KoxYevHeryHbl/8="
+            ),
+            
+            .init(
+                lastUpdated: "2022-07-11T16:10:25.271Z",
+                identifier: "5605b5dd-4270-48b3-b5c1-842c878ec807",
+                internalReference: "knowledge:e252c747-3469-a0f3-d3e6-404f40831520",
+                width: 640,
+                height: 427,
+                sizeInBytes: 53435,
+                mimeType: "image/jpeg", contentHashSha1: "owpH9NioFzrkZ/+VpSAsHIb/B2k="
             )
         ]
     }
@@ -498,6 +508,48 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 order: 5,
                 fontAwesomeCharacterAddress: "f1ea"
             ),
+        ]
+    }
+    
+    var knowledgeEntries: [ExpectedKnowledgeEntry] {
+        return [
+            .init(
+                lastUpdated: "2022-06-23T11:59:23.498Z",
+                identifier: "920a440f-112b-b851-dff8-653af3c040d8",
+                knowledgeGroupIdentifier: "92cdf214-7e9f-6bfa-0370-dfadd5e76493",
+                title: "Website Team",
+                text: "Once the convention is over, all packed up and stored and many exhausted departments go into well earned hibernation for a few months, that’s when the Eurofurence website team powers up. Our mission is to make a website, and make it good. \n\nThe way to that website is, of course, riddled with many time-consuming and complicated tasks. Over the course of just six months, our team of specialized designers, artists, writers, and programmers create a design based on the next con’s theme. The theme is reflected in all matters of the website: even function follows design. An artist is on board to create a visual art piece to first introduce the new theme to both public and staff. The team then updates and layouts all content, molding everything into code that follows the newest standards and will run on all combinations of screens, devices, operating systems and configurations possible. The website team ensures the EF website is accessible to all and breathes the spirit of the theme!\n\nOnce the website is done, we don’t exactly sit back and relax. Throughout the year we provide updates to the website as they come in, ensuring any and all information is always up to date.\n\nOf course, we’re only human, so should we have missed anything or if you’re having any trouble accessing the website, feel free to drop us a note via web@eurofurence.org and we’ll get back to you!",
+                order: 11,
+                links: [
+                    .init(
+                        fragmentType: "WebExternal",
+                        name: "web@eurofurence.org",
+                        target: "mailto:web@eurofurence.org",
+                        knowledgeEntryIdentifier: "92cdf214-7e9f-6bfa-0370-dfadd5e76493"
+                    )
+                ],
+                imageIdentifiers: []
+            ),
+            
+            .init(
+                lastUpdated: "2022-07-11T16:10:20.458Z",
+                identifier: "d54a7222-777c-4f97-4f79-64848169d448",
+                knowledgeGroupIdentifier: "d3c10dde-0c9b-1111-1a61-33b76a562a3c",
+                title: "How you can help",
+                text: "As in past years, we are seeking donations of artwork and other unique items to be used in raising money for charity through our Lottery Booth, Charity Auction and a Charity Display in the Art Show with items for silent bidding.\n\nEven if you have not pre-registered your donation, we will still happily accept extra donations during the convention. You can also consider donating a percentage of your Art Show sales to charity.\nThere will be various events, activities and other opportunities to donate money during the convention to support our charity. \n\nThe charity team and Cheetah Preservation Foundation thank you from the bottom of our hearts for anything you can spare.",
+                order: 1,
+                links: [
+                    .init(
+                        fragmentType: "WebExternal",
+                        name: "Pre-register your donation",
+                        target: "https://charity.eurofurence.org",
+                        knowledgeEntryIdentifier: "d54a7222-777c-4f97-4f79-64848169d448"
+                    )
+                ],
+                imageIdentifiers: [
+                    "5605b5dd-4270-48b3-b5c1-842c878ec807"
+                ]
+            )
         ]
     }
     
