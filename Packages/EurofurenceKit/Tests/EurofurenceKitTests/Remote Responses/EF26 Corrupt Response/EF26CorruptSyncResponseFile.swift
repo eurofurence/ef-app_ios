@@ -495,4 +495,8 @@ struct EF26CorruptSyncResponseFile: SyncResponseFile {
         []
     }
     
+    var dealers: [ExpectedDealer] {
+        []
+    }
+    
 }

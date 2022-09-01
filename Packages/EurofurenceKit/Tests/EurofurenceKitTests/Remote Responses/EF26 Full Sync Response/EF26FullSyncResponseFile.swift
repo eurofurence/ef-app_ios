@@ -430,7 +430,62 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 height: 427,
                 sizeInBytes: 53435,
                 mimeType: "image/jpeg", contentHashSha1: "owpH9NioFzrkZ/+VpSAsHIb/B2k="
-            )
+            ),
+            
+            .init(
+                lastUpdated: "2022-08-15T18:00:09.758Z",
+                identifier: "541f5396-4eb4-401a-a571-ea1b096c4920",
+                internalReference: "dealer:art:7",
+                width: 866,
+                height: 800,
+                sizeInBytes: 165531,
+                mimeType: "image/jpeg",
+                contentHashSha1: "pFDdTwyt6IBduhsLLhCKNmZ8IRk="
+            ),
+            
+            .init(
+                lastUpdated: "2022-08-15T18:00:09.716Z",
+                identifier: "7316e3a5-141f-46ed-830c-0bb8b9cf994b",
+                internalReference: "dealer:thumbnail:7",
+                width: 60,
+                height: 60,
+                sizeInBytes: 3352,
+                mimeType: "image/jpeg",
+                contentHashSha1: "xGoICfU+v0LoDccCMtb0Q6Y2Eiw="
+            ),
+            
+            .init(
+                lastUpdated: "2022-08-15T18:00:09.588Z",
+                identifier: "5dab505d-154c-4979-8e6f-f676e50e5b77",
+                internalReference: "dealer:artist:7",
+                width: 400,
+                height: 450,
+                sizeInBytes: 47183,
+                mimeType: "image/jpeg",
+                contentHashSha1: "g69x51JG7SQ6x6yZo6qpbaVxkwE="
+            ),
+            
+            .init(
+                lastUpdated: "2022-06-29T06:00:08.095Z",
+                identifier: "809cd869-9228-4ee7-803f-4ab5d343bf67",
+                internalReference: "dealer:thumbnail:11",
+                width: 60,
+                height: 60,
+                sizeInBytes: 2618,
+                mimeType: "image/jpeg",
+                contentHashSha1: "SBh4LCQ8ReIpL31RQ8mS3taRdKc="
+            ),
+            
+            .init(
+                lastUpdated: "2022-06-29T06:00:07.970Z",
+                identifier: "5990b1c9-972e-4db4-aeff-abf16b2ba165",
+                internalReference: "dealer:artist:11",
+                width: 450,
+                height: 400,
+                sizeInBytes: 41407,
+                mimeType: "image/jpeg",
+                contentHashSha1: "f19bXoDQ6kZ7zEZUxXgG/gG7Xbw="
+            ),
         ]
     }
     
@@ -549,6 +604,86 @@ struct EF26FullSyncResponseFile: SyncResponseFile {
                 imageIdentifiers: [
                     "5605b5dd-4270-48b3-b5c1-842c878ec807"
                 ]
+            )
+        ]
+    }
+    
+    var dealers: [ExpectedDealer] {
+        return [
+            .init(
+                lastUpdated: "2022-08-15T18:00:11.413Z",
+                identifier: "96b4c052-78f3-45bb-b46f-f3ebe4639db4",
+                registrationNumber: 7,
+                nickname: "Pan Hesekiel Shiroi",
+                displayName: "",
+                merchandiseDescription: "sketch and badge commissions, prints, matted prints, card games, children's books, original concept sketches",
+                shortDescription: "Stop by, say hi and grab a couple of prints, sketches as well as the official Pawpet Show poster for this year's show. :)\r\nSketch commissions available in limited supply.",
+                aboutTheArtistDescription: "Professional illustrator and freelance artist. Pretending to be able to paint and - most importantly - excited to meet you all! :)",
+                aboutTheArtDescription: "At my table you will find:\r\n- prints (bare, matted and double matted)\r\n- original sketches and concept art\r\n- sketch commissions\r\n- Pawpet Show posters\r\n- Paws'n'Claws playing cards\r\n- children's books",
+                links: [
+                    .init(fragmentType: "WebExternal", name: "", target: "http://pan-hesekiel-shiroi.de")
+                ],
+                twitterHandle: "Pan_H_Shiroi",
+                telegramHandle: "Pan_H_Shiroi",
+                thursdayAttendence: true,
+                fridayAttendence: true,
+                saturdayAttendence: true,
+                artPreviewCaption: "",
+                artistThumbnailImageIdentifier: "7316e3a5-141f-46ed-830c-0bb8b9cf994b",
+                artistImageIdentifier: "5dab505d-154c-4979-8e6f-f676e50e5b77",
+                artPreviewImageIdentifier: "541f5396-4eb4-401a-a571-ea1b096c4920",
+                isAfterDark: false,
+                categories: ["Prints", "Artwork", "Commissions"]
+            ),
+            
+            .init(
+                lastUpdated: "2022-06-02T07:37:59.098Z",
+                identifier: "67ef002b-5e1d-472f-a6a3-18ba13489de2",
+                registrationNumber: 22,
+                nickname: "Pinky",
+                displayName: "FurryFursuitMaker",
+                merchandiseDescription: "Fursuit items like feetpaws, a fursuit, merchandise like lanyards, wristbands, keychains, pins, custom made prints & more",
+                shortDescription: "",
+                aboutTheArtistDescription: "",
+                aboutTheArtDescription: "",
+                links: [],
+                twitterHandle: "",
+                telegramHandle: "",
+                thursdayAttendence: true,
+                fridayAttendence: true,
+                saturdayAttendence: true,
+                artPreviewCaption: "",
+                artistThumbnailImageIdentifier: nil,
+                artistImageIdentifier: nil,
+                artPreviewImageIdentifier: nil,
+                isAfterDark: false,
+                categories: ["Miscellaneous"]
+            ),
+            
+            .init(
+                lastUpdated: "2022-06-29T06:00:09.078Z",
+                identifier: "b6c41786-2b9a-4534-a768-88b3458e41cc",
+                registrationNumber: 11,
+                nickname: "Suran",
+                displayName: "YiffyToys",
+                merchandiseDescription: "Dildos",
+                shortDescription: "The YiffyToys.de adult online shop offering sex toys from more then 16 different manufacturers.",
+                aboutTheArtistDescription: "",
+                aboutTheArtDescription: "Offering sex toys from more then 16 different manufacturers.\r\nPremierung new models at EF.\r\nOffering a selection of Flops with slight defects at reduced prices.",
+                links: [
+                    .init(fragmentType: "WebExternal", name: "", target: "https://yiffy.toys")
+                ],
+                twitterHandle: "YiffyToys",
+                telegramHandle: "",
+                thursdayAttendence: true,
+                fridayAttendence: true,
+                saturdayAttendence: true,
+                artPreviewCaption: "",
+                artistThumbnailImageIdentifier: "809cd869-9228-4ee7-803f-4ab5d343bf67",
+                artistImageIdentifier: "5990b1c9-972e-4db4-aeff-abf16b2ba165",
+                artPreviewImageIdentifier: nil,
+                isAfterDark: true,
+                categories: ["Miscellaneous"]
             )
         ]
     }
