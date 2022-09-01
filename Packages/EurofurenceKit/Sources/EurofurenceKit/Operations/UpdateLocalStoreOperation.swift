@@ -19,8 +19,8 @@ struct UpdateLocalStoreOperation {
     
     private func fetchLatestSyncResponse() async throws -> SynchronizationPayload {
         do {
-            let lastSyncTime = configuration.properties.lastSyncTime
-            return try await configuration.api.executeSyncRequest(lastUpdateTime: lastSyncTime)
+            let previousChangeToken = configuration.properties.synchronizationChangeToken
+            return try await configuration.api.fetchChanges(since: previousChangeToken)
         } catch {
             logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.syncFailure
@@ -45,7 +45,7 @@ struct UpdateLocalStoreOperation {
             }
         }
         
-        configuration.properties.lastSyncTime = response.currentDate
+        configuration.properties.synchronizationChangeToken = response.synchronizationToken
     }
     
     private func ingest(syncResponse: SynchronizationPayload, into managedObjectContext: NSManagedObjectContext) throws {

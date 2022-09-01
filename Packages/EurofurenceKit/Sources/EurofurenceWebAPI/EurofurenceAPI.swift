@@ -2,6 +2,8 @@ import Foundation
 
 public protocol EurofurenceAPI {
     
-    func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload
+    func fetchChanges(
+        since previousChangeToken: SynchronizationPayload.GenerationToken?
+    ) async throws -> SynchronizationPayload
     
 }

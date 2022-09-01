@@ -1,3 +1,4 @@
+import EurofurenceWebAPI
 import Foundation
 
 public class AppGroupModelProperties: EurofurenceModelProperties {
@@ -9,13 +10,6 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         userDefaults = UserDefaults(suiteName: SecurityGroup.identifier)!
     }
     
-    public var lastSyncTime: Date? {
-        get {
-            userDefaults.object(forKey: "") as? Date
-        }
-        set {
-            userDefaults.set(newValue, forKey: "")
-        }
-    }
+    public var synchronizationChangeToken: SynchronizationPayload.GenerationToken?
     
 }

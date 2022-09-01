@@ -10,7 +10,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let responseFileData = try Data(contentsOf: responseFileURL)
         network.stub(url: expectedURL, with: .success(responseFileData))
         let api = CIDSensitiveEurofurenceAPI(network: network)
-        _ = try await api.executeSyncRequest(lastUpdateTime: nil)
+        _ = try await api.fetchChanges(since: nil)
         
         let expected = FakeNetwork.Event.get(url: expectedURL)
         XCTAssertEqual([expected], network.history)
@@ -25,7 +25,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let responseFileData = try Data(contentsOf: responseFileURL)
         network.stub(url: expectedURL, with: .success(responseFileData))
         let api = CIDSensitiveEurofurenceAPI(network: network)
-        _ = try await api.executeSyncRequest(lastUpdateTime: lastSyncTime)
+        _ = try await api.fetchChanges(since: lastSyncTime)
         
         let expected = FakeNetwork.Event.get(url: expectedURL)
         XCTAssertEqual([expected], network.history)

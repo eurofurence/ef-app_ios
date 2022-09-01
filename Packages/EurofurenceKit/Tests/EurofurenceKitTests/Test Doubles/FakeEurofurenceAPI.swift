@@ -5,9 +5,11 @@ import Foundation
 class FakeEurofurenceAPI: EurofurenceAPI {
     
     var nextSyncResponse: Result<SynchronizationPayload, Error>?
-    private(set) var lastSyncTime: Date?
-    func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload {
-        lastSyncTime = lastUpdateTime
+    private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
+    func fetchChanges(
+        since previousChangeToken: SynchronizationPayload.GenerationToken?
+    ) async throws -> SynchronizationPayload {
+        lastChangeToken = previousChangeToken
         
         struct NotStubbed: Error { }
         

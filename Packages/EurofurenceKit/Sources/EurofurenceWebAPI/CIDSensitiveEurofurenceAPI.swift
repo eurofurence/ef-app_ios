@@ -14,9 +14,11 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         decoder = EurofurenceAPIDecoder()
     }
     
-    public func executeSyncRequest(lastUpdateTime: Date?) async throws -> SynchronizationPayload {
+    public func fetchChanges(
+        since previousChangeToken: SynchronizationPayload.GenerationToken?
+    ) async throws -> SynchronizationPayload {
         let sinceToken: String = {
-            if let lastUpdateTime = lastUpdateTime {
+            if let lastUpdateTime = previousChangeToken?.lastSyncTime {
                 let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastUpdateTime)
                 return "?since=\(formattedTime)"
             } else {

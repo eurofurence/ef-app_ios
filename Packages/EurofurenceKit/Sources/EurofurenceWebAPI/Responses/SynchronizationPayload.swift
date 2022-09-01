@@ -3,7 +3,7 @@ import Foundation.NSDate
 public struct SynchronizationPayload: Decodable {
     
     private enum CodingKeys: String, CodingKey {
-        case currentDate = "CurrentDateTimeUtc"
+        case synchronizationToken = "CurrentDateTimeUtc"
         case conventionIdentifier = "ConventionIdentifier"
         case days = "EventConferenceDays"
         case tracks = "EventConferenceTracks"
@@ -15,7 +15,7 @@ public struct SynchronizationPayload: Decodable {
         case dealers = "Dealers"
     }
     
-    public var currentDate: Date
+    public var synchronizationToken: GenerationToken
     public var conventionIdentifier: String
     public var days: SynchronizationPayload.Update<Day>
     public var tracks: SynchronizationPayload.Update<Track>
@@ -39,6 +39,27 @@ extension SynchronizationPayload {
         }
         
         public var changed: [E]
+        
+    }
+    
+}
+
+// MARK: - History Tracking
+
+extension SynchronizationPayload {
+    
+    public struct GenerationToken: Codable, Equatable {
+        
+        let lastSyncTime: Date
+        
+        public init(lastSyncTime: Date) {
+            self.lastSyncTime = lastSyncTime
+        }
+        
+        public init(from decoder: Decoder) throws {
+            let singleValueContainer = try decoder.singleValueContainer()
+            lastSyncTime = try singleValueContainer.decode(Date.self)
+        }
         
     }
     

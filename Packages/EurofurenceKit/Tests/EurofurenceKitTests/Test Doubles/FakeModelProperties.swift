@@ -1,8 +1,8 @@
 import EurofurenceKit
-import Foundation
+import EurofurenceWebAPI
 
 class FakeModelProperties: EurofurenceModelProperties {
     
-    var lastSyncTime: Date?
+    var synchronizationChangeToken: SynchronizationPayload.GenerationToken?
     
 }

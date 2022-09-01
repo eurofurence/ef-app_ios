@@ -1,7 +1,7 @@
-import Foundation
+import EurofurenceWebAPI
 
 public protocol EurofurenceModelProperties: AnyObject {
     
-    var lastSyncTime: Date? { get set }
+    var synchronizationChangeToken: SynchronizationPayload.GenerationToken? { get set }
     
 }
