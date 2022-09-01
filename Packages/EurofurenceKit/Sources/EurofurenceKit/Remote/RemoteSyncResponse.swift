@@ -26,7 +26,13 @@ struct RemoteSyncResponse: Decodable {
     
 }
 
-struct RemoteEntityNode<T>: Decodable where T: Decodable & Identifiable {
+protocol RemoteEntity: Decodable, Identifiable {
+    
+    var id: String { get }
+    
+}
+
+struct RemoteEntityNode<T>: Decodable where T: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case changed = "ChangedEntities"
@@ -36,7 +42,7 @@ struct RemoteEntityNode<T>: Decodable where T: Decodable & Identifiable {
     
 }
 
-struct RemoteDay: Decodable, Identifiable {
+struct RemoteDay: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -52,7 +58,7 @@ struct RemoteDay: Decodable, Identifiable {
     
 }
 
-struct RemoteTrack: Decodable, Identifiable {
+struct RemoteTrack: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -66,7 +72,7 @@ struct RemoteTrack: Decodable, Identifiable {
     
 }
 
-struct RemoteRoom: Decodable, Identifiable {
+struct RemoteRoom: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -82,7 +88,7 @@ struct RemoteRoom: Decodable, Identifiable {
     
 }
 
-struct RemoteEvent: Decodable, Identifiable {
+struct RemoteEvent: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -126,7 +132,7 @@ struct RemoteEvent: Decodable, Identifiable {
     
 }
 
-struct RemoteImage: Decodable, Identifiable {
+struct RemoteImage: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -150,7 +156,7 @@ struct RemoteImage: Decodable, Identifiable {
     
 }
 
-struct RemoteKnowledgeGroup: Decodable, Identifiable {
+struct RemoteKnowledgeGroup: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
@@ -170,7 +176,7 @@ struct RemoteKnowledgeGroup: Decodable, Identifiable {
     
 }
 
-struct RemoteKnowledgeEntry: Decodable, Identifiable {
+struct RemoteKnowledgeEntry: RemoteEntity {
     
     private enum CodingKeys: String, CodingKey {
         case lastChangeDateTimeUtc = "LastChangeDateTimeUtc"
