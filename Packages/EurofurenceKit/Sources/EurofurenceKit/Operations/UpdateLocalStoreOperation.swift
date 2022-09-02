@@ -6,6 +6,7 @@ struct UpdateLocalStoreOperation {
     
     private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "UpdateStore")
+    let progress = EurofurenceModel.Progress()
     
     init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
@@ -97,6 +98,8 @@ struct UpdateLocalStoreOperation {
         
         logger.info("Fetching images (count=\(identifiersAndHashes.count))")
         
+        progress.update(totalUnitCount: identifiersAndHashes.count)
+        
         let imagesDirectory = configuration.properties.imagesDirectory
         let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { [logger] group in
             var results = [DownloadImageResult]()
@@ -130,6 +133,7 @@ struct UpdateLocalStoreOperation {
             }
             
             for await result in group {
+                progress.updateCompletedUnitCount()
                 results.append(result)
             }
             

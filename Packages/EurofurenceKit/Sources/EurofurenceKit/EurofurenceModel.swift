@@ -19,7 +19,7 @@ public class EurofurenceModel: ObservableObject {
     
     public func updateLocalStore() async throws {
         let operation = UpdateLocalStoreOperation(configuration: configuration)
-        cloudStatus = .updating
+        cloudStatus = .updating(progress: operation.progress)
         
         do {
             try await operation.execute()
@@ -87,9 +87,44 @@ extension EurofurenceModel {
     
     public enum CloudStatus: Equatable {
         case idle
-        case updating
+        case updating(progress: EurofurenceModel.Progress)
         case updated
         case failed
+    }
+    
+    public class Progress: ObservableObject, Equatable {
+        
+        public static func == (lhs: EurofurenceModel.Progress, rhs: EurofurenceModel.Progress) -> Bool {
+            lhs === rhs
+        }
+        
+        private let progress = Foundation.Progress()
+        private var progressObservation: NSObjectProtocol?
+        private var localizedDescriptionObservation: NSObjectProtocol?
+        
+        @Published private(set) public var fractionComplete: Double? = nil
+        
+        public var localizedDescription: String {
+            progress.localizedDescription
+        }
+        
+        init() {
+            progress.totalUnitCount = 0
+            progress.completedUnitCount = 0
+            
+            progressObservation = progress.observe(\.fractionCompleted) { [weak self] progress, _ in
+                self?.fractionComplete = progress.fractionCompleted
+            }
+        }
+        
+        func update(totalUnitCount: Int) {
+            progress.totalUnitCount = Int64(totalUnitCount)
+        }
+        
+        func updateCompletedUnitCount() {
+            progress.completedUnitCount += 1
+        }
+        
     }
     
 }
