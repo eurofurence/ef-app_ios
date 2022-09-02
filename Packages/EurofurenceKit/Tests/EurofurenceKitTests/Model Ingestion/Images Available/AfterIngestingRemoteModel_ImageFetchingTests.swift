@@ -105,5 +105,31 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
             "Failed to download image - image should not contain a local URL"
         )
     }
+    
+    func testPreviouslyFailedImageRequestIsReattemptedOnNextSync() async throws {
+        let scenario = EurofurenceModelTestBuilder().build()
+        let payload = try SampleResponse.ef26.loadResponse()
+        
+        // We'll fail to download the image for an announcement, then on the next attempt succeed. We should then see
+        // the corresponding image entity contain the local URL.
+        let firstAnnouncement = try XCTUnwrap(payload.announcements.changed.first)
+        let announcementImageIdentifier = try XCTUnwrap(firstAnnouncement.imageIdentifier)
+        
+        let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        await scenario.api.stub(.failure(networkError), forImageIdentifier: announcementImageIdentifier)
+        await scenario.stubSyncResponse(with: .success(payload))
+        try await scenario.updateLocalStore()
+        await scenario.api.stub(.success(()), forImageIdentifier: announcementImageIdentifier)
+        try await scenario.updateLocalStore(using: .noChanges)
+        
+        let announcement: EurofurenceKit.Announcement = try scenario.viewContext.entity(
+            withIdentifier: firstAnnouncement.id
+        )
+        
+        let announcementImage = try XCTUnwrap(announcement.image)
+        let expectedURL = scenario.modelProperties.imagesDirectory.appendingPathComponent(announcementImageIdentifier)
+        
+        XCTAssertEqual(expectedURL, announcementImage.cachedImageURL)
+    }
 
 }

@@ -55,43 +55,72 @@ struct UpdateLocalStoreOperation {
         logger.info("Finished ingesting remote changes.")
         
         configuration.properties.synchronizationChangeToken = response.synchronizationToken
-        try await fetchImages(response)
+        try await fetchImages(response, managedObjectContext: writingContext)
     }
     
-    private func fetchImages(_ syncResponse: SynchronizationPayload) async throws {
-        let imagesDirectory = configuration.properties.imagesDirectory
+    private func fetchImages(
+        _ syncResponse: SynchronizationPayload,
+        managedObjectContext: NSManagedObjectContext
+    ) async throws {
+        var identifiersAndHashes = [String: String]()
         
+        for image in syncResponse.images.changed {
+            identifiersAndHashes[image.id] = image.contentHashSha1
+        }
+        
+        // Also include any Image entities where there is no corresponding URL.
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "cachedImageURL == nil")
+        
+        managedObjectContext.performAndWait { [managedObjectContext] in
+            do {
+                let images = try managedObjectContext.fetch(fetchRequest)
+                for image in images {
+                    identifiersAndHashes[image.identifier] = image.contentHashSHA1
+                }
+            } catch {
+                logger.error(
+                    "Failed to find local images to update.",
+                    metadata: ["Error": .string(String(describing: error))]
+                )
+            }
+        }
+        
+        try await fetchImages(identifiersAndHashes: identifiersAndHashes)
+    }
+    
+    private func fetchImages(identifiersAndHashes: [String: String]) async throws {
         enum DownloadImageResult: Sendable {
             case success(DownloadImageRequest)
             case failure
         }
         
-        logger.info("Fetching images (count=\(syncResponse.images.changed))")
+        logger.info("Fetching images (count=\(identifiersAndHashes.count))")
         
+        let imagesDirectory = configuration.properties.imagesDirectory
         let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { [logger] group in
             var results = [DownloadImageResult]()
             
-            for image in syncResponse.images.changed {
-                let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
-                
+            for (identifier, hash) in identifiersAndHashes {
                 group.addTask {
-                    let fetchRequest = DownloadImageRequest(
-                        imageIdentifier: image.id,
-                        lastKnownImageContentHashSHA1: image.contentHashSha1,
-                        downloadDestinationURL: imageDestinationURL
+                    let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
+                    let downloadRequest = DownloadImageRequest(
+                        imageIdentifier: identifier,
+                        lastKnownImageContentHashSHA1: hash,
+                        downloadDestinationURL: downloadDestination
                     )
                     
                     do {
-                        logger.info("Fetching image.", metadata: ["ID": .string(image.id)])
-                        try await configuration.api.downloadImage(fetchRequest)
-                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(image.id)])
+                        logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
+                        try await configuration.api.downloadImage(downloadRequest)
+                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(hash)])
                         
-                        return .success(fetchRequest)
+                        return .success(downloadRequest)
                     } catch {
                         logger.error(
                             "Failed to fetch image.",
                             metadata: [
-                                "ID": .string(image.id),
+                                "ID": .string(identifier),
                                 "Error": .string(String(describing: error))
                             ]
                         )
