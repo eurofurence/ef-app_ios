@@ -17,16 +17,25 @@ struct SynchronizedStoreAssertion {
     var synchronizationPayload: SynchronizationPayload
     
     func assert() throws {
-        try managedObjectContext.performAndWait {
-            try assertDays()
-            try assertTracks()
-            try assertRooms()
-            try assertEvents()
-            try assertKnowledgeGroups()
-            try assertKnowledgeEntries()
-            try assertDealers()
-            try assertAnnouncements()
-            try assertMaps()
+        var assertionError: Error?
+        managedObjectContext.performAndWait {
+            do {
+                try assertDays()
+                try assertTracks()
+                try assertRooms()
+                try assertEvents()
+                try assertKnowledgeGroups()
+                try assertKnowledgeEntries()
+                try assertDealers()
+                try assertAnnouncements()
+                try assertMaps()
+            } catch {
+                assertionError = error
+            }
+        }
+        
+        if let assertionError = assertionError {
+            throw assertionError
         }
     }
     
