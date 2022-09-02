@@ -143,12 +143,11 @@ struct UpdateLocalStoreOperation {
                 
                 let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "identifier == %@", request.imageIdentifier)
-                fetchRequest.fetchLimit = 1
                 
                 let fetchResults = try writingContext.fetch(fetchRequest)
-                guard let entity = fetchResults.first else { continue }
-                
-                entity.cachedImageURL = request.downloadDestinationURL
+                for entity in fetchResults {
+                    entity.cachedImageURL = request.downloadDestinationURL
+                }
             }
             
             try writingContext.save()
