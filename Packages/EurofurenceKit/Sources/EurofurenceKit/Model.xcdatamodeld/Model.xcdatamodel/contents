@@ -121,15 +121,15 @@
         <attribute name="isBrowsable" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="mapDescription" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="MapEntry" inverseName="map" inverseEntity="MapEntry"/>
-        <relationship name="graphic" maxCount="1" deletionRule="Nullify" destinationEntity="MapGraphic" inverseName="map" inverseEntity="MapGraphic"/>
+        <relationship name="entries" toMany="YES" deletionRule="Cascade" destinationEntity="MapEntry" inverseName="map" inverseEntity="MapEntry"/>
+        <relationship name="graphic" maxCount="1" deletionRule="Cascade" destinationEntity="MapGraphic" inverseName="map" inverseEntity="MapGraphic"/>
     </entity>
     <entity name="MapEntry" representedClassName="MapEntry" syncable="YES">
         <attribute name="identifier" attributeType="String"/>
         <attribute name="radius" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="x" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="y" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="links" toMany="YES" deletionRule="Nullify" destinationEntity="MapEntryLink" inverseName="mapEntry" inverseEntity="MapEntryLink"/>
+        <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="MapEntryLink" inverseName="mapEntry" inverseEntity="MapEntryLink"/>
         <relationship name="map" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="entries" inverseEntity="Map"/>
     </entity>
     <entity name="MapEntryLink" representedClassName="MapEntryLink" parentEntity="Link" syncable="YES">
@@ -175,8 +175,8 @@
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
         <element name="Link" positionX="9" positionY="153" width="128" height="74"/>
-        <element name="Map" positionX="54" positionY="198" width="128" height="118"/>
-        <element name="MapEntry" positionX="9" positionY="153" width="128" height="133"/>
+        <element name="Map" positionX="54" positionY="198" width="128" height="104"/>
+        <element name="MapEntry" positionX="9" positionY="153" width="128" height="119"/>
         <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
         <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>

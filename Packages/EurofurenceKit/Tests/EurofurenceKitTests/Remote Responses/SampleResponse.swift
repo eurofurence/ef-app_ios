@@ -3,6 +3,7 @@ import Foundation
 
 enum SampleResponse {
     
+    case deleteAll
     case ef26
     case corruptEF26
     case noChanges
@@ -14,6 +15,8 @@ enum SampleResponse {
     
     private var fileName: String {
         switch self {
+        case .deleteAll:
+            return "DeleteAll"
         case .ef26:
             return "EF26_Full_Sync_Response"
         case .corruptEF26:
