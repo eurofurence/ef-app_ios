@@ -2,9 +2,14 @@ import EurofurenceKit
 import EurofurenceWebAPI
 import Foundation
 
-class FakeEurofurenceAPI: EurofurenceAPI {
+actor FakeEurofurenceAPI: EurofurenceAPI {
     
-    var nextSyncResponse: Result<SynchronizationPayload, Error>?
+    private var nextSyncResponse: Result<SynchronizationPayload, Error>?
+    
+    func stubNextSyncResponse(_ response: Result<SynchronizationPayload, Error>) {
+        nextSyncResponse = response
+    }
+    
     private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
     func fetchChanges(
         since previousChangeToken: SynchronizationPayload.GenerationToken?
@@ -24,6 +29,20 @@ class FakeEurofurenceAPI: EurofurenceAPI {
         case .failure(let error):
             throw error
         }
+    }
+    
+    private(set) var requestedImages = [DownloadImageRequest]()
+    private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
+    func downloadImage(_ request: DownloadImageRequest) async throws {
+        requestedImages.append(request)
+        
+        if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
+            throw error
+        }
+    }
+    
+    func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
+        imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
     
 }

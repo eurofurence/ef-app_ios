@@ -35,4 +35,17 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         return response
     }
     
+    public func downloadImage(_ request: DownloadImageRequest) async throws {
+        let id = request.imageIdentifier
+        let hash = request.lastKnownImageContentHashSHA1
+        let downloadURLString = "https://app.eurofurence.org/EF26/api/Images/\(id)/Content/with-hash:\(hash)"
+        guard let downloadURL = URL(string: downloadURLString) else { return }
+        
+        if FileManager.default.fileExists(atPath: request.downloadDestinationURL.path) {
+            try FileManager.default.removeItem(at: request.downloadDestinationURL)
+        }
+        
+        try await network.download(contentsOf: downloadURL, to: request.downloadDestinationURL)
+    }
+    
 }

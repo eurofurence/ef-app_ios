@@ -6,4 +6,6 @@ public protocol EurofurenceAPI {
         since previousChangeToken: SynchronizationPayload.GenerationToken?
     ) async throws -> SynchronizationPayload
     
+    func downloadImage(_ request: DownloadImageRequest) async throws
+    
 }

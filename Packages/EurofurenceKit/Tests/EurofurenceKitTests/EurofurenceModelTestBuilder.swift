@@ -41,13 +41,13 @@ extension EurofurenceModelTestBuilder.Scenario {
         model.viewContext
     }
     
-    func stubSyncResponse(with result: Result<SynchronizationPayload, Error>) {
-        api.nextSyncResponse = result
+    func stubSyncResponse(with result: Result<SynchronizationPayload, Error>) async {
+        await api.stubNextSyncResponse(result)
     }
     
     func updateLocalStore(using response: SampleResponse) async throws {
         let synchronizationPayload = try response.loadResponse()
-        stubSyncResponse(with: .success(synchronizationPayload))
+        await stubSyncResponse(with: .success(synchronizationPayload))
         try await model.updateLocalStore()
     }
     

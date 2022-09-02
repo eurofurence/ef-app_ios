@@ -4,6 +4,7 @@ import Foundation
 class FakeNetwork: Network {
     
     private var getResponses = [URL: Result<Data, Error>]()
+    private var downloadResponses = [URL: Result<Data, Error>]()
     
     private struct NotStubbed: Error {
         var url: URL
@@ -11,6 +12,7 @@ class FakeNetwork: Network {
     
     enum Event: Equatable {
         case get(url: URL)
+        case download(url: URL)
     }
     
     private(set) var history = [Event]()
@@ -31,8 +33,28 @@ class FakeNetwork: Network {
         }
     }
     
+    func download(contentsOf url: URL, to destinationURL: URL) async throws {
+        history.append(.download(url: url))
+        
+        guard let response = downloadResponses[url] else {
+            throw NotStubbed(url: url)
+        }
+        
+        switch response {
+        case .success(let data):
+            try data.write(to: destinationURL)
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func stub(url: URL, with result: Result<Data, Error>) {
         getResponses[url] = result
+    }
+    
+    func stubDownload(of url: URL, with result: Result<Data, Error>) {
+        downloadResponses[url] = result
     }
     
 }

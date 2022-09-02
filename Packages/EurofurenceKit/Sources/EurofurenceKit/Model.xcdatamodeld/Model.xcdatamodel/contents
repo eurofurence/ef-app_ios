@@ -83,6 +83,7 @@
         <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="poster" inverseEntity="Event"/>
     </entity>
     <entity name="Image" representedClassName="Image" parentEntity="Entity" syncable="YES">
+        <attribute name="cachedImageURL" optional="YES" attributeType="URI"/>
         <attribute name="contentHashSHA1" attributeType="String"/>
         <attribute name="estimatedSizeInBytes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="height" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -168,7 +169,7 @@
         <element name="Event" positionX="-63" positionY="-18" width="128" height="269"/>
         <element name="EventBanner" positionX="18" positionY="144" width="128" height="44"/>
         <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
-        <element name="Image" positionX="9" positionY="144" width="128" height="133"/>
+        <element name="Image" positionX="9" positionY="144" width="128" height="134"/>
         <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>

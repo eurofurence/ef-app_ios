@@ -12,6 +12,17 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         }
         
         self.init(userDefaults: appGroupUserDefaults)
+        
+        // Make sure the container directory and subdirectories exist.
+        let fileManager = FileManager.default
+        var unused: ObjCBool = false
+        if fileManager.fileExists(atPath: imagesDirectory.path, isDirectory: &unused) == false {
+            do {
+                try fileManager.createDirectory(at: imagesDirectory, withIntermediateDirectories: true)
+            } catch {
+                print("Failed to prepare images directory!")
+            }
+        }
     }
     
     init(userDefaults: UserDefaults) {
@@ -20,6 +31,15 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
     
     private struct Keys {
         static let synchronizationGenerationTokenData = "EFKSynchronizationGenerationTokenData"
+    }
+    
+    public var containerDirectoryURL: URL {
+        let fileManager = FileManager.default
+        guard let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: SecurityGroup.identifier) else {
+            fatalError("Couldn't resolve URL for shared container")
+        }
+
+        return url
     }
     
     public var synchronizationChangeToken: SynchronizationPayload.GenerationToken? {

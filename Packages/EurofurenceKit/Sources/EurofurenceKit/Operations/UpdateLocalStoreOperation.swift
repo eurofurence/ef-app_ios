@@ -52,7 +52,106 @@ struct UpdateLocalStoreOperation {
             }
         }
         
+        logger.info("Finished ingesting remote changes.")
+        
         configuration.properties.synchronizationChangeToken = response.synchronizationToken
+        try await fetchImages(response, managedObjectContext: writingContext)
+    }
+    
+    private func fetchImages(
+        _ syncResponse: SynchronizationPayload,
+        managedObjectContext: NSManagedObjectContext
+    ) async throws {
+        var identifiersAndHashes = [String: String]()
+        
+        for image in syncResponse.images.changed {
+            identifiersAndHashes[image.id] = image.contentHashSha1
+        }
+        
+        // Also include any Image entities where there is no corresponding URL.
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "cachedImageURL == nil")
+        
+        managedObjectContext.performAndWait { [managedObjectContext] in
+            do {
+                let images = try managedObjectContext.fetch(fetchRequest)
+                for image in images {
+                    identifiersAndHashes[image.identifier] = image.contentHashSHA1
+                }
+            } catch {
+                logger.error(
+                    "Failed to find local images to update.",
+                    metadata: ["Error": .string(String(describing: error))]
+                )
+            }
+        }
+        
+        try await fetchImages(identifiersAndHashes: identifiersAndHashes)
+    }
+    
+    private func fetchImages(identifiersAndHashes: [String: String]) async throws {
+        enum DownloadImageResult: Sendable {
+            case success(DownloadImageRequest)
+            case failure
+        }
+        
+        logger.info("Fetching images (count=\(identifiersAndHashes.count))")
+        
+        let imagesDirectory = configuration.properties.imagesDirectory
+        let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { [logger] group in
+            var results = [DownloadImageResult]()
+            
+            for (identifier, hash) in identifiersAndHashes {
+                group.addTask {
+                    let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
+                    let downloadRequest = DownloadImageRequest(
+                        imageIdentifier: identifier,
+                        lastKnownImageContentHashSHA1: hash,
+                        downloadDestinationURL: downloadDestination
+                    )
+                    
+                    do {
+                        logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
+                        try await configuration.api.downloadImage(downloadRequest)
+                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
+                        
+                        return .success(downloadRequest)
+                    } catch {
+                        logger.error(
+                            "Failed to fetch image.",
+                            metadata: [
+                                "ID": .string(identifier),
+                                "Error": .string(String(describing: error))
+                            ]
+                        )
+                        return .failure
+                    }
+                }
+            }
+            
+            for await result in group {
+                results.append(result)
+            }
+            
+            return results
+        }
+        
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        try await writingContext.performAsync { [writingContext] in
+            for result in results {
+                guard case .success(let request) = result else { continue }
+                
+                let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", request.imageIdentifier)
+                
+                let fetchResults = try writingContext.fetch(fetchRequest)
+                for entity in fetchResults {
+                    entity.cachedImageURL = request.downloadDestinationURL
+                }
+            }
+            
+            try writingContext.save()
+        }
     }
     
     private struct ResponseIngester {

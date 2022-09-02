@@ -34,5 +34,58 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expected = FakeNetwork.Event.get(url: expectedURL)
         XCTAssertEqual([expected], network.history)
     }
+    
+    func testDownloadingImageSuccess_WritesDataToURL() async throws {
+        let network = FakeNetwork()
+        let temporaryFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("Image")
+        
+        addTeardownBlock {
+            try FileManager.default.removeItem(at: temporaryFileURL)
+        }
+        
+        let imageRequest = DownloadImageRequest(
+            imageIdentifier: "ID",
+            lastKnownImageContentHashSHA1: "SHA",
+            downloadDestinationURL: temporaryFileURL
+        )
+        
+        let expectedImageEndpointString = "https://app.eurofurence.org/EF26/api/Images/ID/Content/with-hash:SHA"
+        let expectedImageEndpoint = try XCTUnwrap(URL(string: expectedImageEndpointString))
+        let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
+        network.stubDownload(of: expectedImageEndpoint, with: .success(pretendImageData))
+        let api = CIDSensitiveEurofurenceAPI(network: network)
+        try await api.downloadImage(imageRequest)
+        
+        let downloadedImageData = try Data(contentsOf: temporaryFileURL)
+        XCTAssertEqual(downloadedImageData, pretendImageData)
+    }
+    
+    func testDownloadingImageSuccess_FileAlreadyExists_NewImageOverwritesOldFile() async throws {
+        let network = FakeNetwork()
+        let temporaryFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("Image")
+        
+        addTeardownBlock {
+            try FileManager.default.removeItem(at: temporaryFileURL)
+        }
+        
+        let imageRequest = DownloadImageRequest(
+            imageIdentifier: "ID",
+            lastKnownImageContentHashSHA1: "SHA",
+            downloadDestinationURL: temporaryFileURL
+        )
+        
+        let existingData = try XCTUnwrap("👀".data(using: .utf8))
+        try existingData.write(to: temporaryFileURL)
+        
+        let expectedImageEndpointString = "https://app.eurofurence.org/EF26/api/Images/ID/Content/with-hash:SHA"
+        let expectedImageEndpoint = try XCTUnwrap(URL(string: expectedImageEndpointString))
+        let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
+        network.stubDownload(of: expectedImageEndpoint, with: .success(pretendImageData))
+        let api = CIDSensitiveEurofurenceAPI(network: network)
+        try await api.downloadImage(imageRequest)
+        
+        let downloadedImageData = try Data(contentsOf: temporaryFileURL)
+        XCTAssertEqual(downloadedImageData, pretendImageData)
+    }
 
 }

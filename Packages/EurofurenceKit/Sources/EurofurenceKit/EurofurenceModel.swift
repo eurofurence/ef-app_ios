@@ -33,10 +33,13 @@ extension EurofurenceModel {
             case persistent
             case memory
             
-            fileprivate func configure(persistentContainer: EurofurencePersistentContainer) {
+            fileprivate func configure(
+                persistentContainer: EurofurencePersistentContainer,
+                properties: EurofurenceModelProperties
+            ) {
                 switch self {
                 case .persistent:
-                    persistentContainer.attachPersistentStore()
+                    persistentContainer.attachPersistentStore(properties: properties)
                     
                 case .memory:
                     persistentContainer.attachMemoryStore()
@@ -61,7 +64,7 @@ extension EurofurenceModel {
             self.api = api
             self.conventionIdentifier = conventionIdentifier
             
-            environment.configure(persistentContainer: persistentContainer)
+            environment.configure(persistentContainer: persistentContainer, properties: properties)
         }
         
     }
