@@ -41,9 +41,10 @@ struct UpdateLocalStoreOperation {
     
     private func ingestSyncResponse(_ response: SynchronizationPayload) async throws {
         let writingContext = configuration.persistentContainer.newBackgroundContext()
+        let api = configuration.api
         try await writingContext.performAsync { [self, writingContext] in
             do {
-                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
+                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext, api: api)
                 try ingester.ingest()
                 try writingContext.save()
             } catch {
@@ -59,6 +60,7 @@ struct UpdateLocalStoreOperation {
         
         var syncResponse: SynchronizationPayload
         var managedObjectContext: NSManagedObjectContext
+        var api: EurofurenceAPI
         
         func ingest() throws {
             try ingest(node: syncResponse.days, as: Day.self)
@@ -70,6 +72,7 @@ struct UpdateLocalStoreOperation {
             try ingest(node: syncResponse.dealers, as: Dealer.self)
             try ingest(node: syncResponse.announcements, as: Announcement.self)
             try ingest(node: syncResponse.maps, as: Map.self)
+            fetchImages()
         }
         
         private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
@@ -85,6 +88,17 @@ struct UpdateLocalStoreOperation {
                 )
                 
                 try correspondingEntity.update(context: updateContext)
+            }
+        }
+        
+        private func fetchImages() {
+            for image in syncResponse.images.changed {
+                let fetchRequest = ImageFetchRequest(
+                    imageIdentifier: image.id,
+                    lastKnownImageContentHashSHA1: image.contentHashSha1
+                )
+                
+                api.fetchImage(fetchRequest)
             }
         }
         
