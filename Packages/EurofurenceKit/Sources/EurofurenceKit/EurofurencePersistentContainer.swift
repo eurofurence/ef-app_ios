@@ -16,7 +16,7 @@ class EurofurencePersistentContainer: NSPersistentContainer {
 extension EurofurencePersistentContainer {
     
     func attachPersistentStore(properties: EurofurenceModelProperties) {
-        let modelDirectory = properties.containerDirectoryURL.appendingPathComponent("Database")
+        let modelDirectory = properties.persistentStoreDirectory
         let persistentStoreURL = modelDirectory.appendingPathComponent("database.sqlite")
         let persistentStoreDescription = NSPersistentStoreDescription(url: persistentStoreURL)
         persistentStoreDescription.type = NSSQLiteStoreType

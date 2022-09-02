@@ -10,8 +10,16 @@ public protocol EurofurenceModelProperties: AnyObject {
 
 extension EurofurenceModelProperties {
     
+    public var eurofurenceKitDirectory: URL {
+        containerDirectoryURL.appendingPathComponent("EurofurenceKit")
+    }
+    
+    public var persistentStoreDirectory: URL {
+        eurofurenceKitDirectory.appendingPathComponent("Database")
+    }
+    
     public var imagesDirectory: URL {
-        containerDirectoryURL.appendingPathComponent("Images")
+        eurofurenceKitDirectory.appendingPathComponent("Images")
     }
     
 }

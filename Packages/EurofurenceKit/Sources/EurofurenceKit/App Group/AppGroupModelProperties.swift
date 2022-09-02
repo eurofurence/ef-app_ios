@@ -18,7 +18,7 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         var unused: ObjCBool = false
         if fileManager.fileExists(atPath: imagesDirectory.path, isDirectory: &unused) == false {
             do {
-                try fileManager.createDirectory(at: imagesDirectory, withIntermediateDirectories: false)
+                try fileManager.createDirectory(at: imagesDirectory, withIntermediateDirectories: true)
             } catch {
                 print("Failed to prepare images directory!")
             }
