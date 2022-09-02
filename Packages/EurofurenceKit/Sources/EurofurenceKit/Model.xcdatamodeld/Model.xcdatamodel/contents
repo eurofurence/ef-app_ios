@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Announcement" representedClassName="Announcement" parentEntity="Entity" syncable="YES">
+        <attribute name="area" attributeType="String"/>
+        <attribute name="author" attributeType="String"/>
+        <attribute name="contents" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="validFrom" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="validUntil" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AnnouncementImage" inverseName="announcement" inverseEntity="AnnouncementImage"/>
+    </entity>
+    <entity name="AnnouncementImage" representedClassName="AnnouncementImage" parentEntity="Image" syncable="YES">
+        <relationship name="announcement" maxCount="1" deletionRule="Nullify" destinationEntity="Announcement" inverseName="image" inverseEntity="Announcement"/>
+    </entity>
+    <entity name="ArtistImage" representedClassName="ArtistImage" parentEntity="Image" syncable="YES">
+        <relationship name="artist" maxCount="1" deletionRule="Nullify" destinationEntity="Dealer" inverseName="artistImage" inverseEntity="Dealer"/>
+    </entity>
+    <entity name="ArtPreview" representedClassName="ArtPreview" parentEntity="Image" syncable="YES">
+        <attribute name="caption" attributeType="String"/>
+        <relationship name="artist" maxCount="1" deletionRule="Nullify" destinationEntity="Dealer" inverseName="artPreview" inverseEntity="Dealer"/>
+    </entity>
+    <entity name="Day" representedClassName="Day" parentEntity="Entity" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString=""/>
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="day" inverseEntity="Event"/>
+    </entity>
+    <entity name="Dealer" representedClassName="Dealer" parentEntity="Entity" syncable="YES">
+        <attribute name="aboutTheArt" attributeType="String"/>
+        <attribute name="aboutTheArtist" attributeType="String"/>
+        <attribute name="attendeeNickname" attributeType="String"/>
+        <attribute name="dealerShortDescription" attributeType="String"/>
+        <attribute name="displayName" attributeType="String"/>
+        <attribute name="fridayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isAfterDark" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="merchanise" attributeType="String"/>
+        <attribute name="registrationNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saturdayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="telegramHandle" optional="YES" attributeType="String"/>
+        <attribute name="thursdayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="twitterHandle" optional="YES" attributeType="String"/>
+        <relationship name="artistImage" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ArtistImage" inverseName="artist" inverseEntity="ArtistImage"/>
+        <relationship name="artPreview" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ArtPreview" inverseName="artist" inverseEntity="ArtPreview"/>
+        <relationship name="categories" toMany="YES" deletionRule="Nullify" destinationEntity="DealerCategory" inverseName="dealers" inverseEntity="DealerCategory"/>
+        <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="DealerLink" inverseName="dealer" inverseEntity="DealerLink"/>
+        <relationship name="thumbnail" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealerThumbnail" inverseName="dealer" inverseEntity="DealerThumbnail"/>
+    </entity>
+    <entity name="DealerCategory" representedClassName="DealerCategory" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="dealers" toMany="YES" deletionRule="Nullify" destinationEntity="Dealer" inverseName="categories" inverseEntity="Dealer"/>
+    </entity>
+    <entity name="DealerLink" representedClassName="DealerLink" parentEntity="Link" syncable="YES">
+        <relationship name="dealer" maxCount="1" deletionRule="Nullify" destinationEntity="Dealer" inverseName="links" inverseEntity="Dealer"/>
+    </entity>
+    <entity name="DealerThumbnail" representedClassName="DealerThumbnail" parentEntity="Image" syncable="YES">
+        <relationship name="dealer" maxCount="1" deletionRule="Nullify" destinationEntity="Dealer" inverseName="thumbnail" inverseEntity="Dealer"/>
+    </entity>
+    <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="lastEdited" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Event" representedClassName="Event" parentEntity="Entity" syncable="YES">
+        <attribute name="abstract" attributeType="String"/>
+        <attribute name="acceptingFeedback" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="deviatingFromConbook" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="eventDescription" attributeType="String"/>
+        <attribute name="slug" attributeType="String"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="subtitle" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="banner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EventBanner" inverseName="events" inverseEntity="EventBanner"/>
+        <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="events" inverseEntity="Day"/>
+        <relationship name="panelHosts" toMany="YES" deletionRule="Nullify" destinationEntity="PanelHost" inverseName="hostingEvents" inverseEntity="PanelHost"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EventPoster" inverseName="events" inverseEntity="EventPoster"/>
+        <relationship name="room" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="events" inverseEntity="Room"/>
+        <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="events" inverseEntity="Tag"/>
+        <relationship name="track" maxCount="1" deletionRule="Nullify" destinationEntity="Track" inverseName="events" inverseEntity="Track"/>
+    </entity>
+    <entity name="EventBanner" representedClassName="EventBanner" parentEntity="Image" syncable="YES">
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="banner" inverseEntity="Event"/>
+    </entity>
+    <entity name="EventPoster" representedClassName="EventPoster" parentEntity="Image" syncable="YES">
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="poster" inverseEntity="Event"/>
+    </entity>
+    <entity name="Image" representedClassName="Image" parentEntity="Entity" syncable="YES">
+        <attribute name="contentHashSHA1" attributeType="String"/>
+        <attribute name="estimatedSizeInBytes" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="height" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="internalReference" attributeType="String"/>
+        <attribute name="mimeType" attributeType="String"/>
+        <attribute name="width" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="KnowledgeEntry" representedClassName="KnowledgeEntry" parentEntity="Entity" syncable="YES">
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+        <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeGroup" inverseName="entries" inverseEntity="KnowledgeGroup"/>
+        <relationship name="images" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
+        <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
+    </entity>
+    <entity name="KnowledgeEntryImage" representedClassName="KnowledgeEntryImage" parentEntity="Image" syncable="YES">
+        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="images" inverseEntity="KnowledgeEntry"/>
+    </entity>
+    <entity name="KnowledgeGroup" representedClassName="KnowledgeGroup" parentEntity="Entity" syncable="YES">
+        <attribute name="fontAwesomeUnicodeCharacterAddress" attributeType="String"/>
+        <attribute name="knowledgeGroupDescription" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
+    </entity>
+    <entity name="KnowledgeLink" representedClassName="KnowledgeLink" parentEntity="Link" syncable="YES">
+        <relationship name="entry" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="links" inverseEntity="KnowledgeEntry"/>
+    </entity>
+    <entity name="Link" representedClassName="Link" syncable="YES">
+        <attribute name="fragmentType" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="target" attributeType="String"/>
+    </entity>
+    <entity name="Map" representedClassName="Map" parentEntity="Entity" syncable="YES">
+        <attribute name="isBrowsable" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
+        <attribute name="mapDescription" attributeType="String"/>
+        <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="MapEntry" inverseName="map" inverseEntity="MapEntry"/>
+        <relationship name="graphic" maxCount="1" deletionRule="Nullify" destinationEntity="MapGraphic" inverseName="map" inverseEntity="MapGraphic"/>
+    </entity>
+    <entity name="MapEntry" representedClassName="MapEntry" syncable="YES">
+        <attribute name="identifier" attributeType="String"/>
+        <attribute name="radius" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="x" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="y" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="links" toMany="YES" deletionRule="Nullify" destinationEntity="MapEntryLink" inverseName="mapEntry" inverseEntity="MapEntryLink"/>
+        <relationship name="map" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="entries" inverseEntity="Map"/>
+    </entity>
+    <entity name="MapEntryLink" representedClassName="MapEntryLink" parentEntity="Link" syncable="YES">
+        <relationship name="mapEntry" maxCount="1" deletionRule="Nullify" destinationEntity="MapEntry" inverseName="links" inverseEntity="MapEntry"/>
+    </entity>
+    <entity name="MapGraphic" representedClassName="MapGraphic" parentEntity="Image" syncable="YES">
+        <relationship name="map" maxCount="1" deletionRule="Nullify" destinationEntity="Map" inverseName="graphic" inverseEntity="Map"/>
+    </entity>
+    <entity name="PanelHost" representedClassName="PanelHost" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="hostingEvents" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="panelHosts" inverseEntity="Event"/>
+    </entity>
+    <entity name="Room" representedClassName="Room" parentEntity="Entity" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <attribute name="shortName" attributeType="String"/>
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="room" inverseEntity="Event"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="tags" inverseEntity="Event"/>
+    </entity>
+    <entity name="Track" representedClassName="Track" parentEntity="Entity" syncable="YES">
+        <attribute name="name" attributeType="String"/>
+        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="track" inverseEntity="Event"/>
+    </entity>
+    <elements>
+        <element name="Announcement" positionX="36" positionY="180" width="128" height="148"/>
+        <element name="AnnouncementImage" positionX="45" positionY="189" width="128" height="58"/>
+        <element name="ArtistImage" positionX="54" positionY="171" width="128" height="58"/>
+        <element name="ArtPreview" positionX="0" positionY="117" width="128" height="73"/>
+        <element name="Day" positionX="-36" positionY="27" width="128" height="88"/>
+        <element name="Dealer" positionX="36" positionY="162" width="128" height="299"/>
+        <element name="DealerCategory" positionX="27" positionY="171" width="128" height="73"/>
+        <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
+        <element name="DealerThumbnail" positionX="36" positionY="162" width="128" height="58"/>
+        <element name="Entity" positionX="-54" positionY="9" width="128" height="73"/>
+        <element name="Event" positionX="-63" positionY="-18" width="128" height="269"/>
+        <element name="EventBanner" positionX="18" positionY="144" width="128" height="44"/>
+        <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
+        <element name="Image" positionX="9" positionY="144" width="128" height="133"/>
+        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
+        <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
+        <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>
+        <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
+        <element name="Link" positionX="9" positionY="153" width="128" height="74"/>
+        <element name="Map" positionX="54" positionY="198" width="128" height="118"/>
+        <element name="MapEntry" positionX="9" positionY="153" width="128" height="133"/>
+        <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>
+        <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
+        <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
+        <element name="Room" positionX="0" positionY="45" width="128" height="88"/>
+        <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
+        <element name="Track" positionX="-18" positionY="36" width="128" height="73"/>
+    </elements>
+</model>

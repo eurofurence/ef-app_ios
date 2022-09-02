@@ -5,11 +5,11 @@ import PackageDescription
 let package = Package(
     name: "EurofurenceKit",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14), .macOS(.v11), .watchOS(.v8)],
+    platforms: [.iOS(.v14), .macOS(.v12), .watchOS(.v8)],
     products: [
         .library(
             name: "EurofurenceKit",
-            targets: ["EurofurenceKit"]
+            targets: ["EurofurenceKit", "EurofurenceWebAPI"]
         )
     ],
     dependencies: [
@@ -17,14 +17,43 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "EurofurenceWebAPI",
+            dependencies: []
+        ),
+        
+        .target(
             name: "EurofurenceKit",
             dependencies: [
+                .target(name: "EurofurenceWebAPI"),
                 .product(name: "Logging", package: "swift-log")
             ]
         ),
+        
+        .testTarget(
+            name: "EurofurenceWebAPITests",
+            dependencies: [
+                .target(name: "EurofurenceWebAPI")
+            ],
+            resources: [
+                .process("Resources")
+            ]
+        ),
+        
         .testTarget(
             name: "EurofurenceKitTests",
-            dependencies: ["EurofurenceKit"]
+            dependencies: [
+                .target(name: "EurofurenceKit")
+            ],
+            resources: [
+                .process("Remote Responses/JSON")
+            ]
+        ),
+        
+        .testTarget(
+            name: "EurofurenceKitAcceptanceTests",
+            dependencies: [
+                .target(name: "EurofurenceKit")
+            ]
         )
     ]
 )

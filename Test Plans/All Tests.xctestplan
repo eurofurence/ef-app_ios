@@ -201,6 +201,27 @@
         "identifier" : "CA7A2F112606BCB400919DA0",
         "name" : "Eurofurence Clip UITests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceKit",
+        "identifier" : "EurofurenceKitAcceptanceTests",
+        "name" : "EurofurenceKitAcceptanceTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceKit",
+        "identifier" : "EurofurenceKitTests",
+        "name" : "EurofurenceKitTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:Packages\/EurofurenceKit",
+        "identifier" : "EurofurenceWebAPITests",
+        "name" : "EurofurenceWebAPITests"
+      }
     }
   ],
   "version" : 1
