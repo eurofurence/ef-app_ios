@@ -146,4 +146,17 @@ extension EurofurenceModel {
         }
     }
     
+    public func event(identifiedBy identifier: String) throws -> Event {
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        let results = try viewContext.fetch(fetchRequest)
+        if let event = results.first {
+            return event
+        } else {
+            throw EurofurenceError.invalidEvent(identifier)
+        }
+    }
+    
 }

@@ -7,6 +7,10 @@ enum SampleResponse {
     case corruptEF26
     case noChanges
     case deletedAnnouncement
+    case deletedEvent
+    case deletedEventWithBanner
+    case deletedEventWithPoster
+    case deletedEventWithSharedPoster
     
     private var fileName: String {
         switch self {
@@ -18,6 +22,14 @@ enum SampleResponse {
             return "NoChanges"
         case .deletedAnnouncement:
             return "EF26_DeleteAnnouncement"
+        case .deletedEvent:
+            return "EF26_DeleteEvent"
+        case .deletedEventWithBanner:
+            return "EF26_DeleteEvent_WithBanner"
+        case .deletedEventWithPoster:
+            return "EF26_DeleteEvent_WithPoster"
+        case .deletedEventWithSharedPoster:
+            return "EF26_DeleteEvent_WithSharedPoster"
         }
     }
     

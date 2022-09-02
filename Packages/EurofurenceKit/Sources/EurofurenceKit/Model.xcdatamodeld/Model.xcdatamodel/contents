@@ -71,7 +71,7 @@
         <relationship name="banner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EventBanner" inverseName="events" inverseEntity="EventBanner"/>
         <relationship name="day" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="events" inverseEntity="Day"/>
         <relationship name="panelHosts" toMany="YES" deletionRule="Nullify" destinationEntity="PanelHost" inverseName="hostingEvents" inverseEntity="PanelHost"/>
-        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EventPoster" inverseName="events" inverseEntity="EventPoster"/>
+        <relationship name="poster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EventPoster" inverseName="events" inverseEntity="EventPoster"/>
         <relationship name="room" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="events" inverseEntity="Room"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="events" inverseEntity="Tag"/>
         <relationship name="track" maxCount="1" deletionRule="Nullify" destinationEntity="Track" inverseName="events" inverseEntity="Track"/>
