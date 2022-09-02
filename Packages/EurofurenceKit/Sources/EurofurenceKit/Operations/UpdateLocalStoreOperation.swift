@@ -58,15 +58,32 @@ struct UpdateLocalStoreOperation {
     
     private func fetchImages(_ syncResponse: SynchronizationPayload) async throws {
         let imagesDirectory = configuration.properties.containerDirectoryURL.appendingPathComponent("Images")
-        for image in syncResponse.images.changed {
-            let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
-            let fetchRequest = DownloadImageRequest(
-                imageIdentifier: image.id,
-                lastKnownImageContentHashSHA1: image.contentHashSha1,
-                downloadDestinationURL: imageDestinationURL
-            )
-            
-            try await configuration.api.downloadImage(fetchRequest)
+        
+        enum DownloadResult: Sendable {
+            case success
+            case failure
+        }
+        
+        await withTaskGroup(of: DownloadResult.self) { group in
+            for image in syncResponse.images.changed {
+                let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
+                let fetchRequest = DownloadImageRequest(
+                    imageIdentifier: image.id,
+                    lastKnownImageContentHashSHA1: image.contentHashSha1,
+                    downloadDestinationURL: imageDestinationURL
+                )
+                
+                group.addTask {
+                    do {
+                        try await configuration.api.downloadImage(fetchRequest)
+                        return DownloadResult.success
+                    } catch {
+                        return DownloadResult.failure
+                    }
+                }
+                
+                for await _ in group { }
+            }
         }
     }
     

@@ -27,8 +27,17 @@ class FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private(set) var requestedImages = [DownloadImageRequest]()
+    private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
     func downloadImage(_ request: DownloadImageRequest) async throws {
         requestedImages.append(request)
+        
+        if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
+            throw error
+        }
+    }
+    
+    func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
+        imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
     
 }

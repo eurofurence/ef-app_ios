@@ -2,7 +2,7 @@ import Foundation
 
 public struct DownloadImageRequest: Equatable, Hashable {
     
-    var imageIdentifier: String
+    public var imageIdentifier: String
     var lastKnownImageContentHashSHA1: String
     var downloadDestinationURL: URL
     
