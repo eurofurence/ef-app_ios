@@ -40,9 +40,11 @@ extension SynchronizationPayload {
         
         private enum CodingKeys: String, CodingKey {
             case changed = "ChangedEntities"
+            case deletedObjectIdentifiers = "DeletedEntities"
         }
         
         public var changed: [E]
+        public var deletedObjectIdentifiers: [String]
         
     }
     

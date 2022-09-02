@@ -193,6 +193,11 @@ struct UpdateLocalStoreOperation {
                 
                 try correspondingEntity.update(context: updateContext)
             }
+            
+            for deletedObject in node.deletedObjectIdentifiers {
+                let correspondingEntity = try U.entity(identifiedBy: deletedObject, in: managedObjectContext)
+                managedObjectContext.delete(correspondingEntity)
+            }
         }
         
     }

@@ -128,3 +128,22 @@ extension EurofurenceModel {
     }
     
 }
+        
+// MARK: - Fetching Entities
+
+extension EurofurenceModel {
+    
+    public func announcement(identifiedBy identifier: String) throws -> Announcement {
+        let fetchRequest: NSFetchRequest<Announcement> = Announcement.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        let results = try viewContext.fetch(fetchRequest)
+        if let announcement = results.first {
+            return announcement
+        } else {
+            throw EurofurenceError.invalidAnnouncement(identifier)
+        }
+    }
+    
+}

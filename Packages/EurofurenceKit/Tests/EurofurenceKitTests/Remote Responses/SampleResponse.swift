@@ -6,6 +6,7 @@ enum SampleResponse {
     case ef26
     case corruptEF26
     case noChanges
+    case deletedAnnouncement
     
     private var fileName: String {
         switch self {
@@ -15,6 +16,8 @@ enum SampleResponse {
             return "EF26_Corrupt_Sync_Response"
         case .noChanges:
             return "NoChanges"
+        case .deletedAnnouncement:
+            return "EF26_DeleteAnnouncement"
         }
     }
     
