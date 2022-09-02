@@ -22,6 +22,15 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         static let synchronizationGenerationTokenData = "EFKSynchronizationGenerationTokenData"
     }
     
+    public var containerDirectoryURL: URL {
+        let fileManager = FileManager.default
+        guard let url = fileManager.containerURL(forSecurityApplicationGroupIdentifier: SecurityGroup.identifier) else {
+            fatalError("Couldn't resolve URL for shared container")
+        }
+
+        return url
+    }
+    
     public var synchronizationChangeToken: SynchronizationPayload.GenerationToken? {
         get {
             guard let data = userDefaults.data(forKey: Keys.synchronizationGenerationTokenData) else { return nil }

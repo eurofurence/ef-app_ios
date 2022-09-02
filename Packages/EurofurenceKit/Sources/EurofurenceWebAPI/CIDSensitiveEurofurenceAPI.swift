@@ -35,7 +35,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         return response
     }
     
-    public func fetchImage(_ request: ImageFetchRequest) {
+    public func downloadImage(_ request: DownloadImageRequest) {
         
     }
     

@@ -26,8 +26,8 @@ class FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private(set) var requestedImages = [ImageFetchRequest]()
-    func fetchImage(_ request: ImageFetchRequest) {
+    private(set) var requestedImages = [DownloadImageRequest]()
+    func downloadImage(_ request: DownloadImageRequest) {
         requestedImages.append(request)
     }
     

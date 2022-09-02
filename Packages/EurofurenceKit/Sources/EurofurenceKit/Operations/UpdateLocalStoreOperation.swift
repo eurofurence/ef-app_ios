@@ -41,10 +41,14 @@ struct UpdateLocalStoreOperation {
     
     private func ingestSyncResponse(_ response: SynchronizationPayload) async throws {
         let writingContext = configuration.persistentContainer.newBackgroundContext()
-        let api = configuration.api
         try await writingContext.performAsync { [self, writingContext] in
             do {
-                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext, api: api)
+                let ingester = ResponseIngester(
+                    syncResponse: response,
+                    managedObjectContext: writingContext,
+                    configuration: configuration
+                )
+                
                 try ingester.ingest()
                 try writingContext.save()
             } catch {
@@ -60,7 +64,7 @@ struct UpdateLocalStoreOperation {
         
         var syncResponse: SynchronizationPayload
         var managedObjectContext: NSManagedObjectContext
-        var api: EurofurenceAPI
+        var configuration: EurofurenceModel.Configuration
         
         func ingest() throws {
             try ingest(node: syncResponse.days, as: Day.self)
@@ -92,13 +96,16 @@ struct UpdateLocalStoreOperation {
         }
         
         private func fetchImages() {
+            let imagesDirectory = configuration.properties.containerDirectoryURL.appendingPathComponent("Images")
             for image in syncResponse.images.changed {
-                let fetchRequest = ImageFetchRequest(
+                let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
+                let fetchRequest = DownloadImageRequest(
                     imageIdentifier: image.id,
-                    lastKnownImageContentHashSHA1: image.contentHashSha1
+                    lastKnownImageContentHashSHA1: image.contentHashSha1,
+                    downloadDestinationURL: imageDestinationURL
                 )
                 
-                api.fetchImage(fetchRequest)
+                configuration.api.downloadImage(fetchRequest)
             }
         }
         
