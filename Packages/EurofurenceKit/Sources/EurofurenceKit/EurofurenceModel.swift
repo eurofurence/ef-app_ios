@@ -7,6 +7,8 @@ public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
     
+    @Published public private(set) var cloudStatus: CloudStatus = .idle
+    
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
     }
@@ -17,7 +19,15 @@ public class EurofurenceModel: ObservableObject {
     
     public func updateLocalStore() async throws {
         let operation = UpdateLocalStoreOperation(configuration: configuration)
-        try await operation.execute()
+        cloudStatus = .updating(progress: operation.progress)
+        
+        do {
+            try await operation.execute()
+            cloudStatus = .updated
+        } catch {
+            cloudStatus = .failed
+            throw error
+        }
     }
     
 }
@@ -65,6 +75,54 @@ extension EurofurenceModel {
             self.conventionIdentifier = conventionIdentifier
             
             environment.configure(persistentContainer: persistentContainer, properties: properties)
+        }
+        
+    }
+    
+}
+
+// MARK: - Cloud Status
+
+extension EurofurenceModel {
+    
+    public enum CloudStatus: Equatable {
+        case idle
+        case updating(progress: EurofurenceModel.Progress)
+        case updated
+        case failed
+    }
+    
+    public class Progress: ObservableObject, Equatable {
+        
+        public static func == (lhs: EurofurenceModel.Progress, rhs: EurofurenceModel.Progress) -> Bool {
+            lhs === rhs
+        }
+        
+        private let progress = Foundation.Progress()
+        private var progressObservation: NSObjectProtocol?
+        private var localizedDescriptionObservation: NSObjectProtocol?
+        
+        @Published public private(set) var fractionComplete: Double?
+        
+        public var localizedDescription: String {
+            progress.localizedDescription
+        }
+        
+        init() {
+            progress.totalUnitCount = 0
+            progress.completedUnitCount = 0
+            
+            progressObservation = progress.observe(\.fractionCompleted) { [weak self] progress, _ in
+                self?.fractionComplete = progress.fractionCompleted
+            }
+        }
+        
+        func update(totalUnitCount: Int) {
+            progress.totalUnitCount = Int64(totalUnitCount)
+        }
+        
+        func updateCompletedUnitCount() {
+            progress.completedUnitCount += 1
         }
         
     }

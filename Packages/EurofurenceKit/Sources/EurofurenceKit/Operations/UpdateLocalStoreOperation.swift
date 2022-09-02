@@ -6,6 +6,7 @@ struct UpdateLocalStoreOperation {
     
     private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "UpdateStore")
+    let progress = EurofurenceModel.Progress()
     
     init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
@@ -90,46 +91,21 @@ struct UpdateLocalStoreOperation {
     }
     
     private func fetchImages(identifiersAndHashes: [String: String]) async throws {
-        enum DownloadImageResult: Sendable {
-            case success(DownloadImageRequest)
-            case failure
-        }
-        
         logger.info("Fetching images (count=\(identifiersAndHashes.count))")
         
-        let imagesDirectory = configuration.properties.imagesDirectory
-        let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { [logger] group in
+        progress.update(totalUnitCount: identifiersAndHashes.count)
+        
+        let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { group in
             var results = [DownloadImageResult]()
             
             for (identifier, hash) in identifiersAndHashes {
                 group.addTask {
-                    let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
-                    let downloadRequest = DownloadImageRequest(
-                        imageIdentifier: identifier,
-                        lastKnownImageContentHashSHA1: hash,
-                        downloadDestinationURL: downloadDestination
-                    )
-                    
-                    do {
-                        logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
-                        try await configuration.api.downloadImage(downloadRequest)
-                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
-                        
-                        return .success(downloadRequest)
-                    } catch {
-                        logger.error(
-                            "Failed to fetch image.",
-                            metadata: [
-                                "ID": .string(identifier),
-                                "Error": .string(String(describing: error))
-                            ]
-                        )
-                        return .failure
-                    }
+                    await downloadImage(identifier: identifier, contentHashSHA1: hash)
                 }
             }
             
             for await result in group {
+                progress.updateCompletedUnitCount()
                 results.append(result)
             }
             
@@ -151,6 +127,38 @@ struct UpdateLocalStoreOperation {
             }
             
             try writingContext.save()
+        }
+    }
+    
+    private enum DownloadImageResult: Sendable {
+        case success(DownloadImageRequest)
+        case failure
+    }
+    
+    private func downloadImage(identifier: String, contentHashSHA1 hash: String) async -> DownloadImageResult {
+        let imagesDirectory = configuration.properties.imagesDirectory
+        let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
+        let downloadRequest = DownloadImageRequest(
+            imageIdentifier: identifier,
+            lastKnownImageContentHashSHA1: hash,
+            downloadDestinationURL: downloadDestination
+        )
+        
+        do {
+            logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
+            try await configuration.api.downloadImage(downloadRequest)
+            logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
+            
+            return .success(downloadRequest)
+        } catch {
+            logger.error(
+                "Failed to fetch image.",
+                metadata: [
+                    "ID": .string(identifier),
+                    "Error": .string(String(describing: error))
+                ]
+            )
+            return .failure
         }
     }
     
