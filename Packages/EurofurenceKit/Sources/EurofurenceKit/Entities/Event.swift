@@ -25,7 +25,6 @@ public class Event: Entity {
     @NSManaged public var track: Track
     @NSManaged public var tags: Set<Tag>
 
-    
 }
 
 // MARK: - Tags
@@ -129,7 +128,6 @@ extension Event {
     @objc(removePanelHosts:)
     @NSManaged func removeFromPanelHosts(_ values: Set<PanelHost>)
 
-    
     // MARK: Tags
 
     @objc(addTagsObject:)

@@ -9,7 +9,11 @@ class IngestingFullRemoteModel_Success: XCTestCase {
         scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
         
-        let assertion = SynchronizedStoreAssertion(managedObjectContext: scenario.viewContext, synchronizationPayload: payload)
+        let assertion = SynchronizedStoreAssertion(
+            managedObjectContext: scenario.viewContext,
+            synchronizationPayload: payload
+        )
+        
         try assertion.assert()
     }
     

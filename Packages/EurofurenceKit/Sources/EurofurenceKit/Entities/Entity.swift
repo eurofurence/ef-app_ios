@@ -30,7 +30,7 @@ extension Entity {
         if let existingEntity = fetchResults.first {
             return existingEntity
         } else {
-            let newEntity = Self.init(context: managedObjectContext)
+            let newEntity = Self(context: managedObjectContext)
             newEntity.identifier = identifier
             
             return newEntity

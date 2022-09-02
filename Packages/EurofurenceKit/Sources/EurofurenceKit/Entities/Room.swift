@@ -45,4 +45,3 @@ extension Room {
     @NSManaged func removeFromEvents(_ values: Set<Event>)
 
 }
-

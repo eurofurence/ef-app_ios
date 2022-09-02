@@ -69,14 +69,20 @@ struct SynchronizedStoreAssertion {
 
     private func assertKnowledgeGroups() throws {
         for knowledgeGroup in synchronizationPayload.knowledgeGroups.changed {
-            let entity: EurofurenceKit.KnowledgeGroup = try managedObjectContext.entity(withIdentifier: knowledgeGroup.id)
+            let entity: EurofurenceKit.KnowledgeGroup = try managedObjectContext.entity(
+                withIdentifier: knowledgeGroup.id
+            )
+            
             try knowledgeGroup.assert(against: entity)
         }
     }
 
     private func assertKnowledgeEntries() throws {
         for knowledgeEntry in synchronizationPayload.knowledgeEntries.changed {
-            let entity: EurofurenceKit.KnowledgeEntry = try managedObjectContext.entity(withIdentifier: knowledgeEntry.id)
+            let entity: EurofurenceKit.KnowledgeEntry = try managedObjectContext.entity(
+                withIdentifier: knowledgeEntry.id
+            )
+            
             try knowledgeEntry.assert(against: entity, in: managedObjectContext, from: synchronizationPayload)
         }
     }

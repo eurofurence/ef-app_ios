@@ -37,7 +37,8 @@ extension EurofurenceWebAPI.Event {
         let panelHosts = panelHostsSeperatedByComma.components(separatedBy: ",")
         for host in panelHosts {
             let trimmedHost = host.trimmingCharacters(in: .whitespaces)
-            let matchingHost = try XCTUnwrap(actual.panelHosts.first(where: { $0.name == trimmedHost }), "Could not find host \(trimmedHost)")
+            let entityHost = actual.panelHosts.first(where: { $0.name == trimmedHost })
+            let matchingHost = try XCTUnwrap(entityHost, "Could not find host \(trimmedHost)")
             XCTAssertTrue(matchingHost.hostingEvents.contains(actual))
         }
         

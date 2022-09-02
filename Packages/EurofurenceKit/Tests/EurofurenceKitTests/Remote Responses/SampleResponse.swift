@@ -1,5 +1,5 @@
-import Foundation
 import EurofurenceWebAPI
+import Foundation
 
 enum SampleResponse {
     

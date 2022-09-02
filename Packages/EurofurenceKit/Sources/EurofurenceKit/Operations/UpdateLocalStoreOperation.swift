@@ -43,7 +43,8 @@ struct UpdateLocalStoreOperation {
         let writingContext = configuration.persistentContainer.newBackgroundContext()
         try await writingContext.performAsync { [self, writingContext] in
             do {
-                try ingest(syncResponse: response, into: writingContext)
+                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
+                try ingester.ingest()
                 try writingContext.save()
             } catch {
                 logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
@@ -54,34 +55,39 @@ struct UpdateLocalStoreOperation {
         configuration.properties.synchronizationChangeToken = response.synchronizationToken
     }
     
-    private func ingest(syncResponse: SynchronizationPayload, into managedObjectContext: NSManagedObjectContext) throws {
-        try ingest(node: syncResponse.days, from: syncResponse, into: managedObjectContext, as: Day.self)
-        try ingest(node: syncResponse.tracks, from: syncResponse, into: managedObjectContext, as: Track.self)
-        try ingest(node: syncResponse.rooms, from: syncResponse, into: managedObjectContext, as: Room.self)
-        try ingest(node: syncResponse.events, from: syncResponse, into: managedObjectContext, as: Event.self)
-        try ingest(node: syncResponse.knowledgeGroups, from: syncResponse, into: managedObjectContext, as: KnowledgeGroup.self)
-        try ingest(node: syncResponse.knowledgeEntries, from: syncResponse, into: managedObjectContext, as: KnowledgeEntry.self)
-        try ingest(node: syncResponse.dealers, from: syncResponse, into: managedObjectContext, as: Dealer.self)
-        try ingest(node: syncResponse.announcements, from: syncResponse, into: managedObjectContext, as: Announcement.self)
-        try ingest(node: syncResponse.maps, from: syncResponse, into: managedObjectContext, as: Map.self)
-    }
-    
-    private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
-        node: SynchronizationPayload.Update<T>,
-        from response: SynchronizationPayload,
-        into managedObjectContext: NSManagedObjectContext,
-        as entityType: U.Type
-    ) throws where U.RemoteObject == T {
-        for changedObject in node.changed {
-            let correspondingEntity = try U.entity(identifiedBy: changedObject.id, in: managedObjectContext)
-            let updateContext = RemoteResponseConsumingContext(
-                managedObjectContext: managedObjectContext,
-                remoteObject: changedObject,
-                response: response
-            )
-            
-            try correspondingEntity.update(context: updateContext)
+    private struct ResponseIngester {
+        
+        var syncResponse: SynchronizationPayload
+        var managedObjectContext: NSManagedObjectContext
+        
+        func ingest() throws {
+            try ingest(node: syncResponse.days, as: Day.self)
+            try ingest(node: syncResponse.tracks, as: Track.self)
+            try ingest(node: syncResponse.rooms, as: Room.self)
+            try ingest(node: syncResponse.events, as: Event.self)
+            try ingest(node: syncResponse.knowledgeGroups, as: KnowledgeGroup.self)
+            try ingest(node: syncResponse.knowledgeEntries, as: KnowledgeEntry.self)
+            try ingest(node: syncResponse.dealers, as: Dealer.self)
+            try ingest(node: syncResponse.announcements, as: Announcement.self)
+            try ingest(node: syncResponse.maps, as: Map.self)
         }
+        
+        private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
+            node: SynchronizationPayload.Update<T>,
+            as entityType: U.Type
+        ) throws where U.RemoteObject == T {
+            for changedObject in node.changed {
+                let correspondingEntity = try U.entity(identifiedBy: changedObject.id, in: managedObjectContext)
+                let updateContext = RemoteResponseConsumingContext(
+                    managedObjectContext: managedObjectContext,
+                    remoteObject: changedObject,
+                    response: syncResponse
+                )
+                
+                try correspondingEntity.update(context: updateContext)
+            }
+        }
+        
     }
     
 }

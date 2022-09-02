@@ -59,7 +59,7 @@ extension Image {
         if let existingImage = results?.first {
             return existingImage
         } else {
-            let newImage = Self.init(context: managedObjectContext)
+            let newImage = Self(context: managedObjectContext)
             newImage.identifier = identifier
             return newImage
         }

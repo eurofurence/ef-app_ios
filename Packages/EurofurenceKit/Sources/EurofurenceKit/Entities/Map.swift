@@ -47,7 +47,11 @@ extension Map: ConsumesRemoteResponse {
         _ context: RemoteResponseConsumingContext<Map.RemoteObject>,
         _ image: EurofurenceWebAPI.Image
     ) throws {
-        let graphic = try MapGraphic.entity(identifiedBy: context.remoteObject.imageIdentifier, in: context.managedObjectContext)
+        let graphic = try MapGraphic.entity(
+            identifiedBy: context.remoteObject.imageIdentifier,
+            in: context.managedObjectContext
+        )
+        
         graphic.update(from: image)
         self.graphic = graphic
     }

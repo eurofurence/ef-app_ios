@@ -2,7 +2,7 @@ import Foundation
 
 public class EurofurenceAPIDecoder: JSONDecoder {
     
-    public override init() {
+    override public init() {
         super.init()
         dateDecodingStrategy = .formatted(EurofurenceISO8601DateFormatter.instance)
     }

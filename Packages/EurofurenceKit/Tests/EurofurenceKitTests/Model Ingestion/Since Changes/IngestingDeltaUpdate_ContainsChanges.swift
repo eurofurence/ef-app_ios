@@ -13,7 +13,11 @@ class IngestingDeltaUpdate_ContainsChanges: XCTestCase {
         // store.
         
         await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore() }
-        let assertion = SynchronizedStoreAssertion(managedObjectContext: scenario.viewContext, synchronizationPayload: payload)
+        let assertion = SynchronizedStoreAssertion(
+            managedObjectContext: scenario.viewContext,
+            synchronizationPayload: payload
+        )
+        
         try assertion.assert()
     }
 

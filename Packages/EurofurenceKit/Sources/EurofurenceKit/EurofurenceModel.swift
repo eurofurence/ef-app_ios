@@ -37,6 +37,7 @@ extension EurofurenceModel {
                 switch self {
                 case .persistent:
                     persistentContainer.attachPersistentStore()
+                    
                 case .memory:
                     persistentContainer.attachMemoryStore()
                 }

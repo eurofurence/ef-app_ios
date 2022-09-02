@@ -16,7 +16,10 @@ extension EurofurenceWebAPI.KnowledgeEntry {
         XCTAssertEqual(text, actual.text)
         XCTAssertEqual(order, Int(actual.order))
         
-        let knowledgeGroup: EurofurenceKit.KnowledgeGroup = try managedObjectContext.entity(withIdentifier: knowledgeGroupIdentifier)
+        let knowledgeGroup: EurofurenceKit.KnowledgeGroup = try managedObjectContext.entity(
+            withIdentifier: knowledgeGroupIdentifier
+        )
+        
         XCTAssertEqual(knowledgeGroup, actual.group)
         
         XCTAssertEqual(links.count, actual.links.count)

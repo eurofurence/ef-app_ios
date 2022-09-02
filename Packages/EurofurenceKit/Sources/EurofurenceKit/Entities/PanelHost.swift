@@ -48,4 +48,3 @@ extension PanelHost {
     @NSManaged func removeFromHostingEvents(_ values: Set<Event>)
 
 }
-

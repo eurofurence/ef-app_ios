@@ -49,4 +49,3 @@ extension KnowledgeGroup {
     @NSManaged func removeFromEntries(_ values: Set<KnowledgeEntry>)
 
 }
-
