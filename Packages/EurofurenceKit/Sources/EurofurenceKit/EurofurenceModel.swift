@@ -7,6 +7,8 @@ public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
     
+    @Published private(set) public var cloudStatus: CloudStatus = .idle
+    
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
     }
@@ -17,7 +19,15 @@ public class EurofurenceModel: ObservableObject {
     
     public func updateLocalStore() async throws {
         let operation = UpdateLocalStoreOperation(configuration: configuration)
-        try await operation.execute()
+        cloudStatus = .updating
+        
+        do {
+            try await operation.execute()
+            cloudStatus = .updated
+        } catch {
+            cloudStatus = .failed
+            throw error
+        }
     }
     
 }
@@ -67,6 +77,19 @@ extension EurofurenceModel {
             environment.configure(persistentContainer: persistentContainer, properties: properties)
         }
         
+    }
+    
+}
+
+// MARK: - Cloud Status
+
+extension EurofurenceModel {
+    
+    public enum CloudStatus: Equatable {
+        case idle
+        case updating
+        case updated
+        case failed
     }
     
 }
