@@ -7,3 +7,11 @@ public protocol EurofurenceModelProperties: AnyObject {
     var synchronizationChangeToken: SynchronizationPayload.GenerationToken? { get set }
     
 }
+
+extension EurofurenceModelProperties {
+    
+    public var imagesDirectory: URL {
+        containerDirectoryURL.appendingPathComponent("Images")
+    }
+    
+}

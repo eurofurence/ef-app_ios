@@ -2,9 +2,14 @@ import EurofurenceKit
 import EurofurenceWebAPI
 import Foundation
 
-class FakeEurofurenceAPI: EurofurenceAPI {
+actor FakeEurofurenceAPI: EurofurenceAPI {
     
-    var nextSyncResponse: Result<SynchronizationPayload, Error>?
+    private var nextSyncResponse: Result<SynchronizationPayload, Error>?
+    
+    func stubNextSyncResponse(_ response: Result<SynchronizationPayload, Error>) {
+        nextSyncResponse = response
+    }
+    
     private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
     func fetchChanges(
         since previousChangeToken: SynchronizationPayload.GenerationToken?

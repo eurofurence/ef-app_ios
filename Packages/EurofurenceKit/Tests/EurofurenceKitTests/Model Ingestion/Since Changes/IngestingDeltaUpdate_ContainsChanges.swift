@@ -6,7 +6,7 @@ class IngestingDeltaUpdate_ContainsChanges: XCTestCase {
     func testChangedEntitiesAreNotReinserted_SameResponseTwice() async throws {
         let scenario = EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
-        scenario.stubSyncResponse(with: .success(payload))
+        await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
         
         // For each type of expected entity, there should remain a single instance of the entity within the persistent

@@ -52,38 +52,77 @@ struct UpdateLocalStoreOperation {
             }
         }
         
+        logger.info("Finished ingesting remote changes.")
+        
         configuration.properties.synchronizationChangeToken = response.synchronizationToken
         try await fetchImages(response)
     }
     
     private func fetchImages(_ syncResponse: SynchronizationPayload) async throws {
-        let imagesDirectory = configuration.properties.containerDirectoryURL.appendingPathComponent("Images")
+        let imagesDirectory = configuration.properties.imagesDirectory
         
-        enum DownloadResult: Sendable {
-            case success
+        enum DownloadImageResult: Sendable {
+            case success(DownloadImageRequest)
             case failure
         }
         
-        await withTaskGroup(of: DownloadResult.self) { group in
+        logger.info("Fetching images (count=\(syncResponse.images.changed))")
+        
+        let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { [logger] group in
+            var results = [DownloadImageResult]()
+            
             for image in syncResponse.images.changed {
                 let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
-                let fetchRequest = DownloadImageRequest(
-                    imageIdentifier: image.id,
-                    lastKnownImageContentHashSHA1: image.contentHashSha1,
-                    downloadDestinationURL: imageDestinationURL
-                )
                 
                 group.addTask {
+                    let fetchRequest = DownloadImageRequest(
+                        imageIdentifier: image.id,
+                        lastKnownImageContentHashSHA1: image.contentHashSha1,
+                        downloadDestinationURL: imageDestinationURL
+                    )
+                    
                     do {
+                        logger.info("Fetching image.", metadata: ["ID": .string(image.id)])
                         try await configuration.api.downloadImage(fetchRequest)
-                        return DownloadResult.success
+                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(image.id)])
+                        
+                        return .success(fetchRequest)
                     } catch {
-                        return DownloadResult.failure
+                        logger.error(
+                            "Failed to fetch image.",
+                            metadata: [
+                                "ID": .string(image.id),
+                                "Error": .string(String(describing: error))
+                            ]
+                        )
+                        return .failure
                     }
                 }
-                
-                for await _ in group { }
             }
+            
+            for await result in group {
+                results.append(result)
+            }
+            
+            return results
+        }
+        
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        try await writingContext.performAsync { [writingContext] in
+            for result in results {
+                guard case .success(let request) = result else { continue }
+                
+                let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "identifier == %@", request.imageIdentifier)
+                fetchRequest.fetchLimit = 1
+                
+                let fetchResults = try writingContext.fetch(fetchRequest)
+                guard let entity = fetchResults.first else { continue }
+                
+                entity.cachedImageURL = request.downloadDestinationURL
+            }
+            
+            try writingContext.save()
         }
     }
     

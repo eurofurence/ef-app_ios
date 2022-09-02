@@ -12,6 +12,7 @@ public class Image: Entity {
     @NSManaged public var estimatedSizeInBytes: Int64
     @NSManaged public var internalReference: String
     @NSManaged public var mimeType: String
+    @NSManaged public var cachedImageURL: URL?
     @NSManaged var width: Int32
     @NSManaged var height: Int32
 
