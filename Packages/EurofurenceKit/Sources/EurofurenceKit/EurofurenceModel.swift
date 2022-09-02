@@ -7,7 +7,7 @@ public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
     
-    @Published private(set) public var cloudStatus: CloudStatus = .idle
+    @Published public private(set) var cloudStatus: CloudStatus = .idle
     
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
@@ -102,7 +102,7 @@ extension EurofurenceModel {
         private var progressObservation: NSObjectProtocol?
         private var localizedDescriptionObservation: NSObjectProtocol?
         
-        @Published private(set) public var fractionComplete: Double? = nil
+        @Published public private(set) var fractionComplete: Double?
         
         public var localizedDescription: String {
             progress.localizedDescription

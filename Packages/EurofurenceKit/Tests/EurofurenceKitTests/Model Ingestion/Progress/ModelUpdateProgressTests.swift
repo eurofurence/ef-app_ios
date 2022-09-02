@@ -70,7 +70,11 @@ class ModelUpdateProgressTests: XCTestCase {
                 progress
                     .$fractionComplete
                     .sink { [weak self] fractionComplete in
-                        let update = ProgressUpdate(fractionComplete: fractionComplete, localizedDescription: progress.localizedDescription)
+                        let update = ProgressUpdate(
+                            fractionComplete: fractionComplete,
+                            localizedDescription: progress.localizedDescription
+                        )
+                        
                         self?.progressUpdates.append(update)
                     }
                     .store(in: &subscriptions)
