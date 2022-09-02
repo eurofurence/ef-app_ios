@@ -30,7 +30,8 @@ extension EurofurenceWebAPI.Event {
         XCTAssertTrue(room.events.contains(actual))
         
         let track: EurofurenceKit.Track = try managedObjectContext.entity(withIdentifier: trackIdentifier)
-        XCTAssertTrue(actual.tracks.contains(track))
+        XCTAssertEqual(track.identifier, trackIdentifier)
+        XCTAssertTrue(track.events.contains(actual))
         
         let panelHosts = panelHostsSeperatedByComma.components(separatedBy: ",")
         for host in panelHosts {

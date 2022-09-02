@@ -22,7 +22,7 @@ public class Event: Entity {
     @NSManaged public var panelHosts: Set<PanelHost>
     @NSManaged public var poster: EventPoster?
     @NSManaged public var room: Room
-    @NSManaged public var tracks: Set<Track>
+    @NSManaged public var track: Track
     @NSManaged public var tags: Set<Tag>
 
     
@@ -65,9 +65,7 @@ extension Event: ConsumesRemoteResponse {
         
         day = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.dayIdentifier)
         room = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.roomIdentifier)
-        
-        let track: Track = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.trackIdentifier)
-        addToTracks(track)
+        track = try context.managedObjectContext.entity(withIdentifier: context.remoteObject.trackIdentifier)
                 
         updateTags(context)
         updateHosts(context)
@@ -130,21 +128,6 @@ extension Event {
 
     @objc(removePanelHosts:)
     @NSManaged func removeFromPanelHosts(_ values: Set<PanelHost>)
-
-    
-    // MARK: Tracks
-
-    @objc(addTracksObject:)
-    @NSManaged func addToTracks(_ value: Track)
-
-    @objc(removeTracksObject:)
-    @NSManaged func removeFromTracks(_ value: Track)
-
-    @objc(addTracks:)
-    @NSManaged func addToTracks(_ values: Set<Track>)
-
-    @objc(removeTracks:)
-    @NSManaged func removeFromTracks(_ values: Set<Track>)
 
     
     // MARK: Tags
