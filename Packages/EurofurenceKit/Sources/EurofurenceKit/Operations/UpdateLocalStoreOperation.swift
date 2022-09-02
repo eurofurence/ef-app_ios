@@ -43,12 +43,7 @@ struct UpdateLocalStoreOperation {
         let writingContext = configuration.persistentContainer.newBackgroundContext()
         try await writingContext.performAsync { [self, writingContext] in
             do {
-                let ingester = ResponseIngester(
-                    syncResponse: response,
-                    managedObjectContext: writingContext,
-                    configuration: configuration
-                )
-                
+                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
                 try ingester.ingest()
                 try writingContext.save()
             } catch {
@@ -58,13 +53,27 @@ struct UpdateLocalStoreOperation {
         }
         
         configuration.properties.synchronizationChangeToken = response.synchronizationToken
+        try await fetchImages(response)
+    }
+    
+    private func fetchImages(_ syncResponse: SynchronizationPayload) async throws {
+        let imagesDirectory = configuration.properties.containerDirectoryURL.appendingPathComponent("Images")
+        for image in syncResponse.images.changed {
+            let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
+            let fetchRequest = DownloadImageRequest(
+                imageIdentifier: image.id,
+                lastKnownImageContentHashSHA1: image.contentHashSha1,
+                downloadDestinationURL: imageDestinationURL
+            )
+            
+            try await configuration.api.downloadImage(fetchRequest)
+        }
     }
     
     private struct ResponseIngester {
         
         var syncResponse: SynchronizationPayload
         var managedObjectContext: NSManagedObjectContext
-        var configuration: EurofurenceModel.Configuration
         
         func ingest() throws {
             try ingest(node: syncResponse.days, as: Day.self)
@@ -76,7 +85,6 @@ struct UpdateLocalStoreOperation {
             try ingest(node: syncResponse.dealers, as: Dealer.self)
             try ingest(node: syncResponse.announcements, as: Announcement.self)
             try ingest(node: syncResponse.maps, as: Map.self)
-            fetchImages()
         }
         
         private func ingest<T: APIEntity, U: Entity & ConsumesRemoteResponse>(
@@ -92,20 +100,6 @@ struct UpdateLocalStoreOperation {
                 )
                 
                 try correspondingEntity.update(context: updateContext)
-            }
-        }
-        
-        private func fetchImages() {
-            let imagesDirectory = configuration.properties.containerDirectoryURL.appendingPathComponent("Images")
-            for image in syncResponse.images.changed {
-                let imageDestinationURL = imagesDirectory.appendingPathComponent(image.id)
-                let fetchRequest = DownloadImageRequest(
-                    imageIdentifier: image.id,
-                    lastKnownImageContentHashSHA1: image.contentHashSha1,
-                    downloadDestinationURL: imageDestinationURL
-                )
-                
-                configuration.api.downloadImage(fetchRequest)
             }
         }
         

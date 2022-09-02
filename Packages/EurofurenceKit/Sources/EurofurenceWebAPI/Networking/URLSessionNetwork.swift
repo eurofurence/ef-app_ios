@@ -31,4 +31,21 @@ struct URLSessionNetwork: Network {
         }
     }
     
+    func download(contentsOf url: URL) async throws -> URL {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<URL, Error>) in
+            let urlRequest = URLRequest(url: url)
+            let downloadTask = urlSession.downloadTask(with: urlRequest) { url, _, error in
+                if let url = url {
+                    continuation.resume(returning: url)
+                }
+                
+                if let error = error {
+                    continuation.resume(throwing: error)
+                }
+            }
+            
+            downloadTask.resume()
+        }
+    }
+    
 }
