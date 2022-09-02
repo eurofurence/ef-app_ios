@@ -17,7 +17,12 @@ public class Entity: NSManagedObject {
 extension Entity {
     
     class func entity(identifiedBy identifier: String, in managedObjectContext: NSManagedObjectContext) throws -> Self {
-        let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: Self.entity().name!)
+        let entityDescription: NSEntityDescription = Self.entity()
+        guard let entityName = entityDescription.name else {
+            fatalError("Entity \(String(describing: Self.self)) does not possess a name in its NSEntityDescription!")
+        }
+        
+        let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
         fetchRequest.fetchLimit = 1
         

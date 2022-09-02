@@ -47,7 +47,12 @@ extension Image {
         identifier: String,
         in managedObjectContext: NSManagedObjectContext
     ) -> Self {
-        let fetchRequest: NSFetchRequest<Self> = NSFetchRequest<Self>(entityName: Self.entity().name!)
+        let entityDescription: NSEntityDescription = Self.entity()
+        guard let entityName = entityDescription.name else {
+            fatalError("Entity \(String(describing: Self.self)) does not possess a name in its NSEntityDescription!")
+        }
+        
+        let fetchRequest: NSFetchRequest<Self> = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
         let results = try? managedObjectContext.fetch(fetchRequest)
         

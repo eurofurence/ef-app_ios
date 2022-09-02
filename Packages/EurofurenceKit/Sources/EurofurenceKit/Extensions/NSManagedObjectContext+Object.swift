@@ -12,7 +12,12 @@ extension NSManagedObjectContext {
     }
     
     func object<Object>(matching predicate: NSPredicate) throws -> Object where Object: NSManagedObject {
-        let fetchRequest: NSFetchRequest<Object> = NSFetchRequest(entityName: Object.entity().name!)
+        let entityDescription: NSEntityDescription = Object.entity()
+        guard let entityName = entityDescription.name else {
+            fatalError("Entity \(String(describing: Object.self)) does not possess a name in its NSEntityDescription!")
+        }
+        
+        let fetchRequest: NSFetchRequest<Object> = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1
         
@@ -25,7 +30,12 @@ extension NSManagedObjectContext {
     }
     
     func entity<E>(withIdentifier identifier: String) throws -> E where E: Entity {
-        let fetchRequest: NSFetchRequest<E> = NSFetchRequest(entityName: E.entity().name!)
+        let entityDescription: NSEntityDescription = E.entity()
+        guard let entityName = entityDescription.name else {
+            fatalError("Entity \(String(describing: E.self)) does not possess a name in its NSEntityDescription!")
+        }
+        
+        let fetchRequest: NSFetchRequest<E> = NSFetchRequest(entityName: entityName)
         let predicate = NSPredicate(format: "identifier == %@", identifier)
         fetchRequest.predicate = predicate
         

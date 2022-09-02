@@ -7,7 +7,10 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
     private let userDefaults: UserDefaults
     
     convenience init() {
-        let appGroupUserDefaults = UserDefaults(suiteName: SecurityGroup.identifier)!
+        guard let appGroupUserDefaults = UserDefaults(suiteName: SecurityGroup.identifier) else {
+            fatalError("Cannot instantiate App Group user defaults")
+        }
+        
         self.init(userDefaults: appGroupUserDefaults)
     }
     
