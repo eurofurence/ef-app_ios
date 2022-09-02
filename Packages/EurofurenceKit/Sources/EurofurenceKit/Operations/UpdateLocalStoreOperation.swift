@@ -113,7 +113,7 @@ struct UpdateLocalStoreOperation {
                     do {
                         logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
                         try await configuration.api.downloadImage(downloadRequest)
-                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(hash)])
+                        logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
                         
                         return .success(downloadRequest)
                     } catch {

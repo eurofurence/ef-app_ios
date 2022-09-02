@@ -1,5 +1,6 @@
-import EurofurenceWebAPI
+import CoreData
 @testable import EurofurenceKit
+import EurofurenceWebAPI
 import XCTest
 
 class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {

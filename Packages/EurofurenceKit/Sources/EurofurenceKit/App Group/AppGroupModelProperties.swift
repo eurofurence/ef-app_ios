@@ -12,6 +12,17 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         }
         
         self.init(userDefaults: appGroupUserDefaults)
+        
+        // Make sure the container directory and subdirectories exist.
+        let fileManager = FileManager.default
+        var unused: ObjCBool = false
+        if fileManager.fileExists(atPath: imagesDirectory.path, isDirectory: &unused) == false {
+            do {
+                try fileManager.createDirectory(at: imagesDirectory, withIntermediateDirectories: false)
+            } catch {
+                print("Failed to prepare images directory!")
+            }
+        }
     }
     
     init(userDefaults: UserDefaults) {

@@ -31,12 +31,20 @@ struct URLSessionNetwork: Network {
         }
     }
     
-    func download(contentsOf url: URL) async throws -> URL {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<URL, Error>) in
+    func download(contentsOf url: URL, to destinationURL: URL) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             let urlRequest = URLRequest(url: url)
             let downloadTask = urlSession.downloadTask(with: urlRequest) { url, _, error in
                 if let url = url {
-                    continuation.resume(returning: url)
+                    // Move the temporary file created by NSURLSession to the destination URL.
+                    // The transient URL will not be available by the time this completion handler returns.
+                    let fileManager = FileManager.default
+                    do {
+                        try fileManager.moveItem(at: url, to: destinationURL)
+                        continuation.resume()
+                    } catch {
+                        continuation.resume(throwing: error)
+                    }
                 }
                 
                 if let error = error {

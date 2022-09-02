@@ -33,7 +33,7 @@ class FakeNetwork: Network {
         }
     }
     
-    func download(contentsOf url: URL) async throws -> URL {
+    func download(contentsOf url: URL, to destinationURL: URL) async throws {
         history.append(.download(url: url))
         
         guard let response = downloadResponses[url] else {
@@ -42,9 +42,7 @@ class FakeNetwork: Network {
         
         switch response {
         case .success(let data):
-            let temporaryFile = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
-            try data.write(to: temporaryFile)
-            return temporaryFile
+            try data.write(to: destinationURL)
             
         case .failure(let error):
             throw error

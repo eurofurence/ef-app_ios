@@ -41,13 +41,11 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         let downloadURLString = "https://app.eurofurence.org/EF26/api/Images/\(id)/Content/with-hash:\(hash)"
         guard let downloadURL = URL(string: downloadURLString) else { return }
         
-        let downloadedImageURL = try await network.download(contentsOf: downloadURL)
-        
         if FileManager.default.fileExists(atPath: request.downloadDestinationURL.path) {
             try FileManager.default.removeItem(at: request.downloadDestinationURL)
         }
         
-        try FileManager.default.moveItem(at: downloadedImageURL, to: request.downloadDestinationURL)
+        try await network.download(contentsOf: downloadURL, to: request.downloadDestinationURL)
     }
     
 }
