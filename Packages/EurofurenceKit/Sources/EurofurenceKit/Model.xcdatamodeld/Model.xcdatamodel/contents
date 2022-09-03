@@ -107,7 +107,7 @@
         <attribute name="knowledgeGroupDescription" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
+        <relationship name="entries" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
     </entity>
     <entity name="KnowledgeLink" representedClassName="KnowledgeLink" parentEntity="Link" syncable="YES">
         <relationship name="entry" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="links" inverseEntity="KnowledgeEntry"/>
@@ -172,7 +172,7 @@
         <element name="Image" positionX="9" positionY="144" width="128" height="134"/>
         <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
-        <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="118"/>
+        <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="104"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
         <element name="Link" positionX="9" positionY="153" width="128" height="74"/>
         <element name="Map" positionX="54" positionY="198" width="128" height="104"/>
