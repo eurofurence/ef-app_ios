@@ -153,7 +153,7 @@
     </entity>
     <entity name="Track" representedClassName="Track" parentEntity="Entity" syncable="YES">
         <attribute name="name" attributeType="String"/>
-        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="track" inverseEntity="Event"/>
+        <relationship name="events" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="track" inverseEntity="Event"/>
     </entity>
     <elements>
         <element name="Announcement" positionX="36" positionY="180" width="128" height="134"/>
@@ -182,6 +182,6 @@
         <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
         <element name="Room" positionX="0" positionY="45" width="128" height="74"/>
         <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
-        <element name="Track" positionX="-18" positionY="36" width="128" height="73"/>
+        <element name="Track" positionX="-18" positionY="36" width="128" height="59"/>
     </elements>
 </model>
