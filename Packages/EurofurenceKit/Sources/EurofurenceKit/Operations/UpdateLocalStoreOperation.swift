@@ -241,6 +241,7 @@ struct UpdateLocalStoreOperation {
         
         func cleanup() throws {
             try cleanupDealerCategories()
+            try cleanupPanelHosts()
         }
         
         private func cleanupDealerCategories() throws {
@@ -251,6 +252,17 @@ struct UpdateLocalStoreOperation {
             let emptyCategories = try managedObjectContext.fetch(emptyCategoriesFetchRequest)
             for category in emptyCategories {
                 managedObjectContext.delete(category)
+            }
+        }
+        
+        private func cleanupPanelHosts() throws {
+            // Remove any panel hosts no longer associated with an event.
+            let notHostingEventFetchRequest: NSFetchRequest<PanelHost> = PanelHost.fetchRequest()
+            notHostingEventFetchRequest.predicate = NSPredicate(format: "hostingEvents.@count == 0")
+            
+            let hostNoLongerHosting = try managedObjectContext.fetch(notHostingEventFetchRequest)
+            for host in hostNoLongerHosting {
+                managedObjectContext.delete(host)
             }
         }
         

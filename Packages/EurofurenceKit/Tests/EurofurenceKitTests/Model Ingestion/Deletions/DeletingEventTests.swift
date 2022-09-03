@@ -79,5 +79,28 @@ class DeletingEventTests: XCTestCase {
             "Deleting an event with a poster shared amongst multiple events should not delete the poster"
         )
     }
+    
+    func testDeletingAllEventsForGivenPanelHostDeletesPanelHost() async throws {
+        let scenario = EurofurenceModelTestBuilder().build()
+        let payload = try SampleResponse.ef26.loadResponse()
+        await scenario.stubSyncResponse(with: .success(payload))
+        try await scenario.updateLocalStore()
+        
+        // We'll delete all events hosted by "Birdy the Scottish Gryphon" (nothing personal, they only had one event!).
+        // Following this, the panel host should no longer reside in the persistent store.
+        try await scenario.updateLocalStore(using: .deletedEventHostedByBirdy)
+        
+        let birdyFetchRequest: NSFetchRequest<NSFetchRequestResult> = PanelHost.fetchRequest()
+        birdyFetchRequest.predicate = NSPredicate(format: "name == \"Birdy the Scottish Gryphon\"")
+        birdyFetchRequest.fetchLimit = 1
+        birdyFetchRequest.resultType = .countResultType
+        
+        let count = try scenario.viewContext.count(for: birdyFetchRequest)
+        XCTAssertEqual(
+            0,
+            count,
+            "Expected the PanelHost entity to be removed when it is no longer associated with any event"
+        )
+    }
 
 }

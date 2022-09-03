@@ -12,6 +12,7 @@ enum SampleResponse {
     case deletedEventWithBanner
     case deletedEventWithPoster
     case deletedEventWithSharedPoster
+    case deletedEventHostedByBirdy
     case deletedDealer
     case deletedDealersWithinFursuitCategory
     
@@ -35,6 +36,8 @@ enum SampleResponse {
             return "EF26_DeleteEvent_WithPoster"
         case .deletedEventWithSharedPoster:
             return "EF26_DeleteEvent_WithSharedPoster"
+        case .deletedEventHostedByBirdy:
+            return "EF26_DeleteEventHostedByBirdy"
         case .deletedDealer:
             return "EF26_DeleteDealer"
         case .deletedDealersWithinFursuitCategory:
