@@ -22,7 +22,7 @@
     <entity name="Day" representedClassName="Day" parentEntity="Entity" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=""/>
-        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="day" inverseEntity="Event"/>
+        <relationship name="events" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="day" inverseEntity="Event"/>
     </entity>
     <entity name="Dealer" representedClassName="Dealer" parentEntity="Entity" syncable="YES">
         <attribute name="aboutTheArt" attributeType="String"/>
@@ -160,7 +160,7 @@
         <element name="AnnouncementImage" positionX="45" positionY="189" width="128" height="58"/>
         <element name="ArtistImage" positionX="54" positionY="171" width="128" height="58"/>
         <element name="ArtPreview" positionX="0" positionY="117" width="128" height="73"/>
-        <element name="Day" positionX="-36" positionY="27" width="128" height="88"/>
+        <element name="Day" positionX="-36" positionY="27" width="128" height="74"/>
         <element name="Dealer" positionX="36" positionY="162" width="128" height="299"/>
         <element name="DealerCategory" positionX="27" positionY="171" width="128" height="73"/>
         <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
