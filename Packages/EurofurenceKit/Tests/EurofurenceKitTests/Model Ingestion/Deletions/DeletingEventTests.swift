@@ -1,3 +1,4 @@
+import CoreData
 import EurofurenceKit
 import EurofurenceWebAPI
 import XCTest
