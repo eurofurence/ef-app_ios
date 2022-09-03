@@ -16,6 +16,7 @@ enum SampleResponse {
     case deletedDealer
     case deletedDealersWithinFursuitCategory
     case deletedKnowledgeGroup
+    case deletedRoom
     
     private var fileName: String {
         switch self {
@@ -45,6 +46,8 @@ enum SampleResponse {
             return "EF26_DeleteDealers_FursuitCategoryOnly"
         case .deletedKnowledgeGroup:
             return "EF26_DeleteKnowledgeGroup"
+        case .deletedRoom:
+            return "EF26_DeleteRoom"
         }
     }
     

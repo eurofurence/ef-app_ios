@@ -145,7 +145,7 @@
     <entity name="Room" representedClassName="Room" parentEntity="Entity" syncable="YES">
         <attribute name="name" attributeType="String"/>
         <attribute name="shortName" attributeType="String"/>
-        <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="room" inverseEntity="Event"/>
+        <relationship name="events" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="room" inverseEntity="Event"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES">
         <attribute name="name" attributeType="String"/>
@@ -180,7 +180,7 @@
         <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
         <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
-        <element name="Room" positionX="0" positionY="45" width="128" height="88"/>
+        <element name="Room" positionX="0" positionY="45" width="128" height="74"/>
         <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
         <element name="Track" positionX="-18" positionY="36" width="128" height="73"/>
     </elements>
