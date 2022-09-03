@@ -14,9 +14,9 @@ class DeletingKnowledgeGroupTests: XCTestCase {
         // entries associated with the group have been deleted.
         let deletedKnowledgeGroupIdentifier = "92cdf214-7e9f-6bfa-0370-dfadd5e76493"
         let knowledgeEntryIdentifiers = try autoreleasepool { () -> [NSManagedObjectID] in
-            let fetchRequest: NSFetchRequest<EurofurenceKit.KnowledgeGroup> = EurofurenceKit.KnowledgeGroup.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", deletedKnowledgeGroupIdentifier)
-            fetchRequest.fetchLimit = 1
+            let fetchRequest: NSFetchRequest<EurofurenceKit.KnowledgeGroup> = EurofurenceKit
+                .KnowledgeGroup
+                .fetchRequestForExistingEntity(identifier: deletedKnowledgeGroupIdentifier)
             
             let results = try scenario.viewContext.fetch(fetchRequest)
             let knowledgeGroup = try XCTUnwrap(results.first)

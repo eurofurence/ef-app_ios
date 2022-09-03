@@ -13,9 +13,9 @@ class DeleteDayTests: XCTestCase {
         // Once the track has been deleted, any events that were part of the track should also be deleted.
         let deletedDayIdentifier = "db6e0b07-3300-4d58-adfd-84c145e36242"
         let eventIdentifiers = try autoreleasepool { () -> [NSManagedObjectID] in
-            let fetchRequest: NSFetchRequest<EurofurenceKit.Day> = EurofurenceKit.Day.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", deletedDayIdentifier)
-            fetchRequest.fetchLimit = 1
+            let fetchRequest: NSFetchRequest<EurofurenceKit.Day> = EurofurenceKit.Day.fetchRequestForExistingEntity(
+                identifier: deletedDayIdentifier
+            )
             
             let results = try scenario.viewContext.fetch(fetchRequest)
             let day = try XCTUnwrap(results.first)

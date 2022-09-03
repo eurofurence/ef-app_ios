@@ -13,9 +13,9 @@ class DeletingRoomTests: XCTestCase {
         // Once the room has been deleted, any events that were taking place in it should also be deleted.
         let deletedRoomIdentifier = "2d5d9a98-aaca-4434-959d-99d20e675d3a"
         let eventIdentifiers = try autoreleasepool { () -> [NSManagedObjectID] in
-            let fetchRequest: NSFetchRequest<EurofurenceKit.Room> = EurofurenceKit.Room.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "identifier == %@", deletedRoomIdentifier)
-            fetchRequest.fetchLimit = 1
+            let fetchRequest: NSFetchRequest<EurofurenceKit.Room> = EurofurenceKit.Room.fetchRequestForExistingEntity(
+                identifier: deletedRoomIdentifier
+            )
             
             let results = try scenario.viewContext.fetch(fetchRequest)
             let room = try XCTUnwrap(results.first)
