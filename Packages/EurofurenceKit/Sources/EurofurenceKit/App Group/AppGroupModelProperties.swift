@@ -61,4 +61,8 @@ public class AppGroupModelProperties: EurofurenceModelProperties {
         }
     }
     
+    public func removeContainerResource(at url: URL) throws {
+        try FileManager.default.removeItem(at: url)
+    }
+    
 }

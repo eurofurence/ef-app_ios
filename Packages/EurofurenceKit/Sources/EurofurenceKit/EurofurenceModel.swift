@@ -6,6 +6,7 @@ import Logging
 public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
+    private let logger = Logger(label: "EurofurenceModel")
     
     @Published public private(set) var cloudStatus: CloudStatus = .idle
     
@@ -15,6 +16,7 @@ public class EurofurenceModel: ObservableObject {
     
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
+        registerForEntityNotifications()
     }
     
     public func updateLocalStore() async throws {
@@ -125,6 +127,72 @@ extension EurofurenceModel {
             progress.completedUnitCount += 1
         }
         
+    }
+    
+}
+        
+// MARK: - Fetching Entities
+
+extension EurofurenceModel {
+    
+    public func announcement(identifiedBy identifier: String) throws -> Announcement {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidAnnouncement(identifier))
+    }
+    
+    public func event(identifiedBy identifier: String) throws -> Event {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidEvent(identifier))
+    }
+    
+    public func dealer(identifiedBy identifier: String) throws -> Dealer {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
+    }
+    
+    private func entity<E>(
+        identifiedBy identifier: String,
+        throwWhenMissing: @autoclosure () -> EurofurenceError
+    ) throws -> E where E: Entity {
+        let fetchRequest: NSFetchRequest<E> = E.fetchRequestForExistingEntity(identifier: identifier)
+        
+        let results = try viewContext.fetch(fetchRequest)
+        if let entity = results.first {
+            return entity
+        } else {
+            throw throwWhenMissing()
+        }
+    }
+    
+}
+
+// MARK: - Processing Entity Notifications
+
+extension EurofurenceModel {
+    
+    private func registerForEntityNotifications() {
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(willDeleteImage(_:)),
+            name: .EFKWillDeleteImage,
+            object: nil
+        )
+    }
+    
+    @objc private func willDeleteImage(_ notification: Notification) {
+        guard let image = notification.object as? Image else { return }
+        guard let imageURL = image.cachedImageURL else { return }
+        
+        do {
+            logger.info("Deleting image", metadata: ["ID": .string(image.identifier)])
+            try configuration.properties.removeContainerResource(at: imageURL)
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(image.identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            logger.error("Failed to delete image.", metadata: metadata)
+        }
     }
     
 }

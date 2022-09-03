@@ -1,0 +1,98 @@
+{
+  "ConventionIdentifier": "EF26",
+  "Since": "2022-09-02T12:04:11.038+00:00",
+  "CurrentDateTimeUtc": "2022-09-02T12:04:20.632Z",
+  "State": "preview",
+  "Events": {
+    "StorageLastChangeDateTimeUtc": "2022-08-28T10:30:05.522Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.266Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "EventConferenceDays": {
+    "StorageLastChangeDateTimeUtc": "2022-06-23T08:18:09.436Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.334Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "EventConferenceRooms": {
+    "StorageLastChangeDateTimeUtc": "2022-08-27T01:30:05.243Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.339Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "EventConferenceTracks": {
+    "StorageLastChangeDateTimeUtc": "2022-08-21T23:00:05.813Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.343Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "KnowledgeGroups": {
+    "StorageLastChangeDateTimeUtc": "2022-08-26T11:31:36.176Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.347Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "KnowledgeEntries": {
+    "StorageLastChangeDateTimeUtc": "2022-08-31T20:03:51.531Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.351Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "Images": {
+    "StorageLastChangeDateTimeUtc": "2022-09-01T20:09:13.567Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.355Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "Dealers": {
+    "StorageLastChangeDateTimeUtc": "2022-08-21T21:00:10.138Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.359Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": [
+        "ddf3145c-81f3-4e97-840a-58f7f6683884",
+        "18d8e68a-702f-4d4e-b3b4-369ad3f4d883",
+        "87f6669b-4f2b-4ec9-8e23-4aede54e771b",
+        "87f6669b-4f2b-4ec9-8e23-4aede54e771b",
+        "a58d5617-0239-4f73-820f-9ceee6dc6fe0",
+        "0d25206d-db8a-40bf-a3b7-c216f068e369",
+        "41918cc9-be8f-4e69-976b-308dcbb8c04d",
+        "b3a767ed-5da6-4228-88f0-579b38d69937",
+        "582e2f46-75a7-4074-81bd-3f09d53fff66",
+        "7aafdcde-88cf-494e-bd1a-26f0031bb5b6",
+        "151ec7bd-56dc-48ef-92db-c9ff3b3226f7",
+        "59ac8857-59a1-468b-8d25-1f5a1a497c1d",
+        "c9a6dc8a-4d29-4755-82e9-8e3b41b16b7b",
+        "8f284153-3e81-42b9-a2eb-2a911faeaa81",
+        "783c5a96-09be-4849-afdc-d93807283834",
+        "6f9e32f0-cf69-45e0-aacb-61ebb6aa1a4a",
+        "53c58b79-f1f8-4046-a6d5-c015af0a9671",
+        "aa9117b2-6290-43cf-85d6-deadf2251c87",
+        "9423e4f5-6aad-453b-9a6e-84bca367188d",
+        "717bfb01-a912-499d-9bc5-32ac3c449e98",
+        "665b3da0-e4d6-4c5a-9798-816a0be0eb0d"
+    ]
+  },
+  "Announcements": {
+    "StorageLastChangeDateTimeUtc": "2022-09-01T20:09:13.649Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-06-20T11:12:03.223Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  },
+  "Maps": {
+    "StorageLastChangeDateTimeUtc": "2022-08-26T09:56:25.656Z",
+    "StorageDeltaStartChangeDateTimeUtc": "2022-02-23T10:16:35.367Z",
+    "RemoveAllBeforeInsert": false,
+    "ChangedEntities": [],
+    "DeletedEntities": []
+  }
+}

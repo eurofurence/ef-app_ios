@@ -46,6 +46,10 @@ struct UpdateLocalStoreOperation {
             do {
                 let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
                 try ingester.ingest()
+                
+                let janitor = OrphanedEntityJanitor(managedObjectContext: writingContext)
+                try janitor.cleanup()
+                
                 try writingContext.save()
             } catch {
                 logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
@@ -136,8 +140,7 @@ struct UpdateLocalStoreOperation {
     }
     
     private func downloadImage(identifier: String, contentHashSHA1 hash: String) async -> DownloadImageResult {
-        let imagesDirectory = configuration.properties.imagesDirectory
-        let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
+        let downloadDestination = configuration.properties.proposedURL(forImageIdentifier: identifier)
         let downloadRequest = DownloadImageRequest(
             imageIdentifier: identifier,
             lastKnownImageContentHashSHA1: hash,
@@ -162,12 +165,21 @@ struct UpdateLocalStoreOperation {
         }
     }
     
+    /// Consumes a synchronization payload and ingests its contents into the persistent store.
     private struct ResponseIngester {
         
         var syncResponse: SynchronizationPayload
         var managedObjectContext: NSManagedObjectContext
         
         func ingest() throws {
+            // Images are a little special. We only prepare entities for images that other objects related to (e.g.
+            // Event posters and Announcement images) but still need to delete them all when requested to. We don't
+            // process their changes as a node, as the Image entity itself doesn't consume remote responses - we leave
+            // it to the other entities to prepare instances of its generalizations.
+            if syncResponse.images.removeAllObjectsBeforeInsertion {
+                try deleteAllObjects(ofType: Image.self)
+            }
+            
             try ingest(node: syncResponse.days, as: Day.self)
             try ingest(node: syncResponse.tracks, as: Track.self)
             try ingest(node: syncResponse.rooms, as: Room.self)
@@ -183,6 +195,10 @@ struct UpdateLocalStoreOperation {
             node: SynchronizationPayload.Update<T>,
             as entityType: U.Type
         ) throws where U.RemoteObject == T {
+            if node.removeAllObjectsBeforeInsertion {
+                try deleteAllObjects(ofType: U.self)
+            }
+            
             for changedObject in node.changed {
                 let correspondingEntity = try U.entity(identifiedBy: changedObject.id, in: managedObjectContext)
                 let updateContext = RemoteResponseConsumingContext(
@@ -192,6 +208,61 @@ struct UpdateLocalStoreOperation {
                 )
                 
                 try correspondingEntity.update(context: updateContext)
+            }
+            
+            for deletedObject in node.deletedObjectIdentifiers {
+                let correspondingEntity = try U.entity(identifiedBy: deletedObject, in: managedObjectContext)
+                managedObjectContext.delete(correspondingEntity)
+            }
+        }
+        
+        private func deleteAllObjects<Object>(ofType entityType: Object.Type) throws where Object: NSManagedObject {
+            guard let entityName = Object.entity().name else {
+                fatalError("NSEntityDescription for \(Object.self) does not define an entity name")
+            }
+
+            // NOTE: An NSBatchDeleteRequest would be more performant here, but the in-memory store type does
+            // not the support the command.
+            let fetchRequest: NSFetchRequest<Object> = NSFetchRequest(entityName: entityName)
+            fetchRequest.predicate = NSPredicate(value: true)
+            
+            let entities = try managedObjectContext.fetch(fetchRequest)
+            for entity in entities {
+                managedObjectContext.delete(entity)
+            }
+        }
+        
+    }
+    
+    /// Tidies up the persistent store following the ingestion of a response.
+    private struct OrphanedEntityJanitor {
+        
+        var managedObjectContext: NSManagedObjectContext
+        
+        func cleanup() throws {
+            try cleanupDealerCategories()
+            try cleanupPanelHosts()
+        }
+        
+        private func cleanupDealerCategories() throws {
+            // Remove any categories that no longer contain a dealer.
+            let emptyCategoriesFetchRequest: NSFetchRequest<DealerCategory> = DealerCategory.fetchRequest()
+            emptyCategoriesFetchRequest.predicate = NSPredicate(format: "dealers.@count == 0")
+            
+            let emptyCategories = try managedObjectContext.fetch(emptyCategoriesFetchRequest)
+            for category in emptyCategories {
+                managedObjectContext.delete(category)
+            }
+        }
+        
+        private func cleanupPanelHosts() throws {
+            // Remove any panel hosts no longer associated with an event.
+            let notHostingEventFetchRequest: NSFetchRequest<PanelHost> = PanelHost.fetchRequest()
+            notHostingEventFetchRequest.predicate = NSPredicate(format: "hostingEvents.@count == 0")
+            
+            let hostNoLongerHosting = try managedObjectContext.fetch(notHostingEventFetchRequest)
+            for host in hostNoLongerHosting {
+                managedObjectContext.delete(host)
             }
         }
         
