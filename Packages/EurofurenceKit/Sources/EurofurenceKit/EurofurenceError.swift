@@ -4,5 +4,6 @@ public enum EurofurenceError: Error, Equatable {
     case conventionIdentifierMismatch
     case invalidAnnouncement(String)
     case invalidEvent(String)
+    case invalidDealer(String)
     
 }

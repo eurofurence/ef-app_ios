@@ -136,28 +136,28 @@ extension EurofurenceModel {
 extension EurofurenceModel {
     
     public func announcement(identifiedBy identifier: String) throws -> Announcement {
-        let fetchRequest: NSFetchRequest<Announcement> = Announcement.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-        fetchRequest.fetchLimit = 1
-        
-        let results = try viewContext.fetch(fetchRequest)
-        if let announcement = results.first {
-            return announcement
-        } else {
-            throw EurofurenceError.invalidAnnouncement(identifier)
-        }
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidAnnouncement(identifier))
     }
     
     public func event(identifiedBy identifier: String) throws -> Event {
-        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-        fetchRequest.fetchLimit = 1
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidEvent(identifier))
+    }
+    
+    public func dealer(identifiedBy identifier: String) throws -> Dealer {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
+    }
+    
+    private func entity<E>(
+        identifiedBy identifier: String,
+        throwWhenMissing: @autoclosure () -> EurofurenceError
+    ) throws -> E where E: Entity {
+        let fetchRequest: NSFetchRequest<E> = E.fetchRequestForExistingEntity(identifier: identifier)
         
         let results = try viewContext.fetch(fetchRequest)
-        if let event = results.first {
-            return event
+        if let entity = results.first {
+            return entity
         } else {
-            throw EurofurenceError.invalidEvent(identifier)
+            throw throwWhenMissing()
         }
     }
     
