@@ -66,9 +66,7 @@
     "StorageDeltaStartChangeDateTimeUtc": "2022-06-20T11:12:03.223Z",
     "RemoveAllBeforeInsert": false,
     "ChangedEntities": [],
-    "DeletedEntities": [
-        "8822b105-a46c-441a-a8db-cd6c084d33c8"
-    ]
+    "DeletedEntities": []
   },
   "Maps": {
     "StorageLastChangeDateTimeUtc": "2022-08-26T09:56:25.656Z",
