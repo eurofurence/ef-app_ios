@@ -6,6 +6,7 @@ import Logging
 public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
+    private let logger = Logger(label: "EurofurenceModel")
     
     @Published public private(set) var cloudStatus: CloudStatus = .idle
     
@@ -15,6 +16,7 @@ public class EurofurenceModel: ObservableObject {
     
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
+        registerForEntityNotifications()
     }
     
     public func updateLocalStore() async throws {
@@ -156,6 +158,40 @@ extension EurofurenceModel {
             return event
         } else {
             throw EurofurenceError.invalidEvent(identifier)
+        }
+    }
+    
+}
+
+// MARK: - Processing Entity Notifications
+
+extension EurofurenceModel {
+    
+    private func registerForEntityNotifications() {
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(
+            self,
+            selector: #selector(willDeleteImage(_:)),
+            name: .EFKWillDeleteImage,
+            object: nil
+        )
+    }
+    
+    @objc private func willDeleteImage(_ notification: Notification) {
+        guard let image = notification.object as? Image else { return }
+        guard let imageURL = image.cachedImageURL else { return }
+        
+        do {
+            logger.info("Deleting image", metadata: ["ID": .string(image.identifier)])
+            try configuration.properties.removeContainerResource(at: imageURL)
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(image.identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            logger.error("Failed to delete image.", metadata: metadata)
         }
     }
     

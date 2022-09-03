@@ -1,4 +1,4 @@
-import EurofurenceKit
+@testable import EurofurenceKit
 import EurofurenceWebAPI
 import XCTest
 
@@ -33,6 +33,29 @@ class DeleteAllObjectsTest: XCTestCase {
             XCTAssertTrue(
                 objectsIDs.isEmpty,
                 "Expected all \(String(describing: entityType)) entities to be deleted. Still present: \(objectsIDs)"
+            )
+        }
+    }
+    
+    func testDeletingEverythingAlsoDeletesImages() async throws {
+        let scenario = EurofurenceModelTestBuilder().build()
+        let payload = try SampleResponse.ef26.loadResponse()
+        await scenario.stubSyncResponse(with: .success(payload))
+        try await scenario.updateLocalStore()
+        
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+        fetchRequest.predicate = NSPredicate(value: true)
+        
+        let images = try scenario.viewContext.fetch(fetchRequest)
+        
+        try await scenario.updateLocalStore(using: .deleteAll)
+        
+        for image in images {
+            guard let imageURL = image.cachedImageURL else { continue }
+            
+            XCTAssertTrue(
+                scenario.modelProperties.removedContainerResource(at: imageURL),
+                "Failed to request deletion of image at url: \(imageURL)"
             )
         }
     }

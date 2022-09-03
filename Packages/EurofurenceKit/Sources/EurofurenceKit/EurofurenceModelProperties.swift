@@ -7,6 +7,7 @@ public protocol EurofurenceModelProperties: AnyObject {
     var synchronizationChangeToken: SynchronizationPayload.GenerationToken? { get set }
     
     func proposedURL(forImageIdentifier identifier: String) -> URL
+    func removeContainerResource(at url: URL) throws
     
 }
 

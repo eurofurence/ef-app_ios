@@ -15,8 +15,29 @@ public class Image: Entity {
     @NSManaged public var cachedImageURL: URL?
     @NSManaged var width: Int32
     @NSManaged var height: Int32
+    
+    public override func prepareForDeletion() {
+        super.prepareForDeletion()
+        notifyWillDeleteImage()
+    }
+    
+    private func notifyWillDeleteImage() {
+        NotificationCenter.default.post(name: .EFKWillDeleteImage, object: self)
+    }
 
 }
+
+// MARK: - Entity Change Notifications
+
+extension Notification.Name {
+    
+    /// A notification that an `Image` will be deleted.
+    ///
+    /// The notification object is the `Image` entity. There is no corresponding `userInfo` dictionary.
+    static let EFKWillDeleteImage = Notification.Name("EurofurenceKit.EFKWillDeleteImage")
+    
+}
+
 
 // MARK: - Sizing
 
