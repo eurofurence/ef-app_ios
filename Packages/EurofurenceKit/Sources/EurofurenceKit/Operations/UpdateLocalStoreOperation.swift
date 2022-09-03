@@ -136,8 +136,7 @@ struct UpdateLocalStoreOperation {
     }
     
     private func downloadImage(identifier: String, contentHashSHA1 hash: String) async -> DownloadImageResult {
-        let imagesDirectory = configuration.properties.imagesDirectory
-        let downloadDestination = imagesDirectory.appendingPathComponent(identifier)
+        let downloadDestination = configuration.properties.proposedURL(forImageIdentifier: identifier)
         let downloadRequest = DownloadImageRequest(
             imageIdentifier: identifier,
             lastKnownImageContentHashSHA1: hash,

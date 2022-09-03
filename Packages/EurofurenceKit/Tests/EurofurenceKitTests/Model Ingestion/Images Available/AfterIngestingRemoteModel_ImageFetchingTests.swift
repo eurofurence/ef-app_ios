@@ -13,9 +13,8 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
         
         // We would expect to see exactly one request per image identifier. Each image should be downloaded to the
         // known location in the file system, identified by their ID.
-        let expectedImagesURL = scenario.modelProperties.imagesDirectory
         let expectedImageRequests = payload.images.changed.map { image -> DownloadImageRequest in
-            let expectedDownloadURL = expectedImagesURL.appendingPathComponent(image.id)
+            let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
             return DownloadImageRequest(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
@@ -46,9 +45,8 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
         
-        let expectedImagesURL = scenario.modelProperties.imagesDirectory
         let expectedImageRequests = payload.images.changed.map { image -> DownloadImageRequest in
-            let expectedDownloadURL = expectedImagesURL.appendingPathComponent(image.id)
+            let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
             return DownloadImageRequest(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
@@ -77,7 +75,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
             let results = try scenario.viewContext.fetch(fetchRequest)
             guard let entity = results.first else { continue }
             
-            let expectedURL = scenario.modelProperties.imagesDirectory.appendingPathComponent(image.id)
+            let expectedURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
             XCTAssertEqual(expectedURL, entity.cachedImageURL)
         }
     }
@@ -128,7 +126,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
         )
         
         let announcementImage = try XCTUnwrap(announcement.image)
-        let expectedURL = scenario.modelProperties.imagesDirectory.appendingPathComponent(announcementImageIdentifier)
+        let expectedURL = scenario.modelProperties.proposedURL(forImageIdentifier: announcementImageIdentifier)
         
         XCTAssertEqual(expectedURL, announcementImage.cachedImageURL)
     }
