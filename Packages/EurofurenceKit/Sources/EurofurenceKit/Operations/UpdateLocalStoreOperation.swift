@@ -46,6 +46,10 @@ struct UpdateLocalStoreOperation {
             do {
                 let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
                 try ingester.ingest()
+                
+                let janitor = OrphanedEntityJanitor(managedObjectContext: writingContext)
+                try janitor.cleanup()
+                
                 try writingContext.save()
             } catch {
                 logger.error("Failed to update local store.", metadata: ["Error": .string(String(describing: error))])
@@ -161,6 +165,7 @@ struct UpdateLocalStoreOperation {
         }
     }
     
+    /// Consumes a synchronization payload and ingests its contents into the persistent store.
     private struct ResponseIngester {
         
         var syncResponse: SynchronizationPayload
@@ -224,6 +229,28 @@ struct UpdateLocalStoreOperation {
             let entities = try managedObjectContext.fetch(fetchRequest)
             for entity in entities {
                 managedObjectContext.delete(entity)
+            }
+        }
+        
+    }
+    
+    /// Tidies up the persistent store following the ingestion of a response.
+    private struct OrphanedEntityJanitor {
+        
+        var managedObjectContext: NSManagedObjectContext
+        
+        func cleanup() throws {
+            try cleanupDealerCategories()
+        }
+        
+        private func cleanupDealerCategories() throws {
+            // Remove any categories that no longer contain a dealer.
+            let emptyCategoriesFetchRequest: NSFetchRequest<DealerCategory> = DealerCategory.fetchRequest()
+            emptyCategoriesFetchRequest.predicate = NSPredicate(format: "dealers.@count == 0")
+            
+            let emptyCategories = try managedObjectContext.fetch(emptyCategoriesFetchRequest)
+            for category in emptyCategories {
+                managedObjectContext.delete(category)
             }
         }
         
