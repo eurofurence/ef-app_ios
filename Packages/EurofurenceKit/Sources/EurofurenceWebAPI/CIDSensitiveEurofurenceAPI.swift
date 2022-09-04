@@ -48,4 +48,9 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         try await network.download(contentsOf: downloadURL, to: request.downloadDestinationURL)
     }
     
+    public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
+        struct NotImplemented: Error { }
+        throw NotImplemented()
+    }
+    
 }

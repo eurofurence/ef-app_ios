@@ -9,6 +9,7 @@ public class EurofurenceModel: ObservableObject {
     private let logger = Logger(label: "EurofurenceModel")
     
     @Published public private(set) var cloudStatus: CloudStatus = .idle
+    @Published public private(set) var authenticationState: AuthenticationState = .notAuthenticated
     
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
@@ -16,6 +17,8 @@ public class EurofurenceModel: ObservableObject {
     
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
+        
+        authenticationState = configuration.keychain.credential == nil ? .notAuthenticated : .authenticated
         registerForEntityNotifications()
     }
     
@@ -62,17 +65,20 @@ extension EurofurenceModel {
         
         let persistentContainer: EurofurencePersistentContainer
         let properties: EurofurenceModelProperties
+        let keychain: Keychain
         let api: EurofurenceAPI
         let conventionIdentifier: ConventionIdentifier
         
         public init(
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
+            keychain: Keychain = SecKeychain.shared,
             api: EurofurenceAPI = CIDSensitiveEurofurenceAPI.api(),
             conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.persistentContainer = EurofurencePersistentContainer()
             self.properties = properties
+            self.keychain = keychain
             self.api = api
             self.conventionIdentifier = conventionIdentifier
             
@@ -127,6 +133,50 @@ extension EurofurenceModel {
             progress.completedUnitCount += 1
         }
         
+    }
+    
+}
+
+// MARK: - Authentication
+
+public struct LoginParameters {
+    
+    public var registrationNumber: Int
+    public var username: String
+    public var password: String
+    
+    public init(registrationNumber: Int, username: String, password: String) {
+        self.registrationNumber = registrationNumber
+        self.username = username
+        self.password = password
+    }
+    
+}
+
+extension EurofurenceModel {
+    
+    public enum AuthenticationState: Equatable {
+        case notAuthenticated
+        case authenticated
+    }
+    
+    public func registerRemoteNotificationDeviceTokenData(_ data: Data) {
+        
+    }
+    
+    public func signIn(with login: LoginParameters) async throws {
+        let loginRequest = Login(
+            registrationNumber: login.registrationNumber,
+            username: login.username,
+            password: login.password
+        )
+        
+        do {
+            _ = try await configuration.api.requestAuthenticationToken(using: loginRequest)
+            authenticationState = .authenticated
+        } catch {
+            throw EurofurenceError.loginFailed
+        }
     }
     
 }

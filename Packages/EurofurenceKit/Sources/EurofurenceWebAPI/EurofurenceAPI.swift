@@ -8,4 +8,6 @@ public protocol EurofurenceAPI {
     
     func downloadImage(_ request: DownloadImageRequest) async throws
     
+    func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser
+    
 }
