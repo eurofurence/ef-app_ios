@@ -208,7 +208,17 @@ extension EurofurenceModel {
     }
     
     public func signOut() async throws {
+        guard let credential = configuration.keychain.credential else { return }
+        
+        let logout = Logout(
+            authenticationToken: credential.authenticationToken,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        try await configuration.api.requestLogout(logout)
+        
         configuration.keychain.credential = nil
+        currentUser = nil
     }
     
     private func associateDevicePushNotificationToken(data: Data, withUserAuthenticationToken token: String) async {

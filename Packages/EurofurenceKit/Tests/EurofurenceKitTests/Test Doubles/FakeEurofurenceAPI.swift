@@ -84,7 +84,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     func stubLogoutRequest(_ request: Logout, with result: Result<Void, Error>) {
-        
+        logoutResponses[request] = result
     }
     
 }

@@ -129,7 +129,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
     }
     
-    func testAuthenticatedModel_AssociatedDeviceToken_LoggingOut_Succeeds() async throws {
+    func testAuthenticatedModel_AssociatedDeviceToken_LoggingOutSucceeds_ClearsCredential() async throws {
         let keychain = AuthenticatedKeychain()
         let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
@@ -137,28 +137,38 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         
         let expectedLogoutRequest = Logout(authenticationToken: "ABC", pushNotificationDeviceToken: deviceToken)
         await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
-        try await scenario.model.signOut()
+        
+        await XCTAssertEventuallyNoThrows { try await scenario.model.signOut() }
         
         XCTAssertNil(keychain.credential)
+        XCTAssertNil(scenario.model.currentUser)
     }
     
-    func testAuthenticatedModel_NoAssociatedDeviceToken_LoggingOut_Succeeds() async throws {
+    func testAuthenticatedModel_NoAssociatedDeviceToken_LoggingOutSucceeds_ClearsCredential() async throws {
         let keychain = AuthenticatedKeychain()
         let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
         
         let expectedLogoutRequest = Logout(authenticationToken: "ABC", pushNotificationDeviceToken: nil)
         await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
-        try await scenario.model.signOut()
+        
+        await XCTAssertEventuallyNoThrows { try await scenario.model.signOut() }
         
         XCTAssertNil(keychain.credential)
+        XCTAssertNil(scenario.model.currentUser)
     }
     
-    func testAuthenticatedModel_LoggingOut_Fails() async throws {
+    func testAuthenticatedModel_LoggingOutFails_DoesNotClearCredential() async throws {
+        let keychain = AuthenticatedKeychain()
+        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
         
-    }
-    
-    func testUnauthenticatedModel_LoggingOut_Fails() async throws {
+        let expectedLogoutRequest = Logout(authenticationToken: "ABC", pushNotificationDeviceToken: nil)
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .failure(error))
         
+        await XCTAssertEventuallyThrowsError { try await scenario.model.signOut() }
+        
+        XCTAssertNotNil(keychain.credential)
+        XCTAssertNotNil(scenario.model.currentUser)
     }
     
     func testAuthenticatingCachesPrivateMessages() async throws {
@@ -169,7 +179,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         
     }
     
-    func testModelContainsCachedPrivateMessages_IsUnauthenticatedOnStart_DeletesPrivateMessages() {
+    func testModelContainsCachedPrivateMessages_TokenExpiresOnStart_DeletesPrivateMessages() {
         
     }
 
