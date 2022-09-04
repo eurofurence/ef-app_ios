@@ -35,7 +35,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         return response
     }
     
-    public func downloadImage(_ request: DownloadImageRequest) async throws {
+    public func downloadImage(_ request: DownloadImage) async throws {
         let id = request.imageIdentifier
         let hash = request.lastKnownImageContentHashSHA1
         let downloadURLString = "https://app.eurofurence.org/EF26/api/Images/\(id)/Content/with-hash:\(hash)"
@@ -53,7 +53,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         throw NotImplemented()
     }
     
-    public func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws {
+    public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
         
     }
     

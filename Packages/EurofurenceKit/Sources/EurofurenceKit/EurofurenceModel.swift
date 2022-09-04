@@ -221,8 +221,11 @@ extension EurofurenceModel {
         currentUser = nil
     }
     
-    private func associateDevicePushNotificationToken(data: Data, withUserAuthenticationToken token: String) async {
-        let pushNotificationDeviceRegistration = PushNotificationDeviceRegistration(
+    private func associateDevicePushNotificationToken(
+        data: Data,
+        withUserAuthenticationToken token: AuthenticationToken
+    ) async {
+        let pushNotificationDeviceRegistration = RegisterPushNotificationDeviceToken(
             authenticationToken: token,
             pushNotificationDeviceToken: data
         )

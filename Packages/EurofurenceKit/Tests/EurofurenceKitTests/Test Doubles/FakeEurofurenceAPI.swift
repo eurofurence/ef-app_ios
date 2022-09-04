@@ -31,9 +31,9 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private(set) var requestedImages = [DownloadImageRequest]()
+    private(set) var requestedImages = [DownloadImage]()
     private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
-    func downloadImage(_ request: DownloadImageRequest) async throws {
+    func downloadImage(_ request: DownloadImage) async throws {
         requestedImages.append(request)
         
         if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
@@ -55,8 +55,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private(set) var registeredDeviceTokenRequest: PushNotificationDeviceRegistration?
-    func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws {
+    private(set) var registeredDeviceTokenRequest: RegisterPushNotificationDeviceToken?
+    func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
         registeredDeviceTokenRequest = registration
     }
     

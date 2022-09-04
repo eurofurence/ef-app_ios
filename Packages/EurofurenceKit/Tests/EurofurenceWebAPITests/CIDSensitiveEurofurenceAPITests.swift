@@ -43,7 +43,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
             try FileManager.default.removeItem(at: temporaryFileURL)
         }
         
-        let imageRequest = DownloadImageRequest(
+        let imageRequest = DownloadImage(
             imageIdentifier: "ID",
             lastKnownImageContentHashSHA1: "SHA",
             downloadDestinationURL: temporaryFileURL
@@ -68,7 +68,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
             try FileManager.default.removeItem(at: temporaryFileURL)
         }
         
-        let imageRequest = DownloadImageRequest(
+        let imageRequest = DownloadImage(
             imageIdentifier: "ID",
             lastKnownImageContentHashSHA1: "SHA",
             downloadDestinationURL: temporaryFileURL

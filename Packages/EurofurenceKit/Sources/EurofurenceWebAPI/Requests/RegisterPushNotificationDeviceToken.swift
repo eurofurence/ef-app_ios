@@ -1,11 +1,11 @@
 import Foundation
 
-public struct PushNotificationDeviceRegistration: Equatable {
+public struct RegisterPushNotificationDeviceToken: Equatable {
     
-    public var authenticationToken: String
+    public var authenticationToken: AuthenticationToken
     public var pushNotificationDeviceToken: Data
     
-    public init(authenticationToken: String, pushNotificationDeviceToken: Data) {
+    public init(authenticationToken: AuthenticationToken, pushNotificationDeviceToken: Data) {
         self.authenticationToken = authenticationToken
         self.pushNotificationDeviceToken = pushNotificationDeviceToken
     }

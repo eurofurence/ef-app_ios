@@ -6,11 +6,11 @@ public protocol EurofurenceAPI {
         since previousChangeToken: SynchronizationPayload.GenerationToken?
     ) async throws -> SynchronizationPayload
     
-    func downloadImage(_ request: DownloadImageRequest) async throws
+    func downloadImage(_ request: DownloadImage) async throws
     
     func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser
     
-    func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws
+    func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws
     
     func requestLogout(_ logout: Logout) async throws
     
