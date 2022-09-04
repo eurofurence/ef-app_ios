@@ -10,4 +10,6 @@ public protocol EurofurenceAPI {
     
     func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser
     
+    func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws
+    
 }

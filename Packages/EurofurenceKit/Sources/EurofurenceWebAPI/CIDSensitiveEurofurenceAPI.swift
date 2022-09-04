@@ -53,4 +53,8 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         throw NotImplemented()
     }
     
+    public func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws {
+        
+    }
+    
 }

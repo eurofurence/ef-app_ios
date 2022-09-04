@@ -18,8 +18,6 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     ) async throws -> SynchronizationPayload {
         lastChangeToken = previousChangeToken
         
-        
-        
         guard let nextSyncResponse = nextSyncResponse else {
             throw NotStubbed()
         }
@@ -55,6 +53,11 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
             
         case .failure(let error): throw error
         }
+    }
+    
+    private(set) var registeredDeviceTokenRequest: PushNotificationDeviceRegistration?
+    func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws {
+        registeredDeviceTokenRequest = registration
     }
     
     func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {

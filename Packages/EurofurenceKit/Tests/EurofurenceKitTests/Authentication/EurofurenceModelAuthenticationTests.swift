@@ -7,12 +7,19 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testModelNotAuthenticatedOnStart() async throws {
         let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
-        XCTAssertEqual(.notAuthenticated, scenario.model.authenticationState)
+        XCTAssertNil(scenario.model.currentUser)
     }
     
     func testModelAuthenticatedOnStart() async throws {
         let scenario = EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).build()
-        XCTAssertEqual(.authenticated, scenario.model.authenticationState)
+        
+        let user = try XCTUnwrap(
+            scenario.model.currentUser,
+            "Authenticated user information from the keychain should be used to initialize the model"
+        )
+        
+        XCTAssertEqual("Test User", user.name)
+        XCTAssertEqual(42, user.registrationNumber)
     }
     
     func testAuthenticatingModel_LoginSucceeds() async throws {
@@ -38,7 +45,13 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         
         await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
         
-        XCTAssertEqual(.authenticated, scenario.model.authenticationState)
+        let user = try XCTUnwrap(
+            scenario.model.currentUser,
+            "Successful logins should update the current user"
+        )
+        
+        XCTAssertEqual("Actual Username", user.name)
+        XCTAssertEqual(99, user.registrationNumber)
         
         let expectedCredential = Credential(
             username: "Actual Username",
@@ -51,8 +64,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     }
     
     func testAuthenticatingModel_LoginFails() async throws {
-        let keychain = SpyKeychain(UnauthenticatedKeychain())
-        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         
         let expectedLogin = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
@@ -62,6 +74,59 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         await XCTAssertEventuallyThrowsSpecificError(EurofurenceError.loginFailed) {
             try await scenario.model.signIn(with: login)
         }
+    }
+    
+    func testRegisteringRemoteNotificationsToken_ThenLoggingIn() async throws {
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
+        await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
+        
+        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let expectedLogin = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let loginResponse = AuthenticatedUser(
+            userIdentifier: 99,
+            username: "Actual Username",
+            token: "Token",
+            tokenExpires: .distantFuture
+        )
+        
+        await scenario.api.stubLoginAttempt(expectedLogin, with: .success(loginResponse))
+        await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
+        
+        let expectedDeviceTokenRegistration = PushNotificationDeviceRegistration(
+            authenticationToken: "Token",
+            pushNotificationDeviceToken: deviceToken
+        )
+        
+        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
+        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+    }
+    
+    func testLoggingIn_ThenRegisteringRemoteNotificationDeviceToken() async throws {
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        
+        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let expectedLogin = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let loginResponse = AuthenticatedUser(
+            userIdentifier: 99,
+            username: "Actual Username",
+            token: "Token",
+            tokenExpires: .distantFuture
+        )
+        
+        await scenario.api.stubLoginAttempt(expectedLogin, with: .success(loginResponse))
+        await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
+        
+        let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
+        await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
+        
+        let expectedDeviceTokenRegistration = PushNotificationDeviceRegistration(
+            authenticationToken: "Token",
+            pushNotificationDeviceToken: deviceToken
+        )
+        
+        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
+        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
     }
     
     func testAuthenticatedModel_LoggingOut_Succeeds() async throws {
