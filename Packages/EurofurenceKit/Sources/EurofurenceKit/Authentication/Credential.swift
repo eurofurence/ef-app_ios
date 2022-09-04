@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Credential: Codable {
+public struct Credential: Codable, Equatable {
     
     public var username: String
     public var registrationNumber: Int

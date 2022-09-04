@@ -172,7 +172,17 @@ extension EurofurenceModel {
         )
         
         do {
-            _ = try await configuration.api.requestAuthenticationToken(using: loginRequest)
+            let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
+            
+            let credential = Credential(
+                username: authenticatedUser.username,
+                registrationNumber: authenticatedUser.userIdentifier,
+                authenticationToken: authenticatedUser.token,
+                tokenExpiryDate: authenticatedUser.tokenExpires
+            )
+            
+            configuration.keychain.credential = credential
+            
             authenticationState = .authenticated
         } catch {
             throw EurofurenceError.loginFailed

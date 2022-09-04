@@ -3,27 +3,6 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class SpyKeychain<K>: Keychain where K: Keychain {
-    
-    private let spying: K
-    
-    init(_ spying: K) {
-        self.spying = spying
-    }
-    
-    private(set) var setCredential: Credential?
-    var credential: Credential? {
-        get {
-            spying.credential
-        }
-        set {
-            setCredential = newValue
-            spying.credential = newValue
-        }
-    }
-    
-}
-
 class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testModelNotAuthenticatedOnStart() async throws {
@@ -60,6 +39,15 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
         
         XCTAssertEqual(.authenticated, scenario.model.authenticationState)
+        
+        let expectedCredential = Credential(
+            username: "Actual Username",
+            registrationNumber: 99,
+            authenticationToken: "Token",
+            tokenExpiryDate: someDate
+        )
+        
+        XCTAssertEqual(expectedCredential, keychain.setCredential)
     }
     
     func testAuthenticatingModel_LoginFails() async throws {
