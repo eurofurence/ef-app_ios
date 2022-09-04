@@ -129,8 +129,28 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
     }
     
-    func testAuthenticatedModel_LoggingOut_Succeeds() async throws {
+    func testAuthenticatedModel_AssociatedDeviceToken_LoggingOut_Succeeds() async throws {
+        let keychain = AuthenticatedKeychain()
+        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
+        await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         
+        let expectedLogoutRequest = Logout(authenticationToken: "ABC", pushNotificationDeviceToken: deviceToken)
+        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
+        try await scenario.model.signOut()
+        
+        XCTAssertNil(keychain.credential)
+    }
+    
+    func testAuthenticatedModel_NoAssociatedDeviceToken_LoggingOut_Succeeds() async throws {
+        let keychain = AuthenticatedKeychain()
+        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        
+        let expectedLogoutRequest = Logout(authenticationToken: "ABC", pushNotificationDeviceToken: nil)
+        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
+        try await scenario.model.signOut()
+        
+        XCTAssertNil(keychain.credential)
     }
     
     func testAuthenticatedModel_LoggingOut_Fails() async throws {

@@ -60,12 +60,31 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         registeredDeviceTokenRequest = registration
     }
     
+    private var logoutResponses = [Logout: Result<Void, Error>]()
+    func requestLogout(_ logout: Logout) async throws {
+        guard let response = logoutResponses[logout] else {
+            throw NotStubbed()
+        }
+        
+        switch response {
+        case .success(()):
+            return
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
     
     func stubLoginAttempt(_ attempt: Login, with result: Result<AuthenticatedUser, Error>) {
         stubbedLoginAttempts[attempt] = result
+    }
+    
+    func stubLogoutRequest(_ request: Logout, with result: Result<Void, Error>) {
+        
     }
     
 }

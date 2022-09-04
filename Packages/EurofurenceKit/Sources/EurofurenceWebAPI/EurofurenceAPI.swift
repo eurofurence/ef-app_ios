@@ -12,4 +12,6 @@ public protocol EurofurenceAPI {
     
     func registerPushNotificationToken(registration: PushNotificationDeviceRegistration) async throws
     
+    func requestLogout(_ logout: Logout) async throws
+    
 }

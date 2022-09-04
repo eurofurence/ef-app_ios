@@ -57,4 +57,8 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         
     }
     
+    public func requestLogout(_ logout: Logout) async throws {
+        
+    }
+    
 }
