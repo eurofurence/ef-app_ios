@@ -78,7 +78,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     private var messageResponses = [AuthenticationToken: Result<[EurofurenceWebAPI.Message], Error>]()
     func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [EurofurenceWebAPI.Message] {
         guard let response = messageResponses[authenticationToken] else {
-            throw NotStubbed()
+            return []
         }
         
         switch response {

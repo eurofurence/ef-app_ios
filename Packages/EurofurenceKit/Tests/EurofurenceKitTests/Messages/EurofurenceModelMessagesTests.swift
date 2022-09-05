@@ -88,7 +88,35 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testWhenSignedInFutureReloadsIncludeMessages() async throws {
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let user = AuthenticatedUser(
+            userIdentifier: 42,
+            username: "Some Guy",
+            token: "Token",
+            tokenExpires: .distantFuture
+        )
         
+        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
+        try await scenario.model.signIn(with: login)
+        
+        // The next update should include a fetch for messages now we are authenticated.
+        let (received, read) = (Date(), Date())
+        let message = EurofurenceWebAPI.Message(
+            id: "Identifier",
+            author: "Author",
+            subject: "Subject",
+            message: "Message",
+            receivedDate: received,
+            readDate: read
+        )
+        
+        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success([message]))
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let entity = try scenario.model.message(identifiedBy: "Identifier")
+        message.assert(against: entity)
     }
     
     func testLoadingSameMessageMultipleTimesDoesNotDuplicateMessageInContext() async throws {

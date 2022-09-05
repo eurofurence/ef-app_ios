@@ -13,9 +13,20 @@ struct UpdateLocalStoreOperation {
     }
     
     func execute() async throws {
-        let response = try await fetchLatestSyncResponse()
-        try validateSyncResponse(response)
-        try await ingestSyncResponse(response)
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            group.addTask {
+                let response = try await fetchLatestSyncResponse()
+                try validateSyncResponse(response)
+                try await ingestSyncResponse(response)
+            }
+            
+            group.addTask {
+                let fetchMessages = UpdateLocalMessagesOperation(configuration: configuration)
+                await fetchMessages.execute()
+            }
+            
+            try await group.waitForAll()
+        }
     }
     
     private func fetchLatestSyncResponse() async throws -> SynchronizationPayload {
