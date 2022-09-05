@@ -199,6 +199,59 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         await XCTAssertEventuallyThrowsError { try await api.registerPushNotificationToken(registration: pushRegistration) }
     }
     
+    func testLoggingOut_Succeeds() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
+        let logout = Logout(
+            authenticationToken: authenticationToken,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedPushRegistrationBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post)
+        
+        network.stub(expectedRequest, with: .success(Data()))
+        
+        await XCTAssertEventuallyNoThrow { try await api.requestLogout(logout) }
+        
+        let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
+            pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
+            channels: ["EF26", "EF26-ios"]
+        )
+        
+        XCTAssertEqual(expectedNotificationServiceRegistration, pushNotificationService.registration)
+    }
+    
+    func testLoggingOut_Fails() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
+        let logout = Logout(
+            authenticationToken: authenticationToken,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedPushRegistrationBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post)
+        
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        network.stub(expectedRequest, with: .failure(error))
+        
+        await XCTAssertEventuallyThrowsError { try await api.requestLogout(logout) }
+        
+        let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
+            pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
+            channels: ["EF26", "EF26-ios"]
+        )
+        
+        XCTAssertEqual(expectedNotificationServiceRegistration, pushNotificationService.registration)
+    }
+    
     private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {
         let url = try XCTUnwrap(Bundle.module.url(forResource: fileName, withExtension: "json"))
         let data = try Data(contentsOf: url)

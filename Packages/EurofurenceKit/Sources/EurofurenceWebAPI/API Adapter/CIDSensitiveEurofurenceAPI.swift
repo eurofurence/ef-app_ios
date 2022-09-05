@@ -73,11 +73,29 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
+        try await associatePushNotificationToken(
+            registration.pushNotificationDeviceToken,
+            withUserAuthenticationToken: registration.authenticationToken
+        )
+    }
+    
+    public func requestLogout(_ logout: Logout) async throws {
+        // Logging out = disassociate the authentication token with the push token.
+        try await associatePushNotificationToken(
+            logout.pushNotificationDeviceToken,
+            withUserAuthenticationToken: nil
+        )
+    }
+    
+    private func associatePushNotificationToken(
+        _ pushNotificationData: Data?,
+        withUserAuthenticationToken authenticationToken: AuthenticationToken?
+    ) async throws {
         let conventionIdentifier = configuration.conventionIdentifier
         let hostVersion = configuration.hostVersion
         
         let pushNotificationServiceRegistration = PushNotificationServiceRegistration(
-            pushNotificationDeviceTokenData: registration.pushNotificationDeviceToken,
+            pushNotificationDeviceTokenData: pushNotificationData,
             channels: ["\(conventionIdentifier)", "\(conventionIdentifier)-ios"]
         )
         
@@ -94,16 +112,12 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         let registrationURL = makeURL(subpath: "PushNotifications/FcmDeviceRegistration")
         
         var headers = NetworkRequest.Headers()
-        if let authenticationToken = registration.authenticationToken {
+        if let authenticationToken = authenticationToken {
             headers["Authorization"] = "Bearer \(authenticationToken.stringValue)"
         }
         
         let networkRequest = NetworkRequest(url: registrationURL, body: body, method: .post, headers: headers)
         try await configuration.network.perform(request: networkRequest)
-    }
-    
-    public func requestLogout(_ logout: Logout) async throws {
-        
     }
     
     private struct LoginRequest: Encodable {
