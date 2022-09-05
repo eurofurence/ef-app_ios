@@ -29,7 +29,9 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         let urlString = "https://app.eurofurence.org/EF26/api/Sync\(sinceToken)"
         guard let url = URL(string: urlString) else { fatalError() }
         
-        let data = try await network.get(contentsOf: url)
+        let request = NetworkRequest(url: url, method: .get)
+        
+        let data = try await network.perform(request: request)
         let response = try decoder.decode(SynchronizationPayload.self, from: data)
         
         return response
@@ -41,11 +43,13 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         let downloadURLString = "https://app.eurofurence.org/EF26/api/Images/\(id)/Content/with-hash:\(hash)"
         guard let downloadURL = URL(string: downloadURLString) else { return }
         
+        let downloadRequest = NetworkRequest(url: downloadURL, method: .get)
+        
         if FileManager.default.fileExists(atPath: request.downloadDestinationURL.path) {
             try FileManager.default.removeItem(at: request.downloadDestinationURL)
         }
         
-        try await network.download(contentsOf: downloadURL, to: request.downloadDestinationURL)
+        try await network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
     }
     
     public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
