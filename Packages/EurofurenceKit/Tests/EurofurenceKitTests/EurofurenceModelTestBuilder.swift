@@ -12,9 +12,15 @@ class EurofurenceModelTestBuilder {
     }
     
     private var conventionIdentifier: ConventionIdentifier = .current
+    private var keychain: Keychain = UnauthenticatedKeychain()
     
     func with(conventionIdentifier: ConventionIdentifier) -> Self {
         self.conventionIdentifier = conventionIdentifier
+        return self
+    }
+    
+    func with(keychain: Keychain) -> Self {
+        self.keychain = keychain
         return self
     }
     
@@ -24,6 +30,7 @@ class EurofurenceModelTestBuilder {
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
             properties: properties,
+            keychain: keychain,
             api: api,
             conventionIdentifier: conventionIdentifier
         )

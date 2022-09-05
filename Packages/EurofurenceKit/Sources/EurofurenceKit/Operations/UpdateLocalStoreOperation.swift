@@ -135,13 +135,13 @@ struct UpdateLocalStoreOperation {
     }
     
     private enum DownloadImageResult: Sendable {
-        case success(DownloadImageRequest)
+        case success(DownloadImage)
         case failure
     }
     
     private func downloadImage(identifier: String, contentHashSHA1 hash: String) async -> DownloadImageResult {
         let downloadDestination = configuration.properties.proposedURL(forImageIdentifier: identifier)
-        let downloadRequest = DownloadImageRequest(
+        let downloadRequest = DownloadImage(
             imageIdentifier: identifier,
             lastKnownImageContentHashSHA1: hash,
             downloadDestinationURL: downloadDestination

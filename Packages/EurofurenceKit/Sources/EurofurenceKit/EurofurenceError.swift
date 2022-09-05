@@ -6,4 +6,6 @@ public enum EurofurenceError: Error, Equatable {
     case invalidEvent(String)
     case invalidDealer(String)
     
+    case loginFailed
+    
 }

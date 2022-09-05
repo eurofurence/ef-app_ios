@@ -13,12 +13,17 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0")
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
+        .package(
+            url: "https://github.com/firebase/firebase-ios-sdk.git", .upToNextMajor(from: .init(8, 0, 0))
+        )
     ],
     targets: [
         .target(
             name: "EurofurenceWebAPI",
-            dependencies: []
+            dependencies: [
+                .product(name: "FirebaseMessaging", package: "firebase-ios-sdk")
+            ]
         ),
         
         .target(
@@ -29,10 +34,16 @@ let package = Package(
             ]
         ),
         
+        .target(
+            name: "XCTAsyncAssertions",
+            dependencies: []
+        ),
+        
         .testTarget(
             name: "EurofurenceWebAPITests",
             dependencies: [
-                .target(name: "EurofurenceWebAPI")
+                .target(name: "EurofurenceWebAPI"),
+                .target(name: "XCTAsyncAssertions")
             ],
             resources: [
                 .process("Resources")
@@ -42,7 +53,8 @@ let package = Package(
         .testTarget(
             name: "EurofurenceKitTests",
             dependencies: [
-                .target(name: "EurofurenceKit")
+                .target(name: "EurofurenceKit"),
+                .target(name: "XCTAsyncAssertions")
             ],
             resources: [
                 .process("Remote Responses/JSON")
@@ -52,7 +64,8 @@ let package = Package(
         .testTarget(
             name: "EurofurenceKitAcceptanceTests",
             dependencies: [
-                .target(name: "EurofurenceKit")
+                .target(name: "EurofurenceKit"),
+                .target(name: "XCTAsyncAssertions")
             ]
         )
     ]

@@ -1,6 +1,6 @@
 import Foundation
 
-public struct DownloadImageRequest: Equatable, Hashable, @unchecked Sendable {
+public struct DownloadImage: Equatable, Hashable, @unchecked Sendable {
     
     public var imageIdentifier: String
     public var lastKnownImageContentHashSHA1: String

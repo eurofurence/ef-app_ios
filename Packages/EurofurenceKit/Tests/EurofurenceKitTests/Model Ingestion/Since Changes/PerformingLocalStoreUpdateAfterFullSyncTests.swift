@@ -1,5 +1,6 @@
 @testable import EurofurenceKit
 import EurofurenceWebAPI
+import XCTAsyncAssertions
 import XCTest
 
 class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {

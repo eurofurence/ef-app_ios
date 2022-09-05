@@ -1,6 +1,7 @@
 import CoreData
 @testable import EurofurenceKit
 import EurofurenceWebAPI
+import XCTAsyncAssertions
 import XCTest
 
 class DeletingDealerTests: XCTestCase {

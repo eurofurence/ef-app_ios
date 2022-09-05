@@ -16,7 +16,7 @@ public class Image: Entity {
     @NSManaged var width: Int32
     @NSManaged var height: Int32
     
-    public override func prepareForDeletion() {
+    override public func prepareForDeletion() {
         super.prepareForDeletion()
         notifyWillDeleteImage()
     }
@@ -37,7 +37,6 @@ extension Notification.Name {
     static let EFKWillDeleteImage = Notification.Name("EurofurenceKit.EFKWillDeleteImage")
     
 }
-
 
 // MARK: - Sizing
 

@@ -13,16 +13,16 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
         
         // We would expect to see exactly one request per image identifier. Each image should be downloaded to the
         // known location in the file system, identified by their ID.
-        let expectedImageRequests = payload.images.changed.map { image -> DownloadImageRequest in
+        let expectedImageRequests = payload.images.changed.map { image -> DownloadImage in
             let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
-            return DownloadImageRequest(
+            return DownloadImage(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
                 downloadDestinationURL: expectedDownloadURL
             )
         }
         
-        let requestedImages: [DownloadImageRequest] = await scenario.api.requestedImages
+        let requestedImages: [DownloadImage] = await scenario.api.requestedImages
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }
@@ -45,16 +45,16 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
         
-        let expectedImageRequests = payload.images.changed.map { image -> DownloadImageRequest in
+        let expectedImageRequests = payload.images.changed.map { image -> DownloadImage in
             let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
-            return DownloadImageRequest(
+            return DownloadImage(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
                 downloadDestinationURL: expectedDownloadURL
             )
         }
         
-        let requestedImages: [DownloadImageRequest] = await scenario.api.requestedImages
+        let requestedImages: [DownloadImage] = await scenario.api.requestedImages
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }

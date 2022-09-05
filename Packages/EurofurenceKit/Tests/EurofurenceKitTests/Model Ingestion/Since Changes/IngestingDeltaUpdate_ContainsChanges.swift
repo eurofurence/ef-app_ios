@@ -1,4 +1,5 @@
 import EurofurenceWebAPI
+import XCTAsyncAssertions
 import XCTest
 
 class IngestingDeltaUpdate_ContainsChanges: XCTestCase {

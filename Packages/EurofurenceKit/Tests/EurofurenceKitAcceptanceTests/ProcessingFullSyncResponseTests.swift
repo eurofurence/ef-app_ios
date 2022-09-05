@@ -1,4 +1,5 @@
 import EurofurenceKit
+import XCTAsyncAssertions
 import XCTest
 
 class ProcessingFullSyncResponseTests: XCTestCase {
@@ -7,7 +8,7 @@ class ProcessingFullSyncResponseTests: XCTestCase {
         let modelConfiguration = EurofurenceModel.Configuration(environment: .memory, conventionIdentifier: .current)
         let model = EurofurenceModel(configuration: modelConfiguration)
         
-        await XCTAssertEventuallyNoThrow { try await model.updateLocalStore() }
+        await XCTAssertEventuallyNoThrows { try await model.updateLocalStore() }
     }
 
 }
