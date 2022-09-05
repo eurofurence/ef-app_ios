@@ -14,6 +14,24 @@ struct URLSessionNetwork: Network {
         urlSession = URLSession(configuration: .default, delegate: nil, delegateQueue: delegateQueue)
     }
     
+    private static let userAgent: String? = {
+        return Bundle.main.infoDictionary.flatMap { (info) -> String in
+            let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
+            let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
+            let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
+            let appBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
+
+            let osNameVersion: String = {
+                let version = ProcessInfo.processInfo.operatingSystemVersion
+                let versionString = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+
+                return "iOS \(versionString)"
+            }()
+
+            return "\(executable)/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
+        }
+    }()
+    
     func perform(request: NetworkRequest) async throws -> Data {
         let urlRequest = prepareSessionRequest(from: request)
         return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Data, Error>) in
@@ -58,6 +76,7 @@ struct URLSessionNetwork: Network {
     
     private func prepareSessionRequest(from request: NetworkRequest) -> URLRequest {
         var urlRequest = URLRequest(url: request.url)
+        urlRequest.httpBody = request.body
         urlRequest.httpMethod = {
             switch request.method {
             case .post:
@@ -67,6 +86,13 @@ struct URLSessionNetwork: Network {
                 return "GET"
             }
         }()
+        
+        urlRequest.setValue(type(of: self).userAgent, forHTTPHeaderField: "User-Agent")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        for (header, value) in request.headers {
+            urlRequest.setValue(value, forHTTPHeaderField: header)
+        }
         
         return urlRequest
     }
