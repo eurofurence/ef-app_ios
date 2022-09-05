@@ -1,4 +1,4 @@
-import EurofurenceKit
+@testable import EurofurenceKit
 import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
@@ -120,7 +120,39 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testLoadingSameMessageMultipleTimesDoesNotDuplicateMessageInContext() async throws {
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let user = AuthenticatedUser(
+            userIdentifier: 42,
+            username: "Some Guy",
+            token: "Token",
+            tokenExpires: .distantFuture
+        )
         
+        let (received, read) = (Date(), Date())
+        let message = EurofurenceWebAPI.Message(
+            id: "Identifier",
+            author: "Author",
+            subject: "Subject",
+            message: "Message",
+            receivedDate: received,
+            readDate: read
+        )
+        
+        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success([message]))
+        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
+        try await scenario.model.signIn(with: login)
+        
+        // The message already exists in the persistent store - there should only be one instance when fetching again.
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", "Identifier")
+        fetchRequest.resultType = .countResultType
+        
+        let count = try scenario.viewContext.count(for: fetchRequest)
+        XCTAssertEqual(1, count, "Only one instance of a message should exist in the store, based on its ID")
     }
     
     func testWhenSignedInAndCredentialIsNoLongerValid_MessagesAreRemovedFromContext() async throws {

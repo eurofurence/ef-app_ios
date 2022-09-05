@@ -24,7 +24,7 @@ class UpdateLocalMessagesOperation {
             let writingContext = configuration.persistentContainer.newBackgroundContext()
             try await writingContext.performAsync { [writingContext] in
                 for message in messages {
-                    let entity = Message(context: writingContext)
+                    let entity = try Message.message(for: message.id, in: writingContext)
                     entity.update(from: message)
                 }
                 

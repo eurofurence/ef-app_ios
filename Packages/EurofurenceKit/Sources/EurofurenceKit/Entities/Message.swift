@@ -17,6 +17,28 @@ public class Message: NSManagedObject {
 
 }
 
+// MARK: - Fetching
+
+extension Message {
+    
+    static func message(for identifier: String, in managedObjectContext: NSManagedObjectContext) throws -> Message {
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        let results = try managedObjectContext.fetch(fetchRequest)
+        if let message = results.first {
+            return message
+        } else {
+            let message = Message(context: managedObjectContext)
+            message.identifier = identifier
+            
+            return message
+        }
+    }
+    
+}
+
 // MARK: - Updating from remote entity
 
 extension Message {
