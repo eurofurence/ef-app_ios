@@ -200,8 +200,11 @@ extension EurofurenceModel {
         }
     }
     
-    public func signIn(with login: LoginParameters) async throws {
-        guard let loginRequest = login.login else { return }
+    /// Attempts to sign into the application using the provided `Login`.
+    /// - Parameter login: The credentials to use when logging in. An improperly configured set of credentials performs
+    ///                    a no-op.
+    public func signIn(with login: Login) async throws {
+        guard let loginRequest = login.request else { return }
         
         do {
             let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
@@ -221,6 +224,9 @@ extension EurofurenceModel {
         }
     }
     
+    /// Attempts to sign out of the application.
+    ///
+    /// Attempting to sign out when not already signed in is a no-op.
     public func signOut() async throws {
         guard let credential = configuration.keychain.credential else { return }
         

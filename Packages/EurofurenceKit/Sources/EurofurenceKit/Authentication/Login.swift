@@ -1,20 +1,24 @@
 import Combine
 import EurofurenceWebAPI
 
-public class LoginParameters: ObservableObject {
+/// A collection of parameters required to login to the Eurofurence application.
+public class Login: ObservableObject {
     
+    /// The registration number of the attendee. Must be present to permit login.
     @Published public var registrationNumber: Int? {
         didSet {
             validateLogin()
         }
     }
     
+    /// The attendees username. Must be a non-empty string to permit login.
     @Published public var username: String {
         didSet {
            validateLogin()
         }
     }
     
+    /// The attendees password. Must be a non-empty string to permit login.
     @Published public var password: String {
         didSet {
             validateLogin()
@@ -34,7 +38,7 @@ public class LoginParameters: ObservableObject {
         canLogin = registrationNumber != nil && username.isEmpty == false && password.isEmpty == false
     }
     
-    var login: LoginRequest? {
+    var request: LoginRequest? {
         guard let registrationNumber = registrationNumber, canLogin else {
             return nil
         }

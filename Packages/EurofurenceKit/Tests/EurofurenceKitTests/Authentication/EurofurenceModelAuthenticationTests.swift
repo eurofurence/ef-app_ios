@@ -26,7 +26,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     func testAuthenticatingModel_LoginSucceeds() async throws {
         let keychain = SpyKeychain(UnauthenticatedKeychain())
         let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
-        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let someDate = Date().addingTimeInterval(3600)
         
         let expectedLogin = LoginRequest(
@@ -66,7 +66,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testAuthenticatingModel_LoginFails() async throws {
         let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
-        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         
         let expectedLogin = LoginRequest(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
@@ -82,7 +82,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
         await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         
-        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let expectedLogin = LoginRequest(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let loginResponse = AuthenticatedUser(
             userIdentifier: 99,
@@ -106,7 +106,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     func testLoggingIn_ThenRegisteringRemoteNotificationDeviceToken() async throws {
         let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         
-        let login = LoginParameters(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
+        let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let expectedLogin = LoginRequest(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let loginResponse = AuthenticatedUser(
             userIdentifier: 99,
