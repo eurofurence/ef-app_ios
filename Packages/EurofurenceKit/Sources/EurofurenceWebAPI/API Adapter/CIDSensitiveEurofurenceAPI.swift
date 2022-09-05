@@ -54,7 +54,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
-        let url = makeURL(subpath: "Token/SysReg")
+        let url = makeURL(subpath: "Tokens/RegSys")
         let request = LoginRequest(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
         let encoder = JSONEncoder()
         let body = try encoder.encode(request)
@@ -169,10 +169,41 @@ extension CIDSensitiveEurofurenceAPI {
     }
     
     private struct LoginResponse: Decodable {
+        
+        private enum CodingKeys: String, CodingKey {
+            case Uid
+            case Username
+            case Token
+            case TokenValidUntil
+        }
+        
         var Uid: Int
         var Username: String
         var Token: String
         var TokenValidUntil: Date
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            // UIDs look like: RegSys:EF26:<ID>
+            let uidString = try container.decode(String.self, forKey: .Uid)
+            let splitIdentifier = uidString.components(separatedBy: ":")
+            
+            if let stringIdentifier = splitIdentifier.last, let registrationIdentifier = Int(stringIdentifier) {
+                Uid = registrationIdentifier
+            } else {
+                throw CouldNotParseRegistrationIdentifier(uid: uidString)
+            }
+            
+            Username = try container.decode(String.self, forKey: .Username)
+            Token = try container.decode(String.self, forKey: .Token)
+            TokenValidUntil = try container.decode(Date.self, forKey: .TokenValidUntil)
+        }
+        
+        private struct CouldNotParseRegistrationIdentifier: Error {
+            var uid: String
+        }
+        
     }
     
     private struct RegisterDeviceTokenRequest: Encodable {

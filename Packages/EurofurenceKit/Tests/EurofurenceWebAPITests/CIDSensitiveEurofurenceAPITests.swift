@@ -103,7 +103,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     
     func testSignIn_Success() async throws {
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
-        let expectedURLString = "https://app.eurofurence.org/EF26/api/Token/SysReg"
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/Tokens/RegSys"
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         
         let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedLoginBody")

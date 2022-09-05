@@ -1,10 +1,12 @@
 import EurofurenceWebAPI
 import Foundation
+import Logging
 import Security
 
 public class SecKeychain: Keychain {
     
     public static let shared = SecKeychain()
+    private let logger = Logger(label: "Keychain")
     private let userAccount: String = "Eurofurence"
     
     private init() {
@@ -31,6 +33,7 @@ public class SecKeychain: Keychain {
     }
     
     private func deletePersistedToken() {
+        logger.info("Clearing persistent token from Keychain")
         SecItemDelete(makeMutableLoginCredentialQuery())
     }
     
@@ -38,9 +41,14 @@ public class SecKeychain: Keychain {
         let keychainItem = KeychainItemAttributes.fromCredential(credential)
         
         let encoder = JSONEncoder()
-        guard let keychainItemData = try? encoder.encode(keychainItem) else { return }
         
-        storeCredentialData(keychainItemData)
+        do {
+            let keychainItemData = try encoder.encode(keychainItem)
+            storeCredentialData(keychainItemData)
+        } catch {
+            logger.error("Failed to store login credential.", metadata: ["Error": .string(String(describing: error))])
+        }
+        
     }
     
     private func makeMutableLoginCredentialQuery() -> NSMutableDictionary {

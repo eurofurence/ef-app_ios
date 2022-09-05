@@ -265,7 +265,10 @@ extension EurofurenceModel {
         do {
             try await configuration.api.registerPushNotificationToken(registration: pushNotificationDeviceRegistration)
         } catch {
-            
+            logger.error(
+                "Failed to register remote notification token.",
+                metadata: ["Error": .string(String(describing: error))]
+            )
         }
     }
     
