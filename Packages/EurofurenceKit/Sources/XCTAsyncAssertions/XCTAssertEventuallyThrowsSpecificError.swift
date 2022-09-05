@@ -1,6 +1,6 @@
 import XCTest
 
-func XCTAssertThrowsSpecificError<E>(
+public func XCTAssertThrowsSpecificError<E>(
     _ expected: E,
     _ block: () throws -> Void,
     file: StaticString = #file,
@@ -16,7 +16,7 @@ func XCTAssertThrowsSpecificError<E>(
     }
 }
 
-func XCTAssertEventuallyThrowsSpecificError<E>(
+public func XCTAssertEventuallyThrowsSpecificError<E>(
     _ expected: E,
     _ block: () async throws -> Void,
     file: StaticString = #file,
@@ -32,7 +32,7 @@ func XCTAssertEventuallyThrowsSpecificError<E>(
     }
 }
 
-func XCTAssertEventuallyThrowsError(
+public func XCTAssertEventuallyThrowsError(
     _ block: () async throws -> Void,
     file: StaticString = #file,
     line: UInt = #line
@@ -45,7 +45,7 @@ func XCTAssertEventuallyThrowsError(
     }
 }
 
-func XCTAssertEventuallyNoThrows(
+public func XCTAssertEventuallyNoThrows(
     _ block: () async throws -> Void,
     file: StaticString = #file,
     line: UInt = #line

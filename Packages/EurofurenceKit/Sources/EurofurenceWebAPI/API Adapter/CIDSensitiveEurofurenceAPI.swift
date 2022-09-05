@@ -120,25 +120,9 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         try await configuration.network.perform(request: networkRequest)
     }
     
-    private struct LoginRequest: Encodable {
-        var RegNo: Int
-        var Username: String
-        var Password: String
-    }
-    
-    private struct LoginResponse: Decodable {
-        var Uid: Int
-        var Username: String
-        var Token: String
-        var TokenValidUntil: Date
-    }
-    
-    private struct RegisterDeviceTokenRequest: Encodable {
-        var DeviceId: String
-        var Topics: [String]
-    }
-    
 }
+
+// MARK: - Configuration
 
 extension CIDSensitiveEurofurenceAPI {
     
@@ -170,6 +154,30 @@ extension CIDSensitiveEurofurenceAPI {
             self.pushNotificationService = pushNotificationService
         }
         
+    }
+    
+}
+
+// MARK: - Request Payloads
+
+extension CIDSensitiveEurofurenceAPI {
+    
+    private struct LoginRequest: Encodable {
+        var RegNo: Int
+        var Username: String
+        var Password: String
+    }
+    
+    private struct LoginResponse: Decodable {
+        var Uid: Int
+        var Username: String
+        var Token: String
+        var TokenValidUntil: Date
+    }
+    
+    private struct RegisterDeviceTokenRequest: Encodable {
+        var DeviceId: String
+        var Topics: [String]
     }
     
 }

@@ -1,4 +1,5 @@
 import EurofurenceKit
+import XCTAsyncAssertions
 import XCTest
 
 class IngestingFullRemoteModel_Errors: XCTestCase {

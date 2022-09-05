@@ -29,10 +29,16 @@ let package = Package(
             ]
         ),
         
+        .target(
+            name: "XCTAsyncAssertions",
+            dependencies: []
+        ),
+        
         .testTarget(
             name: "EurofurenceWebAPITests",
             dependencies: [
-                .target(name: "EurofurenceWebAPI")
+                .target(name: "EurofurenceWebAPI"),
+                .target(name: "XCTAsyncAssertions")
             ],
             resources: [
                 .process("Resources")
@@ -42,7 +48,8 @@ let package = Package(
         .testTarget(
             name: "EurofurenceKitTests",
             dependencies: [
-                .target(name: "EurofurenceKit")
+                .target(name: "EurofurenceKit"),
+                .target(name: "XCTAsyncAssertions")
             ],
             resources: [
                 .process("Remote Responses/JSON")
@@ -52,7 +59,8 @@ let package = Package(
         .testTarget(
             name: "EurofurenceKitAcceptanceTests",
             dependencies: [
-                .target(name: "EurofurenceKit")
+                .target(name: "EurofurenceKit"),
+                .target(name: "XCTAsyncAssertions")
             ]
         )
     ]

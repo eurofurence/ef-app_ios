@@ -1,6 +1,7 @@
 import Combine
 @testable import EurofurenceKit
 import EurofurenceWebAPI
+import XCTAsyncAssertions
 import XCTest
 
 class ModelUpdateProgressTests: XCTestCase {

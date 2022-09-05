@@ -1,4 +1,5 @@
 @testable import EurofurenceWebAPI
+import XCTAsyncAssertions
 import XCTest
 
 class CIDSensitiveEurofurenceAPITests: XCTestCase {
@@ -142,7 +143,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrow { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        await XCTAssertEventuallyNoThrows { try await api.registerPushNotificationToken(registration: pushRegistration) }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -167,7 +168,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrow { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        await XCTAssertEventuallyNoThrows { try await api.registerPushNotificationToken(registration: pushRegistration) }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -215,7 +216,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrow { try await api.requestLogout(logout) }
+        await XCTAssertEventuallyNoThrows { try await api.requestLogout(logout) }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -263,30 +264,4 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         return try XCTUnwrap(trimmedBody.data(using: .utf8))
     }
 
-}
-
-func XCTAssertEventuallyNoThrow(
-    _ expression: () async throws -> Void,
-    _ message: @autoclosure () -> String = "",
-    file: StaticString = #filePath,
-    line: UInt = #line
-) async {
-    do {
-        try await expression()
-    } catch {
-        XCTFail(message(), file: file, line: line)
-    }
-}
-
-func XCTAssertEventuallyThrowsError(
-    _ block: () async throws -> Void,
-    file: StaticString = #file,
-    line: UInt = #line
-) async {
-    do {
-        try await block()
-        XCTFail("Expected to throw an error.", file: file, line: line)
-    } catch {
-        // 👍
-    }
 }
