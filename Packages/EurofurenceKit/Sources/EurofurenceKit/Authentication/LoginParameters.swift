@@ -27,18 +27,19 @@ public class LoginParameters: ObservableObject {
         self.registrationNumber = registrationNumber
         self.username = username
         self.password = password
+        validateLogin()
     }
     
     private func validateLogin() {
         canLogin = registrationNumber != nil && username.isEmpty == false && password.isEmpty == false
     }
     
-    var login: Login? {
+    var login: LoginRequest? {
         guard let registrationNumber = registrationNumber, canLogin else {
             return nil
         }
 
-        return Login(registrationNumber: registrationNumber, username: username, password: password)
+        return LoginRequest(registrationNumber: registrationNumber, username: username, password: password)
     }
     
 }

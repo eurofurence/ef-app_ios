@@ -41,8 +41,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private var stubbedLoginAttempts = [Login: Result<AuthenticatedUser, Error>]()
-    func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
+    private var stubbedLoginAttempts = [LoginRequest: Result<AuthenticatedUser, Error>]()
+    func requestAuthenticationToken(using login: LoginRequest) async throws -> AuthenticatedUser {
         guard let response = stubbedLoginAttempts[login] else {
             throw NotStubbed()
         }
@@ -60,8 +60,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         registeredDeviceTokenRequest = registration
     }
     
-    private var logoutResponses = [Logout: Result<Void, Error>]()
-    func requestLogout(_ logout: Logout) async throws {
+    private var logoutResponses = [LogoutRequest: Result<Void, Error>]()
+    func requestLogout(_ logout: LogoutRequest) async throws {
         guard let response = logoutResponses[logout] else {
             throw NotStubbed()
         }
@@ -79,11 +79,11 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
     
-    func stubLoginAttempt(_ attempt: Login, with result: Result<AuthenticatedUser, Error>) {
+    func stubLoginAttempt(_ attempt: LoginRequest, with result: Result<AuthenticatedUser, Error>) {
         stubbedLoginAttempts[attempt] = result
     }
     
-    func stubLogoutRequest(_ request: Logout, with result: Result<Void, Error>) {
+    func stubLogoutRequest(_ request: LogoutRequest, with result: Result<Void, Error>) {
         logoutResponses[request] = result
     }
     

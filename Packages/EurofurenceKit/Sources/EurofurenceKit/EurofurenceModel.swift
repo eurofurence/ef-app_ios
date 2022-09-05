@@ -224,7 +224,7 @@ extension EurofurenceModel {
     public func signOut() async throws {
         guard let credential = configuration.keychain.credential else { return }
         
-        let logout = Logout(
+        let logout = LogoutRequest(
             authenticationToken: credential.authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )

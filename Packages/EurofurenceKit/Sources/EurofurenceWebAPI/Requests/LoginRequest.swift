@@ -1,5 +1,5 @@
 /// A request to login to the Eurofurence application service.
-public struct Login: Hashable {
+public struct LoginRequest: Hashable {
     
     /// The registration number of the user within the registration system.
     public var registrationNumber: Int

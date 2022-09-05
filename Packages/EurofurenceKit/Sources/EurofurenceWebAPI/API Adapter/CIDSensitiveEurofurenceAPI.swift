@@ -53,9 +53,9 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         try await configuration.network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
     }
     
-    public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
+    public func requestAuthenticationToken(using login: LoginRequest) async throws -> AuthenticatedUser {
         let url = makeURL(subpath: "Tokens/RegSys")
-        let request = LoginRequest(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
+        let request = LoginPayload(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
         let encoder = JSONEncoder()
         let body = try encoder.encode(request)
         
@@ -79,7 +79,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         )
     }
     
-    public func requestLogout(_ logout: Logout) async throws {
+    public func requestLogout(_ logout: LogoutRequest) async throws {
         // Logging out = disassociate the authentication token with the push token.
         try await associatePushNotificationToken(
             logout.pushNotificationDeviceToken,
@@ -162,7 +162,7 @@ extension CIDSensitiveEurofurenceAPI {
 
 extension CIDSensitiveEurofurenceAPI {
     
-    private struct LoginRequest: Encodable {
+    private struct LoginPayload: Encodable {
         var RegNo: Int
         var Username: String
         var Password: String
