@@ -3,6 +3,7 @@ import EurofurenceWebAPI
 import Foundation
 import Logging
 
+/// Root entry point for entity access, authentication, and more within the Eurofurence targets.
 public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
@@ -18,6 +19,10 @@ public class EurofurenceModel: ObservableObject {
     /// A read-only managed object context for use in presenting the state of the model to the user.
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
+    }
+    
+    public convenience init() {
+        self.init(configuration: Configuration())
     }
     
     public init(configuration: EurofurenceModel.Configuration) {

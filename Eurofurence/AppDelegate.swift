@@ -2,6 +2,7 @@ import ComponentBase
 import EurofurenceApplication
 import FirebaseCore
 import UIKit
+import EurofurenceKit
 
 @UIApplicationMain
 public class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -9,6 +10,8 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate
 
 	public var window: UIWindow?
+    
+    private let model = EurofurenceModel()
 
     public func application(
         _ application: UIApplication,
@@ -38,6 +41,10 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
+        Task(priority: .utility) {
+            await model.registerRemoteNotificationDeviceTokenData(deviceToken)
+        }
+        
         Application.storeRemoteNotificationsToken(deviceToken)
     }
 
