@@ -234,6 +234,7 @@ extension EurofurenceModel {
             
             currentUser = User(name: authenticatedUser.username, registrationNumber: authenticatedUser.userIdentifier)
         } catch {
+            logger.error("Failed to authenticate user.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.loginFailed
         }
     }
