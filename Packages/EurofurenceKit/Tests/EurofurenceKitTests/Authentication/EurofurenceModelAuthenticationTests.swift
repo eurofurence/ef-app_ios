@@ -197,17 +197,5 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         let actualRegistration = await scenario.api.registeredDeviceTokenRequest
         XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
     }
-    
-    func testAuthenticatingCachesPrivateMessages() async throws {
-        
-    }
-    
-    func testLoggingOutDeletesPrivateMessages() {
-        
-    }
-    
-    func testModelContainsCachedPrivateMessages_TokenExpiresOnStart_DeletesPrivateMessages() {
-        
-    }
 
 }
