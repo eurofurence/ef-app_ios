@@ -2,21 +2,21 @@ import Foundation
 
 public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
-    private let network: Network
-    private let pushNotificationService: PushNotificationService
+    private let configuration: Configuration
     private let decoder: JSONDecoder
     
-    public static func api() -> EurofurenceAPI {
-        CIDSensitiveEurofurenceAPI(
-            network: URLSessionNetwork.shared,
-            pushNotificationService: FirebasePushNotificationService.shared
-        )
+    public init(configuration: Configuration) {
+        self.configuration = configuration
+        decoder = EurofurenceAPIDecoder()
     }
     
-    init(network: Network, pushNotificationService: PushNotificationService) {
-        self.network = network
-        self.pushNotificationService = pushNotificationService
-        decoder = EurofurenceAPIDecoder()
+    private func makeURL(subpath: String) -> URL {
+        let baseURL = "https://app.eurofurence.org/\(configuration.conventionIdentifier)"
+        guard let url = URL(string: "\(baseURL)/api/\(subpath)") else {
+            fatalError("Failed to make URL")
+        }
+        
+        return url
     }
     
     public func fetchChanges(
@@ -31,12 +31,10 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
             }
         }()
         
-        let urlString = "https://app.eurofurence.org/EF26/api/Sync\(sinceToken)"
-        guard let url = URL(string: urlString) else { fatalError() }
-        
+        let url = makeURL(subpath: "Sync\(sinceToken)")
         let request = NetworkRequest(url: url, method: .get)
         
-        let data = try await network.perform(request: request)
+        let data = try await configuration.network.perform(request: request)
         let response = try decoder.decode(SynchronizationPayload.self, from: data)
         
         return response
@@ -45,28 +43,24 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     public func downloadImage(_ request: DownloadImage) async throws {
         let id = request.imageIdentifier
         let hash = request.lastKnownImageContentHashSHA1
-        let downloadURLString = "https://app.eurofurence.org/EF26/api/Images/\(id)/Content/with-hash:\(hash)"
-        guard let downloadURL = URL(string: downloadURLString) else { return }
-        
+        let downloadURL = makeURL(subpath: "Images/\(id)/Content/with-hash:\(hash)")
         let downloadRequest = NetworkRequest(url: downloadURL, method: .get)
         
         if FileManager.default.fileExists(atPath: request.downloadDestinationURL.path) {
             try FileManager.default.removeItem(at: request.downloadDestinationURL)
         }
         
-        try await network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
+        try await configuration.network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
     }
     
     public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
-        let urlString = "https://app.eurofurence.org/EF26/api/Token/SysReg"
-        guard let url = URL(string: urlString) else { fatalError() }
-        
+        let url = makeURL(subpath: "Token/SysReg")
         let request = LoginRequest(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
         let encoder = JSONEncoder()
         let body = try encoder.encode(request)
         
         let networkRequest = NetworkRequest(url: url, body: body, method: .post)
-        let response = try await network.perform(request: networkRequest)
+        let response = try await configuration.network.perform(request: networkRequest)
         
         let loginResponse = try decoder.decode(LoginResponse.self, from: response)
         
@@ -79,31 +73,30 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
+        let conventionIdentifier = configuration.conventionIdentifier
+        let hostVersion = configuration.hostVersion
+        
         let pushNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: registration.pushNotificationDeviceToken,
-            channels: ["EF26", "EF26-ios"]
+            channels: ["\(conventionIdentifier)", "\(conventionIdentifier)-ios"]
         )
         
-        pushNotificationService.registerForPushNotifications(registration: pushNotificationServiceRegistration)
+        configuration.pushNotificationService.registerForPushNotifications(registration: pushNotificationServiceRegistration)
         
         let registerDeviceTokenRequest = RegisterDeviceTokenRequest(
-            DeviceId: pushNotificationService.pushNotificationServiceToken,
-            Topics: ["iOS", "version-4.0.0", "cid-EF26"]
+            DeviceId: configuration.pushNotificationService.pushNotificationServiceToken,
+            Topics: ["iOS", "version-\(hostVersion)", "cid-\(conventionIdentifier)"]
         )
         
         let encoder = JSONEncoder()
         let body = try encoder.encode(registerDeviceTokenRequest)
         
-        let urlString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
-        guard let registrationURL = URL(string: urlString) else {
-            fatalError()
-        }
-        
+        let registrationURL = makeURL(subpath: "PushNotifications/FcmDeviceRegistration")
         let networkRequest = NetworkRequest(url: registrationURL, body: body, method: .post, headers: [
             "Authorization": "Bearer \(registration.authenticationToken.stringValue)"
         ])
         
-        try await network.perform(request: networkRequest)
+        try await configuration.network.perform(request: networkRequest)
     }
     
     public func requestLogout(_ logout: Logout) async throws {
@@ -126,6 +119,40 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     private struct RegisterDeviceTokenRequest: Encodable {
         var DeviceId: String
         var Topics: [String]
+    }
+    
+}
+
+extension CIDSensitiveEurofurenceAPI {
+    
+    public struct Configuration {
+                
+        var conventionIdentifier: String
+        var hostVersion: String
+        var network: Network
+        var pushNotificationService: PushNotificationService
+        
+        public init(conventionIdentifier: String, hostVersion: String) {
+            self.init(
+                conventionIdentifier: conventionIdentifier,
+                hostVersion: hostVersion,
+                network: URLSessionNetwork.shared,
+                pushNotificationService: FirebasePushNotificationService.shared
+            )
+        }
+        
+        internal init(
+            conventionIdentifier: String,
+            hostVersion: String,
+            network: Network,
+            pushNotificationService: PushNotificationService
+        ) {
+            self.conventionIdentifier = conventionIdentifier
+            self.hostVersion = hostVersion
+            self.network = network
+            self.pushNotificationService = pushNotificationService
+        }
+        
     }
     
 }

@@ -73,11 +73,42 @@ extension EurofurenceModel {
         let api: EurofurenceAPI
         let conventionIdentifier: ConventionIdentifier
         
+        private static func versionedAPI(for conventionIdentifier: ConventionIdentifier) -> EurofurenceAPI {
+            let configuration = CIDSensitiveEurofurenceAPI.Configuration(
+                conventionIdentifier: conventionIdentifier.stringValue,
+                hostVersion: "4.0.0"
+            )
+            
+            return CIDSensitiveEurofurenceAPI(configuration: configuration)
+        }
+        
         public init(
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
-            api: EurofurenceAPI = CIDSensitiveEurofurenceAPI.api(),
+            conventionIdentifier: ConventionIdentifier = .current
+        ) {
+            let apiConfiguration = CIDSensitiveEurofurenceAPI.Configuration(
+                conventionIdentifier: conventionIdentifier.stringValue,
+                hostVersion: "4.0.0"
+            )
+            
+            let api = CIDSensitiveEurofurenceAPI(configuration: apiConfiguration)
+            
+            self.init(
+                environment: environment,
+                properties: properties,
+                keychain: keychain,
+                api: api,
+                conventionIdentifier: conventionIdentifier
+            )
+        }
+        
+        public init(
+            environment: Environment = .persistent,
+            properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
+            keychain: Keychain = SecKeychain.shared,
+            api: EurofurenceAPI,
             conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.persistentContainer = EurofurencePersistentContainer()

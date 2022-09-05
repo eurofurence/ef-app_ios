@@ -6,13 +6,21 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     private var api: EurofurenceAPI!
     private var network: FakeNetwork!
     private var pushNotificationService: SpyPushNotificationService!
+    private var configuration: CIDSensitiveEurofurenceAPI.Configuration!
     
     override func setUp() async throws {
         try await super.setUp()
         
         network = FakeNetwork()
         pushNotificationService = SpyPushNotificationService()
-        api = CIDSensitiveEurofurenceAPI(network: network, pushNotificationService: pushNotificationService)
+        configuration = CIDSensitiveEurofurenceAPI.Configuration(
+            conventionIdentifier: "EF26",
+            hostVersion: "4.0.0",
+            network: network,
+            pushNotificationService: pushNotificationService
+        )
+        
+        api = CIDSensitiveEurofurenceAPI(configuration: configuration)
     }
     
     func testSyncWithoutTimestampUsesExpectedURL() async throws {
