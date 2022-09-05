@@ -87,6 +87,10 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         )
     }
     
+    public func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [Message] {
+        []
+    }
+    
     private func associatePushNotificationToken(
         _ pushNotificationData: Data?,
         withUserAuthenticationToken authenticationToken: AuthenticationToken?

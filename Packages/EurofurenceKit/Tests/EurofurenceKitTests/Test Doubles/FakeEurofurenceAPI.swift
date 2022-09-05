@@ -75,6 +75,21 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
+    private var messageResponses = [AuthenticationToken: Result<[EurofurenceWebAPI.Message], Error>]()
+    func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [EurofurenceWebAPI.Message] {
+        guard let response = messageResponses[authenticationToken] else {
+            throw NotStubbed()
+        }
+        
+        switch response {
+        case .success(let messages):
+            return messages
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
@@ -85,6 +100,13 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     
     func stubLogoutRequest(_ request: LogoutRequest, with result: Result<Void, Error>) {
         logoutResponses[request] = result
+    }
+    
+    func stubMessageRequest(
+        for authenticationToken: AuthenticationToken,
+        with result: Result<[EurofurenceWebAPI.Message], Error>
+    ) {
+        messageResponses[authenticationToken] = result
     }
     
 }

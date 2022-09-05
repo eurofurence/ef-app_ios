@@ -242,6 +242,7 @@ extension EurofurenceModel {
             }
             
             currentUser = User(registrationNumber: authenticatedUser.userIdentifier, name: authenticatedUser.username)
+            await fetchMessages(authenticationToken: authenticatedUser.token)
         } catch {
             logger.error("Failed to authenticate user.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.loginFailed
@@ -263,6 +264,27 @@ extension EurofurenceModel {
         
         configuration.keychain.credential = nil
         currentUser = nil
+        
+        await deleteMessagesFromPersistentStore()
+    }
+    
+    private func deleteMessagesFromPersistentStore() async {
+        do {
+            let writingContext = configuration.persistentContainer.newBackgroundContext()
+            try await writingContext.performAsync { [writingContext] in
+                let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+                fetchRequest.predicate = NSPredicate(value: true)
+                
+                let messages = try writingContext.fetch(fetchRequest)
+                for message in messages {
+                    writingContext.delete(message)
+                }
+                
+                try writingContext.save()
+            }
+        } catch {
+            logger.error("Failed to delete local messages.", metadata: ["Error": .string(String(describing: error))])
+        }
     }
     
     private func associateDevicePushNotificationToken(
@@ -293,6 +315,24 @@ extension EurofurenceModel {
         )
         
         configuration.keychain.credential = credential
+    }
+    
+    private func fetchMessages(authenticationToken: AuthenticationToken) async {
+        do {
+            let messages = try await configuration.api.fetchMessages(for: authenticationToken)
+            
+            let writingContext = configuration.persistentContainer.newBackgroundContext()
+            try await writingContext.performAsync { [writingContext] in
+                for message in messages {
+                    let entity = Message(context: writingContext)
+                    entity.update(from: message)
+                }
+                
+                try writingContext.save()
+            }
+        } catch {
+            logger.error("Failed to fetch messages.", metadata: ["Error": .string(String(describing: error))])
+        }
     }
     
 }
@@ -326,6 +366,24 @@ extension EurofurenceModel {
     /// - Throws: `EurofurenceError.invalidDealer` if no `Dealer` is associated with the given identifier.
     public func dealer(identifiedBy identifier: String) throws -> Dealer {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
+    }
+    
+    /// Fetches the `Message` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the message to be fetched.
+    /// - Returns: The `Message` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidMessage` if no `Message` is associated with the given identifier.
+    public func message(identifiedBy identifier: String) throws -> Message {
+        let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+        fetchRequest.fetchLimit = 1
+        
+        let fetchResults = try viewContext.fetch(fetchRequest)
+        if let message = fetchResults.first {
+            return message
+        } else {   
+            throw EurofurenceError.invalidMessage(identifier)
+        }
     }
     
     private func entity<E>(
