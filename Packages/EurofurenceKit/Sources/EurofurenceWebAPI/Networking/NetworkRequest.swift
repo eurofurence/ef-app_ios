@@ -14,6 +14,9 @@ public struct NetworkRequest: Hashable {
         
     }
     
+    /// A typelias to represent HTTP headers used in requests.
+    public typealias Headers = [String: String]
+    
     /// The location of the resource to be fetched over the network.
     public var url: URL
     
@@ -24,9 +27,9 @@ public struct NetworkRequest: Hashable {
     public var method: Method
     
     /// Additional HTTP headers to supply with the request, e.g. for authorization.
-    public var headers: [String: String] = [:]
+    public var headers: Headers = [:]
     
-    public init(url: URL, body: Data? = nil, method: NetworkRequest.Method, headers: [String: String] = [:]) {
+    public init(url: URL, body: Data? = nil, method: NetworkRequest.Method, headers: Headers = [:]) {
         self.url = url
         self.body = body
         self.method = method

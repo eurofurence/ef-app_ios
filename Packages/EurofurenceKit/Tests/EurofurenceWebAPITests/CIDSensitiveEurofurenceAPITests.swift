@@ -152,6 +152,31 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         XCTAssertEqual(expectedNotificationServiceRegistration, pushNotificationService.registration)
     }
     
+    func testRegisteringPushNotificationDeviceToken_NotLoggedIn_DoesNotIncludeAuthorizationHeader() async throws {
+        let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
+        let pushRegistration = RegisterPushNotificationDeviceToken(
+            authenticationToken: nil,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedPushRegistrationBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post)
+        
+        network.stub(expectedRequest, with: .success(Data()))
+        
+        await XCTAssertEventuallyNoThrow { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        
+        let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
+            pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
+            channels: ["EF26", "EF26-ios"]
+        )
+        
+        XCTAssertEqual(expectedNotificationServiceRegistration, pushNotificationService.registration)
+    }
+    
     func testRegisteringPushNotificationDeviceToken_Failure() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))

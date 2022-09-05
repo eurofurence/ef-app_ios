@@ -92,10 +92,13 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         let body = try encoder.encode(registerDeviceTokenRequest)
         
         let registrationURL = makeURL(subpath: "PushNotifications/FcmDeviceRegistration")
-        let networkRequest = NetworkRequest(url: registrationURL, body: body, method: .post, headers: [
-            "Authorization": "Bearer \(registration.authenticationToken.stringValue)"
-        ])
         
+        var headers = NetworkRequest.Headers()
+        if let authenticationToken = registration.authenticationToken {
+            headers["Authorization"] = "Bearer \(authenticationToken.stringValue)"
+        }
+        
+        let networkRequest = NetworkRequest(url: registrationURL, body: body, method: .post, headers: headers)
         try await configuration.network.perform(request: networkRequest)
     }
     
