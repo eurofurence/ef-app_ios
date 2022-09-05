@@ -1,6 +1,6 @@
 import EurofurenceKit
-import XCTest
 import XCTAsyncAssertions
+import XCTest
 
 class LoginTests: XCTestCase {
     

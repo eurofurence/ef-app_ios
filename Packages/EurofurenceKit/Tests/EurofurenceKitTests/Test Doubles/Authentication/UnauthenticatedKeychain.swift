@@ -2,6 +2,6 @@ import EurofurenceKit
 
 class UnauthenticatedKeychain: Keychain {
     
-    var credential: Credential? = nil
+    var credential: Credential?
     
 }

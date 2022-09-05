@@ -99,7 +99,9 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
             channels: ["\(conventionIdentifier)", "\(conventionIdentifier)-ios"]
         )
         
-        configuration.pushNotificationService.registerForPushNotifications(registration: pushNotificationServiceRegistration)
+        configuration.pushNotificationService.registerForPushNotifications(
+            registration: pushNotificationServiceRegistration
+        )
         
         let registerDeviceTokenRequest = RegisterDeviceTokenRequest(
             DeviceId: configuration.pushNotificationService.pushNotificationServiceToken,

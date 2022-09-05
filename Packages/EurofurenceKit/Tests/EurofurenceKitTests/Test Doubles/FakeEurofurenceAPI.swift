@@ -67,7 +67,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
         
         switch response {
-        case .success(()):
+        case .success:
             return
             
         case .failure(let error):

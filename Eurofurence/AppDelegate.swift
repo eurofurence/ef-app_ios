@@ -1,8 +1,8 @@
 import ComponentBase
 import EurofurenceApplication
+import EurofurenceKit
 import FirebaseCore
 import UIKit
-import EurofurenceKit
 
 @UIApplicationMain
 public class AppDelegate: UIResponder, UIApplicationDelegate {

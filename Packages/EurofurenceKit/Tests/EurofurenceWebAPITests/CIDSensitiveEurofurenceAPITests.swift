@@ -143,7 +143,9 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrows { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        await XCTAssertEventuallyNoThrows {
+            try await api.registerPushNotificationToken(registration: pushRegistration)
+        }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -168,7 +170,9 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrows { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        await XCTAssertEventuallyNoThrows {
+            try await api.registerPushNotificationToken(registration: pushRegistration)
+        }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -197,7 +201,9 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         network.stub(expectedRequest, with: .failure(error))
         
-        await XCTAssertEventuallyThrowsError { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        await XCTAssertEventuallyThrowsError {
+            try await api.registerPushNotificationToken(registration: pushRegistration)
+        }
     }
     
     func testLoggingOut_Succeeds() async throws {
