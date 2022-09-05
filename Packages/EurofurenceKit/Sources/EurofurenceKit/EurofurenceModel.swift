@@ -9,9 +9,13 @@ public class EurofurenceModel: ObservableObject {
     private let logger = Logger(label: "EurofurenceModel")
     private var pushNotificationDeviceTokenData: Data?
     
+    /// The current synchronisation phase between the model and the backing store.
     @Published public private(set) var cloudStatus: CloudStatus = .idle
+    
+    /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?
     
+    /// A read-only managed object context for use in presenting the state of the model to the user.
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
     }
@@ -20,12 +24,13 @@ public class EurofurenceModel: ObservableObject {
         self.configuration = configuration
         
         if let credential = configuration.keychain.credential {
-            currentUser = User(name: credential.username, registrationNumber: credential.registrationNumber)
+            currentUser = User(registrationNumber: credential.registrationNumber, name: credential.username)
         }
         
         registerForEntityNotifications()
     }
     
+    /// Attempts to synchronise the model with the backing store.
     public func updateLocalStore() async throws {
         let operation = UpdateLocalStoreOperation(configuration: configuration)
         cloudStatus = .updating(progress: operation.progress)
@@ -45,11 +50,16 @@ public class EurofurenceModel: ObservableObject {
 
 extension EurofurenceModel {
     
+    /// Represents a collection of configurable attributes the model should use during runtime.
     public struct Configuration {
         
+        /// Designates the intended usage environment of the model.
         public enum Environment {
             
+            /// The contents of the model should persist between lifecycles.
             case persistent
+            
+            /// The contents of the model should be discarded once the model has been deallocated.
             case memory
             
             fileprivate func configure(
@@ -128,13 +138,23 @@ extension EurofurenceModel {
 
 extension EurofurenceModel {
     
+    /// Represents a phase of synchronisation status as the model fetches updates from the backing store.
     public enum CloudStatus: Equatable {
+        
+        /// The model is not processing any changes.
         case idle
+        
+        /// The model is currently synchronising with the backing store.
         case updating(progress: EurofurenceModel.Progress)
+        
+        /// The model has completed synchronising with the backing store.
         case updated
+        
+        /// The model attempted to synchronise with the backing store, but encountered an error.
         case failed
     }
     
+    /// Represents the relative progress made by the model during a synchronisation pass with the remote store.
     public class Progress: ObservableObject, Equatable {
         
         public static func == (lhs: EurofurenceModel.Progress, rhs: EurofurenceModel.Progress) -> Bool {
@@ -145,8 +165,12 @@ extension EurofurenceModel {
         private var progressObservation: NSObjectProtocol?
         private var localizedDescriptionObservation: NSObjectProtocol?
         
+        /// A number between 0.0 and 1.0 that represents the overall completeness of the current synchronisation pass,
+        /// where 0 represents not started and 1 represents completed. The absence of a value indicates the overall
+        /// progress cannot yet be determined.
         @Published public private(set) var fractionComplete: Double?
         
+        /// A short, localized description that may be presented to the user as the synchronisation pass continues.
         public var localizedDescription: String {
             progress.localizedDescription
         }
@@ -176,13 +200,6 @@ extension EurofurenceModel {
 
 extension EurofurenceModel {
     
-    public struct User {
-        
-        public var name: String
-        public var registrationNumber: Int
-        
-    }
-    
     /// Registers the Apple Push Notification Service (APNS) token of the current device with the model.
     ///
     /// If the user is already logged in, the token is immediatley associated (or re-associated) with their account.
@@ -201,6 +218,7 @@ extension EurofurenceModel {
     }
     
     /// Attempts to sign into the application using the provided `Login`.
+    ///
     /// - Parameter login: The credentials to use when logging in. An improperly configured set of credentials performs
     ///                    a no-op.
     public func signIn(with login: Login) async throws {
@@ -217,7 +235,7 @@ extension EurofurenceModel {
                 )
             }
             
-            currentUser = User(name: authenticatedUser.username, registrationNumber: authenticatedUser.userIdentifier)
+            currentUser = User(registrationNumber: authenticatedUser.userIdentifier, name: authenticatedUser.username)
         } catch {
             logger.error("Failed to authenticate user.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.loginFailed
@@ -277,14 +295,29 @@ extension EurofurenceModel {
 
 extension EurofurenceModel {
     
+    /// Fetches the `Announcement` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the announcement to be fetched.
+    /// - Returns: The `Announcement` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidAnnouncement` if no `Announcement` is associated with the given identifier.
     public func announcement(identifiedBy identifier: String) throws -> Announcement {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidAnnouncement(identifier))
     }
     
+    /// Fetches the `Event` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the event to be fetched.
+    /// - Returns: The `Event` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidEvent` if no `Event` is associated with the given identifier.
     public func event(identifiedBy identifier: String) throws -> Event {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidEvent(identifier))
     }
     
+    /// Fetches the `Dealer` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the dealer to be fetched.
+    /// - Returns: The `Dealer` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidDealer` if no `Dealer` is associated with the given identifier.
     public func dealer(identifiedBy identifier: String) throws -> Dealer {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
     }
