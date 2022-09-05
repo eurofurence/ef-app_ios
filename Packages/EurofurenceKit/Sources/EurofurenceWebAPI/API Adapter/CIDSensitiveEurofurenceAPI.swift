@@ -3,14 +3,19 @@ import Foundation
 public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
     private let network: Network
+    private let pushNotificationService: PushNotificationService
     private let decoder: JSONDecoder
     
     public static func api() -> EurofurenceAPI {
-        CIDSensitiveEurofurenceAPI(network: URLSessionNetwork.shared)
+        CIDSensitiveEurofurenceAPI(
+            network: URLSessionNetwork.shared,
+            pushNotificationService: FirebasePushNotificationService.shared
+        )
     }
     
-    init(network: Network) {
+    init(network: Network, pushNotificationService: PushNotificationService) {
         self.network = network
+        self.pushNotificationService = pushNotificationService
         decoder = EurofurenceAPIDecoder()
     }
     
@@ -74,24 +79,53 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
+        let pushNotificationServiceRegistration = PushNotificationServiceRegistration(
+            pushNotificationDeviceTokenData: registration.pushNotificationDeviceToken,
+            channels: ["EF26", "EF26-ios"]
+        )
         
+        pushNotificationService.registerForPushNotifications(registration: pushNotificationServiceRegistration)
+        
+        let registerDeviceTokenRequest = RegisterDeviceTokenRequest(
+            DeviceId: pushNotificationService.pushNotificationServiceToken,
+            Topics: ["iOS", "version-4.0.0", "cid-EF26"]
+        )
+        
+        let encoder = JSONEncoder()
+        let body = try encoder.encode(registerDeviceTokenRequest)
+        
+        let urlString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        guard let registrationURL = URL(string: urlString) else {
+            fatalError()
+        }
+        
+        let networkRequest = NetworkRequest(url: registrationURL, body: body, method: .post, headers: [
+            "Authorization": "Bearer \(registration.authenticationToken.stringValue)"
+        ])
+        
+        try await network.perform(request: networkRequest)
     }
     
     public func requestLogout(_ logout: Logout) async throws {
         
     }
     
-    struct LoginRequest: Encodable {
+    private struct LoginRequest: Encodable {
         var RegNo: Int
         var Username: String
         var Password: String
     }
     
-    struct LoginResponse: Decodable {
+    private struct LoginResponse: Decodable {
         var Uid: Int
         var Username: String
         var Token: String
         var TokenValidUntil: Date
+    }
+    
+    private struct RegisterDeviceTokenRequest: Encodable {
+        var DeviceId: String
+        var Topics: [String]
     }
     
 }

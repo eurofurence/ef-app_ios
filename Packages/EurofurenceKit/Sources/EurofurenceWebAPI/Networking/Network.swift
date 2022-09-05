@@ -6,6 +6,7 @@ public protocol Network {
     /// Asynchronously executes a network request, returning the contents of the payload.
     /// - Parameter request: A `NetworkRequest` designating the resource to load.
     /// - Returns: An unprocessed `Data` reference for ingesting by the caller.
+    @discardableResult
     func perform(request: NetworkRequest) async throws -> Data
     
     /// Asynchronously executes a network request, writing the contents of the payload directly to the file system.

@@ -3,15 +3,23 @@ import XCTest
 
 class CIDSensitiveEurofurenceAPITests: XCTestCase {
     
+    private var api: EurofurenceAPI!
+    private var network: FakeNetwork!
+    private var pushNotificationService: SpyPushNotificationService!
+    
+    override func setUp() async throws {
+        try await super.setUp()
+        
+        network = FakeNetwork()
+        pushNotificationService = SpyPushNotificationService()
+        api = CIDSensitiveEurofurenceAPI(network: network, pushNotificationService: pushNotificationService)
+    }
+    
     func testSyncWithoutTimestampUsesExpectedURL() async throws {
-        let network = FakeNetwork()
         let expectedURL = try XCTUnwrap(URL(string: "https://app.eurofurence.org/EF26/api/Sync"))
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
-        let bundle = Bundle.module
-        let responseFileURL = try XCTUnwrap(bundle.url(forResource: "EF26FullSyncResponse", withExtension: "json"))
-        let responseFileData = try Data(contentsOf: responseFileURL)
+        let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
         network.stub(expectedRequest, with: .success(responseFileData))
-        let api = CIDSensitiveEurofurenceAPI(network: network)
         _ = try await api.fetchChanges(since: nil)
         
         let expected = FakeNetwork.Event.request(url: expectedURL)
@@ -19,18 +27,14 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testSyncWithTimestampUsesExpectedURL() async throws {
-        let network = FakeNetwork()
         let lastSyncTime = Date()
         let generationToken = SynchronizationPayload.GenerationToken(lastSyncTime: lastSyncTime)
         let formattedSyncTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
         let expectedURLString = "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedSyncTime)"
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
-        let bundle = Bundle.module
-        let responseFileURL = try XCTUnwrap(bundle.url(forResource: "EF26FullSyncResponse", withExtension: "json"))
-        let responseFileData = try Data(contentsOf: responseFileURL)
+        let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
         network.stub(expectedRequest, with: .success(responseFileData))
-        let api = CIDSensitiveEurofurenceAPI(network: network)
         _ = try await api.fetchChanges(since: generationToken)
         
         let expected = FakeNetwork.Event.request(url: expectedURL)
@@ -38,7 +42,6 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testDownloadingImageSuccess_WritesDataToURL() async throws {
-        let network = FakeNetwork()
         let temporaryFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("Image")
         
         addTeardownBlock {
@@ -56,7 +59,6 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedImageRequest = NetworkRequest(url: expectedImageEndpoint, method: .get)
         let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
         network.stubDownload(of: expectedImageRequest, with: .success(pretendImageData))
-        let api = CIDSensitiveEurofurenceAPI(network: network)
         try await api.downloadImage(imageRequest)
         
         let downloadedImageData = try Data(contentsOf: temporaryFileURL)
@@ -64,7 +66,6 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testDownloadingImageSuccess_FileAlreadyExists_NewImageOverwritesOldFile() async throws {
-        let network = FakeNetwork()
         let temporaryFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("Image")
         
         addTeardownBlock {
@@ -85,7 +86,6 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedImageRequest = NetworkRequest(url: expectedImageEndpoint, method: .get)
         let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
         network.stubDownload(of: expectedImageRequest, with: .success(pretendImageData))
-        let api = CIDSensitiveEurofurenceAPI(network: network)
         try await api.downloadImage(imageRequest)
         
         let downloadedImageData = try Data(contentsOf: temporaryFileURL)
@@ -93,25 +93,14 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testSignIn_Success() async throws {
-        let network = FakeNetwork()
-        let api = CIDSensitiveEurofurenceAPI(network: network)
-        
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
         let expectedURLString = "https://app.eurofurence.org/EF26/api/Token/SysReg"
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         
-        let bundle = Bundle.module
-        let expectedBodyURL = try XCTUnwrap(bundle.url(forResource: "ExpectedLoginBody", withExtension: "json"))
-        let expectedBodyData = try Data(contentsOf: expectedBodyURL)
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedLoginBody")
         let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post)
         
-        let expectedResponseURL = try XCTUnwrap(bundle.url(
-            forResource: "ExpectedSuccessfulLoginBody",
-            withExtension: "json"
-        ))
-        
-        let expectedResponseData = try Data(contentsOf: expectedResponseURL)
-        
+        let expectedResponseData = try stubbedBody(fromJSONFileNamed: "ExpectedSuccessfulLoginBody")
         network.stub(expectedRequest, with: .success(expectedResponseData))
         
         let authenticatedUser = try await api.requestAuthenticationToken(using: login)
@@ -126,5 +115,92 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         XCTAssertEqual(expectedUser, authenticatedUser)
     }
+    
+    func testRegisteringPushNotificationDeviceToken_Success() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
+        let pushRegistration = RegisterPushNotificationDeviceToken(
+            authenticationToken: authenticationToken,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedPushRegistrationBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post, headers: [
+            "Authorization": "Bearer Authentication Token"
+        ])
+        
+        network.stub(expectedRequest, with: .success(Data()))
+        
+        await XCTAssertEventuallyNoThrow { try await api.registerPushNotificationToken(registration: pushRegistration) }
+        
+        let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
+            pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
+            channels: ["EF26", "EF26-ios"]
+        )
+        
+        XCTAssertEqual(expectedNotificationServiceRegistration, pushNotificationService.registration)
+    }
+    
+    func testRegisteringPushNotificationDeviceToken_Failure() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
+        let pushRegistration = RegisterPushNotificationDeviceToken(
+            authenticationToken: authenticationToken,
+            pushNotificationDeviceToken: pushNotificationDeviceTokenData
+        )
+        
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/PushNotifications/FcmDeviceRegistration"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let expectedBodyData = try stubbedBody(fromJSONFileNamed: "ExpectedPushRegistrationBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post, headers: [
+            "Authorization": "Bearer Authentication Token"
+        ])
+        
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        network.stub(expectedRequest, with: .failure(error))
+        
+        await XCTAssertEventuallyThrowsError { try await api.registerPushNotificationToken(registration: pushRegistration) }
+    }
+    
+    private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {
+        let url = try XCTUnwrap(Bundle.module.url(forResource: fileName, withExtension: "json"))
+        let data = try Data(contentsOf: url)
+        let string = try XCTUnwrap(String(data: data, encoding: .utf8))
+        
+        // Xcode has a habit of appending a newline at the end of stubbed responses. This usually isn't a big deal,
+        // except our assertions are checking we send the same body.
+        let trimmedBody = string.trimmingCharacters(in: .newlines)
+        return try XCTUnwrap(trimmedBody.data(using: .utf8))
+    }
 
+}
+
+func XCTAssertEventuallyNoThrow(
+    _ expression: () async throws -> Void,
+    _ message: @autoclosure () -> String = "",
+    file: StaticString = #filePath,
+    line: UInt = #line
+) async {
+    do {
+        try await expression()
+    } catch {
+        XCTFail(message(), file: file, line: line)
+    }
+}
+
+func XCTAssertEventuallyThrowsError(
+    _ block: () async throws -> Void,
+    file: StaticString = #file,
+    line: UInt = #line
+) async {
+    do {
+        try await block()
+        XCTFail("Expected to throw an error.", file: file, line: line)
+    } catch {
+        // 👍
+    }
 }

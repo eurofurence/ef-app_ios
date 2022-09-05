@@ -23,10 +23,14 @@ public struct NetworkRequest: Hashable {
     /// The HTTP method to apply when requesting the resource.
     public var method: Method
     
-    public init(url: URL, body: Data? = nil, method: NetworkRequest.Method) {
+    /// Additional HTTP headers to supply with the request, e.g. for authorization.
+    public var headers: [String: String] = [:]
+    
+    public init(url: URL, body: Data? = nil, method: NetworkRequest.Method, headers: [String: String] = [:]) {
         self.url = url
         self.body = body
         self.method = method
+        self.headers = headers
     }
     
 }
