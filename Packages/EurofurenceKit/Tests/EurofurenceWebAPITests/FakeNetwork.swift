@@ -49,12 +49,31 @@ class FakeNetwork: Network {
         }
     }
     
+    private var responses = [NetworkRequest: Result<Data, Error>]()
+    func perform(request: NetworkRequest) async throws -> Data {
+        guard let response = responses[request] else {
+            throw NotStubbed(url: request.url)
+        }
+        
+        switch response {
+        case .success(let data):
+            return data
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func stub(url: URL, with result: Result<Data, Error>) {
         getResponses[url] = result
     }
     
     func stubDownload(of url: URL, with result: Result<Data, Error>) {
         downloadResponses[url] = result
+    }
+    
+    func stub(_ request: NetworkRequest, with result: Result<Data, Error>) {
+        responses[request] = result
     }
     
 }

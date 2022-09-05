@@ -49,8 +49,24 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func requestAuthenticationToken(using login: Login) async throws -> AuthenticatedUser {
-        struct NotImplemented: Error { }
-        throw NotImplemented()
+        let urlString = "https://app.eurofurence.org/EF26/api/Token/SysReg"
+        guard let url = URL(string: urlString) else { fatalError() }
+        
+        let request = LoginRequest(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
+        let encoder = JSONEncoder()
+        let body = try encoder.encode(request)
+        
+        let networkRequest = NetworkRequest(url: url, body: body, method: .post)
+        let response = try await network.perform(request: networkRequest)
+        
+        let loginResponse = try decoder.decode(LoginResponse.self, from: response)
+        
+        return AuthenticatedUser(
+            userIdentifier: loginResponse.Uid,
+            username: loginResponse.Username,
+            token: loginResponse.Token,
+            tokenExpires: loginResponse.TokenValidUntil
+        )
     }
     
     public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
@@ -59,6 +75,19 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
     public func requestLogout(_ logout: Logout) async throws {
         
+    }
+    
+    struct LoginRequest: Encodable {
+        var RegNo: Int
+        var Username: String
+        var Password: String
+    }
+    
+    struct LoginResponse: Decodable {
+        var Uid: Int
+        var Username: String
+        var Token: String
+        var TokenValidUntil: Date
     }
     
 }

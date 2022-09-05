@@ -87,5 +87,40 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let downloadedImageData = try Data(contentsOf: temporaryFileURL)
         XCTAssertEqual(downloadedImageData, pretendImageData)
     }
+    
+    func testSignIn_Success() async throws {
+        let network = FakeNetwork()
+        let api = CIDSensitiveEurofurenceAPI(network: network)
+        
+        let login = Login(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/Token/SysReg"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        
+        let bundle = Bundle.module
+        let expectedBodyURL = try XCTUnwrap(bundle.url(forResource: "ExpectedLoginBody", withExtension: "json"))
+        let expectedBodyData = try Data(contentsOf: expectedBodyURL)
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBodyData, method: .post)
+        
+        let expectedResponseURL = try XCTUnwrap(bundle.url(
+            forResource: "ExpectedSuccessfulLoginBody",
+            withExtension: "json"
+        ))
+        
+        let expectedResponseData = try Data(contentsOf: expectedResponseURL)
+        
+        network.stub(expectedRequest, with: .success(expectedResponseData))
+        
+        let authenticatedUser = try await api.requestAuthenticationToken(using: login)
+        let formatter = EurofurenceISO8601DateFormatter.instance
+        let expirationDate = try XCTUnwrap(formatter.date(from: "2022-09-04T21:23:36.780Z"))
+        let expectedUser = AuthenticatedUser(
+            userIdentifier: 108,
+            username: "Username",
+            token: "Token",
+            tokenExpires: expirationDate
+        )
+        
+        XCTAssertEqual(expectedUser, authenticatedUser)
+    }
 
 }

@@ -56,4 +56,8 @@ struct URLSessionNetwork: Network {
         }
     }
     
+    func perform(request: NetworkRequest) async throws -> Data {
+        Data()
+    }
+    
 }

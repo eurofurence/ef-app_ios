@@ -1,6 +1,6 @@
 import Foundation
 
-public struct AuthenticatedUser {
+public struct AuthenticatedUser: Equatable {
         
     public var userIdentifier: Int
     public var username: String
