@@ -174,20 +174,6 @@ extension EurofurenceModel {
 
 // MARK: - Authentication
 
-public struct LoginParameters {
-    
-    public var registrationNumber: Int
-    public var username: String
-    public var password: String
-    
-    public init(registrationNumber: Int, username: String, password: String) {
-        self.registrationNumber = registrationNumber
-        self.username = username
-        self.password = password
-    }
-    
-}
-
 extension EurofurenceModel {
     
     public struct User {
@@ -215,11 +201,7 @@ extension EurofurenceModel {
     }
     
     public func signIn(with login: LoginParameters) async throws {
-        let loginRequest = Login(
-            registrationNumber: login.registrationNumber,
-            username: login.username,
-            password: login.password
-        )
+        guard let loginRequest = login.login else { return }
         
         do {
             let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
