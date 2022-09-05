@@ -184,6 +184,20 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         XCTAssertNotNil(scenario.model.currentUser)
     }
     
+    func testUnauthenticated_DeviceTokenAvailable_StillAssociatesDeviceTokenForNonPersonalisedMessages() async throws {
+        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
+        await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
+        
+        let expectedDeviceTokenRegistration = RegisterPushNotificationDeviceToken(
+            authenticationToken: nil,
+            pushNotificationDeviceToken: deviceToken
+        )
+        
+        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
+        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+    }
+    
     func testAuthenticatingCachesPrivateMessages() async throws {
         
     }
