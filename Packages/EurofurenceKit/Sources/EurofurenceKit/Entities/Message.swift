@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Message)
 public class Message: NSManagedObject {
+    
+    private static let logger = Logger(label: "Message")
     
     @nonobjc class func fetchRequest() -> NSFetchRequest<Message> {
         return NSFetchRequest<Message>(entityName: "Message")
@@ -61,7 +64,12 @@ extension Message {
                     
                     refreshObject()
                 } catch {
-                    print("")
+                    let metadata: Logger.Metadata = [
+                        "ID": .string(messageIdentifier),
+                        "Error": .string(String(describing: error))
+                    ]
+                    
+                    Self.logger.error("Failed to update read status for message", metadata: metadata)
                 }
             }
             
@@ -98,7 +106,12 @@ extension Message {
             try await api.markMessageAsRead(request: request)
             markedRead = true
         } catch {
-            print("")
+            let metadata: Logger.Metadata = [
+                "ID": .string(messageIdentifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Marking message as read failed", metadata: metadata)
         }
         
         do {
@@ -109,7 +122,12 @@ extension Message {
                 try managedObjectContext.save()
             } 
         } catch {
-            print("")
+            let metadata: Logger.Metadata = [
+                "ID": .string(messageIdentifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Failed to record pending read state update", metadata: metadata)
         }
     }
     
