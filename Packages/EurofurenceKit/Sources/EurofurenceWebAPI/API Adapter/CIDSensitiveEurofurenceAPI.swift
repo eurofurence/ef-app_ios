@@ -104,7 +104,16 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
-        // TODO: Implement
+        let url = makeURL(subpath: "Communication/PrivateMessages/\(request.messageIdentifier)/Read")
+        guard let bodyForSwagger = "true".data(using: .utf8) else {
+            fatalError("Could not produce a data object from the Swagger body")
+        }
+        
+        let networkRequest = NetworkRequest(url: url, body: bodyForSwagger, method: .post, headers: [
+            "Authorization": "Bearer \(request.authenticationToken.stringValue)"
+        ])
+        
+        try await configuration.network.perform(request: networkRequest)
     }
     
     private func associatePushNotificationToken(

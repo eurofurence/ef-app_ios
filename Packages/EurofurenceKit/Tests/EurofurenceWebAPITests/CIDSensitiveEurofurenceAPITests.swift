@@ -284,6 +284,37 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         XCTAssertEqual(message.readDate, expectedRead)
     }
     
+    func testMarkingMessageAsReadSucceedsWhenNetworkDoesNotProduceError() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/Communication/PrivateMessages/ID/Read"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        let expectedBody = try XCTUnwrap("true".data(using: .utf8))
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBody, method: .post, headers: [
+            "Authorization": "Bearer Authentication Token"
+        ])
+        
+        network.stub(expectedRequest, with: .success(Data()))
+        
+        let request = AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        await XCTAssertEventuallyNoThrows { try await api.markMessageAsRead(request: request) }
+    }
+    
+    func testMarkingMessageAsReadFailsWhenNetworkProducesError() async throws {
+        let authenticationToken = AuthenticationToken("Authentication Token")
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/Communication/PrivateMessages/ID/Read"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        let expectedBody = try XCTUnwrap("true".data(using: .utf8))
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBody, method: .post, headers: [
+            "Authorization": "Bearer Authentication Token"
+        ])
+        
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        network.stub(expectedRequest, with: .failure(error))
+        
+        let request = AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        await XCTAssertEventuallyThrowsError { try await api.markMessageAsRead(request: request) }
+    }
+    
     private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {
         let url = try XCTUnwrap(Bundle.module.url(forResource: fileName, withExtension: "json"))
         let data = try Data(contentsOf: url)
