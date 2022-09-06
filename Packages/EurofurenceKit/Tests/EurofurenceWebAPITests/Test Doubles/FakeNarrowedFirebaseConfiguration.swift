@@ -1,4 +1,5 @@
 @testable import EurofurenceWebAPI
+import Foundation
 
 class FakeNarrowedFirebaseConfiguration: NarrowedFirebaseConfiguration {
     

@@ -3,18 +3,8 @@ import Foundation
 public struct FirebaseRemoteConfiguration: RemoteConfiguration {
     
     public static var shared: FirebaseRemoteConfiguration = {
-        return FirebaseRemoteConfiguration(firebaseConfiguration: DummyNarrowedFirebaseConfiguration())
+        return FirebaseRemoteConfiguration(firebaseConfiguration: StaticNarrowedFirebaseConfiguration.shared)
     }()
-    
-    private struct DummyNarrowedFirebaseConfiguration: NarrowedFirebaseConfiguration {
-        func acquireRemoteValues() async {
-            
-        }
-        
-        func remotelyConfiguredValue(forKey key: String) -> NarrowedFirebaseConfiguredValue? {
-            nil
-        }
-    }
     
     private let firebaseConfiguration: NarrowedFirebaseConfiguration
     
