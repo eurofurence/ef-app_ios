@@ -257,7 +257,7 @@ extension EurofurenceModel {
                 }
                 
                 group.addTask { [self] in
-                    await fetchMessages()
+                    await updateLocalMessagesCache()
                 }
                 
                 await group.waitForAll()
@@ -284,7 +284,7 @@ extension EurofurenceModel {
         configuration.keychain.credential = nil
         currentUser = nil
         
-        await deleteMessagesFromPersistentStore()
+        await updateLocalMessagesCache()
     }
     
     private func registerPushNotificationToken(against authenticatedUser: AuthenticatedUser) async {
@@ -296,33 +296,14 @@ extension EurofurenceModel {
         }
     }
     
-    private func fetchMessages() async {
+    private func updateLocalMessagesCache() async {
         do {
             let updateMessages = UpdateLocalMessagesOperation(configuration: configuration)
             try await updateMessages.execute()
         } catch {
             logger.info(
-                "Failed to load messages after login. App may appear in an inconsistent state until next refresh."
+                "Failed to update local messages. App may appear in an inconsistent state until next refresh."
             )
-        }
-    }
-    
-    private func deleteMessagesFromPersistentStore() async {
-        do {
-            let writingContext = configuration.persistentContainer.newBackgroundContext()
-            try await writingContext.performAsync { [writingContext] in
-                let fetchRequest: NSFetchRequest<Message> = Message.fetchRequest()
-                fetchRequest.predicate = NSPredicate(value: true)
-                
-                let messages = try writingContext.fetch(fetchRequest)
-                for message in messages {
-                    writingContext.delete(message)
-                }
-                
-                try writingContext.save()
-            }
-        } catch {
-            logger.error("Failed to delete local messages.", metadata: ["Error": .string(String(describing: error))])
         }
     }
     
