@@ -260,7 +260,14 @@ extension EurofurenceModel {
             currentUser = User(registrationNumber: authenticatedUser.userIdentifier, name: authenticatedUser.username)
             
             let updateMessages = UpdateLocalMessagesOperation(configuration: configuration)
-            await updateMessages.execute()
+            
+            do {
+                try await updateMessages.execute()
+            } catch {
+                logger.info(
+                    "Failed to load messages after login. App may appear in an inconsistent state until next refresh."
+                )
+            }
         } catch {
             logger.error("Failed to authenticate user.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.loginFailed

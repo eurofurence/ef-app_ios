@@ -155,6 +155,21 @@ class EurofurenceModelMessagesTests: XCTestCase {
         XCTAssertEqual(1, count, "Only one instance of a message should exist in the store, based on its ID")
     }
     
+    func testSignedIn_CredentialExpiresMidSession_DoesNotRequestMessagesDuringNextRefresh() async throws {
+        let keychain = AuthenticatedKeychain()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        
+        var expiredCredental = try XCTUnwrap(keychain.credential)
+        expiredCredental.tokenExpiryDate = .distantPast
+        keychain.credential = expiredCredental
+        
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        await scenario.api.stubMessageRequest(for: expiredCredental.authenticationToken, with: .failure(error))
+        
+        // The update should not fail as we should not attempt to request messages with an invalid token.
+        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .ef26) }
+    }
+    
     func testWhenSignedInAndCredentialIsNoLongerValid_MessagesAreRemovedFromContext() async throws {
         
     }

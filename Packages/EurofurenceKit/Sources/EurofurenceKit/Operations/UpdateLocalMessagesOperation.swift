@@ -11,13 +11,15 @@ class UpdateLocalMessagesOperation {
         self.configuration = configuration
     }
     
-    func execute() async {
-        if let authenticationToken = configuration.keychain.credential?.authenticationToken {
-            await fetchMessages(authenticationToken: authenticationToken)
+    func execute() async throws {
+        if let credential = configuration.keychain.credential {
+            if credential.tokenExpiryDate > Date() {
+                try await fetchMessages(authenticationToken: credential.authenticationToken)
+            }
         }
     }
     
-    private func fetchMessages(authenticationToken: AuthenticationToken) async {
+    private func fetchMessages(authenticationToken: AuthenticationToken) async throws {
         do {
             let messages = try await configuration.api.fetchMessages(for: authenticationToken)
             
@@ -32,6 +34,7 @@ class UpdateLocalMessagesOperation {
             }
         } catch {
             logger.error("Failed to fetch messages.", metadata: ["Error": .string(String(describing: error))])
+            throw error
         }
     }
     

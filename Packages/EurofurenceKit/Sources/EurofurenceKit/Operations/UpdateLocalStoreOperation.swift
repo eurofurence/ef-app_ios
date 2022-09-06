@@ -22,7 +22,7 @@ struct UpdateLocalStoreOperation {
             
             group.addTask {
                 let fetchMessages = UpdateLocalMessagesOperation(configuration: configuration)
-                await fetchMessages.execute()
+                try await fetchMessages.execute()
             }
             
             try await group.waitForAll()
