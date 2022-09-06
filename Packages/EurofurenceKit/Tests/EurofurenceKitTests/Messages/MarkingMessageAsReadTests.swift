@@ -23,7 +23,11 @@ class MarkingMessageAsReadTests: XCTestCase {
         
         let authenticationToken = AuthenticationToken("ABC")
         await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
-        let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(keychain: AuthenticatedKeychain())
+            .with(api: api)
+            .build()
+        
         try await scenario.updateLocalStore(using: .ef26)
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
@@ -64,7 +68,11 @@ class MarkingMessageAsReadTests: XCTestCase {
         
         let authenticationToken = AuthenticationToken("ABC")
         await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
-        let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(keychain: AuthenticatedKeychain())
+            .with(api: api)
+            .build()
+        
         try await scenario.updateLocalStore(using: .ef26)
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
@@ -103,7 +111,11 @@ class MarkingMessageAsReadTests: XCTestCase {
         
         let authenticationToken = AuthenticationToken("ABC")
         await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
-        let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(keychain: AuthenticatedKeychain())
+            .with(api: api)
+            .build()
+        
         try await scenario.updateLocalStore(using: .ef26)
         
         let message = try scenario.model.message(identifiedBy: "Identifier")

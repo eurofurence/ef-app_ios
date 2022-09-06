@@ -1,6 +1,6 @@
 import CoreData
-import Logging
 import EurofurenceWebAPI
+import Logging
 
 class EurofurencePersistentContainer: NSPersistentContainer {
     

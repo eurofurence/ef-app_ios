@@ -107,9 +107,7 @@ extension Message {
                 writableMessage.isPendingReadStateUpdateToRemote = markedRead == false
                 
                 try managedObjectContext.save()
-            }
-            
-            
+            } 
         } catch {
             print("")
         }
