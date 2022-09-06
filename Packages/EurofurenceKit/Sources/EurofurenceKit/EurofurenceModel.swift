@@ -21,15 +21,19 @@ public class EurofurenceModel: ObservableObject {
         configuration.persistentContainer.viewContext
     }
     
-    public convenience init() async {
-        await self.init(configuration: Configuration())
+    public convenience init() {
+        self.init(configuration: Configuration())
     }
     
-    public init(configuration: EurofurenceModel.Configuration) async {
+    public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
-        
         registerForEntityNotifications()
-        await updateAuthenticatedStateFromPersistentCredential(configuration)
+    }
+    
+    /// Prepares the model for display within an application. Must be called at least once after the application has
+    /// launched.
+    public func prepareForPresentation() async {
+        await updateAuthenticatedStateFromPersistentCredential()
     }
     
     /// Attempts to synchronise the model with the backing store.
@@ -316,7 +320,7 @@ extension EurofurenceModel {
         configuration.keychain.credential = credential
     }
     
-    private func updateAuthenticatedStateFromPersistentCredential(_ configuration: EurofurenceModel.Configuration) async {
+    private func updateAuthenticatedStateFromPersistentCredential() async {
         if let credential = configuration.keychain.credential {
             if credential.tokenExpiryDate > Date() {
                 currentUser = User(registrationNumber: credential.registrationNumber, name: credential.username)

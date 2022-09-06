@@ -41,7 +41,8 @@ class EurofurenceModelTestBuilder {
             conventionIdentifier: conventionIdentifier
         )
         
-        let model = await EurofurenceModel(configuration: configuration)
+        let model = EurofurenceModel(configuration: configuration)
+        await model.prepareForPresentation()
         
         return Scenario(model: model, modelProperties: properties, api: api)
     }

@@ -21,6 +21,10 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareApplication()
         prepareNotificationDelegate()
         requestRemoteNotificationsDeviceToken()
+        
+        Task {
+            await model.prepareForPresentation()
+        }
 
 		return true
 	}
