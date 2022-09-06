@@ -16,6 +16,8 @@ public class EurofurenceModel: ObservableObject {
     /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?
     
+    @Published public private(set) var conventionStartTime: Date?
+    
     /// A read-only managed object context for use in presenting the state of the model to the user.
     public var viewContext: NSManagedObjectContext {
         configuration.persistentContainer.viewContext
@@ -28,6 +30,8 @@ public class EurofurenceModel: ObservableObject {
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
         registerForEntityNotifications()
+        
+        conventionStartTime = configuration.remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
     }
     
     /// Prepares the model for display within an application. Must be called at least once after the application has
