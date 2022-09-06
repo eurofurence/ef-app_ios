@@ -171,7 +171,33 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testWhenSignedInAndCredentialIsNoLongerValid_MessagesAreRemovedFromContext() async throws {
+        let keychain = AuthenticatedKeychain()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let (received, read) = (Date(), Date())
+        let message = EurofurenceWebAPI.Message(
+            id: "Identifier",
+            author: "Author",
+            subject: "Subject",
+            message: "Message",
+            receivedDate: received,
+            readDate: read
+        )
         
+        var credental = try XCTUnwrap(keychain.credential)
+        await scenario.api.stubMessageRequest(for: credental.authenticationToken, with: .success([message]))
+        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .ef26) }
+        
+        credental.tokenExpiryDate = .distantPast
+        keychain.credential = credental
+        
+        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .noChanges) }
+        
+        let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
+        fetchRequest.predicate = NSPredicate(value: true)
+        fetchRequest.resultType = .countResultType
+        
+        let count = try scenario.viewContext.count(for: fetchRequest)
+        XCTAssertEqual(0, count, "Messages should be removed from the persistent store on next refresh after sign-out")
     }
 
 }

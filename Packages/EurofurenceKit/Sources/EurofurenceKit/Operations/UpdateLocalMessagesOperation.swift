@@ -14,6 +14,8 @@ class UpdateLocalMessagesOperation {
     func execute() async throws {
         if let credential = configuration.keychain.credential, credential.isValid {
             try await fetchMessages(authenticationToken: credential.authenticationToken)
+        } else {
+            try await deleteLocalMessages()
         }
     }
     
@@ -33,6 +35,21 @@ class UpdateLocalMessagesOperation {
         } catch {
             logger.error("Failed to fetch messages.", metadata: ["Error": .string(String(describing: error))])
             throw error
+        }
+    }
+    
+    private func deleteLocalMessages() async throws {
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        try await writingContext.performAsync { [writingContext] in
+            let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
+            fetchRequest.predicate = NSPredicate(value: true)
+            
+            let messages = try writingContext.fetch(fetchRequest)
+            for message in messages {
+                writingContext.delete(message)
+            }
+            
+            try writingContext.save()
         }
     }
     
