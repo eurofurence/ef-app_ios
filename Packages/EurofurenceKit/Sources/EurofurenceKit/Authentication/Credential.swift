@@ -20,4 +20,8 @@ public struct Credential: Codable, Equatable {
         self.tokenExpiryDate = tokenExpiryDate
     }
     
+    var isValid: Bool {
+        tokenExpiryDate > Date()
+    }
+    
 }

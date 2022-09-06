@@ -249,24 +249,18 @@ extension EurofurenceModel {
         do {
             let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
             storeAuthenticatedUserIntoKeychain(authenticatedUser)
+            currentUser = User(authenticatedUser: authenticatedUser)
             
-            if let pushNotificationDeviceTokenData = pushNotificationDeviceTokenData {
-                await associateDevicePushNotificationToken(
-                    data: pushNotificationDeviceTokenData,
-                    withUserAuthenticationToken: authenticatedUser.token
-                )
-            }
-            
-            currentUser = User(registrationNumber: authenticatedUser.userIdentifier, name: authenticatedUser.username)
-            
-            let updateMessages = UpdateLocalMessagesOperation(configuration: configuration)
-            
-            do {
-                try await updateMessages.execute()
-            } catch {
-                logger.info(
-                    "Failed to load messages after login. App may appear in an inconsistent state until next refresh."
-                )
+            await withTaskGroup(of: Void.self) { group in
+                group.addTask { [self] in
+                    await registerPushNotificationToken(against: authenticatedUser)
+                }
+                
+                group.addTask { [self] in
+                    await fetchMessages()
+                }
+                
+                await group.waitForAll()
             }
         } catch {
             logger.error("Failed to authenticate user.", metadata: ["Error": .string(String(describing: error))])
@@ -291,6 +285,26 @@ extension EurofurenceModel {
         currentUser = nil
         
         await deleteMessagesFromPersistentStore()
+    }
+    
+    private func registerPushNotificationToken(against authenticatedUser: AuthenticatedUser) async {
+        if let pushNotificationDeviceTokenData = pushNotificationDeviceTokenData {
+            await associateDevicePushNotificationToken(
+                data: pushNotificationDeviceTokenData,
+                withUserAuthenticationToken: authenticatedUser.token
+            )
+        }
+    }
+    
+    private func fetchMessages() async {
+        do {
+            let updateMessages = UpdateLocalMessagesOperation(configuration: configuration)
+            try await updateMessages.execute()
+        } catch {
+            logger.info(
+                "Failed to load messages after login. App may appear in an inconsistent state until next refresh."
+            )
+        }
     }
     
     private func deleteMessagesFromPersistentStore() async {
@@ -344,8 +358,8 @@ extension EurofurenceModel {
     
     private func updateAuthenticatedStateFromPersistentCredential() async {
         if let credential = configuration.keychain.credential {
-            if credential.tokenExpiryDate > Date() {
-                currentUser = User(registrationNumber: credential.registrationNumber, name: credential.username)
+            if credential.isValid {
+                currentUser = User(credential: credential)
             } else {
                 await automaticallySignOutUser()
             }

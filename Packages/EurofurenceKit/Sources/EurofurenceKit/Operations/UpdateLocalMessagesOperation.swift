@@ -12,10 +12,8 @@ class UpdateLocalMessagesOperation {
     }
     
     func execute() async throws {
-        if let credential = configuration.keychain.credential {
-            if credential.tokenExpiryDate > Date() {
-                try await fetchMessages(authenticationToken: credential.authenticationToken)
-            }
+        if let credential = configuration.keychain.credential, credential.isValid {
+            try await fetchMessages(authenticationToken: credential.authenticationToken)
         }
     }
     
