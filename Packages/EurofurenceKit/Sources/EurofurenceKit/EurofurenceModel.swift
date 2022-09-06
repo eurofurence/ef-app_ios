@@ -21,18 +21,15 @@ public class EurofurenceModel: ObservableObject {
         configuration.persistentContainer.viewContext
     }
     
-    public convenience init() {
-        self.init(configuration: Configuration())
+    public convenience init() async {
+        await self.init(configuration: Configuration())
     }
     
-    public init(configuration: EurofurenceModel.Configuration) {
+    public init(configuration: EurofurenceModel.Configuration) async {
         self.configuration = configuration
         
-        if let credential = configuration.keychain.credential {
-            currentUser = User(registrationNumber: credential.registrationNumber, name: credential.username)
-        }
-        
         registerForEntityNotifications()
+        await updateAuthenticatedStateFromPersistentCredential(configuration)
     }
     
     /// Attempts to synchronise the model with the backing store.
@@ -317,6 +314,24 @@ extension EurofurenceModel {
         )
         
         configuration.keychain.credential = credential
+    }
+    
+    private func updateAuthenticatedStateFromPersistentCredential(_ configuration: EurofurenceModel.Configuration) async {
+        if let credential = configuration.keychain.credential {
+            if credential.tokenExpiryDate > Date() {
+                currentUser = User(registrationNumber: credential.registrationNumber, name: credential.username)
+            } else {
+                await automaticallySignOutUser()
+            }
+        }
+    }
+    
+    private func automaticallySignOutUser() async {
+        do {
+            try await signOut()
+        } catch {
+            logger.error("Failed to automatically sign out user.", metadata: ["Error": .string(String(describing: error))])
+        }
     }
     
 }

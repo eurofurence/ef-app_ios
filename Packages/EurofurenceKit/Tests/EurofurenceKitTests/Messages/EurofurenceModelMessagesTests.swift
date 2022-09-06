@@ -6,7 +6,7 @@ import XCTest
 class EurofurenceModelMessagesTests: XCTestCase {
     
     func testWhenSignedInMessagesAreCachedIntoContext() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
@@ -49,7 +49,7 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testAfterSigningOutMessagesAreRemovedFromContext() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
@@ -88,7 +88,7 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testWhenSignedInFutureReloadsIncludeMessages() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
@@ -120,7 +120,7 @@ class EurofurenceModelMessagesTests: XCTestCase {
     }
     
     func testLoadingSameMessageMultipleTimesDoesNotDuplicateMessageInContext() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let loginRequest = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(

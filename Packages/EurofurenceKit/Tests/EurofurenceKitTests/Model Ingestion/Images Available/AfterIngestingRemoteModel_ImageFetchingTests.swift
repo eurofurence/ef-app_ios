@@ -6,7 +6,7 @@ import XCTest
 class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
     
     func testRequestsImagesFromAPI() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -28,7 +28,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
     }
     
     func testFailingToFetchSomeImagesDoesNotAbandonTheEntireLoad() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         
         // Given a portion of the downloads fail, we expect to still attempt all download requests and not abandon
@@ -60,7 +60,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
     }
     
     func testSuccessfullyDownloadingImageUpdatesEntityWithURL() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -81,7 +81,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
     }
     
     func testFailingToDownloadImageDoesNotUpdateEntityWithURL() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         
         // We'll fail to download the image for an announcement, then assert the associated entity does not contain
@@ -106,7 +106,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
     }
     
     func testPreviouslyFailedImageRequestIsReattemptedOnNextSync() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         
         // We'll fail to download the image for an announcement, then on the next attempt succeed. We should then see

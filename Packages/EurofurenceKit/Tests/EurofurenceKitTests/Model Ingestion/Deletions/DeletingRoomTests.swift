@@ -6,7 +6,7 @@ import XCTest
 class DeletingRoomTests: XCTestCase {
     
     func testDeletingRoomRemovesEventsOccurringInRoom() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()

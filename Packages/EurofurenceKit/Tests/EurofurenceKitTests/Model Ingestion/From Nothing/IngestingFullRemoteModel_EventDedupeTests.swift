@@ -5,7 +5,7 @@ import XCTest
 class IngestingFullRemoteModel_EventDedupeTests: XCTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateHosts() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
         // For each panel host, there should be one instance with the corresponding name associated with one or more
@@ -27,7 +27,7 @@ class IngestingFullRemoteModel_EventDedupeTests: XCTestCase {
     }
     
     func testIngestingFullResponse_DoesNotDuplicateTags() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
         // For each panel tag, there should be one instance with the corresponding name associated with one or more

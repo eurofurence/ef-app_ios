@@ -37,7 +37,7 @@ class LoginTests: XCTestCase {
     }
     
     func testLoginNotAttemptedWhenMissingRegistrationNumber() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let login = Login()
         login.username = "Some Guy"
         login.password = "p455w0rd!"
@@ -46,7 +46,7 @@ class LoginTests: XCTestCase {
     }
     
     func testLoginNotAttemptedWhenMissingUsername() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let login = Login()
         login.registrationNumber = 42
         login.password = "p455w0rd!"
@@ -55,7 +55,7 @@ class LoginTests: XCTestCase {
     }
     
     func testLoginNotAttemptedWhenMissingPassword() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let login = Login()
         login.registrationNumber = 42
         login.username = "Some Guy"
