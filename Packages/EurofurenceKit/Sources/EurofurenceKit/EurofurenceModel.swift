@@ -48,13 +48,14 @@ public class EurofurenceModel: ObservableObject {
     }
     
     private func performLocalStoreUpdates() async throws {
-        let operation = UpdateLocalStoreOperation(configuration: configuration)
+        let context = prepareUpdateOperationContext()
+        let operation = UpdateLocalStoreOperation()
         cloudStatus = .updating(progress: operation.progress)
         
         // Simultaneously update the local store and perform any local book-keeping.
         try await withThrowingTaskGroup(of: Void.self) { group in
             group.addTask {
-                try await operation.execute()
+                try await operation.execute(context: context)
             }
             
             group.addTask { [self] in
@@ -63,6 +64,18 @@ public class EurofurenceModel: ObservableObject {
             
             try await group.waitForAll()
         }
+    }
+    
+    private func prepareUpdateOperationContext() -> UpdateOperationContext {
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        
+        return UpdateOperationContext(
+            managedObjectContext: writingContext,
+            keychain: configuration.keychain,
+            api: configuration.api,
+            properties: configuration.properties,
+            conventionIdentifier: configuration.conventionIdentifier
+        )
     }
     
 }
@@ -298,8 +311,9 @@ extension EurofurenceModel {
     
     private func updateLocalMessagesCache() async {
         do {
-            let updateMessages = UpdateLocalMessagesOperation(configuration: configuration)
-            try await updateMessages.execute()
+            let context = prepareUpdateOperationContext()
+            let updateMessages = UpdateLocalMessagesOperation()
+            try await updateMessages.execute(context: context)
         } catch {
             logger.info(
                 "Failed to update local messages. App may appear in an inconsistent state until next refresh."

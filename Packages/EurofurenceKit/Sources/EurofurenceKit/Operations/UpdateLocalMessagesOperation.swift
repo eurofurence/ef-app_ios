@@ -2,35 +2,32 @@ import CoreData
 import EurofurenceWebAPI
 import Logging
 
-class UpdateLocalMessagesOperation {
+class UpdateLocalMessagesOperation: UpdateOperation {
     
-    private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "UpdateMessages")
     
-    init(configuration: EurofurenceModel.Configuration) {
-        self.configuration = configuration
-    }
-    
-    func execute() async throws {
-        if let credential = configuration.keychain.credential, credential.isValid {
-            try await fetchMessages(authenticationToken: credential.authenticationToken)
+    func execute(context: UpdateOperationContext) async throws {
+        if let credential = context.keychain.credential, credential.isValid {
+            try await fetchMessages(authenticationToken: credential.authenticationToken, context: context)
         } else {
-            try await deleteLocalMessages()
+            try await deleteLocalMessages(managedObjectContext: context.managedObjectContext)
         }
     }
     
-    private func fetchMessages(authenticationToken: AuthenticationToken) async throws {
+    private func fetchMessages(
+        authenticationToken: AuthenticationToken,
+        context: UpdateOperationContext
+    ) async throws {
         do {
-            let messages = try await configuration.api.fetchMessages(for: authenticationToken)
+            let messages = try await context.api.fetchMessages(for: authenticationToken)
             
-            let writingContext = configuration.persistentContainer.newBackgroundContext()
-            try await writingContext.performAsync { [writingContext] in
+            try await context.managedObjectContext.performAsync {
                 for message in messages {
-                    let entity = try Message.message(for: message.id, in: writingContext)
+                    let entity = try Message.message(for: message.id, in: context.managedObjectContext)
                     entity.update(from: message)
                 }
                 
-                try writingContext.save()
+                try context.managedObjectContext.save()
             }
         } catch {
             logger.error("Failed to fetch messages.", metadata: ["Error": .string(String(describing: error))])
@@ -38,18 +35,17 @@ class UpdateLocalMessagesOperation {
         }
     }
     
-    private func deleteLocalMessages() async throws {
-        let writingContext = configuration.persistentContainer.newBackgroundContext()
-        try await writingContext.performAsync { [writingContext] in
+    private func deleteLocalMessages(managedObjectContext: NSManagedObjectContext) async throws {
+        try await managedObjectContext.performAsync { [managedObjectContext] in
             let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
             fetchRequest.predicate = NSPredicate(value: true)
             
-            let messages = try writingContext.fetch(fetchRequest)
+            let messages = try managedObjectContext.fetch(fetchRequest)
             for message in messages {
-                writingContext.delete(message)
+                managedObjectContext.delete(message)
             }
             
-            try writingContext.save()
+            try managedObjectContext.save()
         }
     }
     
