@@ -88,7 +88,15 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [Message] {
-        []
+        let url = makeURL(subpath: "Communication/PrivateMessages")
+        let request = NetworkRequest(url: url, method: .get, headers: [
+            "Authorization": "Bearer \(authenticationToken.stringValue)"
+        ])
+        
+        let responseData = try await configuration.network.perform(request: request)
+        let messages = try decoder.decode([Message].self, from: responseData)
+        
+        return messages
     }
     
     public func fetchRemoteConfiguration() async -> RemoteConfiguration {

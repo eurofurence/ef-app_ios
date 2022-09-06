@@ -1,0 +1,11 @@
+[{
+    "LastChangeDateTimeUtc": "2017-07-25T18:45:59.050Z",
+    "Id": "ID",
+    "RecipientUid": "Recipient",
+    "CreatedDateTimeUtc": "2017-07-25T18:45:59.050Z",
+    "ReceivedDateTimeUtc": "2017-07-25T18:45:59.050Z",
+    "ReadDateTimeUtc": "2017-07-25T18:50:59.050Z",
+    "AuthorName": "Author",
+    "Subject": "Subject",
+    "Message": "Message"
+}]
