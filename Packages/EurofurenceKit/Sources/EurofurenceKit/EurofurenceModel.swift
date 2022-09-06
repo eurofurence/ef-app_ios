@@ -1,4 +1,5 @@
 import CoreData
+import Combine
 import EurofurenceWebAPI
 import Foundation
 import Logging
@@ -9,6 +10,7 @@ public class EurofurenceModel: ObservableObject {
     private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "EurofurenceModel")
     private var pushNotificationDeviceTokenData: Data?
+    private var subscriptions = Set<AnyCancellable>()
     
     /// The current synchronisation phase between the model and the backing store.
     @Published public private(set) var cloudStatus: CloudStatus = .idle
@@ -16,6 +18,7 @@ public class EurofurenceModel: ObservableObject {
     /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?
     
+    /// Designates the start time of the next convention, or `nil` if the start time is not known.
     @Published public private(set) var conventionStartTime: Date?
     
     /// A read-only managed object context for use in presenting the state of the model to the user.
@@ -30,8 +33,7 @@ public class EurofurenceModel: ObservableObject {
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
         registerForEntityNotifications()
-        
-        conventionStartTime = configuration.remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
+        prepareForReadingFromRemoteConfiguration()
     }
     
     /// Prepares the model for display within an application. Must be called at least once after the application has
@@ -80,6 +82,32 @@ public class EurofurenceModel: ObservableObject {
             properties: configuration.properties,
             conventionIdentifier: configuration.conventionIdentifier
         )
+    }
+    
+}
+
+// MARK: - Remote Configuration
+
+extension EurofurenceModel {
+    
+    private func prepareForReadingFromRemoteConfiguration() {
+        configuration
+            .remoteConfiguration
+            .onChange
+            .sink { [self] remoteConfiguration in
+                read(remoteConfiguration: remoteConfiguration)
+        }
+        .store(in: &subscriptions)
+        
+        read(remoteConfiguration: configuration.remoteConfiguration)
+    }
+    
+    private func read(remoteConfiguration: RemoteConfiguration) {
+        let conventionStartTime = configuration.remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
+        
+        if conventionStartTime != self.conventionStartTime {
+            self.conventionStartTime = conventionStartTime
+        }
     }
     
 }
