@@ -7,12 +7,12 @@ import XCTest
 class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testModelNotAuthenticatedOnStart() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         XCTAssertNil(scenario.model.currentUser)
     }
     
     func testModelAuthenticatedOnStart() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).build()
         
         let user = try XCTUnwrap(
             scenario.model.currentUser,
@@ -25,7 +25,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testAuthenticatingModel_LoginSucceeds() async throws {
         let keychain = SpyKeychain(UnauthenticatedKeychain())
-        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
         let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let someDate = Date().addingTimeInterval(3600)
         
@@ -65,7 +65,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     }
     
     func testAuthenticatingModel_LoginFails() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         
         let expectedLogin = LoginRequest(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
@@ -78,7 +78,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     }
     
     func testRegisteringRemoteNotificationsToken_ThenLoggingIn() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
         await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         
@@ -104,7 +104,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     }
     
     func testLoggingIn_ThenRegisteringRemoteNotificationDeviceToken() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         
         let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let expectedLogin = LoginRequest(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
@@ -132,7 +132,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testAuthenticatedModel_AssociatedDeviceToken_LoggingOutSucceeds_ClearsCredential() async throws {
         let keychain = AuthenticatedKeychain()
-        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
         await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         
@@ -151,7 +151,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testAuthenticatedModel_NoAssociatedDeviceToken_LoggingOutSucceeds_ClearsCredential() async throws {
         let keychain = AuthenticatedKeychain()
-        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
         
         let expectedLogoutRequest = LogoutRequest(
             authenticationToken: AuthenticationToken("ABC"),
@@ -168,7 +168,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     
     func testAuthenticatedModel_LoggingOutFails_DoesNotClearCredential() async throws {
         let keychain = AuthenticatedKeychain()
-        let scenario = EurofurenceModelTestBuilder().with(keychain: keychain).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).build()
         
         let expectedLogoutRequest = LogoutRequest(
             authenticationToken: AuthenticationToken("ABC"),
@@ -185,7 +185,7 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
     }
     
     func testUnauthenticated_DeviceTokenAvailable_StillAssociatesDeviceTokenForNonPersonalisedMessages() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
         await scenario.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         
@@ -196,6 +196,66 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
         
         let actualRegistration = await scenario.api.registeredDeviceTokenRequest
         XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+    }
+    
+    func testSigningInWithExpiredCredentialAutomaticallySignsUserOut() async throws {
+        let api = FakeEurofurenceAPI()
+        await api.stubLogoutRequest(
+            LogoutRequest(authenticationToken: AuthenticationToken("ABC"), pushNotificationDeviceToken: nil),
+            with: .success(())
+        )
+        
+        let keychain = ExpiredCredentialKeychain()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        
+        XCTAssertNil(scenario.model.currentUser, "Booted with expired credential - should not appear signed in")
+        XCTAssertNil(keychain.credential, "Credential expired - should be removed from keychain")
+    }
+    
+    func testAutomaticSignOutFails_NextLoginReattemptsSignOut() async throws {
+        let api = FakeEurofurenceAPI()
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        await api.stubLogoutRequest(
+            LogoutRequest(authenticationToken: AuthenticationToken("ABC"), pushNotificationDeviceToken: nil),
+            with: .failure(error)
+        )
+        
+        let keychain = ExpiredCredentialKeychain()
+        await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        
+        XCTAssertNotNil(
+            keychain.credential,
+            "Automatic sign out failed - should retain the token for another attempt on next boot"
+        )
+        
+        await api.stubLogoutRequest(
+            LogoutRequest(authenticationToken: AuthenticationToken("ABC"), pushNotificationDeviceToken: nil),
+            with: .success(())
+        )
+        
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        
+        XCTAssertNil(keychain.credential, "Automatic sign out succeeded - token should be cleared from keychain")
+        XCTAssertNil(scenario.model.currentUser, "Booted with expired credential - should not appear signed in")
+    }
+    
+    func testOnNextStoreUpdate_CredentialHasNowExpired_UserAutomaticallySignedOut() async throws {
+        let api = FakeEurofurenceAPI()
+        await api.stubLogoutRequest(
+            LogoutRequest(authenticationToken: AuthenticationToken("ABC"), pushNotificationDeviceToken: nil),
+            with: .success(())
+        )
+        
+        let keychain = AuthenticatedKeychain()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        var expiredCredential = keychain.credential
+        expiredCredential?.tokenExpiryDate = .distantPast
+        keychain.credential = expiredCredential
+        
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        XCTAssertNil(keychain.credential, "Automatic sign out succeeded - token should be cleared from keychain")
+        XCTAssertNil(scenario.model.currentUser, "Updated store with expired credential - should not appear signed in")
     }
 
 }

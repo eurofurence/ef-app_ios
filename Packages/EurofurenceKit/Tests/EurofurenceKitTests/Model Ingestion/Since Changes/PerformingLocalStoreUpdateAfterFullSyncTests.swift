@@ -6,7 +6,7 @@ import XCTest
 class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     
     func testUsesTimestampFromLastUpdateInSyncRequest() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let changeToken = SynchronizationPayload.GenerationToken(lastSyncTime: Date())
         scenario.modelProperties.synchronizationChangeToken = changeToken
         try await scenario.updateLocalStore(using: .ef26)
@@ -16,7 +16,7 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     }
     
     func testRecordsTimestampAfterSuccessfulSyncRequest() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let response = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(response))
         try await scenario.updateLocalStore()
@@ -26,7 +26,7 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     }
     
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_NetworkFailure() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         await scenario.stubSyncResponse(with: .failure(networkError))
         
@@ -36,7 +36,9 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     }
     
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_ConventionIdentifierMismatch() async throws {
-        let scenario = EurofurenceModelTestBuilder().with(conventionIdentifier: ConventionIdentifier("EF25")).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(conventionIdentifier: ConventionIdentifier("EF25"))
+            .build()
         
         await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore(using: .ef26) }
         
@@ -44,7 +46,7 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     }
     
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_ModelProcessingError() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.corruptEF26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         

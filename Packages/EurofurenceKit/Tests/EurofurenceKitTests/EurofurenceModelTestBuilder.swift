@@ -13,6 +13,7 @@ class EurofurenceModelTestBuilder {
     
     private var conventionIdentifier: ConventionIdentifier = .current
     private var keychain: Keychain = UnauthenticatedKeychain()
+    private var api = FakeEurofurenceAPI()
     
     func with(conventionIdentifier: ConventionIdentifier) -> Self {
         self.conventionIdentifier = conventionIdentifier
@@ -24,9 +25,14 @@ class EurofurenceModelTestBuilder {
         return self
     }
     
-    func build() -> Scenario {
+    func with(api: FakeEurofurenceAPI) -> Self {
+        self.api = api
+        return self
+    }
+    
+    @discardableResult
+    func build() async -> Scenario {
         let properties = FakeModelProperties()
-        let api = FakeEurofurenceAPI()
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
             properties: properties,
@@ -36,6 +42,7 @@ class EurofurenceModelTestBuilder {
         )
         
         let model = EurofurenceModel(configuration: configuration)
+        await model.prepareForPresentation()
         
         return Scenario(model: model, modelProperties: properties, api: api)
     }

@@ -7,12 +7,12 @@ import XCTest
 class ModelUpdateProgressTests: XCTestCase {
 
     func testInitialState() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         XCTAssertEqual(.idle, scenario.model.cloudStatus)
     }
     
     func testUpdatingStoreTransitionsThroughStates() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         
         let journal = CloudStatusJournal(model: scenario.model)
         let payload = try SampleResponse.ef26.loadResponse()
@@ -23,7 +23,7 @@ class ModelUpdateProgressTests: XCTestCase {
     }
     
     func testUpdateFailsTransitionsThroughStates() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         
         let journal = CloudStatusJournal(model: scenario.model)
         let payload = try SampleResponse.corruptEF26.loadResponse()
@@ -34,7 +34,7 @@ class ModelUpdateProgressTests: XCTestCase {
     }
     
     func testDuringUpdatePropogatesProgressEvents() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         
         let journal = CloudStatusJournal(model: scenario.model)
         let payload = try SampleResponse.ef26.loadResponse()

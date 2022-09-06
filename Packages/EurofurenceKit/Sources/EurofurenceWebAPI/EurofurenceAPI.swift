@@ -14,4 +14,6 @@ public protocol EurofurenceAPI {
     
     func requestLogout(_ logout: LogoutRequest) async throws
     
+    func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [Message]
+    
 }

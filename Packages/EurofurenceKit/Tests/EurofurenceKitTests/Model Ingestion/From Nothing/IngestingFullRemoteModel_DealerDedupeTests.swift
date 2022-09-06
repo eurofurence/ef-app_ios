@@ -5,7 +5,7 @@ import XCTest
 class IngestingFullRemoteModel_DealerDedupeTests: XCTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateCategories() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
         // For each category, there should be one instance with the corresponding name associated with one or more

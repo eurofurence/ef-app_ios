@@ -2,52 +2,62 @@ import CoreData
 import EurofurenceWebAPI
 import Logging
 
-struct UpdateLocalStoreOperation {
+struct UpdateLocalStoreOperation: UpdateOperation {
     
-    private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "UpdateStore")
     let progress = EurofurenceModel.Progress()
     
-    init(configuration: EurofurenceModel.Configuration) {
-        self.configuration = configuration
+    func execute(context: UpdateOperationContext) async throws {
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            group.addTask {
+                let response = try await fetchLatestSyncResponse(context: context)
+                try validateSyncResponse(response, context: context)
+                try await ingestSyncResponse(response, context: context)
+            }
+            
+            group.addTask {
+                let fetchMessages = UpdateLocalMessagesOperation()
+                try await fetchMessages.execute(context: context)
+            }
+            
+            try await group.waitForAll()
+        }
     }
     
-    func execute() async throws {
-        let response = try await fetchLatestSyncResponse()
-        try validateSyncResponse(response)
-        try await ingestSyncResponse(response)
-    }
-    
-    private func fetchLatestSyncResponse() async throws -> SynchronizationPayload {
+    private func fetchLatestSyncResponse(context: UpdateOperationContext) async throws -> SynchronizationPayload {
         do {
-            let previousChangeToken = configuration.properties.synchronizationChangeToken
+            let previousChangeToken = context.properties.synchronizationChangeToken
             
             if logger.logLevel >= .info {
                 let tokenMetatadataString = previousChangeToken?.description ?? "nil"
                 logger.info("Fetching latest changes.", metadata: ["Token": .string(tokenMetatadataString)])
             }
             
-            return try await configuration.api.fetchChanges(since: previousChangeToken)
+            return try await context.api.fetchChanges(since: previousChangeToken)
         } catch {
             logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.syncFailure
         }
     }
     
-    private func validateSyncResponse(_ response: SynchronizationPayload) throws {
-        guard response.conventionIdentifier == configuration.conventionIdentifier.stringValue else {
+    private func validateSyncResponse(_ response: SynchronizationPayload, context: UpdateOperationContext) throws {
+        guard response.conventionIdentifier == context.conventionIdentifier.stringValue else {
             throw EurofurenceError.conventionIdentifierMismatch
         }
     }
     
-    private func ingestSyncResponse(_ response: SynchronizationPayload) async throws {
-        let writingContext = configuration.persistentContainer.newBackgroundContext()
-        try await writingContext.performAsync { [self, writingContext] in
+    private func ingestSyncResponse(_ response: SynchronizationPayload, context: UpdateOperationContext) async throws {
+        let writingContext = context.managedObjectContext
+        try await context.managedObjectContext.performAsync { [self] in
             do {
-                let ingester = ResponseIngester(syncResponse: response, managedObjectContext: writingContext)
+                let ingester = ResponseIngester(
+                    syncResponse: response,
+                    managedObjectContext: context.managedObjectContext
+                )
+                
                 try ingester.ingest()
                 
-                let janitor = OrphanedEntityJanitor(managedObjectContext: writingContext)
+                let janitor = OrphanedEntityJanitor(managedObjectContext: context.managedObjectContext)
                 try janitor.cleanup()
                 
                 try writingContext.save()
@@ -59,13 +69,13 @@ struct UpdateLocalStoreOperation {
         
         logger.info("Finished ingesting remote changes.")
         
-        configuration.properties.synchronizationChangeToken = response.synchronizationToken
-        try await fetchImages(response, managedObjectContext: writingContext)
+        context.properties.synchronizationChangeToken = response.synchronizationToken
+        try await fetchImages(response, context: context)
     }
     
     private func fetchImages(
         _ syncResponse: SynchronizationPayload,
-        managedObjectContext: NSManagedObjectContext
+        context: UpdateOperationContext
     ) async throws {
         var identifiersAndHashes = [String: String]()
         
@@ -77,9 +87,9 @@ struct UpdateLocalStoreOperation {
         let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "cachedImageURL == nil")
         
-        managedObjectContext.performAndWait { [managedObjectContext] in
+        context.managedObjectContext.performAndWait {
             do {
-                let images = try managedObjectContext.fetch(fetchRequest)
+                let images = try context.managedObjectContext.fetch(fetchRequest)
                 for image in images {
                     identifiersAndHashes[image.identifier] = image.contentHashSHA1
                 }
@@ -91,10 +101,13 @@ struct UpdateLocalStoreOperation {
             }
         }
         
-        try await fetchImages(identifiersAndHashes: identifiersAndHashes)
+        try await fetchImages(identifiersAndHashes: identifiersAndHashes, context: context)
     }
     
-    private func fetchImages(identifiersAndHashes: [String: String]) async throws {
+    private func fetchImages(
+        identifiersAndHashes: [String: String],
+        context: UpdateOperationContext
+    ) async throws {
         logger.info("Fetching images (count=\(identifiersAndHashes.count))")
         
         progress.update(totalUnitCount: identifiersAndHashes.count)
@@ -104,7 +117,7 @@ struct UpdateLocalStoreOperation {
             
             for (identifier, hash) in identifiersAndHashes {
                 group.addTask {
-                    await downloadImage(identifier: identifier, contentHashSHA1: hash)
+                    await downloadImage(identifier: identifier, contentHashSHA1: hash, context: context)
                 }
             }
             
@@ -116,21 +129,20 @@ struct UpdateLocalStoreOperation {
             return results
         }
         
-        let writingContext = configuration.persistentContainer.newBackgroundContext()
-        try await writingContext.performAsync { [writingContext] in
+        try await context.managedObjectContext.performAsync {
             for result in results {
                 guard case .success(let request) = result else { continue }
                 
                 let fetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
                 fetchRequest.predicate = NSPredicate(format: "identifier == %@", request.imageIdentifier)
                 
-                let fetchResults = try writingContext.fetch(fetchRequest)
+                let fetchResults = try context.managedObjectContext.fetch(fetchRequest)
                 for entity in fetchResults {
                     entity.cachedImageURL = request.downloadDestinationURL
                 }
             }
             
-            try writingContext.save()
+            try context.managedObjectContext.save()
         }
     }
     
@@ -139,8 +151,12 @@ struct UpdateLocalStoreOperation {
         case failure
     }
     
-    private func downloadImage(identifier: String, contentHashSHA1 hash: String) async -> DownloadImageResult {
-        let downloadDestination = configuration.properties.proposedURL(forImageIdentifier: identifier)
+    private func downloadImage(
+        identifier: String,
+        contentHashSHA1 hash: String,
+        context: UpdateOperationContext
+    ) async -> DownloadImageResult {
+        let downloadDestination = context.properties.proposedURL(forImageIdentifier: identifier)
         let downloadRequest = DownloadImage(
             imageIdentifier: identifier,
             lastKnownImageContentHashSHA1: hash,
@@ -149,7 +165,7 @@ struct UpdateLocalStoreOperation {
         
         do {
             logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
-            try await configuration.api.downloadImage(downloadRequest)
+            try await context.api.downloadImage(downloadRequest)
             logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
             
             return .success(downloadRequest)

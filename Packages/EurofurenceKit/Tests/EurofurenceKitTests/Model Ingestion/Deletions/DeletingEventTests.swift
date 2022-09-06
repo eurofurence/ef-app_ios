@@ -7,7 +7,7 @@ import XCTest
 class DeletingEventTests: XCTestCase {
     
     func testDeletedEventRemovedFromStore_NoImages() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -24,7 +24,7 @@ class DeletingEventTests: XCTestCase {
     }
     
     func testDeletedEventRemovedFromStore_HasBanner() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -41,7 +41,7 @@ class DeletingEventTests: XCTestCase {
     }
     
     func testDeletedEventRemovedFromStore_HasPoster() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -58,7 +58,7 @@ class DeletingEventTests: XCTestCase {
     }
     
     func testDeletedEventRemovedFromStore_MultipleEventsSharePoster() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
@@ -83,7 +83,7 @@ class DeletingEventTests: XCTestCase {
     }
     
     func testDeletingAllEventsForGivenPanelHostDeletesPanelHost() async throws {
-        let scenario = EurofurenceModelTestBuilder().build()
+        let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
