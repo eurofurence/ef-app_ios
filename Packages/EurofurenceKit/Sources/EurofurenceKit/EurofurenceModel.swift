@@ -38,15 +38,30 @@ public class EurofurenceModel: ObservableObject {
     
     /// Attempts to synchronise the model with the backing store.
     public func updateLocalStore() async throws {
-        let operation = UpdateLocalStoreOperation(configuration: configuration)
-        cloudStatus = .updating(progress: operation.progress)
-        
         do {
-            try await operation.execute()
+            try await performLocalStoreUpdates()
             cloudStatus = .updated
         } catch {
             cloudStatus = .failed
             throw error
+        }
+    }
+    
+    private func performLocalStoreUpdates() async throws {
+        let operation = UpdateLocalStoreOperation(configuration: configuration)
+        cloudStatus = .updating(progress: operation.progress)
+        
+        // Simultaneously update the local store and perform any local book-keeping.
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            group.addTask {
+                try await operation.execute()
+            }
+            
+            group.addTask { [self] in
+                await updateAuthenticatedStateFromPersistentCredential()
+            }
+            
+            try await group.waitForAll()
         }
     }
     

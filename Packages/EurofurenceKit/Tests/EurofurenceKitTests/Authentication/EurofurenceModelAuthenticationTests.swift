@@ -233,9 +233,29 @@ class EurofurenceModelAuthenticationTests: XCTestCase {
             with: .success(())
         )
         
-        await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
         
         XCTAssertNil(keychain.credential, "Automatic sign out succeeded - token should be cleared from keychain")
+        XCTAssertNil(scenario.model.currentUser, "Booted with expired credential - should not appear signed in")
+    }
+    
+    func testOnNextStoreUpdate_CredentialHasNowExpired_UserAutomaticallySignedOut() async throws {
+        let api = FakeEurofurenceAPI()
+        await api.stubLogoutRequest(
+            LogoutRequest(authenticationToken: AuthenticationToken("ABC"), pushNotificationDeviceToken: nil),
+            with: .success(())
+        )
+        
+        let keychain = AuthenticatedKeychain()
+        let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
+        var expiredCredential = keychain.credential
+        expiredCredential?.tokenExpiryDate = .distantPast
+        keychain.credential = expiredCredential
+        
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        XCTAssertNil(keychain.credential, "Automatic sign out succeeded - token should be cleared from keychain")
+        XCTAssertNil(scenario.model.currentUser, "Updated store with expired credential - should not appear signed in")
     }
 
 }
