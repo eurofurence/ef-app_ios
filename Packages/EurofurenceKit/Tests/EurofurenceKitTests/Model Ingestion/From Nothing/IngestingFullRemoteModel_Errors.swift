@@ -15,7 +15,9 @@ class IngestingFullRemoteModel_Errors: XCTestCase {
     }
     
     func testIngestingRemoteResponse_DifferingConventionIdentifiers() async throws {
-        let scenario = await EurofurenceModelTestBuilder().with(conventionIdentifier: ConventionIdentifier("EF25")).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(conventionIdentifier: ConventionIdentifier("EF25"))
+            .build()
         
         await XCTAssertEventuallyThrowsSpecificError(EurofurenceError.conventionIdentifierMismatch) {
             try await scenario.updateLocalStore(using: .ef26)

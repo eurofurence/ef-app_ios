@@ -36,7 +36,9 @@ class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
     }
     
     func testDoesNotRecordTimestampAfterUnsuccessfulSyncRequest_ConventionIdentifierMismatch() async throws {
-        let scenario = await EurofurenceModelTestBuilder().with(conventionIdentifier: ConventionIdentifier("EF25")).build()
+        let scenario = await EurofurenceModelTestBuilder()
+            .with(conventionIdentifier: ConventionIdentifier("EF25"))
+            .build()
         
         await XCTAssertEventuallyThrowsError { try await scenario.updateLocalStore(using: .ef26) }
         
