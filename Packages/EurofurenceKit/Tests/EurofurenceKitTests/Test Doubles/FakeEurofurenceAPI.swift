@@ -96,11 +96,11 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private(set) var markedMessageReadIdentifiers = [String]()
-    private var messageReadRequestResponses = [String: Result<Void, Error>]()
-    func markMessageAsRead(identifiedBy identifier: String) async throws {
-        markedMessageReadIdentifiers.append(identifier)
+    private var messageReadRequestResponses = [AcknowledgeMessageRequest: Result<Void, Error>]()
+    func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
+        markedMessageReadIdentifiers.append(request.messageIdentifier)
         
-        guard let response = messageReadRequestResponses[identifier] else {
+        guard let response = messageReadRequestResponses[request] else {
             throw NotStubbed()
         }
         
@@ -132,8 +132,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         messageResponses[authenticationToken] = result
     }
     
-    func stubMessageReadRequest(for identifier: String, with result: Result<Void, Error>) {
-        messageReadRequestResponses[identifier] = result
+    func stubMessageReadRequest(for request: AcknowledgeMessageRequest, with result: Result<Void, Error>) {
+        messageReadRequestResponses[request] = result
     }
     
 }

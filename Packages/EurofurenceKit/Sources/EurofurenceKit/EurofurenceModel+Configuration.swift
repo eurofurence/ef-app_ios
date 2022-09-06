@@ -49,7 +49,7 @@ extension EurofurenceModel {
             api: EurofurenceAPI,
             conventionIdentifier: ConventionIdentifier = .current
         ) {
-            self.persistentContainer = EurofurencePersistentContainer(api: api)
+            self.persistentContainer = EurofurencePersistentContainer(api: api, keychain: keychain)
             self.properties = properties
             self.keychain = keychain
             self.api = api

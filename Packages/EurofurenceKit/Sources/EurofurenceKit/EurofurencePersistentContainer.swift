@@ -6,9 +6,11 @@ class EurofurencePersistentContainer: NSPersistentContainer {
     
     private let logger = Logger(label: "EurofurencePersistentContainer")
     private let api: EurofurenceAPI
+    private let keychain: Keychain
     
-    init(api: EurofurenceAPI) {
+    init(api: EurofurenceAPI, keychain: Keychain) {
         self.api = api
+        self.keychain = keychain
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
         
         configureUserInfo(for: viewContext)
@@ -24,6 +26,7 @@ class EurofurencePersistentContainer: NSPersistentContainer {
     private func configureUserInfo(for managedObjectContext: NSManagedObjectContext) {
         managedObjectContext.persistentContainer = self
         managedObjectContext.eurofurenceAPI = api
+        managedObjectContext.keychain = keychain
     }
     
 }

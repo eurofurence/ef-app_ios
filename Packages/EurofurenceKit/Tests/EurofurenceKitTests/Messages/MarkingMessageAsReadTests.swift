@@ -21,7 +21,8 @@ class MarkingMessageAsReadTests: XCTestCase {
             )
         ]
         
-        await api.stubMessageRequest(for: AuthenticationToken("ABC"), with: .success(messages))
+        let authenticationToken = AuthenticationToken("ABC")
+        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
         try await scenario.updateLocalStore(using: .ef26)
         
@@ -32,7 +33,12 @@ class MarkingMessageAsReadTests: XCTestCase {
             "Messages not marked as read should indicate so in the persistent store"
         )
         
-        await api.stubMessageReadRequest(for: "Identifier", with: .success(()))
+        let expectedRequest = AcknowledgeMessageRequest(
+            authenticationToken: authenticationToken,
+            messageIdentifier: "Identifier"
+        )
+        
+        await api.stubMessageReadRequest(for: expectedRequest, with: .success(()))
         await message.markRead()
         
         XCTAssertTrue(
@@ -56,12 +62,19 @@ class MarkingMessageAsReadTests: XCTestCase {
             )
         ]
         
-        await api.stubMessageRequest(for: AuthenticationToken("ABC"), with: .success(messages))
+        let authenticationToken = AuthenticationToken("ABC")
+        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
         try await scenario.updateLocalStore(using: .ef26)
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
-        await api.stubMessageReadRequest(for: "Identifier", with: .success(()))
+        
+        let expectedRequest = AcknowledgeMessageRequest(
+            authenticationToken: authenticationToken,
+            messageIdentifier: "Identifier"
+        )
+        
+        await api.stubMessageReadRequest(for: expectedRequest, with: .success(()))
         await message.markRead()
         await message.markRead()
         
@@ -88,14 +101,20 @@ class MarkingMessageAsReadTests: XCTestCase {
             )
         ]
         
-        await api.stubMessageRequest(for: AuthenticationToken("ABC"), with: .success(messages))
+        let authenticationToken = AuthenticationToken("ABC")
+        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder().with(keychain: AuthenticatedKeychain()).with(api: api).build()
         try await scenario.updateLocalStore(using: .ef26)
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
 
+        let expectedRequest = AcknowledgeMessageRequest(
+            authenticationToken: authenticationToken,
+            messageIdentifier: "Identifier"
+        )
+        
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await api.stubMessageReadRequest(for: "Identifier", with: .failure(error))
+        await api.stubMessageReadRequest(for: expectedRequest, with: .failure(error))
         await message.markRead()
         
         // The previous attempt to mark the message as read failed. On the next sync, the model

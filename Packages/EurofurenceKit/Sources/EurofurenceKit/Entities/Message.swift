@@ -37,6 +37,7 @@ extension Message {
         guard isRead == false else { return }
         guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
         guard let api = managedObjectContext?.eurofurenceAPI else { return }
+        guard let authenticationToken = managedObjectContext?.keychain?.credential?.authenticationToken else { return }
         
         let refreshObject: () -> Void = { [self, managedObjectContext] in
             managedObjectContext?.performAndWait {
@@ -69,6 +70,7 @@ extension Message {
                 await Message.submitReadStatus(
                     messageObjectID: messageObjectID,
                     messageIdentifier: messageIdentifier,
+                    authenticationToken: authenticationToken,
                     to: api,
                     managedObjectContext: writingContext
                 )
@@ -81,13 +83,19 @@ extension Message {
     static func submitReadStatus(
         messageObjectID: NSManagedObjectID,
         messageIdentifier: String,
+        authenticationToken: AuthenticationToken,
         to api: EurofurenceAPI,
         managedObjectContext: NSManagedObjectContext
     ) async {
         var markedRead = false
         
         do {
-            try await api.markMessageAsRead(identifiedBy: messageIdentifier)
+            let request = AcknowledgeMessageRequest(
+                authenticationToken: authenticationToken,
+                messageIdentifier: messageIdentifier
+            )
+            
+            try await api.markMessageAsRead(request: request)
             markedRead = true
         } catch {
             print("")

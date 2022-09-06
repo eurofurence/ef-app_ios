@@ -25,6 +25,15 @@ extension NSManagedObjectContext {
         }
     }
     
+    var keychain: Keychain? {
+        get {
+            userInfo.object(forKey: "EFKKeychain") as? Keychain
+        }
+        set {
+            userInfo.setObject(newValue as Any, forKey: "EFKKeychain" as NSCopying)
+        }
+    }
+    
     /// The instance of the `EurofurenceAPI` in use by the model.
     var eurofurenceAPI: EurofurenceAPI? {
         get {

@@ -26,7 +26,10 @@ class UpdateLocalMessagesOperation: UpdateOperation {
             }
             
             group.addTask { [self] in
-                try await uploadPendingReadStatusNotifications(context: context)
+                try await uploadPendingReadStatusNotifications(
+                    authenticationToken: authenticationToken,
+                    context: context
+                )
             }
             
             try await group.waitForAll()
@@ -54,7 +57,10 @@ class UpdateLocalMessagesOperation: UpdateOperation {
         }
     }
     
-    private func uploadPendingReadStatusNotifications(context: UpdateOperationContext) async throws {
+    private func uploadPendingReadStatusNotifications(
+        authenticationToken: AuthenticationToken,
+        context: UpdateOperationContext
+    ) async throws {
         let managedObjectContext = context.managedObjectContext
         let messageObjectsIDsAndIdentifiers: [NSManagedObjectID: String] = try await managedObjectContext.performAsync {
             let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
@@ -76,6 +82,7 @@ class UpdateLocalMessagesOperation: UpdateOperation {
                     await EurofurenceKit.Message.submitReadStatus(
                         messageObjectID: objectID,
                         messageIdentifier: identifier,
+                        authenticationToken: authenticationToken,
                         to: context.api,
                         managedObjectContext: managedObjectContext
                     )

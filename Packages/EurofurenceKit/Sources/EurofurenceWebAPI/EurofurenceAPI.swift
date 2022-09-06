@@ -1,5 +1,17 @@
 import Foundation
 
+public struct AcknowledgeMessageRequest: Hashable {
+    
+    public var authenticationToken: AuthenticationToken
+    public var messageIdentifier: String
+    
+    public init(authenticationToken: AuthenticationToken, messageIdentifier: String) {
+        self.authenticationToken = authenticationToken
+        self.messageIdentifier = messageIdentifier
+    }
+    
+}
+
 public protocol EurofurenceAPI {
     
     func fetchChanges(
@@ -18,6 +30,6 @@ public protocol EurofurenceAPI {
     
     func fetchRemoteConfiguration() async -> RemoteConfiguration
 
-    func markMessageAsRead(identifiedBy identifier: String) async throws
+    func markMessageAsRead(request: AcknowledgeMessageRequest) async throws
 
 }
