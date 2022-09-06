@@ -33,13 +33,22 @@ public class EurofurenceModel: ObservableObject {
     public init(configuration: EurofurenceModel.Configuration) {
         self.configuration = configuration
         registerForEntityNotifications()
-        prepareForReadingFromRemoteConfiguration()
     }
     
     /// Prepares the model for display within an application. Must be called at least once after the application has
     /// launched.
     public func prepareForPresentation() async {
-        await updateAuthenticatedStateFromPersistentCredential()
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { [self] in
+                await updateAuthenticatedStateFromPersistentCredential()
+            }
+            
+            group.addTask { [self] in
+                await acquireRemoteConfiguration()
+            }
+            
+            await group.waitForAll()
+        }
     }
     
     /// Attempts to synchronise the model with the backing store.
@@ -90,20 +99,24 @@ public class EurofurenceModel: ObservableObject {
 
 extension EurofurenceModel {
     
-    private func prepareForReadingFromRemoteConfiguration() {
-        configuration
-            .remoteConfiguration
+    private func acquireRemoteConfiguration() async {
+        let remoteConfiguration = await configuration.api.fetchRemoteConfiguration()
+        prepareForReading(from: remoteConfiguration)
+    }
+    
+    private func prepareForReading(from remoteConfiguration: RemoteConfiguration) {
+        remoteConfiguration
             .onChange
             .sink { [self] remoteConfiguration in
                 read(remoteConfiguration: remoteConfiguration)
         }
         .store(in: &subscriptions)
-        
-        read(remoteConfiguration: configuration.remoteConfiguration)
+
+        read(remoteConfiguration: remoteConfiguration)
     }
     
     private func read(remoteConfiguration: RemoteConfiguration) {
-        let conventionStartTime = configuration.remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
+        let conventionStartTime = remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
         
         if conventionStartTime != self.conventionStartTime {
             self.conventionStartTime = conventionStartTime

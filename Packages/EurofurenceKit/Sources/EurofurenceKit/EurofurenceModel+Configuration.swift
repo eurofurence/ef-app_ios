@@ -9,7 +9,6 @@ extension EurofurenceModel {
         let properties: EurofurenceModelProperties
         let keychain: Keychain
         let api: EurofurenceAPI
-        let remoteConfiguration: RemoteConfiguration
         let conventionIdentifier: ConventionIdentifier
         
         private static func versionedAPI(for conventionIdentifier: ConventionIdentifier) -> EurofurenceAPI {
@@ -48,14 +47,12 @@ extension EurofurenceModel {
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
             api: EurofurenceAPI,
-            remoteConfiguration: RemoteConfiguration = FirebaseRemoteConfiguration.shared,
             conventionIdentifier: ConventionIdentifier = .current
         ) {
             self.persistentContainer = EurofurencePersistentContainer()
             self.properties = properties
             self.keychain = keychain
             self.api = api
-            self.remoteConfiguration = remoteConfiguration
             self.conventionIdentifier = conventionIdentifier
             
             environment.configure(persistentContainer: persistentContainer, properties: properties)

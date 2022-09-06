@@ -90,6 +90,11 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
+    var remoteConfiguration = FakeRemoteConfiguration()
+    func fetchRemoteConfiguration() async -> RemoteConfiguration {
+        remoteConfiguration
+    }
+    
     func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
     }

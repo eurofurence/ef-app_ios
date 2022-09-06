@@ -1,4 +1,4 @@
-import EurofurenceKit
+import EurofurenceWebAPI
 
 class FakeRemoteConfiguration: RemoteConfiguration {
     
