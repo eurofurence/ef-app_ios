@@ -15,11 +15,15 @@ extension NSManagedObjectContext {
         }
     }
     
-}
-
-// MARK: - API
-
-extension NSManagedObjectContext {
+    /// The collection of properties in use by the model.
+    var properties: EurofurenceModelProperties? {
+        get {
+            userInfo.object(forKey: "EFKModelProperties") as? EurofurenceModelProperties
+        }
+        set {
+            userInfo.setObject(newValue as Any, forKey: "EFKModelProperties" as NSCopying)
+        }
+    }
     
     /// The instance of the `EurofurenceAPI` in use by the model.
     var eurofurenceAPI: EurofurenceAPI? {
