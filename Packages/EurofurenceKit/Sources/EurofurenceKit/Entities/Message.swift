@@ -14,7 +14,99 @@ public class Message: NSManagedObject {
     @NSManaged public var message: String
     @NSManaged public var receivedDate: Date
     @NSManaged public var readDate: Date?
+    
+    /// Indicates whether the user has read this message locally, and the read state is pending synchronisation with
+    /// the remote.
+    @NSManaged var isPendingReadStateUpdateToRemote: Bool
+    
+    /// Indicates whether the user has read the contents of this message.
+    @NSManaged public private(set) var isRead: Bool
 
+}
+
+// MARK: - Marking as Read
+
+extension Message {
+    
+    /// Marks the message as read, synchronizing the status with the remote store.
+    ///
+    /// This function will immediatley update the local store for keeping the application state
+    /// in sync with the user's action. It will later update the remote store with the read state
+    /// of the message.
+    public func markRead() async {
+        guard isRead == false else { return }
+        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
+        guard let api = managedObjectContext?.eurofurenceAPI else { return }
+        
+        let refreshObject: () -> Void = { [self, managedObjectContext] in
+            managedObjectContext?.performAndWait {
+                managedObjectContext?.refresh(self, mergeChanges: true)
+            }
+        }
+        
+        let messageObjectID = objectID
+        let messageIdentifier = identifier
+        let writingContext = persistentContainer.newBackgroundContext()
+        
+        await withTaskGroup(of: Void.self) { group in
+            // Update the store now to indicate locally the read has occurred.
+            group.addTask {
+                do {
+                    try await writingContext.performAsync { [writingContext] in
+                        let writableMessage = try Message.message(for: messageIdentifier, in: writingContext)
+                        writableMessage.isRead = true
+                        try writingContext.save()
+                    }
+                    
+                    refreshObject()
+                } catch {
+                    print("")
+                }
+            }
+            
+            // Simultaneously mark the message as read on the remote.
+            group.addTask {
+                await Message.submitReadStatus(
+                    messageObjectID: messageObjectID,
+                    messageIdentifier: messageIdentifier,
+                    to: api,
+                    managedObjectContext: writingContext
+                )
+            }
+            
+            await group.waitForAll()
+        }
+    }
+    
+    static func submitReadStatus(
+        messageObjectID: NSManagedObjectID,
+        messageIdentifier: String,
+        to api: EurofurenceAPI,
+        managedObjectContext: NSManagedObjectContext
+    ) async {
+        var markedRead = false
+        
+        do {
+            try await api.markMessageAsRead(identifiedBy: messageIdentifier)
+            markedRead = true
+        } catch {
+            print("")
+        }
+        
+        do {
+            try managedObjectContext.performAndWait { [managedObjectContext] in
+                let writableMessage = try Message.message(for: messageIdentifier, in: managedObjectContext)
+                writableMessage.isPendingReadStateUpdateToRemote = markedRead == false
+                
+                try managedObjectContext.save()
+            }
+            
+            
+        } catch {
+            print("")
+        }
+    }
+    
 }
 
 // MARK: - Fetching
@@ -22,18 +114,20 @@ public class Message: NSManagedObject {
 extension Message {
     
     static func message(for identifier: String, in managedObjectContext: NSManagedObjectContext) throws -> Message {
-        let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
-        fetchRequest.fetchLimit = 1
-        
-        let results = try managedObjectContext.fetch(fetchRequest)
-        if let message = results.first {
-            return message
-        } else {
-            let message = Message(context: managedObjectContext)
-            message.identifier = identifier
+        return try managedObjectContext.performAndWait {
+            let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "identifier == %@", identifier)
+            fetchRequest.fetchLimit = 1
             
-            return message
+            let results = try managedObjectContext.fetch(fetchRequest)
+            if let message = results.first {
+                return message
+            } else {
+                let message = Message(context: managedObjectContext)
+                message.identifier = identifier
+                
+                return message
+            }
         }
     }
     

@@ -1,12 +1,29 @@
 import CoreData
 import Logging
+import EurofurenceWebAPI
 
 class EurofurencePersistentContainer: NSPersistentContainer {
     
     private let logger = Logger(label: "EurofurencePersistentContainer")
+    private let api: EurofurenceAPI
     
-    init() {
+    init(api: EurofurenceAPI) {
+        self.api = api
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
+        
+        configureUserInfo(for: viewContext)
+    }
+    
+    override func newBackgroundContext() -> NSManagedObjectContext {
+        let backgroundContext = super.newBackgroundContext()
+        configureUserInfo(for: backgroundContext)
+        
+        return backgroundContext
+    }
+    
+    private func configureUserInfo(for managedObjectContext: NSManagedObjectContext) {
+        managedObjectContext.persistentContainer = self
+        managedObjectContext.eurofurenceAPI = api
     }
     
 }

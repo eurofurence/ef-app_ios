@@ -103,6 +103,10 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         FirebaseRemoteConfiguration.shared
     }
     
+    public func markMessageAsRead(identifiedBy identifier: String) async throws {
+        // TODO: Implement
+    }
+    
     private func associatePushNotificationToken(
         _ pushNotificationData: Data?,
         withUserAuthenticationToken authenticationToken: AuthenticationToken?
