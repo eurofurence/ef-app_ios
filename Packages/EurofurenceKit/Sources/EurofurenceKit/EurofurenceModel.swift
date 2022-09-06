@@ -1,3 +1,4 @@
+import Combine
 import CoreData
 import EurofurenceWebAPI
 import Foundation
@@ -9,12 +10,16 @@ public class EurofurenceModel: ObservableObject {
     private let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "EurofurenceModel")
     private var pushNotificationDeviceTokenData: Data?
+    private var subscriptions = Set<AnyCancellable>()
     
     /// The current synchronisation phase between the model and the backing store.
     @Published public private(set) var cloudStatus: CloudStatus = .idle
     
     /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?
+    
+    /// Designates the start time of the next convention, or `nil` if the start time is not known.
+    @Published public private(set) var conventionStartTime: Date?
     
     /// A read-only managed object context for use in presenting the state of the model to the user.
     public var viewContext: NSManagedObjectContext {
@@ -33,7 +38,17 @@ public class EurofurenceModel: ObservableObject {
     /// Prepares the model for display within an application. Must be called at least once after the application has
     /// launched.
     public func prepareForPresentation() async {
-        await updateAuthenticatedStateFromPersistentCredential()
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask { [self] in
+                await updateAuthenticatedStateFromPersistentCredential()
+            }
+            
+            group.addTask { [self] in
+                await acquireRemoteConfiguration()
+            }
+            
+            await group.waitForAll()
+        }
     }
     
     /// Attempts to synchronise the model with the backing store.
@@ -76,6 +91,36 @@ public class EurofurenceModel: ObservableObject {
             properties: configuration.properties,
             conventionIdentifier: configuration.conventionIdentifier
         )
+    }
+    
+}
+
+// MARK: - Remote Configuration
+
+extension EurofurenceModel {
+    
+    private func acquireRemoteConfiguration() async {
+        let remoteConfiguration = await configuration.api.fetchRemoteConfiguration()
+        prepareForReading(from: remoteConfiguration)
+    }
+    
+    private func prepareForReading(from remoteConfiguration: RemoteConfiguration) {
+        remoteConfiguration
+            .onChange
+            .sink { [self] remoteConfiguration in
+                read(remoteConfiguration: remoteConfiguration)
+        }
+        .store(in: &subscriptions)
+
+        read(remoteConfiguration: remoteConfiguration)
+    }
+    
+    private func read(remoteConfiguration: RemoteConfiguration) {
+        let conventionStartTime = remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self]
+        
+        if conventionStartTime != self.conventionStartTime {
+            self.conventionStartTime = conventionStartTime
+        }
     }
     
 }

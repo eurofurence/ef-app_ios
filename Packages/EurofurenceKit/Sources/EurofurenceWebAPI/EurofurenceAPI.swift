@@ -16,4 +16,6 @@ public protocol EurofurenceAPI {
     
     func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [Message]
     
+    func fetchRemoteConfiguration() async -> RemoteConfiguration
+    
 }

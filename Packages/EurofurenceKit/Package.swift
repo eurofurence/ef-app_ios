@@ -22,7 +22,9 @@ let package = Package(
         .target(
             name: "EurofurenceWebAPI",
             dependencies: [
-                .product(name: "FirebaseMessaging", package: "firebase-ios-sdk")
+                .product(name: "Logging", package: "swift-log"),
+                .product(name: "FirebaseMessaging", package: "firebase-ios-sdk"),
+                .product(name: "FirebaseRemoteConfig", package: "firebase-ios-sdk")
             ]
         ),
         

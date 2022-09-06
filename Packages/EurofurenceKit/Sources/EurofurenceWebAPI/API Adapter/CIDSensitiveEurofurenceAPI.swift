@@ -91,6 +91,10 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         []
     }
     
+    public func fetchRemoteConfiguration() async -> RemoteConfiguration {
+        FirebaseRemoteConfiguration.shared
+    }
+    
     private func associatePushNotificationToken(
         _ pushNotificationData: Data?,
         withUserAuthenticationToken authenticationToken: AuthenticationToken?
