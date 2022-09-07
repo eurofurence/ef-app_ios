@@ -77,10 +77,9 @@ class UpdateLocalMessagesOperation: UpdateOperation {
         }
         
         try await withThrowingTaskGroup(of: Void.self) { group in
-            for (objectID, identifier) in messageObjectsIDsAndIdentifiers {
+            for (_, identifier) in messageObjectsIDsAndIdentifiers {
                 group.addTask {
                     await EurofurenceKit.Message.submitReadStatus(
-                        messageObjectID: objectID,
                         messageIdentifier: identifier,
                         authenticationToken: authenticationToken,
                         to: context.api,

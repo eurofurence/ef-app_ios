@@ -48,7 +48,6 @@ extension Message {
             }
         }
         
-        let messageObjectID = objectID
         let messageIdentifier = identifier
         let writingContext = persistentContainer.newBackgroundContext()
         
@@ -76,7 +75,6 @@ extension Message {
             // Simultaneously mark the message as read on the remote.
             group.addTask {
                 await Message.submitReadStatus(
-                    messageObjectID: messageObjectID,
                     messageIdentifier: messageIdentifier,
                     authenticationToken: authenticationToken,
                     to: api,
@@ -89,7 +87,6 @@ extension Message {
     }
     
     static func submitReadStatus(
-        messageObjectID: NSManagedObjectID,
         messageIdentifier: String,
         authenticationToken: AuthenticationToken,
         to api: EurofurenceAPI,
