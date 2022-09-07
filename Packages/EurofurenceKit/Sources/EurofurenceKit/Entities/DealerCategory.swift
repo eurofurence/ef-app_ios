@@ -22,6 +22,16 @@ extension DealerCategory: Identifiable {
     
 }
 
+// MARK: - CanonicalCategory Adaptation
+
+extension DealerCategory {
+    
+    public var canonicalCategory: CanonicalDealerCategory {
+        CanonicalDealerCategory(categoryName: name)
+    }
+    
+}
+
 // MARK: - Fetching
 
 extension DealerCategory {
