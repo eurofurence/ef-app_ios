@@ -10,8 +10,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate
 
 	public var window: UIWindow?
-    
-    private let model = EurofurenceModel()
 
     public func application(
         _ application: UIApplication,
@@ -21,10 +19,6 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         prepareApplication()
         prepareNotificationDelegate()
         requestRemoteNotificationsDeviceToken()
-        
-        Task {
-            await model.prepareForPresentation()
-        }
 
 		return true
 	}
@@ -46,7 +40,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
     ) {
         Task(priority: .utility) {
-            await model.registerRemoteNotificationDeviceTokenData(deviceToken)
+            await AppModel.shared.model.registerRemoteNotificationDeviceTokenData(deviceToken)
         }
         
         Application.storeRemoteNotificationsToken(deviceToken)
