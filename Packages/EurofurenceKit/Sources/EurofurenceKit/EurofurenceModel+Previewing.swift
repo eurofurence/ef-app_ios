@@ -1,5 +1,6 @@
 import EurofurenceWebAPI
 import Foundation
+import SwiftUI
 
 extension Bundle {
     
@@ -107,6 +108,25 @@ extension EurofurenceModel {
     }
     
     /// Produces a model suitable for previewing within a SwiftUI canvas.
+    ///
+    /// Due to the way in which SwiftUI property wrappers are evaluated, the preview model must be instantiated first
+    /// before installation within a view tree - e.g.:
+    ///
+    /// ```
+    /// let preview: EurofurenceModel = .preview()
+    /// ContentView()
+    ///    .environmentModel(preview)
+    /// ```
+    ///
+    /// For simplicities sake, you can also pass a `ViewBuilder` as the trailing argument to manage the order of
+    /// execution problem. The previewing model will be automatically installed into the view tree:
+    ///
+    /// ```
+    /// EurofurenceModel.preview {
+    ///     ContentView()
+    /// }
+    /// ```
+    ///
     /// - Parameters:
     ///   - content: The preview content classification to apply to the in-memory model.
     ///   - authenticationState: The authentication state for previewing.
@@ -141,6 +161,24 @@ extension EurofurenceModel {
         semaphore.wait()
         
         return model
+    }
+    
+    /// Evaluates a preview `ViewBuilder` by supplying a preview model object.
+    /// 
+    /// - Parameters:
+    ///   - content: The preview content classification to apply to the in-memory model.
+    ///   - authenticationState: The authentication state for previewing.
+    ///   - previewBody: A closure to produce the previewing `View` for the canvas. The previewing model is supplied as
+    ///                  a parameter, and is also pre-emptively injected into the preview's environment.
+    /// - Returns: The preview for the SwiftUI canvas suitable for previewing against the model.
+    public static func preview<Body>(
+        content: PreviewContent = .ef26,
+        authenticationState: AuthenticationState = .unauthenticated,
+        @ViewBuilder previewBody: (EurofurenceModel) -> Body
+    ) -> some View where Body: View {
+        let previewModel = self.preview(content: content, authenticationState: authenticationState)
+        return previewBody(previewModel)
+            .environmentModel(previewModel)
     }
     
     // MARK: - Previewing Configuration

@@ -20,9 +20,9 @@ struct Placeholder: View {
 struct Placeholder_Previews: PreviewProvider {
     
     static var previews: some View {
-        let preview: EurofurenceModel = .preview()
-        Placeholder()
-            .environmentModel(preview)
+        EurofurenceModel.preview { _ in
+            Placeholder()
+        }
     }
     
 }
