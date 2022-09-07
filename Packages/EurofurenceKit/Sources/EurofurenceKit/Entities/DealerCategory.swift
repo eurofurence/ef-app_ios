@@ -12,6 +12,16 @@ public class DealerCategory: NSManagedObject {
 
 }
 
+// MARK - DealerCategory + Identifiable
+
+extension DealerCategory: Identifiable {
+    
+    public var id: some Hashable {
+        objectID
+    }
+    
+}
+
 // MARK: - Fetching
 
 extension DealerCategory {
