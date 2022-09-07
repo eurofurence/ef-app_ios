@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Image)
 public class Image: Entity {
+    
+    private static let logger = Logger(label: "Image")
     
     @nonobjc class func fetchRequest() -> NSFetchRequest<Image> {
         return NSFetchRequest<Image>(entityName: "Image")
@@ -18,24 +21,25 @@ public class Image: Entity {
     
     override public func prepareForDeletion() {
         super.prepareForDeletion()
-        notifyWillDeleteImage()
+        deleteCachedImage()
     }
     
-    private func notifyWillDeleteImage() {
-        NotificationCenter.default.post(name: .EFKWillDeleteImage, object: self)
+    private func deleteCachedImage() {
+        guard let cachedImageURL = cachedImageURL else { return }
+        
+        do {
+            Self.logger.info("Deleting image", metadata: ["ID": .string(identifier)])
+            try managedObjectContext?.properties?.removeContainerResource(at: cachedImageURL)
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Failed to delete image.", metadata: metadata)
+        }
     }
 
-}
-
-// MARK: - Entity Change Notifications
-
-extension Notification.Name {
-    
-    /// A notification that an `Image` will be deleted.
-    ///
-    /// The notification object is the `Image` entity. There is no corresponding `userInfo` dictionary.
-    static let EFKWillDeleteImage = Notification.Name("EurofurenceKit.EFKWillDeleteImage")
-    
 }
 
 // MARK: - Sizing

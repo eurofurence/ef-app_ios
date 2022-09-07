@@ -88,11 +88,32 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     }
     
     public func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [Message] {
-        []
+        let url = makeURL(subpath: "Communication/PrivateMessages")
+        let request = NetworkRequest(url: url, method: .get, headers: [
+            "Authorization": "Bearer \(authenticationToken.stringValue)"
+        ])
+        
+        let responseData = try await configuration.network.perform(request: request)
+        let messages = try decoder.decode([Message].self, from: responseData)
+        
+        return messages
     }
     
     public func fetchRemoteConfiguration() async -> RemoteConfiguration {
         FirebaseRemoteConfiguration.shared
+    }
+    
+    public func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
+        let url = makeURL(subpath: "Communication/PrivateMessages/\(request.messageIdentifier)/Read")
+        guard let bodyForSwagger = "true".data(using: .utf8) else {
+            fatalError("Could not produce a data object from the Swagger body")
+        }
+        
+        let networkRequest = NetworkRequest(url: url, body: bodyForSwagger, method: .post, headers: [
+            "Authorization": "Bearer \(request.authenticationToken.stringValue)"
+        ])
+        
+        try await configuration.network.perform(request: networkRequest)
     }
     
     private func associatePushNotificationToken(

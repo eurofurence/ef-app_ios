@@ -177,6 +177,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
                     "Error": .string(String(describing: error))
                 ]
             )
+            
             return .failure
         }
     }

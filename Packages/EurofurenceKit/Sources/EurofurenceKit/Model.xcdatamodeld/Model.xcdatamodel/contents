@@ -141,7 +141,9 @@
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="author" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
+        <attribute name="isRead" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="message" attributeType="String"/>
+        <attribute name="needsReadStatusUpdate" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="readDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="receivedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="subject" attributeType="String"/>
@@ -187,10 +189,10 @@
         <element name="MapEntry" positionX="9" positionY="153" width="128" height="119"/>
         <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
+        <element name="Message" positionX="0" positionY="144" width="128" height="149"/>
         <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
         <element name="Room" positionX="0" positionY="45" width="128" height="74"/>
         <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
         <element name="Track" positionX="-18" positionY="36" width="128" height="59"/>
-        <element name="Message" positionX="0" positionY="144" width="128" height="119"/>
     </elements>
 </model>

@@ -95,6 +95,24 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         remoteConfiguration
     }
     
+    private(set) var markedMessageReadIdentifiers = [String]()
+    private var messageReadRequestResponses = [AcknowledgeMessageRequest: Result<Void, Error>]()
+    func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
+        markedMessageReadIdentifiers.append(request.messageIdentifier)
+        
+        guard let response = messageReadRequestResponses[request] else {
+            throw NotStubbed()
+        }
+        
+        switch response {
+        case .success:
+            return
+            
+        case .failure(let error):
+            throw error
+        }
+    }
+    
     func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
     }
@@ -112,6 +130,10 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         with result: Result<[EurofurenceWebAPI.Message], Error>
     ) {
         messageResponses[authenticationToken] = result
+    }
+    
+    func stubMessageReadRequest(for request: AcknowledgeMessageRequest, with result: Result<Void, Error>) {
+        messageReadRequestResponses[request] = result
     }
     
 }

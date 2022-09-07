@@ -1,6 +1,15 @@
 import Foundation
 
-public struct Message: Equatable {
+public struct Message: Decodable, Equatable {
+    
+    private enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case author = "AuthorName"
+        case subject = "Subject"
+        case message = "Message"
+        case receivedDate = "ReceivedDateTimeUtc"
+        case readDate = "ReadDateTimeUtc"
+    }
     
     public var id: String
     public var author: String
