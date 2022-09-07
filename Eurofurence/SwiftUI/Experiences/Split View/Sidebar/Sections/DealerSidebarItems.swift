@@ -11,28 +11,14 @@ private extension Sidebar.Item {
 struct DealerSidebarItems: View {
     
     var selectedItem: Binding<Sidebar.Item?>
-    private let exampleCategories: [SampleDealerCategory] = SampleDealerCategory.all
     
-    private struct SampleDealerCategory: Hashable, Identifiable {
-        
-        var id: some Hashable {
-            self
-        }
-        
-        var name: String
-        var symbolName: String
-        
-        static var all: [SampleDealerCategory] = {
-            return [
-                SampleDealerCategory(name: "Prints", symbolName: "printer"),
-                SampleDealerCategory(name: "Fursuits", symbolName: "pawprint"),
-                SampleDealerCategory(name: "Commissions", symbolName: "photo.artframe"),
-                SampleDealerCategory(name: "Artwork", symbolName: "paintbrush"),
-                SampleDealerCategory(name: "Miscellaneous", symbolName: "ellipsis.rectangle"),
-            ]
-        }()
-        
-    }
+    @FetchRequest(
+        entity: DealerCategory.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \DealerCategory.name, ascending: true)
+        ]
+    )
+    private var categories: FetchedResults<DealerCategory>
     
     var body: some View {
         Section {
@@ -46,15 +32,11 @@ struct DealerSidebarItems: View {
                 }
             }
             
-            ForEach(exampleCategories) { category in
+            ForEach(categories) { category in
                 NavigationLink(tag: Sidebar.Item.dealerCategory(category: category.name), selection: selectedItem) {
                     Text(verbatim: category.name)
                 } label: {
-                    Label {
-                        Text(verbatim: category.name)
-                    } icon: {
-                        Image(systemName: category.symbolName)
-                    }
+                    CanonicalDealerCategoryLabel(category: category.canonicalCategory)
                 }
             }
         } header: {

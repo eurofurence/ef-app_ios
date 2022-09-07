@@ -48,7 +48,7 @@ public struct CanonicalDealerCategoryLabel: View {
     ]
     
     @ViewBuilder private var icon: some View {
-        let symbolName = Self.categoriesToSFSymbols[category, default: ""]
+        let symbolName = Self.categoriesToSFSymbols[category, default: "cart"]
         SwiftUI.Image(systemName: symbolName)
     }
     
