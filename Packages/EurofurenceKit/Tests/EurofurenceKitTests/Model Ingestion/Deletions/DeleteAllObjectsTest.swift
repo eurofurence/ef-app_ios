@@ -48,12 +48,11 @@ class DeleteAllObjectsTest: XCTestCase {
         fetchRequest.predicate = NSPredicate(value: true)
         
         let images = try scenario.viewContext.fetch(fetchRequest)
+        let imageURLs = images.compactMap(\.cachedImageURL)
         
         try await scenario.updateLocalStore(using: .deleteAll)
         
-        for image in images {
-            guard let imageURL = image.cachedImageURL else { continue }
-            
+        for imageURL in imageURLs {
             XCTAssertTrue(
                 scenario.modelProperties.removedContainerResource(at: imageURL),
                 "Failed to request deletion of image at url: \(imageURL)"
