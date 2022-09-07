@@ -2,52 +2,6 @@ import EurofurenceWebAPI
 import Foundation
 import SwiftUI
 
-extension Bundle {
-    
-    private class BundleScope { }
-    
-    static var moduleWorkaround: Bundle {
-        let cocoaTouchBundleName = "LocalPackages_EurofurenceKit"
-        let cocoaBundleName = "EurofurenceKit_EurofurenceKit"
-        
-        let appLinkedBundleURL = Bundle.main.resourceURL
-        let commandLineBundleURL = Bundle.main.bundleURL
-        let frameworkLinkedBundleURL = Bundle(for: BundleScope.self).resourceURL
-        let uiTestingBundleURL = frameworkLinkedBundleURL?.deletingLastPathComponent()
-        let crossPackagePreviewBundleURL = frameworkLinkedBundleURL?
-            .deletingLastPathComponent()
-            .deletingLastPathComponent()
-        
-        let candidates = [
-            appLinkedBundleURL,
-            commandLineBundleURL,
-            frameworkLinkedBundleURL,
-            uiTestingBundleURL,
-            crossPackagePreviewBundleURL
-        ]
-        .compactMap { $0 }
-        
-        let bundlePaths = candidates.flatMap { (candidate) in
-            return [
-                candidate.appendingPathComponent("\(cocoaTouchBundleName).bundle"),
-                candidate.appendingPathComponent("\(cocoaBundleName).bundle")
-            ]
-        }
-        
-        let bundle = bundlePaths
-            .lazy
-            .compactMap(Bundle.init(url:))
-            .first
-        
-        if let bundle = bundle {
-            return bundle
-        }
-        
-        fatalError("No EurofurenceKit bundle found")
-    }
-    
-}
-
 extension EurofurenceModel {
     
     /// Content classifications for previewing.
@@ -73,7 +27,7 @@ extension EurofurenceModel {
             
             switch self {
             case .ef26:
-                let bundle = Bundle.moduleWorkaround
+                let bundle = Bundle.previewing
                 guard let url = bundle.url(forResource: "EF26PreviewResponse", withExtension: "json") else {
                     fatalError("Cannot find previewing content URL in Package bundle")
                 }
