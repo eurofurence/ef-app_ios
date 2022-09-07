@@ -13,6 +13,16 @@ public class Track: Entity {
 
 }
 
+// MARK: - CanonicalTrack Adaptation
+
+extension Track {
+    
+    public var canonicalTrack: CanonicalTrack {
+        CanonicalTrack(trackName: name)
+    }
+    
+}
+
 // MARK: - Track + ConsumesRemoteResponse
 
 extension Track: ConsumesRemoteResponse {
