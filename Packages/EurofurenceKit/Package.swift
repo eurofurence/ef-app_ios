@@ -35,6 +35,7 @@ let package = Package(
                 .product(name: "Logging", package: "swift-log")
             ],
             resources: [
+                .process("Resources"),
                 .process("Preview Content")
             ]
         ),

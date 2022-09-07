@@ -1,5 +1,9 @@
 /// Describes a well-defined event track within the model.
-public enum CanonicalTrack: Equatable {
+public enum CanonicalTrack: CaseIterable, Equatable, Hashable, Identifiable {
+    
+    public var id: some Hashable {
+        self
+    }
     
     /// The track has no local canonical meaning. This is a signal the remote has added a new track
     /// the current model cannot process.
