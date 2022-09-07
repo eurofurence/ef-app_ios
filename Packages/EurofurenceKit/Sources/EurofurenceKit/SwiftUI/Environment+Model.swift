@@ -1,30 +1,6 @@
 import CoreData
 import SwiftUI
 
-extension EnvironmentValues {
-    
-    /// Accesses the model associated with the current environment.
-    public var model: EurofurenceModel {
-        get {
-            self[EurofurenceModelEnvironmentKey.self]
-        }
-        set {
-            self[EurofurenceModelEnvironmentKey.self] = newValue
-        }
-    }
-    
-    private struct EurofurenceModelEnvironmentKey: EnvironmentKey {
-        
-        typealias Value = EurofurenceModel
-        
-        static var defaultValue: EurofurenceModel {
-            fatalError("EurofurenceModel must be initialized by the application, no default value is permitted")
-        }
-        
-    }
-    
-}
-
 extension View {
     
     /// Injects the model into the SwiftUI environment in preparation for rendering.

@@ -18,9 +18,10 @@ class DeletingEventTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedEvent)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidEvent(eventIdentifier)) {
-            _ = try scenario.model.event(identifiedBy: eventIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidEvent(eventIdentifier),
+            try scenario.model.event(identifiedBy: eventIdentifier)
+        )
     }
     
     func testDeletedEventRemovedFromStore_HasBanner() async throws {
@@ -35,9 +36,10 @@ class DeletingEventTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedEventWithBanner)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidEvent(eventIdentifier)) {
-            _ = try scenario.model.event(identifiedBy: eventIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidEvent(eventIdentifier),
+            try scenario.model.event(identifiedBy: eventIdentifier)
+        )
     }
     
     func testDeletedEventRemovedFromStore_HasPoster() async throws {
@@ -52,9 +54,10 @@ class DeletingEventTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedEventWithPoster)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidEvent(eventIdentifier)) {
-            _ = try scenario.model.event(identifiedBy: eventIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidEvent(eventIdentifier),
+            try scenario.model.event(identifiedBy: eventIdentifier)
+        )
     }
     
     func testDeletedEventRemovedFromStore_MultipleEventsSharePoster() async throws {
@@ -71,9 +74,10 @@ class DeletingEventTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedEventWithSharedPoster)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidEvent(deletedEventIdentifier)) {
-            _ = try scenario.model.event(identifiedBy: deletedEventIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidEvent(deletedEventIdentifier),
+            try scenario.model.event(identifiedBy: deletedEventIdentifier)
+        )
         
         let sharedPosterEvent = try scenario.model.event(identifiedBy: eventSharingPosterIdentifier)
         XCTAssertNotNil(
