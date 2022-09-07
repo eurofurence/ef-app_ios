@@ -16,6 +16,7 @@ class EurofurencePersistentContainer: NSPersistentContainer {
         
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
         
+        viewContext.automaticallyMergesChangesFromParent = true
         configureUserInfo(for: viewContext)
     }
     

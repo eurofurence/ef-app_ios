@@ -24,6 +24,7 @@
 		CA08B0F722EDD41A00FDAAA7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CA08B0F622EDD41900FDAAA7 /* README.md */; };
 		CA0C9FE525FE35F000665ED4 /* KeychainCredentialStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C9FE425FE35F000665ED4 /* KeychainCredentialStoreTests.swift */; };
 		CA17E6BD28AEC689009BFA8B /* SettingsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA17E6BC28AEC689009BFA8B /* SettingsTests.swift */; };
+		CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D0CAD28C8A2EF007D96F8 /* AppModel.swift */; };
 		CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA23FCA127ED033900265984 /* DebugSettings.swift */; };
 		CA25A89C22C4101D00226478 /* ScreenshotGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845C91F2907A800E8821D /* ScreenshotGenerator.swift */; };
 		CA25A89D22C4101D00226478 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9845D21F2909DB00E8821D /* SnapshotHelper.swift */; };
@@ -273,6 +274,7 @@
 		CA08B0F622EDD41900FDAAA7 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CA0C9FE425FE35F000665ED4 /* KeychainCredentialStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCredentialStoreTests.swift; sourceTree = "<group>"; };
 		CA17E6BC28AEC689009BFA8B /* SettingsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTests.swift; sourceTree = "<group>"; };
+		CA1D0CAD28C8A2EF007D96F8 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		CA23FCA127ED033900265984 /* DebugSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugSettings.swift; sourceTree = "<group>"; };
 		CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerSearchTests.swift; sourceTree = "<group>"; };
 		CA2AA2F122C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateFromAppDealerIntentDonor.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				CA1D0CAD28C8A2EF007D96F8 /* AppModel.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
 				CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */,
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
@@ -1347,6 +1350,7 @@
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
+				CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */,
 				CABD9BA528BE08DF00CEFAB3 /* Placeholder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -18,9 +18,10 @@ class DeletingDealerTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedDealer)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidDealer(dealerIdentifier)) {
-            _ = try scenario.model.dealer(identifiedBy: dealerIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidDealer(dealerIdentifier),
+            try scenario.model.dealer(identifiedBy: dealerIdentifier)
+        )
     }
     
     func testDeletingAllDealersWithinCategoryDeletesCategory() async throws {

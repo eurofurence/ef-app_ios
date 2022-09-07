@@ -1,13 +1,13 @@
 import XCTest
 
-public func XCTAssertThrowsSpecificError<E>(
+public func XCTAssertThrowsSpecificError<E, T>(
     _ expected: E,
-    _ block: () throws -> Void,
+    _ block: @autoclosure () throws -> T,
     file: StaticString = #file,
     line: UInt = #line
 ) where E: Error & Equatable {
     do {
-        try block()
+        _ = try block()
         XCTFail("Expected to throw an error.", file: file, line: line)
     } catch let error as E {
         XCTAssertEqual(expected, error, file: file, line: line)

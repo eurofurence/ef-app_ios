@@ -17,9 +17,10 @@ class DeletingAnnouncementTests: XCTestCase {
         
         try await scenario.updateLocalStore(using: .deletedAnnouncement)
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidAnnouncement(announcementIdentifier)) {
-            _ = try scenario.model.announcement(identifiedBy: announcementIdentifier)
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidAnnouncement(announcementIdentifier),
+            try scenario.model.announcement(identifiedBy: announcementIdentifier)
+        )
     }
 
 }

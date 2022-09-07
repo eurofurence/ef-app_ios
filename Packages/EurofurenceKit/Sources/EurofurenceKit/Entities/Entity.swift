@@ -12,6 +12,16 @@ public class Entity: NSManagedObject {
 
 }
 
+// MARK: - Entity + Identifiable
+
+extension Entity: Identifiable {
+    
+    public var id: some Hashable {
+        identifier
+    }
+    
+}
+
 // MARK: - Fetching
 
 extension Entity {

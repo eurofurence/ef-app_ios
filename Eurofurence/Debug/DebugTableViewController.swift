@@ -1,6 +1,7 @@
 import FirebaseMessaging
 import MobileCoreServices
 import UIKit
+import UniformTypeIdentifiers
 
 class DebugTableViewController: UITableViewController {
 
@@ -38,7 +39,7 @@ class DebugTableViewController: UITableViewController {
 
     private func copyFCMToPasteBoard() {
         guard let value = Messaging.messaging().fcmToken else { return }
-        UIPasteboard.general.setValue(value, forPasteboardType: kUTTypePlainText as String)
+        UIPasteboard.general.setValue(value, forPasteboardType: UTType.plainText.identifier)
 
         let alert = UIAlertController(title: "FCM Copied", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))

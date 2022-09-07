@@ -83,9 +83,10 @@ class EurofurenceModelMessagesTests: XCTestCase {
         try await scenario.model.signIn(with: login)
         try await scenario.model.signOut()
         
-        XCTAssertThrowsSpecificError(EurofurenceError.invalidMessage("Identifier")) {
-            _ = try scenario.model.message(identifiedBy: "Identifier")
-        }
+        XCTAssertThrowsSpecificError(
+            EurofurenceError.invalidMessage("Identifier"),
+            try scenario.model.message(identifiedBy: "Identifier")
+        )
     }
     
     func testWhenSignedInFutureReloadsIncludeMessages() async throws {
