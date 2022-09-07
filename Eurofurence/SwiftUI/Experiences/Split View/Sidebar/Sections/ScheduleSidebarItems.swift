@@ -22,41 +22,13 @@ struct ScheduleSidebarItems: View {
     )
     private var days: FetchedResults<Day>
     
-    // Just for testing the design.
-    private struct SampleTrack: Hashable, Identifiable {
-        
-        var id: some Hashable {
-            self
-        }
-        
-        var name: String
-        var symbolName: String
-        
-        static var all: [SampleTrack] = {
-            return [
-                SampleTrack(name: "Art Show", symbolName: "paintbrush"),
-                SampleTrack(name: "Charity", symbolName: "person.3.sequence"),
-                SampleTrack(name: "Creating Art", symbolName: "paintpalette"),
-                SampleTrack(name: "Dealer's Den", symbolName: "shippingbox"),
-                SampleTrack(name: "Fursuit", symbolName: "pawprint"),
-                SampleTrack(name: "Games | Social", symbolName: "gamecontroller"),
-                SampleTrack(name: "Guest of Honor", symbolName: "person"),
-                SampleTrack(name: "Lobby and Outdoor", symbolName: "building.2"),
-                SampleTrack(name: "Misc.", symbolName: "ellipsis.rectangle"),
-                SampleTrack(name: "Music", symbolName: "music.note"),
-                SampleTrack(name: "Performance", symbolName: "theatermasks"),
-                SampleTrack(name: "Stage", symbolName: "music.mic"),
-                SampleTrack(name: "Supersponsor Event", symbolName: "star.circle"),
-                SampleTrack(name: "Writing", symbolName: "pencil.and.outline"),
-                SampleTrack(name: "Animation", symbolName: "film"),
-                SampleTrack(name: "Dance", symbolName: "music.note.house"),
-                SampleTrack(name: "Maker ∕ Theme-based Fursuit Group Photo", symbolName: "camera")
-            ]
-        }()
-        
-    }
-    
-    private let exampleTracks: [SampleTrack] = SampleTrack.all
+    @FetchRequest(
+        entity: Track.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Track.name, ascending: true)
+        ]
+    )
+    private var tracks: FetchedResults<Track>
     
     var body: some View {
         Section {
@@ -99,15 +71,11 @@ struct ScheduleSidebarItems: View {
             
             Divider()
             
-            ForEach(exampleTracks) { track in
+            ForEach(tracks) { track in
                 NavigationLink(tag: Sidebar.Item.track(track: track.name), selection: selectedItem) {
                     Text(verbatim: track.name)
                 } label: {
-                    Label {
-                        Text(verbatim: track.name)
-                    } icon: {
-                        Image(systemName: track.symbolName)
-                    }
+                    CanonicalTrackLabel(track: track.canonicalTrack)
                 }
             }
         } header: {
