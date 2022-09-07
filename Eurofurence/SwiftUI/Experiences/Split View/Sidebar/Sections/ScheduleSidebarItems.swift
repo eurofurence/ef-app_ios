@@ -14,27 +14,13 @@ struct ScheduleSidebarItems: View {
     
     var selectedItem: Binding<Sidebar.Item?>
     
-    public struct SampleDay: Hashable, Identifiable {
-        
-        public var id: some Hashable {
-            self
-        }
-        
-        var calendarDay: Int
-        var name: String
-        
-        static var all: [SampleDay] = {
-            return [
-                SampleDay(calendarDay: 23, name: "Early Arrival"),
-                SampleDay(calendarDay: 24, name: "Official Con Start/Con Day 1"),
-                SampleDay(calendarDay: 25, name: "Con Day 2"),
-                SampleDay(calendarDay: 26, name: "Con Day 3"),
-                SampleDay(calendarDay: 27, name: "Con Day 4"),
-                SampleDay(calendarDay: 28, name: "Last Day/Con Day 5")
-            ]
-        }()
-        
-    }
+    @FetchRequest(
+        entity: Day.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Day.date, ascending: true)
+        ]
+    )
+    private var days: FetchedResults<Day>
     
     // Just for testing the design.
     private struct SampleTrack: Hashable, Identifiable {
@@ -70,7 +56,6 @@ struct ScheduleSidebarItems: View {
         
     }
     
-    private let exampleDays: [SampleDay] = SampleDay.all
     private let exampleTracks: [SampleTrack] = SampleTrack.all
     
     var body: some View {
@@ -98,14 +83,15 @@ struct ScheduleSidebarItems: View {
             
             Divider()
             
-            ForEach(exampleDays) { day in
+            ForEach(days) { day in
                 NavigationLink(tag: Sidebar.Item.day(name: day.name), selection: selectedItem) {
                     Text(verbatim: day.name)
                 } label: {
                     Label {
                         Text(verbatim: day.name)
                     } icon: {
-                        let systemName = "\(day.calendarDay).square"
+                        let calendarDay = Calendar.current.component(.day, from: day.date)
+                        let systemName = "\(calendarDay).square"
                         Image(systemName: systemName)
                     }
                 }
