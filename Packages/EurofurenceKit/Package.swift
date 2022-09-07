@@ -33,6 +33,9 @@ let package = Package(
             dependencies: [
                 .target(name: "EurofurenceWebAPI"),
                 .product(name: "Logging", package: "swift-log")
+            ],
+            resources: [
+                .process("Preview Content")
             ]
         ),
         
