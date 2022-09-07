@@ -64,7 +64,7 @@ struct TabExperience: View {
     
 }
 
-struct Placeholder_Previews: PreviewProvider {
+struct TabExperience_Previews: PreviewProvider {
     
     static var previews: some View {
         EurofurenceModel.preview { _ in
