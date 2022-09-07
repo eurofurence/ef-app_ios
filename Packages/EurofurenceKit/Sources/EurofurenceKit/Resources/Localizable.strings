@@ -1,4 +1,13 @@
 "Unknown" = "Unknown";
+
+// Dealer categories
+"Prints" = "Prints";
+"Fursuits" = "Fursuits";
+"Commissions" = "Commissions";
+"Artwork" = "Artwork";
+"Miscellaneous" = "Miscellaneous";
+
+// Event tracks
 "Art Show" = "Art Show";
 "Charity" = "Charity";
 "Creating Art" = "Creating Art";

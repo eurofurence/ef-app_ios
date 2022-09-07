@@ -102,7 +102,7 @@ public struct CanonicalTrackLabel: View {
     
 }
 
-struct CanonicalTrackLabel_LibraryProvider: LibraryContentProvider {
+struct CanonicalTrackLabel_LibraryContentProvider: LibraryContentProvider {
     
     @LibraryContentBuilder
     var views: [LibraryItem] {
