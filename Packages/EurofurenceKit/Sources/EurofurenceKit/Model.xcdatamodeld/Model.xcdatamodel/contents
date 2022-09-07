@@ -141,9 +141,9 @@
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="author" attributeType="String"/>
         <attribute name="identifier" attributeType="String"/>
-        <attribute name="isPendingReadStateUpdateToRemote" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="isRead" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="message" attributeType="String"/>
+        <attribute name="needsReadStatusUpdate" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="readDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="receivedDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="subject" attributeType="String"/>

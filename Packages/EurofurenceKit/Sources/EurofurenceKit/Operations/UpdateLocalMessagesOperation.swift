@@ -64,7 +64,7 @@ class UpdateLocalMessagesOperation: UpdateOperation {
         let managedObjectContext = context.managedObjectContext
         let messagesNeedingStatusUpate: [Message] = try await managedObjectContext.performAsync {
             let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
-            fetchRequest.predicate = NSPredicate(format: "isPendingReadStateUpdateToRemote == YES")
+            fetchRequest.predicate = NSPredicate(format: "needsReadStatusUpdate == YES")
             
             return try context.managedObjectContext.fetch(fetchRequest)
         }

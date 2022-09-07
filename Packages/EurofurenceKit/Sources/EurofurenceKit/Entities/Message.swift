@@ -20,7 +20,7 @@ public class Message: NSManagedObject {
     
     /// Indicates whether the user has read this message locally, and the read state is pending synchronisation with
     /// the remote.
-    @NSManaged var isPendingReadStateUpdateToRemote: Bool
+    @NSManaged var needsReadStatusUpdate: Bool
     
     /// Indicates whether the user has read the contents of this message.
     @NSManaged public private(set) var isRead: Bool
@@ -60,7 +60,7 @@ extension Message {
             try await writingContext.performAsync { [writingContext] in
                 let writableMessage = try Message.message(for: identifier, in: writingContext)
                 writableMessage.isRead = true
-                writableMessage.isPendingReadStateUpdateToRemote = true
+                writableMessage.needsReadStatusUpdate = true
                 try writingContext.save()
             }
         } catch {
@@ -91,7 +91,7 @@ extension Message {
             
             try writingContext.performAndWait { [writingContext] in
                 let writableMessage = try Message.message(for: identifier, in: writingContext)
-                writableMessage.isPendingReadStateUpdateToRemote = false
+                writableMessage.needsReadStatusUpdate = false
                 
                 try writingContext.save()
             }
