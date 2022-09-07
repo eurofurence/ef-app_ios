@@ -38,93 +38,70 @@ extension Message {
     /// of the message.
     public func markRead() async {
         guard isRead == false else { return }
-        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
-        guard let api = managedObjectContext?.eurofurenceAPI else { return }
-        guard let authenticationToken = managedObjectContext?.keychain?.credential?.authenticationToken else { return }
         
-        let refreshObject: () -> Void = { [self, managedObjectContext] in
-            managedObjectContext?.performAndWait {
-                managedObjectContext?.refresh(self, mergeChanges: true)
-            }
+        // Update the store now to indicate locally the read has occurred.
+        await markAsRead()
+        
+        managedObjectContext?.performAndWait {
+            managedObjectContext?.refresh(self, mergeChanges: true)
         }
         
-        let messageIdentifier = identifier
+        // Simultaneously mark the message as read on the remote.
+        await submitReadStatus()
+    }
+    
+    private func markAsRead() async {
+        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
+        
+        let identifier = self.identifier
         let writingContext = persistentContainer.newBackgroundContext()
         
-        await withTaskGroup(of: Void.self) { group in
-            // Update the store now to indicate locally the read has occurred.
-            group.addTask {
-                do {
-                    try await writingContext.performAsync { [writingContext] in
-                        let writableMessage = try Message.message(for: messageIdentifier, in: writingContext)
-                        writableMessage.isRead = true
-                        try writingContext.save()
-                    }
-                    
-                    refreshObject()
-                } catch {
-                    let metadata: Logger.Metadata = [
-                        "ID": .string(messageIdentifier),
-                        "Error": .string(String(describing: error))
-                    ]
-                    
-                    Self.logger.error("Failed to update read status for message", metadata: metadata)
-                }
+        do {
+            try await writingContext.performAsync { [writingContext] in
+                let writableMessage = try Message.message(for: identifier, in: writingContext)
+                writableMessage.isRead = true
+                writableMessage.isPendingReadStateUpdateToRemote = true
+                try writingContext.save()
             }
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(identifier),
+                "Error": .string(String(describing: error))
+            ]
             
-            // Simultaneously mark the message as read on the remote.
-            group.addTask {
-                await Message.submitReadStatus(
-                    messageIdentifier: messageIdentifier,
-                    authenticationToken: authenticationToken,
-                    to: api,
-                    managedObjectContext: writingContext
-                )
-            }
-            
-            await group.waitForAll()
+            Self.logger.error("Failed to update read status for message", metadata: metadata)
         }
     }
     
-    static func submitReadStatus(
-        messageIdentifier: String,
-        authenticationToken: AuthenticationToken,
-        to api: EurofurenceAPI,
-        managedObjectContext: NSManagedObjectContext
-    ) async {
-        var markedRead = false
+    func submitReadStatus() async {
+        guard let managedObjectContext = managedObjectContext else { return }
+        guard let persistentContainer = managedObjectContext.persistentContainer else { return }
+        guard let api = managedObjectContext.eurofurenceAPI else { return }
+        guard let authenticationToken = managedObjectContext.keychain?.credential?.authenticationToken else { return }
         
         do {
             let request = AcknowledgeMessageRequest(
                 authenticationToken: authenticationToken,
-                messageIdentifier: messageIdentifier
+                messageIdentifier: identifier
             )
             
             try await api.markMessageAsRead(request: request)
-            markedRead = true
+            
+            let writingContext = persistentContainer.newBackgroundContext()
+            
+            try writingContext.performAndWait { [writingContext] in
+                let writableMessage = try Message.message(for: identifier, in: writingContext)
+                writableMessage.isPendingReadStateUpdateToRemote = false
+                
+                try writingContext.save()
+            }
         } catch {
             let metadata: Logger.Metadata = [
-                "ID": .string(messageIdentifier),
+                "ID": .string(identifier),
                 "Error": .string(String(describing: error))
             ]
             
             Self.logger.error("Marking message as read failed", metadata: metadata)
-        }
-        
-        do {
-            try managedObjectContext.performAndWait { [managedObjectContext] in
-                let writableMessage = try Message.message(for: messageIdentifier, in: managedObjectContext)
-                writableMessage.isPendingReadStateUpdateToRemote = markedRead == false
-                
-                try managedObjectContext.save()
-            } 
-        } catch {
-            let metadata: Logger.Metadata = [
-                "ID": .string(messageIdentifier),
-                "Error": .string(String(describing: error))
-            ]
-            
-            Self.logger.error("Failed to record pending read state update", metadata: metadata)
         }
     }
     

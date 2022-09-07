@@ -62,29 +62,17 @@ class UpdateLocalMessagesOperation: UpdateOperation {
         context: UpdateOperationContext
     ) async throws {
         let managedObjectContext = context.managedObjectContext
-        let messageObjectsIDsAndIdentifiers: [NSManagedObjectID: String] = try await managedObjectContext.performAsync {
+        let messagesNeedingStatusUpate: [Message] = try await managedObjectContext.performAsync {
             let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
             fetchRequest.predicate = NSPredicate(format: "isPendingReadStateUpdateToRemote == YES")
             
-            let pendingMessages = try context.managedObjectContext.fetch(fetchRequest)
-            var messageObjectsIDsAndIdentifiers: [NSManagedObjectID: String] = [:]
-            
-            for pendingMessage in pendingMessages {
-                messageObjectsIDsAndIdentifiers[pendingMessage.objectID] = pendingMessage.identifier
-            }
-            
-            return messageObjectsIDsAndIdentifiers
+            return try context.managedObjectContext.fetch(fetchRequest)
         }
         
         try await withThrowingTaskGroup(of: Void.self) { group in
-            for (_, identifier) in messageObjectsIDsAndIdentifiers {
+            for message in messagesNeedingStatusUpate {
                 group.addTask {
-                    await EurofurenceKit.Message.submitReadStatus(
-                        messageIdentifier: identifier,
-                        authenticationToken: authenticationToken,
-                        to: context.api,
-                        managedObjectContext: managedObjectContext
-                    )
+                    await message.submitReadStatus()
                 }
             }
             
