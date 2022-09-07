@@ -4,9 +4,11 @@ import SwiftUI
 public struct CanonicalDealerCategoryLabel: View {
     
     private let category: CanonicalDealerCategory
+    private let unknownCategoryText: Text
     
-    public init(category: CanonicalDealerCategory) {
+    public init(category: CanonicalDealerCategory, unknownCategoryText: Text) {
         self.category = category
+        self.unknownCategoryText = unknownCategoryText
     }
     
     public var body: some View {
@@ -20,7 +22,7 @@ public struct CanonicalDealerCategoryLabel: View {
     @ViewBuilder private var text: some View {
         switch category {
         case .unknown:
-            Text("Unknown", bundle: .module, comment: "Category title for unknown categories within the model")
+            unknownCategoryText
         
         case .prints:
             Text("Prints", bundle: .module, comment: "Title for the Prints dealer category")
@@ -59,7 +61,7 @@ struct CanonicalDealerCategoryLabel_LibraryContentProvider: LibraryContentProvid
     @LibraryContentBuilder
     var views: [LibraryItem] {
         LibraryItem(
-            CanonicalDealerCategoryLabel(category: .miscellaneous),
+            CanonicalDealerCategoryLabel(category: .miscellaneous, unknownCategoryText: Text("")),
             visible: true,
             title: "Canonical Dealer Category Label",
             category: .control
@@ -72,7 +74,7 @@ struct CanonicalDealerCategoryLabel_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(CanonicalDealerCategory.allCases) { category in
-            CanonicalDealerCategoryLabel(category: category)
+            CanonicalDealerCategoryLabel(category: category, unknownCategoryText: Text("Placeholder"))
         }
     }
     

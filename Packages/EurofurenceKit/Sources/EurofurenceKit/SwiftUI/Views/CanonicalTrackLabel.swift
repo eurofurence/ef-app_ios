@@ -4,9 +4,11 @@ import SwiftUI
 public struct CanonicalTrackLabel: View {
     
     private let track: CanonicalTrack
+    private let unknownTrackText: Text
     
-    public init(track: CanonicalTrack) {
+    public init(track: CanonicalTrack, unknownTrackText: Text) {
         self.track = track
+        self.unknownTrackText = unknownTrackText
     }
     
     public var body: some View {
@@ -20,7 +22,7 @@ public struct CanonicalTrackLabel: View {
     @ViewBuilder private var text: some View {
         switch track {
         case .unknown:
-            Text("Unknown", bundle: .module, comment: "Track title for unknown tracks within the model")
+            unknownTrackText
         
         case .artShow:
             Text("Art Show", bundle: .module, comment: "Track title for the Art Show track")
@@ -107,7 +109,7 @@ struct CanonicalTrackLabel_LibraryContentProvider: LibraryContentProvider {
     @LibraryContentBuilder
     var views: [LibraryItem] {
         LibraryItem(
-            CanonicalTrackLabel(track: .mainStage),
+            CanonicalTrackLabel(track: .mainStage, unknownTrackText: Text("")),
             visible: true,
             title: "Canonical Track Label",
             category: .control
@@ -120,7 +122,7 @@ struct CanonicalTrackLabel_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(CanonicalTrack.allCases) { track in
-            CanonicalTrackLabel(track: track)
+            CanonicalTrackLabel(track: track, unknownTrackText: Text("Placeholder"))
         }
     }
     

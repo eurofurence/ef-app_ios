@@ -75,7 +75,10 @@ struct ScheduleSidebarItems: View {
                 NavigationLink(tag: Sidebar.Item.track(track: track.name), selection: selectedItem) {
                     Text(verbatim: track.name)
                 } label: {
-                    CanonicalTrackLabel(track: track.canonicalTrack)
+                    CanonicalTrackLabel(
+                        track: track.canonicalTrack,
+                        unknownTrackText: Text(verbatim: track.name)
+                    )
                 }
             }
         } header: {

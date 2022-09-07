@@ -36,7 +36,10 @@ struct DealerSidebarItems: View {
                 NavigationLink(tag: Sidebar.Item.dealerCategory(category: category.name), selection: selectedItem) {
                     Text(verbatim: category.name)
                 } label: {
-                    CanonicalDealerCategoryLabel(category: category.canonicalCategory)
+                    CanonicalDealerCategoryLabel(
+                        category: category.canonicalCategory,
+                        unknownCategoryText: Text(verbatim: category.name)
+                    )
                 }
             }
         } header: {
