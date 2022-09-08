@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class AfterIngestingRemoteModel_ImageFetchingTests: XCTestCase {
+class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
     
     func testRequestsImagesFromAPI() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

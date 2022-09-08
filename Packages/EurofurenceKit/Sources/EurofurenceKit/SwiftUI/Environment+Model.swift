@@ -9,6 +9,7 @@ extension View {
     ///
     /// - Parameter model: The model to expose to the view.
     /// - Returns: A `View` with the associated model configured within the environment.
+    @MainActor
     public func environmentModel(_ model: EurofurenceModel) -> some View {
         self
             .environmentObject(model)

@@ -76,6 +76,7 @@ extension EurofurenceModel {
         /// The update succeeded.
         case updated
         
+        @MainActor
         fileprivate func configure(model: EurofurenceModel) {
             switch self {
             case .idle:
@@ -124,6 +125,10 @@ extension EurofurenceModel {
     /// }
     /// ```
     ///
+    /// Previews using the Eurofurence model must be previewed while the preview is running in the canvas. The model
+    /// does not support synchronous snapshot-based previewing due to the asynchronous manner in which data is fed
+    /// in.
+    ///
     /// - Parameters:
     ///   - content: The preview content classification to apply to the in-memory model.
     ///   - authenticationState: The authentication state for previewing.
@@ -145,26 +150,24 @@ extension EurofurenceModel {
         let model = EurofurenceModel(configuration: configuration)
 
         // We'll return the model right away while it loads in the contents of the store.
-        let semaphore = DispatchSemaphore(value: 0)
-        Task {
+        Task(priority: .userInitiated) {
             do {
                 await model.prepareForPresentation()
                 try await model.updateLocalStore()
+                cloudStatus.configure(model: model)
             } catch {
                 print("Failed to prepare model for previewing. Error=\(error)")
             }
-            
-            semaphore.signal()
         }
-        
-        semaphore.wait()
-        
-        cloudStatus.configure(model: model)
         
         return model
     }
     
     /// Evaluates a preview `ViewBuilder` by supplying a preview model object.
+    ///
+    /// Previews using the Eurofurence model must be previewed while the preview is running in the canvas. The model
+    /// does not support synchronous snapshot-based previewing due to the asynchronous manner in which data is fed
+    /// in.
     /// 
     /// - Parameters:
     ///   - content: The preview content classification to apply to the in-memory model.

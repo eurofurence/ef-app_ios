@@ -2,7 +2,7 @@ import EurofurenceWebAPI
 @testable import EurofurenceKit
 import XCTest
 
-class DealersIndexingTitleTests: XCTestCase {
+class DealersIndexingTitleTests: EurofurenceKitTestCase {
     
     func testDealerWithNoDisplayNameUsesNicknameAsName() async throws {
         // This is a known dealer in the sample file with no display name.

@@ -2,7 +2,7 @@ import CoreData
 @testable import EurofurenceKit
 import XCTest
 
-class WellKnownDealerCategoryTests: XCTestCase {
+class WellKnownDealerCategoryTests: EurofurenceKitTestCase {
     
     func testPrints() async throws {
         try await assertCategory(named: "Prints", hasCanonicalCategory: .prints)

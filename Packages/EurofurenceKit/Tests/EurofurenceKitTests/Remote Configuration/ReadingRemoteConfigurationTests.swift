@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class ReadingRemoteConfigurationTests: XCTestCase {
+class ReadingRemoteConfigurationTests: EurofurenceKitTestCase {
     
     func testReadsConventionStartDate() async throws {
         let api = FakeEurofurenceAPI()

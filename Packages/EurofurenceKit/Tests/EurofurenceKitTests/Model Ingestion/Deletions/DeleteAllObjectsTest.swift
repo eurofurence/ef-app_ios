@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class DeleteAllObjectsTest: XCTestCase {
+class DeleteAllObjectsTest: EurofurenceKitTestCase {
 
     func testDeletingAllEntities() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

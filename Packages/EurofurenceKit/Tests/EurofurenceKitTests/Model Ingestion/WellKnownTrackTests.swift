@@ -2,7 +2,7 @@ import CoreData
 @testable import EurofurenceKit
 import XCTest
 
-class WellKnownTrackTests: XCTestCase {
+class WellKnownTrackTests: EurofurenceKitTestCase {
     
     func testArtShow() async throws {
         try await assertTrack(named: "Art Show", hasCanonicalTrack: .artShow)

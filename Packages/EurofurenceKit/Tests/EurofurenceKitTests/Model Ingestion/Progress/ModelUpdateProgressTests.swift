@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class ModelUpdateProgressTests: XCTestCase {
+class ModelUpdateProgressTests: EurofurenceKitTestCase {
 
     func testInitialState() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
@@ -44,6 +44,7 @@ class ModelUpdateProgressTests: XCTestCase {
         journal.assertUpdatingProgress()
     }
     
+    @MainActor
     private class CloudStatusJournal {
         
         private var statuses = [EurofurenceModel.CloudStatus]()

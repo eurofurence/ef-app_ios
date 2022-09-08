@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class DeletingKnowledgeGroupTests: XCTestCase {
+class DeletingKnowledgeGroupTests: EurofurenceKitTestCase {
     
     func testDeletingKnowledgeGroupDeletesEntriesAssociatedWithGroup() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

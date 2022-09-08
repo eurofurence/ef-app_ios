@@ -2,7 +2,7 @@ import CoreData
 @testable import EurofurenceKit
 import XCTest
 
-class IngestingFullRemoteModel_DealerDedupeTests: XCTestCase {
+class IngestingFullRemoteModel_DealerDedupeTests: EurofurenceKitTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateCategories() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

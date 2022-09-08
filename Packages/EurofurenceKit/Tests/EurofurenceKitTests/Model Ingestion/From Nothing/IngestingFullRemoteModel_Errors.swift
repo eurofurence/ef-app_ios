@@ -2,7 +2,7 @@ import EurofurenceKit
 import XCTAsyncAssertions
 import XCTest
 
-class IngestingFullRemoteModel_Errors: XCTestCase {
+class IngestingFullRemoteModel_Errors: EurofurenceKitTestCase {
 
     func testIngestingRemoteResponse_RemoteFetchFailure() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

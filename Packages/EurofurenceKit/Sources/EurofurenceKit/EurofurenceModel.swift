@@ -5,6 +5,7 @@ import Foundation
 import Logging
 
 /// Root entry point for entity access, authentication, and more within the Eurofurence targets.
+@MainActor
 public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration

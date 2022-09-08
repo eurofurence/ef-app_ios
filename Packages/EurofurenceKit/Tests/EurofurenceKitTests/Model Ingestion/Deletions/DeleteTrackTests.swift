@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class DeleteTrackTests: XCTestCase {
+class DeleteTrackTests: EurofurenceKitTestCase {
     
     func testDeletingTrackRemovesEventsThatArePartOfTrack() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

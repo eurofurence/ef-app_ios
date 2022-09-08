@@ -1,5 +1,6 @@
 import EurofurenceKit
 
+@MainActor
 struct AppModel {
     
     static let shared = AppModel()

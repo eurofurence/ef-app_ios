@@ -2,7 +2,7 @@ import EurofurenceKit
 import XCTAsyncAssertions
 import XCTest
 
-class LoginTests: XCTestCase {
+class LoginTests: EurofurenceKitTestCase {
     
     func testInitiallyCannotLogin() {
         let login = Login()

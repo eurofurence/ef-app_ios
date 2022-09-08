@@ -3,7 +3,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class PerformingLocalStoreUpdateAfterFullSyncTests: XCTestCase {
+class PerformingLocalStoreUpdateAfterFullSyncTests: EurofurenceKitTestCase {
     
     func testUsesTimestampFromLastUpdateInSyncRequest() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

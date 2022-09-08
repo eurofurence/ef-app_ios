@@ -2,21 +2,15 @@
 import EurofurenceWebAPI
 import XCTest
 
-class AppGroupModelPropertiesTests: XCTestCase {
+class AppGroupModelPropertiesTests: EurofurenceKitTestCase {
     
-    private var userDefaults: UserDefaults!
-    
-    override func setUp() async throws {
-        try await super.setUp()
-        userDefaults = try XCTUnwrap(UserDefaults(suiteName: "Test"))
-    }
-    
-    override func tearDown() async throws {
-        try await super.tearDown()
-        userDefaults.set(nil, forKey: "EFKSynchronizationGenerationTokenData")
-    }
-    
-    func testArchivesSyncToken() {
+    func testArchivesSyncToken() throws {
+        let userDefaults = try XCTUnwrap(UserDefaults(suiteName: "Test"))
+        
+        addTeardownBlock {
+            userDefaults.set(nil, forKey: "EFKSynchronizationGenerationTokenData")
+        }
+        
         var properties = AppGroupModelProperties(userDefaults: userDefaults)
         
         XCTAssertNil(properties.synchronizationChangeToken, "No change token should be present for a new instance")
@@ -33,7 +27,13 @@ class AppGroupModelPropertiesTests: XCTestCase {
         )
     }
     
-    func testSettingSyncTokenToNilWipesCurrentValue() {
+    func testSettingSyncTokenToNilWipesCurrentValue() throws {
+        let userDefaults = try XCTUnwrap(UserDefaults(suiteName: "Test"))
+        
+        addTeardownBlock {
+            userDefaults.set(nil, forKey: "EFKSynchronizationGenerationTokenData")
+        }
+        
         let properties = AppGroupModelProperties(userDefaults: userDefaults)
         let token = SynchronizationPayload.GenerationToken(lastSyncTime: Date())
         properties.synchronizationChangeToken = token
