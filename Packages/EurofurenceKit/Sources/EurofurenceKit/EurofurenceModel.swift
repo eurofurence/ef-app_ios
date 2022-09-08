@@ -13,7 +13,7 @@ public class EurofurenceModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     /// The current synchronisation phase between the model and the backing store.
-    @Published public private(set) var cloudStatus: CloudStatus = .idle
+    @Published public internal(set) var cloudStatus: CloudStatus = .idle
     
     /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?

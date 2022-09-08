@@ -61,6 +61,49 @@ extension EurofurenceModel {
         
     }
     
+    /// Synchronisation states for previewing.
+    public enum CloudState {
+        
+        /// No update has occurred.
+        case idle
+        
+        /// An update is ongoing, with either known or indeterminate progress.
+        case updating(fractionComplete: Float?)
+        
+        /// The update failed.
+        case failed
+        
+        /// The update succeeded.
+        case updated
+        
+        fileprivate func configure(model: EurofurenceModel) {
+            switch self {
+            case .idle:
+                model.cloudStatus = .idle
+                
+            case .updating(let fractionComplete):
+                let progress = EurofurenceModel.Progress()
+                if let fractionComplete = fractionComplete {
+                    progress.update(totalUnitCount: 100)
+                    
+                    let percentComplete = Int(fractionComplete) * 100
+                    for _ in 0..<percentComplete {
+                        progress.updateCompletedUnitCount()
+                    }
+                }
+                
+                model.cloudStatus = .updating(progress: progress)
+                
+            case .failed:
+                model.cloudStatus = .failed
+                
+            case .updated:
+                model.cloudStatus = .updated
+            }
+        }
+        
+    }
+    
     /// Produces a model suitable for previewing within a SwiftUI canvas.
     ///
     /// Due to the way in which SwiftUI property wrappers are evaluated, the preview model must be instantiated first
@@ -84,10 +127,12 @@ extension EurofurenceModel {
     /// - Parameters:
     ///   - content: The preview content classification to apply to the in-memory model.
     ///   - authenticationState: The authentication state for previewing.
+    ///   - cloudStatus: The cloud status state for previewing.
     /// - Returns: An in-memory `EurofurenceModel` pre-populated with the supplied state.
     public static func preview(
         content: PreviewContent = .ef26,
-        authenticationState: AuthenticationState = .unauthenticated
+        authenticationState: AuthenticationState = .unauthenticated,
+        cloudStatus: EurofurenceModel.CloudState = .updated
     ) -> EurofurenceModel {
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
@@ -114,6 +159,8 @@ extension EurofurenceModel {
         
         semaphore.wait()
         
+        cloudStatus.configure(model: model)
+        
         return model
     }
     
@@ -122,15 +169,22 @@ extension EurofurenceModel {
     /// - Parameters:
     ///   - content: The preview content classification to apply to the in-memory model.
     ///   - authenticationState: The authentication state for previewing.
+    ///   - cloudStatus: The cloud status state for previewing.
     ///   - previewBody: A closure to produce the previewing `View` for the canvas. The previewing model is supplied as
     ///                  a parameter, and is also pre-emptively injected into the preview's environment.
     /// - Returns: The preview for the SwiftUI canvas suitable for previewing against the model.
     public static func preview<Body>(
         content: PreviewContent = .ef26,
         authenticationState: AuthenticationState = .unauthenticated,
+        cloudStatus: EurofurenceModel.CloudState = .updated,
         @ViewBuilder previewBody: (EurofurenceModel) -> Body
     ) -> some View where Body: View {
-        let previewModel = self.preview(content: content, authenticationState: authenticationState)
+        let previewModel = self.preview(
+            content: content,
+            authenticationState: authenticationState,
+            cloudStatus: cloudStatus
+        )
+        
         return previewBody(previewModel)
             .environmentModel(previewModel)
     }

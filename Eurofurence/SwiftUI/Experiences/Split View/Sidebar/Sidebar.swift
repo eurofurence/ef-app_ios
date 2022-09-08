@@ -25,15 +25,7 @@ struct Sidebar: View {
         .navigationTitle("Eurofurence")
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
-                VStack {
-                    HStack {
-                        Image(systemName: "cloud")
-                        Text("Up to date")
-                    }
-                    .foregroundColor(.blue)
-                    
-                    ProgressView(value: 0.5)
-                }
+                CloudStatusView()
             }
         }
     }
