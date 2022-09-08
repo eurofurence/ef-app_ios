@@ -13,7 +13,7 @@ struct Sidebar: View {
         
     }
     
-    @State private var selectedItem: Item?
+    @Binding var selectedItem: Item?
     
     var body: some View {
         List {
@@ -37,7 +37,7 @@ struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         EurofurenceModel.preview { _ in
             NavigationView {
-                Sidebar()
+                Sidebar(selectedItem: .constant(nil))
                     .previewLayout(.sizeThatFits)
             }
             .navigationViewStyle(.stack)

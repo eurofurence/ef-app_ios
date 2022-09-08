@@ -3,9 +3,15 @@ import SwiftUI
 
 struct SplitViewExperience: View {
     
+    @State private var selectedSidebarItem: Sidebar.Item? = .news
+    
     var body: some View {
         NavigationView {
-            Sidebar()
+            Sidebar(selectedItem: $selectedSidebarItem)
+            
+            EmptyView()
+            
+            EmptyView()
         }
     }
     

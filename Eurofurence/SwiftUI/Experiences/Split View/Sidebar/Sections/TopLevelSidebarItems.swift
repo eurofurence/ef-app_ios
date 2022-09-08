@@ -1,7 +1,7 @@
 import EurofurenceKit
 import SwiftUI
 
-private extension Sidebar.Item {
+extension Sidebar.Item {
     
     static let news = Sidebar.Item("News")
     static let information = Sidebar.Item("Information")
@@ -13,10 +13,10 @@ private extension Sidebar.Item {
 
 struct TopLevelSidebarItems: View {
     
-    var selectedItem: Binding<Sidebar.Item?>
+    @Binding var selectedItem: Sidebar.Item?
     
     var body: some View {
-        NavigationLink(tag: Sidebar.Item.news, selection: selectedItem) {
+        NavigationLink(tag: Sidebar.Item.news, selection: $selectedItem) {
             Text("News")
         } label: {
             Label {
@@ -26,7 +26,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.information, selection: selectedItem) {
+        NavigationLink(tag: Sidebar.Item.information, selection: $selectedItem) {
             Text("Information")
         } label: {
             Label {
@@ -36,7 +36,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.maps, selection: selectedItem) {
+        NavigationLink(tag: Sidebar.Item.maps, selection: $selectedItem) {
             Text("Maps")
         } label: {
             Label {
@@ -46,7 +46,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.game, selection: selectedItem) {
+        NavigationLink(tag: Sidebar.Item.game, selection: $selectedItem) {
             Text("Collect-them-All")
         } label: {
             Label {
@@ -56,7 +56,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.information, selection: selectedItem) {
+        NavigationLink(tag: Sidebar.Item.information, selection: $selectedItem) {
             Text("Services")
         } label: {
             Label {

@@ -24,6 +24,8 @@
 		6EA4ECE428C9285D00B20502 /* DealerSidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECE328C9285D00B20502 /* DealerSidebarItems.swift */; };
 		6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECE528C9288800B20502 /* ScheduleSidebarItems.swift */; };
 		6EE355A9289079B300F3ACB7 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE355A8289079B300F3ACB7 /* LoginTests.swift */; };
+		6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */; };
+		6EF82FC328CA3B86006463EA /* DealersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC228CA3B86006463EA /* DealersCollectionView.swift */; };
 		78CA0D061F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */; };
 		78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */; };
 		9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ACF99371EBE172D006FC958 /* AppDelegate.swift */; };
@@ -286,6 +288,8 @@
 		6EA4ECE528C9288800B20502 /* ScheduleSidebarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSidebarItems.swift; sourceTree = "<group>"; };
 		6EE355A8289079B300F3ACB7 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		6EE355AA28907BE600F3ACB7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoPatchSplitViewControllerWindow.swift; sourceTree = "<group>"; };
+		6EF82FC228CA3B86006463EA /* DealersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersCollectionView.swift; sourceTree = "<group>"; };
 		7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurofurence.entitlements; sourceTree = "<group>"; };
 		78CA0D051F0D0CE7006DFD64 /* ApplicationInfoPropertyListShould.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationInfoPropertyListShould.swift; sourceTree = "<group>"; };
 		78CA0D0E1F0E57D5006DFD64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -540,6 +544,7 @@
 			isa = PBXGroup;
 			children = (
 				6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */,
+				6EF82FC228CA3B86006463EA /* DealersCollectionView.swift */,
 				6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */,
 			);
 			path = Dealers;
@@ -619,6 +624,14 @@
 				6EA4ECE528C9288800B20502 /* ScheduleSidebarItems.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		6EF82FBF28CA3A2E006463EA /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		78D7EEA21F17F40C005372A9 /* Screenshots */ = {
@@ -952,6 +965,7 @@
 			children = (
 				6EA4ECDB28C927D600B20502 /* Experiences */,
 				6EA4ECD528C8DC7700B20502 /* Modules */,
+				6EF82FBF28CA3A2E006463EA /* UIKit */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -1496,8 +1510,10 @@
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
+				6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
+				6EF82FC328CA3B86006463EA /* DealersCollectionView.swift in Sources */,
 				6E79E66D28C9CDEC00444A37 /* EventConferenceTracksView.swift in Sources */,
 				6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */,
 				CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */,

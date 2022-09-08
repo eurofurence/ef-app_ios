@@ -16,7 +16,7 @@ struct DealerSidebarItems: View {
     var body: some View {
         Section {
             NavigationLink(tag: Sidebar.Item.dealers, selection: $selectedItem) {
-                Text("Dealers")
+                DealersCollectionView()
             } label: {
                 Label {
                     Text("Dealers")
