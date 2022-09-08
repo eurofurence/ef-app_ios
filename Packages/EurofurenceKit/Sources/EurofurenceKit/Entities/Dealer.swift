@@ -7,12 +7,14 @@ public class Dealer: Entity {
     @nonobjc class func fetchRequest() -> NSFetchRequest<Dealer> {
         return NSFetchRequest<Dealer>(entityName: "Dealer")
     }
+    
+    @NSManaged var attendeeNickname: String
+    @NSManaged var displayName: String
 
+    @NSManaged public var name: String
     @NSManaged public var aboutTheArt: String
     @NSManaged public var aboutTheArtist: String
-    @NSManaged public var attendeeNickname: String
     @NSManaged public var dealerShortDescription: String
-    @NSManaged public var displayName: String
     @NSManaged public var thursdayAttendance: Bool
     @NSManaged public var fridayAttendance: Bool
     @NSManaged public var saturdayAttendance: Bool
@@ -26,6 +28,7 @@ public class Dealer: Entity {
     @NSManaged public var categories: Set<DealerCategory>
     @NSManaged public var links: Set<DealerLink>
     @NSManaged public var thumbnail: DealerThumbnail?
+    @NSManaged public var indexingTitle: String
 
 }
 
@@ -45,21 +48,29 @@ extension Dealer: ConsumesRemoteResponse {
     }
     
     private func updateAttributes(_ context: RemoteResponseConsumingContext<RemoteObject>) {
-        lastEdited = context.remoteObject.lastChangeDateTimeUtc
-        identifier = context.remoteObject.id
-        aboutTheArt = context.remoteObject.aboutTheArtText
-        aboutTheArtist = context.remoteObject.aboutTheArtistText
-        attendeeNickname = context.remoteObject.attendeeNickname
-        dealerShortDescription = context.remoteObject.shortDescription
-        displayName = context.remoteObject.displayName
-        thursdayAttendance = context.remoteObject.attendsOnThursday
-        fridayAttendance = context.remoteObject.attendsOnFriday
-        saturdayAttendance = context.remoteObject.attendsOnSaturday
-        isAfterDark = context.remoteObject.isAfterDark
-        merchanise = context.remoteObject.merchandise
-        registrationNumber = Int16(context.remoteObject.registrationNumber)
-        telegramHandle = context.remoteObject.telegramHandle
-        twitterHandle = context.remoteObject.twitterHandle
+        let remoteObject = context.remoteObject
+        lastEdited = remoteObject.lastChangeDateTimeUtc
+        identifier = remoteObject.id
+        aboutTheArt = remoteObject.aboutTheArtText
+        aboutTheArtist = remoteObject.aboutTheArtistText
+        attendeeNickname = remoteObject.attendeeNickname
+        dealerShortDescription = remoteObject.shortDescription
+        displayName = remoteObject.displayName
+        thursdayAttendance = remoteObject.attendsOnThursday
+        fridayAttendance = remoteObject.attendsOnFriday
+        saturdayAttendance = remoteObject.attendsOnSaturday
+        isAfterDark = remoteObject.isAfterDark
+        merchanise = remoteObject.merchandise
+        registrationNumber = Int16(remoteObject.registrationNumber)
+        telegramHandle = remoteObject.telegramHandle
+        twitterHandle = remoteObject.twitterHandle
+        name = remoteObject.displayName.isEmpty ? remoteObject.attendeeNickname : remoteObject.displayName
+        
+        if let firstCharacter = name.first {
+            indexingTitle = String(firstCharacter)
+        } else {
+            indexingTitle = ""
+        }
     }
     
     private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {

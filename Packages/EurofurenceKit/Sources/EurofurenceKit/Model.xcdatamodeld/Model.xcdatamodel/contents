@@ -31,8 +31,10 @@
         <attribute name="dealerShortDescription" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
         <attribute name="fridayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="indexingTitle" attributeType="String" defaultValueString=""/>
         <attribute name="isAfterDark" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="merchanise" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="registrationNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="saturdayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="telegramHandle" optional="YES" attributeType="String"/>
@@ -171,7 +173,7 @@
         <element name="ArtistImage" positionX="54" positionY="171" width="128" height="58"/>
         <element name="ArtPreview" positionX="0" positionY="117" width="128" height="73"/>
         <element name="Day" positionX="-36" positionY="27" width="128" height="74"/>
-        <element name="Dealer" positionX="36" positionY="162" width="128" height="299"/>
+        <element name="Dealer" positionX="36" positionY="162" width="128" height="329"/>
         <element name="DealerCategory" positionX="27" positionY="171" width="128" height="73"/>
         <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="DealerThumbnail" positionX="36" positionY="162" width="128" height="58"/>
