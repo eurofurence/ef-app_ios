@@ -3,23 +3,11 @@ import SwiftUI
 
 struct Sidebar: View {
     
-    struct Item: Hashable {
-        
-        private let stringValue: String
-        
-        init(_ stringValue: String) {
-            self.stringValue = stringValue
-        }
-        
-    }
-    
-    @Binding var selectedItem: Item?
-    
     var body: some View {
         List {
-            TopLevelSidebarItems(selectedItem: $selectedItem)
-            DealerSidebarItems(selectedItem: $selectedItem)
-            ScheduleSidebarItems(selectedItem: $selectedItem)
+            TopLevelSidebarItems()
+            DealerSidebarItems()
+            ScheduleSidebarItems()
         }
         .listStyle(.sidebar)
         .navigationTitle("Eurofurence")
@@ -37,7 +25,7 @@ struct Sidebar_Previews: PreviewProvider {
     static var previews: some View {
         EurofurenceModel.preview { _ in
             NavigationView {
-                Sidebar(selectedItem: .constant(nil))
+                Sidebar()
                     .previewLayout(.sizeThatFits)
             }
             .navigationViewStyle(.stack)

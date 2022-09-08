@@ -1,22 +1,10 @@
 import EurofurenceKit
 import SwiftUI
 
-extension Sidebar.Item {
-    
-    static let news = Sidebar.Item("News")
-    static let information = Sidebar.Item("Information")
-    static let maps = Sidebar.Item("Maps")
-    static let game = Sidebar.Item("Game")
-    static let services = Sidebar.Item("Services")
-    
-}
-
 struct TopLevelSidebarItems: View {
     
-    @Binding var selectedItem: Sidebar.Item?
-    
     var body: some View {
-        NavigationLink(tag: Sidebar.Item.news, selection: $selectedItem) {
+        NavigationLink {
             Text("News")
         } label: {
             Label {
@@ -26,7 +14,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.information, selection: $selectedItem) {
+        NavigationLink {
             Text("Information")
         } label: {
             Label {
@@ -36,7 +24,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.maps, selection: $selectedItem) {
+        NavigationLink {
             Text("Maps")
         } label: {
             Label {
@@ -46,7 +34,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.game, selection: $selectedItem) {
+        NavigationLink {
             Text("Collect-them-All")
         } label: {
             Label {
@@ -56,7 +44,7 @@ struct TopLevelSidebarItems: View {
             }
         }
         
-        NavigationLink(tag: Sidebar.Item.information, selection: $selectedItem) {
+        NavigationLink {
             Text("Services")
         } label: {
             Label {
@@ -75,7 +63,7 @@ struct TopLevelSidebarItems_Previews: PreviewProvider {
         EurofurenceModel.preview { _ in
             NavigationView {
                 List {
-                    TopLevelSidebarItems(selectedItem: .constant(nil))
+                    TopLevelSidebarItems()
                 }
                 .listStyle(.sidebar)
             }
