@@ -14,21 +14,16 @@ struct DealerCategoriesView: View {
     @Binding var selectedCategory: DealerCategory?
     
     var body: some View {
-        Section {
-            ForEach(categories) { category in
-                NavigationLink(tag: category, selection: $selectedCategory) {
-                    DealersCollectionView(category: category)
-                } label: {
-                    CanonicalDealerCategoryLabel(
-                        category: category.canonicalCategory,
-                        unknownCategoryText: Text(verbatim: category.name)
-                    )
-                }
+        ForEach(categories) { category in
+            NavigationLink(tag: category, selection: $selectedCategory) {
+                DealersCollectionView(category: category)
+            } label: {
+                CanonicalDealerCategoryLabel(
+                    category: category.canonicalCategory,
+                    unknownCategoryText: Text(verbatim: category.name)
+                )
             }
-        } header: {
-            Text("Categories")
         }
-        .headerProminence(.increased)
     }
     
 }

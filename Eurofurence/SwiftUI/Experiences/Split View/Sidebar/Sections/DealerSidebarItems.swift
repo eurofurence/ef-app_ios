@@ -25,6 +25,8 @@ struct DealerSidebarItems: View {
                 }
             }
             
+            Divider()
+            
             DealerCategoriesView(selectedCategory: $selectedCategory)
         } header: {
             Text("Dealers")
