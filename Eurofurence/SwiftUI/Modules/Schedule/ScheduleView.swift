@@ -46,12 +46,14 @@ struct ScheduleView: View {
                 } header: {
                     Text("Days")
                 }
+                .headerProminence(.increased)
                 
                 Section {
                     EventConferenceTracksView(selectedTrack: $selectedTrack)
                 } header: {
                     Text("Tracks")
                 }
+                .headerProminence(.increased)
             } else {
                 ForEach(searchResults) { group in
                     Section {
