@@ -12,27 +12,14 @@ private extension Sidebar.Item {
 
 struct ScheduleSidebarItems: View {
     
-    var selectedItem: Binding<Sidebar.Item?>
+    @Binding var selectedItem: Sidebar.Item?
     
-    @FetchRequest(
-        entity: Day.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Day.date, ascending: true)
-        ]
-    )
-    private var days: FetchedResults<Day>
-    
-    @FetchRequest(
-        entity: Track.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Track.name, ascending: true)
-        ]
-    )
-    private var tracks: FetchedResults<Track>
+    @State private var selectedDay: Day?
+    @State private var selectedTrack: Track?
     
     var body: some View {
         Section {
-            NavigationLink(tag: Sidebar.Item.allEvents, selection: selectedItem) {
+            NavigationLink(tag: Sidebar.Item.allEvents, selection: $selectedItem) {
                 Text("All Events")
             } label: {
                 Label {
@@ -42,51 +29,36 @@ struct ScheduleSidebarItems: View {
                 }
             }
             
-            NavigationLink(tag: Sidebar.Item.favouriteEvents, selection: selectedItem) {
+            NavigationLink(tag: Sidebar.Item.favouriteEvents, selection: $selectedItem) {
                 Text("Favourite Events")
             } label: {
                 Label {
                     Text("Favourite Events")
                 } icon: {
-                    Image(systemName: selectedItem.wrappedValue == .favouriteEvents ? "heart.fill" : "heart")
+                    Image(systemName: selectedItem == .favouriteEvents ? "heart.fill" : "heart")
                         .foregroundColor(.red)
                 }
             }
             
-            if days.isEmpty == false {
-                Divider()
-                
-                ForEach(days) { day in
-                    NavigationLink(tag: Sidebar.Item.day(name: day.name), selection: selectedItem) {
-                        Text(verbatim: day.name)
-                    } label: {
-                        Label {
-                            Text(verbatim: day.name)
-                        } icon: {
-                            let calendarDay = Calendar.current.component(.day, from: day.date)
-                            let systemName = "\(calendarDay).square"
-                            Image(systemName: systemName)
-                        }
-                    }
-                }
-            }
+            Divider()
             
-            if tracks.isEmpty == false {
-                Divider()
-                
-                ForEach(tracks) { track in
-                    NavigationLink(tag: Sidebar.Item.track(track: track.name), selection: selectedItem) {
-                        Text(verbatim: track.name)
-                    } label: {
-                        CanonicalTrackLabel(
-                            track: track.canonicalTrack,
-                            unknownTrackText: Text(verbatim: track.name)
-                        )
-                    }
-                }
-            }
+            EventConferenceDaysView(selectedDay: $selectedDay)
+            
+            Divider()
+            
+            EventConferenceTracksView(selectedTrack: $selectedTrack)
         } header: {
             Text("Schedule")
+        }
+        .onChange(of: selectedDay) { newValue in
+            if let newValue = newValue {
+                selectedItem = Sidebar.Item.day(name: newValue.name)
+            }
+        }
+        .onChange(of: selectedTrack) { newValue in
+            if let newValue = newValue {
+                selectedItem = Sidebar.Item.track(track: newValue.name)
+            }
         }
     }
     

@@ -15,8 +15,14 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
+        let model = AppModel.shared.model
+        
+        Task(priority: .userInitiated) {
+            await model.prepareForPresentation()
+        }
+        
         let rootView = HandheldExperience()
-            .environmentModel(AppModel.shared.model)
+            .environmentModel(model)
         
         let rootViewController = UIHostingController(rootView: rootView)
         window.rootViewController = rootViewController
