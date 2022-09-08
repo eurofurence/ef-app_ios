@@ -10,6 +10,10 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate
 
 	public var window: UIWindow?
+    
+    private var isRunningSwiftUI: Bool {
+        UserDefaults.standard.bool(forKey: "EFSwiftUIAppVariantEnabled")
+    }
 
     public func application(
         _ application: UIApplication,
@@ -28,9 +32,7 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         configurationForConnecting connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions
     ) -> UISceneConfiguration {
-        let userDefaults = UserDefaults.standard
-        let isSwiftUIEnabled = userDefaults.bool(forKey: "EFSwiftUIAppVariantEnabled")
-        let sceneConfigurationName = isSwiftUIEnabled ? "Principal SwiftUI Window Scene" : "Principal Window Scene"
+        let sceneConfigurationName = isRunningSwiftUI ? "Principal SwiftUI Window Scene" : "Principal Window Scene"
         
         return UISceneConfiguration(name: sceneConfigurationName, sessionRole: connectingSceneSession.role)
     }
@@ -78,7 +80,9 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Application.assemble(dependencies: dependencies)
         
-        Theme.global.apply()
+        if isRunningSwiftUI == false {        
+            Theme.global.apply()
+        }
     }
     
     private func requestRemoteNotificationsDeviceToken() {
