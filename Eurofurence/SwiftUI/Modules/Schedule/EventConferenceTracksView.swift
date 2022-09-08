@@ -16,7 +16,8 @@ struct EventConferenceTracksView: View {
     var body: some View {
         ForEach(tracks) { track in
             NavigationLink(tag: track, selection: $selectedTrack) {
-                Text(verbatim: track.name)
+                ScheduleCollectionView(predicate: Event.predicate(forEventsInTrack: track))
+                    .navigationTitle(track.name)
             } label: {
                 CanonicalTrackLabel(
                     track: track.canonicalTrack,

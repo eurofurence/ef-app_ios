@@ -21,7 +21,7 @@ struct ScheduleView: View {
         List {
             if searchQuery.isEmpty {
                 NavigationLink {
-                    Text("All Events")
+                    ScheduleCollectionView()
                 } label: {
                     Label {
                         Text("All Events")
@@ -76,6 +76,41 @@ struct ScheduleView: View {
             searchResults.nsPredicate = NSPredicate(format: "title CONTAINS[cd] %@", newValue)
         }
         .searchable(text: $searchQuery.animation(.spring()))
+    }
+    
+}
+
+struct ScheduleCollectionView: View {
+    
+    @SectionedFetchRequest(
+        entity: Event.entity(),
+        sectionIdentifier: \Event.startDate,
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Event.startDate, ascending: true),
+            NSSortDescriptor(keyPath: \Event.title, ascending: true)
+        ]
+    )
+    private var eventGroups: SectionedFetchResults<Date, Event>
+    
+    var predicate: NSPredicate?
+    
+    var body: some View {
+        List {
+            ForEach(eventGroups) { group in
+                Section {
+                    ForEach(group) { (event) in
+                        NavigationLink(event.title) {
+                            Text(event.title)
+                        }
+                    }
+                } header: {
+                    Text(group.id, format: .dateTime)
+                }
+            }
+        }
+        .onAppear {
+            eventGroups.nsPredicate = predicate
+        }
     }
     
 }

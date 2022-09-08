@@ -609,9 +609,9 @@
 		6EA4ECDE28C927F900B20502 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
+				6E79E66228C9431B00444A37 /* CloudStatusView.swift */,
 				6EA4ECDF28C9280A00B20502 /* Sidebar.swift */,
 				6EA4ECE728C929EF00B20502 /* Sections */,
-				6E79E66228C9431B00444A37 /* CloudStatusView.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";

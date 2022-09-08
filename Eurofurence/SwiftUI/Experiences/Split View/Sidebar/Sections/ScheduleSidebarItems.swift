@@ -20,7 +20,7 @@ struct ScheduleSidebarItems: View {
     var body: some View {
         Section {
             NavigationLink(tag: Sidebar.Item.allEvents, selection: $selectedItem) {
-                Text("All Events")
+                ScheduleCollectionView()
             } label: {
                 Label {
                     Text("All Events")
