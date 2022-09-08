@@ -53,32 +53,36 @@ struct ScheduleSidebarItems: View {
                 }
             }
             
-            Divider()
-            
-            ForEach(days) { day in
-                NavigationLink(tag: Sidebar.Item.day(name: day.name), selection: selectedItem) {
-                    Text(verbatim: day.name)
-                } label: {
-                    Label {
+            if days.isEmpty == false {
+                Divider()
+                
+                ForEach(days) { day in
+                    NavigationLink(tag: Sidebar.Item.day(name: day.name), selection: selectedItem) {
                         Text(verbatim: day.name)
-                    } icon: {
-                        let calendarDay = Calendar.current.component(.day, from: day.date)
-                        let systemName = "\(calendarDay).square"
-                        Image(systemName: systemName)
+                    } label: {
+                        Label {
+                            Text(verbatim: day.name)
+                        } icon: {
+                            let calendarDay = Calendar.current.component(.day, from: day.date)
+                            let systemName = "\(calendarDay).square"
+                            Image(systemName: systemName)
+                        }
                     }
                 }
             }
             
-            Divider()
-            
-            ForEach(tracks) { track in
-                NavigationLink(tag: Sidebar.Item.track(track: track.name), selection: selectedItem) {
-                    Text(verbatim: track.name)
-                } label: {
-                    CanonicalTrackLabel(
-                        track: track.canonicalTrack,
-                        unknownTrackText: Text(verbatim: track.name)
-                    )
+            if tracks.isEmpty == false {
+                Divider()
+                
+                ForEach(tracks) { track in
+                    NavigationLink(tag: Sidebar.Item.track(track: track.name), selection: selectedItem) {
+                        Text(verbatim: track.name)
+                    } label: {
+                        CanonicalTrackLabel(
+                            track: track.canonicalTrack,
+                            unknownTrackText: Text(verbatim: track.name)
+                        )
+                    }
                 }
             }
         } header: {

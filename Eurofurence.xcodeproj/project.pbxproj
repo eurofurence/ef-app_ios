@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66228C9431B00444A37 /* CloudStatusView.swift */; };
+		6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */; };
 		6EA4ECC828C8DBF100B20502 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECC728C8DBF100B20502 /* NewsView.swift */; };
 		6EA4ECCB28C8DC1200B20502 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECCA28C8DC1200B20502 /* ScheduleView.swift */; };
 		6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */; };
@@ -265,6 +266,7 @@
 
 /* Begin PBXFileReference section */
 		6E79E66228C9431B00444A37 /* CloudStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStatusView.swift; sourceTree = "<group>"; };
+		6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandheldExperience.swift; sourceTree = "<group>"; };
 		6EA4ECC728C8DBF100B20502 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		6EA4ECCA28C8DC1200B20502 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersView.swift; sourceTree = "<group>"; };
@@ -502,6 +504,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6E79E66628C9C5BF00444A37 /* Handheld */ = {
+			isa = PBXGroup;
+			children = (
+				6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */,
+			);
+			path = Handheld;
+			sourceTree = "<group>";
+		};
 		6EA4ECC628C8DBD400B20502 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -557,6 +567,7 @@
 		6EA4ECDB28C927D600B20502 /* Experiences */ = {
 			isa = PBXGroup;
 			children = (
+				6E79E66628C9C5BF00444A37 /* Handheld */,
 				6EA4ECDD28C927ED00B20502 /* Split View */,
 				6EA4ECDC28C927E200B20502 /* Tab */,
 			);
@@ -1472,6 +1483,7 @@
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
 				CAA41AEB28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift in Sources */,
+				6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */,
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,

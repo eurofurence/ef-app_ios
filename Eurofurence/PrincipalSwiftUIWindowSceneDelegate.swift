@@ -15,7 +15,10 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
-        let rootViewController = UIHostingController(rootView: TabExperience())
+        let rootView = HandheldExperience()
+            .environmentModel(AppModel.shared.model)
+        
+        let rootViewController = UIHostingController(rootView: rootView)
         window.rootViewController = rootViewController
         
         window.makeKeyAndVisible()
