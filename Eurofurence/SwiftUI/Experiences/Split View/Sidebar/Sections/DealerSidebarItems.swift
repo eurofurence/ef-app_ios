@@ -10,19 +10,12 @@ private extension Sidebar.Item {
 
 struct DealerSidebarItems: View {
     
-    var selectedItem: Binding<Sidebar.Item?>
-    
-    @FetchRequest(
-        entity: DealerCategory.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \DealerCategory.name, ascending: true)
-        ]
-    )
-    private var categories: FetchedResults<DealerCategory>
+    @Binding var selectedItem: Sidebar.Item?
+    @State private var selectedCategory: DealerCategory?
     
     var body: some View {
         Section {
-            NavigationLink(tag: Sidebar.Item.dealers, selection: selectedItem) {
+            NavigationLink(tag: Sidebar.Item.dealers, selection: $selectedItem) {
                 Text("Dealers")
             } label: {
                 Label {
@@ -32,18 +25,14 @@ struct DealerSidebarItems: View {
                 }
             }
             
-            ForEach(categories) { category in
-                NavigationLink(tag: Sidebar.Item.dealerCategory(category: category.name), selection: selectedItem) {
-                    Text(verbatim: category.name)
-                } label: {
-                    CanonicalDealerCategoryLabel(
-                        category: category.canonicalCategory,
-                        unknownCategoryText: Text(verbatim: category.name)
-                    )
-                }
-            }
+            DealerCategoriesView(selectedCategory: $selectedCategory)
         } header: {
             Text("Dealers")
+        }
+        .onChange(of: selectedCategory) { newValue in
+            if let newValue = newValue {
+                selectedItem = Sidebar.Item.dealerCategory(category: newValue.name)
+            }
         }
     }
     

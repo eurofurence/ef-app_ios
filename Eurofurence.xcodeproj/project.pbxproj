@@ -12,6 +12,7 @@
 		6E79E66928C9CD0D00444A37 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66828C9CD0D00444A37 /* ScheduleView.swift */; };
 		6E79E66B28C9CDCE00444A37 /* EventConferenceDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66A28C9CDCE00444A37 /* EventConferenceDaysView.swift */; };
 		6E79E66D28C9CDEC00444A37 /* EventConferenceTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66C28C9CDEC00444A37 /* EventConferenceTracksView.swift */; };
+		6E79E66F28C9E35B00444A37 /* DealerCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */; };
 		6EA4ECC828C8DBF100B20502 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECC728C8DBF100B20502 /* NewsView.swift */; };
 		6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */; };
 		6EA4ECD128C8DC4900B20502 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECD028C8DC4900B20502 /* InformationView.swift */; };
@@ -272,6 +273,7 @@
 		6E79E66828C9CD0D00444A37 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		6E79E66A28C9CDCE00444A37 /* EventConferenceDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceDaysView.swift; sourceTree = "<group>"; };
 		6E79E66C28C9CDEC00444A37 /* EventConferenceTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceTracksView.swift; sourceTree = "<group>"; };
+		6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesView.swift; sourceTree = "<group>"; };
 		6EA4ECC728C8DBF100B20502 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersView.swift; sourceTree = "<group>"; };
 		6EA4ECD028C8DC4900B20502 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
@@ -538,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */,
+				6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */,
 			);
 			path = Dealers;
 			sourceTree = "<group>";
@@ -1500,6 +1503,7 @@
 				CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */,
 				6EA4ECDA28C906DA00B20502 /* SplitViewExperience.swift in Sources */,
 				6EA4ECD828C8DC8700B20502 /* TabItem.swift in Sources */,
+				6E79E66F28C9E35B00444A37 /* DealerCategoriesView.swift in Sources */,
 				6EA4ECD128C8DC4900B20502 /* InformationView.swift in Sources */,
 				6EA4ECE228C9281D00B20502 /* TopLevelSidebarItems.swift in Sources */,
 				6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */,
