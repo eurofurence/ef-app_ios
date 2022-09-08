@@ -82,6 +82,11 @@ struct ScheduleView: View {
 
 struct ScheduleCollectionView: View {
     
+    enum Filter {
+        case day(Day)
+        case track(Track)
+    }
+    
     @SectionedFetchRequest(
         entity: Event.entity(),
         sectionIdentifier: \Event.startDate,
@@ -92,7 +97,7 @@ struct ScheduleCollectionView: View {
     )
     private var eventGroups: SectionedFetchResults<Date, Event>
     
-    var predicate: NSPredicate?
+    var filter: Filter?
     
     var body: some View {
         List {
@@ -109,7 +114,14 @@ struct ScheduleCollectionView: View {
             }
         }
         .onAppear {
-            eventGroups.nsPredicate = predicate
+            if let filter = filter {
+                switch filter {
+                case .day(let day):
+                    eventGroups.nsPredicate = Event.predicate(forEventsOccurringOn: day)
+                case .track(let track):
+                    eventGroups.nsPredicate = Event.predicate(forEventsInTrack: track)
+                }
+            }
         }
     }
     

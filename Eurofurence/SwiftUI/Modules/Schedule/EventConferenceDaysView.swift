@@ -16,7 +16,7 @@ struct EventConferenceDaysView: View {
     var body: some View {
         ForEach(days) { day in
             NavigationLink(tag: day, selection: $selectedDay) {
-                ScheduleCollectionView(predicate: Event.predicate(forEventsOccurringOn: day))
+                ScheduleCollectionView(filter: .day(day))
                     .navigationTitle(day.name)
             } label: {
                 Label {
