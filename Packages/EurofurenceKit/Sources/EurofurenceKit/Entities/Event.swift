@@ -131,6 +131,14 @@ extension Event {
         NSPredicate(format: "SELF.track == %@", track)
     }
     
+    /// Produces a predicate for use in an `NSFetchRequest` that is suitable for textually searching for an event.
+    ///
+    /// - Parameter query: An input query for the `Event`.
+    /// - Returns: An `NSPredicate` that will match against `Event`s that contains the input query.
+    public static func predicateForTextualSearch(query: String) -> NSPredicate {
+        NSPredicate(format: "SELF.title CONTAINS[c] %@", query)
+    }
+    
 }
 
 // MARK: - Core Data Generated Accessors

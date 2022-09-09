@@ -73,7 +73,7 @@ struct ScheduleView: View {
         .listStyle(.insetGrouped)
         .navigationTitle("Schedule")
         .onChange(of: searchQuery) { newValue in
-            searchResults.nsPredicate = NSPredicate(format: "title CONTAINS[cd] %@", newValue)
+            searchResults.nsPredicate = Event.predicateForTextualSearch(query: newValue)
         }
         .searchable(text: $searchQuery.animation(.spring()))
     }

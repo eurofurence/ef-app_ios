@@ -45,5 +45,65 @@ class EventPredicateTests: EurofurenceKitTestCase {
         XCTAssertTrue(matches.contains(artShowSetup))
         XCTAssertFalse(matches.contains(fursuitBadgePickUpAndPrinting))
     }
+    
+    func testEventSearchPredicateReturnsMatchingEventsWhereTitleIsExactlyTheSame() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        // Cheese & Wine
+        let cheeseAndWineEventIdentifier = "073fc7b1-8165-413c-b028-db802c360bcf"
+        let cheeseAndWine = try scenario.model.event(identifiedBy: cheeseAndWineEventIdentifier)
+        
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = Event.predicateForTextualSearch(query: "Cheese & Wine")
+        
+        let matches = try scenario.viewContext.fetch(fetchRequest)
+        
+        XCTAssertEqual(1, matches.count, "Expected only one match for query")
+        
+        let match = try XCTUnwrap(matches.first)
+        
+        XCTAssertEqual(cheeseAndWine, match)
+    }
+    
+    func testEventSearchPredicateReturnsMatchingEventsWhereTitleIsSameWithDifferentCase() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        // Cheese & Wine
+        let cheeseAndWineEventIdentifier = "073fc7b1-8165-413c-b028-db802c360bcf"
+        let cheeseAndWine = try scenario.model.event(identifiedBy: cheeseAndWineEventIdentifier)
+        
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = Event.predicateForTextualSearch(query: "cheese & wine")
+        
+        let matches = try scenario.viewContext.fetch(fetchRequest)
+        
+        XCTAssertEqual(1, matches.count, "Expected only one match for query")
+        
+        let match = try XCTUnwrap(matches.first)
+        
+        XCTAssertEqual(cheeseAndWine, match)
+    }
+    
+    func testEventSearchPredicateReturnsMatchingEventsWhereQueryIsSubstring() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        // Cheese & Wine
+        let cheeseAndWineEventIdentifier = "073fc7b1-8165-413c-b028-db802c360bcf"
+        let cheeseAndWine = try scenario.model.event(identifiedBy: cheeseAndWineEventIdentifier)
+        
+        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+        fetchRequest.predicate = Event.predicateForTextualSearch(query: "cheese")
+        
+        let matches = try scenario.viewContext.fetch(fetchRequest)
+        
+        XCTAssertEqual(1, matches.count, "Expected only one match for query")
+        
+        let match = try XCTUnwrap(matches.first)
+        
+        XCTAssertEqual(cheeseAndWine, match)
+    }
 
 }
