@@ -98,8 +98,8 @@
         <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeGroup" inverseName="entries" inverseEntity="KnowledgeGroup"/>
-        <relationship name="images" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
-        <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
+        <relationship name="images" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
+        <relationship name="links" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
     </entity>
     <entity name="KnowledgeEntryImage" representedClassName="KnowledgeEntryImage" parentEntity="Image" syncable="YES">
         <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="images" inverseEntity="KnowledgeEntry"/>
@@ -109,7 +109,7 @@
         <attribute name="knowledgeGroupDescription" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="entries" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
+        <relationship name="entries" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
     </entity>
     <entity name="KnowledgeLink" representedClassName="KnowledgeLink" parentEntity="Link" syncable="YES">
         <relationship name="entry" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="links" inverseEntity="KnowledgeEntry"/>
@@ -182,7 +182,7 @@
         <element name="EventBanner" positionX="18" positionY="144" width="128" height="44"/>
         <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
         <element name="Image" positionX="9" positionY="144" width="128" height="134"/>
-        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
+        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="119"/>
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="104"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>

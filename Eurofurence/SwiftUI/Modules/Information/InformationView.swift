@@ -13,7 +13,7 @@ struct InformationView: View {
         List {
             ForEach(groups) { group in
                 NavigationLink {
-                    if let first = group.entries.first, group.entries.count == 1 {
+                    if let first = group.orderedKnowledgeEntries.first, group.orderedKnowledgeEntries.count == 1 {
                         KnowledgeEntryView(knowledgeEntry: first)
                     } else {
                         KnowledgeGroupView(knowledgeGroup: group)
@@ -41,19 +41,11 @@ struct InformationView: View {
 
 private struct KnowledgeGroupView: View {
     
-    @FetchRequest(
-        entity: KnowledgeEntry.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \KnowledgeEntry.order, ascending: true)
-        ]
-    )
-    private var knowledgeEntries: FetchedResults<KnowledgeEntry>
-    
     @ObservedObject var knowledgeGroup: KnowledgeGroup
     
     var body: some View {
         List {
-            ForEach(knowledgeEntries) { entry in
+            ForEach(knowledgeGroup.orderedKnowledgeEntries) { entry in
                 NavigationLink {
                     KnowledgeEntryView(knowledgeEntry: entry)
                 } label: {
@@ -61,38 +53,15 @@ private struct KnowledgeGroupView: View {
                 }
             }
         }
-        .onAppear {
-            updateFetchRequest()
-        }
-        .onChange(of: knowledgeGroup) { _ in
-            updateFetchRequest()
-        }
         .navigationTitle(knowledgeGroup.name)
         .navigationBarTitleDisplayMode(.inline)
-    }
-    
-    private func updateFetchRequest() {
-        knowledgeEntries.nsPredicate = KnowledgeEntry.predicateForEntries(in: knowledgeGroup)
     }
     
 }
 
 private struct KnowledgeEntryView: View {
     
-    @FetchRequest(
-        entity: KnowledgeEntryImage.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \KnowledgeEntryImage.internalReference, ascending: true)]
-    )
-    private var images: FetchedResults<KnowledgeEntryImage>
-    
-    @FetchRequest(
-        entity: KnowledgeLink.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \KnowledgeLink.name, ascending: true)]
-    )
-    private var links: FetchedResults<KnowledgeLink>
-    
     @ObservedObject var knowledgeEntry: KnowledgeEntry
-    @State private var containerWidth: CGFloat = 0
     
     init(knowledgeEntry: KnowledgeEntry) {
         self.knowledgeEntry = knowledgeEntry
@@ -101,23 +70,19 @@ private struct KnowledgeEntryView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ForEach(images) { image in
+                ForEach(knowledgeEntry.orderedImages) { image in
                     EurofurenceKitImage(image: image)
                 }
                 
                 let markdown = LocalizedStringKey(knowledgeEntry.text)
                 Text(markdown)
                 
-                ForEach(links) { link in
+                ForEach(knowledgeEntry.orderedLinks) { link in
                     Divider()
                     LinkButton(link: link)
                 }
             }
             .padding()
-        }
-        .onAppear {
-            images.nsPredicate = KnowledgeEntryImage.predicateForImages(in: knowledgeEntry)
-            links.nsPredicate = NSPredicate(format: "entry == %@", knowledgeEntry)
         }
         .navigationTitle(knowledgeEntry.title)
         .navigationBarTitleDisplayMode(.inline)

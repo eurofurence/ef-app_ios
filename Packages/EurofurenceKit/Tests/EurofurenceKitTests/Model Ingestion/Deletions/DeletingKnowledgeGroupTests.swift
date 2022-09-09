@@ -23,7 +23,7 @@ class DeletingKnowledgeGroupTests: EurofurenceKitTestCase {
             let results = try scenario.viewContext.fetch(fetchRequest)
             let knowledgeGroup = try XCTUnwrap(results.first)
             
-            return knowledgeGroup.entries.map(\.identifier)
+            return knowledgeGroup.orderedKnowledgeEntries.map(\.identifier)
         }
         
         // Ensure each knowledge entry is available before processing the deletion
