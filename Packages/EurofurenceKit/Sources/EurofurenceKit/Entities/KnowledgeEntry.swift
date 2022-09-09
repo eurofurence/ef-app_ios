@@ -67,6 +67,21 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
     
 }
 
+// MARK: - Predicates
+
+extension KnowledgeEntry {
+    
+    /// Produces a prdicate for use in an `NSFetchRequest` that will only yield `KnowledgeEntry` objects that are
+    /// contained within the designated `KnowledgeGroup`.
+    ///
+    /// - Parameter group: The `KnowledgeGroup` to fetch associated entries for.
+    /// - Returns: An `NSPredicate` that will filter a fetch request for entries to those within the specified group.
+    public static func predicateForEntries(in group: KnowledgeGroup) -> NSPredicate {
+        NSPredicate(format: "SELF.group == %@", group)
+    }
+    
+}
+
 // MARK: Generated accessors for images
 extension KnowledgeEntry {
 

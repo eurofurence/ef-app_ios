@@ -29,6 +29,15 @@ extension EurofurenceModel {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
     }
     
+    /// Fetches the `KnowledgeGroup` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the knowledge group to be fetched.
+    /// - Returns: The `KnowledgeGroup` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidKnowledgeGroup` if no `KnowledgeGroup` is associated with the given identifier.
+    public func knowledgeGroup(identifiedBy identifier: String) throws -> KnowledgeGroup {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidKnowledgeEntry(identifier))
+    }
+    
     /// Fetches the `KnowledgeEntry` associated with the given identifier.
     ///
     /// - Parameter identifier: The identifier of the knowledge entry to be fetched.

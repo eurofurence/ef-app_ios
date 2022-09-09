@@ -115,6 +115,7 @@ extension Event: ConsumesRemoteResponse {
 extension Event {
     
     /// Produces a predicate for use in an `NSFetchRequest` that will only yield events that occur on a specific day.
+    ///
     /// - Parameter day: A `Day` from the model to fetch events that occur on.
     /// - Returns: An `NSPredicate` for fetching only events that occur on the specified day.
     public static func predicate(forEventsOccurringOn day: Day) -> NSPredicate {
@@ -123,6 +124,7 @@ extension Event {
     
     /// Produces a predicate for use in an `NSFetchRequest` that will only yield events that are part of a specific
     /// track.
+    ///
     /// - Parameter track: A `Track` from the model to fetch events that are a part of.
     /// - Returns: An `NSPredicate` for fetching events that are part of the `Track`.
     public static func predicate(forEventsInTrack track: Track) -> NSPredicate {
