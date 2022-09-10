@@ -21,16 +21,6 @@ struct ScheduleView: View {
         List {
             if searchQuery.isEmpty {
                 NavigationLink {
-                    ScheduleCollectionView()
-                } label: {
-                    Label {
-                        Text("All Events")
-                    } icon: {
-                        Image(systemName: "calendar")
-                    }
-                }
-                
-                NavigationLink {
                     Text("Favourite Events")
                 } label: {
                     Label {
@@ -75,7 +65,7 @@ struct ScheduleView: View {
         .onChange(of: searchQuery) { newValue in
             searchResults.nsPredicate = Event.predicateForTextualSearch(query: newValue)
         }
-        .searchable(text: $searchQuery.animation(.spring()))
+        .searchable(text: $searchQuery)
     }
     
 }
