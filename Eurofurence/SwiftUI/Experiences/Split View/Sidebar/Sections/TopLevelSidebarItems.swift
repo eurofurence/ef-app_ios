@@ -15,7 +15,7 @@ struct TopLevelSidebarItems: View {
         }
         
         NavigationLink {
-            Text("Information")
+            InformationView()
         } label: {
             Label {
                 Text("Information")
