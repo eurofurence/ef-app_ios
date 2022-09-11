@@ -11,22 +11,13 @@ struct ScheduleSidebarItems: View {
             NavigationLink {
                 ScheduleCollectionView()
             } label: {
-                Label {
-                    Text("All Events")
-                } icon: {
-                    Image(systemName: "calendar")
-                }
+                AllEventsLabel()
             }
             
             NavigationLink {
                 Text("Favourite Events")
             } label: {
-                Label {
-                    Text("Favourite Events")
-                } icon: {
-                    Image(systemName: "heart")
-                        .foregroundColor(.red)
-                }
+                FavouriteEventsLabel()
             }
             
             Divider()

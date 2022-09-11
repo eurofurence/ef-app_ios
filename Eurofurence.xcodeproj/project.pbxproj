@@ -13,6 +13,10 @@
 		6E08B1AF28CE064800512406 /* CollectThemAllLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1AE28CE064800512406 /* CollectThemAllLabel.swift */; };
 		6E08B1B128CE06BC00512406 /* AdditionalServicesLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1B028CE06BC00512406 /* AdditionalServicesLabel.swift */; };
 		6E08B1B328CE077A00512406 /* DealersLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1B228CE077A00512406 /* DealersLabel.swift */; };
+		6E08B1B828CE0BCD00512406 /* ScheduleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1B728CE0BCD00512406 /* ScheduleLabel.swift */; };
+		6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1B928CE0C1800512406 /* MoreLabel.swift */; };
+		6E08B1BC28CE0C8200512406 /* AllEventsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1BB28CE0C8200512406 /* AllEventsLabel.swift */; };
+		6E08B1BE28CE0CAD00512406 /* FavouriteEventsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E08B1BD28CE0CAD00512406 /* FavouriteEventsLabel.swift */; };
 		6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66228C9431B00444A37 /* CloudStatusView.swift */; };
 		6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */; };
 		6E79E66928C9CD0D00444A37 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66828C9CD0D00444A37 /* ScheduleView.swift */; };
@@ -283,6 +287,10 @@
 		6E08B1AE28CE064800512406 /* CollectThemAllLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectThemAllLabel.swift; sourceTree = "<group>"; };
 		6E08B1B028CE06BC00512406 /* AdditionalServicesLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalServicesLabel.swift; sourceTree = "<group>"; };
 		6E08B1B228CE077A00512406 /* DealersLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersLabel.swift; sourceTree = "<group>"; };
+		6E08B1B728CE0BCD00512406 /* ScheduleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleLabel.swift; sourceTree = "<group>"; };
+		6E08B1B928CE0C1800512406 /* MoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreLabel.swift; sourceTree = "<group>"; };
+		6E08B1BB28CE0C8200512406 /* AllEventsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllEventsLabel.swift; sourceTree = "<group>"; };
+		6E08B1BD28CE0CAD00512406 /* FavouriteEventsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEventsLabel.swift; sourceTree = "<group>"; };
 		6E79E66228C9431B00444A37 /* CloudStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStatusView.swift; sourceTree = "<group>"; };
 		6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandheldExperience.swift; sourceTree = "<group>"; };
 		6E79E66828C9CD0D00444A37 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -540,11 +548,15 @@
 			isa = PBXGroup;
 			children = (
 				6E08B1B028CE06BC00512406 /* AdditionalServicesLabel.swift */,
+				6E08B1BB28CE0C8200512406 /* AllEventsLabel.swift */,
 				6E08B1AE28CE064800512406 /* CollectThemAllLabel.swift */,
+				6E08B1B228CE077A00512406 /* DealersLabel.swift */,
+				6E08B1BD28CE0CAD00512406 /* FavouriteEventsLabel.swift */,
 				6E08B1AA28CE04EB00512406 /* InformationLabel.swift */,
 				6E08B1AC28CE05C100512406 /* MapsLabel.swift */,
+				6E08B1B928CE0C1800512406 /* MoreLabel.swift */,
 				6E08B1A728CE04AF00512406 /* NewsLabel.swift */,
-				6E08B1B228CE077A00512406 /* DealersLabel.swift */,
+				6E08B1B728CE0BCD00512406 /* ScheduleLabel.swift */,
 			);
 			path = Labels;
 			sourceTree = "<group>";
@@ -1545,9 +1557,11 @@
 				CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */,
 				6E08B1AF28CE064800512406 /* CollectThemAllLabel.swift in Sources */,
 				6E08B1AD28CE05C100512406 /* MapsLabel.swift in Sources */,
+				6E08B1B828CE0BCD00512406 /* ScheduleLabel.swift in Sources */,
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */,
+				6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
 				6E79E66B28C9CDCE00444A37 /* EventConferenceDaysView.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
@@ -1557,6 +1571,7 @@
 				6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */,
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */,
+				6E08B1BE28CE0CAD00512406 /* FavouriteEventsLabel.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
 				6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
@@ -1573,6 +1588,7 @@
 				6E08B1AB28CE04EB00512406 /* InformationLabel.swift in Sources */,
 				6EA4ECE228C9281D00B20502 /* TopLevelSidebarItems.swift in Sources */,
 				6E08B1A828CE04AF00512406 /* NewsLabel.swift in Sources */,
+				6E08B1BC28CE0C8200512406 /* AllEventsLabel.swift in Sources */,
 				6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */,
 				6E79E66928C9CD0D00444A37 /* ScheduleView.swift in Sources */,
 				6EA4ECE028C9280A00B20502 /* Sidebar.swift in Sources */,

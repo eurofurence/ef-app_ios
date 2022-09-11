@@ -20,7 +20,7 @@ struct TabExperience: View {
                     .navigationTitle("News")
             }
             .tabItem {
-                TabItem(title: Text("News"), image: Image(systemName: "newspaper"))
+                NewsLabel(isSelected: selectedTab == .news)
             }
             .tag(Tab.news)
             
@@ -29,7 +29,7 @@ struct TabExperience: View {
                     .navigationTitle("Schedule")
             }
             .tabItem {
-                TabItem(title: Text("Schedule"), image: Image(systemName: "calendar"))
+                ScheduleLabel(isSelected: selectedTab == .schedule)
             }
             .tag(Tab.schedule)
             
@@ -38,7 +38,7 @@ struct TabExperience: View {
                     .navigationTitle("Dealers")
             }
             .tabItem {
-                TabItem(title: Text("Dealers"), image: Image(systemName: "cart"))
+                DealersLabel(isSelected: selectedTab == .dealers)
             }
             .tag(Tab.information)
             
@@ -47,7 +47,7 @@ struct TabExperience: View {
                     .navigationTitle("Information")
             }
             .tabItem {
-                TabItem(title: Text("Information"), image: Image(systemName: "info.circle"))
+                InformationLabel(isSelected: selectedTab == .information)
             }
             .tag(Tab.information)
             
@@ -56,7 +56,7 @@ struct TabExperience: View {
                     .navigationTitle("More")
             }
             .tabItem {
-                TabItem(title: Text("More"), image: Image(systemName: "ellipsis"))
+                MoreLabel(isSelected: selectedTab == .more)
             }
             .tag(Tab.more)
         }
