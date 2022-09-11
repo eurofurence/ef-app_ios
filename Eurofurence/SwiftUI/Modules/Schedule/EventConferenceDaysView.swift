@@ -3,12 +3,7 @@ import SwiftUI
 
 struct EventConferenceDaysView: View {
     
-    @FetchRequest(
-        entity: Day.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Day.date, ascending: true)
-        ]
-    )
+    @FetchRequest(fetchRequest: Day.temporallyOrderedFetchRequest())
     private var days: FetchedResults<Day>
     
     @Binding var selectedDay: Day?
