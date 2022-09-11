@@ -14,13 +14,7 @@ struct EventConferenceDaysView: View {
                 ScheduleCollectionView(filter: .day(day))
                     .navigationTitle(day.name)
             } label: {
-                Label {
-                    Text(verbatim: day.name)
-                } icon: {
-                    let calendarDay = Calendar.current.component(.day, from: day.date)
-                    let systemName = "\(calendarDay).square"
-                    Image(systemName: systemName)
-                }
+                DayLabel(day: day, isSelected: selectedDay == day)
             }
         }
     }
