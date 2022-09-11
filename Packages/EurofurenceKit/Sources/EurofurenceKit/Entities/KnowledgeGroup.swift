@@ -11,7 +11,7 @@ public class KnowledgeGroup: Entity {
     @NSManaged public var fontAwesomeUnicodeCharacterAddress: String
     @NSManaged public var knowledgeGroupDescription: String
     @NSManaged public var name: String
-    @NSManaged public var order: Int16
+    @NSManaged var order: Int16
     @NSManaged var entries: NSOrderedSet
     
     public var orderedKnowledgeEntries: [KnowledgeEntry] {
@@ -47,6 +47,8 @@ public class KnowledgeGroup: Entity {
 
 extension KnowledgeGroup {
     
+    /// Produces an `NSFetchRequest` for fetching all `KnowledgeGroup`s, ordered by the characteristics of the model.
+    /// - Returns: An `NSFetchRequest` for fetching all `KnowledgeGroup`s in their designated order.
     public static func orderedGroupsFetchRequest() -> NSFetchRequest<KnowledgeGroup> {
         let fetchRequest: NSFetchRequest<KnowledgeGroup> = KnowledgeGroup.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \KnowledgeGroup.order, ascending: true)]

@@ -36,6 +36,15 @@ extension DealerCategory {
 
 extension DealerCategory {
     
+    /// Produces an `NSFetchRequest` for displaying all categories, sorted in alphabetical order.
+    /// - Returns: An `NSFetchRequest` that fetches all `DealerCategory` entities, sorted alphabetically by name.
+    public static func alphabeticallySortedFetchRequest() -> NSFetchRequest<DealerCategory> {
+        let fetchRequest: NSFetchRequest<DealerCategory> = DealerCategory.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \DealerCategory.name, ascending: true)]
+        
+        return fetchRequest
+    }
+    
     static func named(name: String, in managedObjectContext: NSManagedObjectContext) -> DealerCategory {
         let fetchRequest = Self.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)

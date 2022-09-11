@@ -3,12 +3,7 @@ import SwiftUI
 
 struct DealerCategoriesView: View {
     
-    @FetchRequest(
-        entity: DealerCategory.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \DealerCategory.name, ascending: true)
-        ]
-    )
+    @FetchRequest(fetchRequest: DealerCategory.alphabeticallySortedFetchRequest())
     private var categories: FetchedResults<DealerCategory>
     
     @Binding var selectedCategory: DealerCategory?
