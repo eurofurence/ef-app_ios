@@ -18,7 +18,7 @@ public class KnowledgeGroup: Entity {
         entries.array(of: KnowledgeEntry.self)
     }
     
-    public override func willSave() {
+    override public func willSave() {
         super.willSave()
         orderKnowledgeEntries()
     }

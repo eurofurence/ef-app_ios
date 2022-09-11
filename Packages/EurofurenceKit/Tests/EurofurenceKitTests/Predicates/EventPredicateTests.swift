@@ -35,7 +35,9 @@ class EventPredicateTests: EurofurenceKitTestCase {
         
         let artShowTrack = try scenario.model.track(identifiedBy: artShowTrackIdentifier)
         let artShowSetup = try scenario.model.event(identifiedBy: artShowSetupAndCheckInIdentifier)
-        let fursuitBadgePickUpAndPrinting = try scenario.model.event(identifiedBy: fursuitBadgePickUpAndPrintingIdentifier)
+        let fursuitBadgePickUpAndPrinting = try scenario.model.event(
+            identifiedBy: fursuitBadgePickUpAndPrintingIdentifier
+        )
         
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
         fetchRequest.predicate = Event.predicate(forEventsInTrack: artShowTrack)

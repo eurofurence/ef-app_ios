@@ -36,7 +36,10 @@ class WellKnownDealerCategoryTests: EurofurenceKitTestCase {
         XCTAssertEqual(category.canonicalCategory, expected, line: line)
     }
     
-    private func category(named name: String, in managedObjectContext: NSManagedObjectContext) throws -> DealerCategory {
+    private func category(
+        named name: String,
+        in managedObjectContext: NSManagedObjectContext
+    ) throws -> DealerCategory {
         let fetchRequest: NSFetchRequest<DealerCategory> = DealerCategory.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "name == %@", name)
         fetchRequest.fetchLimit = 1

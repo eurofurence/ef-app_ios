@@ -12,7 +12,7 @@ public class DealerCategory: NSManagedObject {
 
 }
 
-// MARK - DealerCategory + Identifiable
+// MARK: - DealerCategory + Identifiable
 
 extension DealerCategory: Identifiable {
     

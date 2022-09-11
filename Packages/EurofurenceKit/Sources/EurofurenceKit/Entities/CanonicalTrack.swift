@@ -60,63 +60,29 @@ public enum CanonicalTrack: CaseIterable, Equatable, Hashable, Identifiable {
     /// The track is for events where fursuiters can be captured in group photos, e.g. by maker or theme
     case fursuitGroupPhoto
     
+    private static let canonicalTracksByLowercaseName: [String: CanonicalTrack] = [
+        "art show": .artShow,
+        "charity": .charity,
+        "creating art": .creatingArt,
+        "dealers' den": .dealersDen,
+        "fursuit": .fursuit,
+        "games | social": .gamesAndSocial,
+        "guest of honor": .guestOfHonour,
+        "lobby and outdoor": .lobbyAndOutdoor,
+        "misc.": .miscellaneous,
+        "music": .music,
+        "performance": .performance,
+        "stage": .mainStage,
+        "supersponsor event": .supersponsor,
+        "writing": .writing,
+        "animation": .animation,
+        "dance": .dance,
+        "maker ∕ theme-based fursuit group photo": .fursuitGroupPhoto
+    ]
+    
     init(trackName: String) {
         let lowercasedName = trackName.lowercased()
-        switch lowercasedName {
-        case "art show":
-            self = .artShow
-            
-        case "charity":
-            self = .charity
-            
-        case "creating art":
-            self = .creatingArt
-            
-        case "dealers' den":
-            self = .dealersDen
-            
-        case "fursuit":
-            self = .fursuit
-            
-        case "games | social":
-            self = .gamesAndSocial
-            
-        case "guest of honor":
-            self = .guestOfHonour
-            
-        case "lobby and outdoor":
-            self = .lobbyAndOutdoor
-            
-        case "misc.":
-            self = .miscellaneous
-            
-        case "music":
-            self = .music
-            
-        case "performance":
-            self = .performance
-            
-        case "stage":
-            self = .mainStage
-            
-        case "supersponsor event":
-            self = .supersponsor
-            
-        case "writing":
-            self = .writing
-            
-        case "animation":
-            self = .animation
-            
-        case "dance":
-            self = .dance
-            
-        case "maker ∕ theme-based fursuit group photo":
-            self = .fursuitGroupPhoto
-            
-        default:
-            self = .unknown
-        }
+        self = Self.canonicalTracksByLowercaseName[lowercasedName, default: .unknown]
     }
     
 }

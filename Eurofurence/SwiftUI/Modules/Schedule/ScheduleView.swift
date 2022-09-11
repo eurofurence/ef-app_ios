@@ -108,6 +108,7 @@ struct ScheduleCollectionView: View {
                 switch filter {
                 case .day(let day):
                     eventGroups.nsPredicate = Event.predicate(forEventsOccurringOn: day)
+                    
                 case .track(let track):
                     eventGroups.nsPredicate = Event.predicate(forEventsInTrack: track)
                 }

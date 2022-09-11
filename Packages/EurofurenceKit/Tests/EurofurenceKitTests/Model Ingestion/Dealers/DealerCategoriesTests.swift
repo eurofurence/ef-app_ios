@@ -1,5 +1,5 @@
-import EurofurenceWebAPI
 @testable import EurofurenceKit
+import EurofurenceWebAPI
 import XCTest
 
 class DealerCategoriesTests: EurofurenceKitTestCase {
