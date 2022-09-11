@@ -1,9 +1,29 @@
+import EurofurenceKit
 import SwiftUI
 
 struct MoreView: View {
     
     var body: some View {
-        Text("More")
+        List {
+            NavigationLink {
+                Text("Maps")
+            } label: {
+                MapsLabel()
+            }
+            
+            NavigationLink {
+                Text("Collect-them-all")
+            } label: {
+                CollectThemAllLabel()
+            }
+            
+            NavigationLink {
+                Text("Services")
+            } label: {
+                AdditionalServicesLabel()
+            }
+        }
+        .navigationTitle("More")
     }
     
 }
@@ -11,7 +31,11 @@ struct MoreView: View {
 struct MoreView_Previews: PreviewProvider {
     
     static var previews: some View {
-        MoreView()
+        EurofurenceModel.preview { _ in
+            NavigationView {
+                MoreView()
+            }
+        }
     }
     
 }
