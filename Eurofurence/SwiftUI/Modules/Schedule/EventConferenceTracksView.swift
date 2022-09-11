@@ -16,7 +16,8 @@ struct EventConferenceTracksView: View {
             } label: {
                 CanonicalTrackLabel(
                     track: track.canonicalTrack,
-                    unknownTrackText: Text(verbatim: track.name)
+                    unknownTrackText: Text(verbatim: track.name),
+                    isSelected: selectedTrack == track
                 )
             }
         }

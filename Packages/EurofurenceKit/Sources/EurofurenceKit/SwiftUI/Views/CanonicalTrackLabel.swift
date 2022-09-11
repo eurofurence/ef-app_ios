@@ -5,10 +5,12 @@ public struct CanonicalTrackLabel: View {
     
     private let track: CanonicalTrack
     private let unknownTrackText: Text
+    private let isSelected: Bool
     
-    public init(track: CanonicalTrack, unknownTrackText: Text) {
+    public init(track: CanonicalTrack, unknownTrackText: Text, isSelected: Bool) {
         self.track = track
         self.unknownTrackText = unknownTrackText
+        self.isSelected = isSelected
     }
     
     public var body: some View {
@@ -77,7 +79,7 @@ public struct CanonicalTrackLabel: View {
         }
     }
     
-    private static let tracksToSFSymbolNames: [CanonicalTrack: String] = [
+    private static let tracksToUnselectedSFSymbolNames: [CanonicalTrack: String] = [
         .artShow: "paintbrush",
         .charity: "person.3.sequence",
         .creatingArt: "paintpalette",
@@ -89,7 +91,7 @@ public struct CanonicalTrackLabel: View {
         .miscellaneous: "ellipsis.rectangle",
         .music: "music.note",
         .performance: "theatermasks",
-        .mainStage: "music.mic",
+        .mainStage: "music.mic.circle",
         .supersponsor: "star.circle",
         .writing: "pencil.and.outline",
         .animation: "film",
@@ -97,9 +99,37 @@ public struct CanonicalTrackLabel: View {
         .fursuitGroupPhoto: "camera"
     ]
     
+    private static let tracksToSelectedSFSymbolNames: [CanonicalTrack: String] = [
+        .artShow: "paintbrush.fill",
+        .charity: "person.3.sequence.fill",
+        .creatingArt: "paintpalette.fill",
+        .dealersDen: "shippingbox.fill",
+        .fursuit: "pawprint.fill",
+        .gamesAndSocial: "gamecontroller.fill",
+        .guestOfHonour: "person.fill",
+        .lobbyAndOutdoor: "building.2.fill",
+        .miscellaneous: "ellipsis.rectangle.fill",
+        .music: "music.note",
+        .performance: "theatermasks.fill",
+        .mainStage: "music.mic.circle.fill",
+        .supersponsor: "star.circle.fill",
+        .writing: "pencil.and.outline",
+        .animation: "film.fill",
+        .dance: "music.note.house.fill",
+        .fursuitGroupPhoto: "camera.fill"
+    ]
+    
     @ViewBuilder private var icon: some View {
-        let symbolName = Self.tracksToSFSymbolNames[track, default: "calendar"]
-        SwiftUI.Image(systemName: symbolName)
+        let symbolName: String? = {
+            if isSelected {
+                return Self.tracksToSelectedSFSymbolNames[track]
+            } else {
+                return Self.tracksToUnselectedSFSymbolNames[track]
+            }
+        }()
+        
+        let defaultSymbolName = "calendar"
+        SwiftUI.Image(systemName: symbolName ?? defaultSymbolName)
     }
     
 }
@@ -109,7 +139,7 @@ struct CanonicalTrackLabel_LibraryContentProvider: LibraryContentProvider {
     @LibraryContentBuilder
     var views: [LibraryItem] {
         LibraryItem(
-            CanonicalTrackLabel(track: .mainStage, unknownTrackText: Text("")),
+            CanonicalTrackLabel(track: .mainStage, unknownTrackText: Text(""), isSelected: false),
             visible: true,
             title: "Canonical Track Label",
             category: .control
@@ -122,7 +152,10 @@ struct CanonicalTrackLabel_Previews: PreviewProvider {
     
     static var previews: some View {
         ForEach(CanonicalTrack.allCases) { track in
-            CanonicalTrackLabel(track: track, unknownTrackText: Text("Placeholder"))
+            VStack {
+                CanonicalTrackLabel(track: track, unknownTrackText: Text("Placeholder"), isSelected: false)
+                CanonicalTrackLabel(track: track, unknownTrackText: Text("Placeholder"), isSelected: true)
+            }
         }
     }
     
