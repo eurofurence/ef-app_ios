@@ -3,12 +3,7 @@ import SwiftUI
 
 struct EventConferenceTracksView: View {
     
-    @FetchRequest(
-        entity: Track.entity(),
-        sortDescriptors: [
-            NSSortDescriptor(keyPath: \Track.name, ascending: true)
-        ]
-    )
+    @FetchRequest(fetchRequest: Track.alphabeticallySortedFetchRequest())
     private var tracks: FetchedResults<Track>
     
     @Binding var selectedTrack: Track?

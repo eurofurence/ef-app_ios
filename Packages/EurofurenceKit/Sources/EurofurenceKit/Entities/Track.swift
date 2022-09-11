@@ -23,6 +23,21 @@ extension Track {
     
 }
 
+// MARK: - Fetching
+
+extension Track {
+    
+    /// Produces an `NSFetchRequest` for fetching all `Track` entities in alphabetical order.
+    /// - Returns: An `NSFetchRequest` for fetching all `Track` entities in alphabetical order.
+    public static func alphabeticallySortedFetchRequest() -> NSFetchRequest<Track> {
+        let fetchRequest: NSFetchRequest<Track> = Track.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Track.name, ascending: true)]
+        
+        return fetchRequest
+    }
+    
+}
+
 // MARK: - Track + ConsumesRemoteResponse
 
 extension Track: ConsumesRemoteResponse {
