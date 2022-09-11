@@ -2,7 +2,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class IngestingDeltaUpdate_ContainsChanges: XCTestCase {
+class IngestingDeltaUpdate_ContainsChanges: EurofurenceKitTestCase {
     
     func testChangedEntitiesAreNotReinserted_SameResponseTwice() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

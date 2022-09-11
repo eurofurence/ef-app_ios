@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class EurofurenceModelAuthenticationTests: XCTestCase {
+class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
     
     func testModelNotAuthenticatedOnStart() async throws {
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()

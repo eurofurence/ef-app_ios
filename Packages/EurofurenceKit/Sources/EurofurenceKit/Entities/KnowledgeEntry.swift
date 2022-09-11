@@ -12,9 +12,33 @@ public class KnowledgeEntry: Entity {
     @NSManaged public var text: String
     @NSManaged public var title: String
     @NSManaged public var group: KnowledgeGroup
-    @NSManaged public var images: Set<KnowledgeEntryImage>
-    @NSManaged public var links: Set<KnowledgeLink>
+    
+    @NSManaged var links: NSOrderedSet
+    @NSManaged var images: NSOrderedSet
+    
+    public var orderedImages: [KnowledgeEntryImage] {
+        images.array(of: KnowledgeEntryImage.self)
+    }
+    
+    public var orderedLinks: [KnowledgeLink] {
+        links.array(of: KnowledgeLink.self)
+    }
 
+}
+
+// MARK: - KnowledgeEntry + Comparable
+
+extension KnowledgeEntry: Comparable {
+    
+    public static func < (lhs: KnowledgeEntry, rhs: KnowledgeEntry) -> Bool {
+        // If the orders are the same, disambiguiate by name.
+        if lhs.order == rhs.order {
+            return lhs.title < rhs.title
+        } else {
+            return lhs.order < rhs.order
+        }
+    }
+    
 }
 
 // MARK: - KnowledgeEntry + ConsumesRemoteResponse
@@ -49,7 +73,13 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
     private func updateLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
         removeAllLinks(context)
         
-        for link in context.remoteObject.links {
+        // Insert links alphabetically
+        let sortedLinks = context.remoteObject.links.sorted { first, second in
+            guard let firstName = first.name, let secondName = second.name else { return false }
+            return firstName < secondName
+        }
+        
+        for link in sortedLinks {
             let knowledgeLink = KnowledgeLink(context: context.managedObjectContext)
             knowledgeLink.fragmentType = link.fragmentType
             knowledgeLink.name = link.name
@@ -59,7 +89,7 @@ extension KnowledgeEntry: ConsumesRemoteResponse {
     }
     
     private func removeAllLinks(_ context: RemoteResponseConsumingContext<RemoteObject>) {
-        for link in links {
+        for link in links.array.compactMap({ $0 as? KnowledgeLink }) {
             removeFromLinks(link)
             context.managedObjectContext.delete(link)
         }

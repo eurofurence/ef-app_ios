@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class MarkingMessageAsReadTests: XCTestCase {
+class MarkingMessageAsReadTests: EurofurenceKitTestCase {
     
     func testMarkingUnreadMessageOnSuccessUpdatesLocalReadState() async throws {
         let api = FakeEurofurenceAPI()

@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class DeletingKnowledgeGroupTests: XCTestCase {
+class DeletingKnowledgeGroupTests: EurofurenceKitTestCase {
     
     func testDeletingKnowledgeGroupDeletesEntriesAssociatedWithGroup() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
@@ -23,7 +23,7 @@ class DeletingKnowledgeGroupTests: XCTestCase {
             let results = try scenario.viewContext.fetch(fetchRequest)
             let knowledgeGroup = try XCTUnwrap(results.first)
             
-            return knowledgeGroup.entries.map(\.identifier)
+            return knowledgeGroup.orderedKnowledgeEntries.map(\.identifier)
         }
         
         // Ensure each knowledge entry is available before processing the deletion

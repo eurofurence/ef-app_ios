@@ -5,6 +5,7 @@ import Foundation
 import Logging
 
 /// Root entry point for entity access, authentication, and more within the Eurofurence targets.
+@MainActor
 public class EurofurenceModel: ObservableObject {
     
     private let configuration: EurofurenceModel.Configuration
@@ -13,7 +14,7 @@ public class EurofurenceModel: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     /// The current synchronisation phase between the model and the backing store.
-    @Published public private(set) var cloudStatus: CloudStatus = .idle
+    @Published public internal(set) var cloudStatus: CloudStatus = .idle
     
     /// The currently authenticated user within the model, or `nil` if the model is unauthenticated.
     @Published public private(set) var currentUser: User?
@@ -63,8 +64,9 @@ public class EurofurenceModel: ObservableObject {
     
     private func performLocalStoreUpdates() async throws {
         let context = prepareUpdateOperationContext()
-        let operation = UpdateLocalStoreOperation()
-        cloudStatus = .updating(progress: operation.progress)
+        let progress = EurofurenceModel.Progress()
+        let operation = UpdateLocalStoreOperation(progress: progress)
+        cloudStatus = .updating(progress: progress)
         
         // Simultaneously update the local store and perform any local book-keeping.
         try await withThrowingTaskGroup(of: Void.self) { group in
@@ -145,9 +147,10 @@ extension EurofurenceModel {
     }
     
     /// Represents the relative progress made by the model during a synchronisation pass with the remote store.
+    @MainActor
     public class Progress: ObservableObject, Equatable {
         
-        public static func == (lhs: EurofurenceModel.Progress, rhs: EurofurenceModel.Progress) -> Bool {
+        public nonisolated static func == (lhs: EurofurenceModel.Progress, rhs: EurofurenceModel.Progress) -> Bool {
             lhs === rhs
         }
         

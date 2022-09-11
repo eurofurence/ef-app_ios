@@ -5,7 +5,11 @@ import Logging
 struct UpdateLocalStoreOperation: UpdateOperation {
     
     private let logger = Logger(label: "UpdateStore")
-    let progress = EurofurenceModel.Progress()
+    private let progress: EurofurenceModel.Progress
+    
+    init(progress: EurofurenceModel.Progress) {
+        self.progress = progress
+    }
     
     func execute(context: UpdateOperationContext) async throws {
         try await withThrowingTaskGroup(of: Void.self) { group in
@@ -110,7 +114,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
     ) async throws {
         logger.info("Fetching images (count=\(identifiersAndHashes.count))")
         
-        progress.update(totalUnitCount: identifiersAndHashes.count)
+        await progress.update(totalUnitCount: identifiersAndHashes.count)
         
         let results: [DownloadImageResult] = await withTaskGroup(of: DownloadImageResult.self) { group in
             var results = [DownloadImageResult]()
@@ -122,7 +126,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
             }
             
             for await result in group {
-                progress.updateCompletedUnitCount()
+                await progress.updateCompletedUnitCount()
                 results.append(result)
             }
             

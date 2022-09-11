@@ -2,7 +2,7 @@ import CoreData
 @testable import EurofurenceKit
 import XCTest
 
-class IngestingFullRemoteModel_EventDedupeTests: XCTestCase {
+class IngestingFullRemoteModel_EventDedupeTests: EurofurenceKitTestCase {
     
     func testIngestingFullResponse_DoesNotDuplicateHosts() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

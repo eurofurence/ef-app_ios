@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class DeletingRoomTests: XCTestCase {
+class DeletingRoomTests: EurofurenceKitTestCase {
     
     func testDeletingRoomRemovesEventsOccurringInRoom() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

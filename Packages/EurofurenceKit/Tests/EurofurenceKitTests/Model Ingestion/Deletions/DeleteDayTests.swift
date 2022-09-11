@@ -3,7 +3,7 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
-class DeleteDayTests: XCTestCase {
+class DeleteDayTests: EurofurenceKitTestCase {
     
     func testDeletingDateRemovesEventsThatOccurOnIt() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

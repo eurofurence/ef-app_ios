@@ -31,8 +31,10 @@
         <attribute name="dealerShortDescription" attributeType="String"/>
         <attribute name="displayName" attributeType="String"/>
         <attribute name="fridayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="indexingTitle" attributeType="String" defaultValueString=""/>
         <attribute name="isAfterDark" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="merchanise" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
         <attribute name="registrationNumber" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="saturdayAttendance" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="telegramHandle" optional="YES" attributeType="String"/>
@@ -96,8 +98,8 @@
         <attribute name="text" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="group" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeGroup" inverseName="entries" inverseEntity="KnowledgeGroup"/>
-        <relationship name="images" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
-        <relationship name="links" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
+        <relationship name="images" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeEntryImage" inverseName="entries" inverseEntity="KnowledgeEntryImage"/>
+        <relationship name="links" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeLink" inverseName="entry" inverseEntity="KnowledgeLink"/>
     </entity>
     <entity name="KnowledgeEntryImage" representedClassName="KnowledgeEntryImage" parentEntity="Image" syncable="YES">
         <relationship name="entries" toMany="YES" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="images" inverseEntity="KnowledgeEntry"/>
@@ -107,7 +109,7 @@
         <attribute name="knowledgeGroupDescription" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="entries" toMany="YES" deletionRule="Cascade" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
+        <relationship name="entries" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="KnowledgeEntry" inverseName="group" inverseEntity="KnowledgeEntry"/>
     </entity>
     <entity name="KnowledgeLink" representedClassName="KnowledgeLink" parentEntity="Link" syncable="YES">
         <relationship name="entry" maxCount="1" deletionRule="Nullify" destinationEntity="KnowledgeEntry" inverseName="links" inverseEntity="KnowledgeEntry"/>
@@ -171,7 +173,7 @@
         <element name="ArtistImage" positionX="54" positionY="171" width="128" height="58"/>
         <element name="ArtPreview" positionX="0" positionY="117" width="128" height="73"/>
         <element name="Day" positionX="-36" positionY="27" width="128" height="74"/>
-        <element name="Dealer" positionX="36" positionY="162" width="128" height="299"/>
+        <element name="Dealer" positionX="36" positionY="162" width="128" height="329"/>
         <element name="DealerCategory" positionX="27" positionY="171" width="128" height="73"/>
         <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
         <element name="DealerThumbnail" positionX="36" positionY="162" width="128" height="58"/>
@@ -180,7 +182,7 @@
         <element name="EventBanner" positionX="18" positionY="144" width="128" height="44"/>
         <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
         <element name="Image" positionX="9" positionY="144" width="128" height="134"/>
-        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="133"/>
+        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="119"/>
         <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
         <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="104"/>
         <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>

@@ -14,6 +14,21 @@ public class Day: Entity {
 
 }
 
+// MARK: - Fetching
+
+extension Day {
+    
+    /// Produces an `NSFetchRequest` for fetching all `Day` entities in their temporally-occurring order.
+    /// - Returns: An `NSFetchRequest` that fetches all days in the model, ordered by their occurrance.
+    public static func temporallyOrderedFetchRequest() -> NSFetchRequest<Day> {
+        let fetchRequest: NSFetchRequest<Day> = Day.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Day.date, ascending: true)]
+        
+        return fetchRequest
+    }
+    
+}
+
 // MARK: - Day + ConsumesRemoteResponse
 
 extension Day: ConsumesRemoteResponse {

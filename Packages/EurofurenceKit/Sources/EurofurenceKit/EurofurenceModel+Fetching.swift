@@ -29,13 +29,40 @@ extension EurofurenceModel {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidDealer(identifier))
     }
     
-    /// Fetches the `KnowledgeEtry` associated with the given identifier.
+    /// Fetches the `KnowledgeGroup` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the knowledge group to be fetched.
+    /// - Returns: The `KnowledgeGroup` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidKnowledgeGroup` if no `KnowledgeGroup` is associated with the given identifier.
+    public func knowledgeGroup(identifiedBy identifier: String) throws -> KnowledgeGroup {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidKnowledgeEntry(identifier))
+    }
+    
+    /// Fetches the `KnowledgeEntry` associated with the given identifier.
     ///
     /// - Parameter identifier: The identifier of the knowledge entry to be fetched.
-    /// - Returns: The `KnowledgeEtry` associated with the given identifier.
-    /// - Throws: `EurofurenceError.invalidKnowledgeEntry` if no `KnowledgeEtry` is associated with the given identifier.
+    /// - Returns: The `KnowledgeEntry` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidKnowledgeEntry` if no `KnowledgeEntry` is associated with the given identifier.
     public func knowledgeEntry(identifiedBy identifier: String) throws -> KnowledgeEntry {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidKnowledgeEntry(identifier))
+    }
+    
+    /// Fetches the `Day` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the day to be fetched.
+    /// - Returns: The `Day` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidDay` if no `Day` is associated with the given identifier.
+    public func day(identifiedBy identifier: String) throws -> Day {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidDay(identifier))
+    }
+    
+    /// Fetches the `Track` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the track to be fetched.
+    /// - Returns: The `Track` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidTrack` if no `Track` is associated with the given identifier.
+    public func track(identifiedBy identifier: String) throws -> Track {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidTrack(identifier))
     }
     
     /// Fetches the `Message` associated with the given identifier.

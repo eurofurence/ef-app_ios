@@ -2,7 +2,7 @@ import CoreData
 @testable import EurofurenceKit
 import XCTest
 
-class WellKnownTagTests: XCTestCase {
+class WellKnownTagTests: EurofurenceKitTestCase {
     
     func testSponsorOnly() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

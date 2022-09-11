@@ -14,6 +14,20 @@ public class Link: NSManagedObject {
 
 }
 
+// MARK: - Link + Identifiable
+
+extension Link: Identifiable {
+    
+    public var id: some Hashable {
+        var hasher = Hasher()
+        hasher.combine(fragmentType)
+        hasher.combine(target)
+        
+        return hasher.finalize()
+    }
+    
+}
+
 // MARK: - Updating
 
 extension Link {

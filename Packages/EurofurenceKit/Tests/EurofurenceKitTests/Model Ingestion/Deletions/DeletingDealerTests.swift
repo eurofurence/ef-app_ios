@@ -4,7 +4,7 @@ import EurofurenceWebAPI
 import XCTAsyncAssertions
 import XCTest
 
-class DeletingDealerTests: XCTestCase {
+class DeletingDealerTests: EurofurenceKitTestCase {
     
     func testDeletedDealerRemovedFromStore() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

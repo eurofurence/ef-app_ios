@@ -3,8 +3,10 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
+@MainActor
 class EurofurenceModelTestBuilder {
     
+    @MainActor
     struct Scenario {
         var model: EurofurenceModel
         var modelProperties: FakeModelProperties

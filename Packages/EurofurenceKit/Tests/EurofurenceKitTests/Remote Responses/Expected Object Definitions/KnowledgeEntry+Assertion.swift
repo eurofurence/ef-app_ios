@@ -25,7 +25,7 @@ extension EurofurenceWebAPI.KnowledgeEntry {
         XCTAssertEqual(links.count, actual.links.count)
         
         for link in links {
-            let actualLink = try XCTUnwrap(actual.links.first(where: { $0.target == link.target }))
+            let actualLink = try XCTUnwrap(actual.orderedLinks.first(where: { $0.target == link.target }))
             XCTAssertEqual(link.fragmentType, actualLink.fragmentType)
             XCTAssertEqual(link.name, actualLink.name)
         }

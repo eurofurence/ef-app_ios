@@ -1,7 +1,7 @@
 import EurofurenceWebAPI
 import XCTest
 
-class IngestingFullRemoteModel_Success: XCTestCase {
+class IngestingFullRemoteModel_Success: EurofurenceKitTestCase {
     
     func testIngestingRemoteResponse_InjectResponseObject() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()

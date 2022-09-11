@@ -12,10 +12,19 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = scene as? UIWindowScene else { return }
         
-        let window = UIWindow(windowScene: windowScene)
+        let window = AutoPatchSplitViewControllerWindow(windowScene: windowScene)
         self.window = window
         
-        let rootViewController = UIHostingController(rootView: Placeholder())
+        let model = AppModel.shared.model
+        
+        Task(priority: .userInitiated) {
+            await model.prepareForPresentation()
+        }
+        
+        let rootView = HandheldExperience()
+            .environmentModel(model)
+        
+        let rootViewController = UIHostingController(rootView: rootView)
         window.rootViewController = rootViewController
         
         window.makeKeyAndVisible()

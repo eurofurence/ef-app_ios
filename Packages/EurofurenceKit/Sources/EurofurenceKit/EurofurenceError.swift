@@ -7,6 +7,8 @@ public enum EurofurenceError: Error, Equatable {
     case invalidDealer(String)
     case invalidKnowledgeEntry(String)
     case invalidMessage(String)
+    case invalidTrack(String)
+    case invalidDay(String)
     
     case loginFailed
     
