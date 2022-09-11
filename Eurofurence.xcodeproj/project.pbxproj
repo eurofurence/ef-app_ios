@@ -561,6 +561,16 @@
 			path = Labels;
 			sourceTree = "<group>";
 		};
+		6E08B1BF28CE0E1F00512406 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
+				CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */,
+				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		6E79E66628C9C5BF00444A37 /* Handheld */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,11 +753,8 @@
 				CA728436209C7DE1007D912A /* Settings.bundle */,
 				7820A6F91F16B8A0004C0FB5 /* Eurofurence.entitlements */,
 				9ACF99431EBE172D006FC958 /* Info.plist */,
-				9ACF99371EBE172D006FC958 /* AppDelegate.swift */,
 				CA1D0CAD28C8A2EF007D96F8 /* AppModel.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
-				CABD9BA128BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift */,
-				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */,
 				CA52DA6528ACE5DF00020A4F /* App Icon Picker */,
@@ -756,6 +763,7 @@
 				CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */,
 				CA08861525FE99680044DD53 /* Resources */,
 				CABD9BA328BE08D300CEFAB3 /* SwiftUI */,
+				6E08B1BF28CE0E1F00512406 /* UIKit */,
 			);
 			path = Eurofurence;
 			sourceTree = "<group>";
