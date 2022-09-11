@@ -3,10 +3,7 @@ import SwiftUI
 
 struct InformationView: View {
     
-    @FetchRequest(
-        entity: KnowledgeGroup.entity(),
-        sortDescriptors: [NSSortDescriptor(keyPath: \KnowledgeGroup.order, ascending: true)]
-    )
+    @FetchRequest(fetchRequest: KnowledgeGroup.orderedGroupsFetchRequest())
     private var groups: FetchedResults<KnowledgeGroup>
     
     var body: some View {

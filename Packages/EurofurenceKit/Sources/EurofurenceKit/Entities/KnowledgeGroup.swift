@@ -43,6 +43,19 @@ public class KnowledgeGroup: Entity {
 
 }
 
+// MARK: - Fetching
+
+extension KnowledgeGroup {
+    
+    public static func orderedGroupsFetchRequest() -> NSFetchRequest<KnowledgeGroup> {
+        let fetchRequest: NSFetchRequest<KnowledgeGroup> = KnowledgeGroup.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \KnowledgeGroup.order, ascending: true)]
+        
+        return fetchRequest
+    }
+    
+}
+
 // MARK: - KnowledgeGroup + ConsumesRemoteResponse
 
 extension KnowledgeGroup: ConsumesRemoteResponse {
