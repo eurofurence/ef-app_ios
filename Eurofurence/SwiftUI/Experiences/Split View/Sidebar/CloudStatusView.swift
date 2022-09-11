@@ -95,14 +95,15 @@ struct CloudStatusView: View {
         
         var body: some View {
             VStack {
-                HStack {
-                    ProgressView()
-                    Text(verbatim: progress.localizedDescription)
-                }
-                .foregroundColor(.blue)
-                
                 if let fractionComplete = progress.fractionComplete {
-                    ProgressView(value: fractionComplete)
+                    VStack {
+                        Text(verbatim: progress.localizedDescription)
+                            .foregroundColor(.blue)
+                        
+                        ProgressView(value: fractionComplete)
+                    }
+                } else {
+                    ProgressView()
                 }
             }
         }
