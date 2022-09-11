@@ -10,11 +10,7 @@ struct DealerSidebarItems: View {
             NavigationLink {
                 DealersCollectionView()
             } label: {
-                Label {
-                    Text("Dealers")
-                } icon: {
-                    Image(systemName: "cart")
-                }
+                DealersLabel()
             }
             
             Divider()

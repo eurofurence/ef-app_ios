@@ -3,55 +3,45 @@ import SwiftUI
 
 struct TopLevelSidebarItems: View {
     
+    private enum Item: Hashable {
+        case news
+        case information
+        case maps
+        case game
+        case services
+    }
+    
+    @State private var selectedItem: Item?
+    
     var body: some View {
-        NavigationLink {
+        NavigationLink(tag: Item.news, selection: $selectedItem) {
             Text("News")
         } label: {
-            Label {
-                Text("News")
-            } icon: {
-                Image(systemName: "newspaper")
-            }
+            NewsLabel(isSelected: selectedItem == .news)
         }
         
-        NavigationLink {
+        NavigationLink(tag: Item.information, selection: $selectedItem) {
             InformationView()
         } label: {
-            Label {
-                Text("Information")
-            } icon: {
-                Image(systemName: "info.circle")
-            }
+            InformationLabel(isSelected: selectedItem == .information)
         }
         
-        NavigationLink {
+        NavigationLink(tag: Item.maps, selection: $selectedItem) {
             Text("Maps")
         } label: {
-            Label {
-                Text("Maps")
-            } icon: {
-                Image(systemName: "map")
-            }
+            MapsLabel(isSelected: selectedItem == .maps)
         }
         
-        NavigationLink {
+        NavigationLink(tag: Item.game, selection: $selectedItem) {
             Text("Collect-them-All")
         } label: {
-            Label {
-                Text("Collect-them-All")
-            } icon: {
-                Image("Collectemall-50")
-            }
+            CollectThemAllLabel(isSelected: selectedItem == .game)
         }
         
-        NavigationLink {
+        NavigationLink(tag: Item.services, selection: $selectedItem) {
             Text("Services")
         } label: {
-            Label {
-                Text("Services")
-            } icon: {
-                Image(systemName: "books.vertical")
-            }
+            AdditionalServicesLabel(isSelected: selectedItem == .services)
         }
     }
     
