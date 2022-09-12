@@ -6,12 +6,16 @@ struct EventConferenceTracksView: View {
     @FetchRequest(fetchRequest: Track.alphabeticallySortedFetchRequest())
     private var tracks: FetchedResults<Track>
     
+    @EnvironmentObject private var model: EurofurenceModel
+    
     @Binding var selectedTrack: Track?
     
     var body: some View {
         ForEach(tracks) { track in
             NavigationLink(tag: track, selection: $selectedTrack) {
-                ScheduleCollectionView(filter: .track(track))
+                let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: track)
+                let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+                ScheduleCollectionView(schedule: schedule)
                     .navigationTitle(track.name)
             } label: {
                 CanonicalTrackLabel(
