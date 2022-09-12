@@ -7,8 +7,10 @@ extension EurofurenceModel {
     /// Designates the configuration to apply when assembling a `ScheduleController`.
     public struct ScheduleConfiguration {
         
-        public init() {
-            
+        let day: Day?
+        
+        public init(day: Day? = nil) {
+            self.day = day
         }
         
     }
@@ -19,7 +21,10 @@ extension EurofurenceModel {
     public func makeScheduleController(
         scheduleConfiguration: ScheduleConfiguration = ScheduleConfiguration()
     ) -> ScheduleController {
-        ScheduleController(managedObjectContext: viewContext)
+        ScheduleController(
+            scheduleConfiguration: scheduleConfiguration,
+            managedObjectContext: viewContext
+        )
     }
     
 }

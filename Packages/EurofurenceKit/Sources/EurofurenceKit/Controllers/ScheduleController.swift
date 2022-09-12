@@ -1,11 +1,15 @@
 import CoreData
 import Foundation
+import Logging
 
 /// An object used for accessing the contents of the models events.
 ///
 /// This class is attributed to the main actor, enabling binding of state to the user interface.
 @MainActor
-public class ScheduleController: NSObject, ObservableObject, NSFetchedResultsControllerDelegate {
+public class ScheduleController: NSObject, ObservableObject {
+    
+    private static let logger = Logger(label: "ScheduleController")
+    
     
     /// A typealias for the collection of groups associated with a schedule.
     public typealias EventGroup = Grouping<Date, Event>
@@ -31,15 +35,24 @@ public class ScheduleController: NSObject, ObservableObject, NSFetchedResultsCon
     /// The currently active `Track` within the schedule, used to filter the collection of events.
     @Published public var selectedTrack: Track?
     
+    private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
+    private let managedObjectContext: NSManagedObjectContext
     private let fetchedResultsController: NSFetchedResultsController<Event>
     
-    init(managedObjectContext: NSManagedObjectContext) {
+    init(
+        scheduleConfiguration: EurofurenceModel.ScheduleConfiguration,
+        managedObjectContext: NSManagedObjectContext
+    ) {
         precondition(
             managedObjectContext.concurrencyType == .mainQueueConcurrencyType,
             "\(Self.self) requires a main-queue NSManagedObjectContext"
         )
         
+        self.scheduleConfiguration = scheduleConfiguration
+        self.managedObjectContext = managedObjectContext
+        
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+
         fetchRequest.sortDescriptors = [
             NSSortDescriptor(key: "startDate", ascending: true)
         ]
@@ -55,31 +68,51 @@ public class ScheduleController: NSObject, ObservableObject, NSFetchedResultsCon
         
         fetchedResultsController.delegate = self
         
-        let daysFetchRequest = Day.temporallyOrderedFetchRequest()
-        let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
-        
         do {
-            availableDays = try managedObjectContext.fetch(daysFetchRequest)
-            selectedDay = availableDays.first
-            availableTracks = try managedObjectContext.fetch(tracksFetchRequest)
-            
-            if let selectedDay = selectedDay {
-                fetchedResultsController.fetchRequest.predicate = Event.predicate(forEventsOccurringOn: selectedDay)
-            }
-            
+            try prepareFetchedResultsControllerUsingConfiguration()
             try fetchedResultsController.performFetch()
             updateGroupings()
         } catch {
-            print("")
+            Self.logger.error(
+                "Failed to prepare schedule for querying.",
+                metadata: ["Error": .string(String(describing: error))]
+            )
         }
     }
     
-    public nonisolated func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        Task(priority: .high) {
-            await MainActor.run {
-                self.updateGroupings()
-            }
+    private func prepareFetchedResultsControllerUsingConfiguration() throws {
+        try fetchQueryableEntities()
+        updateFetchRequest()
+    }
+    
+    private func fetchQueryableEntities() throws {
+        try fetchDays()
+        try fetchTracks()
+    }
+    
+    private func fetchDays() throws {
+        if let configuredDay = scheduleConfiguration.day {
+            selectedDay = configuredDay
+        } else {
+            let daysFetchRequest = Day.temporallyOrderedFetchRequest()
+            availableDays = try managedObjectContext.fetch(daysFetchRequest)
+            selectedDay = availableDays.first
         }
+    }
+    
+    private func fetchTracks() throws {
+        let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
+        availableTracks = try managedObjectContext.fetch(tracksFetchRequest)
+    }
+    
+    private func updateFetchRequest() {
+        var predicates = [NSPredicate]()
+        if let selectedDay = selectedDay {
+            predicates.append(Event.predicate(forEventsOccurringOn: selectedDay))
+        }
+        
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        fetchedResultsController.fetchRequest.predicate = predicate
     }
     
     private func updateGroupings() {
@@ -95,6 +128,20 @@ public class ScheduleController: NSObject, ObservableObject, NSFetchedResultsCon
         }
         
         self.eventGroups = newGroups
+    }
+    
+}
+
+// MARK: - ScheduleController + NSFetchedResultsControllerDelegate
+
+extension ScheduleController: NSFetchedResultsControllerDelegate {
+    
+    public nonisolated func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        Task(priority: .high) {
+            await MainActor.run {
+                self.updateGroupings()
+            }
+        }
     }
     
 }
