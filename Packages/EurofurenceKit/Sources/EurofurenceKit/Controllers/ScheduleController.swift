@@ -101,14 +101,22 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func fetchTracks() throws {
-        let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
-        availableTracks = try managedObjectContext.fetch(tracksFetchRequest)
+        if let configuredTrack = scheduleConfiguration.track {
+            selectedTrack = configuredTrack
+        } else {
+            let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
+            availableTracks = try managedObjectContext.fetch(tracksFetchRequest)
+        }
     }
     
     private func updateFetchRequest() {
         var predicates = [NSPredicate]()
         if let selectedDay = selectedDay {
             predicates.append(Event.predicate(forEventsOccurringOn: selectedDay))
+        }
+        
+        if let selectedTrack = selectedTrack {
+            predicates.append(Event.predicate(forEventsInTrack: selectedTrack))
         }
         
         let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

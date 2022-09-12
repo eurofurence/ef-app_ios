@@ -8,9 +8,11 @@ extension EurofurenceModel {
     public struct ScheduleConfiguration {
         
         let day: Day?
+        let track: Track?
         
-        public init(day: Day? = nil) {
+        public init(day: Day? = nil, track: Track? = nil) {
             self.day = day
+            self.track = track
         }
         
     }
