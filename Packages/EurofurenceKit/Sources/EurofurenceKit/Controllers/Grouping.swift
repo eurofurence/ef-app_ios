@@ -1,7 +1,7 @@
 import Foundation
 
 /// A collection of elements grouped by a common ideentifier.
-public struct Grouping<ID, Element> where ID: Identifiable {
+public struct Grouping<ID, Element> where ID: Hashable & Identifiable {
     
     /// The identifier of the group of associated elements.
     public let id: ID
@@ -15,3 +15,7 @@ public struct Grouping<ID, Element> where ID: Identifiable {
     }
     
 }
+
+// MARK: - Grouping + Identifiable
+
+extension Grouping: Identifiable { }
