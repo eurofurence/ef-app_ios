@@ -50,6 +50,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertEqual(expectedSelectedDay, controller.selectedDay)
         XCTAssertNil(controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
+        XCTAssertEqual("Filtered to \(expectedSelectedDay.name)", controller.localizedFilterDescription)
         
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
@@ -99,6 +100,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertEqual(conDayTwo, controller.selectedDay)
         XCTAssertNil(controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
+        XCTAssertNil(controller.localizedFilterDescription)
         
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
@@ -149,6 +151,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertEqual(expectedSelectedDay, controller.selectedDay)
         XCTAssertEqual(miscTrack, controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
+        XCTAssertEqual("Filtered to \(expectedSelectedDay.name)", controller.localizedFilterDescription)
         
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
@@ -204,6 +207,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertNil(controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
         
+        
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
@@ -257,6 +261,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         }
         
         XCTFail("Expected to update the available events following a change to the selected day")
+        XCTAssertEqual("Filtered to \(conDayOne.name)", controller.localizedFilterDescription)
     }
     
     func testConfiguredForDayThenChangingTrackUpdatesDisplayedEvents() async throws {
@@ -299,6 +304,25 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             observedEventIdentifiers,
             "Expected to only view fursuit events on day 2 after changing the schedule's track"
         )
+        
+        XCTAssertEqual("Filtered to \(fursuitTrack.name)", controller.localizedFilterDescription)
+    }
+    
+    func testCompositeFilteringCombinesDescription() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let controller = scenario.model.makeScheduleController()
+        
+        let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
+        let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
+        controller.selectedDay = conDayTwo
+        
+        let miscTrackIdentifier = "0b80cc7b-b5b2-4fab-8b74-078f2b5e366e"
+        let miscTrack = try scenario.model.track(identifiedBy: miscTrackIdentifier)
+        controller.selectedTrack = miscTrack
+        
+        XCTAssertEqual("Filtered to \(conDayTwo.name) and \(miscTrack.name)", controller.localizedFilterDescription)
     }
 
 }

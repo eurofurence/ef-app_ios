@@ -33,6 +33,9 @@ public class ScheduleController: NSObject, ObservableObject {
     /// the schedule has been configured.
     @Published private(set) public var availableTracks: [Track] = []
     
+    /// A localized description of the filter.
+    @Published private(set) public var localizedFilterDescription: String?
+    
     /// The currently active `Day` within the schedule, used to filter the collection of events.
     @Published public var selectedDay: Day? {
         didSet {
@@ -180,11 +183,30 @@ public class ScheduleController: NSObject, ObservableObject {
     private func refetchEvents() {
         do {
             try updateFetchRequest()
+            updateLocalizedFilter()
         } catch {
             Self.logger.error(
                 "Failed to re-fetch schedule events following a change to the critera",
                 metadata: ["Error": .string(String(describing: error))]
             )
+        }
+    }
+    
+    private func updateLocalizedFilter() {
+        var filteringCriteria = [String]()
+        if let selectedDay = selectedDay, scheduleConfiguration.day != selectedDay {
+            filteringCriteria.append(selectedDay.name)
+        }
+        
+        if let selectedTrack = selectedTrack, scheduleConfiguration.track != selectedTrack {
+            filteringCriteria.append(selectedTrack.name)
+        }
+        
+        if filteringCriteria.isEmpty == false {        
+            let formatter = ListFormatter()
+            if let filteringCriteriaDescription = formatter.string(from: filteringCriteria) {
+                localizedFilterDescription = "Filtered to \(filteringCriteriaDescription)"
+            }
         }
     }
     
