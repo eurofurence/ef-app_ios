@@ -28,6 +28,7 @@ struct TabExperience: View {
                 ScheduleView()
                     .navigationTitle("Schedule")
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 ScheduleLabel(isSelected: selectedTab == .schedule)
             }
