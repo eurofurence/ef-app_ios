@@ -15,6 +15,9 @@ public class ScheduleController: NSObject, ObservableObject {
     /// A typealias for the collection of groups associated with a schedule.
     public typealias EventGroup = Grouping<Date, Event>
     
+    /// The number of `Event`s in this schedule that matches the designated criteria.
+    @Published private(set) public var matchingEventsCount: Int = 0
+    
     /// The collection of groups of events, grouped by their start time.
     @Published private(set) public var eventGroups: [EventGroup] = []
     
@@ -154,6 +157,7 @@ public class ScheduleController: NSObject, ObservableObject {
     
     private func updateGroupings() {
         var newGroups = [EventGroup]()
+        var matchingEventsCount = 0
         
         for section in (fetchedResultsController.sections ?? []) {
             guard let events = (section.objects as? [Event]) else { continue }
@@ -162,8 +166,11 @@ public class ScheduleController: NSObject, ObservableObject {
             let grouping = events[0].startDate
             let group = EventGroup(id: grouping, elements: events)
             newGroups.append(group)
+            
+            matchingEventsCount += events.count
         }
         
+        self.matchingEventsCount = matchingEventsCount
         self.eventGroups = newGroups
     }
     

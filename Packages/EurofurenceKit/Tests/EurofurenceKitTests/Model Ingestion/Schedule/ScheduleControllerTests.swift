@@ -11,6 +11,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let controller = scenario.model.makeScheduleController()
         
         let changedExpectation = expectation(description: "")
+        changedExpectation.assertForOverFulfill = false
         let subscription = controller.objectWillChange.sink { _ in
             changedExpectation.fulfill()
         }
@@ -51,12 +52,20 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertFalse(controller.eventGroups.isEmpty)
         
         var observedStartTimes = [Date]()
+        var expectedEventCount = 0
         for group in controller.eventGroups {
             observedStartTimes.append(group.id)
             for event in group.elements {
+                expectedEventCount += 1
                 XCTAssertEqual(event.day, expectedSelectedDay)
             }
         }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            controller.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
         
         let sortedStartTimes = observedStartTimes.sorted()
         XCTAssertEqual(
@@ -92,12 +101,20 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertFalse(controller.eventGroups.isEmpty)
         
         var observedStartTimes = [Date]()
+        var expectedEventCount = 0
         for group in controller.eventGroups {
             observedStartTimes.append(group.id)
             for event in group.elements {
+                expectedEventCount += 1
                 XCTAssertEqual(event.day, conDayTwo)
             }
         }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            controller.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
         
         let sortedStartTimes = observedStartTimes.sorted()
         XCTAssertEqual(
@@ -134,13 +151,21 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertFalse(controller.eventGroups.isEmpty)
         
         var observedStartTimes = [Date]()
+        var expectedEventCount = 0
         for group in controller.eventGroups {
             observedStartTimes.append(group.id)
             for event in group.elements {
+                expectedEventCount += 1
                 XCTAssertEqual(event.day, expectedSelectedDay)
                 XCTAssertEqual(event.track, miscTrack)
             }
         }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            controller.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
         
         let sortedStartTimes = observedStartTimes.sorted()
         XCTAssertEqual(
@@ -180,12 +205,20 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertFalse(controller.eventGroups.isEmpty)
         
         var observedStartTimes = [Date]()
+        var expectedEventCount = 0
         for group in controller.eventGroups {
             observedStartTimes.append(group.id)
             for event in group.elements {
+                expectedEventCount += 1
                 XCTAssertEqual(event.day, conDayTwo)
             }
         }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            controller.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
         
         let sortedStartTimes = observedStartTimes.sorted()
         XCTAssertEqual(
