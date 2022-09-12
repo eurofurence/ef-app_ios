@@ -24,15 +24,27 @@ struct ScheduleCollectionView: View {
         .listStyle(.plain)
         .toolbar {
             ToolbarItem(placement: .status) {
-                Text(
-                    "\(schedule.matchingEventsCount) matching events",
-                    comment: "Format for presenting the number of matching events in a schedule"
-                )
-                .font(.caption)
+                statusView
             }
             
             ToolbarItem(placement: .bottomBar) {
                 ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private var statusView: some View {
+        VStack {
+            Text(
+                "\(schedule.matchingEventsCount) matching events",
+                comment: "Format for presenting the number of matching events in a schedule"
+            )
+            .font(.caption)
+            
+            if let localizedFilterDescription = schedule.localizedFilterDescription {
+                Text(verbatim: localizedFilterDescription)
+                    .font(.caption2)
             }
         }
     }
