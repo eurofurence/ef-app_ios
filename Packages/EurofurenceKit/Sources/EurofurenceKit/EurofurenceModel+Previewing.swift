@@ -192,6 +192,66 @@ extension EurofurenceModel {
             .environmentModel(previewModel)
     }
     
+    // MARK: - Well-Defined Entities
+    
+    public enum PreviewDay {
+        case earlyArrival
+        case conDayOne
+        case conDayTwo
+        
+        fileprivate var identifier: String {
+            switch self {
+            case .earlyArrival:
+                return "db6e0b07-3300-4d58-adfd-84c145e36242"
+                
+            case .conDayOne:
+                return "572ca56c-c473-4ca7-b4ec-c6498c077dda"
+                
+            case .conDayTwo:
+                return "7f69f120-3c8a-49bf-895a-20c2adade161"
+            }
+        }
+    }
+    
+    public func day(for day: PreviewDay) -> Day {
+        let id = day.identifier
+        
+        do {
+            return try self.day(identifiedBy: id)
+        } catch {
+            fatalError("Failed to find day from preview JSON with ID \(id)")
+        }
+    }
+    
+    public enum PreviewTrack {
+        case artShow
+        case artistLounge
+        case clubStage
+        
+        fileprivate var identifier: String {
+            switch self {
+            case .artShow:
+                return "2d5d9a98-aaca-4434-959d-99d20e675d3a"
+                
+            case .artistLounge:
+                return "4fdf6f0b-adf0-49b8-801f-70b026733538"
+                
+            case .clubStage:
+                return "51bb19cb-a658-4cd5-b7cf-b655355040bf"
+            }
+        }
+    }
+    
+    public func track(for track: PreviewTrack) -> Track {
+        let id = track.identifier
+        
+        do {
+            return try self.track(identifiedBy: id)
+        } catch {
+            fatalError("Failed to find track from preview JSON with ID \(id)")
+        }
+    }
+    
     // MARK: - Previewing Configuration
     
     private class PreviewingModelProperties: EurofurenceModelProperties {
