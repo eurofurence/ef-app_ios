@@ -11,9 +11,23 @@ public class ScheduleController: NSObject, ObservableObject {
     
     private static let logger = Logger(label: "ScheduleController")
     
+    /// The attribute used to group a collection of `Events` within a schedule.
+    public enum Group: Hashable, Identifiable {
+        
+        public var id: some Hashable {
+            switch self {
+            case .startDate(let date):
+                return date
+            }
+        }
+        
+        /// A grouping of events under a common starting time.
+        case startDate(Date)
+        
+    }
     
     /// A typealias for the collection of groups associated with a schedule.
-    public typealias EventGroup = Grouping<Date, Event>
+    public typealias EventGroup = Grouping<Group, Event>
     
     /// The number of `Event`s in this schedule that matches the designated criteria.
     @Published private(set) public var matchingEventsCount: Int = 0
@@ -170,7 +184,7 @@ public class ScheduleController: NSObject, ObservableObject {
             guard events.isEmpty == false else { continue }
             
             let grouping = events[0].startDate
-            let group = EventGroup(id: grouping, elements: events)
+            let group = EventGroup(id: .startDate(grouping), elements: events)
             newGroups.append(group)
             
             matchingEventsCount += events.count
@@ -202,7 +216,7 @@ public class ScheduleController: NSObject, ObservableObject {
             filteringCriteria.append(selectedTrack.name)
         }
         
-        if filteringCriteria.isEmpty == false {        
+        if filteringCriteria.isEmpty == false {
             let formatter = ListFormatter()
             if let filteringCriteriaDescription = formatter.string(from: filteringCriteria) {
                 localizedFilterDescription = "Filtered to \(filteringCriteriaDescription)"

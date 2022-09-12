@@ -17,7 +17,10 @@ struct ScheduleCollectionView: View {
                         }
                     }
                 } header: {
-                    Text(group.id, format: Date.FormatStyle(date: .omitted, time: .shortened))
+                    switch group.id {
+                    case .startDate(let date):
+                        Text(date, format: Date.FormatStyle(date: .omitted, time: .shortened))
+                    }
                 }
             }
         }

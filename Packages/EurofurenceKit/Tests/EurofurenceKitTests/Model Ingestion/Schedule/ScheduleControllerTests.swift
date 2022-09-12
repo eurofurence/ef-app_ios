@@ -55,7 +55,10 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
-            observedStartTimes.append(group.id)
+            if case .startDate(let date) = group.id {
+                observedStartTimes.append(date)
+            }
+            
             for event in group.elements {
                 expectedEventCount += 1
                 XCTAssertEqual(event.day, expectedSelectedDay)
@@ -105,7 +108,10 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
-            observedStartTimes.append(group.id)
+            if case .startDate(let date) = group.id {
+                observedStartTimes.append(date)
+            }
+            
             for event in group.elements {
                 expectedEventCount += 1
                 XCTAssertEqual(event.day, conDayTwo)
@@ -156,7 +162,10 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
-            observedStartTimes.append(group.id)
+            if case .startDate(let date) = group.id {
+                observedStartTimes.append(date)
+            }
+            
             for event in group.elements {
                 expectedEventCount += 1
                 XCTAssertEqual(event.day, expectedSelectedDay)
@@ -211,7 +220,10 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         var observedStartTimes = [Date]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
-            observedStartTimes.append(group.id)
+            if case .startDate(let date) = group.id {
+                observedStartTimes.append(date)
+            }
+            
             for event in group.elements {
                 expectedEventCount += 1
                 XCTAssertEqual(event.day, conDayTwo)
