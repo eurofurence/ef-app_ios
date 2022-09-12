@@ -148,17 +148,7 @@ extension EurofurenceModel {
         )
         
         let model = EurofurenceModel(configuration: configuration)
-
-        // We'll return the model right away while it loads in the contents of the store.
-        Task(priority: .userInitiated) {
-            do {
-                await model.prepareForPresentation()
-                try await model.updateLocalStore()
-                cloudStatus.configure(model: model)
-            } catch {
-                print("Failed to prepare model for previewing. Error=\(error)")
-            }
-        }
+        cloudStatus.configure(model: model)
         
         return model
     }
@@ -180,16 +170,36 @@ extension EurofurenceModel {
         content: PreviewContent = .ef26,
         authenticationState: AuthenticationState = .unauthenticated,
         cloudStatus: EurofurenceModel.CloudState = .updated,
-        @ViewBuilder previewBody: (EurofurenceModel) -> Body
+        @ViewBuilder previewBody: @escaping (EurofurenceModel) -> Body
     ) -> some View where Body: View {
-        let previewModel = self.preview(
-            content: content,
-            authenticationState: authenticationState,
-            cloudStatus: cloudStatus
-        )
+        let model = self.preview(content: content, authenticationState: authenticationState, cloudStatus: cloudStatus)
+        return PreviewContainer(previewBody: previewBody, model: model)
+    }
+    
+    struct PreviewContainer<PreviewBody>: View where PreviewBody: View {
         
-        return previewBody(previewModel)
-            .environmentModel(previewModel)
+        var previewBody: (EurofurenceModel) -> PreviewBody
+        var model: EurofurenceModel
+        @State var isModelReady = false
+        
+        var body: some View {
+            if isModelReady {
+                previewBody(model)
+                    .environmentModel(model)
+            } else {
+                Text("Preparing preview")
+                    .task(priority: .userInitiated) {
+                        do {
+                            await model.prepareForPresentation()
+                            try await model.updateLocalStore()
+                            isModelReady = true
+                        } catch {
+                            fatalError("Failed to prepare model for previewing. Error=\(error)")
+                        }
+                    }
+            }
+        }
+        
     }
     
     // MARK: - Well-Defined Entities
