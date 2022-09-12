@@ -36,7 +36,7 @@ public class ScheduleController: NSObject, ObservableObject {
     /// The currently active `Day` within the schedule, used to filter the collection of events.
     @Published public var selectedDay: Day? {
         didSet {
-            updateFetchRequest()
+            refetchEvents()
         }
     }
     
@@ -81,10 +81,9 @@ public class ScheduleController: NSObject, ObservableObject {
         fetchedResultsController.delegate = self
         
         do {
-            try prepareFetchedResultsControllerUsingConfiguration()
+            try fetchQueryableEntities()
             attachClockSubscriber()
-            try fetchedResultsController.performFetch()
-            updateGroupings()
+            try updateFetchRequest()
         } catch {
             Self.logger.error(
                 "Failed to prepare schedule for querying.",
@@ -112,11 +111,6 @@ public class ScheduleController: NSObject, ObservableObject {
         }
     }
     
-    private func prepareFetchedResultsControllerUsingConfiguration() throws {
-        try fetchQueryableEntities()
-        updateFetchRequest()
-    }
-    
     private func fetchQueryableEntities() throws {
         try fetchDays()
         try fetchTracks()
@@ -141,7 +135,13 @@ public class ScheduleController: NSObject, ObservableObject {
         }
     }
     
-    private func updateFetchRequest() {
+    private func updateFetchRequest() throws {
+        fetchedResultsController.fetchRequest.predicate = makeFetchingPredicate()
+        try fetchedResultsController.performFetch()
+        updateGroupings()
+    }
+    
+    private func makeFetchingPredicate() -> NSPredicate {
         var predicates = [NSPredicate]()
         if let selectedDay = selectedDay {
             predicates.append(Event.predicate(forEventsOccurringOn: selectedDay))
@@ -151,8 +151,7 @@ public class ScheduleController: NSObject, ObservableObject {
             predicates.append(Event.predicate(forEventsInTrack: selectedTrack))
         }
         
-        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
-        fetchedResultsController.fetchRequest.predicate = predicate
+        return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
     }
     
     private func updateGroupings() {
@@ -172,6 +171,17 @@ public class ScheduleController: NSObject, ObservableObject {
         
         self.matchingEventsCount = matchingEventsCount
         self.eventGroups = newGroups
+    }
+    
+    private func refetchEvents() {
+        do {
+            try updateFetchRequest()
+        } catch {
+            Self.logger.error(
+                "Failed to re-fetch schedule events following a change to the critera",
+                metadata: ["Error": .string(String(describing: error))]
+            )
+        }
     }
     
 }
