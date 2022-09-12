@@ -76,6 +76,7 @@ private struct ScheduleFilterButton: View {
             }
             .sensiblePopoverFrame()
         }
+        .enablingMediumPresentationDetent()
     }
     
 }
