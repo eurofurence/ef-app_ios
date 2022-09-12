@@ -65,6 +65,15 @@ extension EurofurenceModel {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidTrack(identifier))
     }
     
+    /// Fetches the `Room` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the room to be fetched.
+    /// - Returns: The `Room` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidRoom` if no `Room` is associated with the given identifier.
+    public func room(identifiedBy identifier: String) throws -> Room {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidRoom(identifier))
+    }
+    
     /// Fetches the `Message` associated with the given identifier.
     ///
     /// - Parameter identifier: The identifier of the message to be fetched.

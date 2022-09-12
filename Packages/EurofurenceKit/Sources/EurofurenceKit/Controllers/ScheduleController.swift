@@ -53,6 +53,9 @@ public class ScheduleController: NSObject, ObservableObject {
     /// the schedule has been configured.
     @Published private(set) public var availableTracks: [Track] = []
     
+    /// The collection of `Room` entities associated with the schedule.
+    @Published private(set) public var availableRooms: [Room] = []
+    
     /// A localized description of the filter.
     @Published private(set) public var localizedFilterDescription: String?
     
@@ -69,6 +72,9 @@ public class ScheduleController: NSObject, ObservableObject {
             refetchEvents()
         }
     }
+    
+    /// The currently active `Room` within the schedule, used to filter the collection of events.
+    @Published public var selectedRoom: Room?
     
     private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext
@@ -145,6 +151,7 @@ public class ScheduleController: NSObject, ObservableObject {
     private func fetchQueryableEntities() throws {
         try fetchDays()
         try fetchTracks()
+        try fetchRooms()
     }
     
     private func fetchDays() throws {
@@ -164,6 +171,11 @@ public class ScheduleController: NSObject, ObservableObject {
             let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
             availableTracks = try managedObjectContext.fetch(tracksFetchRequest)
         }
+    }
+    
+    private func fetchRooms() throws {
+        let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
+        availableRooms = try managedObjectContext.fetch(roomsFetchRequest)
     }
     
     private func updateFetchRequest() throws {
@@ -223,20 +235,51 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func updateLocalizedFilter() {
-        var filteringCriteria = [String]()
-        if let selectedDay = selectedDay, scheduleConfiguration.day != selectedDay {
-            filteringCriteria.append(selectedDay.name)
-        }
-        
-        if let selectedTrack = selectedTrack, scheduleConfiguration.track != selectedTrack {
-            filteringCriteria.append(selectedTrack.name)
-        }
-        
-        if filteringCriteria.isEmpty == false {
-            let formatter = ListFormatter()
-            if let filteringCriteriaDescription = formatter.string(from: filteringCriteria) {
-                localizedFilterDescription = "Filtered to \(filteringCriteriaDescription)"
+        let trackName: String? = {
+            if let selectedTrack = selectedTrack, scheduleConfiguration.track != selectedTrack {
+                return selectedTrack.name
+            } else {
+                return nil
             }
+        }()
+        
+        let dayName: String? = {
+            if let selectedDay = selectedDay, scheduleConfiguration.day != selectedDay {
+                return selectedDay.name
+            } else {
+                return nil
+            }
+        }()
+        
+        let roomName: String? = selectedRoom?.shortName
+        
+        var description = ""
+        if let trackName = trackName {
+            description.append(trackName)
+        }
+        
+        if let roomName = roomName {
+            if description.isEmpty {
+                description.append(roomName)
+            } else {
+                description.append(" in ")
+                description.append(roomName)
+            }
+        }
+        
+        if let dayName {
+            if description.isEmpty {
+                description.append(dayName)
+            } else {
+                description.append(" on ")
+                description.append(dayName)
+            }
+        }
+        
+        if description.isEmpty {
+            localizedFilterDescription = nil
+        } else {
+            localizedFilterDescription = description
         }
     }
     

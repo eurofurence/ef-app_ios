@@ -29,6 +29,19 @@ extension Room: ConsumesRemoteResponse {
     
 }
 
+// MARK: - Fetching
+
+extension Room {
+    
+    static func alphabeticallySortedFetchRequest() -> NSFetchRequest<Room> {
+        let fetchRequest: NSFetchRequest<Room> = Room.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \Room.name, ascending: true)]
+        
+        return fetchRequest
+    }
+    
+}
+
 // MARK: Generated accessors for events
 extension Room {
 
