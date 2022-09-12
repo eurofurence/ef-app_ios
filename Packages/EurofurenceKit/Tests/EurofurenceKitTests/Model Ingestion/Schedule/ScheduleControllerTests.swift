@@ -159,11 +159,11 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertFalse(controller.eventGroups.isEmpty)
         XCTAssertEqual("Filtered to \(expectedSelectedDay.name)", controller.localizedFilterDescription)
         
-        var observedStartTimes = [Date]()
+        var observedDays = [EurofurenceKit.Day]()
         var expectedEventCount = 0
         for group in controller.eventGroups {
-            if case .startDate(let date) = group.id {
-                observedStartTimes.append(date)
+            if case .day(let day) = group.id {
+                observedDays.append(day)
             }
             
             for event in group.elements {
@@ -173,17 +173,20 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             }
         }
         
+        XCTAssertGreaterThan(observedDays.count, 0, "Expected to see events grouped by day")
+        
         XCTAssertEqual(
             expectedEventCount,
             controller.matchingEventsCount,
             "Expected to find \(expectedEventCount) matching events"
         )
         
-        let sortedStartTimes = observedStartTimes.sorted()
+        let sortedDays = observedDays.sorted(by: { $0.date < $1.date })
+        
         XCTAssertEqual(
-            observedStartTimes,
-            sortedStartTimes,
-            "Expected to showcase events in start date order"
+            observedDays,
+            sortedDays,
+            "Expected to showcase events ordered by their date occurrance"
         )
     }
     

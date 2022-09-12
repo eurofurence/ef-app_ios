@@ -20,6 +20,9 @@ struct ScheduleCollectionView: View {
                     switch group.id {
                     case .startDate(let date):
                         Text(date, format: Date.FormatStyle(date: .omitted, time: .shortened))
+                        
+                    case .day(let day):
+                        Text(verbatim: day.name)
                     }
                 }
             }

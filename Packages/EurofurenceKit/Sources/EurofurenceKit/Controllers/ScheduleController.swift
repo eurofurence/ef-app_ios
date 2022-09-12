@@ -17,12 +17,18 @@ public class ScheduleController: NSObject, ObservableObject {
         public var id: some Hashable {
             switch self {
             case .startDate(let date):
-                return date
+                return AnyHashable(date)
+                
+            case .day(let day):
+                return AnyHashable(day)
             }
         }
         
         /// A grouping of events under a common starting time.
         case startDate(Date)
+        
+        /// A grouping of events under a common `Day`.
+        case day(Day)
         
     }
     
@@ -69,6 +75,7 @@ public class ScheduleController: NSObject, ObservableObject {
     private let clock: Clock
     private let fetchedResultsController: NSFetchedResultsController<Event>
     private var subscriptions = Set<AnyCancellable>()
+    private var isGroupingByDay: Bool
     
     init(
         scheduleConfiguration: EurofurenceModel.ScheduleConfiguration,
@@ -90,10 +97,13 @@ public class ScheduleController: NSObject, ObservableObject {
             NSSortDescriptor(key: "startDate", ascending: true)
         ]
         
+        isGroupingByDay = scheduleConfiguration.track != nil
+        let sectionNameKeyPath = isGroupingByDay ? "day" : "startDate"
+        
         fetchedResultsController = NSFetchedResultsController(
             fetchRequest: fetchRequest,
             managedObjectContext: managedObjectContext,
-            sectionNameKeyPath: "startDate",
+            sectionNameKeyPath: sectionNameKeyPath,
             cacheName: nil
         )
         
@@ -183,10 +193,16 @@ public class ScheduleController: NSObject, ObservableObject {
             guard let events = (section.objects as? [Event]) else { continue }
             guard events.isEmpty == false else { continue }
             
-            let grouping = events[0].startDate
-            let group = EventGroup(id: .startDate(grouping), elements: events)
-            newGroups.append(group)
+            let group: EventGroup
+            if isGroupingByDay {
+                let grouping = events[0].day
+                group = EventGroup(id: .day(grouping), elements: events)
+            } else {
+                let grouping = events[0].startDate
+                group = EventGroup(id: .startDate(grouping), elements: events)
+            }
             
+            newGroups.append(group)
             matchingEventsCount += events.count
         }
         
