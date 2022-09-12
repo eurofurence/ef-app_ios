@@ -11,7 +11,9 @@ struct ScheduleSidebarItems: View {
     var body: some View {
         Section {
             NavigationLink {
-                ScheduleCollectionView(schedule: model.makeScheduleController())
+                Lazy {
+                    ScheduleCollectionView(schedule: model.makeScheduleController())
+                }
             } label: {
                 AllEventsLabel()
             }

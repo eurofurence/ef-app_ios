@@ -13,10 +13,12 @@ struct EventConferenceTracksView: View {
     var body: some View {
         ForEach(tracks) { track in
             NavigationLink(tag: track, selection: $selectedTrack) {
-                let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: track)
-                let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
-                ScheduleCollectionView(schedule: schedule)
-                    .navigationTitle(track.name)
+                Lazy {                
+                    let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: track)
+                    let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+                    ScheduleCollectionView(schedule: schedule)
+                        .navigationTitle(track.name)
+                }
             } label: {
                 CanonicalTrackLabel(
                     track: track.canonicalTrack,

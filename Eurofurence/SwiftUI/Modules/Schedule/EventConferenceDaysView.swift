@@ -13,10 +13,12 @@ struct EventConferenceDaysView: View {
     var body: some View {
         ForEach(days) { day in
             NavigationLink(tag: day, selection: $selectedDay) {
-                let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: day)
-                let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
-                ScheduleCollectionView(schedule: schedule)
-                    .navigationTitle(day.name)
+                Lazy {                
+                    let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: day)
+                    let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+                    ScheduleCollectionView(schedule: schedule)
+                        .navigationTitle(day.name)
+                }
             } label: {
                 DayLabel(day: day, isSelected: selectedDay == day)
             }

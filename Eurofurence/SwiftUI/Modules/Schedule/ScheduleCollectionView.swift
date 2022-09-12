@@ -3,7 +3,9 @@ import SwiftUI
 
 struct ScheduleCollectionView: View {
     
+    @EnvironmentObject var model: EurofurenceModel
     @ObservedObject var schedule: ScheduleController
+    @State private var isPresentingFilter = false
     
     var body: some View {
         List {
@@ -15,8 +17,123 @@ struct ScheduleCollectionView: View {
                         }
                     }
                 } header: {
-                    Text(group.id, format: .dateTime)
+                    Text(group.id, format: Date.FormatStyle(date: .omitted, time: .shortened))
                 }
+            }
+        }
+        .listStyle(.plain)
+        .toolbar {
+            ToolbarItem(placement: .status) {
+                Text(
+                    "\(schedule.matchingEventsCount) matching events",
+                    comment: "Format for presenting the number of matching events in a schedule"
+                )
+                .font(.caption)
+            }
+            
+            ToolbarItem(placement: .bottomBar) {
+                ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+            }
+        }
+    }
+    
+}
+
+private struct ScheduleFilterButton: View {
+    
+    @Binding var isPresentingFilter: Bool
+    var schedule: ScheduleController
+    
+    var body: some View {
+        Button {
+            isPresentingFilter.toggle()
+        } label: {
+            Label {
+                Text("Filter")
+            } icon: {
+                if isPresentingFilter {
+                    Image(systemName: "line.3.horizontal.decrease.circle.fill")
+                } else {
+                    Image(systemName: "line.3.horizontal.decrease.circle")
+                }
+            }
+        }
+        .popover(isPresented: $isPresentingFilter) {
+            NavigationView {
+                ScheduleFilterView(schedule: schedule)
+            }
+            .sensiblePopoverFrame()
+        }
+    }
+    
+}
+
+private struct ScheduleFilterView: View {
+    
+    @ObservedObject var schedule: ScheduleController
+    
+    var body: some View {
+        List {
+            if schedule.availableDays.isEmpty == false {
+                Section {
+                    ScheduleDayPicker(schedule: schedule)
+                } header: {
+                    Text("Day")
+                }
+            }
+            
+            if schedule.availableTracks.isEmpty == false {
+                Section {
+                    ScheduleTrackPicker(schedule: schedule)
+                } header: {
+                    Text("Track")
+                }
+            }
+        }
+        .listStyle(.insetGrouped)
+        .navigationTitle("Filters")
+    }
+    
+}
+
+private struct ScheduleDayPicker: View {
+    
+    @ObservedObject var schedule: ScheduleController
+    
+    var body: some View {
+        ForEach(schedule.availableDays) { day in
+            SelectableRow(tag: day, selection: $schedule.selectedDay) {
+                DayLabel(day: day, isSelected: schedule.selectedDay == day)
+            }
+        }
+    }
+    
+}
+
+private struct ScheduleTrackPicker: View {
+    
+    @ObservedObject var schedule: ScheduleController
+    
+    var body: some View {
+        SelectableRow(tag: nil, selection: $schedule.selectedTrack) {
+            Label {
+                Text("All Tracks")
+            } icon: {
+                if schedule.selectedTrack == nil {
+                    Image(systemName: "square.stack.fill")
+                } else {
+                    Image(systemName: "square.stack")
+                }
+            }
+        }
+        
+        ForEach(schedule.availableTracks) { track in
+            SelectableRow(tag: track, selection: $schedule.selectedTrack) {
+                CanonicalTrackLabel(
+                    track: track.canonicalTrack,
+                    unknownTrackText: Text(track.name),
+                    isSelected: schedule.selectedTrack == track
+                )
             }
         }
     }
@@ -33,7 +150,7 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
             }
         }
         .previewDisplayName("Unconfigured Schedule")
-         
+        
         EurofurenceModel.preview { model in
             NavigationView {
                 let dayConfiguration = EurofurenceModel.ScheduleConfiguration(day: model.day(for: .conDayTwo))
@@ -51,20 +168,20 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
             }
         }
         .previewDisplayName("Track Specific Schedule")
-
+        
         EurofurenceModel.preview { model in
             NavigationView {
                 let dayAndTrackConfiguration = EurofurenceModel.ScheduleConfiguration(
                     day: model.day(for: .conDayTwo),
-                    track: model.track(for: .artShow)
+                    track: model.track(for: .artistLounge)
                 )
-
+                
                 let scheduleController = model.makeScheduleController(scheduleConfiguration: dayAndTrackConfiguration)
                 ScheduleCollectionView(schedule: scheduleController)
                     .navigationTitle("Preview")
             }
         }
-        .previewDisplayName("Track Specific Schedule")
+        .previewDisplayName("Day + Track Specific Schedule")
     }
     
 }

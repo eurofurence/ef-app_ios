@@ -24,6 +24,10 @@
 		6E79E66B28C9CDCE00444A37 /* EventConferenceDaysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66A28C9CDCE00444A37 /* EventConferenceDaysView.swift */; };
 		6E79E66D28C9CDEC00444A37 /* EventConferenceTracksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66C28C9CDEC00444A37 /* EventConferenceTracksView.swift */; };
 		6E79E66F28C9E35B00444A37 /* DealerCategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */; };
+		6E8389D128CF3AF6007E14DC /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6E8389D028CF3AF6007E14DC /* Localizable.stringsdict */; };
+		6E8389D328CF73EA007E14DC /* Lazy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8389D228CF73EA007E14DC /* Lazy.swift */; };
+		6E8389D628CF7410007E14DC /* View+SensiblePopoverFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8389D528CF740F007E14DC /* View+SensiblePopoverFrame.swift */; };
+		6E8389D828CF7441007E14DC /* SelectableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E8389D728CF7441007E14DC /* SelectableRow.swift */; };
 		6EA4ECC828C8DBF100B20502 /* NewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECC728C8DBF100B20502 /* NewsView.swift */; };
 		6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */; };
 		6EA4ECD128C8DC4900B20502 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECD028C8DC4900B20502 /* InformationView.swift */; };
@@ -299,6 +303,10 @@
 		6E79E66A28C9CDCE00444A37 /* EventConferenceDaysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceDaysView.swift; sourceTree = "<group>"; };
 		6E79E66C28C9CDEC00444A37 /* EventConferenceTracksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventConferenceTracksView.swift; sourceTree = "<group>"; };
 		6E79E66E28C9E35B00444A37 /* DealerCategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerCategoriesView.swift; sourceTree = "<group>"; };
+		6E8389D028CF3AF6007E14DC /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		6E8389D228CF73EA007E14DC /* Lazy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lazy.swift; sourceTree = "<group>"; };
+		6E8389D528CF740F007E14DC /* View+SensiblePopoverFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+SensiblePopoverFrame.swift"; sourceTree = "<group>"; };
+		6E8389D728CF7441007E14DC /* SelectableRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableRow.swift; sourceTree = "<group>"; };
 		6EA4ECC728C8DBF100B20502 /* NewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsView.swift; sourceTree = "<group>"; };
 		6EA4ECCD28C8DC2D00B20502 /* DealersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealersView.swift; sourceTree = "<group>"; };
 		6EA4ECD028C8DC4900B20502 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
@@ -581,6 +589,14 @@
 			path = Handheld;
 			sourceTree = "<group>";
 		};
+		6E8389D428CF7401007E14DC /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				6E8389D528CF740F007E14DC /* View+SensiblePopoverFrame.swift */,
+			);
+			path = Modifiers;
+			sourceTree = "<group>";
+		};
 		6EA4ECC628C8DBD400B20502 /* News */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +714,8 @@
 			isa = PBXGroup;
 			children = (
 				6EF82FC528CA9213006463EA /* FontAwesomeText.swift */,
+				6E8389D228CF73EA007E14DC /* Lazy.swift */,
+				6E8389D728CF7441007E14DC /* SelectableRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -812,6 +830,7 @@
 		CA08861525FE99680044DD53 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E8389D028CF3AF6007E14DC /* Localizable.stringsdict */,
 				CA08861A25FE997E0044DD53 /* Fonts */,
 				CA08861C25FE997E0044DD53 /* Sounds */,
 			);
@@ -1031,6 +1050,7 @@
 			children = (
 				6E08B1A628CE049E00512406 /* Design Language */,
 				6EA4ECDB28C927D600B20502 /* Experiences */,
+				6E8389D428CF7401007E14DC /* Modifiers */,
 				6EA4ECD528C8DC7700B20502 /* Modules */,
 				6EF82FBF28CA3A2E006463EA /* UIKit */,
 				6EF82FC428CA920A006463EA /* Views */,
@@ -1393,6 +1413,7 @@
 				CAA41AEF28ACF41D002B3B2B /* AppIconDisplayNames.strings in Resources */,
 				CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */,
 				CA08862025FE997E0044DD53 /* personal_notification.caf in Resources */,
+				6E8389D128CF3AF6007E14DC /* Localizable.stringsdict in Resources */,
 				CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */,
@@ -1573,6 +1594,7 @@
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */,
 				6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */,
+				6E8389D828CF7441007E14DC /* SelectableRow.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
 				6E79E66B28C9CDCE00444A37 /* EventConferenceDaysView.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
@@ -1592,6 +1614,7 @@
 				6E08B1C328CE6E8400512406 /* ScheduleCollectionView.swift in Sources */,
 				6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */,
 				6EF82FC628CA9213006463EA /* FontAwesomeText.swift in Sources */,
+				6E8389D328CF73EA007E14DC /* Lazy.swift in Sources */,
 				CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */,
 				6EA4ECDA28C906DA00B20502 /* SplitViewExperience.swift in Sources */,
 				6EA4ECD828C8DC8700B20502 /* TabItem.swift in Sources */,
@@ -1601,6 +1624,7 @@
 				6EA4ECE228C9281D00B20502 /* TopLevelSidebarItems.swift in Sources */,
 				6E08B1A828CE04AF00512406 /* NewsLabel.swift in Sources */,
 				6E08B1BC28CE0C8200512406 /* AllEventsLabel.swift in Sources */,
+				6E8389D628CF7410007E14DC /* View+SensiblePopoverFrame.swift in Sources */,
 				6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */,
 				6E79E66928C9CD0D00444A37 /* ScheduleView.swift in Sources */,
 				6EA4ECE028C9280A00B20502 /* Sidebar.swift in Sources */,
