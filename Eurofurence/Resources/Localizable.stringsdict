@@ -13,11 +13,11 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>No matching events</string>
+			<string>No events</string>
 			<key>one</key>
-			<string>1 matching event</string>
+			<string>1 event</string>
 			<key>other</key>
-			<string>%lld matching events</string>
+			<string>%lld events</string>
 		</dict>
 	</dict>
 </dict>
