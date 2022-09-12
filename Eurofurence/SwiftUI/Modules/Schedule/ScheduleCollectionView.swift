@@ -84,6 +84,7 @@ private struct ScheduleFilterButton: View {
 private struct ScheduleFilterView: View {
     
     @ObservedObject var schedule: ScheduleController
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         List {
@@ -105,6 +106,15 @@ private struct ScheduleFilterView: View {
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Filters")
+        .toolbar {
+            ToolbarItem(placement: .confirmationAction) {
+                Button {
+                    dismiss()
+                } label: {
+                    Text("Done")
+                }
+            }
+        }
     }
     
 }
