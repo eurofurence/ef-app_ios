@@ -8,9 +8,7 @@ struct SelectableRow<ID, Label>: View where ID: Identifiable, Label: View {
     
     var body: some View {
         Button {
-            withAnimation {
-                selection = tag
-            }
+            selection = tag
         } label: {
             HStack {
                 content()
