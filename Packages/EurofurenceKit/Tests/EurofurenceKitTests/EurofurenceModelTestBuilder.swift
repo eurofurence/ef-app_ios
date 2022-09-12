@@ -5,7 +5,7 @@ import XCTest
 
 class FakeClock: Clock {
     
-    let significantTimeChangePublisher = SignificantTimeChangePublisher(Date())
+    let significantTimeChangePublisher = SignificantTimeChangePublisher(.distantPast)
     
     func simulateTimeChange(to time: Date) {
         significantTimeChangePublisher.send(time)

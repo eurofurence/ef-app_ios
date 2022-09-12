@@ -41,7 +41,11 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     /// The currently active `Track` within the schedule, used to filter the collection of events.
-    @Published public var selectedTrack: Track?
+    @Published public var selectedTrack: Track? {
+        didSet {
+            refetchEvents()
+        }
+    }
     
     private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext
