@@ -1,3 +1,4 @@
+import Combine
 import CoreData
 import Foundation
 import Logging
@@ -30,18 +31,25 @@ public class ScheduleController: NSObject, ObservableObject {
     @Published private(set) public var availableTracks: [Track] = []
     
     /// The currently active `Day` within the schedule, used to filter the collection of events.
-    @Published public var selectedDay: Day?
+    @Published public var selectedDay: Day? {
+        didSet {
+            updateFetchRequest()
+        }
+    }
     
     /// The currently active `Track` within the schedule, used to filter the collection of events.
     @Published public var selectedTrack: Track?
     
     private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext
+    private let clock: Clock
     private let fetchedResultsController: NSFetchedResultsController<Event>
+    private var subscriptions = Set<AnyCancellable>()
     
     init(
         scheduleConfiguration: EurofurenceModel.ScheduleConfiguration,
-        managedObjectContext: NSManagedObjectContext
+        managedObjectContext: NSManagedObjectContext,
+        clock: Clock
     ) {
         precondition(
             managedObjectContext.concurrencyType == .mainQueueConcurrencyType,
@@ -50,6 +58,7 @@ public class ScheduleController: NSObject, ObservableObject {
         
         self.scheduleConfiguration = scheduleConfiguration
         self.managedObjectContext = managedObjectContext
+        self.clock = clock
         
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
 
@@ -70,6 +79,7 @@ public class ScheduleController: NSObject, ObservableObject {
         
         do {
             try prepareFetchedResultsControllerUsingConfiguration()
+            attachClockSubscriber()
             try fetchedResultsController.performFetch()
             updateGroupings()
         } catch {
@@ -77,6 +87,25 @@ public class ScheduleController: NSObject, ObservableObject {
                 "Failed to prepare schedule for querying.",
                 metadata: ["Error": .string(String(describing: error))]
             )
+        }
+    }
+    
+    private func attachClockSubscriber() {
+        clock
+            .significantTimeChangePublisher
+            .sink { [weak self] date in
+                self?.updateCurrentDay(currentTime: date)
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func updateCurrentDay(currentTime: Date) {
+        let currentTimeComponents = Calendar.current.dateComponents([.day], from: currentTime)
+        for day in availableDays {
+            let dayComponents = Calendar.current.dateComponents([.day], from: day.date)
+            if dayComponents == currentTimeComponents {
+                selectedDay = day
+            }
         }
     }
     

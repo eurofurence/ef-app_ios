@@ -25,7 +25,8 @@ extension EurofurenceModel {
     ) -> ScheduleController {
         ScheduleController(
             scheduleConfiguration: scheduleConfiguration,
-            managedObjectContext: viewContext
+            managedObjectContext: viewContext,
+            clock: configuration.clock
         )
     }
     

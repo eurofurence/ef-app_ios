@@ -8,7 +8,7 @@ import Logging
 @MainActor
 public class EurofurenceModel: ObservableObject {
     
-    private let configuration: EurofurenceModel.Configuration
+    let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "EurofurenceModel")
     private var pushNotificationDeviceTokenData: Data?
     private var subscriptions = Set<AnyCancellable>()

@@ -3,6 +3,16 @@ import CoreData
 import EurofurenceWebAPI
 import XCTest
 
+class FakeClock: Clock {
+    
+    let significantTimeChangePublisher = SignificantTimeChangePublisher(Date())
+    
+    func simulateTimeChange(to time: Date) {
+        significantTimeChangePublisher.send(time)
+    }
+    
+}
+
 @MainActor
 class EurofurenceModelTestBuilder {
     
@@ -11,6 +21,7 @@ class EurofurenceModelTestBuilder {
         var model: EurofurenceModel
         var modelProperties: FakeModelProperties
         var api: FakeEurofurenceAPI
+        var clock: FakeClock
     }
     
     private var conventionIdentifier: ConventionIdentifier = .current
@@ -35,18 +46,20 @@ class EurofurenceModelTestBuilder {
     @discardableResult
     func build() async -> Scenario {
         let properties = FakeModelProperties()
+        let clock = FakeClock()
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
             properties: properties,
             keychain: keychain,
             api: api,
-            conventionIdentifier: conventionIdentifier
+            conventionIdentifier: conventionIdentifier,
+            clock: clock
         )
         
         let model = EurofurenceModel(configuration: configuration)
         await model.prepareForPresentation()
         
-        return Scenario(model: model, modelProperties: properties, api: api)
+        return Scenario(model: model, modelProperties: properties, api: api, clock: clock)
     }
     
 }
@@ -69,6 +82,10 @@ extension EurofurenceModelTestBuilder.Scenario {
     
     func updateLocalStore() async throws {
         try await model.updateLocalStore()
+    }
+    
+    func simulateTimeChange(to time: Date) {
+        clock.simulateTimeChange(to: time)
     }
     
 }

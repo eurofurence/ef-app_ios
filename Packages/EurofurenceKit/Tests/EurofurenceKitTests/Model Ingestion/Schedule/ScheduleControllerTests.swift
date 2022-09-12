@@ -149,5 +149,50 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             "Expected to showcase events in start date order"
         )
     }
+    
+    func testMinimalConfigurationDuringTheConventionPreparesScheduleForCurrentDayTemporally() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
+        let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
+        scenario.simulateTimeChange(to: conDayTwo.date)
+        
+        let controller = scenario.model.makeScheduleController()
+        
+        // Given there is no configuration supplied, we would expect to see:
+        // - All days available, in temporal order
+        // - All tracks available, in alphabetical order
+        // - The selected day = the second day, as it's day two according to the clock
+        // - The selected track = nil
+        // - The current events = events occurring on the first day, in temporal + name order
+        
+        let daysFetchRequest = Day.temporallyOrderedFetchRequest()
+        let expectedDays = try scenario.viewContext.fetch(daysFetchRequest)
+        
+        let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
+        let expectedTracks = try scenario.viewContext.fetch(tracksFetchRequest)
+        
+        XCTAssertEqual(expectedDays, controller.availableDays)
+        XCTAssertEqual(expectedTracks, controller.availableTracks)
+        XCTAssertEqual(conDayTwo, controller.selectedDay)
+        XCTAssertNil(controller.selectedTrack)
+        XCTAssertFalse(controller.eventGroups.isEmpty)
+        
+        var observedStartTimes = [Date]()
+        for group in controller.eventGroups {
+            observedStartTimes.append(group.id)
+            for event in group.elements {
+                XCTAssertEqual(event.day, conDayTwo)
+            }
+        }
+        
+        let sortedStartTimes = observedStartTimes.sorted()
+        XCTAssertEqual(
+            observedStartTimes,
+            sortedStartTimes,
+            "Expected to showcase events in start date order"
+        )
+    }
 
 }
