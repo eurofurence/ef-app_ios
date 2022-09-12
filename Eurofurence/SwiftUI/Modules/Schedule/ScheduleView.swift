@@ -60,6 +60,7 @@ struct ScheduleView: View {
                 }
             }
         }
+        .refreshesModel()
         .listStyle(.insetGrouped)
         .navigationTitle("Schedule")
         .onChange(of: searchQuery) { newValue in
