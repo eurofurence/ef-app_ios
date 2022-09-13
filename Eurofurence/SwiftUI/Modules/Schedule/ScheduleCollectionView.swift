@@ -109,6 +109,14 @@ private struct ScheduleFilterView: View {
                     Text("Track")
                 }
             }
+            
+            if schedule.availableRooms.isEmpty == false {
+                Section {
+                    ScheduleRoomPicker(schedule: schedule)
+                } header: {
+                    Text("Room")
+                }
+            }
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Filters")
@@ -163,6 +171,24 @@ private struct ScheduleTrackPicker: View {
                     unknownTrackText: Text(track.name),
                     isSelected: schedule.selectedTrack == track
                 )
+            }
+        }
+    }
+    
+}
+
+private struct ScheduleRoomPicker: View {
+    
+    @ObservedObject var schedule: ScheduleController
+    
+    var body: some View {
+        SelectableRow(tag: nil, selection: $schedule.selectedRoom) {
+            Text("Everywhere")
+        }
+        
+        ForEach(schedule.availableRooms) { room in
+            SelectableRow(tag: room, selection: $schedule.selectedRoom) {
+                Text(room.shortName)
             }
         }
     }
