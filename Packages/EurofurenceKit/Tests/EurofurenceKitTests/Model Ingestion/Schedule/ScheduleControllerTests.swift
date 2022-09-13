@@ -34,6 +34,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
         // - All tracks available, in alphabetical order
+        // - All rooms available, in alphabetical order
         // - The selected day = first day (as we're outside con time)
         // - The selected track = nil
         // - The current events = events occurring on the first day, in temporal + name order
@@ -96,6 +97,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         // Given the controller is configured for a specific day, we would expect to see:
         // - No days available
         // - All tracks available, in alphabetical order
+        // - All rooms available, in alphabetical order
         // - The selected day = the configured day
         // - The selected track = nil
         // - The current events = events occurring on the specified day, in temporal + name order
@@ -103,8 +105,12 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
         let expectedTracks = try scenario.viewContext.fetch(tracksFetchRequest)
         
+        let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
+        let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
+        
         XCTAssertTrue(controller.availableDays.isEmpty)
         XCTAssertEqual(expectedTracks, controller.availableTracks)
+        XCTAssertEqual(expectedRooms, controller.availableRooms)
         XCTAssertEqual(conDayTwo, controller.selectedDay)
         XCTAssertNil(controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
@@ -150,6 +156,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         // Given the controller is configured for a specific track, we would expect to see:
         // - All days available, in temporal order
         // - No tracks available
+        // - All rooms available, in alphabetical order
         // - The selected day = first day (as we're outside con time)
         // - The selected track = the configured track
         // - The current events = events occurring on the first day that are on the track, in temporal + name order
@@ -158,8 +165,12 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let expectedDays = try scenario.viewContext.fetch(daysFetchRequest)
         let expectedSelectedDay = try XCTUnwrap(expectedDays.first)
         
+        let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
+        let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
+        
         XCTAssertEqual(expectedDays, controller.availableDays)
         XCTAssertTrue(controller.availableTracks.isEmpty)
+        XCTAssertEqual(expectedRooms, controller.availableRooms)
         XCTAssertEqual(expectedSelectedDay, controller.selectedDay)
         XCTAssertEqual(miscTrack, controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
@@ -210,6 +221,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
         // - All tracks available, in alphabetical order
+        // - All rooms available, in alphabetical order
         // - The selected day = the second day, as it's day two according to the clock
         // - The selected track = nil
         // - The current events = events occurring on the first day, in temporal + name order
@@ -220,8 +232,12 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
         let expectedTracks = try scenario.viewContext.fetch(tracksFetchRequest)
         
+        let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
+        let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
+        
         XCTAssertEqual(expectedDays, controller.availableDays)
         XCTAssertEqual(expectedTracks, controller.availableTracks)
+        XCTAssertEqual(expectedRooms, controller.availableRooms)
         XCTAssertEqual(conDayTwo, controller.selectedDay)
         XCTAssertNil(controller.selectedTrack)
         XCTAssertFalse(controller.eventGroups.isEmpty)
@@ -371,6 +387,58 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         XCTAssertEqual(
             "\(miscTrack.name) in \(afterDarkDealersDen.shortName) on \(conDayTwo.name)",
             controller.localizedFilterDescription
+        )
+    }
+    
+    func testConfiguredForSpecificRoomOmitsOtherRoomsAsOptions() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let artShowRoomID = "2d5d9a98-aaca-4434-959d-99d20e675d3a"
+        let artShowRoom = try scenario.model.room(identifiedBy: artShowRoomID)
+        let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(room: artShowRoom)
+        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        
+        XCTAssertEqual(artShowRoom, schedule.selectedRoom)
+        XCTAssertTrue(schedule.availableRooms.isEmpty)
+    }
+    
+    func testFilteringToSpecificRoomOnlyShowsEventsInThatRoomOrderedByDay() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let registrationRoomID = "c137717f-f297-4c3d-bc0e-542cbb032135"
+        let registrationRoom = try scenario.model.room(identifiedBy: registrationRoomID)
+        let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(room: registrationRoom)
+        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        
+        var expectedEventCount = 0
+        var observedDays: [EurofurenceKit.Day] = []
+        for group in schedule.eventGroups {
+            if case .day(let day) = group.id {
+                observedDays.append(day)
+            }
+            
+            for event in group.elements {
+                expectedEventCount += 1
+                XCTAssertEqual(event.room, registrationRoom)
+            }
+        }
+        
+        XCTAssertGreaterThan(observedDays.count, 0, "Expected to see events grouped by day")
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            schedule.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
+        
+        let sortedDays = observedDays.sorted(by: { $0.date < $1.date })
+        
+        XCTAssertEqual(
+            observedDays,
+            sortedDays,
+            "Expected to showcase events ordered by their date occurrance"
         )
     }
 

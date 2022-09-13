@@ -103,7 +103,7 @@ public class ScheduleController: NSObject, ObservableObject {
             NSSortDescriptor(key: "startDate", ascending: true)
         ]
         
-        isGroupingByDay = scheduleConfiguration.track != nil
+        isGroupingByDay = scheduleConfiguration.track != nil || scheduleConfiguration.room != nil
         let sectionNameKeyPath = isGroupingByDay ? "day" : "startDate"
         
         fetchedResultsController = NSFetchedResultsController(
@@ -174,8 +174,12 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func fetchRooms() throws {
-        let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
-        availableRooms = try managedObjectContext.fetch(roomsFetchRequest)
+        if let configuredRoom = scheduleConfiguration.room {
+            selectedRoom = configuredRoom
+        } else {
+            let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
+            availableRooms = try managedObjectContext.fetch(roomsFetchRequest)
+        }
     }
     
     private func updateFetchRequest() throws {
@@ -192,6 +196,10 @@ public class ScheduleController: NSObject, ObservableObject {
         
         if let selectedTrack = selectedTrack {
             predicates.append(Event.predicate(forEventsInTrack: selectedTrack))
+        }
+        
+        if let selectedRoom = selectedRoom {
+            predicates.append(Event.predicate(forEventsInRoom: selectedRoom))
         }
         
         return NSCompoundPredicate(andPredicateWithSubpredicates: predicates)

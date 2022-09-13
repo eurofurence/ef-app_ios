@@ -131,6 +131,10 @@ extension Event {
         NSPredicate(format: "SELF.track == %@", track)
     }
     
+    public static func predicate(forEventsInRoom room: Room) -> NSPredicate {
+        NSPredicate(format: "SELF.room == %@", room)
+    }
+    
     /// Produces a predicate for use in an `NSFetchRequest` that is suitable for textually searching for an event.
     ///
     /// - Parameter query: An input query for the `Event`.

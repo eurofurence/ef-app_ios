@@ -9,10 +9,16 @@ extension EurofurenceModel {
         
         let day: Day?
         let track: Track?
+        let room: Room?
         
-        public init(day: Day? = nil, track: Track? = nil) {
+        public init(
+            day: Day? = nil,
+            track: Track? = nil,
+            room: Room? = nil
+        ) {
             self.day = day
             self.track = track
+            self.room = room
         }
         
     }
