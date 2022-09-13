@@ -14,6 +14,16 @@ public class Day: Entity {
 
 }
 
+// MARK: - Day + Comparable
+
+extension Day: Comparable {
+    
+    public static func < (lhs: Day, rhs: Day) -> Bool {
+        lhs.date < rhs.date
+    }
+    
+}
+
 // MARK: - Fetching
 
 extension Day {

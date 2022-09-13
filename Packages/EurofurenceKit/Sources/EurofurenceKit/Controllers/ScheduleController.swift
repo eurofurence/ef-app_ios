@@ -83,9 +83,12 @@ public class ScheduleController: NSObject, ObservableObject {
     private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext
     private let clock: Clock
-    private let fetchedResultsController: NSFetchedResultsController<Event>
+    private var fetchedResultsController: NSFetchedResultsController<Event>?
     private var subscriptions = Set<AnyCancellable>()
-    private var isGroupingByDay: Bool
+    
+    private var isGroupingByDay: Bool {
+        selectedDay == nil || (scheduleConfiguration.track != nil || scheduleConfiguration.room != nil)
+    }
     
     init(
         scheduleConfiguration: EurofurenceModel.ScheduleConfiguration,
@@ -104,26 +107,27 @@ public class ScheduleController: NSObject, ObservableObject {
         let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
 
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "startDate", ascending: true)
+            NSSortDescriptor(key: "startDate", ascending: true),
+            NSSortDescriptor(key: "title", ascending: true)
         ]
         
-        isGroupingByDay = scheduleConfiguration.track != nil || scheduleConfiguration.room != nil
-        let sectionNameKeyPath = isGroupingByDay ? "day" : "startDate"
-        
-        fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest,
-            managedObjectContext: managedObjectContext,
-            sectionNameKeyPath: sectionNameKeyPath,
-            cacheName: nil
-        )
-        
         super.init()
-        
-        fetchedResultsController.delegate = self
         
         do {
             try fetchQueryableEntities()
             attachClockSubscriber()
+            
+            let sectionNameKeyPath = isGroupingByDay ? "day" : "startDate"
+            
+            fetchedResultsController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: managedObjectContext,
+                sectionNameKeyPath: sectionNameKeyPath,
+                cacheName: nil
+            )
+            
+            fetchedResultsController?.delegate = self
+            
             try updateFetchRequest()
         } catch {
             Self.logger.error(
@@ -164,7 +168,6 @@ public class ScheduleController: NSObject, ObservableObject {
         } else {
             let daysFetchRequest = Day.temporallyOrderedFetchRequest()
             availableDays = try managedObjectContext.fetch(daysFetchRequest)
-            selectedDay = availableDays.first
         }
     }
     
@@ -187,8 +190,8 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func updateFetchRequest() throws {
-        fetchedResultsController.fetchRequest.predicate = makeFetchingPredicate()
-        try fetchedResultsController.performFetch()
+        fetchedResultsController?.fetchRequest.predicate = makeFetchingPredicate()
+        try fetchedResultsController?.performFetch()
         updateGroupings()
     }
     
@@ -213,7 +216,7 @@ public class ScheduleController: NSObject, ObservableObject {
         var newGroups = [EventGroup]()
         var matchingEventsCount = 0
         
-        for section in (fetchedResultsController.sections ?? []) {
+        for section in (fetchedResultsController?.sections ?? []) {
             guard let events = (section.objects as? [Event]) else { continue }
             guard events.isEmpty == false else { continue }
             
@@ -279,7 +282,7 @@ public class ScheduleController: NSObject, ObservableObject {
             }
         }
         
-        if let dayName {
+        if let dayName = dayName {
             if description.isEmpty {
                 description.append(dayName)
             } else {
