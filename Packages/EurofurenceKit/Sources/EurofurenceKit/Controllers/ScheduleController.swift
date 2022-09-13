@@ -74,7 +74,11 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     /// The currently active `Room` within the schedule, used to filter the collection of events.
-    @Published public var selectedRoom: Room?
+    @Published public var selectedRoom: Room? {
+        didSet {
+            refetchEvents()
+        }
+    }
     
     private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext

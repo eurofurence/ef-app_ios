@@ -441,5 +441,54 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             "Expected to showcase events ordered by their date occurrance"
         )
     }
+    
+    func testFilteringToRoomFromUnconfiguredScheduleAppliesFilterWithUpdatedDescription() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let schedule = scenario.model.makeScheduleController()
+        
+        let registrationRoomID = "c137717f-f297-4c3d-bc0e-542cbb032135"
+        let registrationRoom = try scenario.model.room(identifiedBy: registrationRoomID)
+        schedule.selectedRoom = registrationRoom
+        
+        let daysFetchRequest = Day.temporallyOrderedFetchRequest()
+        let expectedDays = try scenario.viewContext.fetch(daysFetchRequest)
+        let expectedSelectedDay = try XCTUnwrap(expectedDays.first)
+        
+        XCTAssertEqual(
+            "\(registrationRoom.shortName) on \(expectedSelectedDay.name)",
+            schedule.localizedFilterDescription
+        )
+        
+        var expectedEventCount = 0
+        var observedStartDates = [Date]()
+        for group in schedule.eventGroups {
+            if case .startDate(let startDate) = group.id {
+                observedStartDates.append(startDate)
+            }
+            
+            for event in group.elements {
+                expectedEventCount += 1
+                XCTAssertEqual(event.room, registrationRoom)
+            }
+        }
+        
+        XCTAssertGreaterThan(observedStartDates.count, 0, "Expected to see events grouped by start date")
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            schedule.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events"
+        )
+        
+        let sortedDays = observedStartDates.sorted()
+        
+        XCTAssertEqual(
+            observedStartDates,
+            sortedDays,
+            "Expected to showcase events ordered by their date occurrance"
+        )
+    }
 
 }
