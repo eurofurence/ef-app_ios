@@ -2,7 +2,7 @@ import CoreData
 
 extension NSManagedObjectContext {
     
-    struct NoSuchObject<Object>: Error {
+    struct NoSuchObject<Object>: Error, @unchecked Sendable {
         var predicate: NSPredicate
     }
     
