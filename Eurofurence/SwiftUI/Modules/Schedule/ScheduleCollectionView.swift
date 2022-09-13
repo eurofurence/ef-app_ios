@@ -139,7 +139,7 @@ private struct ScheduleDayPicker: View {
     
     var body: some View {
         ForEach(schedule.availableDays) { day in
-            SelectableRow(tag: day, selection: $schedule.selectedDay) {
+            SelectableRow(tag: day, selection: $schedule.selectedDay.animation()) {
                 DayLabel(day: day, isSelected: schedule.selectedDay == day)
             }
         }
@@ -152,7 +152,7 @@ private struct ScheduleTrackPicker: View {
     @ObservedObject var schedule: ScheduleController
     
     var body: some View {
-        SelectableRow(tag: nil, selection: $schedule.selectedTrack) {
+        SelectableRow(tag: nil, selection: $schedule.selectedTrack.animation()) {
             Label {
                 Text("All Tracks")
             } icon: {
@@ -165,7 +165,7 @@ private struct ScheduleTrackPicker: View {
         }
         
         ForEach(schedule.availableTracks) { track in
-            SelectableRow(tag: track, selection: $schedule.selectedTrack) {
+            SelectableRow(tag: track, selection: $schedule.selectedTrack.animation()) {
                 CanonicalTrackLabel(
                     track: track.canonicalTrack,
                     unknownTrackText: Text(track.name),
@@ -182,12 +182,12 @@ private struct ScheduleRoomPicker: View {
     @ObservedObject var schedule: ScheduleController
     
     var body: some View {
-        SelectableRow(tag: nil, selection: $schedule.selectedRoom) {
+        SelectableRow(tag: nil, selection: $schedule.selectedRoom.animation()) {
             Text("Everywhere")
         }
         
         ForEach(schedule.availableRooms) { room in
-            SelectableRow(tag: room, selection: $schedule.selectedRoom) {
+            SelectableRow(tag: room, selection: $schedule.selectedRoom.animation()) {
                 Text(room.shortName)
             }
         }
