@@ -155,8 +155,6 @@ extension EurofurenceModel {
         }
         
         private let progress = Foundation.Progress()
-        private var progressObservation: NSObjectProtocol?
-        private var localizedDescriptionObservation: NSObjectProtocol?
         
         /// A number between 0.0 and 1.0 that represents the overall completeness of the current synchronisation pass,
         /// where 0 represents not started and 1 represents completed. The absence of a value indicates the overall
