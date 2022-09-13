@@ -171,10 +171,6 @@ extension EurofurenceModel {
         init() {
             progress.totalUnitCount = 0
             progress.completedUnitCount = 0
-            
-            progressObservation = progress.observe(\.fractionCompleted) { [weak self] progress, _ in
-                self?.fractionComplete = progress.fractionCompleted
-            }
         }
         
         func update(totalUnitCount: Int) {
@@ -183,6 +179,7 @@ extension EurofurenceModel {
         
         func updateCompletedUnitCount() {
             progress.completedUnitCount += 1
+            fractionComplete = progress.fractionCompleted
         }
         
     }
