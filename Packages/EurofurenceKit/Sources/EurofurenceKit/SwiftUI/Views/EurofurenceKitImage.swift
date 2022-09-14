@@ -10,13 +10,18 @@ public struct EurofurenceKitImage: View {
     }
     
     public var body: some View {
-        AsyncImage(url: image.cachedImageURL) { image in
-            image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(7)
-        } placeholder: {
-            Color.gray
+        swiftUIImage
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(7)
+    }
+    
+    @ViewBuilder
+    private var swiftUIImage: some View {
+        if let url = image.cachedImageURL {
+            if let uiImage = UIImage(contentsOfFile: url.path) {
+                SwiftUI.Image(uiImage: uiImage)
+                    .resizable()
+            }
         }
     }
     
