@@ -6,20 +6,25 @@ struct ScheduleCollectionView: View {
     @EnvironmentObject var model: EurofurenceModel
     @ObservedObject var schedule: ScheduleController
     @State private var isPresentingFilter = false
+    @State private var selectedEvent: Event?
     
     var body: some View {
         List {
             ForEach(schedule.eventGroups) { group in
                 Section {
                     ForEach(group.elements) { (event) in
-                        NavigationLink(event.title) {
-                            Text(event.title)
+                        NavigationLink(tag: event, selection: $selectedEvent) {
+                            Lazy {
+                                Text(event.title)
+                            }
+                        } label: {
+                            EventListRow(event: event)
                         }
                     }
                 } header: {
                     switch group.id {
                     case .startDate(let date):
-                        Text(date, format: Date.FormatStyle(date: .omitted, time: .shortened))
+                        FormattedShortTime(date)
                         
                     case .day(let day):
                         Text(verbatim: day.name)
