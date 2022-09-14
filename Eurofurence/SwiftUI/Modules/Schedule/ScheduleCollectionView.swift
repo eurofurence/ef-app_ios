@@ -18,7 +18,13 @@ struct ScheduleCollectionView: View {
                                 Text(event.title)
                             }
                         } label: {
-                            EventListRow(event: event)
+                            EventListRow(
+                                event: event,
+                                configuration: EventListRow.Configuration(
+                                    displayTrackName: schedule.selectedTrack == nil,
+                                    displayRoomName: schedule.selectedRoom == nil
+                                )
+                            )
                         }
                     }
                 } header: {
