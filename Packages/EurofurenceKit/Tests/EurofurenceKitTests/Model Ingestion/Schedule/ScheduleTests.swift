@@ -374,6 +374,70 @@ class ScheduleTests: EurofurenceKitTestCase {
         XCTAssertTrue(isGroupingByStartTime, "Displaying events for a specific day should regroup events by start time")
     }
     
+    func testSearchingForEvent_ExplicitMatch() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let schedule = scenario.model.makeSchedule()
+        schedule.query = "Your First Furry Convention"
+        
+        XCTAssertEqual(1, schedule.eventGroups.count, "Expected one group to contain the only event")
+        
+        if let group = schedule.eventGroups.first {
+            XCTAssertEqual(1, group.elements.count, "Expected one result matching the search")
+            XCTAssertEqual(
+                "ff714ae4-a165-4cbd-a0e1-74773620203a",
+                group.elements.first?.identifier,
+                "Expected to match the specific event based on the criteria"
+            )
+        }
+    }
+    
+    func testSearchingForEvent_CaseInsensitiveMatch() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let schedule = scenario.model.makeSchedule()
+        schedule.query = "your first furry convention"
+        
+        XCTAssertEqual(1, schedule.eventGroups.count, "Expected one group to contain the only event")
+        
+        if let group = schedule.eventGroups.first {
+            XCTAssertEqual(1, group.elements.count, "Expected one result matching the search")
+            XCTAssertEqual(
+                "ff714ae4-a165-4cbd-a0e1-74773620203a",
+                group.elements.first?.identifier,
+                "Expected to match the specific event based on the criteria"
+            )
+        }
+    }
+    
+    func testSearchingForEvent_PartialMatch() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let schedule = scenario.model.makeSchedule()
+        schedule.query = "first furry convention"
+        
+        XCTAssertEqual(1, schedule.eventGroups.count, "Expected one group to contain the only event")
+        
+        if let group = schedule.eventGroups.first {
+            XCTAssertEqual(1, group.elements.count, "Expected one result matching the search")
+            XCTAssertEqual(
+                "ff714ae4-a165-4cbd-a0e1-74773620203a",
+                group.elements.first?.identifier,
+                "Expected to match the specific event based on the criteria"
+            )
+        }
+    }
+    
+    func testApplyingQueryThenRemovingQueryRestoresAllEvents() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let schedule = scenario.model.makeSchedule()
+        schedule.query = "first furry convention"
+        schedule.query = ""
+        
+        assertContainsEventsGroupedByDay(schedule: schedule)
+    }
+    
     private func assertContainsEventsGroupedByDay(
         schedule: Schedule,
         room: EurofurenceKit.Room? = nil,

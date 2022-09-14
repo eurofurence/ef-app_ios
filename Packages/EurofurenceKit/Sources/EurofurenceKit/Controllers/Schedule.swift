@@ -59,6 +59,13 @@ public class Schedule: NSObject, ObservableObject {
     /// A localized description of the filter.
     @Published private(set) public var localizedFilterDescription: String?
     
+    /// A textual query to apply for filtering against this schedule.
+    @Published public var query: String = "" {
+        didSet {
+            refetchEvents()
+        }
+    }
+    
     /// The currently active `Day` within the schedule, used to filter the collection of events.
     @Published public var selectedDay: Day? {
         didSet {
@@ -201,6 +208,11 @@ public class Schedule: NSObject, ObservableObject {
     
     private func makeFetchingPredicate() -> NSPredicate {
         var predicates = [NSPredicate]()
+        
+        if query.isEmpty == false {
+            predicates.append(Event.predicateForTextualSearch(query: query))
+        }
+        
         if let selectedDay = selectedDay {
             predicates.append(Event.predicate(forEventsOccurringOn: selectedDay))
         }
