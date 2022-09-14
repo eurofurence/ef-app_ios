@@ -4,6 +4,7 @@ import SwiftUI
 struct EventListRow: View {
     
     @ObservedObject var event: Event
+    @ScaledMetric(relativeTo: .body) private var rowHeight: CGFloat = 72
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -32,6 +33,7 @@ struct EventListRow: View {
                 EurofurenceKitImage(image: banner)
             }
         }
+        .frame(minHeight: rowHeight)
     }
     
 }
