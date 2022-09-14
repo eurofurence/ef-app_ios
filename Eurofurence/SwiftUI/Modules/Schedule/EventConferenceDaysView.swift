@@ -15,7 +15,7 @@ struct EventConferenceDaysView: View {
             NavigationLink(tag: day, selection: $selectedDay) {
                 Lazy {                
                     let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: day)
-                    let schedule = model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+                    let schedule = model.makeSchedule(configuration: scheduleConfiguration)
                     ScheduleCollectionView(schedule: schedule)
                         .navigationTitle(day.name)
                 }

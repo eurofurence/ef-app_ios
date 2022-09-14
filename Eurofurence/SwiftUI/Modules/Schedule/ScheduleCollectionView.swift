@@ -4,7 +4,7 @@ import SwiftUI
 struct ScheduleCollectionView: View {
     
     @EnvironmentObject var model: EurofurenceModel
-    @ObservedObject var schedule: ScheduleController
+    @ObservedObject var schedule: Schedule
     @State private var isPresentingFilter = false
     @State private var selectedEvent: Event?
     
@@ -65,7 +65,7 @@ struct ScheduleCollectionView: View {
 private struct ScheduleFilterButton: View {
     
     @Binding var isPresentingFilter: Bool
-    var schedule: ScheduleController
+    var schedule: Schedule
     
     var body: some View {
         Button {
@@ -94,7 +94,7 @@ private struct ScheduleFilterButton: View {
 
 private struct ScheduleFilterView: View {
     
-    @ObservedObject var schedule: ScheduleController
+    @ObservedObject var schedule: Schedule
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -140,7 +140,7 @@ private struct ScheduleFilterView: View {
 
 private struct ScheduleDayPicker: View {
     
-    @ObservedObject var schedule: ScheduleController
+    @ObservedObject var schedule: Schedule
     
     var body: some View {
         SelectableRow(tag: nil, selection: $schedule.selectedDay.animation()) {
@@ -166,7 +166,7 @@ private struct ScheduleDayPicker: View {
 
 private struct ScheduleTrackPicker: View {
     
-    @ObservedObject var schedule: ScheduleController
+    @ObservedObject var schedule: Schedule
     
     var body: some View {
         SelectableRow(tag: nil, selection: $schedule.selectedTrack.animation()) {
@@ -196,7 +196,7 @@ private struct ScheduleTrackPicker: View {
 
 private struct ScheduleRoomPicker: View {
     
-    @ObservedObject var schedule: ScheduleController
+    @ObservedObject var schedule: Schedule
     
     var body: some View {
         SelectableRow(tag: nil, selection: $schedule.selectedRoom.animation()) {
@@ -217,7 +217,7 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
     static var previews: some View {
         EurofurenceModel.preview { model in
             NavigationView {
-                ScheduleCollectionView(schedule: model.makeScheduleController())
+                ScheduleCollectionView(schedule: model.makeSchedule())
                     .navigationTitle("Preview")
             }
         }
@@ -226,7 +226,7 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
         EurofurenceModel.preview { model in
             NavigationView {
                 let dayConfiguration = EurofurenceModel.ScheduleConfiguration(day: model.day(for: .conDayTwo))
-                ScheduleCollectionView(schedule: model.makeScheduleController(scheduleConfiguration: dayConfiguration))
+                ScheduleCollectionView(schedule: model.makeSchedule(configuration: dayConfiguration))
                     .navigationTitle("Preview")
             }
         }
@@ -235,7 +235,7 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
         EurofurenceModel.preview { model in
             NavigationView {
                 let trackConfiguration = EurofurenceModel.ScheduleConfiguration(track: model.track(for: .artShow))
-                ScheduleCollectionView(schedule: model.makeScheduleController(scheduleConfiguration: trackConfiguration))
+                ScheduleCollectionView(schedule: model.makeSchedule(configuration: trackConfiguration))
                     .navigationTitle("Preview")
             }
         }
@@ -248,7 +248,7 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
                     track: model.track(for: .artistLounge)
                 )
                 
-                let scheduleController = model.makeScheduleController(scheduleConfiguration: dayAndTrackConfiguration)
+                let scheduleController = model.makeSchedule(configuration: dayAndTrackConfiguration)
                 ScheduleCollectionView(schedule: scheduleController)
                     .navigationTitle("Preview")
             }

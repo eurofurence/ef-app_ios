@@ -17,12 +17,12 @@ private extension Array where Element == EurofurenceKit.Event {
     
 }
 
-class ScheduleControllerTests: EurofurenceKitTestCase {
+class ScheduleTests: EurofurenceKitTestCase {
     
     func testControllerUpdatesAfterSync() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
         
-        let controller = scenario.model.makeScheduleController()
+        let controller = scenario.model.makeSchedule()
         
         let changedExpectation = expectation(description: "")
         changedExpectation.assertForOverFulfill = false
@@ -43,7 +43,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
-        let schedule = scenario.model.makeScheduleController()
+        let schedule = scenario.model.makeSchedule()
         
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
@@ -81,7 +81,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: conDayTwo)
-        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         // Given the controller is configured for a specific day, we would expect to see:
         // - No days available
@@ -116,7 +116,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let miscTrackIdentifier = "0b80cc7b-b5b2-4fab-8b74-078f2b5e366e"
         let miscTrack = try scenario.model.track(identifiedBy: miscTrackIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: miscTrack)
-        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         // Given the controller is configured for a specific track, we would expect to see:
         // - All days available, in temporal order
@@ -151,7 +151,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
         scenario.simulateTimeChange(to: conDayTwo.date)
         
-        let schedule = scenario.model.makeScheduleController()
+        let schedule = scenario.model.makeSchedule()
         
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
@@ -188,7 +188,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let miscTrackIdentifier = "0b80cc7b-b5b2-4fab-8b74-078f2b5e366e"
         let miscTrack = try scenario.model.track(identifiedBy: miscTrackIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: miscTrack)
-        let controller = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let controller = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         // Given the controller will begin on the first day as we are outside of con them
         // When a day within the boundaries of the convention is selected
@@ -220,7 +220,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: conDayTwo)
-        let controller = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let controller = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         // Given the controller is displaying events on day two with no track selected
         // When a track is selected
@@ -261,7 +261,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
-        let controller = scenario.model.makeScheduleController()
+        let controller = scenario.model.makeSchedule()
         
         let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
@@ -281,7 +281,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
-        let controller = scenario.model.makeScheduleController()
+        let controller = scenario.model.makeSchedule()
         
         let afterDarkDealersDenRoomIdentifier = "4d64ba76-8a9b-4dd1-9b78-c159e38c5292"
         let afterDarkDealersDen = try scenario.model.room(identifiedBy: afterDarkDealersDenRoomIdentifier)
@@ -308,7 +308,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let artShowRoomID = "2d5d9a98-aaca-4434-959d-99d20e675d3a"
         let artShowRoom = try scenario.model.room(identifiedBy: artShowRoomID)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(room: artShowRoom)
-        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         XCTAssertEqual(artShowRoom, schedule.selectedRoom)
         XCTAssertTrue(schedule.availableRooms.isEmpty)
@@ -321,7 +321,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let registrationRoomID = "c137717f-f297-4c3d-bc0e-542cbb032135"
         let registrationRoom = try scenario.model.room(identifiedBy: registrationRoomID)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(room: registrationRoom)
-        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeSchedule(configuration: scheduleConfiguration)
         
         assertContainsEventsGroupedByDay(schedule: schedule, room: registrationRoom)
     }
@@ -330,7 +330,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
-        let schedule = scenario.model.makeScheduleController()
+        let schedule = scenario.model.makeSchedule()
         
         let registrationRoomID = "c137717f-f297-4c3d-bc0e-542cbb032135"
         let registrationRoom = try scenario.model.room(identifiedBy: registrationRoomID)
@@ -347,7 +347,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
     func testShowingAllDaysThenFilteringToSpecificDayRegroupsEventsByStartTime() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
-        let controller = scenario.model.makeScheduleController()
+        let controller = scenario.model.makeSchedule()
         
         let initialGroupings = controller.eventGroups.map(\.id)
         let isGroupingByDay = initialGroupings.allSatisfy { group in
@@ -375,7 +375,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
     }
     
     private func assertContainsEventsGroupedByDay(
-        schedule: ScheduleController,
+        schedule: Schedule,
         room: EurofurenceKit.Room? = nil,
         track: EurofurenceKit.Track? = nil,
         line: UInt = #line
@@ -429,7 +429,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
     }
     
     private func assert(
-        schedule: ScheduleController,
+        schedule: Schedule,
         containsEventsGroupedByStartDateOn day: EurofurenceKit.Day,
         line: UInt = #line
     ) {

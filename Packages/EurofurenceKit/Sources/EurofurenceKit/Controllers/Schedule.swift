@@ -7,9 +7,9 @@ import Logging
 ///
 /// This class is attributed to the main actor, enabling binding of state to the user interface.
 @MainActor
-public class ScheduleController: NSObject, ObservableObject {
+public class Schedule: NSObject, ObservableObject {
     
-    private static let logger = Logger(label: "ScheduleController")
+    private static let logger = Logger(label: "Schedule")
     
     /// The attribute used to group a collection of `Events` within a schedule.
     public enum Group: Hashable, Identifiable {
@@ -80,7 +80,7 @@ public class ScheduleController: NSObject, ObservableObject {
         }
     }
     
-    private let scheduleConfiguration: EurofurenceModel.ScheduleConfiguration
+    private let configuration: EurofurenceModel.ScheduleConfiguration
     private let managedObjectContext: NSManagedObjectContext
     private let clock: Clock
     private var fetchedResultsController: NSFetchedResultsController<Event>?
@@ -91,7 +91,7 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     init(
-        scheduleConfiguration: EurofurenceModel.ScheduleConfiguration,
+        configuration: EurofurenceModel.ScheduleConfiguration,
         managedObjectContext: NSManagedObjectContext,
         clock: Clock
     ) {
@@ -100,7 +100,7 @@ public class ScheduleController: NSObject, ObservableObject {
             "\(Self.self) requires a main-queue NSManagedObjectContext"
         )
         
-        self.scheduleConfiguration = scheduleConfiguration
+        self.configuration = configuration
         self.managedObjectContext = managedObjectContext
         self.clock = clock
         
@@ -144,7 +144,7 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func fetchDays() throws {
-        if let configuredDay = scheduleConfiguration.day {
+        if let configuredDay = configuration.day {
             selectedDay = configuredDay
         } else {
             let daysFetchRequest = Day.temporallyOrderedFetchRequest()
@@ -153,7 +153,7 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func fetchTracks() throws {
-        if let configuredTrack = scheduleConfiguration.track {
+        if let configuredTrack = configuration.track {
             selectedTrack = configuredTrack
         } else {
             let tracksFetchRequest = Track.alphabeticallySortedFetchRequest()
@@ -162,7 +162,7 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func fetchRooms() throws {
-        if let configuredRoom = scheduleConfiguration.room {
+        if let configuredRoom = configuration.room {
             selectedRoom = configuredRoom
         } else {
             let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
@@ -255,7 +255,7 @@ public class ScheduleController: NSObject, ObservableObject {
     
     private func updateLocalizedFilter() {
         let trackName: String? = {
-            if let selectedTrack = selectedTrack, scheduleConfiguration.track != selectedTrack {
+            if let selectedTrack = selectedTrack, configuration.track != selectedTrack {
                 return selectedTrack.name
             } else {
                 return nil
@@ -263,7 +263,7 @@ public class ScheduleController: NSObject, ObservableObject {
         }()
         
         let dayName: String? = {
-            if let selectedDay = selectedDay, scheduleConfiguration.day != selectedDay {
+            if let selectedDay = selectedDay, configuration.day != selectedDay {
                 return selectedDay.name
             } else {
                 return nil
@@ -304,9 +304,9 @@ public class ScheduleController: NSObject, ObservableObject {
     
 }
 
-// MARK: - ScheduleController + NSFetchedResultsControllerDelegate
+// MARK: - Schedule + NSFetchedResultsControllerDelegate
 
-extension ScheduleController: NSFetchedResultsControllerDelegate {
+extension Schedule: NSFetchedResultsControllerDelegate {
     
     public nonisolated func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         Task(priority: .high) {

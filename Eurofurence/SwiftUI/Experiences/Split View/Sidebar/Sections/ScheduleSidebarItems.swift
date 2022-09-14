@@ -12,7 +12,7 @@ struct ScheduleSidebarItems: View {
         Section {
             NavigationLink {
                 Lazy {
-                    ScheduleCollectionView(schedule: model.makeScheduleController())
+                    ScheduleCollectionView(schedule: model.makeSchedule())
                         .navigationTitle("All Events")
                 }
             } label: {
