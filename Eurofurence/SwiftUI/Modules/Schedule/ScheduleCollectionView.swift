@@ -183,11 +183,7 @@ private struct ScheduleTrackPicker: View {
         
         ForEach(schedule.availableTracks) { track in
             SelectableRow(tag: track, selection: $schedule.selectedTrack.animation()) {
-                CanonicalTrackLabel(
-                    track: track.canonicalTrack,
-                    unknownTrackText: Text(track.name),
-                    isSelected: schedule.selectedTrack == track
-                )
+                TrackLabel(track, isSelected: schedule.selectedTrack == track)
             }
         }
     }

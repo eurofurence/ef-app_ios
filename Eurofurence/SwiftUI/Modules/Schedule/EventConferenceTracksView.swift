@@ -20,11 +20,7 @@ struct EventConferenceTracksView: View {
                         .navigationTitle(track.name)
                 }
             } label: {
-                CanonicalTrackLabel(
-                    track: track.canonicalTrack,
-                    unknownTrackText: Text(verbatim: track.name),
-                    isSelected: selectedTrack == track
-                )
+                TrackLabel(track, isSelected: selectedTrack == track)
             }
         }
     }

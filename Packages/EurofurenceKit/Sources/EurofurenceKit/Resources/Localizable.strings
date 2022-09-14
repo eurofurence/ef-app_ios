@@ -23,3 +23,13 @@
 "Animation" = "Animation";
 "Dance" = "Dance";
 "Fursuit Group Photo" = "Fursuit Group Photo";
+
+// Event tags
+"Sponsor Only" = "Sponsor Only";
+"Super Sponsor Only" = "Super Sponsor Only";
+"Art Show" = "Art Show";
+"Kage" = "Kage";
+"Dealers Den" = "Dealers Den";
+"Main Stage" = "Main Stage";
+"Photoshoot" = "Photoshoot";
+"Fake Mask Required" = "Fake Mask Required";
