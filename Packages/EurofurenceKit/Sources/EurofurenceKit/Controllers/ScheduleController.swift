@@ -87,7 +87,7 @@ public class ScheduleController: NSObject, ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     private var isGroupingByDay: Bool {
-        selectedDay == nil || (scheduleConfiguration.track != nil || scheduleConfiguration.room != nil)
+        selectedDay == nil
     }
     
     init(
@@ -104,30 +104,11 @@ public class ScheduleController: NSObject, ObservableObject {
         self.managedObjectContext = managedObjectContext
         self.clock = clock
         
-        let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
-
-        fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "startDate", ascending: true),
-            NSSortDescriptor(key: "title", ascending: true)
-        ]
-        
         super.init()
         
         do {
             try fetchQueryableEntities()
             attachClockSubscriber()
-            
-            let sectionNameKeyPath = isGroupingByDay ? "day" : "startDate"
-            
-            fetchedResultsController = NSFetchedResultsController(
-                fetchRequest: fetchRequest,
-                managedObjectContext: managedObjectContext,
-                sectionNameKeyPath: sectionNameKeyPath,
-                cacheName: nil
-            )
-            
-            fetchedResultsController?.delegate = self
-            
             try updateFetchRequest()
         } catch {
             Self.logger.error(
@@ -190,9 +171,32 @@ public class ScheduleController: NSObject, ObservableObject {
     }
     
     private func updateFetchRequest() throws {
+        updateFetchedResultsSectioningKeyPathIfNeeded()
+        
         fetchedResultsController?.fetchRequest.predicate = makeFetchingPredicate()
         try fetchedResultsController?.performFetch()
         updateGroupings()
+    }
+    
+    private func updateFetchedResultsSectioningKeyPathIfNeeded() {
+        let sectionNameKeyPath = isGroupingByDay ? "day.date" : "startDate"
+        if fetchedResultsController?.sectionNameKeyPath != sectionNameKeyPath {
+            let fetchRequest: NSFetchRequest<Event> = Event.fetchRequest()
+            fetchRequest.sortDescriptors = [
+                NSSortDescriptor(key: sectionNameKeyPath, ascending: true),
+                NSSortDescriptor(key: "startDate", ascending: true),
+                NSSortDescriptor(key: "title", ascending: true)
+            ]
+            
+            fetchedResultsController = NSFetchedResultsController(
+                fetchRequest: fetchRequest,
+                managedObjectContext: managedObjectContext,
+                sectionNameKeyPath: sectionNameKeyPath,
+                cacheName: nil
+            )
+            
+            fetchedResultsController?.delegate = self
+        }
     }
     
     private func makeFetchingPredicate() -> NSPredicate {

@@ -528,5 +528,35 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             "Expected to showcase events ordered by the day they occur on"
         )
     }
+    
+    func testShowingAllDaysThenFilteringToSpecificDayRegroupsEventsByStartTime() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let controller = scenario.model.makeScheduleController()
+        
+        let initialGroupings = controller.eventGroups.map(\.id)
+        let isGroupingByDay = initialGroupings.allSatisfy { group in
+            if case .day = group {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        XCTAssertTrue(isGroupingByDay, "Displaying events across multiple days should group events by day")
+        
+        controller.selectedDay = controller.availableDays.first
+        
+        let revisedGroupings = controller.eventGroups.map(\.id)
+        let isGroupingByStartTime = revisedGroupings.allSatisfy { group in
+            if case .startDate = group {
+                return true
+            } else {
+                return false
+            }
+        }
+        
+        XCTAssertTrue(isGroupingByStartTime, "Displaying events for a specific day should regroup events by start time")
+    }
 
 }
