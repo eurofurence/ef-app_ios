@@ -42,7 +42,6 @@ struct EventListRow_Previews: PreviewProvider {
     
     static var previews: some View {
         EurofurenceModel.preview { model in
-            // Registration - no images, fairly standard
             EventListRow(event: model.event(for: .registration))
                 .previewLayout(.sizeThatFits)
                 .previewDisplayName("Registration")
