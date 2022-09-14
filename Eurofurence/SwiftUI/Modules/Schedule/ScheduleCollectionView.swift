@@ -64,6 +64,7 @@ private struct ScheduleFilterButton: View {
                 ScheduleFilterView(schedule: schedule)
             }
             .sensiblePopoverFrame()
+            .filteringInterfaceDetents()
         }
     }
     

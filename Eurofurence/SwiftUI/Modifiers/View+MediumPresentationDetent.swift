@@ -3,10 +3,10 @@ import SwiftUI
 extension View {
     
     @ViewBuilder
-    func enablingMediumPresentationDetent() -> some View {
+    func filteringInterfaceDetents() -> some View {
         if #available(iOS 16.0, *) {
             self
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.medium])
         } else {
             self
         }
