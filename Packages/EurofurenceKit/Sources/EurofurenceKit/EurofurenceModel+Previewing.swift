@@ -241,19 +241,15 @@ extension EurofurenceModel {
     
     public enum PreviewTrack {
         case artShow
-        case artistLounge
         case clubStage
         
         fileprivate var identifier: String {
             switch self {
             case .artShow:
-                return "2d5d9a98-aaca-4434-959d-99d20e675d3a"
-                
-            case .artistLounge:
-                return "4fdf6f0b-adf0-49b8-801f-70b026733538"
+                return "f23cc7f6-34c1-48d5-8acb-0ec10c353403"
                 
             case .clubStage:
-                return "51bb19cb-a658-4cd5-b7cf-b655355040bf"
+                return "1af389c5-7e1c-4524-8db2-ce7551b3c4eb"
             }
         }
     }
