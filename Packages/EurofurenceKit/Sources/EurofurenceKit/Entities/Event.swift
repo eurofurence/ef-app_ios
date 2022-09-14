@@ -114,32 +114,19 @@ extension Event: ConsumesRemoteResponse {
 
 extension Event {
     
-    /// Produces a predicate for use in an `NSFetchRequest` that will only yield events that occur on a specific day.
-    ///
-    /// - Parameter day: A `Day` from the model to fetch events that occur on.
-    /// - Returns: An `NSPredicate` for fetching only events that occur on the specified day.
-    public static func predicate(forEventsOccurringOn day: Day) -> NSPredicate {
+    static func predicate(forEventsOccurringOn day: Day) -> NSPredicate {
         NSPredicate(format: "SELF.day == %@", day)
     }
     
-    /// Produces a predicate for use in an `NSFetchRequest` that will only yield events that are part of a specific
-    /// track.
-    ///
-    /// - Parameter track: A `Track` from the model to fetch events that are a part of.
-    /// - Returns: An `NSPredicate` for fetching events that are part of the `Track`.
-    public static func predicate(forEventsInTrack track: Track) -> NSPredicate {
+    static func predicate(forEventsInTrack track: Track) -> NSPredicate {
         NSPredicate(format: "SELF.track == %@", track)
     }
     
-    public static func predicate(forEventsInRoom room: Room) -> NSPredicate {
+    static func predicate(forEventsInRoom room: Room) -> NSPredicate {
         NSPredicate(format: "SELF.room == %@", room)
     }
     
-    /// Produces a predicate for use in an `NSFetchRequest` that is suitable for textually searching for an event.
-    ///
-    /// - Parameter query: An input query for the `Event`.
-    /// - Returns: An `NSPredicate` that will match against `Event`s that contains the input query.
-    public static func predicateForTextualSearch(query: String) -> NSPredicate {
+    static func predicateForTextualSearch(query: String) -> NSPredicate {
         NSPredicate(format: "SELF.title CONTAINS[c] %@", query)
     }
     
