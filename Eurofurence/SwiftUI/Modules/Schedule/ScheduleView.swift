@@ -51,7 +51,13 @@ struct ScheduleView: View {
                             NavigationLink {
                                 Text(event.title)
                             } label: {
-                                Text(event.title)
+                                EventListRow(
+                                    event: event,
+                                    configuration: EventListRow.Configuration(
+                                        displayTrackName: true, 
+                                        displayRoomName: true
+                                    )
+                                )
                             }
                         }
                     } header: {
