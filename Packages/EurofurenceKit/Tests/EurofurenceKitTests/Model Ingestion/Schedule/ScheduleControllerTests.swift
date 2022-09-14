@@ -3,7 +3,7 @@ import Combine
 import EurofurenceWebAPI
 import XCTest
 
-extension Array where Element == EurofurenceKit.Event {
+private extension Array where Element == EurofurenceKit.Event {
     
     func inStartDateAndNameOrder() -> [Element] {
         sorted { first, second in
@@ -43,7 +43,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scenario = await EurofurenceModelTestBuilder().build()
         try await scenario.updateLocalStore(using: .ef26)
         
-        let controller = scenario.model.makeScheduleController()
+        let schedule = scenario.model.makeScheduleController()
         
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
@@ -62,44 +62,16 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
         let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
         
-        XCTAssertEqual(expectedDays, controller.availableDays)
-        XCTAssertEqual(expectedTracks, controller.availableTracks)
-        XCTAssertEqual(expectedRooms, controller.availableRooms)
-        XCTAssertNil(controller.selectedDay)
-        XCTAssertNil(controller.selectedTrack)
-        XCTAssertNil(controller.selectedRoom)
-        XCTAssertFalse(controller.eventGroups.isEmpty)
-        XCTAssertNil(controller.localizedFilterDescription)
+        XCTAssertEqual(expectedDays, schedule.availableDays)
+        XCTAssertEqual(expectedTracks, schedule.availableTracks)
+        XCTAssertEqual(expectedRooms, schedule.availableRooms)
+        XCTAssertNil(schedule.selectedDay)
+        XCTAssertNil(schedule.selectedTrack)
+        XCTAssertNil(schedule.selectedRoom)
+        XCTAssertFalse(schedule.eventGroups.isEmpty)
+        XCTAssertNil(schedule.localizedFilterDescription)
         
-        var observedDays = [EurofurenceKit.Day]()
-        var eventsByDay = [EurofurenceKit.Day: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in controller.eventGroups {
-            if case .day(let day) = group.id {
-                observedDays.append(day)
-                
-                expectedEventCount += group.elements.count
-                eventsByDay[day] = group.elements
-            }
-        }
-        
-        for (_, events) in eventsByDay {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            controller.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedDays = observedDays.sorted()
-        XCTAssertEqual(
-            observedDays,
-            sortedDays,
-            "Expected to showcase events in start date order"
-        )
+        assertContainsEventsGroupedByDay(schedule: schedule)
     }
     
     func testConfiguredForSpecificDayOmitsOtherDaysAsOptions() async throws {
@@ -109,7 +81,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let conDayTwoIdentifier = "7f69f120-3c8a-49bf-895a-20c2adade161"
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: conDayTwo)
-        let controller = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
         
         // Given the controller is configured for a specific day, we would expect to see:
         // - No days available
@@ -125,48 +97,16 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
         let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
         
-        XCTAssertTrue(controller.availableDays.isEmpty)
-        XCTAssertEqual(expectedTracks, controller.availableTracks)
-        XCTAssertEqual(expectedRooms, controller.availableRooms)
-        XCTAssertEqual(conDayTwo, controller.selectedDay)
-        XCTAssertNil(controller.selectedTrack)
-        XCTAssertFalse(controller.eventGroups.isEmpty)
-        XCTAssertNil(controller.localizedFilterDescription)
-        XCTAssertNil(controller.selectedRoom)
+        XCTAssertTrue(schedule.availableDays.isEmpty)
+        XCTAssertEqual(expectedTracks, schedule.availableTracks)
+        XCTAssertEqual(expectedRooms, schedule.availableRooms)
+        XCTAssertEqual(conDayTwo, schedule.selectedDay)
+        XCTAssertNil(schedule.selectedTrack)
+        XCTAssertFalse(schedule.eventGroups.isEmpty)
+        XCTAssertNil(schedule.localizedFilterDescription)
+        XCTAssertNil(schedule.selectedRoom)
         
-        var observedStartTimes = [Date]()
-        var eventsByStartTime = [Date: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in controller.eventGroups {
-            if case .startDate(let date) = group.id {
-                observedStartTimes.append(date)
-                
-                eventsByStartTime[date] = group.elements
-                expectedEventCount += group.elements.count
-                
-                for event in group.elements {
-                    XCTAssertEqual(event.day, conDayTwo)
-                }
-            }
-        }
-        
-        for (_, events) in eventsByStartTime {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            controller.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedStartTimes = observedStartTimes.sorted()
-        XCTAssertEqual(
-            observedStartTimes,
-            sortedStartTimes,
-            "Expected to showcase events in start date order"
-        )
+        assert(schedule: schedule, containsEventsGroupedByStartDateOn: conDayTwo)
     }
     
     func testConfiguredForSpecificTrackOmitsOtherTracksAsOptions() async throws {
@@ -176,7 +116,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let miscTrackIdentifier = "0b80cc7b-b5b2-4fab-8b74-078f2b5e366e"
         let miscTrack = try scenario.model.track(identifiedBy: miscTrackIdentifier)
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: miscTrack)
-        let controller = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
+        let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
         
         // Given the controller is configured for a specific track, we would expect to see:
         // - All days available, in temporal order
@@ -192,46 +132,15 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
         let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
         
-        XCTAssertEqual(expectedDays, controller.availableDays)
-        XCTAssertTrue(controller.availableTracks.isEmpty)
-        XCTAssertEqual(expectedRooms, controller.availableRooms)
-        XCTAssertNil(controller.selectedDay)
-        XCTAssertEqual(miscTrack, controller.selectedTrack)
-        XCTAssertFalse(controller.eventGroups.isEmpty)
-        XCTAssertNil(controller.selectedRoom)
+        XCTAssertEqual(expectedDays, schedule.availableDays)
+        XCTAssertTrue(schedule.availableTracks.isEmpty)
+        XCTAssertEqual(expectedRooms, schedule.availableRooms)
+        XCTAssertNil(schedule.selectedDay)
+        XCTAssertEqual(miscTrack, schedule.selectedTrack)
+        XCTAssertFalse(schedule.eventGroups.isEmpty)
+        XCTAssertNil(schedule.selectedRoom)
         
-        var observedDays = [EurofurenceKit.Day]()
-        var eventsByDay = [EurofurenceKit.Day: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in controller.eventGroups {
-            if case .day(let day) = group.id {
-                observedDays.append(day)
-                
-                expectedEventCount += group.elements.count
-                eventsByDay[day] = group.elements
-            }
-        }
-        
-        for (_, events) in eventsByDay {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertGreaterThan(observedDays.count, 0, "Expected to see events grouped by day")
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            controller.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedDays = observedDays.sorted(by: { $0.date < $1.date })
-        
-        XCTAssertEqual(
-            observedDays,
-            sortedDays,
-            "Expected to showcase events ordered by their date occurrance"
-        )
+        assertContainsEventsGroupedByDay(schedule: schedule, track: miscTrack)
     }
     
     func testMinimalConfigurationDuringTheConventionPreparesScheduleForCurrentDayTemporally() async throws {
@@ -242,7 +151,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let conDayTwo = try scenario.model.day(identifiedBy: conDayTwoIdentifier)
         scenario.simulateTimeChange(to: conDayTwo.date)
         
-        let controller = scenario.model.makeScheduleController()
+        let schedule = scenario.model.makeScheduleController()
         
         // Given there is no configuration supplied, we would expect to see:
         // - All days available, in temporal order
@@ -261,47 +170,15 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let roomsFetchRequest = Room.alphabeticallySortedFetchRequest()
         let expectedRooms = try scenario.viewContext.fetch(roomsFetchRequest)
         
-        XCTAssertEqual(expectedDays, controller.availableDays)
-        XCTAssertEqual(expectedTracks, controller.availableTracks)
-        XCTAssertEqual(expectedRooms, controller.availableRooms)
-        XCTAssertEqual(conDayTwo, controller.selectedDay)
-        XCTAssertNil(controller.selectedTrack)
-        XCTAssertFalse(controller.eventGroups.isEmpty)
-        XCTAssertNil(controller.selectedRoom)
+        XCTAssertEqual(expectedDays, schedule.availableDays)
+        XCTAssertEqual(expectedTracks, schedule.availableTracks)
+        XCTAssertEqual(expectedRooms, schedule.availableRooms)
+        XCTAssertEqual(conDayTwo, schedule.selectedDay)
+        XCTAssertNil(schedule.selectedTrack)
+        XCTAssertFalse(schedule.eventGroups.isEmpty)
+        XCTAssertNil(schedule.selectedRoom)
         
-        var observedStartTimes = [Date]()
-        var eventsByStartTime = [Date: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in controller.eventGroups {
-            if case .startDate(let date) = group.id {
-                observedStartTimes.append(date)
-                
-                eventsByStartTime[date] = group.elements
-                expectedEventCount += group.elements.count
-                
-                for event in group.elements {
-                    XCTAssertEqual(event.day, conDayTwo)
-                }
-            }
-        }
-        
-        for (_, events) in eventsByStartTime {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            controller.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedStartTimes = observedStartTimes.sorted()
-        XCTAssertEqual(
-            observedStartTimes,
-            sortedStartTimes,
-            "Expected to showcase events in start date order"
-        )
+        assert(schedule: schedule, containsEventsGroupedByStartDateOn: conDayTwo)
     }
     
     func testConfiguredForTrackThenChangingCurrentDayUpdatesEventsToMatchNewCriteria() async throws {
@@ -446,38 +323,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(room: registrationRoom)
         let schedule = scenario.model.makeScheduleController(scheduleConfiguration: scheduleConfiguration)
         
-        var observedDays = [EurofurenceKit.Day]()
-        var eventsByDay = [EurofurenceKit.Day: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in schedule.eventGroups {
-            if case .day(let day) = group.id {
-                observedDays.append(day)
-                
-                expectedEventCount += group.elements.count
-                eventsByDay[day] = group.elements
-            }
-        }
-        
-        for (_, events) in eventsByDay {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertGreaterThan(observedDays.count, 0, "Expected to see events grouped by day")
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            schedule.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedDays = observedDays.sorted()
-        
-        XCTAssertEqual(
-            observedDays,
-            sortedDays,
-            "Expected to showcase events ordered by their date occurrance"
-        )
+        assertContainsEventsGroupedByDay(schedule: schedule, room: registrationRoom)
     }
     
     func testFilteringToRoomFromUnconfiguredScheduleAppliesFilterWithUpdatedDescription() async throws {
@@ -495,38 +341,7 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
             schedule.localizedFilterDescription
         )
         
-        var observedDays = [EurofurenceKit.Day]()
-        var eventsByDay = [EurofurenceKit.Day: [EurofurenceKit.Event]]()
-        var expectedEventCount = 0
-        for group in schedule.eventGroups {
-            if case .day(let day) = group.id {
-                observedDays.append(day)
-                
-                expectedEventCount += group.elements.count
-                eventsByDay[day] = group.elements
-            }
-        }
-        
-        for (_, events) in eventsByDay {
-            let sortedEvents = events.inStartDateAndNameOrder()
-            XCTAssertEqual(events, sortedEvents)
-        }
-        
-        XCTAssertGreaterThan(observedDays.count, 0, "Expected to see events grouped by day")
-        
-        XCTAssertEqual(
-            expectedEventCount,
-            schedule.matchingEventsCount,
-            "Expected to find \(expectedEventCount) matching events"
-        )
-        
-        let sortedDays = observedDays.sorted()
-        
-        XCTAssertEqual(
-            observedDays,
-            sortedDays,
-            "Expected to showcase events ordered by the day they occur on"
-        )
+        assertContainsEventsGroupedByDay(schedule: schedule, room: registrationRoom)
     }
     
     func testShowingAllDaysThenFilteringToSpecificDayRegroupsEventsByStartTime() async throws {
@@ -557,6 +372,102 @@ class ScheduleControllerTests: EurofurenceKitTestCase {
         }
         
         XCTAssertTrue(isGroupingByStartTime, "Displaying events for a specific day should regroup events by start time")
+    }
+    
+    private func assertContainsEventsGroupedByDay(
+        schedule: ScheduleController,
+        room: EurofurenceKit.Room? = nil,
+        track: EurofurenceKit.Track? = nil,
+        line: UInt = #line
+    ) {
+        var observedDays = [EurofurenceKit.Day]()
+        var eventsByDay = [EurofurenceKit.Day: [EurofurenceKit.Event]]()
+        var expectedEventCount = 0
+        for group in schedule.eventGroups {
+            if case .day(let day) = group.id {
+                observedDays.append(day)
+                
+                expectedEventCount += group.elements.count
+                eventsByDay[day] = group.elements
+                
+                for event in group.elements {
+                    if let room = room {
+                        XCTAssertEqual(room, event.room, "Expected to only see events in room \(room)")
+                    }
+                    
+                    if let track = track {
+                        XCTAssertEqual(track, event.track, "Expected only to see events on track \(track)")
+                    }
+                }
+            }
+        }
+        
+        for (_, events) in eventsByDay {
+            let sortedEvents = events.inStartDateAndNameOrder()
+            XCTAssertEqual(
+                events,
+                sortedEvents,
+                "Expected events within each Day group to be sorted by their start time and name",
+                line: line
+            )
+        }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            schedule.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events",
+            line: line
+        )
+        
+        let sortedDays = observedDays.sorted()
+        XCTAssertEqual(
+            observedDays,
+            sortedDays,
+            "Expected to showcase events in start date order",
+            line: line
+        )
+    }
+    
+    private func assert(
+        schedule: ScheduleController,
+        containsEventsGroupedByStartDateOn day: EurofurenceKit.Day,
+        line: UInt = #line
+    ) {
+        var observedStartTimes = [Date]()
+        var eventsByStartTime = [Date: [EurofurenceKit.Event]]()
+        var expectedEventCount = 0
+        for group in schedule.eventGroups {
+            if case .startDate(let date) = group.id {
+                observedStartTimes.append(date)
+                
+                eventsByStartTime[date] = group.elements
+                expectedEventCount += group.elements.count
+                
+                for event in group.elements {
+                    XCTAssertEqual(event.day, day, "Expected only events on \(day)", line: line)
+                }
+            }
+        }
+        
+        for (_, events) in eventsByStartTime {
+            let sortedEvents = events.inStartDateAndNameOrder()
+            XCTAssertEqual(events, sortedEvents, "Expected events grouped by start date sorted by name", line: line)
+        }
+        
+        XCTAssertEqual(
+            expectedEventCount,
+            schedule.matchingEventsCount,
+            "Expected to find \(expectedEventCount) matching events",
+            line: line
+        )
+        
+        let sortedStartTimes = observedStartTimes.sorted()
+        XCTAssertEqual(
+            observedStartTimes,
+            sortedStartTimes,
+            "Expected to showcase events in start date order",
+            line: line
+        )
     }
 
 }
