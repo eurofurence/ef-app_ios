@@ -16,7 +16,8 @@ struct UpdateLocalStoreOperation: UpdateOperation {
             group.addTask {
                 let response = try await fetchLatestSyncResponse(context: context)
                 try validateSyncResponse(response, context: context)
-                try await ingestSyncResponse(response, context: context)
+                try ingestSyncResponse(response, context: context)
+                try await fetchImages(response, context: context)
             }
             
             group.addTask {
@@ -50,9 +51,9 @@ struct UpdateLocalStoreOperation: UpdateOperation {
         }
     }
     
-    private func ingestSyncResponse(_ response: SynchronizationPayload, context: UpdateOperationContext) async throws {
+    func ingestSyncResponse(_ response: SynchronizationPayload, context: UpdateOperationContext) throws {
         let writingContext = context.managedObjectContext
-        try await context.managedObjectContext.performAsync { [self] in
+        try context.managedObjectContext.performAndWait { [self] in
             do {
                 let ingester = ResponseIngester(
                     syncResponse: response,
@@ -74,7 +75,6 @@ struct UpdateLocalStoreOperation: UpdateOperation {
         logger.info("Finished ingesting remote changes.")
         
         context.properties.synchronizationChangeToken = response.synchronizationToken
-        try await fetchImages(response, context: context)
     }
     
     private func fetchImages(

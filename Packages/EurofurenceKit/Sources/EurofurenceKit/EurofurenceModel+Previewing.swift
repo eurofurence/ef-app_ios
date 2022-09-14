@@ -139,16 +139,36 @@ extension EurofurenceModel {
         authenticationState: AuthenticationState = .unauthenticated,
         cloudStatus: EurofurenceModel.CloudState = .updated
     ) -> EurofurenceModel {
+        let keychain = PreviewingKeychain(state: authenticationState)
+        let api = PreviewingEurofurenceAPI(synchronizationPayload: content.synchronizationPayload)
+        let properties = PreviewingModelProperties()
+        
         let configuration = EurofurenceModel.Configuration(
             environment: .memory,
-            properties: PreviewingModelProperties(),
-            keychain: PreviewingKeychain(state: authenticationState),
-            api: PreviewingEurofurenceAPI(synchronizationPayload: content.synchronizationPayload),
+            properties: properties,
+            keychain: keychain,
+            api: api,
             conventionIdentifier: content.conventionIdentifier
         )
         
         let model = EurofurenceModel(configuration: configuration)
         cloudStatus.configure(model: model)
+        
+        let operation = UpdateLocalStoreOperation(progress: EurofurenceModel.Progress())
+        let writingContext = configuration.persistentContainer.newBackgroundContext()
+        let operationContext = UpdateOperationContext(
+            managedObjectContext: writingContext,
+            keychain: keychain,
+            api: api,
+            properties: properties,
+            conventionIdentifier: content.conventionIdentifier
+        )
+        
+        do {
+            try operation.ingestSyncResponse(content.synchronizationPayload, context: operationContext)
+        } catch {
+            fatalError("Failed to prepare model for previewing. Error=\(error)")
+        }
         
         return model
     }
@@ -176,28 +196,14 @@ extension EurofurenceModel {
         return PreviewContainer(previewBody: previewBody, model: model)
     }
     
-    struct PreviewContainer<PreviewBody>: View where PreviewBody: View {
+    private struct PreviewContainer<PreviewBody>: View where PreviewBody: View {
         
         var previewBody: (EurofurenceModel) -> PreviewBody
         var model: EurofurenceModel
-        @State var isModelReady = false
         
         var body: some View {
-            if isModelReady {
-                previewBody(model)
-                    .environmentModel(model)
-            } else {
-                Text("Preparing preview")
-                    .task(priority: .userInitiated) {
-                        do {
-                            await model.prepareForPresentation()
-                            try await model.updateLocalStore()
-                            isModelReady = true
-                        } catch {
-                            fatalError("Failed to prepare model for previewing. Error=\(error)")
-                        }
-                    }
-            }
+            previewBody(model)
+                .environmentModel(model)
         }
         
     }
