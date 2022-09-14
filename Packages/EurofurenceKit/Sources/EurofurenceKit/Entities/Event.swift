@@ -32,10 +32,10 @@ public class Event: Entity {
 extension Event {
     
     /// The collection of well-known tags associated with this event.
-    public var canonicalTags: CanonicalTag {
-        var tags = CanonicalTag()
-        for tag in self.tags {
-            tags.insert(tag.canonicalTag)
+    public var canonicalTags: [CanonicalTag] {
+        var tags = [CanonicalTag]()
+        for tag in self.tags.compactMap(\.canonicalTag) {
+            tags.append(tag)
         }
         
         return tags
