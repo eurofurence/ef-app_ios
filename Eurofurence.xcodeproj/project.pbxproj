@@ -21,6 +21,7 @@
 		6E2026FD28D1C0C1008C61BD /* EventListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2026FC28D1C0C1008C61BD /* EventListRow.swift */; };
 		6E2026FF28D1C75F008C61BD /* FormattedShortTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2026FE28D1C75F008C61BD /* FormattedShortTime.swift */; };
 		6E20270128D1FDE2008C61BD /* FontAwesomeText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E20270028D1FDE2008C61BD /* FontAwesomeText.swift */; };
+		6E20270328D26CDD008C61BD /* ScheduleEventsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E20270228D26CDD008C61BD /* ScheduleEventsList.swift */; };
 		6E79E66328C9431B00444A37 /* CloudStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66228C9431B00444A37 /* CloudStatusView.swift */; };
 		6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */; };
 		6E79E66928C9CD0D00444A37 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E79E66828C9CD0D00444A37 /* ScheduleView.swift */; };
@@ -303,6 +304,7 @@
 		6E2026FC28D1C0C1008C61BD /* EventListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListRow.swift; sourceTree = "<group>"; };
 		6E2026FE28D1C75F008C61BD /* FormattedShortTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedShortTime.swift; sourceTree = "<group>"; };
 		6E20270028D1FDE2008C61BD /* FontAwesomeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeText.swift; sourceTree = "<group>"; };
+		6E20270228D26CDD008C61BD /* ScheduleEventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventsList.swift; sourceTree = "<group>"; };
 		6E79E66228C9431B00444A37 /* CloudStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStatusView.swift; sourceTree = "<group>"; };
 		6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandheldExperience.swift; sourceTree = "<group>"; };
 		6E79E66828C9CD0D00444A37 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -617,6 +619,7 @@
 			children = (
 				6E79E66828C9CD0D00444A37 /* ScheduleView.swift */,
 				6E08B1C228CE6E8400512406 /* ScheduleCollectionView.swift */,
+				6E20270228D26CDD008C61BD /* ScheduleEventsList.swift */,
 				6E2026FC28D1C0C1008C61BD /* EventListRow.swift */,
 				6E79E66A28C9CDCE00444A37 /* EventConferenceDaysView.swift */,
 				6E79E66C28C9CDEC00444A37 /* EventConferenceTracksView.swift */,
@@ -1602,6 +1605,7 @@
 				6E08B1B828CE0BCD00512406 /* ScheduleLabel.swift in Sources */,
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
+				6E20270328D26CDD008C61BD /* ScheduleEventsList.swift in Sources */,
 				CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */,
 				6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */,
 				6E8389D828CF7441007E14DC /* SelectableRow.swift in Sources */,

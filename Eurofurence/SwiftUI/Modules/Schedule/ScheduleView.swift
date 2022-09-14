@@ -3,23 +3,28 @@ import SwiftUI
 
 struct ScheduleView: View {
     
-    @SectionedFetchRequest(
-        entity: Event.entity(),
-        sectionIdentifier: \EurofurenceKit.Event.day.name,
-        sortDescriptors: [
-            NSSortDescriptor(key: "day.date", ascending: true)
-        ],
-        animation: .spring()
-    )
-    private var searchResults: SectionedFetchResults<String, Event>
+    @ObservedObject var schedule: Schedule
     
-    @State private var searchQuery: String = ""
     @State private var selectedDay: Day?
     @State private var selectedTrack: Track?
     
     var body: some View {
+        root
+            .navigationTitle("Schedule")
+            .searchable(text: $schedule.query.animation())
+    }
+    
+    @ViewBuilder private var root: some View {
+        if schedule.query.isEmpty {
+            scheduleRoot
+        } else {
+            ScheduleEventsList(schedule: schedule)
+        }
+    }
+    
+    @ViewBuilder private var scheduleRoot: some View {
         List {
-            if searchQuery.isEmpty {
+            if schedule.query.isEmpty {
                 NavigationLink {
                     Text("Favourite Events")
                 } label: {
@@ -45,34 +50,11 @@ struct ScheduleView: View {
                 }
                 .headerProminence(.increased)
             } else {
-                ForEach(searchResults) { group in
-                    Section {
-                        ForEach(group) { event in
-                            NavigationLink {
-                                Text(event.title)
-                            } label: {
-                                EventListRow(
-                                    event: event,
-                                    configuration: EventListRow.Configuration(
-                                        displayTrackName: true, 
-                                        displayRoomName: true
-                                    )
-                                )
-                            }
-                        }
-                    } header: {
-                        Text(group.id)
-                    }
-                }
+                ScheduleCollectionView(schedule: schedule)
             }
         }
         .refreshesModel()
         .listStyle(.insetGrouped)
-        .navigationTitle("Schedule")
-        .onChange(of: searchQuery) { newValue in
-            searchResults.nsPredicate = Event.predicateForTextualSearch(query: newValue)
-        }
-        .searchable(text: $searchQuery)
     }
     
 }
@@ -80,9 +62,9 @@ struct ScheduleView: View {
 struct ScheduleView_Previews: PreviewProvider {
     
     static var previews: some View {
-        EurofurenceModel.preview { _ in
+        EurofurenceModel.preview { model in
             NavigationView {
-                ScheduleView()
+                ScheduleView(schedule: model.makeSchedule())
             }
         }
     }
