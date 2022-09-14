@@ -262,6 +262,31 @@ extension EurofurenceModel {
         }
     }
     
+    public enum PreviewEvent {
+        case registration
+        case bootyBounce
+        
+        fileprivate var identifier: String {
+            switch self {
+            case .registration:
+                return "76430fe0-ece7-48c9-b8e6-fdbc3974ff64"
+                
+            case .bootyBounce:
+                return "0d7817c3-03c4-48a7-bcf9-5cd690e86368"
+            }
+        }
+    }
+    
+    public func event(for event: PreviewEvent) -> Event {
+        let id = event.identifier
+        
+        do {
+            return try self.event(identifiedBy: id)
+        } catch {
+            fatalError("Failed to find event from preview JSON with ID \(id)")
+        }
+    }
+    
     // MARK: - Previewing Configuration
     
     private class PreviewingModelProperties: EurofurenceModelProperties {
