@@ -220,40 +220,34 @@ struct ScheduleCollectionView_Previews: PreviewProvider {
                 ScheduleCollectionView(schedule: model.makeSchedule())
                     .navigationTitle("Preview")
             }
-        }
-        .previewDisplayName("Unconfigured Schedule")
-        
-        EurofurenceModel.preview { model in
+            .previewDisplayName("Unconfigured Schedule")
+            
             NavigationView {
                 let dayConfiguration = EurofurenceModel.ScheduleConfiguration(day: model.day(for: .conDayTwo))
                 ScheduleCollectionView(schedule: model.makeSchedule(configuration: dayConfiguration))
                     .navigationTitle("Preview")
             }
-        }
-        .previewDisplayName("Day Specific Schedule")
-        
-        EurofurenceModel.preview { model in
+            .previewDisplayName("Day Specific Schedule")
+            
             NavigationView {
-                let trackConfiguration = EurofurenceModel.ScheduleConfiguration(track: model.track(for: .artShow))
+                let trackConfiguration = EurofurenceModel.ScheduleConfiguration(track: model.track(for: .clubStage))
                 ScheduleCollectionView(schedule: model.makeSchedule(configuration: trackConfiguration))
                     .navigationTitle("Preview")
             }
-        }
-        .previewDisplayName("Track Specific Schedule")
-        
-        EurofurenceModel.preview { model in
+            .previewDisplayName("Track Specific Schedule")
+            
             NavigationView {
                 let dayAndTrackConfiguration = EurofurenceModel.ScheduleConfiguration(
                     day: model.day(for: .conDayTwo),
-                    track: model.track(for: .artistLounge)
+                    track: model.track(for: .clubStage)
                 )
                 
                 let scheduleController = model.makeSchedule(configuration: dayAndTrackConfiguration)
                 ScheduleCollectionView(schedule: scheduleController)
                     .navigationTitle("Preview")
             }
+            .previewDisplayName("Day + Track Specific Schedule")
         }
-        .previewDisplayName("Day + Track Specific Schedule")
     }
     
 }

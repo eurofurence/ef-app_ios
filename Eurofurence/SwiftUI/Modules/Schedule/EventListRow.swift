@@ -42,28 +42,15 @@ struct EventListRow_Previews: PreviewProvider {
     
     static var previews: some View {
         EurofurenceModel.preview { model in
-            NavigationView {
-                List {
-                    // Registration - no images, fairly standard
-                    EventListRow(event: model.event(for: .registration))
-                }
-            }
-            .navigationViewStyle(.stack)
+            // Registration - no images, fairly standard
+            EventListRow(event: model.event(for: .registration))
+                .previewLayout(.sizeThatFits)
+                .previewDisplayName("Registration")
+            
+            EventListRow(event: model.event(for: .bootyBounce))
+                .previewLayout(.sizeThatFits)
+                .previewDisplayName("The Booty Bouce")
         }
-        .previewLayout(.sizeThatFits)
-        .previewDisplayName("Registration")
-        
-        EurofurenceModel.preview { model in
-            NavigationView {
-                List {
-                    // The Booty Bounce - has a banner
-                    EventListRow(event: model.event(for: .bootyBounce))
-                }
-            }
-            .navigationViewStyle(.stack)
-        }
-        .previewLayout(.sizeThatFits)
-        .previewDisplayName("The Booty Bouce")
     }
     
 }
