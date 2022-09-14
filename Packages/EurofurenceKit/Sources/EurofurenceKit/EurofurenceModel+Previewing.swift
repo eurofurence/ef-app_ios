@@ -1,3 +1,4 @@
+import CoreData
 import EurofurenceWebAPI
 import Foundation
 import SwiftUI
@@ -166,6 +167,19 @@ extension EurofurenceModel {
         
         do {
             try operation.ingestSyncResponse(content.synchronizationPayload, context: operationContext)
+            
+            // Manually inject all the images for each entity.
+            try writingContext.performAndWait { [writingContext] in
+                let imagesFetchRequest: NSFetchRequest<EurofurenceKit.Image> = EurofurenceKit.Image.fetchRequest()
+                let images = try writingContext.fetch(imagesFetchRequest)
+                
+                for image in images {
+                    let urlForImage = properties.proposedURL(forImageIdentifier: image.identifier)
+                    image.cachedImageURL = urlForImage
+                }
+                
+                try writingContext.save()
+            }
         } catch {
             fatalError("Failed to prepare model for previewing. Error=\(error)")
         }
@@ -301,6 +315,19 @@ extension EurofurenceModel {
         
         func removeContainerResource(at url: URL) throws {
             
+        }
+        
+        func proposedURL(forImageIdentifier identifier: String) -> URL {
+            let bundle = Bundle.previewing
+            let url = bundle.url(forResource: identifier, withExtension: nil)
+            
+            if let url = url {
+                return url
+            } else {
+                fatalError(
+                    "Requested preview URL for image not present in preview bundle. ID=\(identifier)"
+                )
+            }
         }
         
     }
