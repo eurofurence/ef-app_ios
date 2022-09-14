@@ -17,7 +17,7 @@ struct EventListRow: View {
                         .font(.body)
                         .foregroundColor(.secondary)
                         .alignmentGuide(.leading) { dimensions in
-                            dimensions[.leading] - 7
+                            dimensions[.leading] - 14
                         }
                 }
                 
