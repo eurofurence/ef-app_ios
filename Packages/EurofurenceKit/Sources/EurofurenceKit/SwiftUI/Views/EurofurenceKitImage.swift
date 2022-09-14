@@ -18,10 +18,17 @@ public struct EurofurenceKitImage: View {
     @ViewBuilder
     private var swiftUIImage: some View {
         if let url = image.cachedImageURL {
+#if os(iOS)
             if let uiImage = UIImage(contentsOfFile: url.path) {
                 SwiftUI.Image(uiImage: uiImage)
                     .resizable()
             }
+#elseif os(macOS)
+            if let nsImage = NSImage(contentsOf: url) {
+                SwiftUI.Image(nsImage: nsImage)
+                    .resizable()
+            }
+#endif
         }
     }
     
