@@ -80,6 +80,9 @@
         <relationship name="room" maxCount="1" deletionRule="Nullify" destinationEntity="Room" inverseName="events" inverseEntity="Room"/>
         <relationship name="tags" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="events" inverseEntity="Tag"/>
         <relationship name="track" maxCount="1" deletionRule="Nullify" destinationEntity="Track" inverseName="events" inverseEntity="Track"/>
+        <fetchIndex name="byTitle">
+            <fetchIndexElement property="title" type="Binary" order="ascending"/>
+        </fetchIndex>
     </entity>
     <entity name="EventBanner" representedClassName="EventBanner" parentEntity="Image" syncable="YES">
         <relationship name="events" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="banner" inverseEntity="Event"/>
