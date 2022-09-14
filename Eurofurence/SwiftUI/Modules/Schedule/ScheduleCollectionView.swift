@@ -138,6 +138,18 @@ private struct ScheduleDayPicker: View {
     @ObservedObject var schedule: ScheduleController
     
     var body: some View {
+        SelectableRow(tag: nil, selection: $schedule.selectedDay.animation()) {
+            Label {
+                Text("Entire Convention")
+            } icon: {
+                if schedule.selectedTrack == nil {
+                    Image(systemName: "calendar.circle.fill")
+                } else {
+                    Image(systemName: "calendar.circle")
+                }
+            }
+        }
+        
         ForEach(schedule.availableDays) { day in
             SelectableRow(tag: day, selection: $schedule.selectedDay.animation()) {
                 DayLabel(day: day, isSelected: schedule.selectedDay == day)
