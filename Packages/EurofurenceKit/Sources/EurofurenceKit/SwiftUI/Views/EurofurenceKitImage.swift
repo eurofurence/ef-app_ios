@@ -14,6 +14,7 @@ public struct EurofurenceKitImage: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .cornerRadius(7)
         } placeholder: {
             Color.gray
         }
