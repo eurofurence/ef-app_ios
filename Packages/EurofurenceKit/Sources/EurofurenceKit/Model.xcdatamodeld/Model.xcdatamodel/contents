@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G83" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Announcement" representedClassName="Announcement" parentEntity="Entity" syncable="YES">
         <attribute name="area" attributeType="String"/>
         <attribute name="author" attributeType="String"/>
@@ -59,6 +59,9 @@
     <entity name="Entity" representedClassName="Entity" isAbstract="YES" syncable="YES">
         <attribute name="identifier" attributeType="String"/>
         <attribute name="lastEdited" attributeType="Date" usesScalarValueType="NO"/>
+        <fetchIndex name="byIdentifier">
+            <fetchIndexElement property="identifier" type="Binary" order="ascending"/>
+        </fetchIndex>
     </entity>
     <entity name="Event" representedClassName="Event" parentEntity="Entity" syncable="YES">
         <attribute name="abstract" attributeType="String"/>
@@ -167,34 +170,4 @@
         <attribute name="name" attributeType="String"/>
         <relationship name="events" toMany="YES" deletionRule="Cascade" destinationEntity="Event" inverseName="track" inverseEntity="Event"/>
     </entity>
-    <elements>
-        <element name="Announcement" positionX="36" positionY="180" width="128" height="134"/>
-        <element name="AnnouncementImage" positionX="45" positionY="189" width="128" height="58"/>
-        <element name="ArtistImage" positionX="54" positionY="171" width="128" height="58"/>
-        <element name="ArtPreview" positionX="0" positionY="117" width="128" height="73"/>
-        <element name="Day" positionX="-36" positionY="27" width="128" height="74"/>
-        <element name="Dealer" positionX="36" positionY="162" width="128" height="329"/>
-        <element name="DealerCategory" positionX="27" positionY="171" width="128" height="73"/>
-        <element name="DealerLink" positionX="18" positionY="162" width="128" height="58"/>
-        <element name="DealerThumbnail" positionX="36" positionY="162" width="128" height="58"/>
-        <element name="Entity" positionX="-54" positionY="9" width="128" height="73"/>
-        <element name="Event" positionX="-63" positionY="-18" width="128" height="269"/>
-        <element name="EventBanner" positionX="18" positionY="144" width="128" height="44"/>
-        <element name="EventPoster" positionX="27" positionY="153" width="128" height="44"/>
-        <element name="Image" positionX="9" positionY="144" width="128" height="134"/>
-        <element name="KnowledgeEntry" positionX="-18" positionY="99" width="128" height="119"/>
-        <element name="KnowledgeEntryImage" positionX="9" positionY="135" width="128" height="44"/>
-        <element name="KnowledgeGroup" positionX="27" positionY="153" width="128" height="104"/>
-        <element name="KnowledgeLink" positionX="-9" positionY="126" width="128" height="58"/>
-        <element name="Link" positionX="9" positionY="153" width="128" height="74"/>
-        <element name="Map" positionX="54" positionY="198" width="128" height="104"/>
-        <element name="MapEntry" positionX="9" positionY="153" width="128" height="119"/>
-        <element name="MapEntryLink" positionX="18" positionY="162" width="128" height="58"/>
-        <element name="MapGraphic" positionX="0" positionY="144" width="128" height="58"/>
-        <element name="Message" positionX="0" positionY="144" width="128" height="149"/>
-        <element name="PanelHost" positionX="27" positionY="171" width="128" height="73"/>
-        <element name="Room" positionX="0" positionY="45" width="128" height="74"/>
-        <element name="Tag" positionX="0" positionY="144" width="128" height="59"/>
-        <element name="Track" positionX="-18" positionY="36" width="128" height="59"/>
-    </elements>
 </model>
