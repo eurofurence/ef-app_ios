@@ -305,6 +305,14 @@
 		6E2026FE28D1C75F008C61BD /* FormattedShortTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedShortTime.swift; sourceTree = "<group>"; };
 		6E20270028D1FDE2008C61BD /* FontAwesomeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeText.swift; sourceTree = "<group>"; };
 		6E20270228D26CDD008C61BD /* ScheduleEventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventsList.swift; sourceTree = "<group>"; };
+		6E7470D528D3174200A1191C /* EurofurenceKit */ = {isa = PBXFileReference; name = EurofurenceKit; path = Packages/EurofurenceKit; sourceTree = "<group>"; };
+		6E7470D628D3174200A1191C /* EurofurenceApplication */ = {isa = PBXFileReference; name = EurofurenceApplication; path = Packages/EurofurenceApplication; sourceTree = "<group>"; };
+		6E7470D728D3174200A1191C /* EurofurenceApplicationSession */ = {isa = PBXFileReference; name = EurofurenceApplicationSession; path = Packages/EurofurenceApplicationSession; sourceTree = "<group>"; };
+		6E7470D828D3174200A1191C /* EurofurenceClipLogic */ = {isa = PBXFileReference; name = EurofurenceClipLogic; path = Packages/EurofurenceClipLogic; sourceTree = "<group>"; };
+		6E7470D928D3174200A1191C /* EurofurenceComponents */ = {isa = PBXFileReference; name = EurofurenceComponents; path = Packages/EurofurenceComponents; sourceTree = "<group>"; };
+		6E7470DA28D3174200A1191C /* EurofurenceModel */ = {isa = PBXFileReference; name = EurofurenceModel; path = Packages/EurofurenceModel; sourceTree = "<group>"; };
+		6E7470DB28D3174200A1191C /* EventsWidgetLogic */ = {isa = PBXFileReference; name = EventsWidgetLogic; path = Packages/EventsWidgetLogic; sourceTree = "<group>"; };
+		6E7470DC28D3174200A1191C /* TestUtilities */ = {isa = PBXFileReference; name = TestUtilities; path = Packages/TestUtilities; sourceTree = "<group>"; };
 		6E79E66228C9431B00444A37 /* CloudStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStatusView.swift; sourceTree = "<group>"; };
 		6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandheldExperience.swift; sourceTree = "<group>"; };
 		6E79E66828C9CD0D00444A37 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -589,6 +597,21 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
+		6E7470DD28D3174200A1191C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				6E7470D528D3174200A1191C /* EurofurenceKit */,
+				6E7470D628D3174200A1191C /* EurofurenceApplication */,
+				6E7470D728D3174200A1191C /* EurofurenceApplicationSession */,
+				6E7470D828D3174200A1191C /* EurofurenceClipLogic */,
+				6E7470D928D3174200A1191C /* EurofurenceComponents */,
+				6E7470DA28D3174200A1191C /* EurofurenceModel */,
+				6E7470DB28D3174200A1191C /* EventsWidgetLogic */,
+				6E7470DC28D3174200A1191C /* TestUtilities */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		6E79E66628C9C5BF00444A37 /* Handheld */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,6 +768,7 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
+				6E7470DD28D3174200A1191C /* Packages */,
 				CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */,
 				CA7A299322B02B46002AD939 /* Dangerfile */,
 				CA08B0F622EDD41900FDAAA7 /* README.md */,
