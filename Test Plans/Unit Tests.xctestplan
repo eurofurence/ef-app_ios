@@ -21,107 +21,23 @@
     },
     {
       "target" : {
-        "containerPath" : "container:Packages\/EurofurenceApplication",
-        "identifier" : "EurofurenceApplicationTests",
-        "name" : "EurofurenceApplicationTests"
+        "containerPath" : "container:Packages\/EurofurenceClipLogic",
+        "identifier" : "EurofurenceClipLogicTests",
+        "name" : "EurofurenceClipLogicTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:Packages\/EurofurenceApplicationSession",
-        "identifier" : "EurofurenceApplicationSessionTests",
-        "name" : "EurofurenceApplicationSessionTests"
+        "containerPath" : "container:Packages\/EurofurenceKit",
+        "identifier" : "EurofurenceKitTests",
+        "name" : "EurofurenceKitTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "ComponentBaseTests",
-        "name" : "ComponentBaseTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "ContentControllerTests",
-        "name" : "ContentControllerTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "DealerComponentTests",
-        "name" : "DealerComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "DealersComponentTests",
-        "name" : "DealersComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "EventDetailComponentTests",
-        "name" : "EventDetailComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "EventFeedbackComponentTests",
-        "name" : "EventFeedbackComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "KnowledgeDetailComponentTests",
-        "name" : "KnowledgeDetailComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "KnowledgeGroupComponentTests",
-        "name" : "KnowledgeGroupComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "KnowledgeGroupsComponentTests",
-        "name" : "KnowledgeGroupsComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "PreloadComponentTests",
-        "name" : "PreloadComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "ScheduleComponentTests",
-        "name" : "ScheduleComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "TutorialComponentTests",
-        "name" : "TutorialComponentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceModel",
-        "identifier" : "EurofurenceModelTests",
-        "name" : "EurofurenceModelTests"
+        "containerPath" : "container:Packages\/EurofurenceKit",
+        "identifier" : "EurofurenceWebAPITests",
+        "name" : "EurofurenceWebAPITests"
       }
     },
     {
@@ -129,41 +45,6 @@
         "containerPath" : "container:Packages\/EventsWidgetLogic",
         "identifier" : "EventsWidgetLogicTests",
         "name" : "EventsWidgetLogicTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "KnowledgeJourneyTests",
-        "name" : "KnowledgeJourneyTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "DealersJourneyTests",
-        "name" : "DealersJourneyTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "EventsJourneyTests",
-        "name" : "EventsJourneyTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceComponents",
-        "identifier" : "URLContentTests",
-        "name" : "URLContentTests"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:Packages\/EurofurenceClipLogic",
-        "identifier" : "EurofurenceClipLogicTests",
-        "name" : "EurofurenceClipLogicTests"
       }
     }
   ],
