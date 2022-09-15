@@ -36,28 +36,28 @@ public class Schedule: NSObject, ObservableObject {
     public typealias EventGroup = Grouping<Group, Event>
     
     /// The number of `Event`s in this schedule that matches the designated criteria.
-    @Published private(set) public var matchingEventsCount: Int = 0
+    @Published public private(set) var matchingEventsCount: Int = 0
     
     /// The collection of groups of events, grouped by their start time.
-    @Published private(set) public var eventGroups: [EventGroup] = []
+    @Published public private(set) var eventGroups: [EventGroup] = []
     
     /// The collection of `Day` entities associated with the schedule.
     ///
     /// The collection of available days may differ from the full set of days within the model, due to the manner
     /// the schedule has been configured.
-    @Published private(set) public var availableDays: [Day] = []
+    @Published public private(set) var availableDays: [Day] = []
     
     /// The collection of `Track` entities associated with the schedule.
     ///
     /// The collection of available track may differ from the full set of tracks within the model, due to the manner
     /// the schedule has been configured.
-    @Published private(set) public var availableTracks: [Track] = []
+    @Published public private(set) var availableTracks: [Track] = []
     
     /// The collection of `Room` entities associated with the schedule.
-    @Published private(set) public var availableRooms: [Room] = []
+    @Published public private(set) var availableRooms: [Room] = []
     
     /// A localized description of the filter.
-    @Published private(set) public var localizedFilterDescription: String?
+    @Published public private(set) var localizedFilterDescription: String?
     
     /// A textual query to apply for filtering against this schedule.
     @Published public var query: String = "" {

@@ -201,11 +201,9 @@ class ScheduleTests: EurofurenceKitTestCase {
         let registrationOffFirstDayIdentifier = "3017968c-4804-4474-ba01-867a140916c9"
         
         for group in controller.eventGroups {
-            for event in group.elements {
-                if event.identifier == registrationOffFirstDayIdentifier {
-                    // Found the expected event
-                    return
-                }
+            for event in group.elements where event.identifier == registrationOffFirstDayIdentifier {
+                // Found the expected event
+                return
             }
         }
         
@@ -238,7 +236,7 @@ class ScheduleTests: EurofurenceKitTestCase {
             "c292f7fc-dd75-4f9d-892e-5b9b9cf64c75",
             "740d2ffa-5c5d-4ca4-bf26-3034138740eb",
             "0760ae30-25e3-4a94-9a89-fb460c8df3b3",
-            "4d5fb685-2945-45f7-9c2d-1975b7ec9440",
+            "4d5fb685-2945-45f7-9c2d-1975b7ec9440"
         ]
         
         var observedEventIdentifiers = Set<String>()

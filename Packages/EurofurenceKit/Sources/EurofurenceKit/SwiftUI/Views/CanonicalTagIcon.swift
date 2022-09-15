@@ -28,8 +28,6 @@ public struct CanonicalTagIcon: View {
     
 }
 
-
-
 struct CanonicalTagIcon_Previews: PreviewProvider {
     
     static var previews: some View {

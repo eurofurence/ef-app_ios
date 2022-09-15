@@ -1,5 +1,5 @@
-import CoreData
 import Combine
+import CoreData
 import Foundation
 
 extension EurofurenceModel {
