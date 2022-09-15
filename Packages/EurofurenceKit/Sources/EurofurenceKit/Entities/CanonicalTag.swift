@@ -1,41 +1,96 @@
+import Foundation
+
 /// Describes the feature of a well-known tag within the model.
-public struct CanonicalTag: OptionSet {
+public enum CanonicalTag: CaseIterable, CustomStringConvertible, Hashable, Identifiable {
     
-    public var rawValue: Int
-    
-    public init(rawValue: Int) {
-        self.rawValue = rawValue
+    public var id: some Hashable {
+        hashValue
     }
     
-}
-
-// MARK: - Well Defined Tags
-
-extension CanonicalTag {
+    public var description: String {
+        switch self {
+        case .sponsorOnly:
+            return NSLocalizedString(
+                "Sponsor Only",
+                bundle: .module,
+                comment: "Description used to denote an event where only sponsors may attend"
+            )
+            
+        case .superSponsorOnly:
+            return NSLocalizedString(
+                "Super Sponsor Only",
+                bundle: .module,
+                comment: "Description used to denote an event where only super sponsors may attend"
+            )
+            
+        case .artShow:
+            return NSLocalizedString(
+                "Art Show",
+                bundle: .module,
+                comment: "Description used to denote an event that is part of the art show"
+            )
+            
+        case .kage:
+            return NSLocalizedString(
+                "Kage",
+                bundle: .module,
+                comment: "Description used to denote an event Kage is running or a featured panelist"
+            )
+            
+        case .dealersDen:
+            return NSLocalizedString(
+                "Dealers Den",
+                bundle: .module,
+                comment: "Description used to denote an event that is part of the dealers den"
+            )
+            
+        case .mainStage:
+            return NSLocalizedString(
+                "Main Stage",
+                bundle: .module,
+                comment: "Description used to denote an event that takes place on the main stage"
+            )
+            
+        case .photoshoot:
+            return NSLocalizedString(
+                "Photoshoot",
+                bundle: .module,
+                comment: "Description used to denote an event that is part of the photoshoot track"
+            )
+            
+        case .faceMaskRequired:
+            return NSLocalizedString(
+                "Fake Mask Required",
+                bundle: .module,
+                comment: "Description used to denote an event where a face mask is required to enter"
+            )
+            
+        }
+    }
     
     /// The associated event is only for Eurofurence Sponsors.
-    public static let sponsorOnly = CanonicalTag(rawValue: 1 << 0)
+    case sponsorOnly
     
     /// The associated event is only for Eurofurence Super Sponsors.
-    public static let superSponsorOnly = CanonicalTag(rawValue: 1 << 1)
+    case superSponsorOnly
     
     /// The associated event is part of the Art Show.
-    public static let artShow = CanonicalTag(rawValue: 1 << 2)
+    case artShow
     
     /// Bug spray banned 🪳🍷.
-    public static let kage = CanonicalTag(rawValue: 1 << 3)
+    case kage
     
     /// The associated event is part of the Dealers Den.
-    public static let dealersDen = CanonicalTag(rawValue: 1 << 4)
+    case dealersDen
     
     /// The associated event takes place on the Main Stage.
-    public static let mainStage = CanonicalTag(rawValue: 1 << 5)
+    case mainStage
     
     /// The associated event is part of the photoshoot.
-    public static let photoshoot = CanonicalTag(rawValue: 1 << 6)
+    case photoshoot
     
     /// Attendance to the associated event requires a fask mask.
-    public static let faceMaskRequired = CanonicalTag(rawValue: 1 << 7)
+    case faceMaskRequired
     
     private static let wellKnownTagsByName: [String: CanonicalTag] = [
         "sponsors_only": .sponsorOnly,
@@ -48,8 +103,8 @@ extension CanonicalTag {
         "mask_required": .faceMaskRequired
     ]
     
-    static func wellKnownTag(named name: String) -> CanonicalTag {
-        wellKnownTagsByName[name, default: CanonicalTag()]
+    static func wellKnownTag(named name: String) -> CanonicalTag? {
+        wellKnownTagsByName[name]
     }
     
 }

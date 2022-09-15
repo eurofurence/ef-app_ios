@@ -3,6 +3,8 @@ import SwiftUI
 
 struct EventConferenceDaysView: View {
     
+    @EnvironmentObject private var model: EurofurenceModel
+    
     @FetchRequest(fetchRequest: Day.temporallyOrderedFetchRequest())
     private var days: FetchedResults<Day>
     
@@ -11,8 +13,12 @@ struct EventConferenceDaysView: View {
     var body: some View {
         ForEach(days) { day in
             NavigationLink(tag: day, selection: $selectedDay) {
-                ScheduleCollectionView(filter: .day(day))
-                    .navigationTitle(day.name)
+                Lazy {                
+                    let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(day: day)
+                    let schedule = model.makeSchedule(configuration: scheduleConfiguration)
+                    ScheduleCollectionView(schedule: schedule)
+                        .navigationTitle(day.name)
+                }
             } label: {
                 DayLabel(day: day, isSelected: selectedDay == day)
             }

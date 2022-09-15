@@ -8,7 +8,7 @@ import Logging
 @MainActor
 public class EurofurenceModel: ObservableObject {
     
-    private let configuration: EurofurenceModel.Configuration
+    let configuration: EurofurenceModel.Configuration
     private let logger = Logger(label: "EurofurenceModel")
     private var pushNotificationDeviceTokenData: Data?
     private var subscriptions = Set<AnyCancellable>()
@@ -155,8 +155,6 @@ extension EurofurenceModel {
         }
         
         private let progress = Foundation.Progress()
-        private var progressObservation: NSObjectProtocol?
-        private var localizedDescriptionObservation: NSObjectProtocol?
         
         /// A number between 0.0 and 1.0 that represents the overall completeness of the current synchronisation pass,
         /// where 0 represents not started and 1 represents completed. The absence of a value indicates the overall
@@ -171,10 +169,6 @@ extension EurofurenceModel {
         init() {
             progress.totalUnitCount = 0
             progress.completedUnitCount = 0
-            
-            progressObservation = progress.observe(\.fractionCompleted) { [weak self] progress, _ in
-                self?.fractionComplete = progress.fractionCompleted
-            }
         }
         
         func update(totalUnitCount: Int) {
@@ -183,6 +177,7 @@ extension EurofurenceModel {
         
         func updateCompletedUnitCount() {
             progress.completedUnitCount += 1
+            fractionComplete = progress.fractionCompleted
         }
         
     }

@@ -6,19 +6,21 @@ struct EventConferenceTracksView: View {
     @FetchRequest(fetchRequest: Track.alphabeticallySortedFetchRequest())
     private var tracks: FetchedResults<Track>
     
+    @EnvironmentObject private var model: EurofurenceModel
+    
     @Binding var selectedTrack: Track?
     
     var body: some View {
         ForEach(tracks) { track in
             NavigationLink(tag: track, selection: $selectedTrack) {
-                ScheduleCollectionView(filter: .track(track))
-                    .navigationTitle(track.name)
+                Lazy {                
+                    let scheduleConfiguration = EurofurenceModel.ScheduleConfiguration(track: track)
+                    let schedule = model.makeSchedule(configuration: scheduleConfiguration)
+                    ScheduleCollectionView(schedule: schedule)
+                        .navigationTitle(track.name)
+                }
             } label: {
-                CanonicalTrackLabel(
-                    track: track.canonicalTrack,
-                    unknownTrackText: Text(verbatim: track.name),
-                    isSelected: selectedTrack == track
-                )
+                TrackLabel(track, isSelected: selectedTrack == track)
             }
         }
     }

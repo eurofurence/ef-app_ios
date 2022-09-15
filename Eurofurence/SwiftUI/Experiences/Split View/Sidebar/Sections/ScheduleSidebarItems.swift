@@ -3,13 +3,18 @@ import SwiftUI
 
 struct ScheduleSidebarItems: View {
     
+    @EnvironmentObject private var model: EurofurenceModel
+    
     @State private var selectedDay: Day?
     @State private var selectedTrack: Track?
     
     var body: some View {
         Section {
             NavigationLink {
-                ScheduleCollectionView()
+                Lazy {
+                    ScheduleCollectionView(schedule: model.makeSchedule())
+                        .navigationTitle("All Events")
+                }
             } label: {
                 AllEventsLabel()
             }

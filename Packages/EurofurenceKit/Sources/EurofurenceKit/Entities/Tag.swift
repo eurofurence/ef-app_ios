@@ -16,7 +16,7 @@ public class Tag: NSManagedObject {
 
 extension Tag {
     
-    var canonicalTag: CanonicalTag {
+    var canonicalTag: CanonicalTag? {
         CanonicalTag.wellKnownTag(named: name)
     }
     

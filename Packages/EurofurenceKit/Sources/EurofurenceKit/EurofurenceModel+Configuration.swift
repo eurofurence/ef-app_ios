@@ -10,6 +10,7 @@ extension EurofurenceModel {
         let keychain: Keychain
         let api: EurofurenceAPI
         let conventionIdentifier: ConventionIdentifier
+        let clock: Clock
         
         private static func versionedAPI(for conventionIdentifier: ConventionIdentifier) -> EurofurenceAPI {
             let configuration = CIDSensitiveEurofurenceAPI.Configuration(
@@ -24,7 +25,8 @@ extension EurofurenceModel {
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
-            conventionIdentifier: ConventionIdentifier = .current
+            conventionIdentifier: ConventionIdentifier = .current,
+            clock: Clock = DeviceSensitiveClock.shared
         ) {
             let apiConfiguration = CIDSensitiveEurofurenceAPI.Configuration(
                 conventionIdentifier: conventionIdentifier.stringValue,
@@ -47,7 +49,8 @@ extension EurofurenceModel {
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
             api: EurofurenceAPI,
-            conventionIdentifier: ConventionIdentifier = .current
+            conventionIdentifier: ConventionIdentifier = .current,
+            clock: Clock = DeviceSensitiveClock.shared
         ) {
             self.persistentContainer = EurofurencePersistentContainer(
                 api: api,
@@ -59,6 +62,7 @@ extension EurofurenceModel {
             self.keychain = keychain
             self.api = api
             self.conventionIdentifier = conventionIdentifier
+            self.clock = clock
             
             environment.configure(persistentContainer: persistentContainer, properties: properties)
         }

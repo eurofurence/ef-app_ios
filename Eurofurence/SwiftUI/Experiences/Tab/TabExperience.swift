@@ -11,6 +11,7 @@ struct TabExperience: View {
         case more
     }
     
+    @EnvironmentObject private var model: EurofurenceModel
     @State private var selectedTab: Tab = .news
     
     var body: some View {
@@ -25,9 +26,10 @@ struct TabExperience: View {
             .tag(Tab.news)
             
             NavigationView {
-                ScheduleView()
+                ScheduleView(schedule: model.makeSchedule())
                     .navigationTitle("Schedule")
             }
+            .navigationViewStyle(.stack)
             .tabItem {
                 ScheduleLabel(isSelected: selectedTab == .schedule)
             }
