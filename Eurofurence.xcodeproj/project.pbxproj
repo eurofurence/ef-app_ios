@@ -106,7 +106,6 @@
 		CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA630C0822A069AF00754C27 /* ViewEventIntent+Definition.swift */; };
 		CA66C01E2124C6D800F87AFE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA66C01D2124C6D800F87AFE /* StoreKit.framework */; };
 		CA728437209C7DE1007D912A /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA728436209C7DE1007D912A /* Settings.bundle */; };
-		CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */; };
 		CA7DA65F2563018F00F1316F /* EventWidgetContext+TimelineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7DA65E2563018F00F1316F /* EventWidgetContext+TimelineContext.swift */; };
 		CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA85154425FF744900860631 /* DebugTableViewController.swift */; };
 		CA85154725FF744900860631 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA85154525FF744900860631 /* Debug.storyboard */; };
@@ -152,7 +151,6 @@
 		CAC22AE325FEB7A7004E0587 /* EurofurenceApplication in Frameworks */ = {isa = PBXBuildFile; productRef = CAC22AE225FEB7A7004E0587 /* EurofurenceApplication */; };
 		CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */; };
 		CAF194DC24688D7D005DFBBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF194DA24688D7D005DFBBE /* LaunchScreen.storyboard */; };
-		CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */; };
 		CAF254FF2517FB65008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
 		CAF255082517FB92008892ED /* AutomationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF254FE2517FB65008892ED /* AutomationController.swift */; };
 		CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF255112517FE81008892ED /* DealerDetailTests.swift */; };
@@ -305,6 +303,14 @@
 		6E2026FE28D1C75F008C61BD /* FormattedShortTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormattedShortTime.swift; sourceTree = "<group>"; };
 		6E20270028D1FDE2008C61BD /* FontAwesomeText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontAwesomeText.swift; sourceTree = "<group>"; };
 		6E20270228D26CDD008C61BD /* ScheduleEventsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleEventsList.swift; sourceTree = "<group>"; };
+		6E7470D528D3174200A1191C /* EurofurenceKit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceKit; path = Packages/EurofurenceKit; sourceTree = "<group>"; };
+		6E7470D628D3174200A1191C /* EurofurenceApplication */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceApplication; path = Packages/EurofurenceApplication; sourceTree = "<group>"; };
+		6E7470D728D3174200A1191C /* EurofurenceApplicationSession */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceApplicationSession; path = Packages/EurofurenceApplicationSession; sourceTree = "<group>"; };
+		6E7470D828D3174200A1191C /* EurofurenceClipLogic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceClipLogic; path = Packages/EurofurenceClipLogic; sourceTree = "<group>"; };
+		6E7470D928D3174200A1191C /* EurofurenceComponents */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceComponents; path = Packages/EurofurenceComponents; sourceTree = "<group>"; };
+		6E7470DA28D3174200A1191C /* EurofurenceModel */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EurofurenceModel; path = Packages/EurofurenceModel; sourceTree = "<group>"; };
+		6E7470DB28D3174200A1191C /* EventsWidgetLogic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EventsWidgetLogic; path = Packages/EventsWidgetLogic; sourceTree = "<group>"; };
+		6E7470DC28D3174200A1191C /* TestUtilities */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TestUtilities; path = Packages/TestUtilities; sourceTree = "<group>"; };
 		6E79E66228C9431B00444A37 /* CloudStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStatusView.swift; sourceTree = "<group>"; };
 		6E79E66428C9C5BA00444A37 /* HandheldExperience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandheldExperience.swift; sourceTree = "<group>"; };
 		6E79E66828C9CD0D00444A37 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
@@ -390,7 +396,6 @@
 		CA7A2EEB2606B83C00919DA0 /* Eurofurence ClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Eurofurence ClipTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A2EEF2606B83C00919DA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A2F122606BCB400919DA0 /* Eurofurence Clip UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Eurofurence Clip UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eurofurence_Clip_UITests.swift; sourceTree = "<group>"; };
 		CA7A2F162606BCB400919DA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7A32F722B179D8002AD939 /* EurofurenceModel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EurofurenceModel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A32F922B179D8002AD939 /* EventBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EventBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -441,7 +446,6 @@
 		CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalWindowSceneDelegate.swift; sourceTree = "<group>"; };
 		CAF194DB24688D7D005DFBBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CAF254AA2517F983008892ED /* EurofurenceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EurofurenceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchPerformanceTest.swift; sourceTree = "<group>"; };
 		CAF254AE2517F983008892ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF254FE2517FB65008892ED /* AutomationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutomationController.swift; sourceTree = "<group>"; };
 		CAF255112517FE81008892ED /* DealerDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerDetailTests.swift; sourceTree = "<group>"; };
@@ -587,6 +591,21 @@
 				CAE434FC25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		6E7470DD28D3174200A1191C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				6E7470D528D3174200A1191C /* EurofurenceKit */,
+				6E7470D628D3174200A1191C /* EurofurenceApplication */,
+				6E7470D728D3174200A1191C /* EurofurenceApplicationSession */,
+				6E7470D828D3174200A1191C /* EurofurenceClipLogic */,
+				6E7470D928D3174200A1191C /* EurofurenceComponents */,
+				6E7470DA28D3174200A1191C /* EurofurenceModel */,
+				6E7470DB28D3174200A1191C /* EventsWidgetLogic */,
+				6E7470DC28D3174200A1191C /* TestUtilities */,
+			);
+			name = Packages;
 			sourceTree = "<group>";
 		};
 		6E79E66628C9C5BF00444A37 /* Handheld */ = {
@@ -745,6 +764,7 @@
 		9ACF992B1EBE172D006FC958 = {
 			isa = PBXGroup;
 			children = (
+				6E7470DD28D3174200A1191C /* Packages */,
 				CA5F26AD2556F04D00CED97A /* EventsWidgetExtension.entitlements */,
 				CA7A299322B02B46002AD939 /* Dangerfile */,
 				CA08B0F622EDD41900FDAAA7 /* README.md */,
@@ -959,7 +979,6 @@
 			isa = PBXGroup;
 			children = (
 				CA7A2F162606BCB400919DA0 /* Info.plist */,
-				CA7A2F142606BCB400919DA0 /* Eurofurence_Clip_UITests.swift */,
 				CA04437C26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift */,
 			);
 			path = "EurofurenceClip UITests";
@@ -1079,7 +1098,6 @@
 				CA26503C25F7D3EB0080F132 /* DealerSearchTests.swift */,
 				CAF2552E251A6DC4008892ED /* EventDetailTests.swift */,
 				CAB7ABC828730E230037ACFB /* KnowledgeTests.swift */,
-				CAF254AC2517F983008892ED /* LaunchPerformanceTest.swift */,
 				6EE355A8289079B300F3ACB7 /* LoginTests.swift */,
 				CAA53E1A2874DEE800FC5925 /* NewsTests.swift */,
 				CA17E6BC28AEC689009BFA8B /* SettingsTests.swift */,
@@ -1714,7 +1732,6 @@
 				CA04437B26DEBC63008CC04F /* UIAutomationTestCase.swift in Sources */,
 				CAA53E24287568C900FC5925 /* TestResources.swift in Sources */,
 				CA04437A26DEBC63008CC04F /* AutomationController.swift in Sources */,
-				CA7A2F152606BCB400919DA0 /* Eurofurence_Clip_UITests.swift in Sources */,
 				CA04437D26DEBC7E008CC04F /* EurofurenceClip_EventDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1749,7 +1766,6 @@
 				CA17E6BD28AEC689009BFA8B /* SettingsTests.swift in Sources */,
 				CAF2552F251A6DC4008892ED /* EventDetailTests.swift in Sources */,
 				CA26503D25F7D3EB0080F132 /* DealerSearchTests.swift in Sources */,
-				CAF254AD2517F983008892ED /* LaunchPerformanceTest.swift in Sources */,
 				CAF255122517FE81008892ED /* DealerDetailTests.swift in Sources */,
 				CABBCA302566FE0B007A11A2 /* SplitViewDetailBugTests.swift in Sources */,
 			);
