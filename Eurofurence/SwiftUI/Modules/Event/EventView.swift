@@ -19,7 +19,6 @@ struct EventView: View {
                         .padding(.bottom, intersectionSpacing)
                     
                     EventTags(event: event)
-                        .padding(.bottom, intersectionSpacing)
                     
                     MarkdownContent(event.eventDescription)
                 }
@@ -159,6 +158,7 @@ struct EventView: View {
                         .padding(.bottom, interTagSpacing)
                         
                         Divider()
+                            .padding(.bottom, interTagSpacing)
                     }
                 }
             }
