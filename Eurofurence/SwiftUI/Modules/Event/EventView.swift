@@ -65,13 +65,15 @@ struct EventView: View {
             }
             
             ToolbarItem(placement: .bottomBar) {
-                Button {
-                    // TODO: Leave feedback!
-                } label: {
-                    Label {
-                        Text("Leave Feedback")
-                    } icon: {
-                        Image(systemName: "square.and.pencil")
+                if event.acceptingFeedback {
+                    Button {
+                        // TODO: Leave feedback!
+                    } label: {
+                        Label {
+                            Text("Leave Feedback")
+                        } icon: {
+                            Image(systemName: "square.and.pencil")
+                        }
                     }
                 }
             }
@@ -146,7 +148,7 @@ struct EventView: View {
         
         var body: some View {
             if event.canonicalTags.isEmpty == false {
-                VStack(alignment: .leading) {
+                AlignedLabelContainer {
                     ForEach(event.canonicalTags) { tag in
                         HStack {
                             CanonicalTagLabel(tag)
@@ -187,6 +189,12 @@ struct EventView_Previews: PreviewProvider {
                 EventView(event: deadDog)
             }
             .previewDisplayName(deadDog.title)
+            
+            let dealersDen = model.event(for: .dealersDen)
+            NavigationView {
+                EventView(event: dealersDen)
+            }
+            .previewDisplayName(dealersDen.title)
         }
     }
     
