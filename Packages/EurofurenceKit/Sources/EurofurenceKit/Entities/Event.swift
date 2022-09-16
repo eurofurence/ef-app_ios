@@ -38,7 +38,7 @@ extension Event {
             tags.append(tag)
         }
         
-        return tags
+        return tags.sorted()
     }
     
 }

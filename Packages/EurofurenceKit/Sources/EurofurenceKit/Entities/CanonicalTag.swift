@@ -1,7 +1,11 @@
 import Foundation
 
 /// Describes the feature of a well-known tag within the model.
-public enum CanonicalTag: CaseIterable, CustomStringConvertible, Hashable, Identifiable {
+public enum CanonicalTag: CaseIterable, Comparable, CustomStringConvertible, Hashable, Identifiable {
+    
+    public static func > (lhs: CanonicalTag, rhs: CanonicalTag) -> Bool {
+        lhs.description > rhs.description
+    }
     
     public var id: some Hashable {
         hashValue
