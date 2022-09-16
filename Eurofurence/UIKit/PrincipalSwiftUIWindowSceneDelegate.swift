@@ -1,3 +1,4 @@
+import EurofurenceKit
 import SwiftUI
 import UIKit
 
@@ -21,8 +22,10 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
             await model.prepareForPresentation()
         }
         
-        let rootView = HandheldExperience()
-            .environmentModel(model)
+        let rootView = ModalImageContainer {
+            HandheldExperience()
+                .environmentModel(model)
+        }
         
         let rootViewController = UIHostingController(rootView: rootView)
         window.rootViewController = rootViewController

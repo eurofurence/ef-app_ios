@@ -83,7 +83,7 @@ struct EventView: View {
         var body: some View {
             VStack(alignment: .leading) {
                 if let poster = event.poster {
-                    EurofurenceKitImage(image: poster)
+                    EurofurenceKitImage(image: poster, permitsFullscreenInteraction: true)
                 }
                 
                 trackIndicator
