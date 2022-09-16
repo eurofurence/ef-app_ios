@@ -8,6 +8,7 @@ public struct ModalImageContainer<Content>: View where Content: View {
     
     private let content: () -> Content
     @State private var presentedImage: ModallyPresentedImage?
+    @Namespace private var modalImageNamespace
     
     public init(@ViewBuilder _ content: @escaping () -> Content) {
         self.content = content
@@ -16,24 +17,48 @@ public struct ModalImageContainer<Content>: View where Content: View {
     public var body: some View {
         ZStack {
             content()
+                .environment(\.modalImageNamespace, modalImageNamespace)
                 .onChangeOfModallyPresentedImage { newValue in
-                    withAnimation {
+                    withAnimation(.spring()) {
                         presentedImage = newValue
                     }
                 }
-            
-            pannableImage
+                .overlay(pannableImage)
         }
     }
     
     @ViewBuilder private var pannableImage: some View {
         if let presentedImage = presentedImage {
-            PannableFullScreenImage(image: presentedImage.image, isPresented: presentedImage.isPresented)
-                .background(.ultraThinMaterial)
-                .accessibilityAddTraits(.isModal)
+            PannableFullScreenImage(
+                id: presentedImage.id,
+                image: presentedImage.image,
+                namespace: modalImageNamespace,
+                isPresented: presentedImage.isPresented
+            )
+            .background(.ultraThinMaterial)
+            .accessibilityAddTraits(.isModal)
         }
     }
     
 }
 
-
+extension EnvironmentValues {
+    
+    var modalImageNamespace: Namespace.ID? {
+        get {
+            self[ModalImageNamespaceEnvironmentKey.self]
+        }
+        set {
+            self[ModalImageNamespaceEnvironmentKey.self] = newValue
+        }
+    }
+    
+    private struct ModalImageNamespaceEnvironmentKey: EnvironmentKey {
+        
+        typealias Value = Namespace.ID?
+        
+        static var defaultValue: Namespace.ID?
+        
+    }
+    
+}

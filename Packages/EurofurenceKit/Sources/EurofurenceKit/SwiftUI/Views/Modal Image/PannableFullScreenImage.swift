@@ -2,8 +2,11 @@ import SwiftUI
 
 struct PannableFullScreenImage<Content>: View where Content: View {
     
+    var id: AnyHashable
     var image: Content
+    var namespace: Namespace.ID
     @Binding var isPresented: Bool
+    @State private var isSourceForMatchedGeometricTransition = false
     
     private let magnificationScaleLimit: CGFloat = 3
     @State private var currentImageViewSize: CGSize = .zero
@@ -16,68 +19,77 @@ struct PannableFullScreenImage<Content>: View where Content: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                image
-                    .aspectRatio(contentMode: .fit)
-                    .measure { newValue in
-                        currentImageViewSize = newValue
-                    }
-                    .scaleEffect(currentGestureMagnification)
-                    .offset(currentGestureTranslation)
-                    .onChange(of: magnification) { _ in
-                        withAnimation {
-                            translationFromIdentity = finalDragTranslation(
-                                proposedTranslation: .zero,
-                                geometry: geometry
-                            )
+            ZStack(alignment: .center) {
+                if isPresented {
+                    image
+                        .matchedGeometryEffect(id: id, in: namespace, isSource: isSourceForMatchedGeometricTransition)
+                        .transition(.offset())
+                        .measure { newValue in
+                            currentImageViewSize = newValue
                         }
-                    }
-                    .gesture(TapGesture(count: 2)
-                        .onEnded { _ in
+                        .aspectRatio(contentMode: .fit)
+                        .scaleEffect(currentGestureMagnification)
+                        .offset(currentGestureTranslation)
+                        .onChange(of: magnification) { _ in
                             withAnimation {
-                                if fabsf(Float(magnification)) > 1 {
-                                    magnification = 1
-                                } else {
-                                    magnification = 2
+                                translationFromIdentity = finalDragTranslation(
+                                    proposedTranslation: .zero,
+                                    geometry: geometry
+                                )
+                            }
+                        }
+                        .gesture(TapGesture(count: 2)
+                            .onEnded { _ in
+                                withAnimation {
+                                    if fabsf(Float(magnification)) > 1 {
+                                        magnification = 1
+                                    } else {
+                                        magnification = 2
+                                    }
+                                    
+                                    translationFromIdentity = .zero
                                 }
+                            })
+                        .gesture(MagnificationGesture()
+                            .onChanged { scale in
+                                inProgressMagnification = scale
+                            }
+                            .onEnded { scale in
+                                withAnimation {
+                                    let totalMagnificiation = max(min(magnificationScaleLimit, magnification * scale), 1)
+                                    magnification = totalMagnificiation
+                                    inProgressMagnification = 1
+                                }
+                            })
+                        .simultaneousGesture(DragGesture()
+                            .onChanged { value in
+                                inProgressDrag = value
+                            }
+                            .onEnded { value in
+                                let translation = finalDragTranslation(
+                                    proposedTranslation: value.predictedEndTranslation,
+                                    geometry: geometry
+                                )
                                 
-                                translationFromIdentity = .zero
-                            }
-                        })
-                    .gesture(MagnificationGesture()
-                        .onChanged { scale in
-                            inProgressMagnification = scale
+                                withAnimation(.easeOut) {
+                                    inProgressDrag = nil
+                                    translationFromIdentity = translation
+                                }
+                            })
+                        .edgesIgnoringSafeArea(.all)
+                        .onAppear {
+                            isSourceForMatchedGeometricTransition = true
                         }
-                        .onEnded { scale in
-                            withAnimation {
-                                let totalMagnificiation = max(min(magnificationScaleLimit, magnification * scale), 1)
-                                magnification = totalMagnificiation
-                                inProgressMagnification = 1
-                            }
-                        })
-                    .simultaneousGesture(DragGesture()
-                        .onChanged { value in
-                            inProgressDrag = value
-                        }
-                        .onEnded { value in
-                            let translation = finalDragTranslation(
-                                proposedTranslation: value.predictedEndTranslation,
-                                geometry: geometry
-                            )
-                            
-                            withAnimation(.easeOut) {
-                                inProgressDrag = nil
-                                translationFromIdentity = translation
-                            }
-                        })
-                    .edgesIgnoringSafeArea(.all)
+                }
                 
                 HStack {
                     Spacer()
                     
                     VStack {
                         Button {
-                            isPresented.toggle()
+                            withAnimation {
+                                isPresented.toggle()
+                            }
                         } label: {
                             SwiftUI.Image(systemName: "xmark")
                                 .resizable()
@@ -95,7 +107,6 @@ struct PannableFullScreenImage<Content>: View where Content: View {
                 .padding()
             }
         }
-        .transition(.opacity)
     }
     
     private var currentGestureMagnification: CGFloat {

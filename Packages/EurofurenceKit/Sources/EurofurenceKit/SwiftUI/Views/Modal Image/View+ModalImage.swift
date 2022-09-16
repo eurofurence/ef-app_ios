@@ -32,10 +32,29 @@ private struct ModalImageViewModifier: ViewModifier {
     
     @Binding var isPresented: Bool
     let configuration: ModallyPresentedImage
+    @Environment(\.modalImageNamespace) private var modalImageNamespace
+    @State private var contentSize: CGSize = .zero
     
     func body(content: Content) -> some View {
-        content
-            .modallyPresentedImage(isPresented ? configuration : nil)
+        ZStack {
+            if isPresented {
+                content
+                    .matchedGeometryEffect(
+                        id: configuration.id,
+                        in: modalImageNamespace!,
+                        isSource: false
+                    )
+                    .transition(.offset())
+            } else {
+                content
+                    .matchedGeometryEffect(
+                        id: configuration.id,
+                        in: modalImageNamespace!
+                    )
+                    .transition(.offset())
+            }
+        }
+        .modallyPresentedImage(isPresented ? configuration : nil)
     }
     
 }
