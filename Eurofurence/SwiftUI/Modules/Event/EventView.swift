@@ -14,48 +14,28 @@ struct EventView: View {
                 EventHeading(event: event)
                     .padding(.bottom, intersectionSpacing)
                 
-                Divider()
-                    .padding(.bottom, intersectionSpacing)
-                
-                EventTags(event: event)
-                    .padding(.bottom, intersectionSpacing)
+                if (event.tags.isEmpty || event.eventDescription.isEmpty) == false {
+                    Divider()
+                        .padding(.bottom, intersectionSpacing)
+                    
+                    EventTags(event: event)
+                        .padding(.bottom, intersectionSpacing)
+                    
+                    MarkdownContent(event.eventDescription)
+                }
             }
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    // TODO: Add to/remove from calendar!
-                } label: {
-                    Label {
-                        Text("Add to Calendar")
-                    } icon: {
-                        Image(systemName: "calendar.circle")
-                    }
-                }
-            }
-            
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem {
                 Button {
                     // TODO: Favourite/unfavourite!
                 } label: {
                     Label {
-                        Text("Leave Feedback")
+                        Text("Favourite")
                     } icon: {
-                        Image(systemName: "square.and.pencil.circle")
-                    }
-                }
-            }
-            
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    // TODO: Favourite/unfavourite!
-                } label: {
-                    Label {
-                        Text("Faourite")
-                    } icon: {
-                        Image(systemName: "heart.circle")
+                        Image(systemName: "heart")
                     }
                 }
             }
@@ -68,6 +48,30 @@ struct EventView: View {
                         Text("Share")
                     } icon: {
                         Image(systemName: "square.and.arrow.up")
+                    }
+                }
+            }
+            
+            ToolbarItem(placement: .bottomBar) {
+                Button {
+                    // TODO: Add to/remove from calendar!
+                } label: {
+                    Label {
+                        Text("Add to Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.badge.plus")
+                    }
+                }
+            }
+            
+            ToolbarItem(placement: .bottomBar) {
+                Button {
+                    // TODO: Leave feedback!
+                } label: {
+                    Label {
+                        Text("Leave Feedback")
+                    } icon: {
+                        Image(systemName: "square.and.pencil")
                     }
                 }
             }
