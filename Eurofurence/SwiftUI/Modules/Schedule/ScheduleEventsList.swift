@@ -40,7 +40,7 @@ struct ScheduleEventsList: View {
         ForEach(group.elements) { (event) in
             NavigationLink(tag: event, selection: $selectedEvent) {
                 Lazy {
-                    Text(event.title)
+                    EventView(event: event)
                 }
             } label: {
                 EventListRow(

@@ -17,13 +17,13 @@ public struct CanonicalTagIcon: View {
     
     private static let tagToSFSymbolNames: [CanonicalTag: String] = [
         .sponsorOnly: "star.circle",
-            .superSponsorOnly: "star.circle.fill",
-            .artShow: "photo.artframe",
-            .kage: "ant.fill",
-            .dealersDen: "cart.fill",
-            .mainStage: "asterisk.circle.fill",
-            .photoshoot: "camera.fill",
-            .faceMaskRequired: "facemask.fill"
+        .superSponsorOnly: "star.circle.fill",
+        .artShow: "photo.artframe",
+        .kage: "ant.fill",
+        .dealersDen: "cart.fill",
+        .mainStage: "asterisk.circle.fill",
+        .photoshoot: "camera.fill",
+        .faceMaskRequired: "facemask.fill"
     ]
     
 }

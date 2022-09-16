@@ -132,8 +132,8 @@ struct EventListRow: View {
                 Text(event.title)
                     .font(.headline)
                 
-                if let abstract = event.abstract, dynamicTypeSize < .accessibility1 {
-                    MarkdownContent(abstract)
+                if dynamicTypeSize < .accessibility1 {
+                    EventSubtitle(event)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                         .lineLimit(2)
