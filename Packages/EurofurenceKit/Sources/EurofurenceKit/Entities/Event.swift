@@ -30,42 +30,31 @@ public class Event: Entity {
     
     @NSManaged public internal(set) var isFavourite: Bool
     
+    /// Adds the receiver to the user's collection of favourited events.
     public func favourite() async {
-        guard isFavourite == false else { return }
-        
-        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
-        
-        let writingContext = persistentContainer.newBackgroundContext()
-        let eventID = objectID
-        
-        do {
-            try await writingContext.performAsync { [writingContext] in
-                let writableEvent = writingContext.object(with: eventID) as! Event
-                writableEvent.isFavourite = true
-                try writingContext.save()
-            }
-        } catch {
-            let metadata: Logger.Metadata = [
-                "ID": .string(identifier),
-                "Error": .string(String(describing: error))
-            ]
-            
-            Self.logger.error("Failed to add event to favourites", metadata: metadata)
+        if isFavourite == false {
+            await updateFavouriteState(to: true, loggingDescription: "add event to favourites")
         }
     }
     
+    /// Removes the receiver from the user's collection of favourited events.
     public func unfavourite() async {
-        guard isFavourite else { return }
-        
+        if isFavourite {
+            await updateFavouriteState(to: false, loggingDescription: "remove event from favourites")
+        }
+    }
+    
+    private func updateFavouriteState(to newState: Bool, loggingDescription: StaticString) async {
         guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
         
         let writingContext = persistentContainer.newBackgroundContext()
         let eventID = objectID
+        let identifier = self.identifier
         
         do {
             try await writingContext.performAsync { [writingContext] in
                 let writableEvent = writingContext.object(with: eventID) as! Event
-                writableEvent.isFavourite = false
+                writableEvent.isFavourite = newState
                 try writingContext.save()
             }
         } catch {
@@ -74,7 +63,7 @@ public class Event: Entity {
                 "Error": .string(String(describing: error))
             ]
             
-            Self.logger.error("Failed to add event to favourites", metadata: metadata)
+            Self.logger.error("Failed to \(loggingDescription)", metadata: metadata)
         }
     }
 
