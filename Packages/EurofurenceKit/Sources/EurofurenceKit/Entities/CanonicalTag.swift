@@ -1,7 +1,11 @@
 import Foundation
 
 /// Describes the feature of a well-known tag within the model.
-public enum CanonicalTag: CaseIterable, CustomStringConvertible, Hashable, Identifiable {
+public enum CanonicalTag: CaseIterable, Comparable, CustomStringConvertible, Hashable, Identifiable {
+    
+    public static func > (lhs: CanonicalTag, rhs: CanonicalTag) -> Bool {
+        lhs.description > rhs.description
+    }
     
     public var id: some Hashable {
         hashValue
@@ -60,9 +64,54 @@ public enum CanonicalTag: CaseIterable, CustomStringConvertible, Hashable, Ident
             
         case .faceMaskRequired:
             return NSLocalizedString(
-                "Fake Mask Required",
+                "Face Mask Required",
                 bundle: .module,
                 comment: "Description used to denote an event where a face mask is required to enter"
+            )
+            
+        }
+    }
+    
+    public var localizedDescription: String {
+        switch self {
+        case .sponsorOnly:
+            return NSLocalizedString(
+                "Admittance for Sponsors and Super-Sponsors only",
+                bundle: .module,
+                comment: "Detailed description used to denote an event where only sponsors may attend"
+            )
+            
+        case .superSponsorOnly:
+            return NSLocalizedString(
+                "Admittance for Super-Sponsors only",
+                bundle: .module,
+                comment: "Detailed description used to denote an event where only super sponsors may attend"
+            )
+            
+        case .artShow:
+            return description
+            
+        case .kage:
+            return NSLocalizedString(
+                "May contain traces of cockroach and wine",
+                bundle: .module,
+                comment: "Detailed description used to denote an event Kage is running or a featured panelist"
+            )
+            
+        case .dealersDen:
+            return description
+            
+        case .mainStage:
+            return description
+            
+        case .photoshoot:
+            return description
+            
+        case .faceMaskRequired:
+            return NSLocalizedString(
+                "Face masks are mandatory for this event",
+                bundle: .module,
+                comment: "Detailed description used to denote an event where a face mask is required to enter"
             )
             
         }

@@ -4,32 +4,43 @@ import SwiftUI
 public struct EurofurenceKitImage: View {
     
     @ObservedObject private var image: EurofurenceKit.Image
+    @State private var isShowingFullScreen = false
+    private let permitsFullscreenInteraction: Bool
     
-    public init(image: EurofurenceKit.Image) {
+    public init(image: EurofurenceKit.Image, permitsFullscreenInteraction: Bool = false) {
         self.image = image
+        self.permitsFullscreenInteraction = permitsFullscreenInteraction
     }
     
     public var body: some View {
-        swiftUIImage
-            .aspectRatio(contentMode: .fit)
-            .cornerRadius(7)
+        if let swiftUIImage = swiftUIImage {
+            swiftUIImage
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(7)
+                .onTapGesture {
+                    if permitsFullscreenInteraction {
+                        isShowingFullScreen = true
+                    }
+                }
+                .modalImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
+        }
     }
     
-    @ViewBuilder
-    private var swiftUIImage: some View {
+    private var swiftUIImage: SwiftUI.Image? {
         if let url = image.cachedImageURL {
 #if os(iOS)
             if let uiImage = UIImage(contentsOfFile: url.path) {
-                SwiftUI.Image(uiImage: uiImage)
-                    .resizable()
+                return SwiftUI.Image(uiImage: uiImage)
             }
 #elseif os(macOS)
             if let nsImage = NSImage(contentsOf: url) {
-                SwiftUI.Image(nsImage: nsImage)
-                    .resizable()
+                return SwiftUI.Image(nsImage: nsImage)
             }
 #endif
         }
+        
+        return nil
     }
     
 }

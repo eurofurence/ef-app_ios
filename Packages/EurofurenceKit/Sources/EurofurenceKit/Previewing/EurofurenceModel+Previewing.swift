@@ -281,6 +281,8 @@ extension EurofurenceModel {
     public enum PreviewEvent {
         case registration
         case bootyBounce
+        case deadDog
+        case dealersDen
         
         fileprivate var identifier: String {
             switch self {
@@ -289,6 +291,12 @@ extension EurofurenceModel {
                 
             case .bootyBounce:
                 return "0d7817c3-03c4-48a7-bcf9-5cd690e86368"
+                
+            case .deadDog:
+                return "d3e5252b-8521-42ab-bd1a-d67f58c0f10f"
+                
+            case .dealersDen:
+                return "db4a2537-5e9b-41c0-9c2c-3a1cfc513b5c"
             }
         }
     }
