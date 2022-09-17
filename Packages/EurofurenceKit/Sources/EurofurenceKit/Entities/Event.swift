@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Event)
 public class Event: Entity {
+    
+    private static let logger = Logger(label: "Event")
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
@@ -24,6 +27,47 @@ public class Event: Entity {
     @NSManaged public var room: Room
     @NSManaged public var track: Track
     @NSManaged public var tags: Set<Tag>
+    
+    /// Indicates whether the receiver has been included in the user's collection of favourite events.
+    @NSManaged public internal(set) var isFavourite: Bool
+    
+    /// Adds the receiver to the user's collection of favourited events.
+    public func favourite() async {
+        if isFavourite == false {
+            await updateFavouriteState(to: true, loggingDescription: "add event to favourites")
+        }
+    }
+    
+    /// Removes the receiver from the user's collection of favourited events.
+    public func unfavourite() async {
+        if isFavourite {
+            await updateFavouriteState(to: false, loggingDescription: "remove event from favourites")
+        }
+    }
+    
+    private func updateFavouriteState(to newState: Bool, loggingDescription: StaticString) async {
+        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
+        
+        let writingContext = persistentContainer.newBackgroundContext()
+        let eventID = objectID
+        let identifier = self.identifier
+        
+        do {
+            try await writingContext.performAsync { [writingContext] in
+                guard let writableEvent = writingContext.object(with: eventID) as? Event else { return }
+                
+                writableEvent.isFavourite = newState
+                try writingContext.save()
+            }
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Failed to \(loggingDescription)", metadata: metadata)
+        }
+    }
 
 }
 

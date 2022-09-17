@@ -10,15 +10,18 @@ extension EurofurenceModel {
         let day: Day?
         let track: Track?
         let room: Room?
+        let favouritesOnly: Bool
         
         public init(
             day: Day? = nil,
             track: Track? = nil,
-            room: Room? = nil
+            room: Room? = nil,
+            favouritesOnly: Bool = false
         ) {
             self.day = day
             self.track = track
             self.room = room
+            self.favouritesOnly = favouritesOnly
         }
         
     }

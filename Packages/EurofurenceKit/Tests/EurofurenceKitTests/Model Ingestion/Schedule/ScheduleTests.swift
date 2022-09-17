@@ -436,6 +436,51 @@ class ScheduleTests: EurofurenceKitTestCase {
         assertContainsEventsGroupedByDay(schedule: schedule)
     }
     
+    func testScheduleConfiguredOnlyForFavouritesOnlyShowsFavouritedEvent() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let firstFurryConventionID = "ff714ae4-a165-4cbd-a0e1-74773620203a"
+        let firstFurryConvention = try scenario.model.event(identifiedBy: firstFurryConventionID)
+        await firstFurryConvention.favourite()
+        
+        let favouritesOnlyConfiguration = EurofurenceModel.ScheduleConfiguration(favouritesOnly: true)
+        let schedule = scenario.model.makeSchedule(configuration: favouritesOnlyConfiguration)
+        
+        if let group = schedule.eventGroups.first {
+            XCTAssertEqual(1, group.elements.count, "Expected one result matching the search")
+            XCTAssertEqual(
+                "ff714ae4-a165-4cbd-a0e1-74773620203a",
+                group.elements.first?.identifier,
+                "Expected to match the specific favourited event only"
+            )
+        }
+        
+        assertContainsEventsGroupedByDay(schedule: schedule)
+    }
+    
+    func testFilteringToFavouritesRemovesNonFavouritedEvents() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        let schedule = scenario.model.makeSchedule()
+        
+        let firstFurryConventionID = "ff714ae4-a165-4cbd-a0e1-74773620203a"
+        let firstFurryConvention = try scenario.model.event(identifiedBy: firstFurryConventionID)
+        await firstFurryConvention.favourite()
+        schedule.favouritesOnly = true
+        
+        if let group = schedule.eventGroups.first {
+            XCTAssertEqual(1, group.elements.count, "Expected one result matching the search")
+            XCTAssertEqual(
+                "ff714ae4-a165-4cbd-a0e1-74773620203a",
+                group.elements.first?.identifier,
+                "Expected to match the specific favourited event only"
+            )
+        }
+        
+        assertContainsEventsGroupedByDay(schedule: schedule)
+    }
+    
     private func assertContainsEventsGroupedByDay(
         schedule: Schedule,
         room: EurofurenceKit.Room? = nil,

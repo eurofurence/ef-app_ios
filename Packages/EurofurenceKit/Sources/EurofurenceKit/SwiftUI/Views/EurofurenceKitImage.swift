@@ -18,6 +18,7 @@ public struct EurofurenceKitImage: View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(7)
+                .allowsHitTesting(permitsFullscreenInteraction)
                 .onTapGesture {
                     if permitsFullscreenInteraction {
                         isShowingFullScreen = true

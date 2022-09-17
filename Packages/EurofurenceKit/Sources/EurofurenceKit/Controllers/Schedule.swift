@@ -59,6 +59,13 @@ public class Schedule: NSObject, ObservableObject {
     /// A localized description of the filter.
     @Published public private(set) var localizedFilterDescription: String?
     
+    /// A flag to designate whether the schedule should only contain events the user has favourited.
+    @Published public var favouritesOnly: Bool = false {
+        didSet {
+            refetchEvents()
+        }
+    }
+    
     /// A textual query to apply for filtering against this schedule.
     @Published public var query: String = "" {
         didSet {
@@ -110,6 +117,7 @@ public class Schedule: NSObject, ObservableObject {
         self.configuration = configuration
         self.managedObjectContext = managedObjectContext
         self.clock = clock
+        self.favouritesOnly = configuration.favouritesOnly
         
         super.init()
         
@@ -208,6 +216,10 @@ public class Schedule: NSObject, ObservableObject {
     
     private func makeFetchingPredicate() -> NSPredicate {
         var predicates = [NSPredicate]()
+        
+        if favouritesOnly {
+            predicates.append(NSPredicate(format: "isFavourite == YES"))
+        }
         
         if query.isEmpty == false {
             predicates.append(Event.predicateForTextualSearch(query: query))

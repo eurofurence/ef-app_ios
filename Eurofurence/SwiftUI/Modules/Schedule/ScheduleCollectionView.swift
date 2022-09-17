@@ -5,6 +5,7 @@ struct ScheduleCollectionView: View {
     
     @EnvironmentObject var model: EurofurenceModel
     @ObservedObject var schedule: Schedule
+    @Environment(\.showScheduleFilterButton) private var showScheduleFilter
     @State private var isPresentingFilter = false
     @State private var selectedEvent: Event?
     
@@ -17,7 +18,9 @@ struct ScheduleCollectionView: View {
                 }
                 
                 ToolbarItem(placement: .bottomBar) {
-                    ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+                    if showScheduleFilter {
+                        ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+                    }
                 }
             }
     }
@@ -76,7 +79,15 @@ private struct ScheduleFilterView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List {
+        Form {
+            Toggle(isOn: $schedule.favouritesOnly.animation()) {
+                Label {
+                    Text("Favourites Only")
+                } icon: {
+                    FavouriteIcon(filled: true)
+                }
+            }
+            
             if schedule.availableDays.isEmpty == false {
                 Section {
                     ScheduleDayPicker(schedule: schedule)

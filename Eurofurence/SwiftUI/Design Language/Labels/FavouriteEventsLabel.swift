@@ -1,3 +1,4 @@
+import EurofurenceKit
 import SwiftUI
 
 struct FavouriteEventsLabel: View {
@@ -12,16 +13,7 @@ struct FavouriteEventsLabel: View {
         Label {
             Text("Schedule")
         } icon: {
-            icon
-                .foregroundColor(.red)
-        }
-    }
-    
-    @ViewBuilder private var icon: some View {
-        if isSelected {
-            Image(systemName: "heart.fill")
-        } else {
-            Image(systemName: "heart")
+            FavouriteIcon(filled: true)
         }
     }
     

@@ -21,6 +21,12 @@ struct EventListRow: View {
             }
         }
         .frame(minHeight: rowHeight)
+        .swipeActions {
+            ToggleEventFavouriteStateButton(event: event) {
+                Image(systemName: event.isFavourite ? "heart.slash" : "heart.fill")
+            }
+            .tint(.blue)
+        }
     }
     
     private struct EventSummary: View {
@@ -41,7 +47,7 @@ struct EventListRow: View {
     
     private struct Heading: View {
         
-        var event: Event
+        @ObservedObject var event: Event
         var configuration: Configuration
         @Environment(\.dynamicTypeSize) private var dynamicTypeSize: DynamicTypeSize
         
@@ -71,6 +77,7 @@ struct EventListRow: View {
                 if dynamicTypeSize >= .xLarge {
                     HStack {
                         startTime
+                            .padding(.bottom, 3)
                         
                         if dynamicTypeSize >= .xxxLarge && dynamicTypeSize < .accessibility3 {
                             Spacer()
@@ -115,6 +122,10 @@ struct EventListRow: View {
         }
         
         @ViewBuilder private var eventTags: some View {
+            if event.isFavourite {
+                FavouriteIcon(filled: true)
+            }
+            
             ForEach(event.canonicalTags) { tag in
                 CanonicalTagIcon(tag)
             }
