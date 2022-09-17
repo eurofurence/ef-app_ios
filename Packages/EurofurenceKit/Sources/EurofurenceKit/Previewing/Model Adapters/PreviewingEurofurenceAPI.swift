@@ -18,7 +18,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
         
         responses = [
             APIRequests.FetchLatestChanges(since: nil): synchronizationPayload,
-            APIRequests.LoginRequest(registrationNumber: 42, username: "Previewe User", password: "password"): authenticationUser,
+            APIRequests.Login(registrationNumber: 42, username: "Previewe User", password: "password"): authenticationUser,
             APIRequests.FetchConfiguration(): PreviewingRemoteConfiguration(),
             APIRequests.FetchMessages(authenticationToken: previewAuthenticationToken): [Message]()
         ]
@@ -49,7 +49,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func requestAuthenticationToken(
-        using login: APIRequests.LoginRequest
+        using login: APIRequests.Login
     ) async throws -> AuthenticatedUser {
         AuthenticatedUser(
             userIdentifier: 42,
@@ -66,7 +66,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func requestLogout(
-        _ logout: APIRequests.LogoutRequest
+        _ logout: APIRequests.Logout
     ) async throws {
         
     }
@@ -80,7 +80,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func markMessageAsRead(
-        request: APIRequests.AcknowledgeMessageRequest
+        request: APIRequests.AcknowledgeMessage
     ) async throws {
         
     }

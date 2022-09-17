@@ -1,7 +1,7 @@
 extension APIRequests {
     
     /// A request to login to the Eurofurence application service.
-    public struct LoginRequest: APIRequest {
+    public struct Login: APIRequest {
         
         public typealias Output = AuthenticatedUser
         

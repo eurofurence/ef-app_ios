@@ -9,7 +9,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
     func testWhenSignedInMessagesAreCachedIntoContext() async throws {
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
-        let loginRequest = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
             userIdentifier: 42,
             username: "Some Guy",
@@ -52,7 +52,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
     func testAfterSigningOutMessagesAreRemovedFromContext() async throws {
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
-        let loginRequest = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
             userIdentifier: 42,
             username: "Some Guy",
@@ -60,7 +60,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             tokenExpires: .distantFuture
         )
         
-        let logoutRequest = APIRequests.LogoutRequest(
+        let logoutRequest = APIRequests.Logout(
             authenticationToken: AuthenticationToken("Token"),
             pushNotificationDeviceToken: nil
         )
@@ -92,7 +92,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
     func testWhenSignedInFutureReloadsIncludeMessages() async throws {
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
-        let loginRequest = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
             userIdentifier: 42,
             username: "Some Guy",
@@ -124,7 +124,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
     func testLoadingSameMessageMultipleTimesDoesNotDuplicateMessageInContext() async throws {
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         let login = Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
-        let loginRequest = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
+        let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Some Guy", password: "p455w0rd")
         let user = AuthenticatedUser(
             userIdentifier: 42,
             username: "Some Guy",

@@ -75,8 +75,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private var stubbedLoginAttempts = [APIRequests.LoginRequest: Result<AuthenticatedUser, Error>]()
-    func requestAuthenticationToken(using login: APIRequests.LoginRequest) async throws -> AuthenticatedUser {
+    private var stubbedLoginAttempts = [APIRequests.Login: Result<AuthenticatedUser, Error>]()
+    func requestAuthenticationToken(using login: APIRequests.Login) async throws -> AuthenticatedUser {
         guard let response = stubbedLoginAttempts[login] else {
             throw NotStubbed()
         }
@@ -94,8 +94,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         registeredDeviceTokenRequest = registration
     }
     
-    private var logoutResponses = [APIRequests.LogoutRequest: Result<Void, Error>]()
-    func requestLogout(_ logout: APIRequests.LogoutRequest) async throws {
+    private var logoutResponses = [APIRequests.Logout: Result<Void, Error>]()
+    func requestLogout(_ logout: APIRequests.Logout) async throws {
         guard let response = logoutResponses[logout] else {
             throw NotStubbed()
         }
@@ -130,8 +130,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private(set) var markedMessageReadIdentifiers = [String]()
-    private var messageReadRequestResponses = [APIRequests.AcknowledgeMessageRequest: Result<Void, Error>]()
-    func markMessageAsRead(request: APIRequests.AcknowledgeMessageRequest) async throws {
+    private var messageReadRequestResponses = [APIRequests.AcknowledgeMessage: Result<Void, Error>]()
+    func markMessageAsRead(request: APIRequests.AcknowledgeMessage) async throws {
         markedMessageReadIdentifiers.append(request.messageIdentifier)
         
         guard let response = messageReadRequestResponses[request] else {
@@ -164,12 +164,12 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         stubbedResponsesByRequest[expectedRequest] = result
     }
     
-    func stubLoginAttempt(_ attempt: APIRequests.LoginRequest, with result: Result<AuthenticatedUser, Error>) {
+    func stubLoginAttempt(_ attempt: APIRequests.Login, with result: Result<AuthenticatedUser, Error>) {
         stubbedLoginAttempts[attempt] = result
         stubbedResponsesByRequest[attempt] = result
     }
     
-    func stubLogoutRequest(_ request: APIRequests.LogoutRequest, with result: Result<Void, Error>) {
+    func stubLogoutRequest(_ request: APIRequests.Logout, with result: Result<Void, Error>) {
         logoutResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }
@@ -182,7 +182,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         stubbedResponsesByRequest[APIRequests.FetchMessages(authenticationToken: authenticationToken)] = result
     }
     
-    func stubMessageReadRequest(for request: APIRequests.AcknowledgeMessageRequest, with result: Result<Void, Error>) {
+    func stubMessageReadRequest(for request: APIRequests.AcknowledgeMessage, with result: Result<Void, Error>) {
         messageReadRequestResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }

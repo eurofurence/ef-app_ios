@@ -38,12 +38,12 @@ public class Login: ObservableObject {
         canLogin = registrationNumber != nil && username.isEmpty == false && password.isEmpty == false
     }
     
-    var request: APIRequests.LoginRequest? {
+    var request: APIRequests.Login? {
         guard let registrationNumber = registrationNumber, canLogin else {
             return nil
         }
 
-        return APIRequests.LoginRequest(registrationNumber: registrationNumber, username: username, password: password)
+        return APIRequests.Login(registrationNumber: registrationNumber, username: username, password: password)
     }
     
 }

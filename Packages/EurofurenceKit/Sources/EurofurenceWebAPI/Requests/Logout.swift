@@ -3,7 +3,7 @@ import Foundation
 extension APIRequests {
     
     /// A request to log out from the Eurofurence application service.
-    public struct LogoutRequest: APIRequest {
+    public struct Logout: APIRequest {
         
         public typealias Output = Void
         

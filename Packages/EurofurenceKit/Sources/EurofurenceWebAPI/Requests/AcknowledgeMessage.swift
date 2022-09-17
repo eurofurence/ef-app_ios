@@ -1,7 +1,7 @@
 extension APIRequests {
     
     /// A request to notify the API a message has been read by the user.
-    public struct AcknowledgeMessageRequest: Hashable, APIRequest {
+    public struct AcknowledgeMessage: Hashable, APIRequest {
         
         public typealias Output = Void
         

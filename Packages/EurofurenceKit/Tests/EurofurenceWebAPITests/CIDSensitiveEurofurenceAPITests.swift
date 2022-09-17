@@ -102,7 +102,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testSignIn_Success() async throws {
-        let login = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
+        let login = APIRequests.Login(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
         let expectedURLString = "https://app.eurofurence.org/EF26/api/Tokens/RegSys"
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         
@@ -209,7 +209,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testLoggingOut_Succeeds() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let logout = APIRequests.LogoutRequest(
+        let logout = APIRequests.Logout(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -235,7 +235,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testLoggingOut_Fails() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let logout = APIRequests.LogoutRequest(
+        let logout = APIRequests.Logout(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )

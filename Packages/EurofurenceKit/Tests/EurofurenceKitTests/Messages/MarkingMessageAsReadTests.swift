@@ -37,7 +37,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
             "Messages not marked as read should indicate so in the persistent store"
         )
         
-        let expectedRequest = APIRequests.AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -77,7 +77,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
         
-        let expectedRequest = APIRequests.AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -87,7 +87,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         await message.markRead()
         
         let markedMessageReadyIdentifiers = await api
-            .executedRequests(ofType: APIRequests.AcknowledgeMessageRequest.self)
+            .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
             .map(\.messageIdentifier)
         
         XCTAssertEqual(
@@ -125,7 +125,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
 
-        let expectedRequest = APIRequests.AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -141,7 +141,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         try await scenario.updateLocalStore()
         
         let markedMessageReadyIdentifiers = await api
-            .executedRequests(ofType: APIRequests.AcknowledgeMessageRequest.self)
+            .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
             .map(\.messageIdentifier)
         
         XCTAssertEqual(

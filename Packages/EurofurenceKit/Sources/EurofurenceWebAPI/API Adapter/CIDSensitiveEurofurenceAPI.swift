@@ -59,7 +59,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         try await configuration.network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
     }
     
-    public func requestAuthenticationToken(using login: APIRequests.LoginRequest) async throws -> AuthenticatedUser {
+    public func requestAuthenticationToken(using login: APIRequests.Login) async throws -> AuthenticatedUser {
         let url = makeURL(subpath: "Tokens/RegSys")
         let request = LoginPayload(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
         let encoder = JSONEncoder()
@@ -85,7 +85,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         )
     }
     
-    public func requestLogout(_ logout: APIRequests.LogoutRequest) async throws {
+    public func requestLogout(_ logout: APIRequests.Logout) async throws {
         // Logging out = disassociate the authentication token with the push token.
         try await associatePushNotificationToken(
             logout.pushNotificationDeviceToken,
@@ -109,7 +109,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         FirebaseRemoteConfiguration.shared
     }
     
-    public func markMessageAsRead(request: APIRequests.AcknowledgeMessageRequest) async throws {
+    public func markMessageAsRead(request: APIRequests.AcknowledgeMessage) async throws {
         let url = makeURL(subpath: "Communication/PrivateMessages/\(request.messageIdentifier)/Read")
         guard let bodyForSwagger = "true".data(using: .utf8) else {
             fatalError("Could not produce a data object from the Swagger body")
