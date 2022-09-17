@@ -31,8 +31,7 @@ struct ScheduleView: View {
                     Label {
                         Text("Favourite Events")
                     } icon: {
-                        Image(systemName: "heart")
-                            .foregroundColor(.red)
+                        FavouriteIcon(filled: true)
                     }
                 }
                 

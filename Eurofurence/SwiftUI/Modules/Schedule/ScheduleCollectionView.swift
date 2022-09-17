@@ -81,8 +81,7 @@ private struct ScheduleFilterView: View {
                 Label {
                     Text("Favourites Only")
                 } icon: {
-                    Image(systemName: "heart.fill")
-                        .foregroundColor(.red)
+                    FavouriteIcon(filled: true)
                 }
             }
             

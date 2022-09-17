@@ -117,8 +117,7 @@ struct EventListRow: View {
         
         @ViewBuilder private var eventTags: some View {
             if event.isFavourite {
-                Image(systemName: "heart.fill")
-                    .foregroundColor(.red)
+                FavouriteIcon(filled: true)
             }
             
             ForEach(event.canonicalTags) { tag in

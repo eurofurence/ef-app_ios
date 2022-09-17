@@ -40,8 +40,7 @@ struct EventView: View {
                     Label {
                         Text(event.isFavourite ? "Unfavourite" : "Favourite")
                     } icon: {
-                        Image(systemName: event.isFavourite ? "heart.fill" : "heart")
-                            .foregroundColor(.red)
+                        FavouriteIcon(filled: event.isFavourite)
                     }
                 }
             }
