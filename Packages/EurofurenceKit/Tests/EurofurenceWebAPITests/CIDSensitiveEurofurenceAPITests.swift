@@ -57,7 +57,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
             try FileManager.default.removeItem(at: temporaryFileURL)
         }
         
-        let imageRequest = DownloadImage(
+        let imageRequest = APIRequests.DownloadImage(
             imageIdentifier: "ID",
             lastKnownImageContentHashSHA1: "SHA",
             downloadDestinationURL: temporaryFileURL
@@ -81,7 +81,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
             try FileManager.default.removeItem(at: temporaryFileURL)
         }
         
-        let imageRequest = DownloadImage(
+        let imageRequest = APIRequests.DownloadImage(
             imageIdentifier: "ID",
             lastKnownImageContentHashSHA1: "SHA",
             downloadDestinationURL: temporaryFileURL
@@ -102,7 +102,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     }
     
     func testSignIn_Success() async throws {
-        let login = LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
+        let login = APIRequests.LoginRequest(registrationNumber: 42, username: "Some Guy", password: "p4s5w0rd")
         let expectedURLString = "https://app.eurofurence.org/EF26/api/Tokens/RegSys"
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         
@@ -128,7 +128,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testRegisteringPushNotificationDeviceToken_Success() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let pushRegistration = RegisterPushNotificationDeviceToken(
+        let pushRegistration = APIRequests.RegisterPushNotificationDeviceToken(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -157,7 +157,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     
     func testRegisteringPushNotificationDeviceToken_NotLoggedIn_DoesNotIncludeAuthorizationHeader() async throws {
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let pushRegistration = RegisterPushNotificationDeviceToken(
+        let pushRegistration = APIRequests.RegisterPushNotificationDeviceToken(
             authenticationToken: nil,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -185,7 +185,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testRegisteringPushNotificationDeviceToken_Failure() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let pushRegistration = RegisterPushNotificationDeviceToken(
+        let pushRegistration = APIRequests.RegisterPushNotificationDeviceToken(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -209,7 +209,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testLoggingOut_Succeeds() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let logout = LogoutRequest(
+        let logout = APIRequests.LogoutRequest(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -235,7 +235,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testLoggingOut_Fails() async throws {
         let authenticationToken = AuthenticationToken("Authentication Token")
         let pushNotificationDeviceTokenData = try XCTUnwrap("Push Token".data(using: .utf8))
-        let logout = LogoutRequest(
+        let logout = APIRequests.LogoutRequest(
             authenticationToken: authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -295,7 +295,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        let request = AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        let request = APIRequests.AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
         await XCTAssertEventuallyNoThrows { try await api.markMessageAsRead(request: request) }
     }
     
@@ -311,7 +311,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         network.stub(expectedRequest, with: .failure(error))
         
-        let request = AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        let request = APIRequests.AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
         await XCTAssertEventuallyThrowsError { try await api.markMessageAsRead(request: request) }
     }
     

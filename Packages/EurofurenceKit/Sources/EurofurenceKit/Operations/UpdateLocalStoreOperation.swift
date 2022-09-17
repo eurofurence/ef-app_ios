@@ -152,7 +152,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
     }
     
     private enum DownloadImageResult: Sendable {
-        case success(DownloadImage)
+        case success(APIRequests.DownloadImage)
         case failure
     }
     
@@ -162,7 +162,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
         context: UpdateOperationContext
     ) async -> DownloadImageResult {
         let downloadDestination = context.properties.proposedURL(forImageIdentifier: identifier)
-        let downloadRequest = DownloadImage(
+        let downloadRequest = APIRequests.DownloadImage(
             imageIdentifier: identifier,
             lastKnownImageContentHashSHA1: hash,
             downloadDestinationURL: downloadDestination

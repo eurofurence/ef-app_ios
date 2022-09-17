@@ -248,7 +248,7 @@ extension EurofurenceModel {
     public func signOut() async throws {
         guard let credential = configuration.keychain.credential else { return }
         
-        let logout = LogoutRequest(
+        let logout = APIRequests.LogoutRequest(
             authenticationToken: credential.authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
@@ -286,7 +286,7 @@ extension EurofurenceModel {
         data: Data,
         withUserAuthenticationToken token: AuthenticationToken?
     ) async {
-        let pushNotificationDeviceRegistration = RegisterPushNotificationDeviceToken(
+        let pushNotificationDeviceRegistration = APIRequests.RegisterPushNotificationDeviceToken(
             authenticationToken: token,
             pushNotificationDeviceToken: data
         )

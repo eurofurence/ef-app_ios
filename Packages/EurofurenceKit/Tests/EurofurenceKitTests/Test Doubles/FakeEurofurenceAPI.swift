@@ -69,14 +69,14 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
-    func downloadImage(_ request: DownloadImage) async throws {
+    func downloadImage(_ request: APIRequests.DownloadImage) async throws {
         if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
             throw error
         }
     }
     
-    private var stubbedLoginAttempts = [LoginRequest: Result<AuthenticatedUser, Error>]()
-    func requestAuthenticationToken(using login: LoginRequest) async throws -> AuthenticatedUser {
+    private var stubbedLoginAttempts = [APIRequests.LoginRequest: Result<AuthenticatedUser, Error>]()
+    func requestAuthenticationToken(using login: APIRequests.LoginRequest) async throws -> AuthenticatedUser {
         guard let response = stubbedLoginAttempts[login] else {
             throw NotStubbed()
         }
@@ -89,13 +89,13 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private(set) var registeredDeviceTokenRequest: RegisterPushNotificationDeviceToken?
-    func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
+    private(set) var registeredDeviceTokenRequest: APIRequests.RegisterPushNotificationDeviceToken?
+    func registerPushNotificationToken(registration: APIRequests.RegisterPushNotificationDeviceToken) async throws {
         registeredDeviceTokenRequest = registration
     }
     
-    private var logoutResponses = [LogoutRequest: Result<Void, Error>]()
-    func requestLogout(_ logout: LogoutRequest) async throws {
+    private var logoutResponses = [APIRequests.LogoutRequest: Result<Void, Error>]()
+    func requestLogout(_ logout: APIRequests.LogoutRequest) async throws {
         guard let response = logoutResponses[logout] else {
             throw NotStubbed()
         }
@@ -130,8 +130,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private(set) var markedMessageReadIdentifiers = [String]()
-    private var messageReadRequestResponses = [AcknowledgeMessageRequest: Result<Void, Error>]()
-    func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
+    private var messageReadRequestResponses = [APIRequests.AcknowledgeMessageRequest: Result<Void, Error>]()
+    func markMessageAsRead(request: APIRequests.AcknowledgeMessageRequest) async throws {
         markedMessageReadIdentifiers.append(request.messageIdentifier)
         
         guard let response = messageReadRequestResponses[request] else {
@@ -155,7 +155,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     ) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
         
-        let expectedRequest = DownloadImage(
+        let expectedRequest = APIRequests.DownloadImage(
             imageIdentifier: imageIdentifier,
             lastKnownImageContentHashSHA1: lastKnownImageContentHashSHA1,
             downloadDestinationURL: downloadDestinationURL
@@ -164,12 +164,12 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         stubbedResponsesByRequest[expectedRequest] = result
     }
     
-    func stubLoginAttempt(_ attempt: LoginRequest, with result: Result<AuthenticatedUser, Error>) {
+    func stubLoginAttempt(_ attempt: APIRequests.LoginRequest, with result: Result<AuthenticatedUser, Error>) {
         stubbedLoginAttempts[attempt] = result
         stubbedResponsesByRequest[attempt] = result
     }
     
-    func stubLogoutRequest(_ request: LogoutRequest, with result: Result<Void, Error>) {
+    func stubLogoutRequest(_ request: APIRequests.LogoutRequest, with result: Result<Void, Error>) {
         logoutResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }
@@ -182,7 +182,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         stubbedResponsesByRequest[APIRequests.FetchMessages(authenticationToken: authenticationToken)] = result
     }
     
-    func stubMessageReadRequest(for request: AcknowledgeMessageRequest, with result: Result<Void, Error>) {
+    func stubMessageReadRequest(for request: APIRequests.AcknowledgeMessageRequest, with result: Result<Void, Error>) {
         messageReadRequestResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }

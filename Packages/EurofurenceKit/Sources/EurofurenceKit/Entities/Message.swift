@@ -80,7 +80,7 @@ extension Message {
         guard let authenticationToken = managedObjectContext.keychain?.credential?.authenticationToken else { return }
         
         do {
-            let request = AcknowledgeMessageRequest(
+            let request = APIRequests.AcknowledgeMessageRequest(
                 authenticationToken: authenticationToken,
                 messageIdentifier: identifier
             )

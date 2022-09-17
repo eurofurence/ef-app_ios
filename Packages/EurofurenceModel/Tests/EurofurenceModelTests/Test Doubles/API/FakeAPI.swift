@@ -23,9 +23,9 @@ class FakeAPI: API {
         feedbackRequests[request] = nil
     }
 
-    private(set) var capturedLoginRequest: LoginRequest?
+    private(set) var capturedLoginRequest: APIRequests.LoginRequest?
     private var loginHandler: ((LoginResponse?) -> Void)?
-    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
+    func performLogin(request: APIRequests.LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void) {
         capturedLoginRequest = request
         loginHandler = completionHandler
     }

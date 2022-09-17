@@ -46,7 +46,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         return response
     }
     
-    public func downloadImage(_ request: DownloadImage) async throws {
+    public func downloadImage(_ request: APIRequests.DownloadImage) async throws {
         let id = request.imageIdentifier
         let hash = request.lastKnownImageContentHashSHA1
         let downloadURL = makeURL(subpath: "Images/\(id)/Content/with-hash:\(hash)")
@@ -59,7 +59,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         try await configuration.network.download(contentsOf: downloadRequest, to: request.downloadDestinationURL)
     }
     
-    public func requestAuthenticationToken(using login: LoginRequest) async throws -> AuthenticatedUser {
+    public func requestAuthenticationToken(using login: APIRequests.LoginRequest) async throws -> AuthenticatedUser {
         let url = makeURL(subpath: "Tokens/RegSys")
         let request = LoginPayload(RegNo: login.registrationNumber, Username: login.username, Password: login.password)
         let encoder = JSONEncoder()
@@ -78,14 +78,14 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         )
     }
     
-    public func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
+    public func registerPushNotificationToken(registration: APIRequests.RegisterPushNotificationDeviceToken) async throws {
         try await associatePushNotificationToken(
             registration.pushNotificationDeviceToken,
             withUserAuthenticationToken: registration.authenticationToken
         )
     }
     
-    public func requestLogout(_ logout: LogoutRequest) async throws {
+    public func requestLogout(_ logout: APIRequests.LogoutRequest) async throws {
         // Logging out = disassociate the authentication token with the push token.
         try await associatePushNotificationToken(
             logout.pushNotificationDeviceToken,
@@ -109,7 +109,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         FirebaseRemoteConfiguration.shared
     }
     
-    public func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
+    public func markMessageAsRead(request: APIRequests.AcknowledgeMessageRequest) async throws {
         let url = makeURL(subpath: "Communication/PrivateMessages/\(request.messageIdentifier)/Read")
         guard let bodyForSwagger = "true".data(using: .utf8) else {
             fatalError("Could not produce a data object from the Swagger body")

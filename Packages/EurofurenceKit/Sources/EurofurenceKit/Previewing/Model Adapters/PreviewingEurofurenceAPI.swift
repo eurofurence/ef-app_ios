@@ -18,7 +18,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
         
         responses = [
             APIRequests.FetchLatestChanges(since: nil): synchronizationPayload,
-            LoginRequest(registrationNumber: 42, username: "Previewe User", password: "password"): authenticationUser,
+            APIRequests.LoginRequest(registrationNumber: 42, username: "Previewe User", password: "password"): authenticationUser,
             APIRequests.FetchConfiguration(): PreviewingRemoteConfiguration(),
             APIRequests.FetchMessages(authenticationToken: previewAuthenticationToken): [Message]()
         ]
@@ -43,13 +43,13 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func downloadImage(
-        _ request: DownloadImage
+        _ request: APIRequests.DownloadImage
     ) async throws {
         
     }
     
     func requestAuthenticationToken(
-        using login: LoginRequest
+        using login: APIRequests.LoginRequest
     ) async throws -> AuthenticatedUser {
         AuthenticatedUser(
             userIdentifier: 42,
@@ -60,13 +60,13 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func registerPushNotificationToken(
-        registration: RegisterPushNotificationDeviceToken
+        registration: APIRequests.RegisterPushNotificationDeviceToken
     ) async throws {
         
     }
     
     func requestLogout(
-        _ logout: LogoutRequest
+        _ logout: APIRequests.LogoutRequest
     ) async throws {
         
     }
@@ -80,7 +80,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
     }
     
     func markMessageAsRead(
-        request: AcknowledgeMessageRequest
+        request: APIRequests.AcknowledgeMessageRequest
     ) async throws {
         
     }
