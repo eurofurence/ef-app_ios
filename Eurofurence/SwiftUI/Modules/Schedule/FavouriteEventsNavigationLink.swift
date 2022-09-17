@@ -9,6 +9,7 @@ struct FavouriteEventsNavigationLink: View {
         NavigationLink {
             let favouritesOnly = EurofurenceModel.ScheduleConfiguration(favouritesOnly: true)
             ScheduleCollectionView(schedule: model.makeSchedule(configuration: favouritesOnly))
+                .showScheduleFilter(false)
                 .navigationTitle("Favourited Events")
         } label: {
             Label {

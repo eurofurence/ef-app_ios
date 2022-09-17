@@ -5,6 +5,7 @@ struct ScheduleCollectionView: View {
     
     @EnvironmentObject var model: EurofurenceModel
     @ObservedObject var schedule: Schedule
+    @Environment(\.showScheduleFilterButton) private var showScheduleFilter
     @State private var isPresentingFilter = false
     @State private var selectedEvent: Event?
     
@@ -17,7 +18,9 @@ struct ScheduleCollectionView: View {
                 }
                 
                 ToolbarItem(placement: .bottomBar) {
-                    ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+                    if showScheduleFilter {
+                        ScheduleFilterButton(isPresentingFilter: $isPresentingFilter, schedule: schedule)
+                    }
                 }
             }
     }
