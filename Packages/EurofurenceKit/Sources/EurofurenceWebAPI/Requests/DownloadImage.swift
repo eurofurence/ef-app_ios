@@ -28,7 +28,7 @@ extension APIRequests {
             self.downloadDestinationURL = downloadDestinationURL
         }
         
-        public func execute(with context: APIRequestExecutionContext) async throws -> Void {
+        public func execute(with context: APIRequestExecutionContext) async throws {
             let downloadURL = context.makeURL(
                 subpath: "Images/\(imageIdentifier)/Content/with-hash:\(lastKnownImageContentHashSHA1)"
             )

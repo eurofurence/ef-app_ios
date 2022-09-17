@@ -16,7 +16,7 @@ extension APIRequests {
             self.messageIdentifier = messageIdentifier
         }
         
-        public func execute(with context: APIRequestExecutionContext) async throws -> Void {
+        public func execute(with context: APIRequestExecutionContext) async throws {
             let url = context.makeURL(subpath: "Communication/PrivateMessages/\(messageIdentifier)/Read")
             guard let bodyForSwagger = "true".data(using: .utf8) else {
                 fatalError("Could not produce a data object from the Swagger body")

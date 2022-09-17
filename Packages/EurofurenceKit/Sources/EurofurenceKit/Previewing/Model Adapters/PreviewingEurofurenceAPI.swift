@@ -16,9 +16,10 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
             tokenExpires: .distantFuture
         )
         
+        let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Preview User", password: "password")
         responses = [
             APIRequests.FetchLatestChanges(since: nil): synchronizationPayload,
-            APIRequests.Login(registrationNumber: 42, username: "Previewe User", password: "password"): authenticationUser,
+            loginRequest: authenticationUser,
             APIRequests.FetchConfiguration(): PreviewingRemoteConfiguration(),
             APIRequests.FetchMessages(authenticationToken: previewAuthenticationToken): [Message]()
         ]
@@ -28,7 +29,7 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
         var request: Request
     }
     
-    func execute<Request>(request: Request) async throws -> Request.Output where Request : APIRequest {
+    func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
         if let response = responses[request] as? Request.Output {
             return response
         } else {

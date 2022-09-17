@@ -39,7 +39,7 @@ extension APIRequests {
             self.pushNotificationDeviceToken = pushNotificationDeviceToken
         }
         
-        public func execute(with context: APIRequestExecutionContext) async throws -> Void {
+        public func execute(with context: APIRequestExecutionContext) async throws {
             let conventionIdentifier = context.conventionIdentifier
             let hostVersion = context.hostVersion
             

@@ -19,11 +19,12 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     let remoteConfiguration = FakeRemoteConfiguration()
     
     init() {
-        stubbedResponsesByRequest[APIRequests.FetchConfiguration()] = Result<RemoteConfiguration, Error>.success(remoteConfiguration)
+        let successfulRemoteConfigurationResponse = Result<RemoteConfiguration, Error>.success(remoteConfiguration)
+        stubbedResponsesByRequest[APIRequests.FetchConfiguration()] = successfulRemoteConfigurationResponse
     }
     
     private var executedRequests = [Any]()
-    func execute<Request>(request: Request) async throws -> Request.Output where Request : APIRequest {
+    func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
         executedRequests.append(request)
         
         guard let response = stubbedResponsesByRequest[request] as? Result<Request.Output, Error> else {

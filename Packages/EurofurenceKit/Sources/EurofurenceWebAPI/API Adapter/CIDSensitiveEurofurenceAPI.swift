@@ -10,7 +10,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         decoder = EurofurenceAPIDecoder()
     }
     
-    public func execute<Request>(request: Request) async throws -> Request.Output where Request : APIRequest {
+    public func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
         let context = APIRequestExecutionContext(
             conventionIdentifier: configuration.conventionIdentifier,
             hostVersion: configuration.hostVersion,
