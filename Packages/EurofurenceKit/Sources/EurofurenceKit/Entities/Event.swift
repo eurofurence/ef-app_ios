@@ -54,7 +54,8 @@ public class Event: Entity {
         
         do {
             try await writingContext.performAsync { [writingContext] in
-                let writableEvent = writingContext.object(with: eventID) as! Event
+                guard let writableEvent = writingContext.object(with: eventID) as? Event else { return }
+                
                 writableEvent.isFavourite = newState
                 try writingContext.save()
             }
