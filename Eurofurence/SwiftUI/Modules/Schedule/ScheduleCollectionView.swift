@@ -76,7 +76,16 @@ private struct ScheduleFilterView: View {
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        List {
+        Form {
+            Toggle(isOn: $schedule.favouritesOnly.animation()) {
+                Label {
+                    Text("Favourites Only")
+                } icon: {
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.red)
+                }
+            }
+            
             if schedule.availableDays.isEmpty == false {
                 Section {
                     ScheduleDayPicker(schedule: schedule)
