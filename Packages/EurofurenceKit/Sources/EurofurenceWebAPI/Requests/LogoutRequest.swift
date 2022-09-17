@@ -1,7 +1,9 @@
 import Foundation
 
 /// A request to log out from the Eurofurence application service.
-public struct LogoutRequest: Hashable {
+public struct LogoutRequest: Hashable, APIRequest {
+    
+    public typealias Output = Void
     
     /// The previously acquired `AuthenticationToken` of the user that is signed in.
     public var authenticationToken: AuthenticationToken

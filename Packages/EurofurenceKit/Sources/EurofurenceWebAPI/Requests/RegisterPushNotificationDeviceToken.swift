@@ -1,6 +1,8 @@
 import Foundation
 
-public struct RegisterPushNotificationDeviceToken: Equatable {
+public struct RegisterPushNotificationDeviceToken: Equatable, APIRequest {
+    
+    public typealias Output = Void
     
     public var authenticationToken: AuthenticationToken?
     public var pushNotificationDeviceToken: Data

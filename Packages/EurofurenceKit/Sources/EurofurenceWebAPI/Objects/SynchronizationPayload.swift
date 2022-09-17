@@ -56,7 +56,7 @@ extension SynchronizationPayload {
 
 extension SynchronizationPayload {
     
-    public struct GenerationToken: Codable, CustomStringConvertible, Equatable {
+    public struct GenerationToken: Codable, CustomStringConvertible, Equatable, Hashable {
         
         let lastSyncTime: Date
         

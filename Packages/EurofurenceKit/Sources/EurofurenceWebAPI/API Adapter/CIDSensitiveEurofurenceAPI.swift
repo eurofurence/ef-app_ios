@@ -10,6 +10,12 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         decoder = EurofurenceAPIDecoder()
     }
     
+    struct NotImplemented: Error { }
+    public func execute<Request>(request: Request) async throws -> Request.Output where Request : APIRequest {
+        
+        throw NotImplemented()
+    }
+    
     private func makeURL(subpath: String) -> URL {
         let baseURL = "https://app.eurofurence.org/\(configuration.conventionIdentifier)"
         guard let url = URL(string: "\(baseURL)/api/\(subpath)") else {

@@ -16,7 +16,9 @@ class DeletingDealerTests: EurofurenceKitTestCase {
         let dealerIdentifier = "ddf3145c-81f3-4e97-840a-58f7f6683884"
         XCTAssertNoThrow(try scenario.model.dealer(identifiedBy: dealerIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedDealer)
+        let deleteDealerPayload = try SampleResponse.deletedDealer.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteDealerPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidDealer(dealerIdentifier),
@@ -32,7 +34,9 @@ class DeletingDealerTests: EurofurenceKitTestCase {
         
         // We'll delete all dealers within the "Fursuits" category, then assert the category no longer exists
         // within the context once the deletion has processed.
-        try await scenario.updateLocalStore(using: .deletedDealersWithinFursuitCategory)
+        let deleteFursuitDealersPayload = try SampleResponse.deletedDealersWithinFursuitCategory.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteFursuitDealersPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         let fursuitDealerCategoryFetchRequest: NSFetchRequest<DealerCategory> = DealerCategory.fetchRequest()
         fursuitDealerCategoryFetchRequest.predicate = NSPredicate(format: "name == \"Fursuits\"")

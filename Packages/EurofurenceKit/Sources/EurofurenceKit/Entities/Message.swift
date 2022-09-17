@@ -85,7 +85,7 @@ extension Message {
                 messageIdentifier: identifier
             )
             
-            try await api.markMessageAsRead(request: request)
+            try await api.execute(request: request)
             
             let writingContext = persistentContainer.newBackgroundContext()
             

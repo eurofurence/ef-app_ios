@@ -99,8 +99,8 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
-        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        XCTAssertTrue(registeredDeviceToken)
     }
     
     func testLoggingIn_ThenRegisteringRemoteNotificationDeviceToken() async throws {
@@ -126,8 +126,8 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
-        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        XCTAssertTrue(registeredDeviceToken)
     }
     
     func testAuthenticatedModel_AssociatedDeviceToken_LoggingOutSucceeds_ClearsCredential() async throws {
@@ -194,8 +194,8 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let actualRegistration = await scenario.api.registeredDeviceTokenRequest
-        XCTAssertEqual(expectedDeviceTokenRegistration, actualRegistration)
+        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        XCTAssertTrue(registeredDeviceToken)
     }
     
     func testSigningInWithExpiredCredentialAutomaticallySignsUserOut() async throws {

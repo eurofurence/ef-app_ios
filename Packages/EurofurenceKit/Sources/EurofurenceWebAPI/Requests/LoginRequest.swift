@@ -1,5 +1,7 @@
 /// A request to login to the Eurofurence application service.
-public struct LoginRequest: Hashable {
+public struct LoginRequest: Hashable, APIRequest {
+    
+    public typealias Output = AuthenticatedUser
     
     /// The registration number of the user within the registration system.
     public var registrationNumber: Int

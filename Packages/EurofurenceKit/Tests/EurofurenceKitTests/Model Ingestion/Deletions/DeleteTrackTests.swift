@@ -24,7 +24,9 @@ class DeleteTrackTests: EurofurenceKitTestCase {
             return track.events.map(\.identifier)
         }
         
-        try await scenario.updateLocalStore(using: .deletedTrack)
+        let deleteTrackPayload = try SampleResponse.deletedTrack.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteTrackPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         for eventIdentifier in eventIdentifiers {
             XCTAssertThrowsError(try scenario.model.event(identifiedBy: eventIdentifier))

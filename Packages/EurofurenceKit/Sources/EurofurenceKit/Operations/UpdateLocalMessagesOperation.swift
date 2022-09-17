@@ -41,7 +41,8 @@ class UpdateLocalMessagesOperation: UpdateOperation {
         context: UpdateOperationContext
     ) async throws {
         do {
-            let messages = try await context.api.fetchMessages(for: authenticationToken)
+            let request = APIRequests.FetchMessages(authenticationToken: authenticationToken)
+            let messages = try await context.api.execute(request: request)
             
             try await context.managedObjectContext.performAsync {
                 for message in messages {

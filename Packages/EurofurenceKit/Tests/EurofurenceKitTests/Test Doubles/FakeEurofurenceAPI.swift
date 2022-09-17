@@ -8,8 +8,45 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     
     private var nextSyncResponse: Result<SynchronizationPayload, Error>?
     
-    func stubNextSyncResponse(_ response: Result<SynchronizationPayload, Error>) {
+    func stubNextSyncResponse(
+        _ response: Result<SynchronizationPayload, Error>,
+        for generationToken: SynchronizationPayload.GenerationToken? = nil
+    ) {
         nextSyncResponse = response
+        stubbedResponsesByRequest[APIRequests.FetchLatestChanges(since: generationToken)] = response
+    }
+    
+    private var stubbedResponsesByRequest = [AnyHashable: Any]()
+    let remoteConfiguration = FakeRemoteConfiguration()
+    
+    init() {
+        stubbedResponsesByRequest[APIRequests.FetchConfiguration()] = Result<RemoteConfiguration, Error>.success(remoteConfiguration)
+    }
+    
+    private var executedRequests = [Any]()
+    func execute<Request>(request: Request) async throws -> Request.Output where Request : APIRequest {
+        executedRequests.append(request)
+        
+        guard let response = stubbedResponsesByRequest[request] as? Result<Request.Output, Error> else {
+            throw NotStubbed()
+        }
+        
+        switch response {
+        case .success(let success):
+            return success
+            
+        case .failure(let failure):
+            throw failure
+        }
+    }
+    
+    func executedRequests<T>(ofType: T.Type) -> [T] where T: APIRequest {
+        executedRequests.compactMap({ $0 as? T })
+    }
+    
+    func executed<T>(request: T) -> Bool where T: APIRequest {
+        let requests: [T] = executedRequests(ofType: T.self)
+        return requests.contains(request)
     }
     
     private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
@@ -31,11 +68,8 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    private(set) var requestedImages = [DownloadImage]()
     private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
     func downloadImage(_ request: DownloadImage) async throws {
-        requestedImages.append(request)
-        
         if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
             throw error
         }
@@ -90,7 +124,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    var remoteConfiguration = FakeRemoteConfiguration()
+    
     func fetchRemoteConfiguration() async -> RemoteConfiguration {
         remoteConfiguration
     }
@@ -113,16 +147,31 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
+    func stub(
+        _ result: Result<Void, Error>,
+        forImageIdentifier imageIdentifier: String,
+        lastKnownImageContentHashSHA1: String,
+        downloadDestinationURL: URL
+    ) {
         imageDownloadResultsByIdentifier[imageIdentifier] = result
+        
+        let expectedRequest = DownloadImage(
+            imageIdentifier: imageIdentifier,
+            lastKnownImageContentHashSHA1: lastKnownImageContentHashSHA1,
+            downloadDestinationURL: downloadDestinationURL
+        )
+        
+        stubbedResponsesByRequest[expectedRequest] = result
     }
     
     func stubLoginAttempt(_ attempt: LoginRequest, with result: Result<AuthenticatedUser, Error>) {
         stubbedLoginAttempts[attempt] = result
+        stubbedResponsesByRequest[attempt] = result
     }
     
     func stubLogoutRequest(_ request: LogoutRequest, with result: Result<Void, Error>) {
         logoutResponses[request] = result
+        stubbedResponsesByRequest[request] = result
     }
     
     func stubMessageRequest(
@@ -130,10 +179,12 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         with result: Result<[EurofurenceWebAPI.Message], Error>
     ) {
         messageResponses[authenticationToken] = result
+        stubbedResponsesByRequest[APIRequests.FetchMessages(authenticationToken: authenticationToken)] = result
     }
     
     func stubMessageReadRequest(for request: AcknowledgeMessageRequest, with result: Result<Void, Error>) {
         messageReadRequestResponses[request] = result
+        stubbedResponsesByRequest[request] = result
     }
     
 }

@@ -38,7 +38,8 @@ struct UpdateLocalStoreOperation: UpdateOperation {
                 logger.info("Fetching latest changes.", metadata: ["Token": .string(tokenMetatadataString)])
             }
             
-            return try await context.api.fetchChanges(since: previousChangeToken)
+            let request = APIRequests.FetchLatestChanges(since: previousChangeToken)
+            return try await context.api.execute(request: request)
         } catch {
             logger.error("Failed to execute sync request.", metadata: ["Error": .string(String(describing: error))])
             throw EurofurenceError.syncFailure
@@ -169,7 +170,7 @@ struct UpdateLocalStoreOperation: UpdateOperation {
         
         do {
             logger.info("Fetching image.", metadata: ["ID": .string(identifier)])
-            try await context.api.downloadImage(downloadRequest)
+            try await context.api.execute(request: downloadRequest)
             logger.info("Fetching image succeeded.", metadata: ["ID": .string(identifier)])
             
             return .success(downloadRequest)

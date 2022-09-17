@@ -187,12 +187,18 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
         
         var credental = try XCTUnwrap(keychain.credential)
         await scenario.api.stubMessageRequest(for: credental.authenticationToken, with: .success([message]))
-        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .ef26) }
+        
+        let payload = try SampleResponse.ef26.loadResponse()
+        await scenario.stubSyncResponse(with: .success(payload))
+        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore() }
         
         credental.tokenExpiryDate = .distantPast
         keychain.credential = credental
         
-        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .noChanges) }
+        let noChanges = try SampleResponse.noChanges.loadResponse()
+        await scenario.stubSyncResponse(with: .success(noChanges), for: payload.synchronizationToken)
+        
+        await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore() }
         
         let fetchRequest: NSFetchRequest<EurofurenceKit.Message> = EurofurenceKit.Message.fetchRequest()
         fetchRequest.predicate = NSPredicate(value: true)

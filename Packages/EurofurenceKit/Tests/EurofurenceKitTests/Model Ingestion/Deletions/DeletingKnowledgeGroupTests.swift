@@ -31,7 +31,9 @@ class DeletingKnowledgeGroupTests: EurofurenceKitTestCase {
             XCTAssertNoThrow(try scenario.model.knowledgeEntry(identifiedBy: knowledgeEntryIdentifier))
         }
         
-        try await scenario.updateLocalStore(using: .deletedKnowledgeGroup)
+        let deleteKnowledgeGroupPayload = try SampleResponse.deletedKnowledgeGroup.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteKnowledgeGroupPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         for knowledgeEntryIdentifier in knowledgeEntryIdentifiers {
             XCTAssertThrowsSpecificError(

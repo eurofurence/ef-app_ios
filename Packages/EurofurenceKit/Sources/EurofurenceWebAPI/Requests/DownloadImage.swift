@@ -1,6 +1,8 @@
 import Foundation
 
-public struct DownloadImage: Equatable, Hashable, @unchecked Sendable {
+public struct DownloadImage: @unchecked Sendable, APIRequest {
+    
+    public typealias Output = Void
     
     public var imageIdentifier: String
     public var lastKnownImageContentHashSHA1: String

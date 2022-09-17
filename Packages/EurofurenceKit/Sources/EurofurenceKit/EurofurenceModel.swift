@@ -101,8 +101,15 @@ public class EurofurenceModel: ObservableObject {
 extension EurofurenceModel {
     
     private func acquireRemoteConfiguration() async {
-        let remoteConfiguration = await configuration.api.fetchRemoteConfiguration()
-        prepareForReading(from: remoteConfiguration)
+        do {
+            let remoteConfiguration = try await configuration.api.execute(request: APIRequests.FetchConfiguration())
+            prepareForReading(from: remoteConfiguration)
+        } catch {
+            logger.error(
+                "Failed to fetch remote configuration",
+                metadata: ["Error": .string(String(describing: error))]
+            )
+        }
     }
     
     private func prepareForReading(from remoteConfiguration: RemoteConfiguration) {
@@ -214,7 +221,7 @@ extension EurofurenceModel {
         guard let loginRequest = login.request else { return }
         
         do {
-            let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
+            let authenticatedUser = try await configuration.api.execute(request: loginRequest)
             storeAuthenticatedUserIntoKeychain(authenticatedUser)
             currentUser = User(authenticatedUser: authenticatedUser)
             
@@ -246,7 +253,7 @@ extension EurofurenceModel {
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
         
-        try await configuration.api.requestLogout(logout)
+        try await configuration.api.execute(request: logout)
         
         configuration.keychain.credential = nil
         currentUser = nil
@@ -285,7 +292,7 @@ extension EurofurenceModel {
         )
         
         do {
-            try await configuration.api.registerPushNotificationToken(registration: pushNotificationDeviceRegistration)
+            try await configuration.api.execute(request: pushNotificationDeviceRegistration)
         } catch {
             logger.error(
                 "Failed to register remote notification token.",
