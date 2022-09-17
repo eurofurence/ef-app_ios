@@ -31,6 +31,8 @@ public class Event: Entity {
     @NSManaged public internal(set) var isFavourite: Bool
     
     public func favourite() async {
+        guard isFavourite == false else { return }
+        
         guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
         
         let writingContext = persistentContainer.newBackgroundContext()
@@ -40,6 +42,30 @@ public class Event: Entity {
             try await writingContext.performAsync { [writingContext] in
                 let writableEvent = writingContext.object(with: eventID) as! Event
                 writableEvent.isFavourite = true
+                try writingContext.save()
+            }
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Failed to add event to favourites", metadata: metadata)
+        }
+    }
+    
+    public func unfavourite() async {
+        guard isFavourite else { return }
+        
+        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
+        
+        let writingContext = persistentContainer.newBackgroundContext()
+        let eventID = objectID
+        
+        do {
+            try await writingContext.performAsync { [writingContext] in
+                let writableEvent = writingContext.object(with: eventID) as! Event
+                writableEvent.isFavourite = false
                 try writingContext.save()
             }
         } catch {
