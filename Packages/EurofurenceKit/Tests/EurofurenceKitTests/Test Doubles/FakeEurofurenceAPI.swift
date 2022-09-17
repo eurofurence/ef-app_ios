@@ -6,13 +6,10 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     
     private struct NotStubbed: Error { }
     
-    private var nextSyncResponse: Result<SynchronizationPayload, Error>?
-    
     func stubNextSyncResponse(
         _ response: Result<SynchronizationPayload, Error>,
         for generationToken: SynchronizationPayload.GenerationToken? = nil
     ) {
-        nextSyncResponse = response
         stubbedResponsesByRequest[APIRequests.FetchLatestChanges(since: generationToken)] = response
     }
     
@@ -49,112 +46,12 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         return requests.contains(request)
     }
     
-    private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
-    func fetchChanges(
-        since previousChangeToken: SynchronizationPayload.GenerationToken?
-    ) async throws -> SynchronizationPayload {
-        lastChangeToken = previousChangeToken
-        
-        guard let nextSyncResponse = nextSyncResponse else {
-            throw NotStubbed()
-        }
-
-        switch nextSyncResponse {
-        case .success(let payload):
-            return payload
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
-    func downloadImage(_ request: APIRequests.DownloadImage) async throws {
-        if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
-            throw error
-        }
-    }
-    
-    private var stubbedLoginAttempts = [APIRequests.Login: Result<AuthenticatedUser, Error>]()
-    func requestAuthenticationToken(using login: APIRequests.Login) async throws -> AuthenticatedUser {
-        guard let response = stubbedLoginAttempts[login] else {
-            throw NotStubbed()
-        }
-
-        switch response {
-        case .success(let response):
-            return response
-            
-        case .failure(let error): throw error
-        }
-    }
-    
-    private(set) var registeredDeviceTokenRequest: APIRequests.RegisterPushNotificationDeviceToken?
-    func registerPushNotificationToken(registration: APIRequests.RegisterPushNotificationDeviceToken) async throws {
-        registeredDeviceTokenRequest = registration
-    }
-    
-    private var logoutResponses = [APIRequests.Logout: Result<Void, Error>]()
-    func requestLogout(_ logout: APIRequests.Logout) async throws {
-        guard let response = logoutResponses[logout] else {
-            throw NotStubbed()
-        }
-        
-        switch response {
-        case .success:
-            return
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    private var messageResponses = [AuthenticationToken: Result<[EurofurenceWebAPI.Message], Error>]()
-    func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [EurofurenceWebAPI.Message] {
-        guard let response = messageResponses[authenticationToken] else {
-            return []
-        }
-        
-        switch response {
-        case .success(let messages):
-            return messages
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    
-    func fetchRemoteConfiguration() async -> RemoteConfiguration {
-        remoteConfiguration
-    }
-    
-    private(set) var markedMessageReadIdentifiers = [String]()
-    private var messageReadRequestResponses = [APIRequests.AcknowledgeMessage: Result<Void, Error>]()
-    func markMessageAsRead(request: APIRequests.AcknowledgeMessage) async throws {
-        markedMessageReadIdentifiers.append(request.messageIdentifier)
-        
-        guard let response = messageReadRequestResponses[request] else {
-            throw NotStubbed()
-        }
-        
-        switch response {
-        case .success:
-            return
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
     func stub(
         _ result: Result<Void, Error>,
         forImageIdentifier imageIdentifier: String,
         lastKnownImageContentHashSHA1: String,
         downloadDestinationURL: URL
     ) {
-        imageDownloadResultsByIdentifier[imageIdentifier] = result
-        
         let expectedRequest = APIRequests.DownloadImage(
             imageIdentifier: imageIdentifier,
             lastKnownImageContentHashSHA1: lastKnownImageContentHashSHA1,
@@ -165,12 +62,10 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     func stubLoginAttempt(_ attempt: APIRequests.Login, with result: Result<AuthenticatedUser, Error>) {
-        stubbedLoginAttempts[attempt] = result
         stubbedResponsesByRequest[attempt] = result
     }
     
     func stubLogoutRequest(_ request: APIRequests.Logout, with result: Result<Void, Error>) {
-        logoutResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }
     
@@ -178,12 +73,10 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         for authenticationToken: AuthenticationToken,
         with result: Result<[EurofurenceWebAPI.Message], Error>
     ) {
-        messageResponses[authenticationToken] = result
         stubbedResponsesByRequest[APIRequests.FetchMessages(authenticationToken: authenticationToken)] = result
     }
     
     func stubMessageReadRequest(for request: APIRequests.AcknowledgeMessage, with result: Result<Void, Error>) {
-        messageReadRequestResponses[request] = result
         stubbedResponsesByRequest[request] = result
     }
     
