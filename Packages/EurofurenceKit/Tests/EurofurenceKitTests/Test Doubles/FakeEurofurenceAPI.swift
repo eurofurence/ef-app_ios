@@ -4,7 +4,9 @@ import Foundation
 
 actor FakeEurofurenceAPI: EurofurenceAPI {
     
-    private struct NotStubbed: Error { }
+    private struct NotStubbed<Request>: Error where Request: APIRequest {
+        var request: Request
+    }
     
     func stubNextSyncResponse(
         _ response: Result<SynchronizationPayload, Error>,
@@ -25,7 +27,7 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         executedRequests.append(request)
         
         guard let response = stubbedResponsesByRequest[request] as? Result<Request.Output, Error> else {
-            throw NotStubbed()
+            throw NotStubbed(request: request)
         }
         
         switch response {
