@@ -29,7 +29,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
         let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
         network.stub(expectedRequest, with: .success(responseFileData))
-        _ = try await api.fetchChanges(since: nil)
+        _ = try await api.execute(request: APIRequests.FetchLatestChanges(since: nil))
         
         let expected = FakeNetwork.Event.request(url: expectedURL)
         XCTAssertEqual([expected], network.history)
@@ -44,7 +44,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
         let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
         network.stub(expectedRequest, with: .success(responseFileData))
-        _ = try await api.fetchChanges(since: generationToken)
+        _ = try await api.execute(request: APIRequests.FetchLatestChanges(since: generationToken))
         
         let expected = FakeNetwork.Event.request(url: expectedURL)
         XCTAssertEqual([expected], network.history)
@@ -57,18 +57,17 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
             try FileManager.default.removeItem(at: temporaryFileURL)
         }
         
-        let imageRequest = APIRequests.DownloadImage(
-            imageIdentifier: "ID",
-            lastKnownImageContentHashSHA1: "SHA",
-            downloadDestinationURL: temporaryFileURL
-        )
-        
         let expectedImageEndpointString = "https://app.eurofurence.org/EF26/api/Images/ID/Content/with-hash:SHA"
         let expectedImageEndpoint = try XCTUnwrap(URL(string: expectedImageEndpointString))
         let expectedImageRequest = NetworkRequest(url: expectedImageEndpoint, method: .get)
         let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
         network.stubDownload(of: expectedImageRequest, with: .success(pretendImageData))
-        try await api.downloadImage(imageRequest)
+        
+        try await api.execute(request: APIRequests.DownloadImage(
+            imageIdentifier: "ID",
+            lastKnownImageContentHashSHA1: "SHA",
+            downloadDestinationURL: temporaryFileURL
+        ))
         
         let downloadedImageData = try Data(contentsOf: temporaryFileURL)
         XCTAssertEqual(downloadedImageData, pretendImageData)
@@ -95,7 +94,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedImageRequest = NetworkRequest(url: expectedImageEndpoint, method: .get)
         let pretendImageData = try XCTUnwrap("🎆".data(using: .utf8))
         network.stubDownload(of: expectedImageRequest, with: .success(pretendImageData))
-        try await api.downloadImage(imageRequest)
+        try await api.execute(request: imageRequest)
         
         let downloadedImageData = try Data(contentsOf: temporaryFileURL)
         XCTAssertEqual(downloadedImageData, pretendImageData)
@@ -112,7 +111,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let expectedResponseData = try stubbedBody(fromJSONFileNamed: "ExpectedSuccessfulLoginBody")
         network.stub(expectedRequest, with: .success(expectedResponseData))
         
-        let authenticatedUser = try await api.requestAuthenticationToken(using: login)
+        let authenticatedUser = try await api.execute(request: login)
         let formatter = EurofurenceISO8601DateFormatter.instance
         let expirationDate = try XCTUnwrap(formatter.date(from: "2022-09-04T21:23:36.780Z"))
         let expectedUser = AuthenticatedUser(
@@ -144,7 +143,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         network.stub(expectedRequest, with: .success(Data()))
         
         await XCTAssertEventuallyNoThrows {
-            try await api.registerPushNotificationToken(registration: pushRegistration)
+            try await api.execute(request: pushRegistration)
         }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
@@ -171,7 +170,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         network.stub(expectedRequest, with: .success(Data()))
         
         await XCTAssertEventuallyNoThrows {
-            try await api.registerPushNotificationToken(registration: pushRegistration)
+            try await api.execute(request: pushRegistration)
         }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
@@ -202,7 +201,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         network.stub(expectedRequest, with: .failure(error))
         
         await XCTAssertEventuallyThrowsError {
-            try await api.registerPushNotificationToken(registration: pushRegistration)
+            try await api.execute(request: pushRegistration)
         }
     }
     
@@ -222,7 +221,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        await XCTAssertEventuallyNoThrows { try await api.requestLogout(logout) }
+        await XCTAssertEventuallyNoThrows { try await api.execute(request: logout) }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -249,7 +248,7 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         network.stub(expectedRequest, with: .failure(error))
         
-        await XCTAssertEventuallyThrowsError { try await api.requestLogout(logout) }
+        await XCTAssertEventuallyThrowsError { try await api.execute(request: logout) }
         
         let expectedNotificationServiceRegistration = PushNotificationServiceRegistration(
             pushNotificationDeviceTokenData: pushNotificationDeviceTokenData,
@@ -270,7 +269,8 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let messagesResponse = try stubbedBody(fromJSONFileNamed: "ExpectedMessagesResponse")
         network.stub(expectedRequest, with: .success(messagesResponse))
         
-        let messages = try await api.fetchMessages(for: authenticationToken)
+        let request = APIRequests.FetchMessages(authenticationToken: authenticationToken)
+        let messages = try await api.execute(request: request)
         let message = try XCTUnwrap(messages.first)
         let formatter = EurofurenceISO8601DateFormatter.instance
         let expectedReceived = try XCTUnwrap(formatter.date(from: "2017-07-25T18:45:59.050Z"))
@@ -295,8 +295,8 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         
         network.stub(expectedRequest, with: .success(Data()))
         
-        let request = APIRequests.AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
-        await XCTAssertEventuallyNoThrows { try await api.markMessageAsRead(request: request) }
+        let request = APIRequests.AcknowledgeMessage(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        await XCTAssertEventuallyNoThrows { try await api.execute(request: request) }
     }
     
     func testMarkingMessageAsReadFailsWhenNetworkProducesError() async throws {
@@ -311,8 +311,8 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         network.stub(expectedRequest, with: .failure(error))
         
-        let request = APIRequests.AcknowledgeMessageRequest(authenticationToken: authenticationToken, messageIdentifier: "ID")
-        await XCTAssertEventuallyThrowsError { try await api.markMessageAsRead(request: request) }
+        let request = APIRequests.AcknowledgeMessage(authenticationToken: authenticationToken, messageIdentifier: "ID")
+        await XCTAssertEventuallyThrowsError { try await api.execute(request: request) }
     }
     
     private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {

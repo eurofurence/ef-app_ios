@@ -28,7 +28,7 @@ class WhenLoggingIn: XCTestCase {
                                        username: username,
                                        password: password)
         context.authenticationService.login(arguments) { (_) in }
-        let capturedLoginRequest: APIRequests.LoginRequest? = context.api.capturedLoginRequest
+        let capturedLoginRequest: LoginRequest? = context.api.capturedLoginRequest
 
         XCTAssertEqual(username, capturedLoginRequest?.username)
         XCTAssertEqual(registrationNumber, capturedLoginRequest?.regNo)

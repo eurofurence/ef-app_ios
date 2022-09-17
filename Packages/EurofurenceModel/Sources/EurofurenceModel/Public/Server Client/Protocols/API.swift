@@ -6,7 +6,7 @@ public protocol API {
 
     func fetchImage(identifier: String, contentHashSha1: String, completionHandler: @escaping (Data?) -> Void)
 
-    func performLogin(request: APIRequests.LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void)
+    func performLogin(request: LoginRequest, completionHandler: @escaping (LoginResponse?) -> Void)
 
     func loadPrivateMessages(
         authorizationToken: String, 

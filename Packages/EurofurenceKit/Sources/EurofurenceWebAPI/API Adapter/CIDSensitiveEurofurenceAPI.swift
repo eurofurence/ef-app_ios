@@ -1,5 +1,7 @@
 import Foundation
 
+
+
 public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
     private let configuration: Configuration

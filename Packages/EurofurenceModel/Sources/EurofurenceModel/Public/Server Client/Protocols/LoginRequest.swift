@@ -1,6 +1,6 @@
 import Foundation
 
-public struct APIRequests.LoginRequest {
+public struct LoginRequest {
     
     public var regNo: Int
     public var username: String

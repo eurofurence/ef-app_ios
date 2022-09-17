@@ -76,12 +76,12 @@ class LoginAPITests: XCTestCase {
         regNo: Int = 0,
         username: String = "Username",
         password: String = "Password"
-    ) -> APIRequests.LoginRequest {
-        return APIRequests.LoginRequest(regNo: regNo, username: username, password: password)
+    ) -> LoginRequest {
+        return LoginRequest(regNo: regNo, username: username, password: password)
     }
 
     private func performLogin(
-        _ request: APIRequests.LoginRequest,
+        _ request: LoginRequest,
         completionHandler: @escaping (LoginResponse?) -> Void = { _ in }
     ) {
         api.performLogin(request: request, completionHandler: completionHandler)
