@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Event)
 public class Event: Entity {
+    
+    private static let logger = Logger(label: "Event")
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
@@ -24,6 +27,30 @@ public class Event: Entity {
     @NSManaged public var room: Room
     @NSManaged public var track: Track
     @NSManaged public var tags: Set<Tag>
+    
+    @NSManaged public internal(set) var isFavourite: Bool
+    
+    public func favourite() async {
+        guard let persistentContainer = managedObjectContext?.persistentContainer else { return }
+        
+        let writingContext = persistentContainer.newBackgroundContext()
+        let eventID = objectID
+        
+        do {
+            try await writingContext.performAsync { [writingContext] in
+                let writableEvent = writingContext.object(with: eventID) as! Event
+                writableEvent.isFavourite = true
+                try writingContext.save()
+            }
+        } catch {
+            let metadata: Logger.Metadata = [
+                "ID": .string(identifier),
+                "Error": .string(String(describing: error))
+            ]
+            
+            Self.logger.error("Failed to add event to favourites", metadata: metadata)
+        }
+    }
 
 }
 
