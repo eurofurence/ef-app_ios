@@ -25,15 +25,7 @@ struct ScheduleView: View {
     @ViewBuilder private var scheduleRoot: some View {
         List {
             if schedule.query.isEmpty {
-                NavigationLink {
-                    Text("Favourite Events")
-                } label: {
-                    Label {
-                        Text("Favourite Events")
-                    } icon: {
-                        FavouriteIcon(filled: true)
-                    }
-                }
+                FavouriteEventsNavigationLink()
                 
                 Section {
                     EventConferenceDaysView(selectedDay: $selectedDay)

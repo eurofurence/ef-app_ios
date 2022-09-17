@@ -117,6 +117,7 @@ public class Schedule: NSObject, ObservableObject {
         self.configuration = configuration
         self.managedObjectContext = managedObjectContext
         self.clock = clock
+        self.favouritesOnly = configuration.favouritesOnly
         
         super.init()
         

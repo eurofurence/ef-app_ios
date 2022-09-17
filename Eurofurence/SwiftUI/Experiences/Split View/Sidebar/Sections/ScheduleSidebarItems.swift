@@ -19,11 +19,7 @@ struct ScheduleSidebarItems: View {
                 AllEventsLabel()
             }
             
-            NavigationLink {
-                Text("Favourite Events")
-            } label: {
-                FavouriteEventsLabel()
-            }
+            FavouriteEventsNavigationLink()
             
             Divider()
             
