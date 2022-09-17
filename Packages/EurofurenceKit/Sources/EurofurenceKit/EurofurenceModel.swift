@@ -249,7 +249,6 @@ extension EurofurenceModel {
         guard let credential = configuration.keychain.credential else { return }
         
         let logout = APIRequests.Logout(
-            authenticationToken: credential.authenticationToken,
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
         

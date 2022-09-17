@@ -60,10 +60,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             tokenExpires: .distantFuture
         )
         
-        let logoutRequest = APIRequests.Logout(
-            authenticationToken: AuthenticationToken("Token"),
-            pushNotificationDeviceToken: nil
-        )
+        let logoutRequest = APIRequests.Logout(pushNotificationDeviceToken: nil)
         
         let (received, read) = (Date(), Date())
         let messages = [

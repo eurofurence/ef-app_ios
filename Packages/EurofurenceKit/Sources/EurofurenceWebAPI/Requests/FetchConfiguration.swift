@@ -9,6 +9,10 @@ extension APIRequests {
             
         }
         
+        public func execute(with context: APIRequestExecutionContext) async throws -> Output {
+            FirebaseRemoteConfiguration.shared
+        }
+        
     }
     
 }

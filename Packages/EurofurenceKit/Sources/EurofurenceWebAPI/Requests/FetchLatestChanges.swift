@@ -17,6 +17,25 @@ extension APIRequests {
             self.previousChangeToken = previousChangeToken
         }
         
+        public func execute(with context: APIRequestExecutionContext) async throws -> SynchronizationPayload {
+            let sinceToken: String = {
+                if let lastUpdateTime = previousChangeToken?.lastSyncTime {
+                    let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastUpdateTime)
+                    return "?since=\(formattedTime)"
+                } else {
+                    return ""
+                }
+            }()
+            
+            let url = context.makeURL(subpath: "Sync\(sinceToken)")
+            let request = NetworkRequest(url: url, method: .get)
+            
+            let data = try await context.network.perform(request: request)
+            let response = try context.decoder.decode(SynchronizationPayload.self, from: data)
+            
+            return response
+        }
+        
     }
     
 }

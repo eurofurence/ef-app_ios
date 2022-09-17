@@ -12,6 +12,18 @@ extension APIRequests {
             self.authenticationToken = authenticationToken
         }
         
+        public func execute(with context: APIRequestExecutionContext) async throws -> [Message] {
+            let url = context.makeURL(subpath: "Communication/PrivateMessages")
+            let request = NetworkRequest(url: url, method: .get, headers: [
+                "Authorization": "Bearer \(authenticationToken.stringValue)"
+            ])
+            
+            let responseData = try await context.network.perform(request: request)
+            let messages = try context.decoder.decode([Message].self, from: responseData)
+            
+            return messages
+        }
+        
     }
     
 }

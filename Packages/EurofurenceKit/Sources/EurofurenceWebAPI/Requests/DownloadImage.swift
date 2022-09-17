@@ -28,6 +28,20 @@ extension APIRequests {
             self.downloadDestinationURL = downloadDestinationURL
         }
         
+        public func execute(with context: APIRequestExecutionContext) async throws -> Void {
+            let downloadURL = context.makeURL(
+                subpath: "Images/\(imageIdentifier)/Content/with-hash:\(lastKnownImageContentHashSHA1)"
+            )
+            
+            let downloadRequest = NetworkRequest(url: downloadURL, method: .get)
+            
+            if FileManager.default.fileExists(atPath: downloadDestinationURL.path) {
+                try FileManager.default.removeItem(at: downloadDestinationURL)
+            }
+            
+            try await context.network.download(contentsOf: downloadRequest, to: downloadDestinationURL)
+        }
+        
     }
     
 }

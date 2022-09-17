@@ -16,6 +16,19 @@ extension APIRequests {
             self.messageIdentifier = messageIdentifier
         }
         
+        public func execute(with context: APIRequestExecutionContext) async throws -> Void {
+            let url = context.makeURL(subpath: "Communication/PrivateMessages/\(messageIdentifier)/Read")
+            guard let bodyForSwagger = "true".data(using: .utf8) else {
+                fatalError("Could not produce a data object from the Swagger body")
+            }
+            
+            let networkRequest = NetworkRequest(url: url, body: bodyForSwagger, method: .post, headers: [
+                "Authorization": "Bearer \(authenticationToken.stringValue)"
+            ])
+            
+            try await context.network.perform(request: networkRequest)
+        }
+        
     }
     
 }
