@@ -28,6 +28,7 @@ public class Event: Entity {
     @NSManaged public var track: Track
     @NSManaged public var tags: Set<Tag>
     
+    /// Indicates whether the receiver has been included in the user's collection of favourite events.
     @NSManaged public internal(set) var isFavourite: Bool
     
     /// Adds the receiver to the user's collection of favourited events.
