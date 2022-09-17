@@ -8,7 +8,7 @@ struct PannableFullScreenImage<Content>: View where Content: View {
     @Binding var isPresented: Bool
     @State private var isSourceForMatchedGeometricTransition = false
     
-    private let magnificationScaleLimit: CGFloat = 3
+    private let magnificationLimit: CGFloat = 3
     @State private var currentImageViewSize: CGSize = .zero
     
     @State private var magnification = 1.0
@@ -56,7 +56,7 @@ struct PannableFullScreenImage<Content>: View where Content: View {
                             }
                             .onEnded { scale in
                                 withAnimation {
-                                    let totalMagnificiation = max(min(magnificationScaleLimit, magnification * scale), 1)
+                                    let totalMagnificiation = max(min(magnificationLimit, magnification * scale), 1)
                                     magnification = totalMagnificiation
                                     inProgressMagnification = 1
                                 }
