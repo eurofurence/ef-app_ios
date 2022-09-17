@@ -41,7 +41,7 @@ struct EventListRow: View {
     
     private struct Heading: View {
         
-        var event: Event
+        @ObservedObject var event: Event
         var configuration: Configuration
         @Environment(\.dynamicTypeSize) private var dynamicTypeSize: DynamicTypeSize
         
@@ -71,6 +71,7 @@ struct EventListRow: View {
                 if dynamicTypeSize >= .xLarge {
                     HStack {
                         startTime
+                            .padding(.bottom, 3)
                         
                         if dynamicTypeSize >= .xxxLarge && dynamicTypeSize < .accessibility3 {
                             Spacer()
@@ -115,6 +116,11 @@ struct EventListRow: View {
         }
         
         @ViewBuilder private var eventTags: some View {
+            if event.isFavourite {
+                Image(systemName: "heart.fill")
+                    .foregroundColor(.red)
+            }
+            
             ForEach(event.canonicalTags) { tag in
                 CanonicalTagIcon(tag)
             }
