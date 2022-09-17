@@ -246,7 +246,7 @@ extension EurofurenceModel {
     ///
     /// Attempting to sign out when not already signed in is a no-op.
     public func signOut() async throws {
-        guard let credential = configuration.keychain.credential else { return }
+        guard configuration.keychain.credential != nil else { return }
         
         let logout = APIRequests.Logout(
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
