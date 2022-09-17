@@ -3,7 +3,7 @@ import SwiftUI
 
 struct EventView: View {
     
-    var event: Event
+    @ObservedObject var event: Event
     @State private var isAboutExpanded = true
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var intersectionSpacing: CGFloat = 7
@@ -29,12 +29,19 @@ struct EventView: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    // TODO: Favourite/unfavourite!
+                    Task { @MainActor in
+                        if event.isFavourite {
+                            await event.unfavourite()
+                        } else {
+                            await event.favourite()
+                        }
+                    }
                 } label: {
                     Label {
-                        Text("Favourite")
+                        Text(event.isFavourite ? "Unfavourite" : "Favourite")
                     } icon: {
-                        Image(systemName: "heart")
+                        Image(systemName: event.isFavourite ? "heart.fill" : "heart")
+                            .foregroundColor(.red)
                     }
                 }
             }
