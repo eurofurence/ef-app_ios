@@ -28,20 +28,8 @@ struct EventView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem {
-                Button {
-                    Task { @MainActor in
-                        if event.isFavourite {
-                            await event.unfavourite()
-                        } else {
-                            await event.favourite()
-                        }
-                    }
-                } label: {
-                    Label {
-                        Text(event.isFavourite ? "Unfavourite" : "Favourite")
-                    } icon: {
-                        FavouriteIcon(filled: event.isFavourite)
-                    }
+                ToggleEventFavouriteStateButton(event: event) {
+                    FavouriteIcon(filled: event.isFavourite)
                 }
             }
             
