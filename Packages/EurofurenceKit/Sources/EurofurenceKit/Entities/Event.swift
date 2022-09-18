@@ -87,6 +87,46 @@ extension Event {
     
 }
 
+// MARK: - Feedback
+
+extension Event {
+    
+    /// An input mechanism for collecting and sending feedback for an event.
+    public class FeedbackForm: Identifiable, ObservableObject {
+        
+        public var id: String {
+            event.identifier
+        }
+        
+        private let event: Event
+        
+        init(event: Event) {
+            self.event = event
+        }
+        
+        /// The percentage rating of the event.
+        @Percentage(defaultValue: 0.5) public var percentageRating: Float
+        
+        /// Additional comments supplied by the user regarding the event.
+        public var additionalComments: String = ""
+        
+    }
+    
+    /// Prepares an object to collect feedback for the receiver.
+    ///
+    /// Attempting to prepare feedback for an event that is not accepting feedback throws an error.
+    ///
+    /// - Returns: A `FeedbackForm` for collating and submitting feedback.
+    public func prepareFeedback() throws -> FeedbackForm {
+        if acceptingFeedback {
+            return FeedbackForm(event: self)
+        } else {
+            throw EurofurenceError.eventNotAcceptingFeedback(identifier)
+        }
+    }
+    
+}
+
 // MARK: - Event + ConsumesRemoteResponse
 
 extension Event: ConsumesRemoteResponse {
