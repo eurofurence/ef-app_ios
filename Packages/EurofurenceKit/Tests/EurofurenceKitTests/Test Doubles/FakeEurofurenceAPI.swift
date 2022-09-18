@@ -23,6 +23,10 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         stubbedResponsesByRequest[APIRequests.FetchConfiguration()] = successfulRemoteConfigurationResponse
     }
     
+    func stub<Request>(request: Request, with response: Result<Request.Output, Error>) where Request: APIRequest {
+        stubbedResponsesByRequest[request] = response
+    }
+    
     private var executedRequests = [Any]()
     func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
         executedRequests.append(request)

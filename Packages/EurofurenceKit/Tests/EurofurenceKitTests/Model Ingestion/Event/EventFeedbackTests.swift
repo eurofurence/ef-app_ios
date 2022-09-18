@@ -1,3 +1,4 @@
+import Combine
 @testable import EurofurenceKit
 import EurofurenceWebAPI
 import XCTAsyncAssertions
@@ -57,6 +58,51 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let feedbackForm = try artistsLounge.prepareFeedback()
         
         XCTAssertEqual(artistsLounge.id, feedbackForm.id)
+    }
+    
+    func testSubmittingFeedbackUnsuccessfullyThrowsError() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
+        let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
+        let feedbackForm = try artistsLounge.prepareFeedback()
+        feedbackForm.percentageRating = 0.66
+        feedbackForm.additionalComments = "Needs more 🦨"
+        
+        let expectedRequest = APIRequests.SubmitEventFeedback(
+            identifier: artistsLoungeID,
+            percentageRating: 0.66,
+            additionalComments: "Needs more 🦨"
+        )
+        
+        let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        await scenario.api.stub(request: expectedRequest, with: .failure(networkError))
+        
+        await XCTAssertEventuallyThrowsSpecificError(
+            EurofurenceError.feedbackSubmissionFailed,
+            { try await feedbackForm.submit() }
+        )
+    }
+    
+    func testSubmittingFeedbackSuccessfully() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
+        let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
+        let feedbackForm = try artistsLounge.prepareFeedback()
+        feedbackForm.percentageRating = 0.66
+        feedbackForm.additionalComments = "Needs more 🦨"
+        
+        let expectedRequest = APIRequests.SubmitEventFeedback(
+            identifier: artistsLoungeID,
+            percentageRating: 0.66,
+            additionalComments: "Needs more 🦨"
+        )
+        
+        await scenario.api.stub(request: expectedRequest, with: .success(()))
+        await XCTAssertEventuallyNoThrows({ try await feedbackForm.submit() })
     }
 
 }

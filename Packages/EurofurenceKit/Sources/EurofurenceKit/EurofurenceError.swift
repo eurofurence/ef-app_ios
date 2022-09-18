@@ -14,5 +14,6 @@ public enum EurofurenceError: Error, Equatable {
     case loginFailed
     
     case eventNotAcceptingFeedback(String)
+    case feedbackSubmissionFailed
     
 }

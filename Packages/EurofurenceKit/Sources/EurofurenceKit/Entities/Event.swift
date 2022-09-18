@@ -99,9 +99,11 @@ extension Event {
         }
         
         private let event: Event
+        private let api: EurofurenceAPI
         
-        init(event: Event) {
+        init(event: Event, api: EurofurenceAPI) {
             self.event = event
+            self.api = api
         }
         
         /// The percentage rating of the event.
@@ -109,6 +111,21 @@ extension Event {
         
         /// Additional comments supplied by the user regarding the event.
         public var additionalComments: String = ""
+        
+        /// Submits this feedback to the events team for processing.
+        public func submit() async throws {
+            let request = APIRequests.SubmitEventFeedback(
+                identifier: event.identifier,
+                percentageRating: percentageRating,
+                additionalComments: additionalComments
+            )
+            
+            do {
+                try await api.execute(request: request)
+            } catch {
+                throw EurofurenceError.feedbackSubmissionFailed
+            }
+        }
         
     }
     
@@ -118,11 +135,11 @@ extension Event {
     ///
     /// - Returns: A `FeedbackForm` for collating and submitting feedback.
     public func prepareFeedback() throws -> FeedbackForm {
-        if acceptingFeedback {
-            return FeedbackForm(event: self)
-        } else {
+        guard let api = managedObjectContext?.eurofurenceAPI, acceptingFeedback else {
             throw EurofurenceError.eventNotAcceptingFeedback(identifier)
         }
+        
+        return FeedbackForm(event: self, api: api)
     }
     
 }
