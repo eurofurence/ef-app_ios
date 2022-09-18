@@ -106,8 +106,8 @@ extension Event {
             self.api = api
         }
         
-        /// The percentage rating of the event.
-        @Percentage(defaultValue: 0.5) public var percentageRating: Float
+        /// The rating of the event.
+        public var percentageRating: Rating = 3
         
         /// Additional comments supplied by the user regarding the event.
         public var additionalComments: String = ""
@@ -116,7 +116,7 @@ extension Event {
         public func submit() async throws {
             let request = APIRequests.SubmitEventFeedback(
                 identifier: event.identifier,
-                percentageRating: percentageRating,
+                rating: percentageRating.value,
                 additionalComments: additionalComments
             )
             
@@ -125,6 +125,36 @@ extension Event {
             } catch {
                 throw EurofurenceError.feedbackSubmissionFailed
             }
+        }
+        
+    }
+    
+    /// Specifies a value the user has associated with the event to express their satisfaction with its content and
+    /// execution.
+    public struct Rating: Equatable, ExpressibleByIntegerLiteral {
+        
+        /// The smallest possible rating value permitted by the model.
+        public static let smallestPossibleRatingValue = 1
+        
+        /// The largest possible rating value permitted by the model.
+        public static let largestPossibleRatingValue = 5
+        
+        public typealias IntegerLiteralType = Int
+        
+        public var value: Int
+        
+        public init(_ value: Int) {
+            if value < Self.smallestPossibleRatingValue {
+                self.value = Self.smallestPossibleRatingValue
+            } else if value > Self.largestPossibleRatingValue {
+                self.value = Self.largestPossibleRatingValue
+            } else {
+                self.value = value
+            }
+        }
+        
+        public init(integerLiteral value: IntegerLiteralType) {
+            self.init(value)
         }
         
     }

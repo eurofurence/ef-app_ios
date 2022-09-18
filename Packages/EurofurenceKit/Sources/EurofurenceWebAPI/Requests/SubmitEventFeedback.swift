@@ -3,16 +3,16 @@ extension APIRequests {
     public struct SubmitEventFeedback: APIRequest {
         
         private let identifier: String
-        private let percentageRating: Float
+        private let rating: Int
         private let additionalComments: String
         
         public init(
             identifier: String,
-            percentageRating: Float,
+            rating: Int,
             additionalComments: String
         ) {
             self.identifier = identifier
-            self.percentageRating = percentageRating
+            self.rating = rating
             self.additionalComments = additionalComments
         }
         
