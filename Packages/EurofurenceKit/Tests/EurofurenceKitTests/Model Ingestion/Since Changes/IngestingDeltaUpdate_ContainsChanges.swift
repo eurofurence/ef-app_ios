@@ -13,6 +13,7 @@ class IngestingDeltaUpdate_ContainsChanges: EurofurenceKitTestCase {
         // For each type of expected entity, there should remain a single instance of the entity within the persistent
         // store.
         
+        await scenario.stubSyncResponse(with: .success(payload), for: payload.synchronizationToken)
         await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore() }
         let assertion = SynchronizedStoreAssertion(
             managedObjectContext: scenario.viewContext,

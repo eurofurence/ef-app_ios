@@ -15,7 +15,9 @@ class DeletingAnnouncementTests: EurofurenceKitTestCase {
         let announcementIdentifier = "8822b105-a46c-441a-a8db-cd6c084d33c8"
         XCTAssertNoThrow(try scenario.model.announcement(identifiedBy: announcementIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedAnnouncement)
+        let deleteAnnouncementPayload = try SampleResponse.deletedAnnouncement.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteAnnouncementPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidAnnouncement(announcementIdentifier),

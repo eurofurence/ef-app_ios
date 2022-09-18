@@ -5,16 +5,6 @@ import XCTest
 
 class PerformingLocalStoreUpdateAfterFullSyncTests: EurofurenceKitTestCase {
     
-    func testUsesTimestampFromLastUpdateInSyncRequest() async throws {
-        let scenario = await EurofurenceModelTestBuilder().build()
-        let changeToken = SynchronizationPayload.GenerationToken(lastSyncTime: Date())
-        scenario.modelProperties.synchronizationChangeToken = changeToken
-        try await scenario.updateLocalStore(using: .ef26)
-        
-        let lastChangeToken = await scenario.api.lastChangeToken
-        XCTAssertEqual(changeToken, lastChangeToken)
-    }
-    
     func testRecordsTimestampAfterSuccessfulSyncRequest() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
         let response = try SampleResponse.ef26.loadResponse()

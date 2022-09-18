@@ -10,7 +10,10 @@ class DeleteAllObjectsTest: EurofurenceKitTestCase {
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
-        try await scenario.updateLocalStore(using: .deleteAll)
+        
+        let deleteAllPayload = try SampleResponse.deleteAll.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteAllPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         let entityTypes: [Entity.Type] = [
             Announcement.self,
@@ -50,7 +53,9 @@ class DeleteAllObjectsTest: EurofurenceKitTestCase {
         let images = try scenario.viewContext.fetch(fetchRequest)
         let imageURLs = images.compactMap(\.cachedImageURL)
         
-        try await scenario.updateLocalStore(using: .deleteAll)
+        let deleteAllPayload = try SampleResponse.deleteAll.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteAllPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         for imageURL in imageURLs {
             XCTAssertTrue(

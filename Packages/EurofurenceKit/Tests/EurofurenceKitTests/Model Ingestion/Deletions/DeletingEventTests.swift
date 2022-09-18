@@ -16,7 +16,9 @@ class DeletingEventTests: EurofurenceKitTestCase {
         let eventIdentifier = "76430fe0-ece7-48c9-b8e6-fdbc3974ff64"
         XCTAssertNoThrow(try scenario.model.event(identifiedBy: eventIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedEvent)
+        let deleteEventPayload = try SampleResponse.deletedEvent.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteEventPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidEvent(eventIdentifier),
@@ -34,7 +36,9 @@ class DeletingEventTests: EurofurenceKitTestCase {
         let eventIdentifier = "d7676a70-bc1e-4fde-9891-8060cb9f291a"
         XCTAssertNoThrow(try scenario.model.event(identifiedBy: eventIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedEventWithBanner)
+        let deleteEventWithBannerPayload = try SampleResponse.deletedEventWithBanner.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteEventWithBannerPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidEvent(eventIdentifier),
@@ -52,7 +56,9 @@ class DeletingEventTests: EurofurenceKitTestCase {
         let eventIdentifier = "46c59831-012e-4e4b-8e15-a6de1aca3ad4"
         XCTAssertNoThrow(try scenario.model.event(identifiedBy: eventIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedEventWithPoster)
+        let deleteEventWithPosterPayload = try SampleResponse.deletedEventWithPoster.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteEventWithPosterPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidEvent(eventIdentifier),
@@ -72,7 +78,13 @@ class DeletingEventTests: EurofurenceKitTestCase {
         let eventSharingPosterIdentifier = "46c59831-012e-4e4b-8e15-a6de1aca3ad4"
         XCTAssertNoThrow(try scenario.model.event(identifiedBy: deletedEventIdentifier))
         
-        try await scenario.updateLocalStore(using: .deletedEventWithSharedPoster)
+        let deleteEventWithSharedPosterPayload = try SampleResponse.deletedEventWithSharedPoster.loadResponse()
+        await scenario.stubSyncResponse(
+            with: .success(deleteEventWithSharedPosterPayload),
+            for: payload.synchronizationToken
+        )
+        
+        try await scenario.updateLocalStore()
         
         XCTAssertThrowsSpecificError(
             EurofurenceError.invalidEvent(deletedEventIdentifier),
@@ -94,7 +106,9 @@ class DeletingEventTests: EurofurenceKitTestCase {
         
         // We'll delete all events hosted by "Birdy the Scottish Gryphon" (nothing personal, they only had one event!).
         // Following this, the panel host should no longer reside in the persistent store.
-        try await scenario.updateLocalStore(using: .deletedEventHostedByBirdy)
+        let deleteBirdyEventPayload = try SampleResponse.deletedEventHostedByBirdy.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteBirdyEventPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         let birdyFetchRequest: NSFetchRequest<NSFetchRequestResult> = PanelHost.fetchRequest()
         birdyFetchRequest.predicate = NSPredicate(format: "name == \"Birdy the Scottish Gryphon\"")

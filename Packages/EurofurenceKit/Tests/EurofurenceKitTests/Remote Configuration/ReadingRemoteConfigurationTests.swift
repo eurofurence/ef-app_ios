@@ -7,7 +7,7 @@ class ReadingRemoteConfigurationTests: EurofurenceKitTestCase {
     
     func testReadsConventionStartDate() async throws {
         let api = FakeEurofurenceAPI()
-        let remoteConfiguration = await api.remoteConfiguration
+        let remoteConfiguration = api.remoteConfiguration
         let now = Date()
         remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self] = now
         let scenario = await EurofurenceModelTestBuilder().with(api: api).build()
@@ -17,7 +17,7 @@ class ReadingRemoteConfigurationTests: EurofurenceKitTestCase {
     
     func testUpdatesConventionStartTimeWhenAvailableLater() async throws {
         let api = FakeEurofurenceAPI()
-        let remoteConfiguration = await api.remoteConfiguration
+        let remoteConfiguration = api.remoteConfiguration
         let scenario = await EurofurenceModelTestBuilder().with(api: api).build()
         
         XCTAssertNil(scenario.model.conventionStartTime, "Convention start time not known at boot")
@@ -40,7 +40,7 @@ class ReadingRemoteConfigurationTests: EurofurenceKitTestCase {
     
     func testDoesNotNotifyObjectChangedWhenStartTimeHasNotActuallyChanged() async throws {
         let api = FakeEurofurenceAPI()
-        let remoteConfiguration = await api.remoteConfiguration
+        let remoteConfiguration = api.remoteConfiguration
         let now = Date()
         remoteConfiguration[RemoteConfigurationKeys.ConventionStartTime.self] = now
         let scenario = await EurofurenceModelTestBuilder().with(api: api).build()

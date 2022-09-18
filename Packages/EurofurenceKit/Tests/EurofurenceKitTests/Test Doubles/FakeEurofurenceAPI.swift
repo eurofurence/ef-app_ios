@@ -4,136 +4,83 @@ import Foundation
 
 actor FakeEurofurenceAPI: EurofurenceAPI {
     
-    private struct NotStubbed: Error { }
-    
-    private var nextSyncResponse: Result<SynchronizationPayload, Error>?
-    
-    func stubNextSyncResponse(_ response: Result<SynchronizationPayload, Error>) {
-        nextSyncResponse = response
+    private struct NotStubbed<Request>: Error where Request: APIRequest {
+        var request: Request
     }
     
-    private(set) var lastChangeToken: SynchronizationPayload.GenerationToken?
-    func fetchChanges(
-        since previousChangeToken: SynchronizationPayload.GenerationToken?
-    ) async throws -> SynchronizationPayload {
-        lastChangeToken = previousChangeToken
+    func stubNextSyncResponse(
+        _ response: Result<SynchronizationPayload, Error>,
+        for generationToken: SynchronizationPayload.GenerationToken? = nil
+    ) {
+        stubbedResponsesByRequest[APIRequests.FetchLatestChanges(since: generationToken)] = response
+    }
+    
+    private var stubbedResponsesByRequest = [AnyHashable: Any]()
+    let remoteConfiguration = FakeRemoteConfiguration()
+    
+    init() {
+        let successfulRemoteConfigurationResponse = Result<RemoteConfiguration, Error>.success(remoteConfiguration)
+        stubbedResponsesByRequest[APIRequests.FetchConfiguration()] = successfulRemoteConfigurationResponse
+    }
+    
+    private var executedRequests = [Any]()
+    func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
+        executedRequests.append(request)
         
-        guard let nextSyncResponse = nextSyncResponse else {
-            throw NotStubbed()
-        }
-
-        switch nextSyncResponse {
-        case .success(let payload):
-            return payload
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    private(set) var requestedImages = [DownloadImage]()
-    private var imageDownloadResultsByIdentifier = [String: Result<Void, Error>]()
-    func downloadImage(_ request: DownloadImage) async throws {
-        requestedImages.append(request)
-        
-        if case .failure(let error) = imageDownloadResultsByIdentifier[request.imageIdentifier] {
-            throw error
-        }
-    }
-    
-    private var stubbedLoginAttempts = [LoginRequest: Result<AuthenticatedUser, Error>]()
-    func requestAuthenticationToken(using login: LoginRequest) async throws -> AuthenticatedUser {
-        guard let response = stubbedLoginAttempts[login] else {
-            throw NotStubbed()
-        }
-
-        switch response {
-        case .success(let response):
-            return response
-            
-        case .failure(let error): throw error
-        }
-    }
-    
-    private(set) var registeredDeviceTokenRequest: RegisterPushNotificationDeviceToken?
-    func registerPushNotificationToken(registration: RegisterPushNotificationDeviceToken) async throws {
-        registeredDeviceTokenRequest = registration
-    }
-    
-    private var logoutResponses = [LogoutRequest: Result<Void, Error>]()
-    func requestLogout(_ logout: LogoutRequest) async throws {
-        guard let response = logoutResponses[logout] else {
-            throw NotStubbed()
+        guard let response = stubbedResponsesByRequest[request] as? Result<Request.Output, Error> else {
+            throw NotStubbed(request: request)
         }
         
         switch response {
-        case .success:
-            return
+        case .success(let success):
+            return success
             
-        case .failure(let error):
-            throw error
+        case .failure(let failure):
+            throw failure
         }
     }
     
-    private var messageResponses = [AuthenticationToken: Result<[EurofurenceWebAPI.Message], Error>]()
-    func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [EurofurenceWebAPI.Message] {
-        guard let response = messageResponses[authenticationToken] else {
-            return []
-        }
+    func executedRequests<T>(ofType: T.Type) -> [T] where T: APIRequest {
+        executedRequests.compactMap({ $0 as? T })
+    }
+    
+    func executed<T>(request: T) -> Bool where T: APIRequest {
+        let requests: [T] = executedRequests(ofType: T.self)
+        return requests.contains(request)
+    }
+    
+    func stub(
+        _ result: Result<Void, Error>,
+        forImageIdentifier imageIdentifier: String,
+        lastKnownImageContentHashSHA1: String,
+        downloadDestinationURL: URL
+    ) {
+        let expectedRequest = APIRequests.DownloadImage(
+            imageIdentifier: imageIdentifier,
+            lastKnownImageContentHashSHA1: lastKnownImageContentHashSHA1,
+            downloadDestinationURL: downloadDestinationURL
+        )
         
-        switch response {
-        case .success(let messages):
-            return messages
-            
-        case .failure(let error):
-            throw error
-        }
+        stubbedResponsesByRequest[expectedRequest] = result
     }
     
-    var remoteConfiguration = FakeRemoteConfiguration()
-    func fetchRemoteConfiguration() async -> RemoteConfiguration {
-        remoteConfiguration
+    func stubLoginAttempt(_ attempt: APIRequests.Login, with result: Result<AuthenticatedUser, Error>) {
+        stubbedResponsesByRequest[attempt] = result
     }
     
-    private(set) var markedMessageReadIdentifiers = [String]()
-    private var messageReadRequestResponses = [AcknowledgeMessageRequest: Result<Void, Error>]()
-    func markMessageAsRead(request: AcknowledgeMessageRequest) async throws {
-        markedMessageReadIdentifiers.append(request.messageIdentifier)
-        
-        guard let response = messageReadRequestResponses[request] else {
-            throw NotStubbed()
-        }
-        
-        switch response {
-        case .success:
-            return
-            
-        case .failure(let error):
-            throw error
-        }
-    }
-    
-    func stub(_ result: Result<Void, Error>, forImageIdentifier imageIdentifier: String) {
-        imageDownloadResultsByIdentifier[imageIdentifier] = result
-    }
-    
-    func stubLoginAttempt(_ attempt: LoginRequest, with result: Result<AuthenticatedUser, Error>) {
-        stubbedLoginAttempts[attempt] = result
-    }
-    
-    func stubLogoutRequest(_ request: LogoutRequest, with result: Result<Void, Error>) {
-        logoutResponses[request] = result
+    func stubLogoutRequest(_ request: APIRequests.Logout, with result: Result<Void, Error>) {
+        stubbedResponsesByRequest[request] = result
     }
     
     func stubMessageRequest(
         for authenticationToken: AuthenticationToken,
         with result: Result<[EurofurenceWebAPI.Message], Error>
     ) {
-        messageResponses[authenticationToken] = result
+        stubbedResponsesByRequest[APIRequests.FetchMessages(authenticationToken: authenticationToken)] = result
     }
     
-    func stubMessageReadRequest(for request: AcknowledgeMessageRequest, with result: Result<Void, Error>) {
-        messageReadRequestResponses[request] = result
+    func stubMessageReadRequest(for request: APIRequests.AcknowledgeMessage, with result: Result<Void, Error>) {
+        stubbedResponsesByRequest[request] = result
     }
     
 }

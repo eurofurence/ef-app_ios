@@ -24,7 +24,9 @@ class DeletingRoomTests: EurofurenceKitTestCase {
             return room.events.map(\.identifier)
         }
         
-        try await scenario.updateLocalStore(using: .deletedRoom)
+        let deleteRoomPayload = try SampleResponse.deletedRoom.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteRoomPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         for eventIdentifier in eventIdentifiers {
             XCTAssertThrowsError(try scenario.model.event(identifiedBy: eventIdentifier))

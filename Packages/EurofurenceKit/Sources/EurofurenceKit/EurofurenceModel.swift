@@ -101,8 +101,15 @@ public class EurofurenceModel: ObservableObject {
 extension EurofurenceModel {
     
     private func acquireRemoteConfiguration() async {
-        let remoteConfiguration = await configuration.api.fetchRemoteConfiguration()
-        prepareForReading(from: remoteConfiguration)
+        do {
+            let remoteConfiguration = try await configuration.api.execute(request: APIRequests.FetchConfiguration())
+            prepareForReading(from: remoteConfiguration)
+        } catch {
+            logger.error(
+                "Failed to fetch remote configuration",
+                metadata: ["Error": .string(String(describing: error))]
+            )
+        }
     }
     
     private func prepareForReading(from remoteConfiguration: RemoteConfiguration) {
@@ -214,7 +221,7 @@ extension EurofurenceModel {
         guard let loginRequest = login.request else { return }
         
         do {
-            let authenticatedUser = try await configuration.api.requestAuthenticationToken(using: loginRequest)
+            let authenticatedUser = try await configuration.api.execute(request: loginRequest)
             storeAuthenticatedUserIntoKeychain(authenticatedUser)
             currentUser = User(authenticatedUser: authenticatedUser)
             
@@ -239,14 +246,13 @@ extension EurofurenceModel {
     ///
     /// Attempting to sign out when not already signed in is a no-op.
     public func signOut() async throws {
-        guard let credential = configuration.keychain.credential else { return }
+        guard configuration.keychain.credential != nil else { return }
         
-        let logout = LogoutRequest(
-            authenticationToken: credential.authenticationToken,
+        let logout = APIRequests.Logout(
             pushNotificationDeviceToken: pushNotificationDeviceTokenData
         )
         
-        try await configuration.api.requestLogout(logout)
+        try await configuration.api.execute(request: logout)
         
         configuration.keychain.credential = nil
         currentUser = nil
@@ -279,13 +285,13 @@ extension EurofurenceModel {
         data: Data,
         withUserAuthenticationToken token: AuthenticationToken?
     ) async {
-        let pushNotificationDeviceRegistration = RegisterPushNotificationDeviceToken(
+        let pushNotificationDeviceRegistration = APIRequests.RegisterPushNotificationDeviceToken(
             authenticationToken: token,
             pushNotificationDeviceToken: data
         )
         
         do {
-            try await configuration.api.registerPushNotificationToken(registration: pushNotificationDeviceRegistration)
+            try await configuration.api.execute(request: pushNotificationDeviceRegistration)
         } catch {
             logger.error(
                 "Failed to register remote notification token.",

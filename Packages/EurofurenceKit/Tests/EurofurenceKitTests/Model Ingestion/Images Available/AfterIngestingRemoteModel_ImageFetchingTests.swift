@@ -13,16 +13,16 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         
         // We would expect to see exactly one request per image identifier. Each image should be downloaded to the
         // known location in the file system, identified by their ID.
-        let expectedImageRequests = payload.images.changed.map { image -> DownloadImage in
+        let expectedImageRequests = payload.images.changed.map { image -> APIRequests.DownloadImage in
             let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
-            return DownloadImage(
+            return APIRequests.DownloadImage(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
                 downloadDestinationURL: expectedDownloadURL
             )
         }
         
-        let requestedImages: [DownloadImage] = await scenario.api.requestedImages
+        let requestedImages = await scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }
@@ -35,26 +35,31 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         // the process prematurely.
         let numberOfImages = payload.images.changed.count
         let halfNumberOfImages = numberOfImages / 2
-        let requestIdentifiersToFail = payload.images.changed.map(\.id).prefix(halfNumberOfImages)
+        let imagesToFailDownloading = payload.images.changed.prefix(halfNumberOfImages)
         
-        for identifier in requestIdentifiersToFail {
+        for image in imagesToFailDownloading {
             struct SomeError: Error { }
-            await scenario.api.stub(.failure(SomeError()), forImageIdentifier: identifier)
+            await scenario.api.stub(
+                .failure(SomeError()),
+                forImageIdentifier: image.id,
+                lastKnownImageContentHashSHA1: image.contentHashSha1,
+                downloadDestinationURL: scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
+            )
         }
         
         await scenario.stubSyncResponse(with: .success(payload))
         try await scenario.updateLocalStore()
         
-        let expectedImageRequests = payload.images.changed.map { image -> DownloadImage in
+        let expectedImageRequests = payload.images.changed.map { image -> APIRequests.DownloadImage in
             let expectedDownloadURL = scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
-            return DownloadImage(
+            return APIRequests.DownloadImage(
                 imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
                 downloadDestinationURL: expectedDownloadURL
             )
         }
         
-        let requestedImages: [DownloadImage] = await scenario.api.requestedImages
+        let requestedImages = await scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }
@@ -83,6 +88,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
     func testFailingToDownloadImageDoesNotUpdateEntityWithURL() async throws {
         let scenario = await EurofurenceModelTestBuilder().build()
         let payload = try SampleResponse.ef26.loadResponse()
+        await scenario.stubSyncResponse(with: .success(payload))
         
         // We'll fail to download the image for an announcement, then assert the associated entity does not contain
         // a URL.
@@ -90,8 +96,13 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         let announcementImageIdentifier = try XCTUnwrap(firstAnnouncement.imageIdentifier)
         
         let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await scenario.api.stub(.failure(networkError), forImageIdentifier: announcementImageIdentifier)
-        await scenario.stubSyncResponse(with: .success(payload))
+        try await stubDownload(
+            result: .failure(networkError),
+            forImageIdentifiedBy: announcementImageIdentifier,
+            in: payload,
+            scenario: scenario
+        )
+        
         try await scenario.updateLocalStore()
         
         let announcement: EurofurenceKit.Announcement = try scenario.viewContext.entity(
@@ -115,11 +126,27 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         let announcementImageIdentifier = try XCTUnwrap(firstAnnouncement.imageIdentifier)
         
         let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await scenario.api.stub(.failure(networkError), forImageIdentifier: announcementImageIdentifier)
+        try await stubDownload(
+            result: .failure(networkError),
+            forImageIdentifiedBy: announcementImageIdentifier,
+            in: payload,
+            scenario: scenario
+        )
+        
         await scenario.stubSyncResponse(with: .success(payload))
+        
         try await scenario.updateLocalStore()
-        await scenario.api.stub(.success(()), forImageIdentifier: announcementImageIdentifier)
-        try await scenario.updateLocalStore(using: .noChanges)
+        
+        try await stubDownload(
+            result: .success(()),
+            forImageIdentifiedBy: announcementImageIdentifier,
+            in: payload,
+            scenario: scenario
+        )
+        
+        let noChanges = try SampleResponse.noChanges.loadResponse()
+        await scenario.stubSyncResponse(with: .success(noChanges), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         let announcement: EurofurenceKit.Announcement = try scenario.viewContext.entity(
             withIdentifier: firstAnnouncement.id
@@ -129,6 +156,22 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         let expectedURL = scenario.modelProperties.proposedURL(forImageIdentifier: announcementImageIdentifier)
         
         XCTAssertEqual(expectedURL, announcementImage.cachedImageURL)
+    }
+    
+    private func stubDownload(
+        result: Result<Void, Error>,
+        forImageIdentifiedBy identifier: String,
+        in payload: SynchronizationPayload,
+        scenario: EurofurenceModelTestBuilder.Scenario
+    ) async throws {
+        let image = try XCTUnwrap(payload.images.changed.first(where: { $0.id == identifier }))
+        
+        await scenario.api.stub(
+            result,
+            forImageIdentifier: identifier,
+            lastKnownImageContentHashSHA1: image.contentHashSha1,
+            downloadDestinationURL: scenario.modelProperties.proposedURL(forImageIdentifier: identifier)
+        )
     }
 
 }

@@ -24,7 +24,9 @@ class DeleteDayTests: EurofurenceKitTestCase {
             return day.events.map(\.identifier)
         }
         
-        try await scenario.updateLocalStore(using: .deletedDay)
+        let deleteDayPayload = try SampleResponse.deletedDay.loadResponse()
+        await scenario.stubSyncResponse(with: .success(deleteDayPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
         for eventIdentifier in eventIdentifiers {
             XCTAssertThrowsError(try scenario.model.event(identifiedBy: eventIdentifier))

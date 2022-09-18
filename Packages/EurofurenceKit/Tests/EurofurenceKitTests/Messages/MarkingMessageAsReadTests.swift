@@ -37,7 +37,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
             "Messages not marked as read should indicate so in the persistent store"
         )
         
-        let expectedRequest = AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -77,7 +77,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
         
-        let expectedRequest = AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -86,7 +86,10 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         await message.markRead()
         await message.markRead()
         
-        let markedMessageReadyIdentifiers = await api.markedMessageReadIdentifiers
+        let markedMessageReadyIdentifiers = await api
+            .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
+            .map(\.messageIdentifier)
+        
         XCTAssertEqual(
             ["Identifier"],
             markedMessageReadyIdentifiers,
@@ -116,11 +119,13 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
             .with(api: api)
             .build()
         
-        try await scenario.updateLocalStore(using: .ef26)
+        let payload = try SampleResponse.ef26.loadResponse()
+        await scenario.stubSyncResponse(with: .success(payload))
+        try await scenario.updateLocalStore()
         
         let message = try scenario.model.message(identifiedBy: "Identifier")
 
-        let expectedRequest = AcknowledgeMessageRequest(
+        let expectedRequest = APIRequests.AcknowledgeMessage(
             authenticationToken: authenticationToken,
             messageIdentifier: "Identifier"
         )
@@ -131,9 +136,14 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         
         // The previous attempt to mark the message as read failed. On the next sync, the model
         // should attempt to update the remote's state again.
-        try await scenario.updateLocalStore(using: .noChanges)
+        let noChangesPayload = try SampleResponse.noChanges.loadResponse()
+        await scenario.stubSyncResponse(with: .success(noChangesPayload), for: payload.synchronizationToken)
+        try await scenario.updateLocalStore()
         
-        let markedMessageReadyIdentifiers = await api.markedMessageReadIdentifiers
+        let markedMessageReadyIdentifiers = await api
+            .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
+            .map(\.messageIdentifier)
+        
         XCTAssertEqual(
             ["Identifier", "Identifier"],
             markedMessageReadyIdentifiers,

@@ -80,12 +80,12 @@ extension Message {
         guard let authenticationToken = managedObjectContext.keychain?.credential?.authenticationToken else { return }
         
         do {
-            let request = AcknowledgeMessageRequest(
+            let request = APIRequests.AcknowledgeMessage(
                 authenticationToken: authenticationToken,
                 messageIdentifier: identifier
             )
             
-            try await api.markMessageAsRead(request: request)
+            try await api.execute(request: request)
             
             let writingContext = persistentContainer.newBackgroundContext()
             
