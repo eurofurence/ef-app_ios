@@ -76,6 +76,13 @@ class EventFeedbackTests: EurofurenceKitTestCase {
             additionalComments: "Needs more 🦨"
         )
         
+        let doesNotPostNotificationExpectation = expectation(
+            forNotification: .EFKEventFeedbackSubmitted,
+            object: artistsLounge
+        )
+        
+        doesNotPostNotificationExpectation.isInverted = true
+        
         let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         await scenario.api.stub(request: expectedRequest, with: .failure(networkError))
         
@@ -83,6 +90,8 @@ class EventFeedbackTests: EurofurenceKitTestCase {
             EurofurenceError.feedbackSubmissionFailed,
             { try await feedbackForm.submit() }
         )
+        
+        waitForExpectations(timeout: 0.1)
     }
     
     func testSubmittingFeedbackSuccessfully() async throws {
@@ -101,8 +110,14 @@ class EventFeedbackTests: EurofurenceKitTestCase {
             additionalComments: "Needs more 🦨"
         )
         
+        let postsNotificationExpectation = expectation(
+            forNotification: .EFKEventFeedbackSubmitted,
+            object: artistsLounge
+        )
+        
         await scenario.api.stub(request: expectedRequest, with: .success(()))
         await XCTAssertEventuallyNoThrows({ try await feedbackForm.submit() })
+        waitForExpectations(timeout: 0.1)
     }
 
 }
