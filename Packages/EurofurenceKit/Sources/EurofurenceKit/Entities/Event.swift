@@ -76,7 +76,7 @@ public class Event: Entity {
 extension NSNotification.Name {
     
     /// A notification that is posted when the user has submitted feedback for an event that has been received by the
-    /// events team.
+    /// events team. This notification is posted on the main actor.
     ///
     /// The object associated with the notification is the `Event` in which feedbac has been submitted for.
     public static let EFKEventFeedbackSubmitted = Notification.Name("EFKEventFeedbackSubmitted")
@@ -134,7 +134,9 @@ extension Event {
             
             do {
                 try await api.execute(request: request)
-                NotificationCenter.default.post(name: .EFKEventFeedbackSubmitted, object: event)
+                await MainActor.run {
+                    NotificationCenter.default.post(name: .EFKEventFeedbackSubmitted, object: event)
+                }
             } catch {
                 throw EurofurenceError.feedbackSubmissionFailed
             }

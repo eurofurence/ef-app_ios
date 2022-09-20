@@ -110,13 +110,53 @@ class EventFeedbackTests: EurofurenceKitTestCase {
             additionalComments: "Needs more 🦨"
         )
         
+        expectation(forNotification: .EFKEventFeedbackSubmitted, object: artistsLounge)
+        
+        await scenario.api.stub(request: expectedRequest, with: .success(()))
+        await XCTAssertEventuallyNoThrows({ try await feedbackForm.submit() })
+        waitForExpectations(timeout: 0.1)
+    }
+    
+    func testSuccessfulFeedbackNotificationsPostedOnMainActor() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
+        let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
+        let feedbackForm = try artistsLounge.prepareFeedback()
+        feedbackForm.percentageRating = 4
+        feedbackForm.additionalComments = "Needs more 🦨"
+        
+        let expectedRequest = APIRequests.SubmitEventFeedback(
+            identifier: artistsLoungeID,
+            rating: 4,
+            additionalComments: "Needs more 🦨"
+        )
+        
         let postsNotificationExpectation = expectation(
             forNotification: .EFKEventFeedbackSubmitted,
             object: artistsLounge
         )
         
+        let subscription = NotificationCenter
+            .default
+            .publisher(for: .EFKEventFeedbackSubmitted)
+            .sink { _ in
+                postsNotificationExpectation.fulfill()
+                
+                XCTAssertTrue(
+                    Thread.current.isMainThread,
+                    "Expected feedback notifications to occur on the main actor"
+                )
+            }
+        
+        addTeardownBlock {
+            subscription.cancel()
+        }
+        
         await scenario.api.stub(request: expectedRequest, with: .success(()))
         await XCTAssertEventuallyNoThrows({ try await feedbackForm.submit() })
+        
         waitForExpectations(timeout: 0.1)
     }
 
