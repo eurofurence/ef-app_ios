@@ -156,7 +156,7 @@ extension Event {
         
         public typealias IntegerLiteralType = Int
         
-        public var value: Int
+        public let value: Int
         
         public init(_ value: Int) {
             if value < Self.smallestPossibleRatingValue {

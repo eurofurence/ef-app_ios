@@ -6,6 +6,7 @@ struct StarRating: View {
     @State private var editingValue: Int
     @State private var layoutWidth: CGFloat = 1
     @Environment(\.selectionChangedHaptic) private var selectionChangedHaptic
+    private let minRating: Int
     private let maxRating: Int
     private let ratings: [Rating]
     
@@ -24,6 +25,7 @@ struct StarRating: View {
         
         _rating = rating
         editingValue = rating.wrappedValue
+        self.minRating = minRating
         self.maxRating = maxRating
         
         let range = minRating...maxRating
@@ -71,8 +73,9 @@ struct StarRating: View {
         let horizontalProportion = point.x / layoutWidth
         let estimatedValue = horizontalProportion * CGFloat(maxRating)
         let truncatedValue = Int(ceil(estimatedValue))
+        let rangedValue = min(maxRating, max(minRating, truncatedValue))
         
-        return truncatedValue
+        return rangedValue
     }
     
 }

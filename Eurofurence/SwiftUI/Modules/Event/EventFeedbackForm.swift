@@ -193,7 +193,7 @@ struct EventFeedbackForm: View {
         private var eventRatingBinding: Binding<Int> {
             Binding(
                 get: { feedback.rating.value },
-                set: { newValue in feedback.rating.value = newValue }
+                set: { newValue in feedback.rating = Event.Rating(newValue) }
             )
         }
         
