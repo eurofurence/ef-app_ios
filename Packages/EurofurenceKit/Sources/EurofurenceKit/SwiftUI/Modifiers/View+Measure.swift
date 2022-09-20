@@ -24,7 +24,7 @@ private struct MeasuredViewModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .background(
+            .overlay(
                 GeometryReader { proxy in
                     Color
                         .clear

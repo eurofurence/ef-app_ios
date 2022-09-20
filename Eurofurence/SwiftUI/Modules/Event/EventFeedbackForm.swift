@@ -163,7 +163,20 @@ struct EventFeedbackForm: View {
         
         @ViewBuilder private var inputControls: some View {
             Section {
-                Text("To do")
+                HStack {
+                    Spacer()
+                    
+                    StarRating(
+                        rating: eventRatingBinding,
+                        minRating: Event.Rating.smallestPossibleRatingValue,
+                        maxRating: Event.Rating.largestPossibleRatingValue
+                    )
+                    .frame(maxHeight: 44)
+                    
+                    Spacer()
+                }
+                .background(Color.formHeading)
+                .listRowInsets(EdgeInsets())
             } header: {
                 Text("Rating")
             }
@@ -175,6 +188,13 @@ struct EventFeedbackForm: View {
             } footer: {
                 Text("Your feedback will be submitted anonymously. Any comments will be manually reviewed and may be forwarded to the hosts or panelists. Hateful language or insults will not be forwarded.")
             }
+        }
+        
+        private var eventRatingBinding: Binding<Int> {
+            Binding(
+                get: { feedback.percentageRating.value },
+                set: { newValue in feedback.percentageRating.value = newValue }
+            )
         }
         
     }

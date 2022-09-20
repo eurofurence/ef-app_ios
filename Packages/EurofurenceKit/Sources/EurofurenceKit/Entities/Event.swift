@@ -119,10 +119,10 @@ extension Event {
         }
         
         /// The rating of the event.
-        public var percentageRating: Rating = 3
+        @Published public var percentageRating: Rating = 3
         
         /// Additional comments supplied by the user regarding the event.
-        public var additionalComments: String = ""
+        @Published public var additionalComments: String = ""
         
         /// Submits this feedback to the events team for processing.
         public func submit() async throws {
