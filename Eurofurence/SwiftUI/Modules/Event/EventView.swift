@@ -95,7 +95,7 @@ struct EventView: View {
         .onReceive(NotificationCenter.default.publisher(for: .EFKEventFeedbackSubmitted, object: event)) { _ in
             isFeedbackConfirmationPresented = true
         }
-        .transientOverlay(isPresented: $isFeedbackConfirmationPresented) { _ in
+        .transientOverlay(id: event.id, isPresented: $isFeedbackConfirmationPresented) { _ in
             FeedbackSentPopover()
         }
     }

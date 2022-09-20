@@ -20,6 +20,7 @@ public struct EurofurenceKitImage: View {
                     Color
                         .clear
                         .frame(width: viewSize.width, height: viewSize.height)
+                        .transition(.identity)
                 } else {
                     swiftUIImage
                         .resizable()
@@ -27,18 +28,17 @@ public struct EurofurenceKitImage: View {
                         .cornerRadius(7)
                         .allowsHitTesting(permitsFullscreenInteraction)
                         .onTapGesture {
-                            if permitsFullscreenInteraction {
-                                withAnimation {                                
-                                    isShowingFullScreen = true
-                                }
+                            if permitsFullscreenInteraction {                            
+                                isShowingFullScreen = true
                             }
                         }
-                        .measure(onChange: { newSize in
+                        .measure { newSize in
                             viewSize = newSize
-                        })
+                        }
+                        .transition(.identity)
                 }
             }
-            .modalImage(id: image.id, isPresented: $isShowingFullScreen.animation(), image: swiftUIImage.resizable())
+            .modalImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
         }
     }
     
