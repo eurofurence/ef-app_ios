@@ -39,7 +39,7 @@ private struct FillsScenePannableImageViewModifier<ID>: ViewModifier where ID: H
         content
             .transientOverlayMatchedGeometryEffect(id: id)
             .transition(.offset())
-            .transientOverlay(id: id, isPresented: $isPresented) { namespace in
+            .transientOverlay(id: id, isPresented: $isPresented, transiency: .indefinite) { namespace in
                 PannableFullScreenImage(
                     image: image.matchedGeometryEffect(id: id, in: namespace),
                     isPresented: $isPresented
