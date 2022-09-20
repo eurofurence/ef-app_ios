@@ -23,7 +23,7 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         
         let rootView = TransientOverlayContainer {
-            HandheldExperience()
+            ContentView()
                 .environmentModel(model)
         }
         
