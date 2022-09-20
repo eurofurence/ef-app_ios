@@ -1,9 +1,9 @@
 import EurofurenceWebAPI
 
-struct PreviewingEurofurenceAPI: EurofurenceAPI {
+class PreviewingEurofurenceAPI: EurofurenceAPI {
     
     private let synchronizationPayload: SynchronizationPayload
-    private let responses: [AnyHashable: Any]
+    private var responses = [AnyHashable: () async throws -> Any]()
     
     init(synchronizationPayload: SynchronizationPayload) {
         self.synchronizationPayload = synchronizationPayload
@@ -17,12 +17,10 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
         )
         
         let loginRequest = APIRequests.Login(registrationNumber: 42, username: "Preview User", password: "password")
-        responses = [
-            APIRequests.FetchLatestChanges(since: nil): synchronizationPayload,
-            loginRequest: authenticationUser,
-            APIRequests.FetchConfiguration(): PreviewingRemoteConfiguration(),
-            APIRequests.FetchMessages(authenticationToken: previewAuthenticationToken): [Message]()
-        ]
+        respond(to: APIRequests.FetchLatestChanges(since: nil), with: { synchronizationPayload })
+        respond(to: loginRequest, with: { authenticationUser })
+        respond(to: APIRequests.FetchConfiguration(), with: { PreviewingRemoteConfiguration() })
+        respond(to: APIRequests.FetchMessages(authenticationToken: previewAuthenticationToken), with: { [] })
     }
     
     struct NotStubbedForPreview<Request>: Error where Request: APIRequest {
@@ -37,53 +35,11 @@ struct PreviewingEurofurenceAPI: EurofurenceAPI {
         }
     }
     
-    func fetchChanges(
-        since previousChangeToken: SynchronizationPayload.GenerationToken?
-    ) async throws -> SynchronizationPayload {
-        synchronizationPayload
-    }
-    
-    func downloadImage(
-        _ request: APIRequests.DownloadImage
-    ) async throws {
-        
-    }
-    
-    func requestAuthenticationToken(
-        using login: APIRequests.Login
-    ) async throws -> AuthenticatedUser {
-        AuthenticatedUser(
-            userIdentifier: 42,
-            username: "Previewing User",
-            token: "Unused",
-            tokenExpires: .distantFuture
-        )
-    }
-    
-    func registerPushNotificationToken(
-        registration: APIRequests.RegisterPushNotificationDeviceToken
-    ) async throws {
-        
-    }
-    
-    func requestLogout(
-        _ logout: APIRequests.Logout
-    ) async throws {
-        
-    }
-    
-    func fetchRemoteConfiguration() async -> RemoteConfiguration {
-        PreviewingRemoteConfiguration()
-    }
-    
-    func fetchMessages(for authenticationToken: AuthenticationToken) async throws -> [EurofurenceWebAPI.Message] {
-        []
-    }
-    
-    func markMessageAsRead(
-        request: APIRequests.AcknowledgeMessage
-    ) async throws {
-        
+    func respond<Request>(
+        to request: Request,
+        with handler: @Sendable @escaping () async throws -> Request.Output
+    ) where Request: APIRequest {
+        responses[request] = handler
     }
     
 }

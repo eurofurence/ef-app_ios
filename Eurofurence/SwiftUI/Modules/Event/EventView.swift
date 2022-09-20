@@ -1,10 +1,18 @@
 import EurofurenceKit
+import Logging
 import SwiftUI
+
+extension Logger {
+    
+    static let ui = Logger(label: "UI")
+    
+}
 
 struct EventView: View {
     
     @ObservedObject var event: Event
     @State private var isAboutExpanded = true
+    @State private var feedbackForm: Event.FeedbackForm?
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var intersectionSpacing: CGFloat = 7
     
@@ -60,7 +68,17 @@ struct EventView: View {
             ToolbarItem(placement: .bottomBar) {
                 if event.acceptingFeedback {
                     Button {
-                        // TODO: Leave feedback!
+                        do {
+                            feedbackForm = try event.prepareFeedback()
+                        } catch {
+                            Logger.ui.error(
+                                "Failed to prepare feedback form for event",
+                                metadata: [
+                                    "EventID": .string(event.id),
+                                    "Error": .string(String(describing: error))
+                                ]
+                            )
+                        }
                     } label: {
                         Label {
                             Text("Leave Feedback")
@@ -70,6 +88,9 @@ struct EventView: View {
                     }
                 }
             }
+        }
+        .sheet(item: $feedbackForm) { feedbackForm in
+            EventFeedbackForm(event: event, feedback: feedbackForm)
         }
     }
     
@@ -113,6 +134,9 @@ struct EventView: View {
                         Text(event.room.name)
                             .foregroundColor(.secondary)
                     }
+                    
+                    EventHostsLabel(event)
+                        .foregroundColor(.blue)
                     
                     EventSubtitle(event)
                 }
