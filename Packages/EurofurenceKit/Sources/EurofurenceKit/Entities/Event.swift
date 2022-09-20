@@ -119,7 +119,7 @@ extension Event {
         }
         
         /// The rating of the event.
-        @Published public var percentageRating: Rating = 3
+        @Published public var rating: Rating = 3
         
         /// Additional comments supplied by the user regarding the event.
         @Published public var additionalComments: String = ""
@@ -128,7 +128,7 @@ extension Event {
         public func submit() async throws {
             let request = APIRequests.SubmitEventFeedback(
                 identifier: event.identifier,
-                rating: percentageRating.value,
+                rating: rating.value,
                 additionalComments: additionalComments
             )
             

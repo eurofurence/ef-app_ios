@@ -30,7 +30,7 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         
         let feedbackForm = try artistsLounge.prepareFeedback()
         
-        XCTAssertEqual(3, feedbackForm.percentageRating)
+        XCTAssertEqual(3, feedbackForm.rating)
         XCTAssertEqual("", feedbackForm.additionalComments)
     }
     
@@ -42,11 +42,11 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
         let feedbackForm = try artistsLounge.prepareFeedback()
         
-        feedbackForm.percentageRating = 0
-        XCTAssertEqual(1, feedbackForm.percentageRating, "Cannot designate feedback rating < 1")
+        feedbackForm.rating = 0
+        XCTAssertEqual(1, feedbackForm.rating, "Cannot designate feedback rating < 1")
         
-        feedbackForm.percentageRating = 6
-        XCTAssertEqual(5, feedbackForm.percentageRating, "Cannot designate feedback rating > 5")
+        feedbackForm.rating = 6
+        XCTAssertEqual(5, feedbackForm.rating, "Cannot designate feedback rating > 5")
     }
     
     func testFeedbackIdentityLinkedToOriginEvent() async throws {
@@ -67,7 +67,7 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
         let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
         let feedbackForm = try artistsLounge.prepareFeedback()
-        feedbackForm.percentageRating = 4
+        feedbackForm.rating = 4
         feedbackForm.additionalComments = "Needs more 🦨"
         
         let expectedRequest = APIRequests.SubmitEventFeedback(
@@ -101,7 +101,7 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
         let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
         let feedbackForm = try artistsLounge.prepareFeedback()
-        feedbackForm.percentageRating = 4
+        feedbackForm.rating = 4
         feedbackForm.additionalComments = "Needs more 🦨"
         
         let expectedRequest = APIRequests.SubmitEventFeedback(
@@ -124,7 +124,7 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let artistsLoungeID = "db66d940-7f38-4729-9b51-5e98351b68ef"
         let artistsLounge = try scenario.model.event(identifiedBy: artistsLoungeID)
         let feedbackForm = try artistsLounge.prepareFeedback()
-        feedbackForm.percentageRating = 4
+        feedbackForm.rating = 4
         feedbackForm.additionalComments = "Needs more 🦨"
         
         let expectedRequest = APIRequests.SubmitEventFeedback(
