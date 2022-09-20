@@ -182,7 +182,21 @@ struct EventFeedbackForm: View {
             }
             
             Section {
-                TextField("Anything else you would like us to know", text: $feedback.additionalComments)
+                if #available(iOS 16.0, *) {
+                    TextField(
+                        "Additional Comments",
+                        text: $feedback.additionalComments,
+                        prompt: Text("Anything else you would like us to know"),
+                        axis: .vertical
+                    )
+                } else {
+                    // This one's a little screwy but good enough.
+                    PlaceholderTextEditor(
+                        text: $feedback.additionalComments,
+                        placeholder: Text("Anything else you would like us to know")
+                            .foregroundColor(.secondary)
+                    )
+                }
             } header: {
                 Text("Additional Comments")
             } footer: {
@@ -195,6 +209,23 @@ struct EventFeedbackForm: View {
                 get: { feedback.rating.value },
                 set: { newValue in feedback.rating = Event.Rating(newValue) }
             )
+        }
+        
+    }
+    
+    private struct PlaceholderTextEditor<Placeholder>: View where Placeholder: View {
+        
+        @Binding var text: String
+        var placeholder: Placeholder
+        
+        var body: some View {
+            ZStack(alignment: .center) {
+                if text.isEmpty {
+                    placeholder
+                }
+                
+                TextEditor(text: $text)
+            }
         }
         
     }
