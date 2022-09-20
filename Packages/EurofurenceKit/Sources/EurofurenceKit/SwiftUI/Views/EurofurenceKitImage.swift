@@ -38,7 +38,7 @@ public struct EurofurenceKitImage: View {
                         .transition(.identity)
                 }
             }
-            .modalImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
+            .fillsScenePannableImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
         }
     }
     

@@ -12,14 +12,14 @@ extension View {
     ///   - isPresented: A binding to infer whether the image is currently being presented modally.
     ///   - image: The SwiftUI `Image` to present modally, atop the current scene.
     /// - Returns: A modified `View` that presents the provided image modally when `isPresented` is `true`.
-    public func modalImage<ID>(
+    public func fillsScenePannableImage<ID>(
         id: ID,
         isPresented: Binding<Bool>,
         image: SwiftUI.Image
     ) -> some View where ID: Hashable {
         ModifiedContent(
             content: self,
-            modifier: ModalImageViewModifier(
+            modifier: FillsScenePannableImageViewModifier(
                 id: id,
                 isPresented: isPresented,
                 image: image
@@ -29,7 +29,7 @@ extension View {
     
 }
 
-private struct ModalImageViewModifier<ID>: ViewModifier where ID: Hashable {
+private struct FillsScenePannableImageViewModifier<ID>: ViewModifier where ID: Hashable {
     
     let id: ID
     @Binding var isPresented: Bool
