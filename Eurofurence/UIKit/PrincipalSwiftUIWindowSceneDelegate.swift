@@ -22,7 +22,7 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
             await model.prepareForPresentation()
         }
         
-        let rootView = ModalImageContainer {
+        let rootView = TransientOverlayContainer {
             HandheldExperience()
                 .environmentModel(model)
         }

@@ -5,6 +5,7 @@ public struct EurofurenceKitImage: View {
     
     @ObservedObject private var image: EurofurenceKit.Image
     @State private var isShowingFullScreen = false
+    @State private var viewSize: CGSize = .zero
     private let permitsFullscreenInteraction: Bool
     
     public init(image: EurofurenceKit.Image, permitsFullscreenInteraction: Bool = false) {
@@ -14,17 +15,30 @@ public struct EurofurenceKitImage: View {
     
     public var body: some View {
         if let swiftUIImage = swiftUIImage {
-            swiftUIImage
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(7)
-                .allowsHitTesting(permitsFullscreenInteraction)
-                .onTapGesture {
-                    if permitsFullscreenInteraction {
-                        isShowingFullScreen = true
-                    }
+            ZStack {
+                if isShowingFullScreen {
+                    Color
+                        .clear
+                        .frame(width: viewSize.width, height: viewSize.height)
+                } else {
+                    swiftUIImage
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(7)
+                        .allowsHitTesting(permitsFullscreenInteraction)
+                        .onTapGesture {
+                            if permitsFullscreenInteraction {
+                                withAnimation {                                
+                                    isShowingFullScreen = true
+                                }
+                            }
+                        }
+                        .measure(onChange: { newSize in
+                            viewSize = newSize
+                        })
                 }
-                .modalImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
+            }
+            .modalImage(id: image.id, isPresented: $isShowingFullScreen.animation(), image: swiftUIImage.resizable())
         }
     }
     

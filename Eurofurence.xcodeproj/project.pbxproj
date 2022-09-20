@@ -763,6 +763,13 @@
 			path = Event;
 			sourceTree = "<group>";
 		};
+		6EE14CC528D9B2FA00A3A117 /* Transient Overlay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Transient Overlay";
+			sourceTree = "<group>";
+		};
 		6EF82FBF28CA3A2E006463EA /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1115,6 +1122,7 @@
 				6EA4ECDB28C927D600B20502 /* Experiences */,
 				6E8389D428CF7401007E14DC /* Modifiers */,
 				6EA4ECD528C8DC7700B20502 /* Modules */,
+				6EE14CC528D9B2FA00A3A117 /* Transient Overlay */,
 				6EF82FBF28CA3A2E006463EA /* UIKit */,
 				6EF82FC428CA920A006463EA /* Views */,
 			);

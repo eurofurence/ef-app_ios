@@ -2,7 +2,7 @@ import SwiftUI
 
 extension View {
     
-    /// A modifier that enables the receiver `View` to present an image in a modal context.
+    /// A modifier that enables the receiver `View` to present an image in a transientally modal context.
     ///
     /// The image parameter will be presented on top of all other views within the current environment, with an
     /// appropriate backdrop to occlude the UI, allowing the user to pan and zoom the image to review details.
@@ -20,42 +20,36 @@ extension View {
         ModifiedContent(
             content: self,
             modifier: ModalImageViewModifier(
+                id: id,
                 isPresented: isPresented,
-                configuration: ModallyPresentedImage(id: id, isPresented: isPresented, image: image)
+                image: image
             )
         )
     }
     
 }
 
-private struct ModalImageViewModifier: ViewModifier {
+private struct ModalImageViewModifier<ID>: ViewModifier where ID: Hashable {
     
+    let id: ID
     @Binding var isPresented: Bool
-    let configuration: ModallyPresentedImage
-    @Environment(\.modalImageNamespace) private var modalImageNamespace
-    @State private var contentSize: CGSize = .zero
+    let image: SwiftUI.Image
+    @Environment(\.transientOverlayNamespace) private var transientOverlayNamespace
     
     func body(content: Content) -> some View {
-        if let modalImageNamespace = modalImageNamespace {
-            ZStack {
-                if isPresented {
-                    content
-                        .matchedGeometryEffect(
-                            id: configuration.id,
-                            in: modalImageNamespace,
-                            isSource: false
-                        )
-                        .transition(.offset())
-                } else {
-                    content
-                        .matchedGeometryEffect(
-                            id: configuration.id,
-                            in: modalImageNamespace
-                        )
-                        .transition(.offset())
+        if let transientOverlayNamespace = transientOverlayNamespace {
+            content
+                .matchedGeometryEffect(
+                    id: id,
+                    in: transientOverlayNamespace
+                )
+                .transition(.offset())
+                .transientOverlay(isPresented: $isPresented) { namespace in
+                    PannableFullScreenImage(
+                        image: image.matchedGeometryEffect(id: id, in: namespace),
+                        isPresented: $isPresented
+                    )
                 }
-            }
-            .modallyPresentedImage(isPresented ? configuration : nil)
         } else {
             content
         }
