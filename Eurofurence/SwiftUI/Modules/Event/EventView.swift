@@ -11,7 +11,7 @@ extension Logger {
 struct EventView: View {
     
     @ObservedObject var event: Event
-    @State private var isAboutExpanded = true
+    @State private var isFeedbackConfirmationPresented = false
     @State private var feedbackForm: Event.FeedbackForm?
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ScaledMetric(relativeTo: .body) private var intersectionSpacing: CGFloat = 7
@@ -91,6 +91,12 @@ struct EventView: View {
         }
         .sheet(item: $feedbackForm) { feedbackForm in
             EventFeedbackForm(event: event, feedback: feedbackForm)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .EFKEventFeedbackSubmitted, object: event)) { _ in
+            isFeedbackConfirmationPresented = true
+        }
+        .transientOverlay(isPresented: $isFeedbackConfirmationPresented) { _ in
+            FeedbackSentPopover()
         }
     }
     

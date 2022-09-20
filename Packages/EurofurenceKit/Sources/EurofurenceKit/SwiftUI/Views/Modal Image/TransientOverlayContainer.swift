@@ -46,7 +46,6 @@ public struct TransientOverlayContainer<Content>: View where Content: View {
         var body: some View {
             if isPresented {
                 makeOverlay(namespace)
-                    .background(.ultraThinMaterial)
                     .accessibilityAddTraits(.isModal)
             }
         }

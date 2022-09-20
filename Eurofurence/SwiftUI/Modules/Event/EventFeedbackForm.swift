@@ -72,7 +72,6 @@ struct EventFeedbackForm: View {
                         Text("Discard")
                     }
                 }
-                .overlay(state == .sent ? FeedbackSentPopover() : nil)
                 .navigationTitle("Event Feedback")
                 .navigationBarTitleDisplayMode(.inline)
                 .interactiveDismissDisabled()
@@ -100,9 +99,7 @@ struct EventFeedbackForm: View {
         Task(priority: .userInitiated) {
             do {
                 try await feedback.submit()
-                withAnimation {
-                    state = .sent
-                }
+                dismiss()
             } catch {
                 withAnimation {
                     isPresentingFeedbackSubmissionErrorAlert = true
@@ -110,23 +107,6 @@ struct EventFeedbackForm: View {
                     state = .preparing
                 }
             }
-        }
-    }
-    
-    @ViewBuilder private var sentFeedbackPlaceholder: some View {
-        VStack {
-            Image(systemName: "checkmark.circle.fill")
-                .resizable()
-                .symbolRenderingMode(.multicolor)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250, height: 250)
-            
-            Text("Thanks for your feedback!")
-        }
-        .padding()
-        .background(.ultraThinMaterial)
-        .onAppear {
-            
         }
     }
     
@@ -201,30 +181,6 @@ struct EventFeedbackForm: View {
     
 }
 
-struct FeedbackSentPopover: View {
-    
-    var body: some View {
-        VStack(alignment: .center) {
-            Image(systemName: "checkmark.circle.fill")
-                .resizable()
-                .symbolRenderingMode(.multicolor)
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 133, height: 133)
-            
-            Text("Thanks for your feedback!")
-                .foregroundColor(.secondary)
-        }
-        .padding()
-        .padding()
-        .background(.ultraThinMaterial)
-        .cornerRadius(14)
-        .onAppear {
-            
-        }
-    }
-    
-}
-
 struct EventFeedbackForm_Previews: PreviewProvider {
     
     static var previews: some View {
@@ -238,10 +194,6 @@ struct EventFeedbackForm_Previews: PreviewProvider {
             EventFeedbackForm(event: dealersDen, feedback: unsuccessfulFeedback)
                 .previewDisplayName("Fails Sending Feedback")
         }
-        
-        Text("")
-            .overlay(FeedbackSentPopover())
-            .previewDisplayName("Feedback Sent Popover")
     }
     
     private static func successfulFeedback(for event: Event, in model: EurofurenceModel) -> Event.FeedbackForm {

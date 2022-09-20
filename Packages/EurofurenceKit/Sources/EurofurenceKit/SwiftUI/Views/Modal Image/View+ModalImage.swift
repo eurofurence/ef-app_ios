@@ -49,6 +49,7 @@ private struct ModalImageViewModifier<ID>: ViewModifier where ID: Hashable {
                         image: image.matchedGeometryEffect(id: id, in: namespace),
                         isPresented: $isPresented
                     )
+                    .background(.ultraThinMaterial)
                 }
         } else {
             content

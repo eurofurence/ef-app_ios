@@ -9,7 +9,7 @@ extension View {
     ///   - overlay: A view builder to produce the contents of the overlay. The closure accepts one parameter that
     ///              provides a namespace to coordinate geometric transitions during the presentation.
     /// - Returns: A modified view that presents the specified overlay.
-    func transientOverlay<Overlay>(
+    public func transientOverlay<Overlay>(
         isPresented: Binding<Bool>,
         @ViewBuilder overlay: @escaping (Namespace.ID) -> Overlay
     ) -> some View where Overlay: View {
