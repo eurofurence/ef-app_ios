@@ -29,52 +29,6 @@ extension View {
     
 }
 
-extension View {
-    
-    func transientOverlayMatchedGeometryEffect<ID>(
-        id: ID,
-        properties: MatchedGeometryProperties = .frame,
-        anchor: UnitPoint = .center,
-        isSource: Bool = true
-    ) -> some View where ID : Hashable {
-        ModifiedContent(
-            content: self,
-            modifier: TransientOverlayMatchedGeometryEffectViewModifier(
-                id: id,
-                properties: properties,
-                anchor: anchor,
-                isSource: isSource
-            )
-        )
-    }
-    
-}
-
-private struct TransientOverlayMatchedGeometryEffectViewModifier<ID>: ViewModifier where ID: Hashable {
-    
-    var id: ID
-    @Environment(\.transientOverlayNamespace) private var transientOverlayNamespace: Namespace.ID?
-    var properties: MatchedGeometryProperties
-    var anchor: UnitPoint
-    var isSource: Bool
-    
-    func body(content: Content) -> some View {
-        if let namespace = transientOverlayNamespace {
-            content
-                .matchedGeometryEffect(
-                    id: id,
-                    in: namespace,
-                    properties: properties,
-                    anchor: anchor,
-                    isSource: isSource
-                )
-        } else {
-            content
-        }
-    }
-    
-}
-
 private struct ModalImageViewModifier<ID>: ViewModifier where ID: Hashable {
     
     let id: ID

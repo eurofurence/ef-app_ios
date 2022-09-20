@@ -54,6 +54,9 @@ public struct TransientOverlayContainer<Content>: View where Content: View {
                 transientOverlay
                     .makeOverlay(presentationNamespace: transientOverlayNamespace)
                     .accessibilityAddTraits(.isModal)
+                    .onAppear {
+                        transientOverlay.onAppear()
+                    }
             }
         }
         
