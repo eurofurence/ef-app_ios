@@ -103,7 +103,7 @@ class EventTests: EurofurenceKitTestCase {
         let dealersDen = try scenario.model.event(identifiedBy: dealersDenID)
         
         let expected = try XCTUnwrap(URL(string: "https://stubbed.for.test"))
-        await scenario.api.stub(expected, forContent: .event(id: dealersDenID))
+        scenario.api.stub(expected, forContent: .event(id: dealersDenID))
         
         let actual = dealersDen.contentURL
         

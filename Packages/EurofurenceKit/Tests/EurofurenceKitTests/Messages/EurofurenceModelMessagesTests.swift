@@ -39,8 +39,12 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             )
         ]
         
-        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
-        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success(messages))
+        scenario.api.stub(request: loginRequest, with: .success(user))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: AuthenticationToken("Token")),
+            with: .success(messages)
+        )
+        
         try await scenario.model.signIn(with: login)
         
         for message in messages {
@@ -74,9 +78,13 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             )
         ]
         
-        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
-        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success(messages))
-        await scenario.api.stubLogoutRequest(logoutRequest, with: .success(()))
+        scenario.api.stub(request: loginRequest, with: .success(user))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: AuthenticationToken("Token")),
+            with: .success(messages)
+        )
+        
+        scenario.api.stub(request: logoutRequest, with: .success(()))
         try await scenario.model.signIn(with: login)
         try await scenario.model.signOut()
         
@@ -97,7 +105,7 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             tokenExpires: .distantFuture
         )
         
-        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
+        scenario.api.stub(request: loginRequest, with: .success(user))
         try await scenario.model.signIn(with: login)
         
         // The next update should include a fetch for messages now we are authenticated.
@@ -111,7 +119,11 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             readDate: read
         )
         
-        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success([message]))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: AuthenticationToken("Token")),
+            with: .success([message])
+        )
+        
         try await scenario.updateLocalStore(using: .ef26)
         
         let entity = try scenario.model.message(identifiedBy: "Identifier")
@@ -139,8 +151,12 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
             readDate: read
         )
         
-        await scenario.api.stubMessageRequest(for: AuthenticationToken("Token"), with: .success([message]))
-        await scenario.api.stubLoginAttempt(loginRequest, with: .success(user))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: AuthenticationToken("Token")),
+            with: .success([message])
+        )
+        
+        scenario.api.stub(request: loginRequest, with: .success(user))
         try await scenario.model.signIn(with: login)
         
         // The message already exists in the persistent store - there should only be one instance when fetching again.
@@ -163,7 +179,10 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
         keychain.credential = expiredCredental
         
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await scenario.api.stubMessageRequest(for: expiredCredental.authenticationToken, with: .failure(error))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: expiredCredental.authenticationToken),
+            with: .failure(error)
+        )
         
         // The update should not fail as we should not attempt to request messages with an invalid token.
         await XCTAssertEventuallyNoThrows { try await scenario.updateLocalStore(using: .ef26) }
@@ -183,7 +202,10 @@ class EurofurenceModelMessagesTests: EurofurenceKitTestCase {
         )
         
         var credental = try XCTUnwrap(keychain.credential)
-        await scenario.api.stubMessageRequest(for: credental.authenticationToken, with: .success([message]))
+        scenario.api.stub(
+            request: APIRequests.FetchMessages(authenticationToken: AuthenticationToken("ABC")),
+            with: .success([message])
+        )
         
         let payload = try SampleResponse.ef26.loadResponse()
         await scenario.stubSyncResponse(with: .success(payload))

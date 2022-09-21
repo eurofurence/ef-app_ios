@@ -22,7 +22,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
             )
         }
         
-        let requestedImages = await scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
+        let requestedImages = scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }
@@ -39,12 +39,14 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
         
         for image in imagesToFailDownloading {
             struct SomeError: Error { }
-            await scenario.api.stub(
-                .failure(SomeError()),
-                forImageIdentifier: image.id,
+            
+            let expectedRequest = APIRequests.DownloadImage(
+                imageIdentifier: image.id,
                 lastKnownImageContentHashSHA1: image.contentHashSha1,
                 downloadDestinationURL: scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
             )
+            
+            scenario.api.stub(request: expectedRequest, with: .failure(SomeError()))
         }
         
         await scenario.stubSyncResponse(with: .success(payload))
@@ -59,7 +61,7 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
             )
         }
         
-        let requestedImages = await scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
+        let requestedImages = scenario.api.executedRequests(ofType: APIRequests.DownloadImage.self)
         XCTAssertEqual(expectedImageRequests.count, requestedImages.count)
         XCTAssertEqual(Set(expectedImageRequests), Set(requestedImages))
     }
@@ -166,12 +168,13 @@ class AfterIngestingRemoteModel_ImageFetchingTests: EurofurenceKitTestCase {
     ) async throws {
         let image = try XCTUnwrap(payload.images.changed.first(where: { $0.id == identifier }))
         
-        await scenario.api.stub(
-            result,
-            forImageIdentifier: identifier,
+        let expectedRequest = APIRequests.DownloadImage(
+            imageIdentifier: image.id,
             lastKnownImageContentHashSHA1: image.contentHashSha1,
-            downloadDestinationURL: scenario.modelProperties.proposedURL(forImageIdentifier: identifier)
+            downloadDestinationURL: scenario.modelProperties.proposedURL(forImageIdentifier: image.id)
         )
+        
+        scenario.api.stub(request: expectedRequest, with: result)
     }
 
 }
