@@ -2,7 +2,7 @@ import EurofurenceKit
 import EurofurenceWebAPI
 import Foundation
 
-actor FakeEurofurenceAPI: EurofurenceAPI {
+class FakeEurofurenceAPI: EurofurenceAPI {
     
     private struct NotStubbed<Request>: Error where Request: APIRequest {
         var request: Request
@@ -28,7 +28,14 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     private var executedRequests = [Any]()
+    private let lock = NSRecursiveLock()
     func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
+        lock.lock()
+        
+        defer {
+            lock.unlock()
+        }
+        
         executedRequests.append(request)
         
         guard let response = stubbedResponsesByRequest[request] as? Result<Request.Output, Error> else {
@@ -42,6 +49,15 @@ actor FakeEurofurenceAPI: EurofurenceAPI {
         case .failure(let failure):
             throw failure
         }
+    }
+    
+    private var stubbedURLs = [EurofurenceContent: URL]()
+    func stub(_ url: URL, forContent content: EurofurenceContent) {
+        stubbedURLs[content] = url
+    }
+    
+    func url(for content: EurofurenceContent) -> URL {
+        stubbedURLs[content, default: URL(fileURLWithPath: "/")]
     }
     
     func executedRequests<T>(ofType: T.Type) -> [T] where T: APIRequest {

@@ -31,6 +31,12 @@ public class Event: Entity {
     /// Indicates whether the receiver has been included in the user's collection of favourite events.
     @NSManaged public internal(set) var isFavourite: Bool
     
+    /// Computes a stable `URL` for referencing this `Event` between the local model and the remote Eurofurence
+    /// web API.
+    public var contentURL: URL {
+        eurofurenceAPI.url(for: .event(id: identifier))
+    }
+    
     /// Adds the receiver to the user's collection of favourited events.
     public func favourite() async {
         if isFavourite == false {

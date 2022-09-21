@@ -1,4 +1,5 @@
 import EurofurenceWebAPI
+import Foundation
 
 class PreviewingEurofurenceAPI: EurofurenceAPI {
     
@@ -33,6 +34,10 @@ class PreviewingEurofurenceAPI: EurofurenceAPI {
         } else {
             throw NotStubbedForPreview(request: request)
         }
+    }
+    
+    func url(for content: EurofurenceContent) -> URL {
+        URL(fileURLWithPath: "/")
     }
     
     func respond<Request>(

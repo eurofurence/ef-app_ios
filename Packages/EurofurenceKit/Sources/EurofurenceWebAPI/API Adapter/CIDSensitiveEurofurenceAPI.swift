@@ -22,6 +22,10 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         return try await request.execute(with: context)
     }
     
+    public func url(for content: EurofurenceContent) -> URL {
+        URL(fileURLWithPath: "/")
+    }
+    
 }
 
 // MARK: - Configuration
