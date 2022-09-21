@@ -54,6 +54,12 @@ struct ScheduleEventsList: View {
                     NSItemProvider(item: event.contentURL as NSSecureCoding, typeIdentifier: "public.url")
                 }
             }
+            .swipeActions {
+                ToggleEventFavouriteStateButton(event: event) {
+                    Image(systemName: event.isFavourite ? "heart.slash" : "heart.fill")
+                }
+                .tint(.blue)
+            }
         }
     }
     

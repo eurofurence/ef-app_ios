@@ -21,12 +21,6 @@ struct EventListRow: View {
             }
         }
         .frame(minHeight: rowHeight)
-        .swipeActions {
-            ToggleEventFavouriteStateButton(event: event) {
-                Image(systemName: event.isFavourite ? "heart.slash" : "heart.fill")
-            }
-            .tint(.blue)
-        }
     }
     
     private struct EventSummary: View {
