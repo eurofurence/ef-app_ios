@@ -60,7 +60,7 @@ struct StarRating: View {
                     rating = estimatedValue(fromDrag: change)
                 }
         )
-        .onChange(of: editingValue) { newValue in
+        .onChange(of: editingValue) { _ in
             selectionChangedHaptic()
         }
         .onChange(of: rating) { newValue in

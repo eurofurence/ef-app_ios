@@ -65,6 +65,7 @@
 		6EE14CE028DAEBA400A3A117 /* Haptics+SuccessNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CDF28DAEBA400A3A117 /* Haptics+SuccessNotification.swift */; };
 		6EE14CE328DAF45F00A3A117 /* Color+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CE228DAF45F00A3A117 /* Color+Resources.swift */; };
 		6EE14CE528DAF4A800A3A117 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CE428DAF4A800A3A117 /* Logging.swift */; };
+		6EE14CE728DAF9A100A3A117 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6EE14CE628DAF9A100A3A117 /* Localizable.strings */; };
 		6EE355A9289079B300F3ACB7 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE355A8289079B300F3ACB7 /* LoginTests.swift */; };
 		6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */; };
 		6EF82FC328CA3B86006463EA /* DealersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC228CA3B86006463EA /* DealersCollectionView.swift */; };
@@ -376,6 +377,7 @@
 		6EE14CDF28DAEBA400A3A117 /* Haptics+SuccessNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Haptics+SuccessNotification.swift"; sourceTree = "<group>"; };
 		6EE14CE228DAF45F00A3A117 /* Color+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Resources.swift"; sourceTree = "<group>"; };
 		6EE14CE428DAF4A800A3A117 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		6EE14CE628DAF9A100A3A117 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		6EE355A8289079B300F3ACB7 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		6EE355AA28907BE600F3ACB7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoPatchSplitViewControllerWindow.swift; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 				6E8389D028CF3AF6007E14DC /* Localizable.stringsdict */,
 				CA08861A25FE997E0044DD53 /* Fonts */,
 				CA08861C25FE997E0044DD53 /* Sounds */,
+				6EE14CE628DAF9A100A3A117 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1561,6 +1564,7 @@
 				CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */,
+				6EE14CE728DAF9A100A3A117 /* Localizable.strings in Resources */,
 				CAA41AED28ACF39F002B3B2B /* AppIcons.plist in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA728437209C7DE1007D912A /* Settings.bundle in Resources */,

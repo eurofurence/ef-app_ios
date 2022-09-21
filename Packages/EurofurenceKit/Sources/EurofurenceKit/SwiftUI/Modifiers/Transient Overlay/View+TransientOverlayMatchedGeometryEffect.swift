@@ -16,7 +16,7 @@ extension View {
         properties: MatchedGeometryProperties = .frame,
         anchor: UnitPoint = .center,
         isSource: Bool = true
-    ) -> some View where ID : Hashable {
+    ) -> some View where ID: Hashable {
         ModifiedContent(
             content: self,
             modifier: TransientOverlayMatchedGeometryEffectViewModifier(

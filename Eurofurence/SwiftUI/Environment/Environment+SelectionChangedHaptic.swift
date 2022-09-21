@@ -4,9 +4,7 @@ extension EnvironmentValues {
     
     /// A haptic to play to confirm a user-driven choice lead to a change in state.
     var selectionChangedHaptic: Haptics.SelectionChanged {
-        get {
-            self[SelectionChangedHapticEnvironmentKey.self]
-        }
+        self[SelectionChangedHapticEnvironmentKey.self]
     }
     
     private struct SelectionChangedHapticEnvironmentKey: EnvironmentKey {

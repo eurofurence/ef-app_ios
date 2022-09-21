@@ -63,7 +63,7 @@ class TransientOverlay: Equatable, Identifiable, ObservableObject {
         case .brief(let seconds):
             return Timer.publish(every: seconds, on: .main, in: .common)
                 .autoconnect()
-                .flatMap(maxPublishers: .max(1)) { publisher in
+                .flatMap(maxPublishers: .max(1)) { _ in
                     Just(())
                 }
                 .eraseToAnyPublisher()

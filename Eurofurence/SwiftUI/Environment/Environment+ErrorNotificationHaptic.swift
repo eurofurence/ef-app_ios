@@ -4,9 +4,7 @@ extension EnvironmentValues {
     
     /// A haptic to play when user-instigated operations fail.
     var errorNotificationHaptic: Haptics.ErrorNotification {
-        get {
-            self[ErrorNotificationHapticEnvironmentKey.self]
-        }
+        self[ErrorNotificationHapticEnvironmentKey.self]
     }
     
     private struct ErrorNotificationHapticEnvironmentKey: EnvironmentKey {

@@ -191,7 +191,7 @@ struct EventFeedbackForm: View {
             } header: {
                 Text("Additional Comments")
             } footer: {
-                Text("Your feedback will be submitted anonymously. Any comments will be manually reviewed and may be forwarded to the hosts or panelists. Hateful language or insults will not be forwarded.")
+                Text("EVENT_FEEDBACK_FOOTER")
             }
         }
         

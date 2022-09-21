@@ -86,10 +86,9 @@ class EventFeedbackTests: EurofurenceKitTestCase {
         let networkError = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
         await scenario.api.stub(request: expectedRequest, with: .failure(networkError))
         
-        await XCTAssertEventuallyThrowsSpecificError(
-            EurofurenceError.feedbackSubmissionFailed,
-            { try await feedbackForm.submit() }
-        )
+        await XCTAssertEventuallyThrowsSpecificError(EurofurenceError.feedbackSubmissionFailed) {
+            try await feedbackForm.submit()
+        }
         
         waitForExpectations(timeout: 0.1)
     }
