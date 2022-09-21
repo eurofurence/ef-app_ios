@@ -25,6 +25,7 @@ struct EventFeedbackForm: View {
     @State private var feedbackSubmissionError: Error?
     @State private var isPresentingFeedbackSubmissionErrorAlert = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.errorNotificationHaptic) private var errorNotificationHaptic
     
     private enum FeedbackState {
         case preparing
@@ -75,7 +76,11 @@ struct EventFeedbackForm: View {
                 .navigationTitle("Event Feedback")
                 .navigationBarTitleDisplayMode(.inline)
                 .interactiveDismissDisabled()
-                .alert("Feedback Not Sent", isPresented: $isPresentingFeedbackSubmissionErrorAlert, presenting: feedbackSubmissionError) { _ in
+                .alert(
+                    "Feedback Not Sent",
+                    isPresented: $isPresentingFeedbackSubmissionErrorAlert,
+                    presenting: feedbackSubmissionError
+                ) { _ in
                     Button {
                         sendFeedback()
                     } label: {
@@ -102,6 +107,7 @@ struct EventFeedbackForm: View {
                 dismiss()
             } catch {
                 withAnimation {
+                    errorNotificationHaptic()
                     isPresentingFeedbackSubmissionErrorAlert = true
                     feedbackSubmissionError = error
                     state = .preparing

@@ -3,6 +3,7 @@ import SwiftUI
 struct FeedbackSentPopover: View {
     
     @ScaledMetric(relativeTo: .body) private var imageHeight: CGFloat = 125
+    @Environment(\.successNotificationHaptic) private var successNotificationHaptic
     
     var body: some View {
         VStack(alignment: .center) {
@@ -21,6 +22,9 @@ struct FeedbackSentPopover: View {
         .padding()
         .background(.ultraThinMaterial)
         .cornerRadius(14)
+        .onAppear {
+            successNotificationHaptic()
+        }
     }
     
 }
