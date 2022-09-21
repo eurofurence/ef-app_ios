@@ -2,12 +2,6 @@ import EurofurenceKit
 import Logging
 import SwiftUI
 
-extension Logger {
-    
-    static let ui = Logger(label: "UI")
-    
-}
-
 struct EventView: View {
     
     @ObservedObject var event: Event
