@@ -39,7 +39,10 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         let lastSyncTime = Date()
         let generationToken = SynchronizationPayload.GenerationToken(lastSyncTime: lastSyncTime)
         let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
-        let expectedURLString = try urlPercentEncoded("https://app.eurofurence.org/EF26/api/Sync?since=\(formattedTime)")
+        let expectedURLString = try urlPercentEncoded(
+            "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedTime)"
+        )
+        
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
         let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
