@@ -16,7 +16,7 @@ public class Entity: NSManagedObject {
 
 extension Entity: Identifiable {
     
-    public var id: some Hashable {
+    public var id: String {
         identifier
     }
     

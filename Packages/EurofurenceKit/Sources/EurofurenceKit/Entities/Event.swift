@@ -71,6 +71,18 @@ public class Event: Entity {
 
 }
 
+// MARK: - Notifications
+
+extension NSNotification.Name {
+    
+    /// A notification that is posted when the user has submitted feedback for an event that has been received by the
+    /// events team. This notification is posted on the main actor.
+    ///
+    /// The object associated with the notification is the `Event` in which feedback has been submitted for.
+    public static let EFKEventFeedbackSubmitted = Notification.Name("EFKEventFeedbackSubmitted")
+    
+}
+
 // MARK: - Tags
 
 extension Event {
@@ -83,6 +95,96 @@ extension Event {
         }
         
         return tags.sorted()
+    }
+    
+}
+
+// MARK: - Feedback
+
+extension Event {
+    
+    /// An input mechanism for collecting and sending feedback for an event.
+    public class FeedbackForm: Identifiable, ObservableObject {
+        
+        public var id: String {
+            event.identifier
+        }
+        
+        private let event: Event
+        private let api: EurofurenceAPI
+        
+        init(event: Event, api: EurofurenceAPI) {
+            self.event = event
+            self.api = api
+        }
+        
+        /// The rating of the event.
+        @Published public var rating: Rating = 3
+        
+        /// Additional comments supplied by the user regarding the event.
+        @Published public var additionalComments: String = ""
+        
+        /// Submits this feedback to the events team for processing.
+        public func submit() async throws {
+            let request = APIRequests.SubmitEventFeedback(
+                identifier: event.identifier,
+                rating: rating.value,
+                additionalComments: additionalComments
+            )
+            
+            do {
+                try await api.execute(request: request)
+                await MainActor.run {
+                    NotificationCenter.default.post(name: .EFKEventFeedbackSubmitted, object: event)
+                }
+            } catch {
+                throw EurofurenceError.feedbackSubmissionFailed
+            }
+        }
+        
+    }
+    
+    /// Specifies a value the user has associated with the event to express their satisfaction with its content and
+    /// execution.
+    public struct Rating: Equatable, ExpressibleByIntegerLiteral {
+        
+        /// The smallest possible rating value permitted by the model.
+        public static let smallestPossibleRatingValue = 1
+        
+        /// The largest possible rating value permitted by the model.
+        public static let largestPossibleRatingValue = 5
+        
+        public typealias IntegerLiteralType = Int
+        
+        public let value: Int
+        
+        public init(_ value: Int) {
+            if value < Self.smallestPossibleRatingValue {
+                self.value = Self.smallestPossibleRatingValue
+            } else if value > Self.largestPossibleRatingValue {
+                self.value = Self.largestPossibleRatingValue
+            } else {
+                self.value = value
+            }
+        }
+        
+        public init(integerLiteral value: IntegerLiteralType) {
+            self.init(value)
+        }
+        
+    }
+    
+    /// Prepares an object to collect feedback for the receiver.
+    ///
+    /// Attempting to prepare feedback for an event that is not accepting feedback throws an error.
+    ///
+    /// - Returns: A `FeedbackForm` for collating and submitting feedback.
+    public func prepareFeedback() throws -> FeedbackForm {
+        guard let api = managedObjectContext?.eurofurenceAPI, acceptingFeedback else {
+            throw EurofurenceError.eventNotAcceptingFeedback(identifier)
+        }
+        
+        return FeedbackForm(event: self, api: api)
     }
     
 }

@@ -311,4 +311,36 @@ extension EurofurenceModel {
         }
     }
     
+    public func prepareSuccessfulFeedbackResponse(event: Event, rating: Event.Rating, comments: String) {
+        guard let previewingAPI = configuration.api as? PreviewingEurofurenceAPI else { return }
+        
+        previewingAPI.respond(
+            to: APIRequests.SubmitEventFeedback(
+                identifier: event.identifier,
+                rating: rating.value,
+                additionalComments: ""
+            ),
+            with: {
+                try await Task.sleep(nanoseconds: NSEC_PER_SEC * 3)
+            }
+        )
+    }
+    
+    public func prepareUnsuccessfulFeedbackResponse(event: Event, rating: Event.Rating, comments: String) {
+        guard let previewingAPI = configuration.api as? PreviewingEurofurenceAPI else { return }
+        
+        struct SomeError: Error { }
+        previewingAPI.respond(
+            to: APIRequests.SubmitEventFeedback(
+                identifier: event.identifier,
+                rating: rating.value,
+                additionalComments: ""
+            ),
+            with: {
+                try await Task.sleep(nanoseconds: NSEC_PER_SEC * 3)
+                throw SomeError()
+            }
+        )
+    }
+    
 }

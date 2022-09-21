@@ -9,7 +9,7 @@ class DebugTableViewController: UITableViewController {
 
     @IBOutlet private weak var fcmTokenLabel: UILabel!
     
-    private lazy var actions: [IndexPath : () -> Void] = [
+    private lazy var actions: [IndexPath: () -> Void] = [
         IndexPath(item: 0, section: 0): self.copyFCMToPasteBoard
     ]
 

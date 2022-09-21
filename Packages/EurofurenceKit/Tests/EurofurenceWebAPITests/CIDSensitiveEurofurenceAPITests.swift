@@ -311,6 +311,41 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         await XCTAssertEventuallyThrowsError { try await api.execute(request: request) }
     }
     
+    func testSubmittingEventFeedbackSuccessfully() async throws {
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/EventFeedback"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        let expectedBody = try stubbedBody(fromJSONFileNamed: "ExpectedEventFeedbackBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBody, method: .post)
+        
+        let feedbackRequest = APIRequests.SubmitEventFeedback(
+            identifier: "ID",
+            rating: 5,
+            additionalComments: "Comments"
+        )
+        
+        network.stub(expectedRequest, with: .success(Data()))
+        
+        await XCTAssertEventuallyNoThrows { try await api.execute(request: feedbackRequest) }
+    }
+    
+    func testSubmittingEventFeedbackUnsuccessfully() async throws {
+        let expectedURLString = "https://app.eurofurence.org/EF26/api/EventFeedback"
+        let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
+        let expectedBody = try stubbedBody(fromJSONFileNamed: "ExpectedEventFeedbackBody")
+        let expectedRequest = NetworkRequest(url: expectedURL, body: expectedBody, method: .post)
+        
+        let feedbackRequest = APIRequests.SubmitEventFeedback(
+            identifier: "ID",
+            rating: 5,
+            additionalComments: "Comments"
+        )
+        
+        let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
+        network.stub(expectedRequest, with: .failure(error))
+        
+        await XCTAssertEventuallyThrowsError { try await api.execute(request: feedbackRequest) }
+    }
+    
     private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {
         let url = try XCTUnwrap(Bundle.module.url(forResource: fileName, withExtension: "json"))
         let data = try Data(contentsOf: url)

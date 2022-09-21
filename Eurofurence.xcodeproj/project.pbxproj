@@ -49,6 +49,23 @@
 		6EE14CBC28D5C3D100A3A117 /* ToggleEventFavouriteStateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CBB28D5C3D100A3A117 /* ToggleEventFavouriteStateButton.swift */; };
 		6EE14CBE28D5C5B200A3A117 /* FavouriteEventsNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CBD28D5C5B200A3A117 /* FavouriteEventsNavigationLink.swift */; };
 		6EE14CC028D5C87400A3A117 /* View+ShowScheduleFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CBF28D5C87400A3A117 /* View+ShowScheduleFilter.swift */; };
+		6EE14CC228D7D3C200A3A117 /* EventFeedbackForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CC128D7D3C200A3A117 /* EventFeedbackForm.swift */; };
+		6EE14CC428D8898700A3A117 /* EventHostsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CC328D8898700A3A117 /* EventHostsLabel.swift */; };
+		6EE14CC728D9C79200A3A117 /* FeedbackSentPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CC628D9C79200A3A117 /* FeedbackSentPopover.swift */; };
+		6EE14CC928DA0A1A00A3A117 /* EventFeedbackTransientOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CC828DA0A1A00A3A117 /* EventFeedbackTransientOverlay.swift */; };
+		6EE14CCB28DA0ABD00A3A117 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CCA28DA0ABD00A3A117 /* ContentView.swift */; };
+		6EE14CCE28DA0B8700A3A117 /* View+ApplicationTransientOverlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CCD28DA0B8700A3A117 /* View+ApplicationTransientOverlays.swift */; };
+		6EE14CD028DA0C2700A3A117 /* StarRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CCF28DA0C2700A3A117 /* StarRating.swift */; };
+		6EE14CD328DA5D9200A3A117 /* Environment+SelectionChangedHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CD228DA5D9200A3A117 /* Environment+SelectionChangedHaptic.swift */; };
+		6EE14CD628DA5DB000A3A117 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CD528DA5DB000A3A117 /* Haptics.swift */; };
+		6EE14CD828DA5DCB00A3A117 /* Haptics+SelectionChanged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CD728DA5DCB00A3A117 /* Haptics+SelectionChanged.swift */; };
+		6EE14CDA28DA659800A3A117 /* Haptics+ErrorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CD928DA659800A3A117 /* Haptics+ErrorNotification.swift */; };
+		6EE14CDC28DA65F900A3A117 /* Environment+ErrorNotificationHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CDB28DA65F900A3A117 /* Environment+ErrorNotificationHaptic.swift */; };
+		6EE14CDE28DAEB9600A3A117 /* Environment+SuccessNotificationHaptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CDD28DAEB9600A3A117 /* Environment+SuccessNotificationHaptic.swift */; };
+		6EE14CE028DAEBA400A3A117 /* Haptics+SuccessNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CDF28DAEBA400A3A117 /* Haptics+SuccessNotification.swift */; };
+		6EE14CE328DAF45F00A3A117 /* Color+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CE228DAF45F00A3A117 /* Color+Resources.swift */; };
+		6EE14CE528DAF4A800A3A117 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CE428DAF4A800A3A117 /* Logging.swift */; };
+		6EE14CE728DAF9A100A3A117 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6EE14CE628DAF9A100A3A117 /* Localizable.strings */; };
 		6EE355A9289079B300F3ACB7 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE355A8289079B300F3ACB7 /* LoginTests.swift */; };
 		6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */; };
 		6EF82FC328CA3B86006463EA /* DealersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82FC228CA3B86006463EA /* DealersCollectionView.swift */; };
@@ -344,6 +361,23 @@
 		6EE14CBB28D5C3D100A3A117 /* ToggleEventFavouriteStateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleEventFavouriteStateButton.swift; sourceTree = "<group>"; };
 		6EE14CBD28D5C5B200A3A117 /* FavouriteEventsNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEventsNavigationLink.swift; sourceTree = "<group>"; };
 		6EE14CBF28D5C87400A3A117 /* View+ShowScheduleFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ShowScheduleFilter.swift"; sourceTree = "<group>"; };
+		6EE14CC128D7D3C200A3A117 /* EventFeedbackForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackForm.swift; sourceTree = "<group>"; };
+		6EE14CC328D8898700A3A117 /* EventHostsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHostsLabel.swift; sourceTree = "<group>"; };
+		6EE14CC628D9C79200A3A117 /* FeedbackSentPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSentPopover.swift; sourceTree = "<group>"; };
+		6EE14CC828DA0A1A00A3A117 /* EventFeedbackTransientOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFeedbackTransientOverlay.swift; sourceTree = "<group>"; };
+		6EE14CCA28DA0ABD00A3A117 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6EE14CCD28DA0B8700A3A117 /* View+ApplicationTransientOverlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ApplicationTransientOverlays.swift"; sourceTree = "<group>"; };
+		6EE14CCF28DA0C2700A3A117 /* StarRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRating.swift; sourceTree = "<group>"; };
+		6EE14CD228DA5D9200A3A117 /* Environment+SelectionChangedHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+SelectionChangedHaptic.swift"; sourceTree = "<group>"; };
+		6EE14CD528DA5DB000A3A117 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		6EE14CD728DA5DCB00A3A117 /* Haptics+SelectionChanged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Haptics+SelectionChanged.swift"; sourceTree = "<group>"; };
+		6EE14CD928DA659800A3A117 /* Haptics+ErrorNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Haptics+ErrorNotification.swift"; sourceTree = "<group>"; };
+		6EE14CDB28DA65F900A3A117 /* Environment+ErrorNotificationHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+ErrorNotificationHaptic.swift"; sourceTree = "<group>"; };
+		6EE14CDD28DAEB9600A3A117 /* Environment+SuccessNotificationHaptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+SuccessNotificationHaptic.swift"; sourceTree = "<group>"; };
+		6EE14CDF28DAEBA400A3A117 /* Haptics+SuccessNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Haptics+SuccessNotification.swift"; sourceTree = "<group>"; };
+		6EE14CE228DAF45F00A3A117 /* Color+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Resources.swift"; sourceTree = "<group>"; };
+		6EE14CE428DAF4A800A3A117 /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
+		6EE14CE628DAF9A100A3A117 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		6EE355A8289079B300F3ACB7 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		6EE355AA28907BE600F3ACB7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6EF82FC028CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoPatchSplitViewControllerWindow.swift; sourceTree = "<group>"; };
@@ -750,11 +784,61 @@
 		6EB17FED28D35B24008DB4F1 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				6EB17FEE28D35B30008DB4F1 /* EventView.swift */,
+				6EE14CC128D7D3C200A3A117 /* EventFeedbackForm.swift */,
+				6EE14CC328D8898700A3A117 /* EventHostsLabel.swift */,
 				6EB17FF028D37915008DB4F1 /* EventSubtitle.swift */,
+				6EB17FEE28D35B30008DB4F1 /* EventView.swift */,
+				6EE14CC628D9C79200A3A117 /* FeedbackSentPopover.swift */,
+				6EE14CCF28DA0C2700A3A117 /* StarRating.swift */,
 				6EE14CBB28D5C3D100A3A117 /* ToggleEventFavouriteStateButton.swift */,
 			);
 			path = Event;
+			sourceTree = "<group>";
+		};
+		6EE14CC528D9B2FA00A3A117 /* Transient Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				6EE14CCD28DA0B8700A3A117 /* View+ApplicationTransientOverlays.swift */,
+				6EE14CCC28DA0B5300A3A117 /* Overlays */,
+			);
+			path = "Transient Overlay";
+			sourceTree = "<group>";
+		};
+		6EE14CCC28DA0B5300A3A117 /* Overlays */ = {
+			isa = PBXGroup;
+			children = (
+				6EE14CC828DA0A1A00A3A117 /* EventFeedbackTransientOverlay.swift */,
+			);
+			path = Overlays;
+			sourceTree = "<group>";
+		};
+		6EE14CD128DA5D7B00A3A117 /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				6EE14CDB28DA65F900A3A117 /* Environment+ErrorNotificationHaptic.swift */,
+				6EE14CD228DA5D9200A3A117 /* Environment+SelectionChangedHaptic.swift */,
+				6EE14CDD28DAEB9600A3A117 /* Environment+SuccessNotificationHaptic.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
+		6EE14CD428DA5DA300A3A117 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				6EE14CD528DA5DB000A3A117 /* Haptics.swift */,
+				6EE14CD928DA659800A3A117 /* Haptics+ErrorNotification.swift */,
+				6EE14CD728DA5DCB00A3A117 /* Haptics+SelectionChanged.swift */,
+				6EE14CDF28DAEBA400A3A117 /* Haptics+SuccessNotification.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		6EE14CE128DAF45400A3A117 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6EE14CE228DAF45F00A3A117 /* Color+Resources.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6EF82FBF28CA3A2E006463EA /* UIKit */ = {
@@ -834,6 +918,7 @@
 				9ACF99431EBE172D006FC958 /* Info.plist */,
 				CA1D0CAD28C8A2EF007D96F8 /* AppModel.swift */,
 				CA3ABA05229C4B260045A35B /* AppNotificationDelegate.swift */,
+				6EE14CE428DAF4A800A3A117 /* Logging.swift */,
 				9ACF993E1EBE172D006FC958 /* Assets.xcassets */,
 				CAE057BB28AED79800E1F0E6 /* Versioning.xcconfig */,
 				CA52DA6528ACE5DF00020A4F /* App Icon Picker */,
@@ -891,6 +976,7 @@
 				6E8389D028CF3AF6007E14DC /* Localizable.stringsdict */,
 				CA08861A25FE997E0044DD53 /* Fonts */,
 				CA08861C25FE997E0044DD53 /* Sounds */,
+				6EE14CE628DAF9A100A3A117 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1105,10 +1191,15 @@
 		CABD9BA328BE08D300CEFAB3 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				6EE14CCA28DA0ABD00A3A117 /* ContentView.swift */,
 				6E08B1A628CE049E00512406 /* Design Language */,
+				6EE14CD128DA5D7B00A3A117 /* Environment */,
 				6EA4ECDB28C927D600B20502 /* Experiences */,
+				6EE14CD428DA5DA300A3A117 /* Haptics */,
 				6E8389D428CF7401007E14DC /* Modifiers */,
 				6EA4ECD528C8DC7700B20502 /* Modules */,
+				6EE14CE128DAF45400A3A117 /* Resources */,
+				6EE14CC528D9B2FA00A3A117 /* Transient Overlay */,
 				6EF82FBF28CA3A2E006463EA /* UIKit */,
 				6EF82FC428CA920A006463EA /* Views */,
 			);
@@ -1473,6 +1564,7 @@
 				CA08862125FE997E0044DD53 /* generic_notification.caf in Resources */,
 				78CA0D0F1F0E57D5006DFD64 /* GoogleService-Info.plist in Resources */,
 				CA08861F25FE997E0044DD53 /* fontawesome-webfont.ttf in Resources */,
+				6EE14CE728DAF9A100A3A117 /* Localizable.strings in Resources */,
 				CAA41AED28ACF39F002B3B2B /* AppIcons.plist in Resources */,
 				9ACF993F1EBE172D006FC958 /* Assets.xcassets in Resources */,
 				CA728437209C7DE1007D912A /* Settings.bundle in Resources */,
@@ -1641,17 +1733,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EE14CC028D5C87400A3A117 /* View+ShowScheduleFilter.swift in Sources */,
+				6EE14CC228D7D3C200A3A117 /* EventFeedbackForm.swift in Sources */,
+				6EE14CC928DA0A1A00A3A117 /* EventFeedbackTransientOverlay.swift in Sources */,
+				6EE14CE528DAF4A800A3A117 /* Logging.swift in Sources */,
+				6EE14CC728D9C79200A3A117 /* FeedbackSentPopover.swift in Sources */,
+				6EE14CD828DA5DCB00A3A117 /* Haptics+SelectionChanged.swift in Sources */,
 				CA85154625FF744900860631 /* DebugTableViewController.swift in Sources */,
 				6EA4ECC828C8DBF100B20502 /* NewsView.swift in Sources */,
 				CA630BEE229F16F400754C27 /* DonateFromAppEventIntentDonor.swift in Sources */,
 				6E2026FD28D1C0C1008C61BD /* EventListRow.swift in Sources */,
 				6E08B1AF28CE064800512406 /* CollectThemAllLabel.swift in Sources */,
+				6EE14CCE28DA0B8700A3A117 /* View+ApplicationTransientOverlays.swift in Sources */,
+				6EE14CD328DA5D9200A3A117 /* Environment+SelectionChangedHaptic.swift in Sources */,
 				6E08B1AD28CE05C100512406 /* MapsLabel.swift in Sources */,
 				6E08B1B828CE0BCD00512406 /* ScheduleLabel.swift in Sources */,
 				CA02910221F4D6020007F350 /* UIWindow+Debug.swift in Sources */,
 				CA3ABA06229C4B260045A35B /* AppNotificationDelegate.swift in Sources */,
 				6E20270328D26CDD008C61BD /* ScheduleEventsList.swift in Sources */,
+				6EE14CDE28DAEB9600A3A117 /* Environment+SuccessNotificationHaptic.swift in Sources */,
 				CABD9BA228BE089800CEFAB3 /* PrincipalSwiftUIWindowSceneDelegate.swift in Sources */,
+				6EE14CD028DA0C2700A3A117 /* StarRating.swift in Sources */,
 				6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */,
 				6E8389D828CF7441007E14DC /* SelectableRow.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
@@ -1660,13 +1761,18 @@
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,
 				CA2AA2F422C9518A00C0E1A1 /* ViewDealerIntent+Definition.swift in Sources */,
 				CAA41AEB28ACF38F002B3B2B /* ApplicationTargetAppIconRepository.swift in Sources */,
+				6EE14CCB28DA0ABD00A3A117 /* ContentView.swift in Sources */,
 				6E08B1B328CE077A00512406 /* DealersLabel.swift in Sources */,
+				6EE14CD628DA5DB000A3A117 /* Haptics.swift in Sources */,
+				6EE14CDC28DA65F900A3A117 /* Environment+ErrorNotificationHaptic.swift in Sources */,
 				6E79E66528C9C5BA00444A37 /* HandheldExperience.swift in Sources */,
 				CA23FCA227ED033900265984 /* DebugSettings.swift in Sources */,
 				6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */,
+				6EE14CDA28DA659800A3A117 /* Haptics+ErrorNotification.swift in Sources */,
 				6E2026FF28D1C75F008C61BD /* FormattedShortTime.swift in Sources */,
 				6E08B1BE28CE0CAD00512406 /* FavouriteEventsLabel.swift in Sources */,
 				9ACF99381EBE172D006FC958 /* AppDelegate.swift in Sources */,
+				6EE14CE328DAF45F00A3A117 /* Color+Resources.swift in Sources */,
 				6EF82FC128CA3A47006463EA /* AutoPatchSplitViewControllerWindow.swift in Sources */,
 				CAB4E9172662704400EFE882 /* Intents.intentdefinition in Sources */,
 				CA630C0922A069AF00754C27 /* ViewEventIntent+Definition.swift in Sources */,
@@ -1677,6 +1783,7 @@
 				6EA4ECCE28C8DC2D00B20502 /* DealersView.swift in Sources */,
 				6E8389D328CF73EA007E14DC /* Lazy.swift in Sources */,
 				CA1D0CAE28C8A2EF007D96F8 /* AppModel.swift in Sources */,
+				6EE14CE028DAEBA400A3A117 /* Haptics+SuccessNotification.swift in Sources */,
 				6EA4ECDA28C906DA00B20502 /* SplitViewExperience.swift in Sources */,
 				6EA4ECD828C8DC8700B20502 /* TabItem.swift in Sources */,
 				6E79E66F28C9E35B00444A37 /* DealerCategoriesView.swift in Sources */,
@@ -1698,6 +1805,7 @@
 				6EE14CBC28D5C3D100A3A117 /* ToggleEventFavouriteStateButton.swift in Sources */,
 				6EE14CBE28D5C5B200A3A117 /* FavouriteEventsNavigationLink.swift in Sources */,
 				6EA4ECD428C8DC6000B20502 /* MoreView.swift in Sources */,
+				6EE14CC428D8898700A3A117 /* EventHostsLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@ private extension Array where Element == EurofurenceKit.Event {
     
 }
 
+// swiftlint:disable file_length
 class ScheduleTests: EurofurenceKitTestCase {
     
     func testControllerUpdatesAfterSync() async throws {

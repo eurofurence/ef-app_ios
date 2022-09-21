@@ -4,6 +4,7 @@ import SwiftUI
 struct ToggleEventFavouriteStateButton<Icon>: View where Icon: View {
     
     @ObservedObject private var event: Event
+    @Environment(\.selectionChangedHaptic) private var selectionChangedHaptic
     private let icon: () -> Icon
     
     init(event: Event, @ViewBuilder _ icon: @escaping () -> Icon) {
@@ -13,6 +14,8 @@ struct ToggleEventFavouriteStateButton<Icon>: View where Icon: View {
     
     var body: some View {
         Button {
+            selectionChangedHaptic()
+            
             Task {
                 if event.isFavourite {
                     await event.unfavourite()

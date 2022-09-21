@@ -2,11 +2,8 @@ import SwiftUI
 
 struct PannableFullScreenImage<Content>: View where Content: View {
     
-    var id: AnyHashable
     var image: Content
-    var namespace: Namespace.ID
     @Binding var isPresented: Bool
-    @State private var isSourceForMatchedGeometricTransition = false
     
     private let magnificationLimit: CGFloat = 3
     @State private var currentImageViewSize: CGSize = .zero
@@ -22,8 +19,6 @@ struct PannableFullScreenImage<Content>: View where Content: View {
             ZStack(alignment: .center) {
                 if isPresented {
                     image
-                        .matchedGeometryEffect(id: id, in: namespace, isSource: isSourceForMatchedGeometricTransition)
-                        .transition(.offset())
                         .measure { newValue in
                             currentImageViewSize = newValue
                         }
@@ -77,9 +72,6 @@ struct PannableFullScreenImage<Content>: View where Content: View {
                                 }
                             })
                         .edgesIgnoringSafeArea(.all)
-                        .onAppear {
-                            isSourceForMatchedGeometricTransition = true
-                        }
                 }
                 
                 HStack {
