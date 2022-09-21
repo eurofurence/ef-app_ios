@@ -94,5 +94,20 @@ class EventTests: EurofurenceKitTestCase {
         
         waitForExpectations(timeout: 0.5)
     }
+    
+    func testContentURL() async throws {
+        let scenario = await EurofurenceModelTestBuilder().build()
+        try await scenario.updateLocalStore(using: .ef26)
+        
+        let dealersDenID = "18ab1606-506e-4b7c-b1db-4d3dad0e7c20"
+        let dealersDen = try scenario.model.event(identifiedBy: dealersDenID)
+        
+        let expected = try XCTUnwrap(URL(string: "https://stubbed.for.test"))
+        scenario.api.stub(expected, forContent: .event(id: dealersDenID))
+        
+        let actual = dealersDen.contentURL
+        
+        XCTAssertEqual(expected, actual)
+    }
 
 }

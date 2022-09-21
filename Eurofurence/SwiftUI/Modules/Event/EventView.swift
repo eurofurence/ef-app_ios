@@ -35,15 +35,7 @@ struct EventView: View {
             }
             
             ToolbarItem(placement: .primaryAction) {
-                Button {
-                    // TODO: Share!
-                } label: {
-                    Label {
-                        Text("Share")
-                    } icon: {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                }
+                EurofurenceShareLink(url: event.contentURL, title: event.title)
             }
             
             ToolbarItem(placement: .bottomBar) {

@@ -1,8 +1,6 @@
 import CoreData
 import EurofurenceWebAPI
 
-// MARK: - Persistent Container
-
 extension NSManagedObjectContext {
     
     private struct Keys {
@@ -50,6 +48,29 @@ extension NSManagedObjectContext {
         set {
             userInfo.setObject(newValue as Any, forKey: Keys.apiKey as NSCopying)
         }
+    }
+    
+}
+
+// MARK: - NSManagedObject Convenience
+
+extension NSManagedObject {
+    
+    /// The instance of the `EurofurenceAPI` in use by the model.
+    var eurofurenceAPI: EurofurenceAPI {
+        unsafeAccess(managedObjectContextKeyPath: \.eurofurenceAPI)
+    }
+    
+    private func unsafeAccess<T>(managedObjectContextKeyPath: KeyPath<NSManagedObjectContext, T?>) -> T {
+        guard let managedObjectContext = managedObjectContext else {
+            fatalError("\(self) not associated with a NSManagedObjectContext")
+        }
+        
+        guard let value = managedObjectContext[keyPath: managedObjectContextKeyPath] else {
+            fatalError("\(managedObjectContext) has no value for key path \(managedObjectContextKeyPath)")
+        }
+        
+        return value
     }
     
 }

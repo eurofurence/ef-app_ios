@@ -12,6 +12,7 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
     
     public func execute<Request>(request: Request) async throws -> Request.Output where Request: APIRequest {
         let context = APIRequestExecutionContext(
+            urlComponents: configuration.urlComponents,
             conventionIdentifier: configuration.conventionIdentifier,
             hostVersion: configuration.hostVersion,
             network: configuration.network,
@@ -20,6 +21,23 @@ public struct CIDSensitiveEurofurenceAPI: EurofurenceAPI {
         )
         
         return try await request.execute(with: context)
+    }
+    
+    public func url(for content: EurofurenceContent) -> URL {
+        let subPath: String
+        switch content {
+        case .event(let id):
+            subPath = "/Web/Events/\(id)"
+        }
+        
+        var components = configuration.urlComponents
+        components.path.append(subPath)
+        
+        guard let url = components.url else {
+            fatalError("Failed to prepare URL for content: \(content)")
+        }
+        
+        return url
     }
     
 }
@@ -34,6 +52,7 @@ extension CIDSensitiveEurofurenceAPI {
         var hostVersion: String
         var network: Network
         var pushNotificationService: PushNotificationService
+        var urlComponents: URLComponents
         
         public init(conventionIdentifier: String, hostVersion: String) {
             self.init(
@@ -54,6 +73,11 @@ extension CIDSensitiveEurofurenceAPI {
             self.hostVersion = hostVersion
             self.network = network
             self.pushNotificationService = pushNotificationService
+            
+            urlComponents = URLComponents()
+            urlComponents.scheme = "https"
+            urlComponents.host = "app.eurofurence.org"
+            urlComponents.path = "/\(conventionIdentifier)"
         }
         
     }

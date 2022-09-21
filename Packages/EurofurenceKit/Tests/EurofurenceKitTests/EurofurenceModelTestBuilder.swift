@@ -74,19 +74,20 @@ extension EurofurenceModelTestBuilder.Scenario {
         with result: Result<SynchronizationPayload, Error>,
         for generationToken: SynchronizationPayload.GenerationToken? = nil
     ) async {
-        await api.stubNextSyncResponse(result, for: generationToken)
+        api.stub(request: APIRequests.FetchLatestChanges(since: generationToken), with: result)
         
         // Pre-emptively mark all image requests as successful. Failing requests will need to be designated by the
         // corresponding tests.
         
         if case .success(let payload) = result {
             for image in payload.images.changed {
-                await api.stub(
-                    .success(()),
-                    forImageIdentifier: image.id,
+                let expectedRequest = APIRequests.DownloadImage(
+                    imageIdentifier: image.id,
                     lastKnownImageContentHashSHA1: image.contentHashSha1,
                     downloadDestinationURL: modelProperties.proposedURL(forImageIdentifier: image.id)
                 )
+                
+                api.stub(request: expectedRequest, with: .success(()))
             }
         }
     }

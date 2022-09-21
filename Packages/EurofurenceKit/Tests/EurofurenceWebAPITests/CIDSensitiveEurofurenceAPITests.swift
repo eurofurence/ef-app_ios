@@ -38,8 +38,11 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
     func testSyncWithTimestampUsesExpectedURL() async throws {
         let lastSyncTime = Date()
         let generationToken = SynchronizationPayload.GenerationToken(lastSyncTime: lastSyncTime)
-        let formattedSyncTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
-        let expectedURLString = "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedSyncTime)"
+        let formattedTime = EurofurenceISO8601DateFormatter.instance.string(from: lastSyncTime)
+        let expectedURLString = try urlPercentEncoded(
+            "https://app.eurofurence.org/EF26/api/Sync?since=\(formattedTime)"
+        )
+        
         let expectedURL = try XCTUnwrap(URL(string: expectedURLString))
         let expectedRequest = NetworkRequest(url: expectedURL, method: .get)
         let responseFileData = try stubbedBody(fromJSONFileNamed: "EF26FullSyncResponse")
@@ -344,6 +347,21 @@ class CIDSensitiveEurofurenceAPITests: XCTestCase {
         network.stub(expectedRequest, with: .failure(error))
         
         await XCTAssertEventuallyThrowsError { try await api.execute(request: feedbackRequest) }
+    }
+    
+    func testURLForEvent() throws {
+        let event: EurofurenceContent = .event(id: "Event_ID")
+        let expected = try XCTUnwrap(URL(string: "https://app.eurofurence.org/EF26/Web/Events/Event_ID"))
+        let actual = api.url(for: event)
+        
+        XCTAssertEqual(expected, actual)
+    }
+    
+    private func urlPercentEncoded(_ string: String) throws -> String {
+        let percentEncoded = string
+            .addingPercentEncoding(withAllowedCharacters: .urlHostAllowed.union(.urlPathAllowed))
+        
+        return try XCTUnwrap(percentEncoded)
     }
     
     private func stubbedBody(fromJSONFileNamed fileName: String) throws -> Data {

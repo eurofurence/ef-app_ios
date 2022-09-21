@@ -22,7 +22,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         ]
         
         let authenticationToken = AuthenticationToken("ABC")
-        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
+        api.stub(request: APIRequests.FetchMessages(authenticationToken: authenticationToken), with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder()
             .with(keychain: AuthenticatedKeychain())
             .with(api: api)
@@ -42,7 +42,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
             messageIdentifier: "Identifier"
         )
         
-        await api.stubMessageReadRequest(for: expectedRequest, with: .success(()))
+        api.stub(request: expectedRequest, with: .success(()))
         await message.markRead()
         
         XCTAssertTrue(
@@ -67,7 +67,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         ]
         
         let authenticationToken = AuthenticationToken("ABC")
-        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
+        api.stub(request: APIRequests.FetchMessages(authenticationToken: authenticationToken), with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder()
             .with(keychain: AuthenticatedKeychain())
             .with(api: api)
@@ -82,11 +82,11 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
             messageIdentifier: "Identifier"
         )
         
-        await api.stubMessageReadRequest(for: expectedRequest, with: .success(()))
+        api.stub(request: expectedRequest, with: .success(()))
         await message.markRead()
         await message.markRead()
         
-        let markedMessageReadyIdentifiers = await api
+        let markedMessageReadyIdentifiers = api
             .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
             .map(\.messageIdentifier)
         
@@ -113,7 +113,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         ]
         
         let authenticationToken = AuthenticationToken("ABC")
-        await api.stubMessageRequest(for: authenticationToken, with: .success(messages))
+        api.stub(request: APIRequests.FetchMessages(authenticationToken: authenticationToken), with: .success(messages))
         let scenario = await EurofurenceModelTestBuilder()
             .with(keychain: AuthenticatedKeychain())
             .with(api: api)
@@ -131,7 +131,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         )
         
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await api.stubMessageReadRequest(for: expectedRequest, with: .failure(error))
+        api.stub(request: expectedRequest, with: .failure(error))
         await message.markRead()
         
         // The previous attempt to mark the message as read failed. On the next sync, the model
@@ -140,7 +140,7 @@ class MarkingMessageAsReadTests: EurofurenceKitTestCase {
         await scenario.stubSyncResponse(with: .success(noChangesPayload), for: payload.synchronizationToken)
         try await scenario.updateLocalStore()
         
-        let markedMessageReadyIdentifiers = await api
+        let markedMessageReadyIdentifiers = api
             .executedRequests(ofType: APIRequests.AcknowledgeMessage.self)
             .map(\.messageIdentifier)
         

@@ -3,6 +3,7 @@ import Foundation
 /// A parameter object used by requests during their execution.
 public struct APIRequestExecutionContext {
     
+    var urlComponents: URLComponents
     var conventionIdentifier: String
     var hostVersion: String
     var network: Network
@@ -10,9 +11,11 @@ public struct APIRequestExecutionContext {
     var decoder: JSONDecoder
     
     func makeURL(subpath: String) -> URL {
-        let baseURL = "https://app.eurofurence.org/\(conventionIdentifier)"
-        guard let url = URL(string: "\(baseURL)/api/\(subpath)") else {
-            fatalError("Failed to make URL")
+        var components = urlComponents
+        components.path.append("/api/\(subpath)")
+        
+        guard let url = components.url else {
+            fatalError("Failed to prepare URL for subpath: \(subpath)")
         }
         
         return url

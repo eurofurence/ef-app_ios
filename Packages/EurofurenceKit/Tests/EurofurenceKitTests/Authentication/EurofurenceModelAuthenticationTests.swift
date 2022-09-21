@@ -42,7 +42,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             tokenExpires: someDate
         )
         
-        await scenario.api.stubLoginAttempt(expectedLogin, with: .success(loginResponse))
+        scenario.api.stub(request: expectedLogin, with: .success(loginResponse))
         
         await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
         
@@ -70,7 +70,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
         
         let expectedLogin = APIRequests.Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await scenario.api.stubLoginAttempt(expectedLogin, with: .failure(error))
+        scenario.api.stub(request: expectedLogin, with: .failure(error))
         
         await XCTAssertEventuallyThrowsSpecificError(EurofurenceError.loginFailed) {
             try await scenario.model.signIn(with: login)
@@ -91,7 +91,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             tokenExpires: .distantFuture
         )
         
-        await scenario.api.stubLoginAttempt(expectedLogin, with: .success(loginResponse))
+        scenario.api.stub(request: expectedLogin, with: .success(loginResponse))
         await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
         
         let expectedDeviceTokenRegistration = APIRequests.RegisterPushNotificationDeviceToken(
@@ -99,7 +99,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        let registeredDeviceToken = scenario.api.executed(request: expectedDeviceTokenRegistration)
         XCTAssertTrue(registeredDeviceToken)
     }
     
@@ -115,7 +115,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             tokenExpires: .distantFuture
         )
         
-        await scenario.api.stubLoginAttempt(expectedLogin, with: .success(loginResponse))
+        scenario.api.stub(request: expectedLogin, with: .success(loginResponse))
         await XCTAssertEventuallyNoThrows { try await scenario.model.signIn(with: login) }
         
         let deviceToken = try XCTUnwrap("Device Token".data(using: .utf8))
@@ -126,7 +126,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        let registeredDeviceToken = scenario.api.executed(request: expectedDeviceTokenRegistration)
         XCTAssertTrue(registeredDeviceToken)
     }
     
@@ -138,7 +138,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
         
         let expectedLogoutRequest = APIRequests.Logout(pushNotificationDeviceToken: deviceToken)
         
-        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
+        scenario.api.stub(request: expectedLogoutRequest, with: .success(()))
         
         await XCTAssertEventuallyNoThrows { try await scenario.model.signOut() }
         
@@ -152,7 +152,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
         
         let expectedLogoutRequest = APIRequests.Logout(pushNotificationDeviceToken: nil)
         
-        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .success(()))
+        scenario.api.stub(request: expectedLogoutRequest, with: .success(()))
         
         await XCTAssertEventuallyNoThrows { try await scenario.model.signOut() }
         
@@ -167,7 +167,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
         let expectedLogoutRequest = APIRequests.Logout(pushNotificationDeviceToken: nil)
         
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await scenario.api.stubLogoutRequest(expectedLogoutRequest, with: .failure(error))
+        scenario.api.stub(request: expectedLogoutRequest, with: .failure(error))
         
         await XCTAssertEventuallyThrowsError { try await scenario.model.signOut() }
         
@@ -185,16 +185,13 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             pushNotificationDeviceToken: deviceToken
         )
         
-        let registeredDeviceToken = await scenario.api.executed(request: expectedDeviceTokenRegistration)
+        let registeredDeviceToken = scenario.api.executed(request: expectedDeviceTokenRegistration)
         XCTAssertTrue(registeredDeviceToken)
     }
     
     func testSigningInWithExpiredCredentialAutomaticallySignsUserOut() async throws {
         let api = FakeEurofurenceAPI()
-        await api.stubLogoutRequest(
-            APIRequests.Logout(pushNotificationDeviceToken: nil),
-            with: .success(())
-        )
+        api.stub(request: APIRequests.Logout(pushNotificationDeviceToken: nil), with: .success(()))
         
         let keychain = ExpiredCredentialKeychain()
         let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
@@ -206,10 +203,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
     func testAutomaticSignOutFails_NextLoginReattemptsSignOut() async throws {
         let api = FakeEurofurenceAPI()
         let error = NSError(domain: NSURLErrorDomain, code: URLError.badServerResponse.rawValue)
-        await api.stubLogoutRequest(
-            APIRequests.Logout(pushNotificationDeviceToken: nil),
-            with: .failure(error)
-        )
+        api.stub(request: APIRequests.Logout(pushNotificationDeviceToken: nil), with: .failure(error))
         
         let keychain = ExpiredCredentialKeychain()
         await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
@@ -219,10 +213,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
             "Automatic sign out failed - should retain the token for another attempt on next boot"
         )
         
-        await api.stubLogoutRequest(
-            APIRequests.Logout(pushNotificationDeviceToken: nil),
-            with: .success(())
-        )
+        api.stub(request: APIRequests.Logout(pushNotificationDeviceToken: nil), with: .success(()))
         
         let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
         
@@ -232,10 +223,7 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
     
     func testOnNextStoreUpdate_CredentialHasNowExpired_UserAutomaticallySignedOut() async throws {
         let api = FakeEurofurenceAPI()
-        await api.stubLogoutRequest(
-            APIRequests.Logout(pushNotificationDeviceToken: nil),
-            with: .success(())
-        )
+        api.stub(request: APIRequests.Logout(pushNotificationDeviceToken: nil), with: .success(()))
         
         let keychain = AuthenticatedKeychain()
         let scenario = await EurofurenceModelTestBuilder().with(keychain: keychain).with(api: api).build()
