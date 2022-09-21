@@ -1,20 +1,41 @@
 import SwiftUI
 
+extension EurofurenceKit.Image {
+    
+    /// Produces a platform-capable `Image` for presenting the contents of the receiver.
+    public var image: SwiftUI.Image? {
+        if let url = cachedImageURL {
+#if os(iOS)
+            if let uiImage = UIImage(contentsOfFile: url.path) {
+                return SwiftUI.Image(uiImage: uiImage)
+            }
+#elseif os(macOS)
+            if let nsImage = NSImage(contentsOf: url) {
+                return SwiftUI.Image(nsImage: nsImage)
+            }
+#endif
+        }
+        
+        return nil
+    }
+    
+}
+
 /// A `View` for rendering `Image` types from the EurofurenceKit package.
 public struct EurofurenceKitImage: View {
     
-    @ObservedObject private var image: EurofurenceKit.Image
+    @ObservedObject private var model: EurofurenceKit.Image
     @State private var isShowingFullScreen = false
     @State private var viewSize: CGSize = .zero
     private let permitsFullscreenInteraction: Bool
     
     public init(image: EurofurenceKit.Image, permitsFullscreenInteraction: Bool = false) {
-        self.image = image
+        self.model = image
         self.permitsFullscreenInteraction = permitsFullscreenInteraction
     }
     
     public var body: some View {
-        if let swiftUIImage = swiftUIImage {
+        if let swiftUIImage = model.image {
             ZStack {
                 if isShowingFullScreen {
                     Color
@@ -38,24 +59,8 @@ public struct EurofurenceKitImage: View {
                         .transition(.identity)
                 }
             }
-            .fillsScenePannableImage(id: image.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
+            .fillsScenePannableImage(id: model.id, isPresented: $isShowingFullScreen, image: swiftUIImage.resizable())
         }
-    }
-    
-    private var swiftUIImage: SwiftUI.Image? {
-        if let url = image.cachedImageURL {
-#if os(iOS)
-            if let uiImage = UIImage(contentsOfFile: url.path) {
-                return SwiftUI.Image(uiImage: uiImage)
-            }
-#elseif os(macOS)
-            if let nsImage = NSImage(contentsOf: url) {
-                return SwiftUI.Image(nsImage: nsImage)
-            }
-#endif
-        }
-        
-        return nil
     }
     
 }

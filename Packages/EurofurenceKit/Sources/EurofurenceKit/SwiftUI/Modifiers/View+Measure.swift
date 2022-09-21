@@ -20,7 +20,6 @@ extension View {
 private struct MeasuredViewModifier: ViewModifier {
     
     let onChange: (CGSize) -> Void
-    @State private var size: CGSize = .zero
     
     func body(content: Content) -> some View {
         content

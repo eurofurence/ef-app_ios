@@ -25,6 +25,7 @@ class PrincipalSwiftUIWindowSceneDelegate: UIResponder, UIWindowSceneDelegate {
         let rootView = TransientOverlayContainer {
             ContentView()
                 .environmentModel(model)
+                .environment(\.window, window)
         }
         
         let rootViewController = UIHostingController(rootView: rootView)
