@@ -50,6 +50,9 @@ struct ScheduleEventsList: View {
                         displayRoomName: schedule.selectedRoom == nil
                     )
                 )
+                .onDrag {
+                    NSItemProvider(item: event.contentURL as NSSecureCoding, typeIdentifier: "public.url")
+                }
             }
         }
     }
