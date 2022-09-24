@@ -1,5 +1,17 @@
 import EurofurenceWebAPI
 
+public struct UnimplementedEventCalendar: EventCalendar {
+    
+    public init() {
+        
+    }
+    
+    public func contains(entry: EventCalendarEntry) -> Bool {
+        false
+    }
+    
+}
+
 extension EurofurenceModel {
     
     /// Represents a collection of configurable attributes the model should use during runtime.
@@ -25,6 +37,7 @@ extension EurofurenceModel {
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
+            calendar: EventCalendar = UnimplementedEventCalendar(),
             conventionIdentifier: ConventionIdentifier = .current,
             clock: Clock = DeviceSensitiveClock.shared
         ) {
@@ -40,6 +53,7 @@ extension EurofurenceModel {
                 properties: properties,
                 keychain: keychain,
                 api: api,
+                calendar: calendar,
                 conventionIdentifier: conventionIdentifier
             )
         }
@@ -49,13 +63,15 @@ extension EurofurenceModel {
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
             api: EurofurenceAPI,
+            calendar: EventCalendar,
             conventionIdentifier: ConventionIdentifier = .current,
             clock: Clock = DeviceSensitiveClock.shared
         ) {
             self.persistentContainer = EurofurencePersistentContainer(
                 api: api,
                 keychain: keychain,
-                properties: properties
+                properties: properties,
+                calendar: calendar
             )
             
             self.properties = properties

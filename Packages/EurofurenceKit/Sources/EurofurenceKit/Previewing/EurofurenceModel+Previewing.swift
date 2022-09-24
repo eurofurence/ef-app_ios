@@ -149,6 +149,7 @@ extension EurofurenceModel {
             properties: properties,
             keychain: keychain,
             api: api,
+            calendar: PreviewingEventCalendar(),
             conventionIdentifier: content.conventionIdentifier
         )
         

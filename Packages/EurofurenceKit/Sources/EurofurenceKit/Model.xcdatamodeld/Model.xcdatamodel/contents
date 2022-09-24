@@ -70,6 +70,7 @@
         <attribute name="endDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="eventDescription" attributeType="String"/>
         <attribute name="isFavourite" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="isPresentInCalendar" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="slug" attributeType="String"/>
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="subtitle" attributeType="String"/>
