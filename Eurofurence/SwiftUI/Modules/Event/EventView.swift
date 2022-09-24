@@ -39,15 +39,7 @@ struct EventView: View {
             }
             
             ToolbarItem(placement: .bottomBar) {
-                Button {
-                    // TODO: Add to/remove from calendar!
-                } label: {
-                    Label {
-                        Text("Add to Calendar")
-                    } icon: {
-                        Image(systemName: "calendar.badge.plus")
-                    }
-                }
+                ToggleCalendarPresenceButton(event: event)
             }
             
             ToolbarItem(placement: .bottomBar) {
@@ -162,6 +154,41 @@ struct EventView: View {
                         
                         Divider()
                             .padding(.bottom, interTagSpacing)
+                    }
+                }
+            }
+        }
+        
+    }
+    
+    private struct ToggleCalendarPresenceButton: View {
+        
+        @ObservedObject var event: Event
+        @Environment(\.selectionChangedHaptic) private var selectionChangedHaptic
+        @State private var statusOverlayVisible = false
+        
+        var body: some View {
+            Button {
+                statusOverlayVisible = true
+                selectionChangedHaptic()
+                
+                if event.isPresentInCalendar {
+                    event.removeFromCalendar()
+                } else {
+                    event.addToCalendar()
+                }
+            } label: {
+                if event.isPresentInCalendar {
+                    Label {
+                        Text("Remove from Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.badge.minus")
+                    }
+                } else {
+                    Label {
+                        Text("Add to Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.badge.plus")
                     }
                 }
             }
