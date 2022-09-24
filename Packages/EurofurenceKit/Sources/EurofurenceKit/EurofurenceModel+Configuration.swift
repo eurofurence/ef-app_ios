@@ -1,27 +1,5 @@
 import EurofurenceWebAPI
 
-public struct UnimplementedEventCalendar: EventCalendar {
-    
-    public init() {
-        
-    }
-    
-    public let calendarChanged = EventCalendarChangedPublisher()
-    
-    public func add(entry: EventCalendarEntry) {
-        
-    }
-    
-    public func remove(entry: EventCalendarEntry) {
-        
-    }
-    
-    public func contains(entry: EventCalendarEntry) -> Bool {
-        false
-    }
-    
-}
-
 extension EurofurenceModel {
     
     /// Represents a collection of configurable attributes the model should use during runtime.
@@ -47,7 +25,7 @@ extension EurofurenceModel {
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
-            calendar: EventCalendar = UnimplementedEventCalendar(),
+            calendar: EventCalendar = EventKitCalendar.shared,
             conventionIdentifier: ConventionIdentifier = .current,
             clock: Clock = DeviceSensitiveClock.shared
         ) {

@@ -1,7 +1,7 @@
 import Foundation
 
 public struct EventCalendarEntry: Hashable {
-   
+    
     public var title: String
     public var startDate: Date
     public var endDate: Date
@@ -9,12 +9,13 @@ public struct EventCalendarEntry: Hashable {
     public var shortDescription: String
     public var url: URL?
     
-    public init(title: String,
-                startDate: Date,
-                endDate: Date,
-                location: String,
-                shortDescription: String,
-                url: URL? = nil
+    public init(
+        title: String,
+        startDate: Date,
+        endDate: Date,
+        location: String,
+        shortDescription: String,
+        url: URL? = nil
     ) {
         self.title = title
         self.startDate = startDate
