@@ -1,3 +1,4 @@
+import Combine
 import CoreData
 import EurofurenceWebAPI
 import Logging
@@ -6,6 +7,7 @@ import Logging
 public class Event: Entity {
     
     private static let logger = Logger(label: "Event")
+    private var subscriptions = Set<AnyCancellable>()
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
@@ -31,6 +33,7 @@ public class Event: Entity {
     /// Indicates whether the receiver has been included in the user's collection of favourite events.
     @NSManaged public internal(set) var isFavourite: Bool
     
+    /// Indicates whether the receiver has been added to a system calendar.
     @NSManaged public internal(set) var isPresentInCalendar: Bool
     
     /// Computes a stable `URL` for referencing this `Event` between the local model and the remote Eurofurence
@@ -41,25 +44,14 @@ public class Event: Entity {
     
     public override func awakeFromFetch() {
         super.awakeFromFetch()
-        isPresentInCalendar = eventsCalendar.contains(entry: calendarEntry)
+        prepareCalendarManagement()
     }
     
-    private var calendarEntry: EventCalendarEntry {
-        EventCalendarEntry(
-            title: calendarEntryTitle,
-            startDate: startDate,
-            endDate: endDate,
-            location: room.name,
-            shortDescription: abstract ?? "",
-            url: eurofurenceAPI.url(for: .event(id: identifier))
-        )
-    }
-    
-    private var calendarEntryTitle: String {
-        if tags.contains(where: { $0.name == "essential_subtitle" }) {
-            return "\(title) - \(subtitle)"
-        } else {
-            return title
+    public override func willTurnIntoFault() {
+        super.willTurnIntoFault()
+        
+        for subscription in subscriptions {
+            subscription.cancel()
         }
     }
     
@@ -217,6 +209,49 @@ extension Event {
         }
         
         return FeedbackForm(event: self, api: api)
+    }
+    
+}
+
+// MARK: - Calendar Management
+
+extension Event {
+    
+    private func prepareCalendarManagement() {
+        updateCalendarPresence()
+        listenForCalendarChanges()
+    }
+    
+    private func listenForCalendarChanges() {
+        eventsCalendar
+            .calendarChanged
+            .sink { [weak self] _ in
+                self?.updateCalendarPresence()
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func updateCalendarPresence() {
+        isPresentInCalendar = eventsCalendar.contains(entry: calendarEntry)
+    }
+    
+    private var calendarEntry: EventCalendarEntry {
+        EventCalendarEntry(
+            title: calendarEntryTitle,
+            startDate: startDate,
+            endDate: endDate,
+            location: room.name,
+            shortDescription: abstract ?? "",
+            url: eurofurenceAPI.url(for: .event(id: identifier))
+        )
+    }
+    
+    private var calendarEntryTitle: String {
+        if tags.contains(where: { $0.name == "essential_subtitle" }) {
+            return "\(title) - \(subtitle)"
+        } else {
+            return title
+        }
     }
     
 }
