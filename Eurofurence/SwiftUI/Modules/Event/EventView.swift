@@ -28,20 +28,6 @@ struct EventView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem {
-                ToggleEventFavouriteStateButton(event: event) {
-                    FavouriteIcon(filled: event.isFavourite)
-                }
-            }
-            
-            ToolbarItem(placement: .primaryAction) {
-                EurofurenceShareLink(url: event.contentURL, title: event.title)
-            }
-            
-            ToolbarItem(placement: .primaryAction) {
-                ToggleCalendarPresenceButton(event: event)
-            }
-            
             ToolbarItem(placement: .primaryAction) {
                 if event.acceptingFeedback {
                     Button {
@@ -64,6 +50,20 @@ struct EventView: View {
                         }
                     }
                 }
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                ToggleCalendarPresenceButton(event: event)
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                ToggleEventFavouriteStateButton(event: event) {
+                    FavouriteIcon(filled: event.isFavourite)
+                }
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                EurofurenceShareLink(url: event.contentURL, title: event.title)
             }
         }
         .sheet(item: $feedbackForm) { feedbackForm in
