@@ -223,9 +223,11 @@ extension Event {
 extension Event {
     
     /// Adds the receiver to the device calendar.
-    public func addToCalendar() {
+    ///
+    /// This method may fail if the user has denied access to their events database.
+    public func addToCalendar() throws {
         guard isPresentInCalendar == false else { return }
-        eventsCalendar.add(entry: calendarEntry)
+        try eventsCalendar.add(entry: calendarEntry)
     }
     
     public func removeFromCalendar() {

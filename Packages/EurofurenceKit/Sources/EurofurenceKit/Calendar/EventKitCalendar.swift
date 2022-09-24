@@ -21,8 +21,8 @@ public class EventKitCalendar: EventCalendar {
             })
     }
     
-    public func add(entry: EventCalendarEntry) {
-        attemptCalendarStoreEdit { [unowned self] in
+    public func add(entry: EventCalendarEntry) throws {
+        try attemptCalendarStoreEdit { [unowned self] in
             let calendarEvent = EKEvent(eventStore: eventStore)
             calendarEvent.calendar = eventStore.defaultCalendarForNewEvents
             calendarEvent.title = entry.title
@@ -37,19 +37,20 @@ public class EventKitCalendar: EventCalendar {
                 try eventStore.save(calendarEvent, span: .thisEvent)
             } catch {
                 logger.error("Failed to add calendar event", metadata: ["Error": .string(String(describing: error))])
+                throw error
             }
         }
     }
     
     public func remove(entry: EventCalendarEntry) {
-        attemptCalendarStoreEdit { [unowned self] in
-            if let event = eventKitEvent(for: entry) {
-                do {
+        do {
+            try attemptCalendarStoreEdit { [unowned self] in
+                if let event = eventKitEvent(for: entry) {
                     try eventStore.remove(event, span: .thisEvent)
-                } catch {
-                    logger.error("Failed to add remove event", metadata: ["Error": .string(String(describing: error))])
                 }
             }
+        } catch {
+            logger.error("Failed to add remove event", metadata: ["Error": .string(String(describing: error))])
         }
     }
     
@@ -65,19 +66,33 @@ public class EventKitCalendar: EventCalendar {
         return event
     }
     
-    private func attemptCalendarStoreEdit(edit: @escaping () -> Void) {
-        if EKEventStore.authorizationStatus(for: .event) == .authorized {
-            edit()
-        } else {
+    private func attemptCalendarStoreEdit(edit: @escaping () throws -> Void) throws {
+        let authorisationStatus = EKEventStore.authorizationStatus(for: .event)
+        switch authorisationStatus {
+        case .notDetermined:
             requestCalendarEditingAuthorisation(success: edit)
+            
+        case .authorized:
+            try edit()
+            
+        default:
+            struct PermissionNotGranted: Error { }
+            throw PermissionNotGranted()
         }
     }
     
-    private func requestCalendarEditingAuthorisation(success: @escaping () -> Void) {
+    private func requestCalendarEditingAuthorisation(success: @escaping () throws -> Void) {
         eventStore.requestAccess(to: .event) { granted, _ in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 if granted {
-                    success()
+                    do {
+                        try success()
+                    } catch {
+                        logger.error(
+                            "Failed to process editing action after requesting event store access",
+                            metadata: ["Error": .string(String(describing: error))]
+                        )
+                    }
                 }
             }
         }

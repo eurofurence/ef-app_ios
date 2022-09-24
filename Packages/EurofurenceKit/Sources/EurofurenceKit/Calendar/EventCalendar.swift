@@ -6,7 +6,7 @@ public protocol EventCalendar {
     
     var calendarChanged: EventCalendarChangedPublisher { get }
     
-    func add(entry: EventCalendarEntry)
+    func add(entry: EventCalendarEntry) throws
     func remove(entry: EventCalendarEntry)
     func contains(entry: EventCalendarEntry) -> Bool
     

@@ -76,7 +76,7 @@ class EventCalendarPresenceTests: EurofurenceKitTestCase {
             subscription.cancel()
         }
         
-        afterDarkDealersDenSetup.addToCalendar()
+        try afterDarkDealersDenSetup.addToCalendar()
         
         XCTAssertTrue(
             scenario.calendar.contains(entry: expectedCalendarEntry),
@@ -93,9 +93,9 @@ class EventCalendarPresenceTests: EurofurenceKitTestCase {
         let afterDarkDealersDenSetup = try scenario.model.event(identifiedBy: afterDarkDealersDenSetupID)
         
         let expectedCalendarEntry = try expectedAfterDarkDealersDenCalendarEntry(in: scenario)
-        afterDarkDealersDenSetup.addToCalendar()
-        afterDarkDealersDenSetup.addToCalendar()
-        afterDarkDealersDenSetup.addToCalendar()
+        try afterDarkDealersDenSetup.addToCalendar()
+        try afterDarkDealersDenSetup.addToCalendar()
+        try afterDarkDealersDenSetup.addToCalendar()
         
         XCTAssertEqual(
             1,
@@ -111,7 +111,7 @@ class EventCalendarPresenceTests: EurofurenceKitTestCase {
         let afterDarkDealersDenSetup = try scenario.model.event(identifiedBy: afterDarkDealersDenSetupID)
         
         let expectedCalendarEntry = try expectedAfterDarkDealersDenCalendarEntry(in: scenario)
-        afterDarkDealersDenSetup.addToCalendar()
+        try afterDarkDealersDenSetup.addToCalendar()
         
         let changedExpectation = expectation(
             description: "Event should notify it has changed after removing from calendar"

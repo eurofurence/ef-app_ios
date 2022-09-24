@@ -38,11 +38,11 @@ struct EventView: View {
                 EurofurenceShareLink(url: event.contentURL, title: event.title)
             }
             
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .primaryAction) {
                 ToggleCalendarPresenceButton(event: event)
             }
             
-            ToolbarItem(placement: .bottomBar) {
+            ToolbarItem(placement: .primaryAction) {
                 if event.acceptingFeedback {
                     Button {
                         do {
@@ -165,17 +165,21 @@ struct EventView: View {
         
         @ObservedObject var event: Event
         @Environment(\.selectionChangedHaptic) private var selectionChangedHaptic
-        @State private var statusOverlayVisible = false
+        @State private var isFailedToAddToCalendarAlertVisible = false
+        @Environment(\.openURL) private var openURL
         
         var body: some View {
             Button {
-                statusOverlayVisible = true
-                selectionChangedHaptic()
-                
-                if event.isPresentInCalendar {
-                    event.removeFromCalendar()
-                } else {
-                    event.addToCalendar()
+                do {
+                    selectionChangedHaptic()
+                    
+                    if event.isPresentInCalendar {
+                        event.removeFromCalendar()
+                    } else {
+                        try event.addToCalendar()
+                    }
+                } catch {
+                    isFailedToAddToCalendarAlertVisible = true
                 }
             } label: {
                 if event.isPresentInCalendar {
@@ -192,6 +196,26 @@ struct EventView: View {
                     }
                 }
             }
+            .alert("Not Permitted", isPresented: $isFailedToAddToCalendarAlertVisible) {
+                Button {
+#if os(iOS)
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+#endif
+                } label: {
+                    Text("Settings")
+                }
+                
+                Button(role: .cancel) {
+                    
+                } label: {
+                    Text("Cancel")
+                }
+            } message: {
+                Text("Grant Eurofurence Calendar access in the Settings app to add or remove events to the calendar")
+            }
+
         }
         
     }
