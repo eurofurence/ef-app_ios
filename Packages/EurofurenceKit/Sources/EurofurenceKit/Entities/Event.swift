@@ -34,7 +34,12 @@ public class Event: Entity {
     @NSManaged public internal(set) var isFavourite: Bool
     
     /// Indicates whether the receiver has been added to a system calendar.
-    @NSManaged public internal(set) var isPresentInCalendar: Bool
+    public var isPresentInCalendar: Bool {
+        get {
+            willAccessValue(forKey: nil)
+            return eventsCalendar.contains(entry: calendarEntry)
+        }
+    }
     
     /// Computes a stable `URL` for referencing this `Event` between the local model and the remote Eurofurence
     /// web API.
@@ -44,7 +49,7 @@ public class Event: Entity {
     
     public override func awakeFromFetch() {
         super.awakeFromFetch()
-        prepareCalendarManagement()
+        listenForCalendarChanges()
     }
     
     public override func willTurnIntoFault() {
@@ -217,22 +222,23 @@ extension Event {
 
 extension Event {
     
-    private func prepareCalendarManagement() {
-        updateCalendarPresence()
-        listenForCalendarChanges()
+    /// Adds the receiver to the device calendar.
+    public func addToCalendar() {
+        guard isPresentInCalendar == false else { return }
+        eventsCalendar.add(entry: calendarEntry)
+    }
+    
+    public func removeFromCalendar() {
+        eventsCalendar.remove(entry: calendarEntry)
     }
     
     private func listenForCalendarChanges() {
         eventsCalendar
             .calendarChanged
             .sink { [weak self] _ in
-                self?.updateCalendarPresence()
+                self?.objectWillChange.send()
             }
             .store(in: &subscriptions)
-    }
-    
-    private func updateCalendarPresence() {
-        isPresentInCalendar = eventsCalendar.contains(entry: calendarEntry)
     }
     
     private var calendarEntry: EventCalendarEntry {

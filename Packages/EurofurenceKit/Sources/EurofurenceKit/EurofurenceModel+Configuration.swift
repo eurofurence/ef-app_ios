@@ -8,6 +8,14 @@ public struct UnimplementedEventCalendar: EventCalendar {
     
     public let calendarChanged = EventCalendarChangedPublisher()
     
+    public func add(entry: EventCalendarEntry) {
+        
+    }
+    
+    public func remove(entry: EventCalendarEntry) {
+        
+    }
+    
     public func contains(entry: EventCalendarEntry) -> Bool {
         false
     }

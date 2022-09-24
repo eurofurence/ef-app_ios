@@ -22,6 +22,7 @@ class EurofurenceModelTestBuilder {
         var modelProperties: FakeModelProperties
         var api: FakeEurofurenceAPI
         var clock: FakeClock
+        var calendar: FakeEventCalendar
     }
     
     private var conventionIdentifier: ConventionIdentifier = .current
@@ -66,7 +67,7 @@ class EurofurenceModelTestBuilder {
         let model = EurofurenceModel(configuration: configuration)
         await model.prepareForPresentation()
         
-        return Scenario(model: model, modelProperties: properties, api: api, clock: clock)
+        return Scenario(model: model, modelProperties: properties, api: api, clock: clock, calendar: eventCalendar)
     }
     
 }
