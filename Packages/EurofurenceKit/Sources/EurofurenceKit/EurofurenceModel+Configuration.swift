@@ -25,6 +25,7 @@ extension EurofurenceModel {
             environment: Environment = .persistent,
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
+            calendar: EventCalendar = EventKitCalendar.shared,
             conventionIdentifier: ConventionIdentifier = .current,
             clock: Clock = DeviceSensitiveClock.shared
         ) {
@@ -40,6 +41,7 @@ extension EurofurenceModel {
                 properties: properties,
                 keychain: keychain,
                 api: api,
+                calendar: calendar,
                 conventionIdentifier: conventionIdentifier
             )
         }
@@ -49,13 +51,15 @@ extension EurofurenceModel {
             properties: EurofurenceModelProperties = AppGroupModelProperties.shared,
             keychain: Keychain = SecKeychain.shared,
             api: EurofurenceAPI,
+            calendar: EventCalendar,
             conventionIdentifier: ConventionIdentifier = .current,
             clock: Clock = DeviceSensitiveClock.shared
         ) {
             self.persistentContainer = EurofurencePersistentContainer(
                 api: api,
                 keychain: keychain,
-                properties: properties
+                properties: properties,
+                calendar: calendar
             )
             
             self.properties = properties

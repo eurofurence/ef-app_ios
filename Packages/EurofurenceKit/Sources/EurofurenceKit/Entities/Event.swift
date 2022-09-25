@@ -1,3 +1,4 @@
+import Combine
 import CoreData
 import EurofurenceWebAPI
 import Logging
@@ -6,6 +7,7 @@ import Logging
 public class Event: Entity {
     
     private static let logger = Logger(label: "Event")
+    private var subscriptions = Set<AnyCancellable>()
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Event> {
         return NSFetchRequest<Event>(entityName: "Event")
@@ -31,10 +33,29 @@ public class Event: Entity {
     /// Indicates whether the receiver has been included in the user's collection of favourite events.
     @NSManaged public internal(set) var isFavourite: Bool
     
+    /// Indicates whether the receiver has been added to a system calendar.
+    public var isPresentInCalendar: Bool {
+        willAccessValue(forKey: nil)
+        return eventsCalendar.contains(entry: calendarEntry)
+    }
+    
     /// Computes a stable `URL` for referencing this `Event` between the local model and the remote Eurofurence
     /// web API.
     public var contentURL: URL {
         eurofurenceAPI.url(for: .event(id: identifier))
+    }
+    
+    override public func awakeFromFetch() {
+        super.awakeFromFetch()
+        listenForCalendarChanges()
+    }
+    
+    override public func willTurnIntoFault() {
+        super.willTurnIntoFault()
+        
+        for subscription in subscriptions {
+            subscription.cancel()
+        }
     }
     
     /// Adds the receiver to the user's collection of favourited events.
@@ -191,6 +212,52 @@ extension Event {
         }
         
         return FeedbackForm(event: self, api: api)
+    }
+    
+}
+
+// MARK: - Calendar Management
+
+extension Event {
+    
+    /// Adds the receiver to the device calendar.
+    ///
+    /// This method may fail if the user has denied access to their events database.
+    public func addToCalendar() throws {
+        guard isPresentInCalendar == false else { return }
+        try eventsCalendar.add(entry: calendarEntry)
+    }
+    
+    public func removeFromCalendar() {
+        eventsCalendar.remove(entry: calendarEntry)
+    }
+    
+    private func listenForCalendarChanges() {
+        eventsCalendar
+            .calendarChanged
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private var calendarEntry: EventCalendarEntry {
+        EventCalendarEntry(
+            title: calendarEntryTitle,
+            startDate: startDate,
+            endDate: endDate,
+            location: room.name,
+            shortDescription: abstract ?? "",
+            url: eurofurenceAPI.url(for: .event(id: identifier))
+        )
+    }
+    
+    private var calendarEntryTitle: String {
+        if tags.contains(where: { $0.name == "essential_subtitle" }) {
+            return "\(title) - \(subtitle)"
+        } else {
+            return title
+        }
     }
     
 }

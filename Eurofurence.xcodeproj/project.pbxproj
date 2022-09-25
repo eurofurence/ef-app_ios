@@ -1699,7 +1699,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nif which swiftlint >/dev/null; then\n  swiftlint --config ${SRCROOT}/.swiftlint.yml ${SRCROOT}/\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n";
+			shellScript = "#!/bin/bash\n\nexport PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n  swiftlint --config ${SRCROOT}/.swiftlint.yml ${SRCROOT}/\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi \n";
 		};
 		CA8950F722B44DB200AF4875 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;

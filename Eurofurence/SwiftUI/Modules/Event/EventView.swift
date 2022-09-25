@@ -28,29 +28,7 @@ struct EventView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            ToolbarItem {
-                ToggleEventFavouriteStateButton(event: event) {
-                    FavouriteIcon(filled: event.isFavourite)
-                }
-            }
-            
             ToolbarItem(placement: .primaryAction) {
-                EurofurenceShareLink(url: event.contentURL, title: event.title)
-            }
-            
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    // TODO: Add to/remove from calendar!
-                } label: {
-                    Label {
-                        Text("Add to Calendar")
-                    } icon: {
-                        Image(systemName: "calendar.badge.plus")
-                    }
-                }
-            }
-            
-            ToolbarItem(placement: .bottomBar) {
                 if event.acceptingFeedback {
                     Button {
                         do {
@@ -72,6 +50,20 @@ struct EventView: View {
                         }
                     }
                 }
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                ToggleCalendarPresenceButton(event: event)
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                ToggleEventFavouriteStateButton(event: event) {
+                    FavouriteIcon(filled: event.isFavourite)
+                }
+            }
+            
+            ToolbarItem(placement: .primaryAction) {
+                EurofurenceShareLink(url: event.contentURL, title: event.title)
             }
         }
         .sheet(item: $feedbackForm) { feedbackForm in
@@ -165,6 +157,65 @@ struct EventView: View {
                     }
                 }
             }
+        }
+        
+    }
+    
+    private struct ToggleCalendarPresenceButton: View {
+        
+        @ObservedObject var event: Event
+        @Environment(\.selectionChangedHaptic) private var selectionChangedHaptic
+        @State private var isFailedToAddToCalendarAlertVisible = false
+        @Environment(\.openURL) private var openURL
+        
+        var body: some View {
+            Button {
+                do {
+                    selectionChangedHaptic()
+                    
+                    if event.isPresentInCalendar {
+                        event.removeFromCalendar()
+                    } else {
+                        try event.addToCalendar()
+                    }
+                } catch {
+                    isFailedToAddToCalendarAlertVisible = true
+                }
+            } label: {
+                if event.isPresentInCalendar {
+                    Label {
+                        Text("Remove from Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.badge.minus")
+                    }
+                } else {
+                    Label {
+                        Text("Add to Calendar")
+                    } icon: {
+                        Image(systemName: "calendar.badge.plus")
+                    }
+                }
+            }
+            .alert("Not Permitted", isPresented: $isFailedToAddToCalendarAlertVisible) {
+                Button {
+#if os(iOS)
+                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                        openURL(url)
+                    }
+#endif
+                } label: {
+                    Text("Settings")
+                }
+                
+                Button(role: .cancel) {
+                    
+                } label: {
+                    Text("Cancel")
+                }
+            } message: {
+                Text("Grant Eurofurence Calendar access in the Settings app to add or remove events to the calendar")
+            }
+
         }
         
     }

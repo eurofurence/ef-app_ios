@@ -8,11 +8,18 @@ class EurofurencePersistentContainer: NSPersistentContainer {
     private let api: EurofurenceAPI
     private let keychain: Keychain
     private let properties: EurofurenceModelProperties
+    private let calendar: EventCalendar
     
-    init(api: EurofurenceAPI, keychain: Keychain, properties: EurofurenceModelProperties) {
+    init(
+        api: EurofurenceAPI,
+        keychain: Keychain,
+        properties: EurofurenceModelProperties,
+        calendar: EventCalendar
+    ) {
         self.api = api
         self.keychain = keychain
         self.properties = properties
+        self.calendar = calendar
         
         super.init(name: "Eurofurence", managedObjectModel: .eurofurenceModel)
         
@@ -32,6 +39,7 @@ class EurofurencePersistentContainer: NSPersistentContainer {
         managedObjectContext.eurofurenceAPI = api
         managedObjectContext.keychain = keychain
         managedObjectContext.properties = properties
+        managedObjectContext.eventsCalendar = calendar
     }
     
 }

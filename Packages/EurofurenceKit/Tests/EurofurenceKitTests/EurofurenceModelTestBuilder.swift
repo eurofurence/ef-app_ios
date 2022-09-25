@@ -22,11 +22,13 @@ class EurofurenceModelTestBuilder {
         var modelProperties: FakeModelProperties
         var api: FakeEurofurenceAPI
         var clock: FakeClock
+        var calendar: FakeEventCalendar
     }
     
     private var conventionIdentifier: ConventionIdentifier = .current
     private var keychain: Keychain = UnauthenticatedKeychain()
     private var api = FakeEurofurenceAPI()
+    private var eventCalendar = FakeEventCalendar()
     
     func with(conventionIdentifier: ConventionIdentifier) -> Self {
         self.conventionIdentifier = conventionIdentifier
@@ -43,6 +45,11 @@ class EurofurenceModelTestBuilder {
         return self
     }
     
+    func with(eventCalendar: FakeEventCalendar) -> Self {
+        self.eventCalendar = eventCalendar
+        return self
+    }
+    
     @discardableResult
     func build() async -> Scenario {
         let properties = FakeModelProperties()
@@ -52,6 +59,7 @@ class EurofurenceModelTestBuilder {
             properties: properties,
             keychain: keychain,
             api: api,
+            calendar: eventCalendar,
             conventionIdentifier: conventionIdentifier,
             clock: clock
         )
@@ -59,7 +67,7 @@ class EurofurenceModelTestBuilder {
         let model = EurofurenceModel(configuration: configuration)
         await model.prepareForPresentation()
         
-        return Scenario(model: model, modelProperties: properties, api: api, clock: clock)
+        return Scenario(model: model, modelProperties: properties, api: api, clock: clock, calendar: eventCalendar)
     }
     
 }

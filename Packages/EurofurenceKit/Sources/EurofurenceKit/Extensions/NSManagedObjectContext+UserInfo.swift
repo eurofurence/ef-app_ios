@@ -8,6 +8,7 @@ extension NSManagedObjectContext {
         static let propertiesKey = "EFKModelProperties"
         static let keychainKey = "EFKKeychain"
         static let apiKey = "EFKEurofurenceAPI"
+        static let eventCalendarKey = "EFKEventCalendar"
     }
     
     /// The `NSPersistentContainer` that produced this managed object context.
@@ -50,6 +51,16 @@ extension NSManagedObjectContext {
         }
     }
     
+    /// The instance of the `EventCalendar` in use by the model.
+    var eventsCalendar: EventCalendar? {
+        get {
+            userInfo.object(forKey: Keys.eventCalendarKey) as? EventCalendar
+        }
+        set {
+            userInfo.setObject(newValue as Any, forKey: Keys.eventCalendarKey as NSCopying)
+        }
+    }
+    
 }
 
 // MARK: - NSManagedObject Convenience
@@ -59,6 +70,11 @@ extension NSManagedObject {
     /// The instance of the `EurofurenceAPI` in use by the model.
     var eurofurenceAPI: EurofurenceAPI {
         unsafeAccess(managedObjectContextKeyPath: \.eurofurenceAPI)
+    }
+    
+    /// The instance of the `EventCalendar` in use by the model.
+    var eventsCalendar: EventCalendar {
+        unsafeAccess(managedObjectContextKeyPath: \.eventsCalendar)
     }
     
     private func unsafeAccess<T>(managedObjectContextKeyPath: KeyPath<NSManagedObjectContext, T?>) -> T {

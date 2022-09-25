@@ -50,7 +50,14 @@ class FakeEurofurenceAPI: EurofurenceAPI {
     }
     
     func url(for content: EurofurenceContent) -> URL {
-        stubbedURLs[content, default: URL(fileURLWithPath: "/")]
+        stubbedURLs[content, default: synthesizeDefaultURL(for: content)]
+    }
+    
+    private func synthesizeDefaultURL(for content: EurofurenceContent) -> URL {
+        switch content {
+        case .event(let id):
+            return URL(string: "https://app.eurofurence.org/Event/\(id)").unsafelyUnwrapped
+        }
     }
     
     func executedRequests<T>(ofType: T.Type) -> [T] where T: APIRequest {
