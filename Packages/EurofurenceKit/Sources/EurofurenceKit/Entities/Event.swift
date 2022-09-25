@@ -35,10 +35,8 @@ public class Event: Entity {
     
     /// Indicates whether the receiver has been added to a system calendar.
     public var isPresentInCalendar: Bool {
-        get {
-            willAccessValue(forKey: nil)
-            return eventsCalendar.contains(entry: calendarEntry)
-        }
+        willAccessValue(forKey: nil)
+        return eventsCalendar.contains(entry: calendarEntry)
     }
     
     /// Computes a stable `URL` for referencing this `Event` between the local model and the remote Eurofurence
@@ -47,12 +45,12 @@ public class Event: Entity {
         eurofurenceAPI.url(for: .event(id: identifier))
     }
     
-    public override func awakeFromFetch() {
+    override public func awakeFromFetch() {
         super.awakeFromFetch()
         listenForCalendarChanges()
     }
     
-    public override func willTurnIntoFault() {
+    override public func willTurnIntoFault() {
         super.willTurnIntoFault()
         
         for subscription in subscriptions {

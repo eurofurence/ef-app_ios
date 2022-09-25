@@ -16,13 +16,15 @@ public class EventKitCalendar: EventCalendar {
             forName: .EKEventStoreChanged,
             object: eventStore,
             queue: .main,
-            using: { [unowned self] _ in
-                calendarChanged.send(self)
+            using: { [weak self] _ in
+                if let self = self {
+                    self.calendarChanged.send(self)
+                }
             })
     }
     
     public func add(entry: EventCalendarEntry) throws {
-        try attemptCalendarStoreEdit { [unowned self] in
+        try attemptCalendarStoreEdit { [eventStore, logger] in
             let calendarEvent = EKEvent(eventStore: eventStore)
             calendarEvent.calendar = eventStore.defaultCalendarForNewEvents
             calendarEvent.title = entry.title
@@ -44,8 +46,8 @@ public class EventKitCalendar: EventCalendar {
     
     public func remove(entry: EventCalendarEntry) {
         do {
-            try attemptCalendarStoreEdit { [unowned self] in
-                if let event = eventKitEvent(for: entry) {
+            try attemptCalendarStoreEdit { [weak self, eventStore] in
+                if let self = self, let event = self.eventKitEvent(for: entry) {
                     try eventStore.remove(event, span: .thisEvent)
                 }
             }
@@ -82,8 +84,8 @@ public class EventKitCalendar: EventCalendar {
     }
     
     private func requestCalendarEditingAuthorisation(success: @escaping () throws -> Void) {
-        eventStore.requestAccess(to: .event) { granted, _ in
-            DispatchQueue.main.async { [unowned self] in
+        eventStore.requestAccess(to: .event) { [logger] granted, _ in
+            DispatchQueue.main.async {
                 if granted {
                     do {
                         try success()
