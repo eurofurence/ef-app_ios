@@ -10,7 +10,7 @@ struct MapsView: View {
         List {
             ForEach(maps) { map in
                 NavigationLink {
-                    Text("")
+                    MapView(map: map)
                 } label: {
                     Text(map.mapDescription)
                 }

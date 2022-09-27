@@ -4,7 +4,6 @@ import SwiftUI
 public struct PannableView<Content>: View where Content: View {
     
     private let content: Content
-    private let geometry: GeometryProxy
     private let magnificationLimit: CGFloat = 3
     @State private var currentImageViewSize: CGSize = .zero
     
@@ -14,69 +13,71 @@ public struct PannableView<Content>: View where Content: View {
     @State private var translationFromIdentity = CGSize.zero
     @State private var inProgressDrag: DragGesture.Value?
     
-    public init(_ content: Content, geometry: GeometryProxy) {
-        self.geometry = geometry
+    public init(_ content: Content) {
         self.content = content
     }
     
-    public init(geometry: GeometryProxy, @ViewBuilder _ content: () -> Content) {
-        self.geometry = geometry
+    public init(@ViewBuilder _ content: () -> Content) {
         self.content = content()
     }
     
     public var body: some View {
-        content
-            .measure { newValue in
-                currentImageViewSize = newValue
-            }
-            .aspectRatio(contentMode: .fit)
-            .scaleEffect(currentGestureMagnification)
-            .offset(currentGestureTranslation)
-            .onChange(of: magnification) { _ in
-                withAnimation {
-                    translationFromIdentity = finalDragTranslation(
-                        proposedTranslation: .zero
-                    )
+        GeometryReader { geometry in
+            content
+                .measure { newValue in
+                    currentImageViewSize = newValue
                 }
-            }
-            .gesture(TapGesture(count: 2)
-                .onEnded { _ in
+                .aspectRatio(contentMode: .fit)
+                .scaleEffect(currentGestureMagnification)
+                .offset(currentGestureTranslation)
+                .onChange(of: magnification) { _ in
                     withAnimation {
-                        if fabsf(Float(magnification)) > 1 {
-                            magnification = 1
-                        } else {
-                            magnification = 2
+                        translationFromIdentity = finalDragTranslation(
+                            proposedTranslation: .zero,
+                            geometry: geometry
+                        )
+                    }
+                }
+                .gesture(TapGesture(count: 2)
+                    .onEnded { _ in
+                        withAnimation {
+                            if fabsf(Float(magnification)) > 1 {
+                                magnification = 1
+                            } else {
+                                magnification = 2
+                            }
+                            
+                            translationFromIdentity = .zero
                         }
+                    })
+                .gesture(MagnificationGesture()
+                    .onChanged { scale in
+                        inProgressMagnification = scale
+                    }
+                    .onEnded { scale in
+                        withAnimation {
+                            let totalMagnificiation = max(min(magnificationLimit, magnification * scale), 1)
+                            magnification = totalMagnificiation
+                            inProgressMagnification = 1
+                        }
+                    })
+                .simultaneousGesture(DragGesture()
+                    .onChanged { value in
+                        inProgressDrag = value
+                    }
+                    .onEnded { value in
+                        let translation = finalDragTranslation(
+                            proposedTranslation: value.predictedEndTranslation,
+                            geometry: geometry
+                        )
                         
-                        translationFromIdentity = .zero
-                    }
-                })
-            .gesture(MagnificationGesture()
-                .onChanged { scale in
-                    inProgressMagnification = scale
-                }
-                .onEnded { scale in
-                    withAnimation {
-                        let totalMagnificiation = max(min(magnificationLimit, magnification * scale), 1)
-                        magnification = totalMagnificiation
-                        inProgressMagnification = 1
-                    }
-                })
-            .simultaneousGesture(DragGesture()
-                .onChanged { value in
-                    inProgressDrag = value
-                }
-                .onEnded { value in
-                    let translation = finalDragTranslation(
-                        proposedTranslation: value.predictedEndTranslation
-                    )
-                    
-                    withAnimation(.easeOut) {
-                        inProgressDrag = nil
-                        translationFromIdentity = translation
-                    }
-                })
-            .edgesIgnoringSafeArea(.all)
+                        withAnimation(.easeOut) {
+                            inProgressDrag = nil
+                            translationFromIdentity = translation
+                        }
+                    })
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        }
     }
     
     private var currentGestureMagnification: CGFloat {
@@ -93,7 +94,7 @@ public struct PannableView<Content>: View where Content: View {
         return translation
     }
     
-    private func finalDragTranslation(proposedTranslation: CGSize) -> CGSize {
+    private func finalDragTranslation(proposedTranslation: CGSize, geometry: GeometryProxy) -> CGSize {
         var finalTranslation = translationFromIdentity
         finalTranslation.width += proposedTranslation.width
         finalTranslation.height += proposedTranslation.height
@@ -103,13 +104,17 @@ public struct PannableView<Content>: View where Content: View {
             height: currentImageViewSize.height * magnification
         )
         
-        adjustHorizontalComponent(proposedTranslation: &finalTranslation, viewSize: viewSize)
-        adjustVerticalComponent(proposedTranslation: &finalTranslation, viewSize: viewSize)
+        adjustHorizontalComponent(proposedTranslation: &finalTranslation, viewSize: viewSize, geometry: geometry)
+        adjustVerticalComponent(proposedTranslation: &finalTranslation, viewSize: viewSize, geometry: geometry)
         
         return finalTranslation
     }
     
-    private func adjustHorizontalComponent(proposedTranslation: inout CGSize, viewSize: CGSize) {
+    private func adjustHorizontalComponent(
+        proposedTranslation: inout CGSize,
+        viewSize: CGSize,
+        geometry: GeometryProxy
+    ) {
         let w_i = viewSize.width
         let w_v = geometry.size.width
         
@@ -149,7 +154,11 @@ public struct PannableView<Content>: View where Content: View {
         }
     }
     
-    private func adjustVerticalComponent(proposedTranslation: inout CGSize, viewSize: CGSize) {
+    private func adjustVerticalComponent(
+        proposedTranslation: inout CGSize,
+        viewSize: CGSize,
+        geometry: GeometryProxy
+    ) {
         let h_i = viewSize.height
         let h_v = geometry.size.height
         

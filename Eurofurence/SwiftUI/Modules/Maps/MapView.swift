@@ -6,14 +6,13 @@ struct MapView: View {
     @ObservedObject var map: Map
     
     var body: some View {
-        ZStack {
-            map
-                .graphic
-                .image?
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+        ZStack(alignment: .center) {
+            if let mapImage = map.graphic.image {
+                PannableView(mapImage.resizable().aspectRatio(contentMode: .fit))
+            }
         }
         .navigationTitle(map.mapDescription)
+        .navigationBarTitleDisplayMode(.inline)
     }
     
 }
