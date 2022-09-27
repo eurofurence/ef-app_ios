@@ -74,6 +74,15 @@ extension EurofurenceModel {
         try entity(identifiedBy: identifier, throwWhenMissing: .invalidRoom(identifier))
     }
     
+    /// Fetches the `Map` associated with the given identifier.
+    ///
+    /// - Parameter identifier: The identifier of the map to be fetched.
+    /// - Returns: The `Map` associated with the given identifier.
+    /// - Throws: `EurofurenceError.invalidMap` if no `Map` is associated with the given identifier.
+    public func map(identifiedBy identifier: String) throws -> Map {
+        try entity(identifiedBy: identifier, throwWhenMissing: .invalidMap(identifier))
+    }
+    
     /// Fetches the `Message` associated with the given identifier.
     ///
     /// - Parameter identifier: The identifier of the message to be fetched.

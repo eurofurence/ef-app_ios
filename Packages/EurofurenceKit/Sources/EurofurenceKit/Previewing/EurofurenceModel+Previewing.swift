@@ -344,4 +344,31 @@ extension EurofurenceModel {
         )
     }
     
+    public enum PreviewMap {
+        
+        case venue
+        case dealersDen
+        
+        fileprivate var identifier: String {
+            switch self {
+            case .venue:
+                return "825c3a3c-7fb6-46aa-ada4-efa597ca6d45"
+                
+            case .dealersDen:
+                return "62a74341-880f-49f1-a52d-0a3f480e81a6"
+            }
+        }
+        
+    }
+    
+    public func map(for map: PreviewMap) -> Map {
+        let id = map.identifier
+        
+        do {
+            return try self.map(identifiedBy: id)
+        } catch {
+            fatalError("Failed to find map from preview JSON with ID \(id)")
+        }
+    }
+    
 }
