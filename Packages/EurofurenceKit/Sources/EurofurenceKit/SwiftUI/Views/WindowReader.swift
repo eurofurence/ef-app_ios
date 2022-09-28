@@ -7,14 +7,14 @@ import UIKit
 #endif
 
 #if os(iOS)
-typealias WindowType = UIWindow
+public typealias WindowType = UIWindow
 #elseif os(macOS)
-typealias WindowType = NSWindow
+public typealias WindowType = NSWindow
 #endif
 
 extension EnvironmentValues {
     
-    var window: WindowType {
+    public var window: WindowType {
         get {
             self[WindowEnvironmentKey.self]
         }

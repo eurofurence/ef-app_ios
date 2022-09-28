@@ -46,7 +46,6 @@
 		6EA4ECE428C9285D00B20502 /* DealerSidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECE328C9285D00B20502 /* DealerSidebarItems.swift */; };
 		6EA4ECE628C9288800B20502 /* ScheduleSidebarItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4ECE528C9288800B20502 /* ScheduleSidebarItems.swift */; };
 		6EAFCC0428DB2290001F8DEB /* EurofurenceShareLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAFCC0328DB2290001F8DEB /* EurofurenceShareLink.swift */; };
-		6EAFCC0628DB2483001F8DEB /* WindowReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAFCC0528DB2483001F8DEB /* WindowReader.swift */; };
 		6EB17FEF28D35B30008DB4F1 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB17FEE28D35B30008DB4F1 /* EventView.swift */; };
 		6EB17FF128D37915008DB4F1 /* EventSubtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB17FF028D37915008DB4F1 /* EventSubtitle.swift */; };
 		6EE14CBA28D533E600A3A117 /* AlignedLabelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE14CB928D533E600A3A117 /* AlignedLabelContainer.swift */; };
@@ -362,7 +361,6 @@
 		6EA4ECE328C9285D00B20502 /* DealerSidebarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealerSidebarItems.swift; sourceTree = "<group>"; };
 		6EA4ECE528C9288800B20502 /* ScheduleSidebarItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSidebarItems.swift; sourceTree = "<group>"; };
 		6EAFCC0328DB2290001F8DEB /* EurofurenceShareLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EurofurenceShareLink.swift; sourceTree = "<group>"; };
-		6EAFCC0528DB2483001F8DEB /* WindowReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowReader.swift; sourceTree = "<group>"; };
 		6EB17FEE28D35B30008DB4F1 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		6EB17FF028D37915008DB4F1 /* EventSubtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSubtitle.swift; sourceTree = "<group>"; };
 		6EE14CB928D533E600A3A117 /* AlignedLabelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlignedLabelContainer.swift; sourceTree = "<group>"; };
@@ -876,7 +874,6 @@
 				6E8389D228CF73EA007E14DC /* Lazy.swift */,
 				6E8389D728CF7441007E14DC /* SelectableRow.swift */,
 				6EAFCC0328DB2290001F8DEB /* EurofurenceShareLink.swift */,
-				6EAFCC0528DB2483001F8DEB /* WindowReader.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1776,7 +1773,6 @@
 				6E08B1BA28CE0C1800512406 /* MoreLabel.swift in Sources */,
 				6E8389D828CF7441007E14DC /* SelectableRow.swift in Sources */,
 				CA2AA2F222C9514500C0E1A1 /* DonateFromAppDealerIntentDonor.swift in Sources */,
-				6EAFCC0628DB2483001F8DEB /* WindowReader.swift in Sources */,
 				6E79E66B28C9CDCE00444A37 /* EventConferenceDaysView.swift in Sources */,
 				6E8389DA28CFC8AD007E14DC /* View+MediumPresentationDetent.swift in Sources */,
 				CAE434FD25FEBA4D001E74B7 /* PrincipalWindowSceneDelegate.swift in Sources */,

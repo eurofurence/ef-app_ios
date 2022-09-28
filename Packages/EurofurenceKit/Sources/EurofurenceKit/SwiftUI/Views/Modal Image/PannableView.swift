@@ -1,5 +1,17 @@
 import SwiftUI
 
+struct IsPanningOutsideContainerPreferenceKey: PreferenceKey {
+    
+    typealias Value = Bool
+    
+    static var defaultValue: Bool = false
+    
+    static func reduce(value: inout Bool, nextValue: () -> Bool) {
+        value = value && nextValue()
+    }
+    
+}
+
 /// A `View` that enables panning and zooming of another view.
 public struct PannableView<Content>: View where Content: View {
     
@@ -12,6 +24,8 @@ public struct PannableView<Content>: View where Content: View {
     
     @State private var translationFromIdentity = CGSize.zero
     @State private var inProgressDrag: DragGesture.Value?
+    
+    @State private var isPanningOutsideContainer = false
     
     public init(_ content: Content) {
         self.content = content
@@ -30,6 +44,16 @@ public struct PannableView<Content>: View where Content: View {
                 .aspectRatio(contentMode: .fit)
                 .scaleEffect(currentGestureMagnification)
                 .offset(currentGestureTranslation)
+                .onChange(of: currentGestureMagnification) { newValue in
+                    // Determine whether we're panning outside the container, i.e. we occupy >= 75% the total viewport
+                    // height. If this is the case, give a hint to the view hiearchy to accomodate for any visual
+                    // clipping.
+                    let availableHeight = geometry.size.height
+                    let scaledHeight = newValue * currentImageViewSize.height
+                    let proportion = scaledHeight / availableHeight
+                    let relativeContainerProportionVerticalAxis = 0.75
+                    isPanningOutsideContainer = proportion >= relativeContainerProportionVerticalAxis
+                }
                 .onChange(of: magnification) { _ in
                     withAnimation {
                         translationFromIdentity = finalDragTranslation(
@@ -38,6 +62,7 @@ public struct PannableView<Content>: View where Content: View {
                         )
                     }
                 }
+                .preference(key: IsPanningOutsideContainerPreferenceKey.self, value: isPanningOutsideContainer)
                 .gesture(TapGesture(count: 2)
                     .onEnded { _ in
                         withAnimation {

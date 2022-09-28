@@ -11,8 +11,11 @@ struct MapView: View {
                 PannableView(mapImage.resizable().aspectRatio(contentMode: .fit))
             }
         }
-        .navigationTitle(map.mapDescription)
+        // Keep the ZStack centered in the scene, regardless of whether the navigation bars are displayed
+        .edgesIgnoringSafeArea(.all)
         .navigationBarTitleDisplayMode(.inline)
+        .hideToolbarsWhenPanningLargerThanContainer()
+        .navigationTitle(map.mapDescription)
     }
     
 }
