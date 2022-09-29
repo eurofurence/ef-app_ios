@@ -16,7 +16,7 @@ extension View {
     
     @ViewBuilder
     func onInteraction(perform: @escaping (CGPoint) -> Void) -> some View {
-        if #available(iOS 16.0, *) {
+        if #available(iOS 16.0, *, macOS 13.0, *) {
             modifier(ModernInteractionViewModifier(action: perform))
         } else {
             modifier(LegacyInteractionViewModifier(action: perform))
@@ -25,16 +25,19 @@ extension View {
     
 }
 
-@available(iOS 16.0, *)
+@available(iOS 16.0, *, macOS 13.0, *)
 private struct ModernInteractionViewModifier: ViewModifier {
     
     let action: (CGPoint) -> Void
     
     func body(content: Content) -> some View {
         content
+        // TODO: Fix for macOS
+#if os(iOS)
             .onTapGesture { point in
                 action(point)
             }
+#endif
     }
     
 }
