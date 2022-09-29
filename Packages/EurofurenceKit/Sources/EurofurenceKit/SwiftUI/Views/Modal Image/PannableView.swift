@@ -12,12 +12,56 @@ struct IsPanningOutsideContainerPreferenceKey: PreferenceKey {
     
 }
 
+extension View {
+    
+    @ViewBuilder
+    func onInteraction(perform: @escaping (CGPoint) -> Void) -> some View {
+        if #available(iOS 16.0, *) {
+            modifier(ModernInteractionViewModifier(action: perform))
+        } else {
+            modifier(LegacyInteractionViewModifier(action: perform))
+        }
+    }
+    
+}
+
+@available(iOS 16.0, *)
+private struct ModernInteractionViewModifier: ViewModifier {
+    
+    let action: (CGPoint) -> Void
+    
+    func body(content: Content) -> some View {
+        content
+            .onTapGesture { point in
+                action(point)
+            }
+    }
+    
+}
+
+private struct LegacyInteractionViewModifier: ViewModifier {
+    
+    let action: (CGPoint) -> Void
+    
+    func body(content: Content) -> some View {
+        content
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onEnded { value in
+                        let point = value.location
+                        action(point)
+                    }
+            )
+    }
+    
+}
+
 /// A `View` that enables panning and zooming of another view.
 public struct PannableView<Content>: View where Content: View {
     
     private let content: Content
     private let magnificationLimit: CGFloat = 3
-    @State private var currentImageViewSize: CGSize = .zero
+    @State private var measuredSize: CGSize = .zero
     
     @State private var magnification = 1.0
     @State private var inProgressMagnification = 1.0
@@ -26,12 +70,21 @@ public struct PannableView<Content>: View where Content: View {
     @State private var inProgressDrag: DragGesture.Value?
     
     @State private var isPanningOutsideContainer = false
+    @Binding private var selectedProportionalLocation: CGPoint?
     
-    public init(_ content: Content) {
+    public init(
+        selectedProportionalLocation: Binding<CGPoint?> = .constant(nil),
+        _ content: Content
+    ) {
+        _selectedProportionalLocation = selectedProportionalLocation
         self.content = content
     }
     
-    public init(@ViewBuilder _ content: () -> Content) {
+    public init(
+        selectedProportionalLocation: Binding<CGPoint?> = .constant(nil),
+        @ViewBuilder _ content: () -> Content
+    ) {
+        _selectedProportionalLocation = selectedProportionalLocation
         self.content = content()
     }
     
@@ -39,7 +92,7 @@ public struct PannableView<Content>: View where Content: View {
         GeometryReader { geometry in
             content
                 .measure { newValue in
-                    currentImageViewSize = newValue
+                    measuredSize = newValue
                 }
                 .aspectRatio(contentMode: .fit)
                 .scaleEffect(currentGestureMagnification)
@@ -49,7 +102,7 @@ public struct PannableView<Content>: View where Content: View {
                     // height. If this is the case, give a hint to the view hiearchy to accomodate for any visual
                     // clipping.
                     let availableHeight = geometry.size.height
-                    let scaledHeight = newValue * currentImageViewSize.height
+                    let scaledHeight = newValue * measuredSize.height
                     let proportion = scaledHeight / availableHeight
                     let relativeContainerProportionVerticalAxis = 0.75
                     isPanningOutsideContainer = proportion >= relativeContainerProportionVerticalAxis
@@ -102,6 +155,36 @@ public struct PannableView<Content>: View where Content: View {
                         }
                     })
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onInteraction { location in
+                    // Transform the coordinate from the coordinate space of the container into the coordinate space
+                    // of the target view.
+                    let magnifiedSize = CGSize(
+                        width: measuredSize.width * magnification,
+                        height: measuredSize.height * magnification
+                    )
+                    
+                    // Start by working out the "top" position of the view in the window
+                    var top = (geometry.size.height / 2) - (magnifiedSize.height / 2)
+                    
+                    // Apply any vertical translation from the identity position.
+                    top += translationFromIdentity.height
+                    
+                    // Now work out the true "left" position based on current scaling and magnification.
+                    var left = (geometry.size.width / 2) - (magnifiedSize.width / 2)
+                    left += translationFromIdentity.width
+                    
+                    // Subtract the inbound coordinates to transform the points into the local coordinate space.
+                    let offset = CGPoint(x: location.x - left, y: location.y - top)
+                    
+                    // Finally scale these positions relative to the size of the container to work out the proportions.
+                    let proportionalOffset = CGPoint(
+                        x: offset.x / magnifiedSize.width,
+                        y: offset.y / magnifiedSize.height
+                    )
+                    
+                    // Propogate this value through the binding back to the presenting view.
+                    selectedProportionalLocation = proportionalOffset
+                }
         }
     }
     
@@ -125,8 +208,8 @@ public struct PannableView<Content>: View where Content: View {
         finalTranslation.height += proposedTranslation.height
         
         let viewSize = CGSize(
-            width: currentImageViewSize.width * magnification,
-            height: currentImageViewSize.height * magnification
+            width: measuredSize.width * magnification,
+            height: measuredSize.height * magnification
         )
         
         adjustHorizontalComponent(proposedTranslation: &finalTranslation, viewSize: viewSize, geometry: geometry)
