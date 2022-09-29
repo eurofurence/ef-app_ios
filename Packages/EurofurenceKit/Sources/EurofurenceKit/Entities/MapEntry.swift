@@ -2,19 +2,19 @@ import CoreData
 import EurofurenceWebAPI
 
 @objc(MapEntry)
-public class MapEntry: NSManagedObject {
+class MapEntry: NSManagedObject {
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<MapEntry> {
         return NSFetchRequest<MapEntry>(entityName: "MapEntry")
     }
 
-    @NSManaged public var identifier: String
-    @NSManaged public var radius: Int32
-    @NSManaged public var x: Int32
-    @NSManaged public var y: Int32
-    @NSManaged public var links: Set<MapEntryLink>
-    @NSManaged public var map: Map
-
+    @NSManaged var identifier: String
+    @NSManaged var radius: Int32
+    @NSManaged var x: Int32
+    @NSManaged var y: Int32
+    @NSManaged var links: Set<MapEntryLink>
+    @NSManaged var map: Map
+    
 }
 
 // MARK: - Fetching

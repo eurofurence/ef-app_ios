@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Map)
 public class Map: Entity {
+    
+    private static let logger = Logger(label: "Map")
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Map> {
         return NSFetchRequest<Map>(entityName: "Map")
@@ -11,9 +14,66 @@ public class Map: Entity {
     @NSManaged public var isBrowsable: Bool
     @NSManaged public var mapDescription: String
     @NSManaged public var order: Int16
-    @NSManaged public var entries: Set<MapEntry>
     @NSManaged public var graphic: MapGraphic
+    
+    @NSManaged var entries: Set<MapEntry>
 
+}
+
+// MARK: - Content Lookup
+
+extension Map {
+    
+    public struct Coordinate {
+        
+        let x: Int
+        let y: Int
+        
+        public init(x: Int, y: Int) {
+            self.x = x
+            self.y = y
+        }
+        
+    }
+    
+    public enum Entry {
+        case dealer(Dealer)
+    }
+    
+    public func entry(at coordinate: Coordinate) -> Entry? {
+        let fetchRequest: NSFetchRequest<MapEntry> = MapEntry.fetchRequest()
+        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
+            NSPredicate(format: "x == %li", coordinate.x),
+            NSPredicate(format: "y == %li", coordinate.y)
+        ])
+        
+        do {
+            guard let fetchedResults = try managedObjectContext?.fetch(fetchRequest) else {
+                return nil
+            }
+            
+            guard let entry = fetchedResults.first else { return nil }
+            guard let link = entry.links.first else { return nil }
+            guard let destination = link.destination else { return nil }
+            
+            switch destination {
+            case .dealer(let dealer):
+                return .dealer(dealer)
+            }
+        } catch {
+            Self.logger.error(
+                "Failed to fetch map entries for specific coordinate",
+                metadata: [
+                    "Map": .string(identifier),
+                    "Coordinate": .string("x=\(coordinate.x) , y=\(coordinate.y)"),
+                    "Error": .string(String(describing: error))
+                ]
+            )
+            
+            return nil
+        }
+    }
+    
 }
 
 // MARK: - Map + ConsumesRemoteResponse
