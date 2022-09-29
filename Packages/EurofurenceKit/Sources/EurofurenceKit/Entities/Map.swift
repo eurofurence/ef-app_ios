@@ -24,6 +24,7 @@ public class Map: Entity {
 
 extension Map {
     
+    /// A location within the geometry of a `Map`.
     public struct Coordinate {
         
         let x: Int
@@ -36,42 +37,30 @@ extension Map {
         
     }
     
-    public enum Entry {
+    /// A content assignment against a `Map`, associated to a specific location.
+    public enum Entry: Comparable, Equatable {
         case dealer(Dealer)
     }
     
-    public func entry(at coordinate: Coordinate) -> Entry? {
-        let fetchRequest: NSFetchRequest<MapEntry> = MapEntry.fetchRequest()
-        fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [
-            NSPredicate(format: "x == %li", coordinate.x),
-            NSPredicate(format: "y == %li", coordinate.y)
-        ])
-        
-        do {
-            guard let fetchedResults = try managedObjectContext?.fetch(fetchRequest) else {
-                return nil
-            }
-            
-            guard let entry = fetchedResults.first else { return nil }
-            guard let link = entry.links.first else { return nil }
-            guard let destination = link.destination else { return nil }
-            
-            switch destination {
-            case .dealer(let dealer):
-                return .dealer(dealer)
-            }
-        } catch {
-            Self.logger.error(
-                "Failed to fetch map entries for specific coordinate",
-                metadata: [
-                    "Map": .string(identifier),
-                    "Coordinate": .string("x=\(coordinate.x) , y=\(coordinate.y)"),
-                    "Error": .string(String(describing: error))
-                ]
-            )
-            
-            return nil
+    /// Determines the entries present at a specified point on the map.
+    /// - Parameter coordinate: The `Coordinate` of the map to resolve the entries for.
+    /// - Returns: A collection of entries associated with the designated map coordinate.
+    public func entries(at coordinate: Coordinate) -> [Entry] {
+        var entriesInRange = [MapEntry]()
+        for entry in entries where entry.isWithinTappingRange(of: coordinate) {
+            entriesInRange.append(entry)
         }
+        
+        return entriesInRange
+            .flatMap(\.links)
+            .compactMap(\.destination)
+            .map { destination in
+                switch destination {
+                case .dealer(let dealer):
+                    return .dealer(dealer)
+                }
+            }
+            .sorted()
     }
     
 }

@@ -15,6 +15,15 @@ class MapEntry: NSManagedObject {
     @NSManaged var links: Set<MapEntryLink>
     @NSManaged var map: Map
     
+    func isWithinTappingRange(of coordinate: Map.Coordinate) -> Bool {
+        distance(from: coordinate) <= Double(radius)
+    }
+    
+    private func distance(from coordinate: Map.Coordinate) -> Double {
+        let (dX, dY) = (coordinate.x - Int(x), coordinate.y - Int(y))
+        return hypot(Double(abs(dX)), Double(abs(dY)))
+    }
+    
 }
 
 // MARK: - Fetching

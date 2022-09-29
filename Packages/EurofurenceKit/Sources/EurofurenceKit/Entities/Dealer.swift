@@ -32,6 +32,16 @@ public class Dealer: Entity {
 
 }
 
+// MARK: Dealer + Comparable
+
+extension Dealer: Comparable {
+    
+    public static func < (lhs: Dealer, rhs: Dealer) -> Bool {
+        lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
+    }
+
+}
+
 // MARK: - Dealer + ConsumesRemoteResponse
 
 extension Dealer: ConsumesRemoteResponse {
