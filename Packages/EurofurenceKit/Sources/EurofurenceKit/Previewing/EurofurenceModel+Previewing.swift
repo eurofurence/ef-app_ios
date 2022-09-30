@@ -371,4 +371,27 @@ extension EurofurenceModel {
         }
     }
     
+    public enum PreviewDealer {
+        
+        case animasAnimus
+        
+        fileprivate var identifier: String {
+            switch self {
+            case .animasAnimus:
+                return "895d60b9-1462-4d35-91c5-113ab5aba47c"
+            }
+        }
+        
+    }
+    
+    public func dealer(for dealer: PreviewDealer) -> Dealer {
+        let id = dealer.identifier
+        
+        do {
+            return try self.dealer(identifiedBy: id)
+        } catch {
+            fatalError("Failed to find dealer from preview JSON with ID \(id)")
+        }
+    }
+    
 }

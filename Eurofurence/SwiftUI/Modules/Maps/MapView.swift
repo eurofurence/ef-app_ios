@@ -40,9 +40,11 @@ struct MapView: View {
         .hideToolbarsWhenPanningLargerThanContainer()
         .navigationTitle(map.mapDescription)
         .sheet(item: $selectedEntry) { entry in
-            switch entry {
-            case .dealer(let dealer):
-                Text(dealer.name)
+            NavigationView {
+                switch entry {
+                case .dealer(let dealer):
+                    DealerView(dealer: dealer)
+                }
             }
         }
         .confirmationDialog("Select Option", isPresented: isDisambiguiatingEntrySelection) {
