@@ -35,7 +35,8 @@ class MapTests: EurofurenceKitTestCase {
         let item = try XCTUnwrap(map.entries(at: point).first, "Expected to find an entry at the exact position")
         
         if case .dealer(let dealer) = item {
-            XCTAssertEqual("895d60b9-1462-4d35-91c5-113ab5aba47c", dealer.id, "Expected Animal Animus")
+            XCTAssertEqual("895d60b9-1462-4d35-91c5-113ab5aba47c", dealer.id, "Expected AnimasAnimus")
+            XCTAssertEqual("AnimasAnimus", item.title)
         } else {
             XCTFail("Unexpected map element: \(item)")
         }

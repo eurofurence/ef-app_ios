@@ -52,7 +52,7 @@ struct MapView: View {
                 Button {
                     selectedEntry = entry
                 } label: {
-                    Text("NEEDS TITLE")
+                    Text(entry.title)
                 }
             }
         }

@@ -39,6 +39,7 @@ extension Map {
     
     /// A content assignment against a `Map`, associated to a specific location.
     public enum Entry: Comparable, Equatable, Identifiable {
+        
         public var id: some Hashable {
             switch self {
             case .dealer(let dealer):
@@ -46,7 +47,16 @@ extension Map {
             }
         }
         
+        /// A user-facing title to display for this entry.
+        public var title: String {
+            switch self {
+            case .dealer(let dealer):
+                return dealer.name
+            }
+        }
+        
         case dealer(Dealer)
+        
     }
     
     /// Determines the entries present at a specified point on the map.
