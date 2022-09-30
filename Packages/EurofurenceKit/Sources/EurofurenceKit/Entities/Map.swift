@@ -38,7 +38,14 @@ extension Map {
     }
     
     /// A content assignment against a `Map`, associated to a specific location.
-    public enum Entry: Comparable, Equatable {
+    public enum Entry: Comparable, Equatable, Identifiable {
+        public var id: some Hashable {
+            switch self {
+            case .dealer(let dealer):
+                return dealer.id
+            }
+        }
+        
         case dealer(Dealer)
     }
     
