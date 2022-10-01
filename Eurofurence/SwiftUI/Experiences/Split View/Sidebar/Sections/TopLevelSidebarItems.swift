@@ -27,7 +27,7 @@ struct TopLevelSidebarItems: View {
         }
         
         NavigationLink(tag: Item.maps, selection: $selectedItem) {
-            Text("Maps")
+            MapsView()
         } label: {
             MapsLabel(isSelected: selectedItem == .maps)
         }

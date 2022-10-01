@@ -10,6 +10,7 @@ public enum EurofurenceError: Error, Equatable {
     case invalidTrack(String)
     case invalidDay(String)
     case invalidRoom(String)
+    case invalidMap(String)
     
     case loginFailed
     

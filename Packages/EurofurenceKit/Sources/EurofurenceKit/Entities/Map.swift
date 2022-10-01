@@ -1,8 +1,11 @@
 import CoreData
 import EurofurenceWebAPI
+import Logging
 
 @objc(Map)
 public class Map: Entity {
+    
+    private static let logger = Logger(label: "Map")
 
     @nonobjc class func fetchRequest() -> NSFetchRequest<Map> {
         return NSFetchRequest<Map>(entityName: "Map")
@@ -11,9 +14,72 @@ public class Map: Entity {
     @NSManaged public var isBrowsable: Bool
     @NSManaged public var mapDescription: String
     @NSManaged public var order: Int16
-    @NSManaged public var entries: Set<MapEntry>
     @NSManaged public var graphic: MapGraphic
+    
+    @NSManaged var entries: Set<MapEntry>
 
+}
+
+// MARK: - Content Lookup
+
+extension Map {
+    
+    /// A location within the geometry of a `Map`.
+    public struct Coordinate {
+        
+        let x: Int
+        let y: Int
+        
+        public init(x: Int, y: Int) {
+            self.x = x
+            self.y = y
+        }
+        
+    }
+    
+    /// A content assignment against a `Map`, associated to a specific location.
+    public enum Entry: Comparable, Equatable, Identifiable {
+        
+        public var id: some Hashable {
+            switch self {
+            case .dealer(let dealer):
+                return dealer.id
+            }
+        }
+        
+        /// A user-facing title to display for this entry.
+        public var title: String {
+            switch self {
+            case .dealer(let dealer):
+                return dealer.name
+            }
+        }
+        
+        case dealer(Dealer)
+        
+    }
+    
+    /// Determines the entries present at a specified point on the map.
+    /// - Parameter coordinate: The `Coordinate` of the map to resolve the entries for.
+    /// - Returns: A collection of entries associated with the designated map coordinate.
+    public func entries(at coordinate: Coordinate) -> [Entry] {
+        var entriesInRange = [MapEntry]()
+        for entry in entries where entry.isWithinTappingRange(of: coordinate) {
+            entriesInRange.append(entry)
+        }
+        
+        return entriesInRange
+            .flatMap(\.links)
+            .compactMap(\.destination)
+            .map { destination in
+                switch destination {
+                case .dealer(let dealer):
+                    return .dealer(dealer)
+                }
+            }
+            .sorted()
+    }
+    
 }
 
 // MARK: - Map + ConsumesRemoteResponse

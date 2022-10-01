@@ -1,3 +1,4 @@
+import EurofurenceKit
 import UIKit
 
 class AutoPatchSplitViewControllerWindow: UIWindow {
@@ -18,28 +19,6 @@ class AutoPatchSplitViewControllerWindow: UIWindow {
                 splitViewController.preferredDisplayMode = .twoBesideSecondary
             }
         }
-    }
-    
-}
-
-private extension UIViewController {
-    
-    func firstDescendent<T>(ofType type: T.Type) -> T? where T: UIViewController {
-        if let target = self as? T {
-            return target
-        }
-        
-        for child in children {
-            if let target = child as? T {
-                return target
-            } else {
-                if let target = child.firstDescendent(ofType: type) {
-                    return target
-                }
-            }
-        }
-        
-        return nil
     }
     
 }
