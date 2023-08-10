@@ -109,35 +109,36 @@ struct PrincipalWindowAssembler {
             mapsComponentDelegate: ShowMapFromMaps(router: router)
         )
         
-        let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
-            collectThemAllComponentFactory: componentRegistry.collectThemAllComponentFactory
-        )
-        
-        let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
-            additionalServicesComponentFactory: componentRegistry.additionalServicesComponentFactory
-        )
-        
-        let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
-            SupplementaryContentController(
-                contentControllerFactory: mapsContentControllerFactory,
-                presentationHandler: contentWireframe.presentPrimaryContentController(_:)
-            ),
-            SupplementaryContentController(
-                contentControllerFactory: collectThemAllContentControllerFactory,
-                presentationHandler: contentWireframe.replaceDetailContentController(_:)
-            ),
-            SupplementaryContentController(
-                contentControllerFactory: additionalServicesContentControllerFactory,
-                presentationHandler: contentWireframe.replaceDetailContentController(_:)
-            )
-        ])
+// todo: Reenable widget once support for new IDP has been implemented
+//        let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
+//            collectThemAllComponentFactory: componentRegistry.collectThemAllComponentFactory
+//        )
+//
+//        let additionalServicesContentControllerFactory = AdditionalServicesContentControllerFactory(
+//            additionalServicesComponentFactory: componentRegistry.additionalServicesComponentFactory
+//        )
+//
+//        let moreContentControllerFactory = MoreContentControllerFactory(supplementaryContentControllerFactories: [
+//            SupplementaryContentController(
+//                contentControllerFactory: mapsContentControllerFactory,
+//                presentationHandler: contentWireframe.presentPrimaryContentController(_:)
+//            ),
+//            SupplementaryContentController(
+//                contentControllerFactory: collectThemAllContentControllerFactory,
+//                presentationHandler: contentWireframe.replaceDetailContentController(_:)
+//            ),
+//            SupplementaryContentController(
+//                contentControllerFactory: additionalServicesContentControllerFactory,
+//                presentationHandler: contentWireframe.replaceDetailContentController(_:)
+//            )
+//        ])
         
         return [
             newsContentControllerFactory,
             scheduleContentControllerFactory,
             dealersContentControllerFactory,
             knowledgeContentControllerFactory,
-            moreContentControllerFactory
+            mapsContentControllerFactory
         ]
     }
     
