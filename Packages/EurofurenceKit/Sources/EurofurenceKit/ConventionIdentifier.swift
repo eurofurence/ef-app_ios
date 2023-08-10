@@ -12,6 +12,6 @@ public struct ConventionIdentifier: Equatable {
 
 extension ConventionIdentifier {
     
-    public static let current = ConventionIdentifier("EF26")
+    public static let current = ConventionIdentifier("EF27")
     
 }
