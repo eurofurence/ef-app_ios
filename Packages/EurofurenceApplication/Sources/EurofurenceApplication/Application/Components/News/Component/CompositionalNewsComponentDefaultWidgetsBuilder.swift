@@ -14,7 +14,8 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
     }
     
     func buildNewsComponent() -> any NewsComponentFactory {
-        addPersonalisedWidget()
+        // todo: Reenable widget once support for new IDP has been implemented
+        // addPersonalisedWidget()
         addCountdownWidget()
         addAnnouncementsWidget()
         addUpcomingEventsWidget()
