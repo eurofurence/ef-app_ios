@@ -109,7 +109,7 @@ struct PrincipalWindowAssembler {
             mapsComponentDelegate: ShowMapFromMaps(router: router)
         )
         
-// todo: Reenable widget once support for new IDP has been implemented
+// TODO: Reenable widget once support for new IDP has been implemented
 //        let collectThemAllContentControllerFactory = CollectThemAllContentControllerFactory(
 //            collectThemAllComponentFactory: componentRegistry.collectThemAllComponentFactory
 //        )

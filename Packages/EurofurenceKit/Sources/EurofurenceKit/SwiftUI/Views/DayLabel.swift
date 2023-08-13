@@ -46,19 +46,19 @@ private struct PrimitiveDayLabel: View {
 struct DayLabel_Previews: PreviewProvider {
     
     static var previews: some View {
-        let earlyArrivalEF26Components = DateComponents(
+        let earlyArrivalEF27Components = DateComponents(
             calendar: .current,
             timeZone: .conventionTimeZone,
-            year: 2022,
-            month: 8,
-            day: 23,
+            year: 2023,
+            month: 9,
+            day: 2,
             hour: 12
         )
         
-        let earlyArrivalEF26 = earlyArrivalEF26Components.date.unsafelyUnwrapped
+        let earlyArrivalEF27 = earlyArrivalEF27Components.date.unsafelyUnwrapped
         
-        PrimitiveDayLabel(name: "Early Arrival", date: earlyArrivalEF26, isSelected: false)
-        PrimitiveDayLabel(name: "Early Arrival", date: earlyArrivalEF26, isSelected: true)
+        PrimitiveDayLabel(name: "Early Arrival", date: earlyArrivalEF27, isSelected: false)
+        PrimitiveDayLabel(name: "Early Arrival", date: earlyArrivalEF27, isSelected: true)
     }
     
 }

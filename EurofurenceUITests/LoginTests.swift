@@ -3,6 +3,9 @@ import XCTest
 class LoginTests: UIAutomationTestCase {
     
     func testCanNavigateToScheduleAfterSigningIn_BUG() throws {
+        // TODO: Reenable once support for new IDP has been implemented
+        throw XCTSkip("Login feature disabled due to deprecation.")
+        
         XCUIDevice.shared.orientation = .portrait
         
         controller.app.launch()

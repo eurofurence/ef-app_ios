@@ -17,7 +17,7 @@ extension EurofurenceModel {
         fileprivate var conventionIdentifier: ConventionIdentifier {
             switch self {
             case .ef26:
-                return ConventionIdentifier("EF26")
+                return ConventionIdentifier("EF27")
             }
         }
         
