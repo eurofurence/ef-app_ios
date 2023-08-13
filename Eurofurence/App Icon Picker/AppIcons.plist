@@ -16,7 +16,7 @@
 		<key>EFAppIconImageFileName</key>
 		<string>Themed</string>
 		<key>EFAppIconDisplayNameLocalizedStringKey</key>
-		<string>OnTheHighSeasAppIconDisplayName</string>
+		<string>ThemedAppIconDisplayName</string>
 	</dict>
 </array>
 </plist>
