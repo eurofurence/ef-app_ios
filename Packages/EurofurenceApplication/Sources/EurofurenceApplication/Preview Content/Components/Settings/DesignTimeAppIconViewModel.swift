@@ -33,7 +33,7 @@ extension DesignTimeAppIconViewModel {
     }
     
     static var highSeas: DesignTimeAppIconViewModel {
-        DesignTimeAppIconViewModel(imageName: "Pirate", displayName: "High Seas", isCurrentAppIcon: false)
+        DesignTimeAppIconViewModel(imageName: "Themed", displayName: "Black Magic", isCurrentAppIcon: false)
     }
     
 }
