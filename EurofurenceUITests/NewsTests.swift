@@ -3,6 +3,9 @@ import XCTest
 class NewsTests: UIAutomationTestCase {
     
     func testMessagesListingDoesNotAppearInSecondaryPane() throws {
+        // TODO: Reenable once support for new IDP has been implemented
+        throw XCTSkip("Login feature disabled due to deprecation.")
+        
         try controller.skipIfTablet()
         
         XCUIDevice.shared.orientation = .portrait
@@ -19,6 +22,9 @@ class NewsTests: UIAutomationTestCase {
     }
     
     func testSigningOutWhileViewingMesssagesInLandscape() throws {
+        // TODO: Reenable once support for new IDP has been implemented
+        throw XCTSkip("Login feature disabled due to deprecation.")
+        
         XCUIDevice.shared.orientation = .landscapeLeft
         controller.app.launch()
         controller.transitionToContent()

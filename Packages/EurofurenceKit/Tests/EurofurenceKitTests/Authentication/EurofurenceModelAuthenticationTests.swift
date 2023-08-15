@@ -104,6 +104,8 @@ class EurofurenceModelAuthenticationTests: EurofurenceKitTestCase {
     }
     
     func testLoggingIn_ThenRegisteringRemoteNotificationDeviceToken() async throws {
+        // TODO: Reenable once support for new IDP has been implemented
+        throw XCTSkip("Login feature disabled due to deprecation.")
         let scenario = await EurofurenceModelTestBuilder().with(keychain: UnauthenticatedKeychain()).build()
         
         let login = Login(registrationNumber: 108, username: "Some Guy", password: "donthackmebro")

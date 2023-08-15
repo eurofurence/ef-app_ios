@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "banner_2022_logo@1x.png",
+      "filename" : "banner_2023_logo@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "banner_2022_logo@2x.png",
+      "filename" : "banner_2023_logo@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "banner_2022_logo.png",
+      "filename" : "banner_2023_logo.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
