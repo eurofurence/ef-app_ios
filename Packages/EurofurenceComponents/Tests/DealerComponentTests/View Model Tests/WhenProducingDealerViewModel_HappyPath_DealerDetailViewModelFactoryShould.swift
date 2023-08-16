@@ -53,7 +53,25 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
             )
         )
     }
-
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnAnyDay_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = false
+        extendedDealerData.isAttendingOnFriday = false
+        extendedDealerData.isAttendingOnSaturday = false
+        extendedDealerData.isAfterDark = false
+        
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: "Location and Availability",
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: nil,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
+    }
+    
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursday_AndNotInAfterDarkDen_AtIndexOne() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = false
