@@ -81,7 +81,7 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         
         // TODO: EF27 weekdays
         // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Friday", "Saturday"])
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Tueday", "Wednesday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Tuesday", "Wednesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(

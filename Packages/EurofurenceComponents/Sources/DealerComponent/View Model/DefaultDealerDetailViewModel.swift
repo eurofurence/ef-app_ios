@@ -191,6 +191,10 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
             comment: "Text displayed with the days during the convention a dealer is present for, e.g. 'Thursday'"
         )
         
+        if data.isAttendingOnThursday && data.isAttendingOnFriday && data.isAttendingOnSaturday {
+            return nil
+        }
+        
         var days = [String]()
 
         // TODO: Improve model (and backend API) to support arbitrary weekdays
