@@ -53,7 +53,25 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
             )
         )
     }
-
+    
+    func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnAnyDay_AndNotInAfterDarkDen_AtIndexOne() {
+        var extendedDealerData = ExtendedDealerData.random
+        extendedDealerData.isAttendingOnThursday = false
+        extendedDealerData.isAttendingOnFriday = false
+        extendedDealerData.isAttendingOnSaturday = false
+        extendedDealerData.isAfterDark = false
+        
+        assertDealerData(
+            extendedDealerData,
+            produces: DealerDetailLocationAndAvailabilityViewModel(
+                title: "Location and Availability",
+                mapPNGGraphicData: extendedDealerData.dealersDenMapLocationGraphicPNGData,
+                limitedAvailabilityWarning: nil,
+                locatedInAfterDarkDealersDenMessage: nil
+            )
+        )
+    }
+    
     func testProduceExpectedLocationAndAvailability_WhenNotAvailableOnThursday_AndNotInAfterDarkDen_AtIndexOne() {
         var extendedDealerData = ExtendedDealerData.random
         extendedDealerData.isAttendingOnThursday = false
@@ -61,7 +79,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Friday", "Saturday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Friday", "Saturday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Tuesday", "Wednesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(
@@ -80,7 +100,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday", "Saturday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday", "Saturday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Monday", "Wednesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(
@@ -99,7 +121,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday", "Friday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday", "Friday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Monday", "Tuesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(
@@ -118,7 +142,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Thursday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Monday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(
@@ -137,7 +163,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = false
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Friday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Friday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Tuesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(
@@ -156,7 +184,9 @@ class WhenProducingDealerViewModel_HappyPath_DealerDetailViewModelFactoryShould:
         extendedDealerData.isAttendingOnSaturday = true
         extendedDealerData.isAfterDark = false
         
-        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Saturday"])
+        // TODO: EF27 weekdays
+        // let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Saturday"])
+        let limitedAvailabilityWarning = makeExpectedLimitedAvailabilityWarning(["Wednesday"])
         assertDealerData(
             extendedDealerData,
             produces: DealerDetailLocationAndAvailabilityViewModel(

@@ -212,9 +212,11 @@ public struct DefaultDealersViewModelFactory: DealersViewModelFactory, DealersIn
 
             title = dealer.preferredName
             subtitle = dealer.alternateName
-            isPresentForAllDays = dealer.isAttendingOnThursday &&
+            isPresentForAllDays = (dealer.isAttendingOnThursday &&
                                   dealer.isAttendingOnFriday &&
-                                  dealer.isAttendingOnSaturday
+                                  dealer.isAttendingOnSaturday) || (!dealer.isAttendingOnThursday &&
+                                                                   !dealer.isAttendingOnFriday &&
+                                                                   !dealer.isAttendingOnSaturday)
             isAfterDarkContentPresent = dealer.isAfterDark
         }
 

@@ -191,30 +191,33 @@ struct DefaultDealerDetailViewModel: DealerDetailViewModel {
             comment: "Text displayed with the days during the convention a dealer is present for, e.g. 'Thursday'"
         )
         
+        if data.isAttendingOnThursday && data.isAttendingOnFriday && data.isAttendingOnSaturday {
+            return nil
+        }
+        
         var days = [String]()
 
-        if !data.isAttendingOnThursday {
-            days = ["Friday", "Saturday"]
+        // TODO: Improve model (and backend API) to support arbitrary weekdays
+        /*
+         EF27 starts on Sunday instead of Wednesday, thus DD is open Monday to Wednesday instead of Thursday to Saturday:
+         Thursday -> Monday
+         Friday   -> Tuesday
+         Saturday -> Wednesday
+         */
+        if data.isAttendingOnThursday {
+            // TODO: EF27 weekdays
+            // days.append("Thursday")
+            days.append("Monday")
         }
-
-        if !data.isAttendingOnFriday {
-            days = ["Thursday", "Saturday"]
+        if data.isAttendingOnFriday {
+            // TODO: EF27 weekdays
+            // days.append("Friday")
+            days.append("Tuesday")
         }
-
-        if !data.isAttendingOnSaturday {
-            days = ["Thursday", "Friday"]
-        }
-
-        if !data.isAttendingOnFriday && !data.isAttendingOnSaturday {
-            days = ["Thursday"]
-        }
-
-        if !data.isAttendingOnThursday && !data.isAttendingOnSaturday {
-            days = ["Friday"]
-        }
-
-        if !data.isAttendingOnThursday && !data.isAttendingOnFriday {
-            days = ["Saturday"]
+        if data.isAttendingOnSaturday {
+            // TODO: EF27 weekdays
+            // days.append("Saturday")
+            days.append("Wednesday")
         }
 
         if days.isEmpty {

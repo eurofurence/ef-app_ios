@@ -14,6 +14,13 @@ class WhenResolvingDealerAvailability_DealersViewModelFactoryShould: XCTestCase 
         )
         
         assertIsPresentForAllDays(
+            true,
+            isAttendingOnThursday: false,
+            isAttendingOnFriday: false,
+            isAttendingOnSaturday: false
+        )
+        
+        assertIsPresentForAllDays(
             false,
             isAttendingOnThursday: false,
             isAttendingOnFriday: true,
