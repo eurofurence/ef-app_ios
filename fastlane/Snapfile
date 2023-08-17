@@ -1,21 +1,17 @@
 devices([
    "iPhone SE (3rd generation)",
-   "iPhone 8",
-   "iPhone 8 Plus",
-   "iPhone 13",
-   "iPhone 13 Pro Max",
+   "iPhone 14",
+   "iPhone 14 Pro Max",
 
-   "iPad Pro (9.7-inch)",
-   "iPad Pro (11-inch) (3rd generation)",
-   "iPad Pro (12.9-inch) (2nd generation)",
-   "iPad Pro (12.9-inch) (5th generation)"
+   "iPad Pro (11-inch) (4th generation)",
+   "iPad Pro (12.9-inch) (6th generation)"
 ])
 
 languages([
   "en-US"
 ])
 
-workspace("Eurofurence.xcworkspace")
+project("Eurofurence.xcodeproj")
 scheme("Eurofurence")
 testplan("Screenshots")
 output_directory("./screenshots")
