@@ -36,11 +36,12 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     private func takePhoneScreenshots() throws {
+        app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
+                                          thenDragTo: app.tabBars.firstMatch)
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
-        
-        app.tables.firstMatch.swipeDown()
+        try automationController.transitionToKnownEvent()
         
         snapshot("02_Schedule")
         
@@ -49,7 +50,7 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("03_EventDetail")
         
         automationController.tapTab(.dealers)
-        app.tables.firstMatch.swipeDown()
+        try automationController.transitionToKnownDealer()
         
         snapshot("04_Dealers")
         
@@ -64,30 +65,37 @@ class ScreenshotGenerator: XCTestCase {
         try automationController.tapKnownKnowledgeGroup()
         
         snapshot("07_SocialMedia")
+        
+        automationController.tapTab(.maps)
+        
+        snapshot("08_Maps")
     }
     
     private func takeTabletScreenshots() throws {
+        app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
+                                          thenDragTo: app.tabBars.firstMatch)
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
-        
-        app.tables.firstMatch.swipeDown()
-        
         try automationController.tapKnownEvent()
         
         snapshot("02_Schedule")
         
         automationController.tapTab(.dealers)
-        
+        try automationController.transitionToKnownDealer()
         try automationController.tapKnownDealer()
         
         snapshot("03_Dealers")
         
         automationController.tapTab(.information)
-        
         try automationController.tapKnownKnowledgeGroup()
         
         snapshot("04_Information")
+        
+        automationController.tapTab(.maps)
+        try automationController.tapKnownMap()
+        
+        snapshot("05_Maps")
     }
 
 }

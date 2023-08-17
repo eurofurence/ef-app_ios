@@ -45,6 +45,11 @@ extension AutomationController {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
     
+    func transitionToKnownEvent() throws {
+        app.buttons["Tue 5"].tap()
+        try waitForCellWithText("Furry Tails Theater")
+    }
+    
     func tapKnownEvent() throws {
         // We know this event has a good amount of text for most devices for testing (bar a larger iPad).
         // This may need to change as more event info pops through for EF26.
@@ -53,9 +58,11 @@ extension AutomationController {
     }
     
     func tapKnownDealer() throws {
-        try XCTSkipIf(true, "The API does not yield dealers at the moment. Dealer based UI tests are disabled.")
-        
-        try tapCellWithText("Eurofurence Shop")
+        try tapCellWithText("Eurofurence Convention Store")
+    }
+    
+    func transitionToKnownDealer() throws {
+        try waitForCellWithText("Eurofurence Convention Store")
     }
     
     func tapKnownKnowledgeGroup() throws {
@@ -63,6 +70,9 @@ extension AutomationController {
         try tapCellWithText("Eurofurence on Social Media")
     }
     
+    func tapKnownMap() throws {
+        app.staticTexts["CCH & Radisson Venue"].tap()
+    }
 }
 
 // MARK: - Finding Elements
@@ -111,6 +121,7 @@ extension AutomationController {
         case schedule
         case dealers
         case information
+        case maps
         
         fileprivate func tap(in application: XCUIApplication) {
             application.tabBars.buttons[identifier].tap()
@@ -124,6 +135,8 @@ extension AutomationController {
                 return "Dealers"
             case .information:
                 return "Information"
+            case .maps:
+                return "Maps"
             }
         }
         
@@ -172,7 +185,7 @@ extension AutomationController {
             return 250
             
         default:
-            return 400
+            return 450
         }
     }
     
