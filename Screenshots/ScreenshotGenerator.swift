@@ -36,12 +36,16 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     private func takePhoneScreenshots() throws {
+        // Force refresh to ensure updated data if app was already installed on simulator
         app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
                                           thenDragTo: app.tabBars.firstMatch)
+        try automationController.prepareFavouriteEvents()
+        
+        automationController.tapTab(.news)
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
-        try automationController.transitionToKnownEvent()
+        app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
         
@@ -50,7 +54,7 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("03_EventDetail")
         
         automationController.tapTab(.dealers)
-        try automationController.transitionToKnownDealer()
+        app.tables.firstMatch.swipeDown()
         
         snapshot("04_Dealers")
         
@@ -74,6 +78,9 @@ class ScreenshotGenerator: XCTestCase {
     private func takeTabletScreenshots() throws {
         app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
                                           thenDragTo: app.tabBars.firstMatch)
+        try automationController.prepareFavouriteEvents()
+        try automationController.tapKnownFavouriteEvent()
+        
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
@@ -82,7 +89,6 @@ class ScreenshotGenerator: XCTestCase {
         snapshot("02_Schedule")
         
         automationController.tapTab(.dealers)
-        try automationController.transitionToKnownDealer()
         try automationController.tapKnownDealer()
         
         snapshot("03_Dealers")

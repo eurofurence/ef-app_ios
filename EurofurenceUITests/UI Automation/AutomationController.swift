@@ -45,9 +45,16 @@ extension AutomationController {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
     
-    func transitionToKnownEvent() throws {
+    func prepareFavouriteEvents() throws {
+        tapTab(.schedule)
         app.buttons["Tue 5"].tap()
-        try waitForCellWithText("Furry Tails Theater")
+        try swipeLeftCellWithText("Furry Tails Theater")
+        app.buttons["Favourite"].tap()
+        app.buttons["Tue 5"].tap()
+    }
+    
+    func tapKnownFavouriteEvent() throws {
+        try tapCellWithText("Furry Tails Theater")
     }
     
     func tapKnownEvent() throws {
@@ -59,10 +66,6 @@ extension AutomationController {
     
     func tapKnownDealer() throws {
         try tapCellWithText("Eurofurence Convention Store")
-    }
-    
-    func transitionToKnownDealer() throws {
-        try waitForCellWithText("Eurofurence Convention Store")
     }
     
     func tapKnownKnowledgeGroup() throws {
@@ -118,6 +121,7 @@ extension AutomationController {
     
     enum Tab {
         
+        case news
         case schedule
         case dealers
         case information
@@ -129,6 +133,8 @@ extension AutomationController {
         
         private var identifier: String {
             switch self {
+            case .news:
+                return "News"
             case .schedule:
                 return "Schedule"
             case .dealers:
@@ -179,13 +185,18 @@ extension AutomationController {
         textElement.tap()
     }
     
+    func swipeLeftCellWithText(_ text: String) throws {
+        let textElement = try waitForCellWithText(text)
+        textElement.swipeLeft(velocity: XCUIGestureVelocity(integerLiteral: 400))
+    }
+    
     private var verticalSwipeVelocity: XCUIGestureVelocity {
         switch XCUIDevice.shared.orientation {
         case .landscapeLeft, .landscapeRight:
-            return 250
+            return 400
             
         default:
-            return 450
+            return 500
         }
     }
     
