@@ -19,8 +19,8 @@ struct CompositionalNewsComponentDefaultWidgetsBuilder {
         addCountdownWidget()
         addAnnouncementsWidget()
         addUpcomingEventsWidget()
-        addRunningEventsWidget()
         addTodaysFavouriteEventsWidget()
+        addRunningEventsWidget()
         
         return builder.build()
     }

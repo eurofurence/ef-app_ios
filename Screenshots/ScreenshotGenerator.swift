@@ -36,10 +36,15 @@ class ScreenshotGenerator: XCTestCase {
     }
     
     private func takePhoneScreenshots() throws {
+        // Force refresh to ensure updated data if app was already installed on simulator
+        app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
+                                          thenDragTo: app.tabBars.firstMatch)
+        try automationController.prepareFavouriteEvents()
+        
+        automationController.tapTab(.news)
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
-        
         app.tables.firstMatch.swipeDown()
         
         snapshot("02_Schedule")
@@ -64,30 +69,39 @@ class ScreenshotGenerator: XCTestCase {
         try automationController.tapKnownKnowledgeGroup()
         
         snapshot("07_SocialMedia")
+        
+        automationController.tapTab(.maps)
+        
+        snapshot("08_Maps")
     }
     
     private func takeTabletScreenshots() throws {
+        app.tables.cells.firstMatch.press(forDuration: TimeInterval(integerLiteral: 1),
+                                          thenDragTo: app.tabBars.firstMatch)
+        try automationController.prepareFavouriteEvents()
+        try automationController.tapKnownFavouriteEvent()
+        
         snapshot("01_News")
 
         automationController.tapTab(.schedule)
-        
-        app.tables.firstMatch.swipeDown()
-        
         try automationController.tapKnownEvent()
         
         snapshot("02_Schedule")
         
         automationController.tapTab(.dealers)
-        
         try automationController.tapKnownDealer()
         
         snapshot("03_Dealers")
         
         automationController.tapTab(.information)
-        
         try automationController.tapKnownKnowledgeGroup()
         
         snapshot("04_Information")
+        
+        automationController.tapTab(.maps)
+        try automationController.tapKnownMap()
+        
+        snapshot("05_Maps")
     }
 
 }

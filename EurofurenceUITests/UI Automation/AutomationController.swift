@@ -45,6 +45,18 @@ extension AutomationController {
         } while waitingForTabItemToAppear && totalWaitTimeSeconds < threeMinutes
     }
     
+    func prepareFavouriteEvents() throws {
+        tapTab(.schedule)
+        app.buttons["Tue 5"].tap()
+        try swipeLeftCellWithText("Furry Tails Theater")
+        app.buttons["Favourite"].tap()
+        app.buttons["Tue 5"].tap()
+    }
+    
+    func tapKnownFavouriteEvent() throws {
+        try tapCellWithText("Furry Tails Theater")
+    }
+    
     func tapKnownEvent() throws {
         // We know this event has a good amount of text for most devices for testing (bar a larger iPad).
         // This may need to change as more event info pops through for EF26.
@@ -53,9 +65,7 @@ extension AutomationController {
     }
     
     func tapKnownDealer() throws {
-        try XCTSkipIf(true, "The API does not yield dealers at the moment. Dealer based UI tests are disabled.")
-        
-        try tapCellWithText("Eurofurence Shop")
+        try tapCellWithText("Eurofurence Convention Store")
     }
     
     func tapKnownKnowledgeGroup() throws {
@@ -63,6 +73,9 @@ extension AutomationController {
         try tapCellWithText("Eurofurence on Social Media")
     }
     
+    func tapKnownMap() throws {
+        app.staticTexts["CCH & Radisson Venue"].tap()
+    }
 }
 
 // MARK: - Finding Elements
@@ -108,9 +121,11 @@ extension AutomationController {
     
     enum Tab {
         
+        case news
         case schedule
         case dealers
         case information
+        case maps
         
         fileprivate func tap(in application: XCUIApplication) {
             application.tabBars.buttons[identifier].tap()
@@ -118,12 +133,16 @@ extension AutomationController {
         
         private var identifier: String {
             switch self {
+            case .news:
+                return "News"
             case .schedule:
                 return "Schedule"
             case .dealers:
                 return "Dealers"
             case .information:
                 return "Information"
+            case .maps:
+                return "Maps"
             }
         }
         
@@ -166,13 +185,18 @@ extension AutomationController {
         textElement.tap()
     }
     
+    func swipeLeftCellWithText(_ text: String) throws {
+        let textElement = try waitForCellWithText(text)
+        textElement.swipeLeft(velocity: XCUIGestureVelocity(integerLiteral: 400))
+    }
+    
     private var verticalSwipeVelocity: XCUIGestureVelocity {
         switch XCUIDevice.shared.orientation {
         case .landscapeLeft, .landscapeRight:
-            return 250
+            return 400
             
         default:
-            return 400
+            return 500
         }
     }
     
