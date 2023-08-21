@@ -12,7 +12,11 @@ public class AppDelegate: UIResponder, UIApplicationDelegate {
 	public var window: UIWindow?
     
     private var isRunningSwiftUI: Bool {
+        #if DEBUG
         UserDefaults.standard.bool(forKey: "EFSwiftUIAppVariantEnabled")
+        #else
+        false
+        #endif
     }
 
     public func application(
