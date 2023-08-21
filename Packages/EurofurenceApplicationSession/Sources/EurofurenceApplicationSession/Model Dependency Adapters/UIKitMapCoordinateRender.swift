@@ -23,7 +23,7 @@ struct UIKitMapCoordinateRender: MapCoordinateRender {
 
         guard let highlightedImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else { return Data() }
 
-        let viewportWindow = max(CGFloat(radius) * 7.5, 333)
+        let viewportWindow = max(CGFloat(radius) * 7.5, 700)
         let croppingRect = CGRect(x: CGFloat(x) - viewportWindow / 2,
                                   y: CGFloat(y) - viewportWindow / 2,
                                   width: viewportWindow,
