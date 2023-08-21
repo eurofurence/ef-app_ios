@@ -39,6 +39,7 @@ class DealerDetailLocationAndAvailabilityTableViewCell: UITableViewCell, DealerL
 
         dealerMapImageView.layer.borderColor = UIColor.lightGray.cgColor
         dealerMapImageView.layer.borderWidth = 1
+        dealerMapImageView.contentMode = .scaleAspectFill
     }
 
     // MARK: DealerLocationAndAvailabilityComponent
