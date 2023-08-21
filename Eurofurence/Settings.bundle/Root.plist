@@ -25,16 +25,6 @@
 			<string>PSToggleSwitchSpecifier</string>
 		</dict>
 		<dict>
-			<key>DefaultValue</key>
-			<false/>
-			<key>Key</key>
-			<string>EFSwiftUIAppVariantEnabled</string>
-			<key>Title</key>
-			<string>Use SwiftUI Variant</string>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
 			<key>File</key>
 			<string>Credits</string>
 			<key>Title</key>
