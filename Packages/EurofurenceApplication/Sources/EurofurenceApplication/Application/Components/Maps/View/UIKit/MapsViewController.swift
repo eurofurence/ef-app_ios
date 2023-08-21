@@ -18,9 +18,8 @@ class MapsViewController: UIViewController, MapsScene {
         super.viewDidLoad()
         delegate?.mapsSceneDidLoad()
     }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
+    
+    override func viewLayoutMarginsDidChange() {
         collectionView?.collectionViewLayout.invalidateLayout()
     }
 
